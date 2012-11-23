@@ -60,7 +60,7 @@ CloudfoundryUsergroups::Application.configure do
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
-  config.action_mailer.default_url_options = { :host => 'cfdg-test.cloudfoundry.com' }
+  
   # Log the query plan for queries taking more than this (works
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
@@ -73,6 +73,7 @@ CloudfoundryUsergroups::Application.configure do
   #EVENTBRITE_CLIENT_SECRET = 'ZG7WVTHUWLLFDXHA4AIUWEVJTYDDNIYSXGWFKWBPYPCFLEBZX4'  
   #EVENTBRITE_REDIRECT_URL = 'http://user-groups.cloudfoundry.com/events/oauth_reader'
   #EVENTBRITE_ORGANIZATION_ID = '2835415942'
+  #config.action_mailer.default_url_options = { :host => 'user-groups.cloudfoundry.com' }
 
   #cfdg-test
   FEDERATED_KEY = 'AIzaSyBDzBczQ51lkKiXLaS2Inx1iSRtf3SdjsI'
@@ -80,6 +81,7 @@ CloudfoundryUsergroups::Application.configure do
   EVENTBRITE_CLIENT_SECRET = 'YMEZVG4JTYTUX4LODI457DH27EJ5EBAORLPUH3DYWEQOZ3HYWR'  
   EVENTBRITE_REDIRECT_URL = 'http://cfdg-test.cloudfoundry.com/events/oauth_reader'
   EVENTBRITE_ORGANIZATION_ID = '2916808731'
+  config.action_mailer.default_url_options = { :host => 'cfdg-test.cloudfoundry.com' }
 
   #cfdg
   #FEDERATED_KEY = 'AIzaSyBY5e8OXkT-5f8m0z1kMLSap9fEkBWiLiU'
@@ -87,6 +89,7 @@ CloudfoundryUsergroups::Application.configure do
   #EVENTBRITE_CLIENT_SECRET = 'KC454JQAHL6CUOAKBBVYNWQ4NXDONSZFXNR3X6N7PANQ2F5HD7'  
   #EVENTBRITE_REDIRECT_URL = 'http://cfdg.cloudfoundry.com/events/oauth_reader'
   #EVENTBRITE_ORGANIZATION_ID = '2916808731'
+  #config.action_mailer.default_url_options = { :host => 'cfdg.cloudfoundry.com' }
   
 
   FEDERATED_BASE_URL = "https://www.googleapis.com/identitytoolkit/v1/relyingparty/verifyAssertion?key=#{FEDERATED_KEY}"
