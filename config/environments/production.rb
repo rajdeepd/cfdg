@@ -75,13 +75,13 @@ CloudfoundryUsergroups::Application.configure do
   #EVENTBRITE_ORGANIZATION_ID = '2835415942'
   #config.action_mailer.default_url_options = { :host => 'user-groups.cloudfoundry.com' }
 
-  #cfdg-test
-  FEDERATED_KEY = 'AIzaSyBDzBczQ51lkKiXLaS2Inx1iSRtf3SdjsI'
-  EVENTBRITE_CLIENT_ID = '5TTCXIKE42QQTVWI4L'
-  EVENTBRITE_CLIENT_SECRET = 'YMEZVG4JTYTUX4LODI457DH27EJ5EBAORLPUH3DYWEQOZ3HYWR'  
-  EVENTBRITE_REDIRECT_URL = 'http://cfdg-test.cloudfoundry.com/events/oauth_reader'
-  EVENTBRITE_ORGANIZATION_ID = '2916808731'
-  config.action_mailer.default_url_options = { :host => 'cfdg-test.cloudfoundry.com' }
+  #cfdg-test-2
+  FEDERATED_KEY = 'AIzaSyC3buRb285rN77C8A1AzUcmqLHlTvnGEcE'
+  EVENTBRITE_CLIENT_ID = 'OYTCC7KJXELJXDDM7W'
+  EVENTBRITE_CLIENT_SECRET = 'JFTX2DDVPRHEO6OL6HMZDNUQNFIYAPSEYBVIAJMF7I36Q3MCNP'
+  EVENTBRITE_REDIRECT_URL = 'http://cfdg-test-2.cloudfoundry.com/events/oauth_reader'
+  #EVENTBRITE_ORGANIZATION_ID = '2916808731'
+
 
   #cfdg
   #FEDERATED_KEY = 'AIzaSyBY5e8OXkT-5f8m0z1kMLSap9fEkBWiLiU'

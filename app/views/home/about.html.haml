@@ -15,15 +15,42 @@
           %p.label-16{:style => "line-height: 20px;margin-bottom: 40px;"}
             If there isn't a Cloud Foundry Developer Group in your city, you could
             %a.blue{:href => "#"} start one
-            yourself ! All you have to do is
-            = succeed "," do
-              %a.blue{:href => "#"} Sign Up
+            yourself ! All you have to do is            
+            
+            - class_val = ''
+            - href = "#"
+            -if @current_user.blank?
+              -class_val = ' signin'
+            -elsif !ChapterMember.is_primary_coordinator?(current_user.id)
+              -href = "#{new_chapter_path}"
+
+            %a.blue{:href => "#", :class => class_val} Sign Up
             create a proposal, fill in a
-            %a.blue{:href => "#"} Create Chapter
+            %a.blue{:href => "#{href}" ,:class => class_val} Create Chapter
             form and the site admin will get back to you.
+
     .cf-right.flt-right
       %img{:src => "/assets/banner.png", :style => "margin:40px 0px 0px 0px;"}
         %div{:style => "border:1px solid #ccc;height:200px;margin:0px 0px 10px 0px;"}
+          = gmaps4rails(@markers)
+          - content_for :javascript do        
+            :javascript
+                function redirect_to(url) {
+                  return function(){window.location = url;}
+                };
+
+                Gmaps.map.callback = function() {
+                  if (Gmaps.map.markers.length == 0 ){
+                    setTimeout(function() { Gmaps.map.serviceObject.setZoom(1);}, 50);
+                  }
+                  else{
+                    setTimeout(function() { Gmaps.map.serviceObject.setZoom(4);}, 50);
+                  }
+      
+                  for (var i = 0; i <  Gmaps.map.markers.length; i++) {              
+                     google.maps.event.addListener(Gmaps.map.markers[i].serviceObject, 'click',   redirect_to(Gmaps.map.markers[i].link));
+                  }                
+                };
         %h1.label-36{:style => "margin-bottom: 10px;"} You can plan events and meetups with other members in your own city....
         %p.label-16{:style => "line-height: 20px;margin-bottom: 10px;"}
           Organized meet-ups are a way for you to meet the members in your group/
@@ -31,7 +58,7 @@
           face-to-face.  Members can make presentations, invite a speaker or have group discussions. Meet ups are all about connecting people and promoting healthy discussion.
         %p.label-16{:style => "line-height: 20px;margin-bottom: 40px;"}
           Visit the
-          %a.blue{:href => "#"} directory
+          %a.blue{:href => "#{directory_path}"} directory
           to see if there's a local meetup in your area. Feel free to contact the organizers to find out more. If there's no chapter near you, consider starting one!
     .cf-bottom
       .cfb-div
