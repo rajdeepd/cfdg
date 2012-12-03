@@ -54,6 +54,12 @@ tmp/**/*
 /vendor/cache/*
 
 
+#Ignore all .Idea(RubyMine Project Directory)
+/.idea/
+.idea/*
+/.idea/workspace.xml
+
+
 *#*
 *.#*
 

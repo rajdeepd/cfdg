@@ -1,0 +1,16 @@
+---
+applications:
+  .:
+    name: cfdg-test-2
+    framework:
+      name: rails3
+      info:
+        mem: 256M
+        description: Rails Application
+        exec: !!null 
+    url: ${name}.${target-base}
+    mem: 256M
+    instances: 1
+    services:
+      mysql-56076:
+        type: mysql
