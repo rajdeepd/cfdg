@@ -193,8 +193,10 @@ class EventsController < ApplicationController
   	event_brite_oauthtoken = EventbriteOauthToken.find_by_user_id(@current_user.id)
   	if(!event_brite_oauthtoken.nil?) 	
   	 @eb_client = EventbriteClient.new({ access_token: event_brite_oauthtoken.event_brite_token})
-  	else
+    else
+      logger.info "############## test #####{OAuth2::Client.new(EVENTBRITE_CLIENT_ID, EVENTBRITE_CLIENT_SECRET, {:site => EVENTBRITE_URL})}"
   	 @auth_client_obj = OAuth2::Client.new(EVENTBRITE_CLIENT_ID, EVENTBRITE_CLIENT_SECRET, {:site => EVENTBRITE_URL})
+      logger.info "############## test 1 #####{@auth_client_obj.inspect}"
   	 @accept_url = @auth_client_obj.auth_code.authorize_url( :redirect_uri => EVENTBRITE_REDIRECT_URL)
   	end   
   end

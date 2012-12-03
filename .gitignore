@@ -44,4 +44,13 @@ tmp/**/*
 
 *#*
 *.#*
+#Ignore all .Idea
+/.idea/
+.idea/*
+.idea/workspace.xml
+/.idea/workspace.xml
+/tmp/
+# Ignore databse config
+/public/images/
+/vendor/bundle/*
 
