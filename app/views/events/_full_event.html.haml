@@ -17,6 +17,7 @@
       Location: #{@event.venue}
       %br
       #{@event.description}
+      -#=image_tag(@event.image,:size => "60x60")
       %br
   .div-d
     - (@event.comments || []).each do |comment|

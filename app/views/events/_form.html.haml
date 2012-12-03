@@ -26,7 +26,8 @@
       .event-left
         .el-cont{:style => "text-align: center;margin-top:10px;"}
           %div{:style => " width: 250px;height:160px;background: #ccc;margin: 0 auto;"}
-          %label.label-14 Upload Image
+          = f.file_field :image, :class => "label-14"
+
         .el-cont
       .event-right 
         .el-cont
