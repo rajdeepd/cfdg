@@ -52,7 +52,7 @@ resources :events, :has_many => :comments
   get "admin/log_out" => "admin/sessions#destroy", :as => "log_out"
   get '/sign_up' , :to => 'users#edit'
   match '/verify_user' => 'federated#verify_user'
-  match '/user_status' => 'federated#user_status' 
+  match '/user_status' => 'federated#user_status'
   match '/login' => 'federated#login', :as => :login
   match '/logout' => 'federated#logout'
   match '/profile' => 'users#profile' , :as => :profile
