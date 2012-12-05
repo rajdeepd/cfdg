@@ -14,7 +14,7 @@
 /log/*.log
 /tmp
 
-/config/database.yml
+#/config/database.yml
 /db/schema.rb
 /nbproject/
 *.swp
@@ -49,7 +49,7 @@ tmp/**/*
 /tmp/
 # Ignore databse config
 /public/images/
-/config/database.yml
+#/config/database.yml
 /vendor/bundle/*
 /vendor/cache/*
 
