@@ -1,6 +1,7 @@
 require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
+require "action_mailer/railtie"
 
 if defined?(Bundler)
   # If you precompile assets before deploying to production, use this line
@@ -57,11 +58,27 @@ module CloudfoundryUsergroups
     config.assets.enabled = true
     config.time_zone = 'Kolkata'
     config.autoload_paths += %W(#{config.root}/app/models/ckeditor)
-    
+
+    config.action_mailer.default_url_options = {:host => "cfdg.cloudfoundry.com"}
+    #config.action_mailer.default_url_options = {:host => "local.cfdg.com"}
+
     config.generators do |g|
       g.template_engine :haml
     end
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings = {
+        :address              => "smtp.gmail.com",
+        :port                 => 587,
+        :domain               => 'mail.weboniselab.com',
+        :user_name            => 'pansingh@weboniselab.com',
+        :password             => 'pansingh6186',
+        :authentication       => 'plain',
+        :enable_starttls_auto => true  }
+    config.autoload_paths += %W(#{config.root}/app/middleware/)
+
+
   end
 end
