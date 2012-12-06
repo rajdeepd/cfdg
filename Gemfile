@@ -29,7 +29,6 @@ gem 'devise'
 gem "oa-core", "~> 0.3.2"
 gem "rest-client", "~> 1.6.7"
 gem 'soft-deletable'
-gem 'hirb'
 # Authentication end
 
 
@@ -52,10 +51,10 @@ group :test do
     gem 'factory_girl_rails', :require => false
 end
 
-#group :development do
-#   # To use debugger
-	#gem 'debugger'
-#end
+group :development do
+   # To use debugger
+  gem 'hirb'
+end
 
 
 gem 'jquery-rails'
