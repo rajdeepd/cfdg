@@ -133,7 +133,7 @@ class EventsController < ApplicationController
         @chapter = Chapter.find(@event.chapter_id)
         @chapter_events = @chapter.events.sort        
         @two_chapter_events = @chapter_events.take(2)
-        format.js 
+        format.js
       else
         format.js
       end
