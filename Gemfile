@@ -69,7 +69,7 @@ gem 'remotipart', '~> 1.0'
 gem "ckeditor", "~> 3.7.3"
 
 gem 'aws-sdk'
-#gem 'hirb'
+gem 'carrierwave'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
