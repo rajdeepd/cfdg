@@ -76,6 +76,7 @@ CloudfoundryUsergroups::Application.configure do
 
   #cfdg-test
   #FEDERATED_KEY = 'AIzaSyBDzBczQ51lkKiXLaS2Inx1iSRtf3SdjsI'
+
   #EVENTBRITE_CLIENT_ID = '5TTCXIKE42QQTVWI4L'
   #EVENTBRITE_CLIENT_SECRET = 'YMEZVG4JTYTUX4LODI457DH27EJ5EBAORLPUH3DYWEQOZ3HYWR'
   #EVENTBRITE_REDIRECT_URL = 'http://cfdg-test.cloudfoundry.com/events/oauth_reader'
@@ -93,6 +94,7 @@ CloudfoundryUsergroups::Application.configure do
   #EVENTBRITE_CLIENT_SECRET = 'KF4RVWEKKWKFBSRW4F3CVIL7ORFF2M4NQDEBSEWDENNME3QOQC'
   #EVENTBRITE_REDIRECT_URL = 'http://cfdg-2.cloudfoundry.com/events/oauth_reader'
   #EVENTBRITE_ORGANIZATION_ID = '2916808731'
+
 
   FEDERATED_BASE_URL = "https://www.googleapis.com/identitytoolkit/v1/relyingparty/verifyAssertion?key=#{FEDERATED_KEY}"
   

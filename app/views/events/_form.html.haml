@@ -1,94 +1,113 @@
--if @eb_client.nil?
-  = link_to 'Connect to Eventbrite', "#{@accept_url}", :class => "btn-a-small" , :style => "margin-left:30%;"
--else
-  = semantic_form_for @event ,:remote=> true do |f|
-    .event-form
-      .event-left{:style => "width:100%;"}
-        .el-cont{:style => "margin-bottom: 16px;"}
-          %h2.label-45.flt-left Create Event For #{@event.chapter.try(:name)}
-      .event-left{:style => "width:49%;"}
-        .el-cont
-          %label.flt-left.label-26 Starts On
-          = f.input :event_start_time ,  :placeholder => "hh:mm", :label => false,   :input_html => {:class => "input-b size-b size-of-inputs flt-right timepicker",:style => " margin:0px 10px 0px 10px;" }
-          = f.input :event_start_date , :input_html => {:class => "input-b size-b size-of-inputs flt-right"} , :placeholder => "dd/mm/yyyy", :label => false
-        .error{:class => "el-cont"}
-          %li{:style => "padding-left:72px;float:left;width:35%;", :class => "inline-errors event_event_start_date"} &nbsp;
-          %li{:style => "float:left;padding-left:14px;", :class => "inline-errors event_event_start_time"} &nbsp;
-        .el-cont
-          %label.flt-left.label-26 Ends On          
-          = f.input :event_end_time ,  :placeholder => "hh:mm", :label => false , :input_html => {:class => "input-b size-b size-of-inputs flt-right timepicker", :style => " margin:0px 10px 0px 10px;" }
-          = f.input :event_end_date , :input_html => {:class => "input-b size-b size-of-inputs flt-right"} , :placeholder => "dd/mm/yyyy", :label => false
-        .error{:class => "el-cont"}
-          %li{:style => "padding-left:72px;float:left;width:35%;", :class => "inline-errors event_event_end_date"} &nbsp;
-          %li{:style => "float:left;padding-left:14px;", :class => "inline-errors event_event_end_time"} &nbsp;
-      .event-bottom
-    .event-form
-      .event-left
-        .el-cont{:style => "text-align: center;margin-top:10px;"}
-          %div{:style => " width: 250px;height:160px;background: #ccc;margin: 0 auto;"}
-          %label.label-14 Upload Image
-        .el-cont
-      .event-right 
-        .el-cont
-          %h5.label-26.flt-left Location
-        .el-cont
-        .el-cont{:style => "margin-bottom:2px;"}
-          = f.input :venue , :input_html => {:class => "input-b size-text-event-create"} , :placeholder => "Venue Name", :label => false 
-          
-        .el-cont
-          = f.input :address_line1 , :input_html => {:class => "input-b size-text-event-create"} , :placeholder => "Address Line 1", :label => false  
-          
-        .el-cont
-          = f.input :address_line2 , :input_html => {:class => "input-b size-text-event-create"} , :placeholder => "Address Line 2", :label => false        
-          
-        .el-cont
-          = f.input :city_name ,:input_html => { :class => "input-b size-text-event-create" }, :placeholder => "Type to select a city", :label => false        
-          = f.hidden_field :chapter_id
-        .el-cont
-          = f.input :postal_code , :input_html => {:class => "input-b size-text-event-create"} , :placeholder => "Postal code", :label => false        
-    .event-form{:style => "padding-top:10px; padding-bottom: 20px;"}
+-#-if @eb_client.nil?
+-#  = link_to 'Connect to Eventbrite', "#{@accept_url}", :class => "btn-a-small" , :style => "margin-left:30%;"
+-#-else
+= semantic_form_for @event ,:remote=> true do |f|
+  .event-form
+    .event-left{:style => "width:100%;"}
+      .el-cont{:style => "margin-bottom: 16px;"}
+        %h2.label-45.flt-left Create Event For #{@event.chapter.try(:name)}
+    .event-left{:style => "width:49%;"}
       .el-cont
-        = f.input :title , :input_html => {:class => "input-b size-f"} , :placeholder => "Event Title", :label => false
+        %label.flt-left.label-26 Starts On
+        = f.input :event_start_time ,  :placeholder => "hh:mm", :label => false,   :input_html => {:class => "input-b size-b size-of-inputs flt-right timepicker",:style => " margin:0px 10px 0px 10px;" }
+        = f.input :event_start_date , :input_html => {:class => "input-b size-b size-of-inputs flt-right"} , :placeholder => "dd/mm/yyyy", :label => false
       .error{:class => "el-cont"}
-        %li{:style => "float:left;", :class => "inline-errors event_title"} &nbsp;
+        %li{:style => "padding-left:72px;float:left;width:35%;", :class => "inline-errors event_event_start_date"} &nbsp;
+        %li{:style => "float:left;padding-left:14px;", :class => "inline-errors event_event_start_time"} &nbsp;
       .el-cont
-        = f.text_area :description , :class => "input-b size-f" , :placeholder => "Event description", :style => "height: 40px;margin:5px 0px;", :label => false
-      #spinner.spinner{:style => 'display:none;margin-right:10px;float:right;'}
-        %img{:src => "/assets/spinner.gif", :alt => "Loading" , :id => 'img-spinner'}/  
-      #options{:style => "width:628px; overflow: hidden;"}
-        %button.btn-a-small.flt-right{:style => "margin-right:10px;", :id=>"event_form_submit"} CREATE
-        /%button.btn-c-small.flt-right{:style => "margin-right:10px;"} DISCARD
-        
+        %label.flt-left.label-26 Ends On
+        = f.input :event_end_time ,  :placeholder => "hh:mm", :label => false , :input_html => {:class => "input-b size-b size-of-inputs flt-right timepicker", :style => " margin:0px 10px 0px 10px;" }
+        = f.input :event_end_date , :input_html => {:class => "input-b size-b size-of-inputs flt-right"} , :placeholder => "dd/mm/yyyy", :label => false
+      .error{:class => "el-cont"}
+        %li{:style => "padding-left:72px;float:left;width:35%;", :class => "inline-errors event_event_end_date"} &nbsp;
+        %li{:style => "float:left;padding-left:14px;", :class => "inline-errors event_event_end_time"} &nbsp;
+    .event-bottom
+  .event-form
+    .event-left
+      .el-cont{:style => "text-align: center;margin-top:10px;"}
+        %div{:style => " width: 250px;height:160px;background: #ccc;margin: 0 auto;"}
+        = f.file_field :image, :class => "label-14"
+      .el-cont
+    .event-right
+      .el-cont
+        %h5.label-26.flt-left Location
+      .el-cont
+      .el-cont{:style => "margin-bottom:2px;"}
+        = f.input :venue , :input_html => {:class => "input-b size-text-event-create"} , :placeholder => "Venue Name", :label => false
+
+      .el-cont
+        = f.input :address_line1 , :input_html => {:class => "input-b size-text-event-create"} , :placeholder => "Address Line 1", :label => false
+
+      .el-cont
+        = f.input :address_line2 , :input_html => {:class => "input-b size-text-event-create"} , :placeholder => "Address Line 2", :label => false
+
+      .el-cont
+        = f.input :city_name ,:input_html => { :class => "input-b size-text-event-create" }, :placeholder => "Type to select a city", :label => false
+        = f.hidden_field :chapter_id
+      .el-cont
+        = f.input :postal_code , :input_html => {:class => "input-b size-text-event-create"} , :placeholder => "Postal code", :label => false
+  .event-form{:style => "padding-top:10px; padding-bottom: 20px;"}
+    .el-cont
+      = f.input :title , :input_html => {:class => "input-b size-f"} , :placeholder => "Event Title", :label => false
+    .error{:class => "el-cont"}
+      %li{:style => "float:left;", :class => "inline-errors event_title"} &nbsp;
+    .el-cont
+      = f.text_area :description , :class => "input-b size-f" , :placeholder => "Event description", :style => "height: 40px;margin:5px 0px;", :label => false
+    #spinner.spinner{:style => 'display:none;margin-right:10px;float:right;'}
+      %img{:src => "/assets/spinner.gif", :alt => "Loading" , :id => 'img-spinner'}/
+    #options{:style => "width:628px; overflow: hidden;"}
+      %button.btn-a-small.flt-right{:style => "margin-right:10px;", :id=>"event_form_submit"} CREATE
+      /%button.btn-c-small.flt-right{:style => "margin-right:10px;"} DISCARD
+
 
 :javascript
   $(function(){
+  var today = new Date();
     $( "#event_event_start_date" ).datepicker({
-      minDate: 0,
-      dateFormat: "dd/mm/yy",
-      onClose: function( selectedDate ) {
-        $( "#event_event_end_date" ).datepicker( "option", "minDate", selectedDate );
-      }
+        minDate: 0,
+        dateFormat: "dd/mm/yy",
+        onClose: function( selectedDate ) {
+            $( "#event_event_end_date" ).datepicker( "option", "minDate", selectedDate );
+           if(selectedDate ==  $.datepicker.formatDate( "dd/mm/yy", today))
+           {
+             // here will skip some time values for the current date
+             $( "#event_event_start_time" ).timepicker( "option", "minTime", today.toTimeString() );
+
+           }
+           else
+          {
+            $( "#event_event_start_time" ).timepicker( "option", "minTime", new Date(0, 0, 0, 8, 0, 0) );
+          }
+        }
     });
     $( "#event_event_end_date" ).datepicker({
-      dateFormat: "dd/mm/yy",
-      onClose: function( selectedDate ) {
-        $( "#event_event_start_date" ).datepicker( "option", "maxDate", selectedDate );
-      }
-    });
-    $('input.timepicker').timepicker({
-      showNowButton: true,
-      showDeselectButton: true,
-      defaultTime: '',
-      timeFormat: 'hh:mm',
-      minTime: new Date(0, 0, 0, 8, 0, 0),
-      interval: 15,
+        dateFormat: "dd/mm/yy",
+        onClose: function( selectedDate ) {
+            $( "#event_event_start_date" ).datepicker( "option", "maxDate", selectedDate );
+            if(selectedDate ==  $.datepicker.formatDate( "dd/mm/yy", today))
+             {
+               alert("selected doday date")
+               // here will skip some time values for the current date
+               $( "#event_event_end_time" ).timepicker( "option", "minTime", today.toTimeString() );
+
+             }
+             else
+             {
+               $( "#event_event_end_time" ).timepicker( "option", "minTime", new Date(0, 0, 0, 8, 0, 0) );
+             }
+        }
     });
 
-    $('#event_event_start_time').timepicker()
-      .option('change', function(time){
-          // update startTime option in timepicker-2
-        $('#event_event_end_time').timepicker('option', 'startTime', time);
-      });
+    $('input.timepicker').timepicker({
+        timeFormat: 'hh:mm p',
+        minTime: new Date(0, 0, 0, 8, 0, 0),
+        interval: 15,
+    });
+    //$('#event_event_start_time').timepicker()
+    //    .option('change', function(time) {
+    //        // update startTime option in timepicker-2
+    //        $('#event_event_end_time').timepicker('option', 'startTime', time);
+    //});
   })
 
 
