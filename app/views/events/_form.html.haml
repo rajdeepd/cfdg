@@ -87,7 +87,6 @@
             $( "#event_event_start_date" ).datepicker( "option", "maxDate", selectedDate );
             if(selectedDate ==  $.datepicker.formatDate( "dd/mm/yy", today))
              {
-               alert("selected doday date")
                // here will skip some time values for the current date
                $( "#event_event_end_time" ).timepicker( "option", "minTime", today.toTimeString() );
 
