@@ -34,7 +34,7 @@ Events ={
   $('#delete_an_event').die('click').live('click', function(e){
 
       var data = {event_id: $(this).attr('event_id')};
-      var confirmation = confirm("Are u sure")
+      var confirmation = confirm("Are You Sure?")
 
       if (confirmation == true)
       {
