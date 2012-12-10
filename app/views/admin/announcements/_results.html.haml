@@ -1,21 +1,25 @@
 %table.table-b
-  - @announcements.each do |ann|
-    %tr{:style => ""}
-      %td.tb-1-4
-        = photo_display_pic(ann,'thumb', '128x86','img-g.png',"img-c flt-left")
-      %td.tb-2-4
-        %a.label-36.bold{:href => "#"}= ann.title
-        %p.label-26{:style => "padding-top:5px"}
-          = ann.body
-      %td.tb-3-4
-        %h5.label-20.flt-right.date-cross= ann.created_at.strftime("%B %d, %Y")
-      %td.tb-4-4
-        = link_to "", admin_announcement_path(ann), :confirm => "Are you sure you want to delete this announcement?", :method => :delete , :remote => true , :class => "bg-cross-b date-cross"
-    %tr
-      %td{:colspan => "4", :style => "border-bottom: 1px solid #C5C6C7;"}
-        %br
-    %tr
-      %td{:colspan => "4"}
-        %br
-%div{:style => "margin: 30px 0 10px;"}
-= will_paginate(@announcements, :class => 'pgt-bar',:inner_window => 2, :outer_window => 0, :renderer => RemoteLinkRenderer, :previous_label => '&lt; PREVIOUS'.html_safe, :next_label => 'NEXT &gt;'.html_safe)
+  -if @announcements.present?
+    - @announcements.each do |ann|
+      %tr{:style => ""}
+        %td.tb-1-4
+          = photo_display_pic(ann,'thumb', '128x86','img-g.png',"img-c flt-left")
+        %td.tb-2-4
+          %a.label-36.bold{:href => "#"}= ann.title
+          %p.label-26{:style => "padding-top:5px"}
+            = ann.body
+        %td.tb-3-4
+          %h5.label-20.flt-right.date-cross= ann.created_at.strftime("%B %d, %Y")
+        %td.tb-4-4
+          = link_to "", admin_announcement_path(ann), :confirm => "Are you sure you want to delete this announcement?", :method => :delete , :remote => true , :class => "bg-cross-b date-cross"
+      %tr
+        %td{:colspan => "4", :style => "border-bottom: 1px solid #C5C6C7;"}
+          %br
+      %tr
+        %td{:colspan => "4"}
+          %br
+    %div{:style => "margin: 30px 0 10px;"}
+    = will_paginate(@announcements, :class => 'pgt-bar',:inner_window => 2, :outer_window => 0, :renderer => RemoteLinkRenderer, :previous_label => '&lt; PREVIOUS'.html_safe, :next_label => 'NEXT &gt;'.html_safe)
+  -else
+    No Announcements
+
