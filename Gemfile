@@ -51,10 +51,10 @@ group :test do
     gem 'factory_girl_rails', :require => false
 end
 
-#group :development do
-#   # To use debugger
-	#gem 'debugger'
-#end
+group :development do
+   # To use debugger
+  gem 'hirb'
+end
 
 
 gem 'jquery-rails'
@@ -69,6 +69,7 @@ gem 'remotipart', '~> 1.0'
 gem "ckeditor", "~> 3.7.3"
 
 gem 'aws-sdk'
+gem 'carrierwave'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

@@ -41,7 +41,29 @@ tmp/
 tmp/**/*
 /Gemfile.lock
 
+#Ignore all .Idea
+/.idea/
+.idea/*
+.idea/workspace.xml
+/.idea/workspace.xml
+/tmp/
+# Ignore databse config
+/public/images/
+/config/database.yml
+/vendor/bundle/*
+/vendor/cache/*
+
 
 *#*
 *.#*
+#Ignore all .Idea
+/.idea/
+.idea/*
+.idea/workspace.xml
+/.idea/workspace.xml
+/tmp/
+# Ignore databse config
+/public/images/
+public/uploads/
+/vendor/bundle/*
 

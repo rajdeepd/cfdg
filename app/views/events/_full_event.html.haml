@@ -12,11 +12,12 @@
       Attendees: #{@event.event_members.size}
       %br
       -if(!@event.event_start_date.blank?)
-        #{Time.parse(@event.event_start_date.to_s).strftime('%A %I:%M %p,%b %d, %Y')} I #{@event.entry_fee}  per person
+        #{Time.parse(@event.event_start_time.to_s).strftime('%A %I:%M %p')}, #{Date.parse(@event.event_start_date.to_s).strftime('%b %d, %Y')}  I #{@event.entry_fee}  per person
       %br
       Location: #{@event.venue}
       %br
       #{@event.description}
+      -#=image_tag(@event.image,:size => "60x60")
       %br
   .div-d
     - (@event.comments || []).each do |comment|
