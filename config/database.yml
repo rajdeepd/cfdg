@@ -1,10 +1,12 @@
-
-development: 
+development:
   adapter: mysql2
   encoding: utf8
-  database: cf_usergroups
+  reconnect: false
+  database: cfdg_development
+  pool: 5
   username: root
-  password: root
+  password: webonise6186
+  socket: /var/run/mysqld/mysqld.sock
   
 
 # Warning: The database defined as "test" will be erased and

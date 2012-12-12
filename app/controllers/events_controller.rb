@@ -189,8 +189,10 @@ class EventsController < ApplicationController
 
 
 
-  def initialise_eventbrite_client 
+  def initialise_eventbrite_client
+    logger.info("#############################{@current_user.inspect}")
   	event_brite_oauthtoken = EventbriteOauthToken.find_by_user_id(@current_user.id)
+    logger.info("#############################{event_brite_oauthtoken.inspect}")
   	if(!event_brite_oauthtoken.nil?) 	
   	 @eb_client = EventbriteClient.new({ access_token: event_brite_oauthtoken.event_brite_token})
   	else
