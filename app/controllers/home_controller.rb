@@ -49,6 +49,6 @@ class HomeController < ApplicationController
 
   def chapters
     @chapters = Chapter.incubated_or_active || []
-  	@markers = get_markers.to_json 
+  	@markers = get_markers.to_json
   end
 end

@@ -2,7 +2,7 @@
 -#-if @eb_client.nil?
 -#  = link_to 'Connect to Eventbrite', "#{@accept_url}", :class => "btn-a-small" , :style => "margin-left:30%;"
 -#-else
-= semantic_form_for @event ,:remote=> true do |f|
+= semantic_form_for @event ,:url => chapter_events_path(params[:chapter_id]),:method => :post,:remote=> true do |f|
   .event-form
     .event-left{:style => "width:100%;"}
       .el-cont{:style => "margin-bottom: 16px;"}

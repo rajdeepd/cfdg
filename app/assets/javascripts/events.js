@@ -6,9 +6,10 @@ Events ={
 			var chapter_id= $('#group_admin_ref').attr('chapter_id');
 
 		    $.ajax({
-		      url: '/events/new',
-          data: {chapter_id: chapter_id},
+		      url: '/chapters/'+ chapter_id+'/events/new',
+//          data: {chapter_id: chapter_id},
 		      success: function(data){
+
 		          $('#admincontent').html(data);
 		      },
 		      async:false,
