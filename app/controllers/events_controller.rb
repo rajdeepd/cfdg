@@ -44,7 +44,7 @@ class EventsController < ApplicationController
 
   def oauth_reader
     if !params[:code].blank?
-      access_token_obj = @auth_client_obj.auth_code.get_token(params[:code], { :redirect_uri => EVENTBRITE_REDIRECT_URL, :token_method => :post })      
+      access_token_obj = @auth_client_obj.auth_code.get_token(params[:code], { :redirect_uri => EVENTBRITE_REDIRECT_URL, :token_method => :post })
       eventbrite_entry = EventbriteOauthToken.new(:user_id => @current_user.id, :event_brite_token => access_token_obj.token)
       eventbrite_entry.save!
 
@@ -192,13 +192,12 @@ class EventsController < ApplicationController
   def initialise_eventbrite_client
     logger.info("#############################{@current_user.inspect}")
   	event_brite_oauthtoken = EventbriteOauthToken.find_by_user_id(@current_user.id)
-    logger.info("#############################{event_brite_oauthtoken.inspect}")
-  	if(!event_brite_oauthtoken.nil?) 	
+  	if(!event_brite_oauthtoken.nil?)
   	 @eb_client = EventbriteClient.new({ access_token: event_brite_oauthtoken.event_brite_token})
-  	else
+    else
   	 @auth_client_obj = OAuth2::Client.new(EVENTBRITE_CLIENT_ID, EVENTBRITE_CLIENT_SECRET, {:site => EVENTBRITE_URL})
   	 @accept_url = @auth_client_obj.auth_code.authorize_url( :redirect_uri => EVENTBRITE_REDIRECT_URL)
-  	end   
+  	end
   end
 
   protected
