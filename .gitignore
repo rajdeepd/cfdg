@@ -64,6 +64,6 @@ tmp/**/*
 /tmp/
 # Ignore databse config
 /public/images/
-public/uploads/
+/public/uploads/
 /vendor/bundle/*
 
