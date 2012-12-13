@@ -10,11 +10,10 @@ class RegistrationsController  < Devise::RegistrationsController
     @user = User.new(params[:user])
     @user.fullname = "#{params[:user][:first_name]} #{params[:user][:last_name]}"
     if @user.save
-      session[:user], session[:user_id], session[:user_name] = {:name => @user.fullname, :email => @user.email, :id => @user.id}, @user.id, @user.fullname
-      @registered = true
+      #session[:user], session[:user_id], session[:user_name] = {:name => @user.fullname, :email => @user.email, :id => @user.id}, @user.id, @user.fullname
+      #@registered = true
       flash[:notice] = "You have signed up successfully. "
-      #binding.remote_pry
-      redirect_to root_url
+      redirect_to home_index
     else
       render :action => :new
     end
