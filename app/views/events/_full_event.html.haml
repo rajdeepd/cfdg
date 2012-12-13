@@ -7,22 +7,32 @@
     %a.label-9.event_expand{:href => "#", :event_id=> @event.id} #{@event.title}  
     -if !current_user.blank? and @profile_page != true  and !@event.am_i_member?(@current_user.id)                    
       %button.btn-a-small.flt-right{:id=>"follow_an_event", :event_id => "#{@event.id}"} FOLLOW
-    %br
-    %p.label-26{:id => "short_content"}
-      Attendees: #{@event.event_members.size}
-      %br
-      -if(!@event.event_start_date.blank?)
-        #{Time.parse(@event.event_start_time.to_s).strftime('%A %I:%M %p')}, #{Date.parse(@event.event_start_date.to_s).strftime('%b %d, %Y')}  I #{@event.entry_fee}  per person
-      %br
-      Location: #{@event.venue}
-      %br
-      #{@event.description}
+    %div.clr
+    %div.label-26{:id => "short_content"}
+      %div.dateAttendees
+        %div.date
+          -if(!@event.event_start_date.blank?)
+            #{Time.parse(@event.event_start_time.to_s).strftime('%A %I:%M %p')}, #{Date.parse(@event.event_start_date.to_s).strftime('%b %d, %Y')}
+            -#I #{@event.entry_fee}  per person
+
+        %div.attendees
+          %strong Attendees:
+          #{@event.event_members.size}
+        .clr
+      %div.location
+        %div.title
+          Location
+        #{@event.venue}
+      %div.description
+        #{@event.description}
+
       -#=image_tag(@event.image,:size => "60x60")
-      %br
+  %div.clr
+
   .div-d
     - (@event.comments || []).each do |comment|
       .divd-comment-pos
-        %br
+        -#%br
         %table.table-c
           %tr
             %td
@@ -42,5 +52,5 @@
         = f.hidden_field   :commentable_type
         = f.hidden_field   :commentable_id
   %br
-  
+
 
