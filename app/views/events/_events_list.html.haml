@@ -38,7 +38,7 @@
 
             -if !current_user.blank?   and event.can_i_delete?(@current_user.id, event.chapter_id)      
               %button.btn-a-small.flt-right{:id=>"delete_an_event", :event_id => "#{event.id}"} DELETE
-            %br
+            %div.clr
             %label.label-25
               -if(!event.event_start_date.blank?)
                 #{Time.parse(event.event_start_time.to_s).strftime('%A %I:%M %p')} #{Date.parse(event.event_start_date.to_s).strftime("%b %d, %Y")} I #{event.entry_fee}  per person
@@ -60,7 +60,7 @@
               %button.btn-a-small.flt-right{:id=>"follow_an_event", :event_id => "#{event.id}"} CLICK TO ATTEND
             -if !current_user.blank?   and event.can_i_delete?(@current_user.id, event.chapter_id)      
               %button.btn-a-small.flt-right{:id=>"delete_an_event", :event_id => "#{event.id}"} DELETE
-            %br
+            %div.clr
             %label.label-25
               -if(!event.event_start_date.blank?)
                 #{Time.parse(event.event_start_time.to_s).strftime('%A %I:%M %p')} #{Date.parse(event.event_start_date.to_s).strftime("%b %d, %Y")} I #{event.entry_fee}  per person
