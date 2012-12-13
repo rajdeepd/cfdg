@@ -22,7 +22,7 @@
       %div.location
         %div.title
           Location
-        #{@event.venue}
+        = get_event_address(@event)
       %div.description
         #{@event.description}
 
