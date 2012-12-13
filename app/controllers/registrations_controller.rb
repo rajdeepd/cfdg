@@ -13,7 +13,7 @@ class RegistrationsController  < Devise::RegistrationsController
       #session[:user], session[:user_id], session[:user_name] = {:name => @user.fullname, :email => @user.email, :id => @user.id}, @user.id, @user.fullname
       #@registered = true
       flash[:notice] = "You have signed up successfully. "
-      redirect_to home_index
+      redirect_to home_index_path
     else
       render :action => :new
     end
