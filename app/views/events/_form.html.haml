@@ -109,7 +109,7 @@
      //var postal_code= new LiveValidation("event_postal_code",{validMessage:" ",onlyOnSubmit:true});
      //postal_code.add( Validate.Numericality ,{ onlyInteger: true },{maximum: 2000,failureMessage:"Should be Postal code"});
     var postal_code =   new LiveValidation("event_postal_code",{validMessage:" ",onlyOnSubmit:true});
-    postal_code.add( Validate.Format , { pattern: /^[0-9]{5}$|^[0-9]{6}$/, failureMessage: "Must be a valid URL" });
+    postal_code.add( Validate.Format , { pattern: /^[0-9]{5}$|^[0-9]{6}$/, failureMessage: "Must be a valid postal code" });
 
 
     //$('#event_event_start_time').timepicker()
