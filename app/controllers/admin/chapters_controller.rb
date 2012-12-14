@@ -3,7 +3,7 @@ class Admin::ChaptersController < ApplicationController
   layout 'admin'
 
   def index
-    @chapters = Chapter.applied_chapters    
+    @chapters = Chapter.applied_chapters
     respond_to do |format|
       format.html # index.html.erb
       format.js{ render layout: false }

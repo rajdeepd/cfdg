@@ -16,18 +16,18 @@
       %ul.ul-a.flt-right        
         - if !current_user.blank?
           %li
-            %a.label-2.logout{:href => "#{profile_path}"}= t('menu.myprofile')
+            %a.label-2.logout{:href => "#{profile_path}"}= t('menu.myprofile') |
           %li
             %label.label-2.bold{:style => "position: relative;top: -2px;font-size: 18px;color:#afafaf;"}
               |
           %li
             %a.label-2.logout{:href => "#"}= t('menu.logout')
         - else
-          %li
-            %a.label-2.signup{:href => "#"}= t('menu.signup')
+          -#%li
+          -#  %a.label-2.signup{:href => "#"}= t('menu.signup')
           %li
             %label.label-2.bold{:style => "position: relative;top: -2px;font-size: 18px;color:#afafaf;"}
-              |
+
           %li
             %a.label-2.signin{:href => "#"}= t('menu.login')
   .header-b
