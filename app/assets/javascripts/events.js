@@ -53,7 +53,6 @@ Events ={
   });
 
   $('#event_form_submit').die('click').live('click', function(e){
-
     $('#options').hide();
     $('#spinner').show();
   });
