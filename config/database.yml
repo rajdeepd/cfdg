@@ -1,5 +1,4 @@
-
-development: 
+development:
   adapter: mysql2
   encoding: utf8
   database: cf_usergroups

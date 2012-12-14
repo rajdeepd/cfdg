@@ -48,6 +48,7 @@ CloudfoundryUsergroups::Application.configure do
    EVENTBRITE_CLIENT_SECRET = 'SZ6KSV4WFJ6NLDP2OXLPJLSKW6W6JPAXOZEI5EAXPO6S33R6EL'
    EVENTBRITE_URL = 'https://www.eventbrite.com'
    EVENTBRITE_REDIRECT_URL = 'http://localhost:3000/events/oauth_reader'
+   #EVENTBRITE_REDIRECT_URL = 'http://local.cfdg.com//events/oauth_reader'
    EVENTBRITE_ORGANIZATION_ID = '2894467429'
 
 end

@@ -10,6 +10,7 @@ CloudfoundryUsergroups::Application.routes.draw do
   get '/wiki' => 'home#wiki' , :as => "wiki"
   
   resources :chapters do
+    resources :events
      collection do
       post 'join_a_chapter'
       get  'chapter_admin_home_page'
@@ -40,7 +41,7 @@ CloudfoundryUsergroups::Application.routes.draw do
       post 'create_event_comment'
     end  
   end
-resources :events, :has_many => :comments
+#resources :events, :has_many => :comments
 
 #scope ':locale' do
   devise_for :users , :controllers => { :registrations => "registrations" } do

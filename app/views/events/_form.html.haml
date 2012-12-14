@@ -1,7 +1,7 @@
 -#-if @eb_client.nil?
 -#  = link_to 'Connect to Eventbrite', "#{@accept_url}", :class => "btn-a-small" , :style => "margin-left:30%;"
 -#-else
-= semantic_form_for @event ,:remote=> true do |f|
+= semantic_form_for @event ,:url => chapter_events_path(params[:chapter_id]),:method => :post,:remote=> true do |f|
   .event-form
     .event-left{:style => "width:100%;"}
       .el-cont{:style => "margin-bottom: 16px;"}
@@ -86,7 +86,6 @@
             $( "#event_event_start_date" ).datepicker( "option", "maxDate", selectedDate );
             if(selectedDate ==  $.datepicker.formatDate( "dd/mm/yy", today))
              {
-               alert("selected doday date")
                // here will skip some time values for the current date
                $( "#event_event_end_time" ).timepicker( "option", "minTime", today.toTimeString() );
 
@@ -103,6 +102,12 @@
         minTime: new Date(0, 0, 0, 8, 0, 0),
         interval: 15,
     });
+
+     //var postal_code= new LiveValidation("event_postal_code",{validMessage:" ",onlyOnSubmit:true});
+     //postal_code.add( Validate.Numericality ,{ onlyInteger: true },{maximum: 2000,failureMessage:"Should be Postal code"});
+    var postal_code =   new LiveValidation("event_postal_code",{validMessage:" ",onlyOnSubmit:true});
+    postal_code.add( Validate.Format , { pattern: /^[0-9]{5}$|^[0-9]{6}$/, failureMessage: "Must be a valid postal code" });
+
     //$('#event_event_start_time').timepicker()
     //    .option('change', function(time) {
     //        // update startTime option in timepicker-2
