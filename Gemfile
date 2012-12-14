@@ -53,7 +53,8 @@ end
 
 group :development do
    # To use debugger
-  gem 'hirb'
+  #gem 'hirb'
+  #gem "pry-remote"
 end
 
 

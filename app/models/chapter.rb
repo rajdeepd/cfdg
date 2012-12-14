@@ -1,11 +1,12 @@
 class Chapter < ActiveRecord::Base  
   stampable
-  acts_as_soft_deletable         
+  acts_as_soft_deletable
 
-  has_many :chapter_members
+
+  has_many :chapter_members ,:dependent => :destroy
+
   has_many :messages
   accepts_nested_attributes_for :messages
-  
   has_many :users , :through => :chapter_members
   has_many :events
   has_many :posts
