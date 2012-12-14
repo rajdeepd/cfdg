@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121203133032) do
+ActiveRecord::Schema.define(:version => 20121214124912) do
 
   create_table "announcements", :force => true do |t|
     t.string   "title"
@@ -50,13 +50,14 @@ ActiveRecord::Schema.define(:version => 20121203133032) do
     t.integer  "created_by"
     t.integer  "updated_by"
     t.datetime "deleted_at"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
     t.string   "city_name"
     t.string   "state_name"
     t.string   "country_name"
     t.datetime "approved_on"
     t.datetime "rejected_on"
+    t.string   "institution",    :default => ""
   end
 
   create_table "cities", :force => true do |t|
