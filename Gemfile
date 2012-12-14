@@ -53,7 +53,7 @@ end
 
 group :development do
    # To use debugger
-  #gem 'hirb'
+  gem 'hirb'
 end
 
 
