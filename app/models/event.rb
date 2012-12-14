@@ -39,6 +39,6 @@ class Event < ActiveRecord::Base
   end
 
   def can_i_delete?(user_id, chapter_id)
-    ChapterMember.am_i_coordiantor?(user_id, chapter_id)
+    ChapterMember.am_i_coordinator?(user_id, chapter_id)
   end
 end
