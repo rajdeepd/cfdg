@@ -1,6 +1,7 @@
 -#-if @eb_client.nil?
 -#  = link_to 'Connect to Eventbrite', "#{@accept_url}", :class => "btn-a-small" , :style => "margin-left:30%;"
 -#-else
+= javascript_include_tag "jquery.validate"
 = semantic_form_for @event ,:url => chapter_events_path(params[:chapter_id]),:method => :post,:remote=> true do |f|
   .event-form
     .event-left{:style => "width:100%;"}
@@ -61,6 +62,27 @@
 
 
 :javascript
+  $(document).ready(function(){
+    $('#new_event').validate({
+      rules: {
+        "event[event_start_date]": {
+          required: true
+        },
+        "event[event_start_time]": {
+          required: true
+        },
+        "event[event_end_date]": {
+          required: true
+        },
+        "event[event_end_time]":{
+          required: true
+        },
+        "event[title]":{
+          required: true
+        }
+      }
+    });
+  });
   $(function(){
   var today = new Date();
     $( "#event_event_start_date" ).datepicker({
@@ -114,6 +136,7 @@
     //        $('#event_event_end_time').timepicker('option', 'startTime', time);
     //});
   })
+
 
 
 
