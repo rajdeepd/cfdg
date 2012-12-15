@@ -20,7 +20,7 @@ class Chapter < ActiveRecord::Base
   #validations
   validates  :country_id , :state_id, :city_id,:country_name, :state_name, :city_name,:chapter_type, presence: true
   validates :locality, :address ,:landmark, presence: true , :if => lambda { |o| o.chapter_type == "student"}
-  validates :city_name, :uniqueness => true, :if => lambda { |o| o.chapter_type == "professional"}
+  validates_uniqueness_of :city_name, :scope => [:state_name , :country_name], :if => lambda { |o| o.chapter_type == "professional"}
   validates_with CityNameValidator
   #Scopes
    scope :applied_chapters, where(:chapter_status => [:applied, :incubated,:denied])
