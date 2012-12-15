@@ -28,6 +28,13 @@
       .el-cont{:style => "text-align: center;margin-top:10px;"}
         %div{:style => " width: 250px;height:160px;background: #ccc;margin: 0 auto;"}
         = f.file_field :image, :class => "label-14"
+        -#%a.label-14{:href=>"",:id => "image_upload_link",:style => " width: 250px;height:160px;margin: 0 auto;"}
+          Upload Image
+        -#%div{:style => "display:none"}
+          = f.file_field :image, :class => "label-14"
+
+
+
       .el-cont
     .event-right
       .el-cont
@@ -82,6 +89,14 @@
         }
       }
     });
+    //$("#image_upload_link").on("click",function(event){
+    //  event.preventDefault();
+    //  $("#event_image").trigger("click");
+      //$("#image_upload_link").text("Image Uploaded...100%");
+    //});
+
+
+
   });
   $(function(){
   var today = new Date();
