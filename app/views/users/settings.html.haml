@@ -51,8 +51,8 @@
 
     //var mobile= new LiveValidation("user_mobile",{validMessage:" ",onlyOnSubmit:true});
     //mobile.add( Validate.Numericality ,{ onlyInteger: true },{maximum: 999999999999999});
-    var postal_code =   new LiveValidation("user_mobile",{validMessage:" ",onlyOnSubmit:true});
-    postal_code.add( Validate.Format , { pattern: /^[0-9]{0,15}$/, failureMessage: "Must be a Number" });
+    var contact_number =   new LiveValidation("user_mobile",{validMessage:" ",onlyOnSubmit:true});
+    contact_number.add( Validate.Format , { pattern: /^[0-9]{0,15}$/, failureMessage: "Must be a Number" });
   });
 :css
   .uploadify-queue-item{
