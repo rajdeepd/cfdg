@@ -26,8 +26,6 @@
 
 ignored/*
 
-db/schema.rb
-
 lib/java/applets/*.class
 
 log/*
