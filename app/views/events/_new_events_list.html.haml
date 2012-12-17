@@ -36,7 +36,8 @@
 
 
 
-            -if !current_user.blank?   and event.can_i_delete?(@current_user.id, event.chapter_id)      
+            -if !current_user.blank?   and event.can_i_delete?(@current_user.id, event.chapter_id)
+              = link_to "EDIT",edit_chapter_event_path(event.chapter_id,event.id),:class => "btn-a-small flt-right"
               %button.btn-a-small.flt-right{:id=>"delete_an_event", :event_id => "#{event.id}"} DELETE
             %div.clr
             %label.label-25
