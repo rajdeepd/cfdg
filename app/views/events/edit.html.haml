@@ -2,6 +2,8 @@
 
 -#= render 'form'
 = javascript_include_tag "jquery.validate"
+= javascript_include_tag "jquery.timepicker-1.2.2"
+
 = form_for @event ,:url => chapter_event_path(params[:chapter_id],params[:id]),:method => :put do |f|
   .event-form
     .event-left{:style => "width:100%;"}
