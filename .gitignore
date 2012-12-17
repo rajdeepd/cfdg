@@ -26,7 +26,6 @@
 
 ignored/*
 
-
 lib/java/applets/*.class
 
 log/*
