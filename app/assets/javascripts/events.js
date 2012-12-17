@@ -53,8 +53,8 @@ Events ={
   });
 
   $('#event_form_submit').die('click').live('click', function(e){
-    $('#options').hide();
-    $('#spinner').show();
+//    $('#options').hide();
+//    $('#spinner').show();
   });
 
 /*  $('.event_expand').die('click').live('click', function(e){
