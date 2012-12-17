@@ -54,6 +54,8 @@
         = f.hidden_field :chapter_id
       .el-cont
         = f.input :postal_code , :input_html => {:class => "input-b size-text-event-create"} , :placeholder => "Postal code", :label => false
+      .el-cont
+        = f.text_field :attendees_count , :class => "input-b size-text-event-create", :placeholder => "Attendees Count", :label => false
   .event-form{:style => "padding-top:10px; padding-bottom: 20px;"}
     .el-cont
       = f.input :title , :input_html => {:class => "input-b size-f"} , :placeholder => "Event Title", :label => false
