@@ -89,16 +89,15 @@ class EventsController < ApplicationController
     @event = Event.find(params[:event_id])
     @event_memeber = EventMember.new(:event_id => @event.id, :user_id => current_user.id)
     @event_memeber.save!
-    logger.info "########### event @########{@event.inspect}"
-    logger.info "########### before event @########{@event.attendees_count.inspect}"
-    @event.attendees_count -= 1
-    @event.save!
-    logger.info "########### after event @########{@event.attendees_count.inspect}"
+    if @event.attendees_count.nil?
+    else
+      @event.attendees_count -= 1
+      @event.save!
+    end
     chapter_events = Event.find_all_by_chapter_id(@event.chapter_id) || []
     get_upcoming_and_past_events(chapter_events, true)
-
+    @chapter = Chapter.find(@event.chapter_id)
     @profile_page = false
-
     respond_to do |format|
       format.js {render :partial => 'events_list' }# new.html.erb
     end
