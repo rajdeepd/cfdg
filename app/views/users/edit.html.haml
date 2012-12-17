@@ -48,4 +48,7 @@
       },
       formData   : {'session_encoded': '#{session}', 'id': "#{@user.id}", 'authenticity_token': "#{form_authenticity_token}"  }
     });
+
+    var contact_number =   new LiveValidation("user_mobile",{validMessage:" ",onlyOnSubmit:true});
+    contact_number.add( Validate.Format , { pattern: /^[0-9]{0,15}$/, failureMessage: "Must be a Number" });
   });
