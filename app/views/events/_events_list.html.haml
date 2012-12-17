@@ -58,7 +58,7 @@
           .div-h
             %a.label-9.event_expand{:href => "#{event_path(event.id)}", :event_id => event.id, :target=>"_blank"} #{event.title}  
             -if !current_user.blank? and  @profile_page != true  and event.chapter.am_i_chapter_memeber?(@current_user.id) and !event.am_i_member?(@current_user.id)                    
-              %button.btn-a-small.flt-right{:id=>"follow_an_event", :event_id => "#{event.id}"} CLICK TO ATTEND
+              %button.btn-a-small.flt-right{:id=>"follow_an_event", :event_id => "#{event.id}"} RSVP
             -if event.am_i_member?(@current_user.id)
               %img.flt-right{:src => "/assets/Event.png"}
             -if !current_user.blank?   and event.can_i_delete?(@current_user.id, event.chapter_id)      
