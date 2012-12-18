@@ -114,7 +114,7 @@
     //});
     $("#event_form_submit").on("click",function(event){
       if($("#event_attendees_count").val() < $("#event_address_line1").attr("event_member")){
-        alert("can not decrease the count");
+        alert($("#event_address_line1").attr("event_member")+" member(s) already RSVP'ed, can not decrease than "+$("#event_address_line1").attr("event_member"));
         event.preventDefault();
       }
     });
