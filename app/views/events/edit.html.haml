@@ -3,87 +3,87 @@
 -#= render 'form'
 = javascript_include_tag "jquery.validate"
 = javascript_include_tag "jquery.timepicker-1.2.2"
+%div.content.wrapper
+  = form_for @event ,:url => chapter_event_path(params[:chapter_id],params[:id]),:method => :put do |f|
+    .event-form
+      .event-left{:style => "width:100%;"}
+        .el-cont{:style => "margin-bottom: 16px;"}
+          %h2.label-45.flt-left Create Event For #{@event.chapter.try(:name)}
+      .event-left{:style => "width:49%;"}
+        .el-cont
+          %label.flt-left.label-26 Starts On
+          = f.text_field :event_start_time , :class => "input-b size-b size-of-inputs flt-right timepicker",:html => {:style => " margin:0px 10px 0px 10px;"}
+          = f.text_field :event_start_date , :class => "input-b size-b size-of-inputs flt-right"
+        .error{:class => "el-cont"}
+          %li{:style => "padding-left:72px;float:left;width:35%;", :class => "inline-errors event_event_start_date"} &nbsp;
+          %li{:style => "float:left;padding-left:14px;", :class => "inline-errors event_event_start_time"} &nbsp;
+        .el-cont
+          %label.flt-left.label-26 Ends On
+          = f.text_field :event_end_time, :class => "input-b size-b size-of-inputs flt-right timepicker", :style => " margin:0px 10px 0px 10px;"
+          = f.text_field :event_end_date, :class => "input-b size-b size-of-inputs flt-right"
+        .error{:class => "el-cont"}
+          %li{:style => "padding-left:72px;float:left;width:35%;", :class => "inline-errors event_event_end_date"} &nbsp;
+          %li{:style => "float:left;padding-left:14px;", :class => "inline-errors event_event_end_time"} &nbsp;
+      .event-bottom
+    .event-form
+      .event-left
+        .el-cont{:style => "text-align: center;margin-top:10px;"}
+          %div{:style => " width: 250px;height:160px;background: #ccc;margin: 0 auto;"}
+            -if @event.image.present?
+              = image_tag(@event.image, :style => "width:250px;height:160px")
+            -else
+              %img{:alt => "", :src => "/assets/img-h.png", :style => "width:250px;height:160px"}
 
-= form_for @event ,:url => chapter_event_path(params[:chapter_id],params[:id]),:method => :put do |f|
-  .event-form
-    .event-left{:style => "width:100%;"}
-      .el-cont{:style => "margin-bottom: 16px;"}
-        %h2.label-45.flt-left Create Event For #{@event.chapter.try(:name)}
-    .event-left{:style => "width:49%;"}
-      .el-cont
-        %label.flt-left.label-26 Starts On
-        = f.text_field :event_start_time , :class => "input-b size-b size-of-inputs flt-right timepicker",:html => {:style => " margin:0px 10px 0px 10px;"}
-        = f.text_field :event_start_date , :class => "input-b size-b size-of-inputs flt-right"
-      .error{:class => "el-cont"}
-        %li{:style => "padding-left:72px;float:left;width:35%;", :class => "inline-errors event_event_start_date"} &nbsp;
-        %li{:style => "float:left;padding-left:14px;", :class => "inline-errors event_event_start_time"} &nbsp;
-      .el-cont
-        %label.flt-left.label-26 Ends On
-        = f.text_field :event_end_time, :class => "input-b size-b size-of-inputs flt-right timepicker", :style => " margin:0px 10px 0px 10px;"
-        = f.text_field :event_end_date, :class => "input-b size-b size-of-inputs flt-right"
-      .error{:class => "el-cont"}
-        %li{:style => "padding-left:72px;float:left;width:35%;", :class => "inline-errors event_event_end_date"} &nbsp;
-        %li{:style => "float:left;padding-left:14px;", :class => "inline-errors event_event_end_time"} &nbsp;
-    .event-bottom
-  .event-form
-    .event-left
-      .el-cont{:style => "text-align: center;margin-top:10px;"}
-        %div{:style => " width: 250px;height:160px;background: #ccc;margin: 0 auto;"}
-          -if @event.image.present?
-            = image_tag(@event.image, :style => "width:250px;height:160px")
-          -else
-            %img{:alt => "", :src => "/assets/img-h.png", :style => "width:250px;height:160px"}
-
-        = f.file_field :image, :class => "label-14"
-        -#%a.label-14{:href=>"",:id => "image_upload_link",:style => " width: 250px;height:160px;margin: 0 auto;"}
-          Upload Image
-        -#%div{:style => "display:none"}
           = f.file_field :image, :class => "label-14"
+          -#%a.label-14{:href=>"",:id => "image_upload_link",:style => " width: 250px;height:160px;margin: 0 auto;"}
+            Upload Image
+          -#%div{:style => "display:none"}
+            = f.file_field :image, :class => "label-14"
 
 
 
-      .el-cont
-    .event-right
-      .el-cont
-        %h5.label-26.flt-left Location
-      .el-cont
-      .el-cont{:style => "margin-bottom:2px;"}
-        = f.text_field :venue , :class => "input-b size-text-event-create", :placeholder => "Venue"
+        .el-cont
+      .event-right
+        .el-cont
+          %h5.label-26.flt-left Location
+        .el-cont
+        .el-cont{:style => "margin-bottom:2px;"}
+          = f.text_field :venue , :class => "input-b size-text-event-create", :placeholder => "Venue"
 
-      .el-cont
-        = f.text_field :address_line1, :class => "input-b size-text-event-create",:placeholder => "Address Line 1"
+        .el-cont
+          = f.text_field :address_line1, :class => "input-b size-text-event-create",:placeholder => "Address Line 1"
 
-      .el-cont
-        = f.text_field :address_line2 , :class => "input-b size-text-event-create",:placeholder => "Address Line 2"
+        .el-cont
+          = f.text_field :address_line2 , :class => "input-b size-text-event-create",:placeholder => "Address Line 2"
 
+        .el-cont
+          = f.text_field :city_name , :class => "input-b size-text-event-create",:placeholder => "City"
+          = f.hidden_field :chapter_id
+        .el-cont
+          = f.text_field :postal_code , :class => "input-b size-text-event-create",:placeholder => "Postal code"
+        .el-cont
+          = f.text_field :attendees_count , :class => "input-b size-text-event-create", :placeholder => "Attendees Count", :label => false
+    .event-form{:style => "padding-top:10px; padding-bottom: 20px;"}
       .el-cont
-        = f.text_field :city_name , :class => "input-b size-text-event-create",:placeholder => "City"
-        = f.hidden_field :chapter_id
+        = f.text_field :title , :class => "input-b size-f",:placeholder => "Event Title"
+      .error{:class => "el-cont"}
+        %li{:style => "float:left;", :class => "inline-errors event_title"} &nbsp;
       .el-cont
-        = f.text_field :postal_code , :class => "input-b size-text-event-create",:placeholder => "Postal code"
-      .el-cont
-        = f.text_field :attendees_count , :class => "input-b size-text-event-create", :placeholder => "Attendees Count", :label => false
-  .event-form{:style => "padding-top:10px; padding-bottom: 20px;"}
-    .el-cont
-      = f.text_field :title , :class => "input-b size-f",:placeholder => "Event Title"
-    .error{:class => "el-cont"}
-      %li{:style => "float:left;", :class => "inline-errors event_title"} &nbsp;
-    .el-cont
-      = f.text_area :description , :class => "input-b size-f" , :placeholder => "Event description", :style => "height: 40px;margin:5px 0px;", :label => false
-    #spinner.spinner{:style => 'display:none;margin-right:10px;float:right;'}
-      %img{:src => "/assets/spinner.gif", :alt => "Loading" , :id => 'img-spinner'}/
-    #options{:style => "width:628px; overflow: hidden;"}
-      %button.btn-a-small.flt-right{:style => "margin-right:10px;", :id=>"event_form_submit"} UPDATE
-      /%button.btn-c-small.flt-right{:style => "margin-right:10px;"} DISCARD
+        = f.text_area :description , :class => "input-b size-f" , :placeholder => "Event description", :style => "height: 40px;margin:5px 0px;", :label => false
+      #spinner.spinner{:style => 'display:none;margin-right:10px;float:right;'}
+        %img{:src => "/assets/spinner.gif", :alt => "Loading" , :id => 'img-spinner'}/
+      #options{:style => "width:628px; overflow: hidden;"}
+        %button.btn-a-small.flt-right{:style => "margin-right:10px;", :id=>"event_form_submit"} UPDATE
+        /%button.btn-c-small.flt-right{:style => "margin-right:10px;"} DISCARD
 
-= link_to 'Show', @event
-\|
-= link_to 'Back', events_path
+  = link_to 'Show', @event
+  \|
+  = link_to 'Back', events_path
 
 
 :javascript
   $(document).ready(function(){
-    $('#new_event').validate({
+    $('.edit_event').validate({
       rules: {
         "event[event_start_date]": {
           required: true
