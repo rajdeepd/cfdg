@@ -49,10 +49,10 @@
           %h5.label-26.flt-left Location
         .el-cont
         .el-cont{:style => "margin-bottom:2px;"}
-          = f.text_field :venue , :class => "input-b size-text-event-create", :placeholder => "Venue"
+          = f.text_field :venue , :class => "input-b size-text-event-create", :placeholder => "Venue",:rel => @event.attendees_count
 
         .el-cont
-          = f.text_field :address_line1, :class => "input-b size-text-event-create",:placeholder => "Address Line 1"
+          = f.text_field :address_line1, :class => "input-b size-text-event-create",:placeholder => "Address Line 1",:event_member => EventMember.get_count(@event.id)
 
         .el-cont
           = f.text_field :address_line2 , :class => "input-b size-text-event-create",:placeholder => "Address Line 2"
@@ -105,12 +105,19 @@
           digits: true
         }
       }
+
     });
     //$("#image_upload_link").on("click",function(event){
     //  event.preventDefault();
     //  $("#event_image").trigger("click");
       //$("#image_upload_link").text("Image Uploaded...100%");
     //});
+    $("#event_form_submit").on("click",function(event){
+      if($("#event_attendees_count").val() < $("#event_address_line1").attr("event_member")){
+        alert($("#event_address_line1").attr("event_member")+" member(s) already RSVP'ed, can not decrease than "+$("#event_address_line1").attr("event_member"));
+        event.preventDefault();
+      }
+    });
   });
   $(function(){
     var today = new Date();
