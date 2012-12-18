@@ -90,7 +90,7 @@ class EventsController < ApplicationController
     @event_memeber = EventMember.new(:event_id => @event.id, :user_id => current_user.id)
     @event_memeber.save!
     if @event.attendees_count.nil?
-    else
+    elsif @event.attendees_count > 0
       @event.attendees_count -= 1
       @event.save!
     end
