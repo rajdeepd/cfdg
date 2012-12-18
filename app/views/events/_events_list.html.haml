@@ -34,7 +34,8 @@
               -elsif event.am_i_member?(@current_user.id) 
                 -#%img.flt-right{:src => "/assets/Event.png"}
             -if !current_user.blank? and  (@current_user.id != @chapter.created_by)
-              -if event.chapter.am_i_chapter_memeber?(@current_user.id) and !event.am_i_member?(@current_user.id) and event.is_rsvp_allowed?
+              -#-if event.chapter.am_i_chapter_memeber?(@current_user.id) and !event.am_i_member?(@current_user.id) and event.is_rsvp_allowed?
+              -if !event.am_i_member?(@current_user.id) and event.is_rsvp_allowed?
                 %button.btn-a-small.flt-right{:id=>"follow_an_event", :event_id => "#{event.id}"} RSVP
               -elsif !event.am_i_member?(@current_user.id) and !event.is_rsvp_allowed?
                 %button.btn-a-small.flt-right{:id=>"join_wait_list"} Limit Reached!

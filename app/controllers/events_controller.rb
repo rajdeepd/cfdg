@@ -97,6 +97,9 @@ class EventsController < ApplicationController
     chapter_events = Event.find_all_by_chapter_id(@event.chapter_id) || []
     get_upcoming_and_past_events(chapter_events, true)
     @chapter = Chapter.find(@event.chapter_id)
+    if !@chapter.am_i_chapter_memeber?(@current_user.id)
+      ChapterMember.create({:memeber_type=>ChapterMember::MEMBER, :user_id => @current_user.id, :chapter_id => @chapter.id})
+    end
     @profile_page = false
     respond_to do |format|
       format.js {render :partial => 'events_list' }# new.html.erb
