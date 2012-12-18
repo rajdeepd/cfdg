@@ -125,3 +125,11 @@
 #join_wait_list {
     opacity: 0.35;
 }
+
+.event_date{
+    margin-right: 20px;
+}
+
+.event_time_edit{
+    margin-right: 140px;
+}

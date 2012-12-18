@@ -1,26 +1,27 @@
-%h1 Edit chapter
+-#%h1 Edit chapter
 
 -#= render 'form'
 = javascript_include_tag "jquery.validate"
+= stylesheet_link_tag    "event", :media => "all"
 = javascript_include_tag "jquery.timepicker-1.2.2"
 %div.content.wrapper
   = form_for @event ,:url => chapter_event_path(params[:chapter_id],params[:id]),:method => :put do |f|
     .event-form
       .event-left{:style => "width:100%;"}
         .el-cont{:style => "margin-bottom: 16px;"}
-          %h2.label-45.flt-left Create Event For #{@event.chapter.try(:name)}
+          %h2.label-45.flt-left Edit Event For #{@event.chapter.try(:name)}
       .event-left{:style => "width:49%;"}
         .el-cont
           %label.flt-left.label-26 Starts On
-          = f.text_field :event_start_time , :class => "input-b size-b size-of-inputs flt-right timepicker",:html => {:style => " margin:0px 10px 0px 10px;"}
-          = f.text_field :event_start_date , :class => "input-b size-b size-of-inputs flt-right"
+          = f.text_field :event_start_time , :class => "input-b size-b size-of-inputs flt-right timepicker event_time_edit"
+          = f.text_field :event_start_date , :class => "input-b size-b size-of-inputs flt-right event_date"
         .error{:class => "el-cont"}
           %li{:style => "padding-left:72px;float:left;width:35%;", :class => "inline-errors event_event_start_date"} &nbsp;
           %li{:style => "float:left;padding-left:14px;", :class => "inline-errors event_event_start_time"} &nbsp;
         .el-cont
           %label.flt-left.label-26 Ends On
-          = f.text_field :event_end_time, :class => "input-b size-b size-of-inputs flt-right timepicker", :style => " margin:0px 10px 0px 10px;"
-          = f.text_field :event_end_date, :class => "input-b size-b size-of-inputs flt-right"
+          = f.text_field :event_end_time, :class => "input-b size-b size-of-inputs flt-right timepicker event_time_edit"
+          = f.text_field :event_end_date, :class => "input-b size-b size-of-inputs flt-right event_date"
         .error{:class => "el-cont"}
           %li{:style => "padding-left:72px;float:left;width:35%;", :class => "inline-errors event_event_end_date"} &nbsp;
           %li{:style => "float:left;padding-left:14px;", :class => "inline-errors event_event_end_time"} &nbsp;
