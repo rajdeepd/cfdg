@@ -121,3 +121,7 @@
     background-image: none;
     opacity: 0.35;
 }
+
+#join_wait_list {
+    opacity: 0.35;
+}
