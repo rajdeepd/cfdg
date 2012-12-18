@@ -1,7 +1,7 @@
 development:
   adapter: mysql2
   encoding: utf8
-  database: cfdg_development
+  database: cf_usergroups
   username: root
   password: webonise6186
   
