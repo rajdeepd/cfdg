@@ -34,9 +34,9 @@
               -elsif event.am_i_member?(@current_user.id) 
                 -#%img.flt-right{:src => "/assets/Event.png"}
             -if !current_user.blank? and  (@current_user.id != @chapter.created_by)
-              -if event.chapter.am_i_chapter_memeber?(@current_user.id) and !event.am_i_member?(@current_user.id) and event.attendees_count != 0
+              -if event.chapter.am_i_chapter_memeber?(@current_user.id) and !event.am_i_member?(@current_user.id) and event.is_rsvp_allowed?
                 %button.btn-a-small.flt-right{:id=>"follow_an_event", :event_id => "#{event.id}"} RSVP
-              -elsif !event.am_i_member?(@current_user.id) and event.attendees_count == 0
+              -elsif !event.am_i_member?(@current_user.id) and !event.is_rsvp_allowed?
                 %button.btn-a-small.flt-right{:id=>"join_wait_list"} Limit Reached!
               -if event.am_i_member?(@current_user.id)
                 %img.flt-right{:src => "/assets/Event.png"}
@@ -67,9 +67,9 @@
             %a.label-9.event_expand{:href => "#{event_path(event.id)}", :event_id => event.id, :target=>"_blank"} #{event.title}
             -#-if !current_user.blank? and  @profile_page != true  and event.chapter.am_i_chapter_memeber?(@current_user.id) and !event.am_i_member?(@current_user.id)
             -if !current_user.blank? and (@current_user.id != @chapter.created_by)
-              -if event.chapter.am_i_chapter_memeber?(@current_user.id) and !event.am_i_member?(@current_user.id) and event.attendees_count != 0
+              -if event.chapter.am_i_chapter_memeber?(@current_user.id) and !event.am_i_member?(@current_user.id) and event.is_rsvp_allowed?
                 %button.btn-a-small.flt-right{:id=>"follow_an_event", :event_id => "#{event.id}"} RSVP
-              -elsif !event.am_i_member?(@current_user.id) and event.attendees_count == 0
+              -elsif !event.am_i_member?(@current_user.id) and !event.is_rsvp_allowed?
                 %button.btn-a-small.flt-right{:id=>"join_wait_list"} Limit Reached!
               -if event.am_i_member?(@current_user.id)
                 %img.flt-right{:src => "/assets/Event.png"}

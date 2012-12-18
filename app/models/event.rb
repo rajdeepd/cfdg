@@ -11,9 +11,8 @@ class Event < ActiveRecord::Base
                   :address_line1,   :address_line2 ,:event_start_time ,:event_end_time, :city_name, :postal_code, :state_name,
                   :country_name ,:agenda_and_speakers,:image,:attendees_count
   mount_uploader :image, ImageUploader
-  #validates :title,:event_start_time ,:event_start_date, :event_end_date, :event_end_time ,:presence => true
-
-
+  validate :start_time_validation
+  validates :title,:event_start_time ,:event_start_date, :event_end_date, :event_end_time ,:presence => true
   validates :event_start_date ,:format => {
       :with => /^([0-3])?[0-9]\/[0-1][0-9]\/[1-9][0-9][0-9][0-9]$/,
       :message => "Date should be in dd/mm/yyyy format"
@@ -23,7 +22,6 @@ class Event < ActiveRecord::Base
       :with => /^([0-3])?[0-9]\/[0-1][0-9]\/[1-9][0-9][0-9][0-9]$/,
       :message => "Date should be in dd/mm/yyyy format"
   } , :unless => Proc.new{|event| event.event_end_date.blank?}
-
 
 
   def <=> (other)
@@ -42,5 +40,25 @@ class Event < ActiveRecord::Base
 
   def can_i_delete?(user_id, chapter_id)
     ChapterMember.am_i_coordinator?(user_id, chapter_id)
+  end
+
+  def is_rsvp_allowed?
+    self.event_members.length < self.attendees_count
+  end
+
+  private
+  def start_time_validation
+    #Rails.logger.info("date1  #{self.event_start_date}")
+    #Rails.logger.info("date2  #{self.event_end_date}")
+    #Rails.logger.info("time1  #{self.event_start_time}")
+    #Rails.logger.info("time2  #{self.event_end_time}")
+    #Rails.logger.info("comparingggggggggggggggggggggg")
+    #Rails.logger.info("date  #{self.event_start_date == self.event_end_date}")
+    #Rails.logger.info("time  #{self.event_start_time >= self.event_end_time}")
+    if  self.event_start_date == self.event_end_date
+      if self.event_start_time >= self.event_end_time
+        errors.add(:event_start_time, 'Event Start time should be less than event end time')
+      end
+    end
   end
 end

@@ -16,7 +16,7 @@
 //= require_tree .
 
 $(function(){
-    alertInfo();
+
   $('.signin').click(function(){
     $('#navbar').accountChooser('showAccountChooser');   
   });
@@ -121,7 +121,6 @@ $(function(){
       dataType: 'html'
     });
   });
- 
          
 });
 
@@ -137,3 +136,4 @@ function hideFlashMessages() {
 function showFlashMessages() {
   $('.alert').slideDown(200);
 }
+
