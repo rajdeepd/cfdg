@@ -14,6 +14,7 @@ class Chapter < ActiveRecord::Base
   belongs_to :state
   belongs_to :city
   belongs_to :user, :foreign_key => :created_by
+  has_one :geolocation
   # Setup accessible (or protected) attributes for your model
   attr_accessible :name, :chapter_type, :country_id , :state_id, :city_id , :locality, :address ,:landmark,:chapter_status, :country_name, :state_name, :city_name,:messages_attributes,:rejected_on , :approved_on,:institution
 
