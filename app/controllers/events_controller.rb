@@ -89,11 +89,11 @@ class EventsController < ApplicationController
     @event = Event.find(params[:event_id])
     @event_memeber = EventMember.new(:event_id => @event.id, :user_id => current_user.id)
     @event_memeber.save!
-    if @event.attendees_count.nil?
-    elsif @event.attendees_count > 0
-      @event.attendees_count -= 1
-      @event.save!
-    end
+    #if @event.attendees_count.nil?
+    #elsif @event.attendees_count > 0
+    #  @event.attendees_count -= 1
+    #  @event.save!
+    #end
     chapter_events = Event.find_all_by_chapter_id(@event.chapter_id) || []
     get_upcoming_and_past_events(chapter_events, true)
     @chapter = Chapter.find(@event.chapter_id)
@@ -154,7 +154,7 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
 
     respond_to do |format|
-      if @event.update_attributes(params[:event])
+      if @event.update_attributes!(params[:event])
         format.html { redirect_to @event, notice: 'Event was successfully updated.' }
         format.json { head :no_content }
       else

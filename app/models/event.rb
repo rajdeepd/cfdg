@@ -42,6 +42,10 @@ class Event < ActiveRecord::Base
     ChapterMember.am_i_coordinator?(user_id, chapter_id)
   end
 
+  def is_rsvp_allowed?
+    self.event_members.length < self.attendees_count
+  end
+
   private
   def start_time_validation
     #Rails.logger.info("date1  #{self.event_start_date}")
