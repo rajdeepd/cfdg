@@ -122,6 +122,16 @@ class EventsController < ApplicationController
     end
   end
 
+  def unfollow_an_event
+    @event = Event.find(params[:id])
+    @member = @event.event_members.includes(:user).select{|i| i.user == @current_user}.first
+    @member.delete
+    @profile_page = false
+    respond_to do |format|
+      format.js {render :partial => 'events_list' }# new.html.erb
+    end
+  end
+
 
 
   # POST /events

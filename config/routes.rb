@@ -42,6 +42,7 @@ CloudfoundryUsergroups::Application.routes.draw do
     end
     member do
       get :download_list
+      get :unfollow_an_event
     end
   end
 #resources :events, :has_many => :comments
