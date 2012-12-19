@@ -5,6 +5,7 @@ class EventsController < ApplicationController
   # GET /events.json
   #before_filter :initialise_eventbrite_client, :except => ['create_event_comment', 'show']
   before_filter :set_profile_page
+  before_filter :check_authorization ,:only => [:download_list]
 
   def index
     @events = Event.all
@@ -199,7 +200,6 @@ class EventsController < ApplicationController
 
   def download_list
     require 'csv'
-
     @event = Event.find(params[:id])
     @members = @event.event_members.includes(:user).collect{|i| i.user}
     logger.info("inside csv")
@@ -216,6 +216,13 @@ class EventsController < ApplicationController
                                :type => "text/csv; charset=iso-8859-1; header=present",
                                :disposition => "attachment; filename=event.csv" }
       format.json {render :json => @members}
+    end
+  end
+
+  def check_authorization
+    @event = Event.find(params[:id])
+    if @current_user.present?  and !@event.can_i_delete?(@current_user.id, @event.chapter_id)
+       redirect_to event_path(@event)
     end
   end
 
