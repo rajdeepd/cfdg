@@ -196,6 +196,28 @@ class EventsController < ApplicationController
     render json: data.to_json
   end
 
+  def download_list
+    require 'csv'
+
+    @event = Event.find(params[:id])
+    @members = @event.event_members.includes(:user).collect{|i| i.user}
+    logger.info("inside csv")
+    #render :json => @members
+    csv_string = CSV.generate do |csv|
+      csv << ["Full Name" , "Email" , "Contact Number"]
+      @members.each do |p|
+        csv << [ p.fullname,p.email,p.mobile]
+      end
+    end
+    respond_to do |format|
+
+      format.html  { send_data csv_string,
+                               :type => "text/csv; charset=iso-8859-1; header=present",
+                               :disposition => "attachment; filename=event.csv" }
+      format.json {render :json => @members}
+    end
+  end
+
 
 
   def initialise_eventbrite_client
@@ -276,7 +298,5 @@ class EventsController < ApplicationController
     venue_id
 
   end
-
-
 
 end
