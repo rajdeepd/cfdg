@@ -50,17 +50,39 @@ class Event < ActiveRecord::Base
     end
   end
 
-  private
+
+  def event_start_date_in_date
+     Date.parse(self.event_start_date)
+     #self.event_start_date
+  end
+
+  def event_end_date_in_date
+    Date.parse(self.event_start_date)
+    #self.event_start_date
+  end
+
+  def event_end_time_in_time
+    Time.parse(self.event_end_time)
+    #(self.event_end_time )
+  end
+
+  def event_start_time_in_time
+    Time.parse(self.event_start_time)
+    #self.event_start_time
+  end
+
   def start_time_validation
-    #Rails.logger.info("date1  #{self.event_start_date}")
-    #Rails.logger.info("date2  #{self.event_end_date}")
-    #Rails.logger.info("time1  #{self.event_start_time}")
-    #Rails.logger.info("time2  #{self.event_end_time}")
-    #Rails.logger.info("comparingggggggggggggggggggggg")
-    #Rails.logger.info("date  #{self.event_start_date == self.event_end_date}")
-    #Rails.logger.info("time  #{self.event_start_time >= self.event_end_time}")
-    if  self.event_start_date == self.event_end_date
-      if self.event_start_time >= self.event_end_time
+    #Rails.logger.info("date1  #{self.event_start_date_in_date}")
+    #Rails.logger.info("date2  #{self.event_end_date_in_date}")
+    #Rails.logger.info("time1  #{self.event_start_time_in_time}")
+    #Rails.logger.info("time2  #{self.event_end_time_in_time}")
+    #Rails.logger.info("time2class  #{self.event_end_time_in_time.class}")
+    #Rails.logger.info("time2  #{self.event_end_time_in_time}")
+    #Rails.logger.info("comparing")
+    #Rails.logger.info("date  #{self.event_start_date_in_date == self.event_end_date_in_date}")
+    #Rails.logger.info("time  #{self.event_start_time_in_time >= self.event_end_time_in_time}")
+    if  self.event_start_date_in_date == self.event_end_date_in_date
+      if self.event_start_time_in_time >= self.event_end_time_in_time
         errors.add(:event_start_time, 'Event Start time should be less than event end time')
       end
     end
