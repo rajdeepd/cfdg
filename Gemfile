@@ -29,6 +29,7 @@ gem 'devise'
 gem "oa-core", "~> 0.3.2"
 gem "rest-client", "~> 1.6.7"
 gem 'soft-deletable'
+#gem 'hirb'
 # Authentication end
 
 

@@ -39,7 +39,8 @@ CloudfoundryUsergroups::Application.configure do
 
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 
-  FEDERATED_KEY = 'AIzaSyB8IrA9iaoSnQZbagf2rGxbIOk41IRKUA8'
+  #FEDERATED_KEY = 'AIzaSyB8IrA9iaoSnQZbagf2rGxbIOk41IRKUA8'
+  FEDERATED_KEY = 'AIzaSyBU01mSxFQ5efyknhwxX46tBFhbi5wj-PY' # new test api key
 
   FEDERATED_BASE_URL = "https://www.googleapis.com/identitytoolkit/v1/relyingparty/verifyAssertion?key=#{FEDERATED_KEY}"
 
