@@ -1,0 +1,12 @@
+
+%h1
+  Attendees List
+  %br
+%ul
+  %li
+    %br
+    -@members.each do |i|
+      %li
+        = avatar_display_pic(i,'thumb', '30x30','profile.png',"profile-img img-a flt-left")
+        = i.fullname
+      %br

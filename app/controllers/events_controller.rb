@@ -5,6 +5,7 @@ class EventsController < ApplicationController
   # GET /events.json
   #before_filter :initialise_eventbrite_client, :except => ['create_event_comment', 'show']
   before_filter :set_profile_page
+  before_filter :check_authorization ,:only => [:download_list]
 
   def index
     @events = Event.all
@@ -19,6 +20,7 @@ class EventsController < ApplicationController
   def show
     @event = Event.find(params[:id])
     @emails = ''
+    @members = @event.event_members.includes(:user).collect{|i| i.user}
     @event.event_members.each do |member| @emails << (member.user.try(:email).to_s+"\;")  end
 
     respond_to do |format|
@@ -120,6 +122,16 @@ class EventsController < ApplicationController
     end
   end
 
+  def unfollow_an_event
+    @event = Event.find(params[:id])
+    @member = @event.event_members.includes(:user).select{|i| i.user == @current_user}.first
+    @member.delete
+    @profile_page = false
+    respond_to do |format|
+      format.js {render :partial => 'events_list' }# new.html.erb
+    end
+  end
+
 
 
   # POST /events
@@ -194,6 +206,34 @@ class EventsController < ApplicationController
     end
 
     render json: data.to_json
+  end
+
+  def download_list
+    require 'csv'
+    @event = Event.find(params[:id])
+    @members = @event.event_members.includes(:user).collect{|i| i.user}
+    logger.info("inside csv")
+    #render :json => @members
+    csv_string = CSV.generate do |csv|
+      csv << ["Full Name" , "Email" , "Contact Number"]
+      @members.each do |p|
+        csv << [ p.fullname,p.email,p.mobile]
+      end
+    end
+    respond_to do |format|
+
+      format.html  { send_data csv_string,
+                               :type => "text/csv; charset=iso-8859-1; header=present",
+                               :disposition => "attachment; filename=event.csv" }
+      format.json {render :json => @members}
+    end
+  end
+
+  def check_authorization
+    @event = Event.find(params[:id])
+    if @current_user.present?  and !@event.can_i_delete?(@current_user.id, @event.chapter_id)
+       redirect_to event_path(@event)
+    end
   end
 
 
@@ -276,7 +316,5 @@ class EventsController < ApplicationController
     venue_id
 
   end
-
-
 
 end
