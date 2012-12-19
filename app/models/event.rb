@@ -43,7 +43,11 @@ class Event < ActiveRecord::Base
   end
 
   def is_rsvp_allowed?
-    self.event_members.length < self.attendees_count
+    if  self.attendees_count.present?
+      self.event_members.length < self.attendees_count
+    else
+      true
+    end
   end
 
   private

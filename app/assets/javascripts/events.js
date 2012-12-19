@@ -26,6 +26,7 @@ Events ={
         data : data,
         success: function(data){
             $('#events').html(data);
+            $('.join_us').hide()
         },
         async:false,
         dataType: 'html'
