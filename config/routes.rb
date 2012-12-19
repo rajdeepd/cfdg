@@ -39,7 +39,10 @@ CloudfoundryUsergroups::Application.routes.draw do
       get 'full_event_content'
       get 'title_list'
       post 'create_event_comment'
-    end  
+    end
+    member do
+      post 'image_gallery_upload'
+    end
   end
 #resources :events, :has_many => :comments
 

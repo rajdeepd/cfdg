@@ -206,6 +206,31 @@ class EventsController < ApplicationController
     end
   end
 
+  def image_gallery_upload
+    #@gallery = Gallery.find(params[:id])
+    #@count = @gallery
+    #params[:image].each do |i|
+    #  begin
+    #    @image = @gallery.images.new(:image => i)
+    #    @image.save
+    #  rescue
+    #  end
+    #end
+    logger.info "inside action ######################################"
+    respond_to do |format|
+      #if @image.
+      #    format.html {redirect_to :layout => false, :action => "show"}
+      #  format.js {render :partial => "gallery_images", :collection => @image, :layout => false }
+        format.js{render :layout => false}
+      #else
+      #  format.html {redirect_to request.referrer, :notice => "Unsuccessfull"}
+      #  format.js{render :layout => false}
+
+    end
+  end
+
+
+
   protected
 
   def upcoming_and_past_events(chapter_events)

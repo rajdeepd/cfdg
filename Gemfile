@@ -71,6 +71,7 @@ gem "ckeditor", "~> 3.7.3"
 
 gem 'aws-sdk'
 gem 'carrierwave'
+
 #gem 'pry-remote'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

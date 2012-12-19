@@ -1,10 +1,11 @@
+= javascript_include_tag 'ajaxupload.js'
 %li.ulg-expanded{:style => "margin-top: -3px;"}
   .div-c
     -if(!@event.event_start_date.blank?)
       %h1.label-23 #{Time.parse(@event.event_start_date.to_s).strftime('%d')}
       %h4.label-24 #{Time.parse(@event.event_start_date.to_s).strftime('%b')}
   .div-h
-    %a.label-9.event_expand{:href => "#", :event_id=> @event.id} #{@event.title}  
+    %a.label-9.event_expand{:href => "#", :event_id=> @event.id,:id => "event_title"} #{@event.title}
     -if !current_user.blank? and @profile_page != true  and !@event.am_i_member?(@current_user.id)                    
       %button.btn-a-small.flt-right{:id=>"follow_an_event", :event_id => "#{@event.id}"} FOLLOW
     %div.clr
@@ -18,6 +19,15 @@
         %div.attendees
           %strong Attendees:
           #{@event.event_members.size}
+          -#= link_to "Upload Images","",:id => "upload_gallery_images"
+          %a.label-14{:href=>"",:id => "upload",:style => " width: 250px;height:160px;margin: 0 auto;"}
+            Upload Images
+          %div{:style => "display:none"}
+            = file_field_tag "image_gallery"
+
+
+
+
         .clr
       %div.location
         %div.title
@@ -53,4 +63,37 @@
         = f.hidden_field   :commentable_id
   %br
 
-
+:javascript
+  $(document).ready(function(){
+    $("#upload").on('click',function(event){
+      event.preventDefault();
+      $("#image_gallery").trigger('click');
+    });
+    var event_id = $("#event_title").attr("event_id");
+    var button = $('#upload'), interval;
+    autoSubmit:true,
+    new AjaxUpload("upload",{
+      action: "/events/"+ event_id +"/image_gallery_upload.js",
+      name: 'image[]',
+      multiple: true,
+      responseType: "js",
+      onSubmit : function(file, ext){
+        button.text('Loading.....');
+        this.disable();
+        interval = window.setInterval(function(){
+          var text = button.text();
+          if (text.length < 13){
+            button.text(text + '.');
+          } else {
+            button.text('Loading.....');
+          }
+        }, 200);
+      },
+      onComplete: function(file, response){
+        button.text('upload test');
+        window.clearInterval(interval);
+        //window.location.reload();
+        this.enable();
+      }
+    });
+  });
