@@ -1,0 +1,6 @@
+.picHolder{:id => "image_gallery"}
+  -if @all_event_images.present?
+    - @all_event_images.each do |i|
+      = image_tag(i.image, :style => "width:99px;height:99px")
+  -else
+    = "No Image for the event."

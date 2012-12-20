@@ -122,6 +122,13 @@ ActiveRecord::Schema.define(:version => 20121220091714) do
 
   add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
 
+  create_table "event_galleries", :force => true do |t|
+    t.string   "image"
+    t.integer  "event_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "event_members", :force => true do |t|
     t.integer  "event_id",   :null => false
     t.integer  "user_id",    :null => false
