@@ -90,7 +90,7 @@ class EventsController < ApplicationController
     @event = Event.find(params[:event_id])
     @event_memeber = EventMember.new(:event_id => @event.id, :user_id => current_user.id)
     @event_memeber.save!
-    EventNotification.rsvped_event(@event,@current_user).deliver
+    EventNotification.delay.rsvped_event(@event,@current_user)
     #if @event.attendees_count.nil?
     #elsif @event.attendees_count > 0
     #  @event.attendees_count -= 1
