@@ -67,6 +67,10 @@ class Event < ActiveRecord::Base
     Time.parse(self.event_start_time)
   end
 
+  def is_cancelled?
+    self.is_cancelled ? true : false
+  end
+
   def start_time_validation
     Rails.logger.info("date1  #{self.event_start_date_in_date}")
     Rails.logger.info("date2  #{self.event_end_date_in_date}")

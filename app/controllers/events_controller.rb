@@ -110,6 +110,7 @@ class EventsController < ApplicationController
 
   def delete_an_event
     @event = Event.find(params[:event_id])
+    @chapter = @event.chapter
     @event.event_members.each do|member| member.soft_delete! end
     @event.soft_delete!
 
@@ -127,6 +128,21 @@ class EventsController < ApplicationController
     @member = @event.event_members.includes(:user).select{|i| i.user == @current_user}.first
     @member.delete
     @profile_page = false
+    respond_to do |format|
+      format.js {render :partial => 'events_list' }# new.html.erb
+    end
+  end
+
+  def cancel_event
+    @event = Event.find(params[:event_id])
+    @chapter = @event.chapter
+
+    @event.is_cancelled = true
+    @event.save
+    chapter_events = Event.find_all_by_chapter_id(@event.chapter_id) || []
+    get_upcoming_and_past_events(chapter_events, true)
+    @profile_page = false
+
     respond_to do |format|
       format.js {render :partial => 'events_list' }# new.html.erb
     end

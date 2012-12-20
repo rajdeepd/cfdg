@@ -133,7 +133,11 @@
     text-align:center;
 }
 
-#join_wait_list {
+#join_wait_list  {
+    opacity: 0.35;
+}
+
+#cancelled_event  {
     opacity: 0.35;
 }
 
