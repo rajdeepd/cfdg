@@ -43,8 +43,11 @@ CloudfoundryUsergroups::Application.routes.draw do
     member do
       get :download_list
       get :unfollow_an_event
+      post 'image_gallery_upload'
+      get 'image_gallery_upload'
     end
   end
+
 #resources :events, :has_many => :comments
 
 #scope ':locale' do

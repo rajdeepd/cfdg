@@ -15,10 +15,10 @@ Released under the MIT License <http://www.opensource.org/licenses/mit-license.p
 
 .uploadify {
 	/*position: relative;*/
-        margin-top: 179px;
+        margin-top: 20px;
         position: absolute;
 	margin-bottom: 1em;
-        margin-left: 30px;
+        /*margin-left: 30px;*/
 }
 
 
