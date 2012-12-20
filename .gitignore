@@ -15,7 +15,7 @@
 /tmp
 
 /config/database.yml
-/db/schema.rb
+db/schema.rb
 /nbproject/
 *.swp
 .sass-cache
