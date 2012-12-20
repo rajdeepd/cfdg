@@ -22,7 +22,6 @@ class EventsController < ApplicationController
     @emails = ''
     @members = @event.event_members.includes(:user).collect{|i| i.user}
     @event.event_members.each do |member| @emails << (member.user.try(:email).to_s+"\;")  end
-    UserMailer.welcome_mail(@current_user).deliver
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @event }
@@ -91,6 +90,7 @@ class EventsController < ApplicationController
     @event = Event.find(params[:event_id])
     @event_memeber = EventMember.new(:event_id => @event.id, :user_id => current_user.id)
     @event_memeber.save!
+    EventNotification.rsvped_event(@event,@current_user).deliver
     #if @event.attendees_count.nil?
     #elsif @event.attendees_count > 0
     #  @event.attendees_count -= 1
