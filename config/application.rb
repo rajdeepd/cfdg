@@ -78,27 +78,27 @@ module CloudfoundryUsergroups
     #    :authentication       => 'plain',
     #    :enable_starttls_auto => true  }
 
-    #require "tlsmail"
-    config.action_mailer.delivery_method = :smtp
-    #config.action_mailer.smtp_settings = {
-    #    :address              => "smtp.sendgrid.net",
-    #    :port                 => 587,
-    #    :user_name            => 'cfdg',
-    #    :password             => 'vmware123',
-    #    :authentication       => 'plain',
-    #    :enable_starttls_auto => true
-    #}
     require "tlsmail"
-     # Net::SMTP.enable_tls( OpenSSL::SSL::VERIFY_NONE )
-      ActionMailer::Base.smtp_settings = {
-            :enable_starttls_auto => true,
-            :address => "smtp.sendgrid.net",
-            :port => 25,
-            :domain => "localhost",
-            :authentication => :plain,
-            :user_name => "locamotiv",
-           :password => "locamotiv"
-     }
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings = {
+        :address              => "smtp.sendgrid.net",
+        :port                 => 587,
+        :user_name            => 'locamotiv',
+        :password             => 'locamotiv',
+        :authentication       => 'plain',
+        :enable_starttls_auto => true
+    }
+    #require "tlsmail"
+    # # Net::SMTP.enable_tls( OpenSSL::SSL::VERIFY_NONE )
+    #  ActionMailer::Base.smtp_settings = {
+    #        :enable_starttls_auto => true,
+    #        :address => "smtp.sendgrid.net",
+    #        :port => 25,
+    #        :domain => "localhost",
+    #        :authentication => :plain,
+    #        :user_name => "locamotiv",
+    #       :password => "locamotiv"
+    # }
     config.autoload_paths += %W(#{config.root}/app/middleware/)
 
 
