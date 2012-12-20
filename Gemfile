@@ -71,6 +71,8 @@ gem "ckeditor", "~> 3.7.3"
 
 gem 'aws-sdk'
 gem 'carrierwave'
+gem 'mini_magick'
+gem 'flash_cookie_session'
 
 #gem 'pry-remote'
 # To use ActiveModel has_secure_password

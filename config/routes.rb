@@ -44,6 +44,7 @@ CloudfoundryUsergroups::Application.routes.draw do
       post 'image_gallery_upload'
     end
   end
+
 #resources :events, :has_many => :comments
 
 #scope ':locale' do

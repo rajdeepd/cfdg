@@ -17,7 +17,8 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.json
   def show
-    @event = Event.find(params[:id])
+    #@event = Event.find(params[:id])
+    @event = Event.find(9)
     @emails = ''
     @event.event_members.each do |member| @emails << (member.user.try(:email).to_s+"\;")  end
 
@@ -207,26 +208,20 @@ class EventsController < ApplicationController
   end
 
   def image_gallery_upload
-    #@gallery = Gallery.find(params[:id])
-    #@count = @gallery
-    #params[:image].each do |i|
-    #  begin
-    #    @image = @gallery.images.new(:image => i)
-    #    @image.save
-    #  rescue
-    #  end
-    #end
-    logger.info "inside action ######################################"
+    logger.info "inside action ######################################{params.inspect}"
+    @event = Event.find(params[:id])
+    @upload_image = @event.event_galleries.new(:image => params[:Filedata])
+    @upload_image.save!
     respond_to do |format|
-      #if @image.
-      #    format.html {redirect_to :layout => false, :action => "show"}
-      #  format.js {render :partial => "gallery_images", :collection => @image, :layout => false }
+      if @upload_image.save
+        format.html {redirect_to :layout => false, :action => "show"}
+        format.js {render :partial => "gallery_images", :collection => @upload_image, :layout => false }
+      else
+        format.html {redirect_to request.referrer, :notice => "Unsuccessfull"}
         format.js{render :layout => false}
-      #else
-      #  format.html {redirect_to request.referrer, :notice => "Unsuccessfull"}
-      #  format.js{render :layout => false}
-
+      end
     end
+
   end
 
 
