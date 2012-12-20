@@ -144,3 +144,34 @@
 .event_time_edit{
     margin-right: 140px;
 }
+#event_event_start_date_input, #event_event_start_time_input, #event_event_end_date_input, #event_event_end_time_input {
+    width: 120px;
+    float: left;
+    margin: 0 5px;
+}
+
+.el-cont label.label-26 {
+    top: 7px;
+    width: 70px;
+}
+.size-text-event-create {
+    width: 295px;
+}
+#event_event_start_date_input label.error, #event_event_start_time_input label.error, #event_event_end_date_input label.error, #event_event_end_time_input label.error, .el-cont label.error  {
+    display: block;
+    float: left;
+    margin-top: 5px;
+    color: #ff0000;
+    font-size: 12px;
+}
+.el-cont.error .inline-errors.event_event_start_date, .el-cont.error .inline-errors.event_event_start_time  {
+    display: block;
+    float: none !important;
+}
+span.LV_invalid {
+    display: block;
+    color: #ff0000;
+    font-size: 12px;
+    margin-bottom: 10px;
+    margin-top: -5px;
+}
