@@ -22,7 +22,7 @@ class EventsController < ApplicationController
     @emails = ''
     @members = @event.event_members.includes(:user).collect{|i| i.user}
     @event.event_members.each do |member| @emails << (member.user.try(:email).to_s+"\;")  end
-
+    UserMailer.welcome_mail(@current_user).deliver
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @event }
