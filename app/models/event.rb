@@ -57,7 +57,7 @@ class Event < ActiveRecord::Base
   end
 
   def event_end_date_in_date
-    Date.parse(self.event_start_date)
+    Date.parse(self.event_end_date)
     #self.event_start_date
   end
 

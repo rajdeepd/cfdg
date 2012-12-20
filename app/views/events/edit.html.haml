@@ -77,9 +77,9 @@
         %button.btn-a-small.flt-right{:style => "margin-right:10px;", :id=>"event_form_submit"} UPDATE
         /%button.btn-c-small.flt-right{:style => "margin-right:10px;"} DISCARD
 
-  = link_to 'Show', @event
-  \|
-  = link_to 'Back', events_path
+  -#= link_to 'Show', @event
+  -#\|
+  -#= link_to 'Back', events_path
 
 
 :javascript
@@ -103,6 +103,9 @@
         },
         "event[attendees_count]":{
           digits: true
+        } ,
+        "event[postal_code]":{
+          eventPostalCode:true
         }
       }
 
@@ -113,10 +116,13 @@
       //$("#image_upload_link").text("Image Uploaded...100%");
     //});
     $("#event_form_submit").on("click",function(event){
+    if ($("#event_attendees_count").val() != "")
+    {
       if($("#event_attendees_count").val() < $("#event_address_line1").attr("event_member")){
         alert($("#event_address_line1").attr("event_member")+" member(s) already RSVP'ed, can not decrease than "+$("#event_address_line1").attr("event_member"));
         event.preventDefault();
       }
+    }
     });
   });
   $(function(){
@@ -163,14 +169,20 @@
 
        //var postal_code= new LiveValidation("event_postal_code",{validMessage:" ",onlyOnSubmit:true});
        //postal_code.add( Validate.Numericality ,{ onlyInteger: true },{maximum: 2000,failureMessage:"Should be Postal code"});
-      var postal_code =   new LiveValidation("event_postal_code",{validMessage:" ",onlyOnSubmit:true});
-      postal_code.add( Validate.Format , { pattern: /^[0-9]{5}$|^[0-9]{6}$/, failureMessage: "Must be a valid postal code" });
+      //var postal_code =   new LiveValidation("event_postal_code",{validMessage:" ",onlyOnSubmit:true});
+      //postal_code.add( Validate.Format , { pattern: /^[0-9]{5}$|^[0-9]{6}$/, failureMessage: "Must be a valid postal code" });
 
       //$('#event_event_start_time').timepicker()
       //    .option('change', function(time) {
       //        // update startTime option in timepicker-2
       //        $('#event_event_end_time').timepicker('option', 'startTime', time);
       //});
+
+      jQuery.validator.addMethod("eventPostalCode", function(value, element) {
+         var re = new RegExp(/^[0-9]{5}$|^[0-9]{6}$/);
+         return (value.match(re))
+       }, "Must be a valid postal code.");
+
     })
 
 
