@@ -22,4 +22,4 @@ production:
   encoding: utf8
   database: cf_usergroups_production
   username: root
-  password: root
+  password: webonise6186

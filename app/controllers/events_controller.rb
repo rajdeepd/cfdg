@@ -1,6 +1,7 @@
 require 'eventbrite-client'
 require 'oauth2'
 class EventsController < ApplicationController
+  protect_from_forgery :except => [:image_gallery_upload]
   # GET /events
   # GET /events.json
   #before_filter :initialise_eventbrite_client, :except => ['create_event_comment', 'show']
@@ -17,11 +18,13 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.json
   def show
-    #@event = Event.find(params[:id])
-    @event = Event.find(9)
+    @event = Event.find(params[:id])
+    #@event = Event.find(9)
     @emails = ''
     @event.event_members.each do |member| @emails << (member.user.try(:email).to_s+"\;")  end
-
+    if @event.event_galleries.present?
+      @all_event_images =  @event.event_galleries
+    end
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @event }
@@ -210,16 +213,13 @@ class EventsController < ApplicationController
   def image_gallery_upload
     logger.info "inside action ######################################{params.inspect}"
     @event = Event.find(params[:id])
-    @upload_image = @event.event_galleries.new(:image => params[:Filedata])
-    @upload_image.save!
+   if params[:Filedata].present?
+    upload_image = @event.event_galleries.new(:image => params[:Filedata])
+    upload_image.save!
+   end
+    @all_event_images = @event.event_galleries
     respond_to do |format|
-      if @upload_image.save
-        format.html {redirect_to :layout => false, :action => "show"}
-        format.js {render :partial => "gallery_images", :collection => @upload_image, :layout => false }
-      else
-        format.html {redirect_to request.referrer, :notice => "Unsuccessfull"}
-        format.js{render :layout => false}
-      end
+      format.js {render :layout => false}
     end
 
   end

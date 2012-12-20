@@ -42,6 +42,7 @@ CloudfoundryUsergroups::Application.routes.draw do
     end
     member do
       post 'image_gallery_upload'
+      get 'image_gallery_upload'
     end
   end
 
