@@ -25,8 +25,6 @@
             Upload Images
           -#%div{:style => "display:block"}
           -#= file_field_tag "uploadify",multiple:true
-          %input#Uploadify{:name => "Uploadify", :type => "file"}
-
 
 
         .clr
@@ -39,6 +37,13 @@
 
       -#=image_tag(@event.image,:size => "60x60")
   %div.clr
+  #gallery_images123
+    = render  "events/image_gallery_upload"
+    -#- @event.event_galleries.each do |i|
+      = image_tag(i.image, :style => "width:99px;height:99px")
+  -if current_user.present?
+    -if current_user.id == @event.created_by
+      %input#Uploadify{:name => "Uploadify", :type => "file"}
 
   .div-d
     - (@event.comments || []).each do |comment|
@@ -63,10 +68,7 @@
         = f.hidden_field   :commentable_type
         = f.hidden_field   :commentable_id
   %br
-    #gallery_images123
-      = render  "events/image_gallery_upload"
-      -#- @event.event_galleries.each do |i|
-        = image_tag(i.image, :style => "width:99px;height:99px")
+
 
 - session_key = Rails.application.config.session_options[:key]
 
@@ -86,6 +88,7 @@
       console.log(url);
       $('input#Uploadify').uploadify({
         swf            : '/assets/uploadify.swf',
+        buttonText     :'Upload Images',
         uploader       : url,
         formData       : 'photo[image]',
         fileExt        : '*.png;*.jpg;*.gif',
