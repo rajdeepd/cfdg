@@ -14,7 +14,7 @@
       %button.btn-a-small.flt-right{:id=>"follow_an_event", :event_id => "#{@event.id}"} FOLLOW
     -if !current_user.blank? and  (current_user.id != @event.created_by)
       -if @event.is_cancelled?
-        %button.btn-a-small.flt-right{:id=>"cancelled_event", :event_id => "#{@event.id}" ,:disable => true} CANCELLED
+        %button.btn-a-small.flt-right{:id=>"cancelled_event", :event_id => "#{@event.id}" ,:disable => true,:style => "opacity:0.35"} CANCELLED
       -else
         -if !@event.am_i_member?(current_user.id) and @event.is_rsvp_allowed?
           %button.btn-a-small.flt-right.rsvp_me{:id=>"follow_an_event", :event_id => "#{@event.id}"} RSVP

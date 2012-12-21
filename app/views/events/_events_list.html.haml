@@ -51,7 +51,7 @@
             -if current_user.blank?
               -#-if event.chapter.am_i_chapter_memeber?(@current_user.id) and !event.am_i_member?(@current_user.id) and event.is_rsvp_allowed?
               -if event.is_cancelled?
-                %button.btn-a-small.flt-right{:id=>"cancelled_event", :event_id => "#{event.id}" ,:disable => true} CANCELLED
+                %button.btn-a-small.flt-right{:id=>"cancelled_event", :event_id => "#{event.id}" ,:disable => true,:style => "opacity:0.35"} CANCELLED
               -else
                 -if  event.is_rsvp_allowed?
                   %button.btn-a-small.flt-right{:class => "signin"} RSVP
@@ -64,7 +64,7 @@
               -if !event.is_cancelled?
                 %button.btn-a-small.flt-right{:id=>"cancel_an_event", :event_id => "#{event.id}"} CANCEL
               -else
-                %button.btn-a-small.flt-right{:id=>"cancelled_event", :event_id => "#{event.id}" ,:disable => true} CANCELLED
+                %button.btn-a-small.flt-right{:id=>"cancelled_event", :event_id => "#{event.id}" ,:disable => true,:style => "opacity:0.35"} CANCELLED
             %div.clr
             %label.label-25
               -if(!event.event_start_date.blank?)
@@ -100,7 +100,7 @@
               -if !event.is_cancelled?
                 %button.btn-a-small.flt-right{:id=>"cancel_an_event", :event_id => "#{event.id}"} CANCEL
               -else
-                %button.btn-a-small.flt-right{:id=>"cancelled_event", :event_id => "#{event.id}" ,:disable => true} CANCELLED
+                %button.btn-a-small.flt-right{:id=>"cancelled_event", :event_id => "#{event.id}" ,:disable => true,:style => "opacity:0.35"} CANCELLED
 
             -if current_user.blank?
               -#-if event.chapter.am_i_chapter_memeber?(@current_user.id) and !event.am_i_member?(@current_user.id) and event.is_rsvp_allowed?
@@ -117,12 +117,12 @@
               -if !event.is_cancelled?
                 %button.btn-a-small.flt-right{:id=>"cancel_an_event", :event_id => "#{event.id}"} CANCEL
               -else
-                %button.btn-a-small.flt-right{:id=>"cancelled_event", :event_id => "#{event.id}" ,:disable => true} CANCELLED
+                %button.btn-a-small.flt-right{:id=>"cancelled_event", :event_id => "#{event.id}" ,:disable => true,:style => "opacity:0.35"} CANCELLED
 
             -if current_user.blank?
               -#-if event.chapter.am_i_chapter_memeber?(@current_user.id) and !event.am_i_member?(@current_user.id) and event.is_rsvp_allowed?
               -if event.is_cancelled?
-                %button.btn-a-small.flt-right{:id=>"cancelled_event", :event_id => "#{event.id}" ,:disable => true} CANCELLED
+                %button.btn-a-small.flt-right{:id=>"cancelled_event", :event_id => "#{event.id}" ,:disable => true,:style => "opacity:0.35"} CANCELLED
               -else
 
                 -if  event.is_rsvp_allowed?
