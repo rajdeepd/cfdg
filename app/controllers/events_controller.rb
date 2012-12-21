@@ -136,9 +136,10 @@ class EventsController < ApplicationController
   def cancel_event
     @event = Event.find(params[:event_id])
     @chapter = @event.chapter
-
+    emails = @event.event_members.includes(:user).collect{|i| i.user.email}
     @event.is_cancelled = true
     @event.save
+    EventNotification.delay.event_cancellation(@event, emails)
     chapter_events = Event.find_all_by_chapter_id(@event.chapter_id) || []
     get_upcoming_and_past_events(chapter_events, true)
     @profile_page = false
