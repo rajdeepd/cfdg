@@ -154,6 +154,7 @@
           }
       });
       $( "#event_event_end_date" ).datepicker({
+          minDate : new Date,
           dateFormat: "dd/mm/yy",
           onClose: function( selectedDate ) {
               $( "#event_event_start_date" ).datepicker( "option", "maxDate", selectedDate );

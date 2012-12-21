@@ -53,7 +53,7 @@ class Event < ActiveRecord::Base
 
   def can_be_deleted?
     members = self.event_members.includes(:user)
-    members.length == 1 and members.first.user.id == self.created_by
+    members.size == 1 and members.first.user.id == self.created_by
   end
 
 
