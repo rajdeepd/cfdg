@@ -12,4 +12,17 @@ class EventNotification < ActionMailer::Base
      @event = event
      mail(:to => emails, :subject => "Event Cancellation")
   end
+
+  def event_creation(event,emails,chapter)
+    @event = event
+    @chapter = chapter
+    mail(:to => emails, :subject => "New Event")
+  end
+
+  def event_edit(event,emails,chapter)
+    @event = event
+    @chapter = chapter
+    mail(:to => emails, :subject => "New Event")
+  end
+
 end

@@ -90,7 +90,7 @@ class EventsController < ApplicationController
     @event = Event.find(params[:event_id])
     @event_memeber = EventMember.new(:event_id => @event.id, :user_id => current_user.id)
     @event_memeber.save!
-    EventNotification.delay.rsvped_event(@event,@current_user)
+    EventNotification.rsvped_event(@event,@current_user).deliver
     #if @event.attendees_count.nil?
     #elsif @event.attendees_count > 0
     #  @event.attendees_count -= 1
@@ -170,7 +170,9 @@ class EventsController < ApplicationController
 
         @chapter = Chapter.find(@event.chapter_id)
         @chapter_events = @chapter.events.sort
+        emails=@chapter.chapter_members.includes(:user).collect{|i| i.user.email}
         @two_chapter_events = @chapter_events.take(2)
+        EventNotification.delay.event_creation(@event,emails,@chapter)
         format.js
       else
         format.js
@@ -188,6 +190,9 @@ class EventsController < ApplicationController
     respond_to do |format|
       if @event.update_attributes(params[:event])
         format.html { redirect_to @event, notice: 'Event was successfully updated.' }
+        @chapter = Chapter.find(@event.chapter_id)
+        emails=@chapter.chapter_members.includes(:user).collect{|i| i.user.email}
+        EventNotification.delay.event_edit(@event,emails,@chapter)
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
