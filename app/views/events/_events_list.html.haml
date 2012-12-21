@@ -56,9 +56,11 @@
                   %button.btn-a-small.flt-right{:id=>"join_wait_list"} Limit Reached!
 
             -if !current_user.blank?   and event.can_i_delete?(@current_user.id, event.chapter_id)
-              = link_to "EDIT",edit_chapter_event_path(event.chapter_id,event.id),:class => "btn-a-small flt-right"
-              %button.btn-a-small.flt-right{:id=>"delete_an_event", :event_id => "#{event.id}"} DELETE
+
+              -if event.can_be_deleted?
+                %button.btn-a-small.flt-right{:id=>"delete_an_event", :event_id => "#{event.id}"} DELETE
               -if !event.is_cancelled?
+                = link_to "EDIT",edit_chapter_event_path(event.chapter_id,event.id),:class => "btn-a-small flt-right"
                 %button.btn-a-small.flt-right{:id=>"cancel_an_event", :event_id => "#{event.id}"} CANCEL
               -else
                 %button.btn-a-small.flt-right{:id=>"cancelled_event", :event_id => "#{event.id}" ,:disable => true} CANCELLED
@@ -89,9 +91,11 @@
               -if event.am_i_member?(@current_user.id)
                 %img.flt-right{:src => "/assets/Event.png"}
             -if !current_user.blank?   and event.can_i_delete?(@current_user.id, event.chapter_id)
-              = link_to "EDIT",edit_chapter_event_path(event.chapter_id,event.id),:class => "btn-a-small flt-right"
-              %button.btn-a-small.flt-right{:id=>"delete_an_event", :event_id => "#{event.id}"} DELETE
+
+              -if event.can_be_deleted?
+                %button.btn-a-small.flt-right{:id=>"delete_an_event", :event_id => "#{event.id}"} DELETE
               -if !event.is_cancelled?
+                = link_to "EDIT",edit_chapter_event_path(event.chapter_id,event.id),:class => "btn-a-small flt-right"
                 %button.btn-a-small.flt-right{:id=>"cancel_an_event", :event_id => "#{event.id}"} CANCEL
               -else
                 %button.btn-a-small.flt-right{:id=>"cancelled_event", :event_id => "#{event.id}" ,:disable => true} CANCELLED
@@ -105,13 +109,13 @@
                 -if event.am_i_member?(@current_user.id)
                   %img.flt-right{:src => "/assets/Event.png"}
 
-            -if !current_user.blank?   and event.can_i_delete?(@current_user.id, event.chapter_id)
-              = link_to "EDIT",edit_chapter_event_path(event.chapter_id,event.id),:class => "btn-a-small flt-right"
-              %button.btn-a-small.flt-right{:id=>"delete_an_event", :event_id => "#{event.id}"} DELETE
-              -if !event.is_cancelled?
-                %button.btn-a-small.flt-right{:id=>"cancel_an_event", :event_id => "#{event.id}"} CANCEL
-              -else
-                %button.btn-a-small.flt-right{:id=>"cancelled_event", :event_id => "#{event.id}" ,:disable => true} CANCELLED
+            -#-if !current_user.blank?   and event.can_i_delete?(@current_user.id, event.chapter_id)
+            -#  = link_to "EDIT",edit_chapter_event_path(event.chapter_id,event.id),:class => "btn-a-small flt-right"
+            -#  %button.btn-a-small.flt-right{:id=>"delete_an_event", :event_id => "#{event.id}"} DELETE
+            -#  -if !event.is_cancelled?
+            -#    %button.btn-a-small.flt-right{:id=>"cancel_an_event", :event_id => "#{event.id}"} CANCEL
+            -#  -else
+            -#    %button.btn-a-small.flt-right{:id=>"cancelled_event", :event_id => "#{event.id}" ,:disable => true} CANCELLED
 
             -if current_user.blank?
               -#-if event.chapter.am_i_chapter_memeber?(@current_user.id) and !event.am_i_member?(@current_user.id) and event.is_rsvp_allowed?
