@@ -97,14 +97,10 @@ class EventsController < ApplicationController
     @event = Event.find(params[:event_id])
     @event_memeber = EventMember.new(:event_id => @event.id, :user_id => current_user.id)
     @event_memeber.save!
+
     EventNotification.rsvped_event(@event,@current_user).deliver
     #EventNotification.delay.rsvped_event(@event,@current_user)
 
-    #if @event.attendees_count.nil?
-    #elsif @event.attendees_count > 0
-    #  @event.attendees_count -= 1
-    #  @event.save!
-    #end
     chapter_events = Event.find_all_by_chapter_id(@event.chapter_id) || []
     get_upcoming_and_past_events(chapter_events, true)
     @chapter = Chapter.find(@event.chapter_id)
@@ -223,10 +219,11 @@ class EventsController < ApplicationController
   def create_event_comment
     @event = Event.find(params[:comment][:commentable_id])
     @comment = Comment.new(params[:comment])
-
+    @all_event_images = @event.event_galleries
     respond_to do |format|
       if(@comment.save)
         format.js { render :partial => "/events/full_event" }
+
       end
     end
 

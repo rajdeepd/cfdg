@@ -23,9 +23,12 @@
       - @two_upcoming_events.each do |event|    
         %li
           .div-c
-            -if(!event.event_start_date.blank?)
-              %h1.label-23 #{Time.parse(event.event_start_date.to_s).strftime('%d')}
-              %h4.label-24 #{Time.parse(event.event_start_date.to_s).strftime('%b')}
+            -if event.image.present?
+              = image_tag(event.image, :style => "width:72px;height:80px")
+            -else
+              -if(!event.event_start_date.blank?)
+                %h1.label-23 #{Time.parse(event.event_start_date.to_s).strftime('%d')}
+                %h4.label-24 #{Time.parse(event.event_start_date.to_s).strftime('%b')}
           .div-h
             %a.label-9.event_expand{:href => "#{event_path(event.id)}", :event_id=> event.id, :target=>"_blank"} #{event.title} 
             -#-if !current_user.blank? and @profile_page != true
@@ -48,7 +51,7 @@
             -if current_user.blank?
               -#-if event.chapter.am_i_chapter_memeber?(@current_user.id) and !event.am_i_member?(@current_user.id) and event.is_rsvp_allowed?
               -if event.is_cancelled?
-                %button.btn-a-small.flt-right{:id=>"cancelled_event", :event_id => "#{event.id}" ,:disable => true} CANCELLED
+                %button.btn-a-small.flt-right{:id=>"cancelled_event", :event_id => "#{event.id}" ,:disable => true,:style => "opacity:0.35"} CANCELLED
               -else
                 -if  event.is_rsvp_allowed?
                   %button.btn-a-small.flt-right{:class => "signin"} RSVP
@@ -63,7 +66,7 @@
                 = link_to "EDIT",edit_chapter_event_path(event.chapter_id,event.id),:class => "btn-a-small flt-right"
                 %button.btn-a-small.flt-right{:id=>"cancel_an_event", :event_id => "#{event.id}"} CANCEL
               -else
-                %button.btn-a-small.flt-right{:id=>"cancelled_event", :event_id => "#{event.id}" ,:disable => true} CANCELLED
+                %button.btn-a-small.flt-right{:id=>"cancelled_event", :event_id => "#{event.id}" ,:disable => true,:style => "opacity:0.35"} CANCELLED
             %div.clr
             %label.label-25
               -if(!event.event_start_date.blank?)
@@ -77,9 +80,12 @@
       - @upcoming_events.each do |event|
         %li
           .div-c
-            -if(!event.event_start_date.blank?)
-              %h1.label-23 #{Time.parse(event.event_start_date.to_s).strftime('%d')}
-              %h4.label-24 #{Time.parse(event.event_start_date.to_s).strftime('%b')}
+            -if event.image.present?
+              = image_tag(event.image, :style => "width:72px;height:80px")
+            -else
+              -if(!event.event_start_date.blank?)
+                %h1.label-23 #{Time.parse(event.event_start_date.to_s).strftime('%d')}
+                %h4.label-24 #{Time.parse(event.event_start_date.to_s).strftime('%b')}
           .div-h
             %a.label-9.event_expand{:href => "#{event_path(event.id)}", :event_id => event.id, :target=>"_blank"} #{event.title}
             -#-if !current_user.blank? and  @profile_page != true  and event.chapter.am_i_chapter_memeber?(@current_user.id) and !event.am_i_member?(@current_user.id)
@@ -98,7 +104,7 @@
                 = link_to "EDIT",edit_chapter_event_path(event.chapter_id,event.id),:class => "btn-a-small flt-right"
                 %button.btn-a-small.flt-right{:id=>"cancel_an_event", :event_id => "#{event.id}"} CANCEL
               -else
-                %button.btn-a-small.flt-right{:id=>"cancelled_event", :event_id => "#{event.id}" ,:disable => true} CANCELLED
+                %button.btn-a-small.flt-right{:id=>"cancelled_event", :event_id => "#{event.id}" ,:disable => true,:style => "opacity:0.35"} CANCELLED
 
             -if current_user.blank?
               -#-if event.chapter.am_i_chapter_memeber?(@current_user.id) and !event.am_i_member?(@current_user.id) and event.is_rsvp_allowed?
@@ -109,18 +115,20 @@
                 -if event.am_i_member?(@current_user.id)
                   %img.flt-right{:src => "/assets/Event.png"}
 
+
             -#-if !current_user.blank?   and event.can_i_delete?(@current_user.id, event.chapter_id)
             -#  = link_to "EDIT",edit_chapter_event_path(event.chapter_id,event.id),:class => "btn-a-small flt-right"
             -#  %button.btn-a-small.flt-right{:id=>"delete_an_event", :event_id => "#{event.id}"} DELETE
             -#  -if !event.is_cancelled?
             -#    %button.btn-a-small.flt-right{:id=>"cancel_an_event", :event_id => "#{event.id}"} CANCEL
             -#  -else
-            -#    %button.btn-a-small.flt-right{:id=>"cancelled_event", :event_id => "#{event.id}" ,:disable => true} CANCELLED
+            -#    %button.btn-a-small.flt-right{:id=>"cancelled_event", :event_id => "#{event.id}" ,:disable => true,:style => "opacity:0.35"} CANCELLED
+
 
             -if current_user.blank?
               -#-if event.chapter.am_i_chapter_memeber?(@current_user.id) and !event.am_i_member?(@current_user.id) and event.is_rsvp_allowed?
               -if event.is_cancelled?
-                %button.btn-a-small.flt-right{:id=>"cancelled_event", :event_id => "#{event.id}" ,:disable => true} CANCELLED
+                %button.btn-a-small.flt-right{:id=>"cancelled_event", :event_id => "#{event.id}" ,:disable => true,:style => "opacity:0.35"} CANCELLED
               -else
 
                 -if  event.is_rsvp_allowed?
