@@ -2,9 +2,12 @@
 = stylesheet_link_tag "uploadify", :media => "all"
 %li.ulg-expanded{:style => "margin-top: -3px;"}
   .div-c
-    -if(!@event.event_start_date.blank?)
-      %h1.label-23 #{Time.parse(@event.event_start_date.to_s).strftime('%d')}
-      %h4.label-24 #{Time.parse(@event.event_start_date.to_s).strftime('%b')}
+    -if @event.image.present?
+      = image_tag(@event.image, :style => "width:72px;height:80px")
+    -else
+      -if(!@event.event_start_date.blank?)
+        %h1.label-23 #{Time.parse(@event.event_start_date.to_s).strftime('%d')}
+        %h4.label-24 #{Time.parse(@event.event_start_date.to_s).strftime('%b')}
   .div-h
     %a.label-9.event_expand{:href => "#", :event_id=> @event.id,:id => "event_title"} #{@event.title}
     -if !current_user.blank? and @profile_page != true  and !@event.am_i_member?(@current_user.id)                    
@@ -37,7 +40,7 @@
 
       -#=image_tag(@event.image,:size => "60x60")
   %div.clr
-  #gallery_images123
+  #gallery_images
     = render  "events/image_gallery_upload"
     -#- @event.event_galleries.each do |i|
       = image_tag(i.image, :style => "width:99px;height:99px")
