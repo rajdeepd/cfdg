@@ -16,7 +16,7 @@
       -if @event.is_cancelled?
         %button.btn-a-small.flt-right{:id=>"cancelled_event", :event_id => "#{@event.id}" ,:disable => true} CANCELLED
       -else
-        -if @event.chapter.am_i_chapter_memeber?(current_user.id) and !@event.am_i_member?(current_user.id) and @event.is_rsvp_allowed?
+        -if !@event.am_i_member?(current_user.id) and @event.is_rsvp_allowed?
           %button.btn-a-small.flt-right.rsvp_me{:id=>"follow_an_event", :event_id => "#{@event.id}"} RSVP
           %img.flt-right#rsvp_tick{:src => "/assets/Event.png",:style => "display:none"}
         -elsif !@event.am_i_member?(current_user.id) and !@event.is_rsvp_allowed?
