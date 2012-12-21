@@ -3,7 +3,9 @@ Uploadify
 Copyright (c) 2012 Reactive Apps, Ronnie Garcia
 Released under the MIT License <http://www.opensource.org/licenses/mit-license.php>
 */
-
+.uploadImage{
+    margin: 153px 0 0 22px;
+}
 .fileuploader-text  {
     font-size: 13px;
     color:#0097D7 !important;
@@ -11,6 +13,9 @@ Released under the MIT License <http://www.opensource.org/licenses/mit-license.p
 .fileuploader-text span{
   color:#0097D7 !important;
   cursor: pointer;
+  margin: 153px 0 0 22px;
+  display: block;
+  width: 150px;
 }
 
 .uploadify {
