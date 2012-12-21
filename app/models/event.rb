@@ -50,6 +50,11 @@ class Event < ActiveRecord::Base
     end
   end
 
+  def can_be_deleted?
+    members = self.event_members.includes(:user)
+    members.length == 1 and members.first.user.id == self.created_by
+  end
+
 
   def event_start_date_in_date
      Date.parse(self.event_start_date)
