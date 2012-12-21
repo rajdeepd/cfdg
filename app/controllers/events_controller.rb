@@ -211,10 +211,11 @@ class EventsController < ApplicationController
   def create_event_comment
     @event = Event.find(params[:comment][:commentable_id])
     @comment = Comment.new(params[:comment])
-
+    @all_event_images = @event.event_galleries
     respond_to do |format|
       if(@comment.save)
         format.js { render :partial => "/events/full_event" }
+
       end
     end
 
