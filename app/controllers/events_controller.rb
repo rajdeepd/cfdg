@@ -139,7 +139,7 @@ class EventsController < ApplicationController
     emails = @event.event_members.includes(:user).collect{|i| i.user.email}
     @event.is_cancelled = true
     @event.save
-    EventNotification.delay.event_cancellation(@event, emails)
+    #EventNotification.delay.event_cancellation(@event, emails)
     chapter_events = Event.find_all_by_chapter_id(@event.chapter_id) || []
     get_upcoming_and_past_events(chapter_events, true)
     @profile_page = false
@@ -172,7 +172,7 @@ class EventsController < ApplicationController
         @chapter_events = @chapter.events.sort
         emails=@chapter.chapter_members.includes(:user).collect{|i| i.user.email}
         @two_chapter_events = @chapter_events.take(2)
-        EventNotification.delay.event_creation(@event,emails,@chapter)
+        #EventNotification.delay.event_creation(@event,emails,@chapter)
         format.js
       else
         format.js
@@ -192,7 +192,7 @@ class EventsController < ApplicationController
         format.html { redirect_to @event, notice: 'Event was successfully updated.' }
         @chapter = Chapter.find(@event.chapter_id)
         emails=@chapter.chapter_members.includes(:user).collect{|i| i.user.email}
-        EventNotification.delay.event_edit(@event,emails,@chapter)
+        #EventNotification.delay.event_edit(@event,emails,@chapter)
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
