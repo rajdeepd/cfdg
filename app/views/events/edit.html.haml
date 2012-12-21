@@ -6,6 +6,7 @@
 = javascript_include_tag "jquery.timepicker-1.2.2"
 %div.content.wrapper
   = form_for @event ,:url => chapter_event_path(params[:chapter_id],params[:id]),:method => :put do |f|
+
     .event-form
       .event-left{:style => "width:100%;"}
         .el-cont{:style => "margin-bottom: 16px;"}
@@ -18,6 +19,9 @@
           %li{:id => :event_event_start_time_input }
             = f.text_field :event_start_time , :class => "input-b size-b size-of-inputs  timepicker event_time_edit"
         .error{:class => "el-cont"}
+          .start_time_validation{:style =>"color :red"}
+            -if @event.errors.any?
+              = @event.errors.messages[:event_start_time].first
           %li{:style => "padding-left:72px;float:left;width:35%;", :class => "inline-errors event_event_start_date"} &nbsp;
           %li{:style => "float:left;padding-left:14px;", :class => "inline-errors event_event_start_time"} &nbsp;
         .el-cont
