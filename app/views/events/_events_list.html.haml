@@ -108,8 +108,8 @@
                 %button.btn-a-small.flt-right{:class => "signin"} RSVP
               -elsif  !event.is_rsvp_allowed?
                 %button.btn-a-small.flt-right{:id=>"join_wait_list"} Limit Reached!
-                -if event.am_i_member?(@current_user.id)
-                  %img.flt-right{:src => "/assets/Event.png"}
+                -#-if event.am_i_member?(@current_user.id)
+                -#  %img.flt-right{:src => "/assets/Event.png"}
 
             -if !current_user.blank?   and event.can_i_delete?(@current_user.id, event.chapter_id)
               = link_to "EDIT",edit_chapter_event_path(event.chapter_id,event.id),:class => "btn-a-small flt-right"
