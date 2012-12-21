@@ -22,7 +22,7 @@ class EventNotification < ActionMailer::Base
   def event_edit(event,emails,chapter)
     @event = event
     @chapter = chapter
-    mail(:to => emails, :subject => "New Event")
+    mail(:to => emails, :subject => "New Updated")
   end
 
 end
