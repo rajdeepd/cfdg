@@ -10,8 +10,19 @@
         %h4.label-24 #{Time.parse(@event.event_start_date.to_s).strftime('%b')}
   .div-h
     %a.label-9.event_expand{:href => "#", :event_id=> @event.id,:id => "event_title"} #{@event.title}
-    -if !current_user.blank? and @profile_page != true  and !@event.am_i_member?(@current_user.id)                    
+    -#-if !current_user.blank? and @profile_page != true  and !@event.am_i_member?(@current_user.id)
       %button.btn-a-small.flt-right{:id=>"follow_an_event", :event_id => "#{@event.id}"} FOLLOW
+    -if !current_user.blank? and  (current_user.id != @event.created_by)
+      -if @event.is_cancelled?
+        %button.btn-a-small.flt-right{:id=>"cancelled_event", :event_id => "#{@event.id}" ,:disable => true} CANCELLED
+      -else
+        -if @event.chapter.am_i_chapter_memeber?(current_user.id) and !@event.am_i_member?(current_user.id) and @event.is_rsvp_allowed?
+          %button.btn-a-small.flt-right.rsvp_me{:id=>"follow_an_event", :event_id => "#{@event.id}"} RSVP
+          %img.flt-right#rsvp_tick{:src => "/assets/Event.png",:style => "display:none"}
+        -elsif !@event.am_i_member?(current_user.id) and !@event.is_rsvp_allowed?
+          %button.btn-a-small.flt-right{:id=>"join_wait_list"} Limit Reached!
+        -if @event.am_i_member?(current_user.id)
+          %img.flt-right{:src => "/assets/Event.png"}
     %div.clr
     %div.label-26{:id => "short_content"}
       %div.dateAttendees
@@ -23,12 +34,6 @@
         %div.attendees
           %strong Attendees:
           #{@event.event_members.size}
-          -#= link_to "Upload Images","",:id => "upload_gallery_images"
-          -#%a.label-14{:href=>"",:id => "upload",:style => " width: 250px;height:160px;margin: 0 auto;"}
-            Upload Images
-          -#%div{:style => "display:block"}
-          -#= file_field_tag "uploadify",multiple:true
-
 
         .clr
       %div.location
@@ -42,8 +47,6 @@
   %div.clr
   #gallery_images
     = render  "events/image_gallery_upload"
-    -#- @event.event_galleries.each do |i|
-      = image_tag(i.image, :style => "width:99px;height:99px")
   -if current_user.present?
     -if current_user.id == @event.created_by
       %input#Uploadify{:name => "Uploadify", :type => "file"}
@@ -77,6 +80,7 @@
 
 = content_for :scripts do
   :javascript
+    Events.init();
     $(document).ready(function(e){
 
       var uploadify_script_data = {};
@@ -103,6 +107,9 @@
           //$('#gallery_images').append(response);
         }
       });
-
+      $(".rsvp_me").on("click",function(){
+        $(".rsvp_me").hide();
+        $("#rsvp_tick").show();
+      });
 
     });
