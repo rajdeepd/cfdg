@@ -90,3 +90,7 @@ Released under the MIT License <http://www.opensource.org/licenses/mit-license.p
 	height: 3px;
 	width: 1px;
 }
+.uploadify-button-custom span.uploadify-button-text {
+    color: #ffffff;
+    font-weight: bold;
+}

@@ -45,8 +45,8 @@
 
       -#=image_tag(@event.image,:size => "60x60")
   %div.clr
-  #gallery_images
-    = render  "events/image_gallery_upload"
+    #gallery_images
+      = render  "events/image_gallery_upload"
   -if current_user.present?
     -if current_user.id == @event.created_by
       %input#Uploadify{:name => "Uploadify", :type => "file"}
@@ -62,14 +62,14 @@
               /%img.img-c.flt-left{:src => "/assets/img-d.png"}
             %td
               %h5.label-27
-                #{comment.user.fullname} - 
-                
+                #{comment.user.fullname} -
+
                 %label.label-25 #{Time.parse(comment.created_at.to_s).strftime('%d, %b')}
               %p.label-16
                 #{comment.content}
-    - @comment =  @event.comments.build    
+    - @comment =  @event.comments.build
     -if @current_user.present?
-      = semantic_form_for  @comment do |f|      
+      = semantic_form_for  @comment do |f|
         = f.text_area :content, :placeholder => "comment", :label => false, :class => " content_comment_class ta-a"
         = f.hidden_field   :commentable_type
         = f.hidden_field   :commentable_id
@@ -96,6 +96,7 @@
       $('input#Uploadify').uploadify({
         swf            : '/assets/uploadify.swf',
         buttonText     :'Upload Images',
+        buttonClass    :'uploadify-button-custom',
         uploader       : url,
         formData       : 'photo[image]',
         fileExt        : '*.png;*.jpg;*.gif',
