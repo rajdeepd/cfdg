@@ -95,12 +95,13 @@ class EventsController < ApplicationController
 
   def follow_an_event
     @event = Event.find(params[:event_id])
-    @event_memeber = EventMember.new(:event_id => @event.id, :user_id => current_user.id)
-    @event_memeber.save!
+    if !@event.is_cancelled?
+      @event_memeber = EventMember.new(:event_id => @event.id, :user_id => current_user.id)
+      @event_memeber.save!
 
-    EventNotification.rsvped_event(@event,@current_user).deliver
-    #EventNotification.delay.rsvped_event(@event,@current_user)
-
+      EventNotification.rsvped_event(@event,@current_user).deliver
+      #EventNotification.delay.rsvped_event(@event,@current_user)
+    end
     chapter_events = Event.find_all_by_chapter_id(@event.chapter_id) || []
     get_upcoming_and_past_events(chapter_events, true)
     @chapter = Chapter.find(@event.chapter_id)
@@ -200,7 +201,7 @@ class EventsController < ApplicationController
         @chapter = Chapter.find(@event.chapter_id)
         emails=@chapter.chapter_members.includes(:user).collect{|i| i.user.email}
         #EventNotification.delay.event_edit(@event,emails,@chapter)
-        EventNotification.event_edit(@event,emails,@chapter).deliver
+        #EventNotification.event_edit(@event,emails,@chapter).deliver
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

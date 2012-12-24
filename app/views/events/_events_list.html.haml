@@ -38,14 +38,17 @@
                 -#%img.flt-right{:src => "/assets/Event.png"}
             -if !current_user.blank? and  (@current_user.id != @chapter.created_by)
               -#-if event.chapter.am_i_chapter_memeber?(@current_user.id) and !event.am_i_member?(@current_user.id) and event.is_rsvp_allowed?
-              -if !event.am_i_member?(@current_user.id) and event.is_rsvp_allowed?
-                %button.btn-a-small.flt-right{:id=>"follow_an_event", :event_id => "#{event.id}"} RSVP
-              -elsif !event.am_i_member?(@current_user.id) and !event.is_rsvp_allowed?
-                %button.btn-a-small.flt-right{:id=>"join_wait_list"} Limit Reached!
-              -if event.am_i_member?(@current_user.id)
-                %img.flt-right{:src => "/assets/Event.png"}
-              -if !current_user.blank?   and event.can_i_delete?(@current_user.id, event.chapter_id)
-                %button.btn-a-small.flt-right{:id=>"delete_an_event", :event_id => "#{event.id}"} DELETE
+              -if event.is_cancelled?
+                %button.btn-a-small.flt-right{:id=>"cancelled_event", :event_id => "#{event.id}" ,:disable => true,:style => "opacity:0.35"} CANCELLED
+              -else
+                -if !event.am_i_member?(@current_user.id) and event.is_rsvp_allowed?
+                  %button.btn-a-small.flt-right{:id=>"follow_an_event", :event_id => "#{event.id}"} RSVP
+                -elsif !event.am_i_member?(@current_user.id) and !event.is_rsvp_allowed?
+                  %button.btn-a-small.flt-right{:id=>"join_wait_list"} Limit Reached!
+                -if event.am_i_member?(@current_user.id)
+                  %img.flt-right{:src => "/assets/Event.png"}
+                -if !current_user.blank?   and event.can_i_delete?(@current_user.id, event.chapter_id)
+                  %button.btn-a-small.flt-right{:id=>"delete_an_event", :event_id => "#{event.id}"} DELETE
 
 
             -if current_user.blank?
@@ -90,12 +93,15 @@
             %a.label-9.event_expand{:href => "#{event_path(event.id)}", :event_id => event.id, :target=>"_blank"} #{event.title.truncate(15)}
             -#-if !current_user.blank? and  @profile_page != true  and event.chapter.am_i_chapter_memeber?(@current_user.id) and !event.am_i_member?(@current_user.id)
             -if !current_user.blank? and (@current_user.id != @chapter.created_by)
-              -if !event.am_i_member?(@current_user.id) and event.is_rsvp_allowed?
-                %button.btn-a-small.flt-right{:id=>"follow_an_event", :event_id => "#{event.id}"} RSVP
-              -elsif !event.am_i_member?(@current_user.id) and !event.is_rsvp_allowed?
-                %button.btn-a-small.flt-right{:id=>"join_wait_list"} Limit Reached!
-              -if event.am_i_member?(@current_user.id)
-                %img.flt-right{:src => "/assets/Event.png"}
+              -if event.is_cancelled?
+                %button.btn-a-small.flt-right{:id=>"cancelled_event", :event_id => "#{event.id}" ,:disable => true,:style => "opacity:0.35"} CANCELLED
+              -else
+                -if !event.am_i_member?(@current_user.id) and event.is_rsvp_allowed?
+                  %button.btn-a-small.flt-right{:id=>"follow_an_event", :event_id => "#{event.id}"} RSVP
+                -elsif !event.am_i_member?(@current_user.id) and !event.is_rsvp_allowed?
+                  %button.btn-a-small.flt-right{:id=>"join_wait_list"} Limit Reached!
+                -if event.am_i_member?(@current_user.id)
+                  %img.flt-right{:src => "/assets/Event.png"}
             -if !current_user.blank?   and event.can_i_delete?(@current_user.id, event.chapter_id)
 
               -if event.can_be_deleted?
