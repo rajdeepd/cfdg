@@ -112,11 +112,11 @@
         "event[attendees_count]":{
           digits: true
         }
-        // ,
-        //"event[postal_code]":{
-        //  required: true,
-        //  eventPostalCode:true
-        //}
+        ,
+        "event[postal_code]":{
+          required: true,
+          eventPostalCode:true
+        }
       }
 
     });
@@ -190,7 +190,7 @@
       //});
 
       jQuery.validator.addMethod("eventPostalCode", function(value, element) {
-         var re = new RegExp(/^[0-9]{5}$|^[0-9]{6}$/);
+         var re = new RegExp(/^[0-9A-Za-z ]+$/);
          return (value.match(re))
        }, "Must be a valid postal code.");
 
