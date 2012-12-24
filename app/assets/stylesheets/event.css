@@ -208,6 +208,14 @@ span.LV_invalid {
     float: left;
     margin-right: 5px;
 }
-#event_title_input {
+#event_title_input, .eventTitleEditLbl {
     float: left;
+    width: 510px;
+}
+#event_title_input .size-f,
+.eventTitleEditLbl .size-f{
+    margin-bottom: 0;
+}
+.createEventField {
+    margin-bottom: 12px;
 }
