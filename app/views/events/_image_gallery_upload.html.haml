@@ -4,7 +4,7 @@
       .eventImageHolder
         = image_tag(i.image)
     .seeAllImages
-      = link_to "See all photos for this event."
+      = link_to "See all photos for this event.",show_all_event_images_event_path(@all_event_images.first.event_id)
 
   -else
     = "No Image for the event."

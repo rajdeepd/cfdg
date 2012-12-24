@@ -46,6 +46,7 @@ CloudfoundryUsergroups::Application.routes.draw do
       get :unfollow_an_event
       post 'image_gallery_upload'
       get 'image_gallery_upload'
+      get 'show_all_event_images'
     end
   end
 
