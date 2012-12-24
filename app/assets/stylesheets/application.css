@@ -509,7 +509,11 @@ a.label-9:hover{
 textarea.size-a{width:325px;height:60px;}
 textarea.size-b{height: 84px;width: 163px;margin-bottom:0px;}
 .er-left{width:155px;}
-.size-b{width: 100px}.size-c{width: 75px;}.size-d{width:200px;}.size-e{width:550px;}.size-f{width:618px;}
+.size-b{width: 100px}.size-c{width: 75px;}.size-d{width:200px;}.size-e{width:550px;}
+.size-f {
+    width:510px;
+    margin-bottom: 20px;
+}
 .div-l .input-b{margin-bottom: 5px;}
 .input-a{
 	border: 1px solid #cccccc;

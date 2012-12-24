@@ -9,6 +9,9 @@
         %h2.label-45.flt-left Create Event For #{@event.chapter.try(:name)}
     .event-left{:style => "width:95%;"}
       .el-cont
+        %label.label-26.eventTitle  Event Title
+        = f.input :title , :input_html => {:class => "input-b size-f flt-left"} , :placeholder => "Event Title", :label => false
+      .el-cont
         %label.flt-left.label-26 Starts On
         = f.input :event_start_date , :input_html => {:class => "input-b size-b size-of-inputs "} , :placeholder => "dd/mm/yyyy", :label => false
         = f.input :event_start_time ,  :placeholder => "hh:mm", :label => false,   :input_html => {:class => "input-b size-b size-of-inputs timepicker" }
@@ -57,8 +60,6 @@
       .el-cont
         = f.text_field :attendees_count , :class => "input-b size-text-event-create", :placeholder => "Attendees Count", :label => false
   .event-form{:style => "padding-top:10px; padding-bottom: 20px;"}
-    .el-cont
-      = f.input :title , :input_html => {:class => "input-b size-f"} , :placeholder => "Event Title", :label => false
     .error{:class => "el-cont"}
       %li{:style => "float:left;", :class => "inline-errors event_title"} &nbsp;
     .el-cont
