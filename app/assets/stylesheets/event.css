@@ -219,3 +219,8 @@ span.LV_invalid {
 .createEventField {
     margin-bottom: 12px;
 }
+.div-h #cancel_an_event,
+.div-h #delete_an_event,
+.div-h #cancelled_event{
+    margin-top: 0;
+}
