@@ -76,6 +76,7 @@ gem "delayed_job"
 gem 'delayed_job_active_record'
 gem 'mini_magick'
 gem 'flash_cookie_session'
+gem 'fog'
 
 #gem 'pry-remote'
 # To use ActiveModel has_secure_password
