@@ -197,7 +197,7 @@ span.LV_invalid {
     width: 150px;
     height: 150px;
     text-align: center;
-    vertical-align: middle;
+    vertical-align: bottom;
     display: table-cell;
 }
 .seeAllImages a {
