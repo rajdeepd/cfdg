@@ -295,6 +295,10 @@ class EventsController < ApplicationController
 
   end
 
+  def show_all_event_images
+    @event = Event.find(params[:id])
+    @all_event_images = @event.event_galleries
+  end
 
 
   protected
