@@ -1,6 +1,12 @@
-.picHolder{:id => "image_gallery"}
+.picHolder{:id => "image_gallery",:style =>"width:500px;" }
   -if @all_event_images.present?
-    - @all_event_images.each do |i|
-      = image_tag(i.image, :style => "width:99px;height:99px")
+    - @all_event_images.limit(5).each do |i|
+      .eventImageHolder
+        = image_tag(i.image)
+    .seeAllImages
+      = link_to "See all photos for this event."
+
   -else
     = "No Image for the event."
+
+.clr
