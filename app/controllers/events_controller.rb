@@ -201,7 +201,7 @@ class EventsController < ApplicationController
         @chapter = Chapter.find(@event.chapter_id)
         emails=@chapter.chapter_members.includes(:user).collect{|i| i.user.email}
         #EventNotification.delay.event_edit(@event,emails,@chapter)
-        #EventNotification.event_edit(@event,emails,@chapter).deliver
+        EventNotification.event_edit(@event,emails,@chapter).deliver
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
