@@ -179,3 +179,43 @@ span.LV_invalid {
     margin-bottom: 10px;
     margin-top: -5px;
 }
+.eventImageHolder {
+    float: left;
+    width: 150px;
+    height: 150px;
+    text-align: center;
+    vertical-align: middle;
+    display: table-cell;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+.eventImageHolder img {
+    width: 150px;
+    height: 150px;
+}
+.seeAllImages {
+    width: 150px;
+    height: 150px;
+    text-align: center;
+    vertical-align: middle;
+    display: table-cell;
+}
+.seeAllImages a {
+    text-decoration: underline;
+    color: #0097D7;
+}
+.eventTitle {
+    float: left;
+    margin-right: 5px;
+}
+#event_title_input, .eventTitleEditLbl {
+    float: left;
+    width: 510px;
+}
+#event_title_input .size-f,
+.eventTitleEditLbl .size-f{
+    margin-bottom: 0;
+}
+.createEventField {
+    margin-bottom: 12px;
+}

@@ -11,26 +11,32 @@
       .event-left{:style => "width:100%;"}
         .el-cont{:style => "margin-bottom: 16px;"}
           %h2.label-45.flt-left Edit Event For #{@event.chapter.try(:name)}
-      .event-left{:style => "width:49%;"}
-        .el-cont
+      .event-left{:style => "width:610px;"}
+        .el-cont.createEventField
+          %label.label-26.eventTitle  Event Title
+          .eventTitleEditLbl
+            = f.text_field :title , :class => "input-b size-f",:placeholder => "Event Title"
+        -#.error{:class => "el-cont"}
+          %li{:style => "float:left;", :class => "inline-errors event_title"} &nbsp;
+        .el-cont.createEventField
           %label.flt-left.label-26 Starts On
           %li{:id => :event_event_start_date_input }
             = f.text_field :event_start_date , :class => "input-b size-b size-of-inputs event_date"
           %li{:id => :event_event_start_time_input }
             = f.text_field :event_start_time , :class => "input-b size-b size-of-inputs  timepicker event_time_edit"
-        .error{:class => "el-cont"}
+        -#.error{:class => "el-cont"}
           .start_time_validation{:style =>"color :red"}
             -if @event.errors.any?
               = @event.errors.messages[:event_start_time].first
           %li{:style => "padding-left:72px;float:left;width:35%;", :class => "inline-errors event_event_start_date"} &nbsp;
           %li{:style => "float:left;padding-left:14px;", :class => "inline-errors event_event_start_time"} &nbsp;
-        .el-cont
+        .el-cont.createEventField
           %label.flt-left.label-26 Ends On
           %li{:id => :event_event_end_date_input }
             = f.text_field :event_end_date, :class => "input-b size-b size-of-inputs event_date"
           %li{:id => :event_event_end_time_input }
             = f.text_field :event_end_time, :class => "input-b size-b size-of-inputs timepicker event_time_edit"
-        .error{:class => "el-cont"}
+        -#.error{:class => "el-cont"}
           %li{:style => "padding-left:72px;float:left;width:35%;", :class => "inline-errors event_event_end_date"} &nbsp;
           %li{:style => "float:left;padding-left:14px;", :class => "inline-errors event_event_end_time"} &nbsp;
       .event-bottom
@@ -73,10 +79,6 @@
         .el-cont
           = f.text_field :attendees_count , :class => "input-b size-text-event-create", :placeholder => "Attendees Count", :label => false
     .event-form{:style => "padding-top:10px; padding-bottom: 20px;"}
-      .el-cont
-        = f.text_field :title , :class => "input-b size-f",:placeholder => "Event Title"
-      .error{:class => "el-cont"}
-        %li{:style => "float:left;", :class => "inline-errors event_title"} &nbsp;
       .el-cont
         = f.text_area :description , :class => "input-b size-f" , :placeholder => "Event description", :style => "height: 40px;margin:5px 0px;", :label => false
       #spinner.spinner{:style => 'display:none;margin-right:10px;float:right;'}
