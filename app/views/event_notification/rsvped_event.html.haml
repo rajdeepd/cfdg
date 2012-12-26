@@ -1,9 +1,10 @@
-Hi
-%br/
+= "Hi #{@user.fullname},"
+%br
 %p
-= @user.fullname
-= "You are successfully RSVP to the event #{@event.title}"
+= "You have successfully registered to the event #{@event.title} of the #{@event.chapter.name} chapter of Cloud Foundry developer groups. For further details regarding the event please refer the below link"
+%br
+%a{:href => "#{event_url(@event)}"} Click Here
 %p
-Thank you,
+Thank you
 %p
 CloudFoundry Team
