@@ -65,7 +65,7 @@
         /   %i.bg-arrow-down-b
         -if @current_user.present? and (ChapterMember.am_i_coordinator?(@current_user.id, @chapter.id))
           %li{:style => "float:right"}
-            -#%a.cp{:href => "#{profile_path}" , :id=>"create_event_from_chapter", :chapter_id=> @chapter.id} + Create Event
+            %a.cp{:href => "#{profile_path}" , :id=>"create_event_from_chapter", :chapter_id=> @chapter.id} + Create Event
       #chapter_show_events
         = render '/events/events_list' 
     /=render '/events/comment_partial'

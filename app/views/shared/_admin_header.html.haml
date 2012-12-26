@@ -15,7 +15,7 @@
           %a{:href => "#{root_path}"}= t('menu.home')
         %li{:class => "#{active_class("directory","home")}"}
           %a{:href => "#{directory_path}"}= t('menu.directory')
-        %li{:class => "#{active_class("wiki","home")}"}
+        -#%li{:class => "#{active_class("wiki","home")}"}
           %a{:href => "#{wiki_path}"}= t('menu.wiki')
         %li{:class => "#{active_class("admin","admin")}"}
           %a{:href => "#{new_admin_session_path}"}= t('menu.admin')

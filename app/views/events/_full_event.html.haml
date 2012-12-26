@@ -1,5 +1,7 @@
 = javascript_include_tag "jquery.uploadify"
+= javascript_include_tag "jquery.validate"
 = stylesheet_link_tag "uploadify", :media => "all"
+-#= stylesheet_link_tag "event", :media => "all"
 %li.ulg-expanded{:style => "margin-top: -3px;"}
   .div-c
     -if @event.image.present?
@@ -45,8 +47,8 @@
   %div.clr
     #gallery_images
       = render  "events/image_gallery_upload"
-  -if current_user.present?
-    -if current_user.id == @event.created_by
+  -if(current_user.present? )
+    -if current_user.id == @event.created_by and !@event.is_cancelled?
       %input#Uploadify{:name => "Uploadify", :type => "file"}
 
   .div-d
@@ -80,6 +82,14 @@
   :javascript
     Events.init();
     $(document).ready(function(e){
+
+    $('#new_comment').validate({
+      rules: {
+        "comment[content]": {
+          required: true
+        }
+      }
+    });
 
       var uploadify_script_data = {};
       var csrf_token = $('meta[name=csrf-token]').attr('content');
