@@ -38,11 +38,12 @@
               -else
                 -if event.chapter.am_i_chapter_memeber?(@current_user.id)  and !event.am_i_member?(@current_user.id) and event.is_rsvp_allowed?
                   -#%button.btn-a-small.flt-right{:id=>"follow_an_event", :event_id => "#{event.id}"} CLICK TO ATTEND
-                  %button.btn-a-small.flt-right{:id=>"follow_an_event", :event_id => "#{event.id}"} RSVP
+                  %button.btn-a-small.flt-right{:id=>"follow_an_event", :event_id => "#{event.id}"} R.S.V.P
                 -elsif !event.am_i_member?(@current_user.id) and !event.is_rsvp_allowed?
                   %button.btn-a-small.flt-right{:id=>"join_wait_list"} Limit Reached!
                 -if event.am_i_member?(@current_user.id)
-                  %img.flt-right{:src => "/assets/Event.png"}
+                  -#%img.flt-right{:src => "/assets/Event.png"}
+                  %button.btn-a-small.flt-right{:id=>"event_rsvped",:style => "opacity:0.35"} Attending
             -if !current_user.blank?   and event.can_i_delete?(@current_user.id, event.chapter_id)
 
 
@@ -79,11 +80,12 @@
                 %button.btn-a-small.flt-right{:id=>"cancelled_event", :event_id => "#{event.id}" ,:disable => true,:style => "opacity:0.35"} CANCELLED
               -else
                 -if event.chapter.am_i_chapter_memeber?(@current_user.id) and !event.am_i_member?(@current_user.id) and event.is_rsvp_allowed?
-                  %button.btn-a-small.flt-right{:id=>"follow_an_event", :event_id => "#{event.id}"} RSVP
+                  %button.btn-a-small.flt-right{:id=>"follow_an_event", :event_id => "#{event.id}"} R.S.V.P
                 -elsif !event.am_i_member?(@current_user.id) and !event.is_rsvp_allowed?
                   %button.btn-a-small.flt-right{:id=>"join_wait_list"} Limit Reached!
                 -if event.am_i_member?(@current_user.id)
-                  %img.flt-right{:src => "/assets/Event.png"}
+                  -#%img.flt-right{:src => "/assets/Event.png"}
+                  %button.btn-a-small.flt-right{:id=>"event_rsvped",:style => "opacity:0.35"} Attending
             -if !current_user.blank?   and event.can_i_delete?(@current_user.id, event.chapter_id)
 
               -if event.can_be_deleted?
@@ -105,8 +107,8 @@
         %li.flt-right{:style => "margin-top:10px;"}
           %a.label-27{:href => "#" ,:id=>"upcoming_events"} See all upcoming events...   
 
-#past_events
-  = render "events/past_events"
+  #past_events
+    = render "events/past_events"
 
 :javascript 
   Chapters.init(); 

@@ -17,12 +17,14 @@
         %button.btn-a-small.flt-right{:id=>"cancelled_event", :event_id => "#{@event.id}" ,:disable => true,:style => "opacity:0.35"} CANCELLED
       -else
         -if !@event.am_i_member?(current_user.id) and @event.is_rsvp_allowed?
-          %button.btn-a-small.flt-right.rsvp_me{:id=>"follow_an_event", :event_id => "#{@event.id}"} RSVP
-          %img.flt-right#rsvp_tick{:src => "/assets/Event.png",:style => "display:none"}
+          %button.btn-a-small.flt-right.rsvp_me{:id=>"follow_an_event", :event_id => "#{@event.id}"} R.S.V.P
+          -#%img.flt-right#rsvp_tick{:src => "/assets/Event.png",:style => "display:none"}
+          %button.btn-a-small.flt-right{:id=>"rsvp_tick",:style => "display:none;opacity:0.35"} Attending
         -elsif !@event.am_i_member?(current_user.id) and !@event.is_rsvp_allowed?
           %button.btn-a-small.flt-right{:id=>"join_wait_list"} Limit Reached!
         -if @event.am_i_member?(current_user.id)
-          %img.flt-right{:src => "/assets/Event.png"}
+          -#%img.flt-right{:src => "/assets/Event.png"}
+          %button.btn-a-small.flt-right{:id=>"event_rsvped",:style => "opacity:0.35"} Attending
     %div.clr
     %div.label-26{:id => "short_content"}
       %div.dateAttendees
@@ -30,10 +32,6 @@
           -if(!@event.event_start_date.blank?)
             #{Time.parse(@event.event_start_time.to_s).strftime('%A %I:%M %p')}, #{Date.parse(@event.event_start_date.to_s).strftime('%b %d, %Y')}
             -#I #{@event.entry_fee}  per person
-
-        %div.attendees
-          %strong Attendees:
-          #{@event.event_members.size}
 
         .clr
       %div.location
@@ -45,8 +43,8 @@
 
       -#=image_tag(@event.image,:size => "60x60")
   %div.clr
-  #gallery_images
-    = render  "events/image_gallery_upload"
+    #gallery_images
+      = render  "events/image_gallery_upload"
   -if current_user.present?
     -if current_user.id == @event.created_by
       %input#Uploadify{:name => "Uploadify", :type => "file"}
@@ -62,14 +60,14 @@
               /%img.img-c.flt-left{:src => "/assets/img-d.png"}
             %td
               %h5.label-27
-                #{comment.user.fullname} - 
-                
+                #{comment.user.fullname} -
+
                 %label.label-25 #{Time.parse(comment.created_at.to_s).strftime('%d, %b')}
               %p.label-16
                 #{comment.content}
-    - @comment =  @event.comments.build    
+    - @comment =  @event.comments.build
     -if @current_user.present?
-      = semantic_form_for  @comment do |f|      
+      = semantic_form_for  @comment do |f|
         = f.text_area :content, :placeholder => "comment", :label => false, :class => " content_comment_class ta-a"
         = f.hidden_field   :commentable_type
         = f.hidden_field   :commentable_id
@@ -96,6 +94,7 @@
       $('input#Uploadify').uploadify({
         swf            : '/assets/uploadify.swf',
         buttonText     :'Upload Images',
+        buttonClass    :'uploadify-button-custom',
         uploader       : url,
         formData       : 'photo[image]',
         fileExt        : '*.png;*.jpg;*.gif',

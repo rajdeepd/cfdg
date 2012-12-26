@@ -179,3 +179,89 @@ span.LV_invalid {
     margin-bottom: 10px;
     margin-top: -5px;
 }
+.eventImageHolder {
+    float: left;
+    width: 150px;
+    height: 150px;
+    text-align: center;
+    vertical-align: middle;
+    display: table-cell;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+.eventImageHolder img {
+    width: 150px;
+    height: 150px;
+}
+.seeAllImages {
+    width: 150px;
+    height: 150px;
+    text-align: center;
+    vertical-align: bottom;
+    display: table-cell;
+}
+.seeAllImages a {
+    text-decoration: underline;
+    color: #0097D7;
+}
+.eventTitle {
+    float: left;
+    margin-right: 5px;
+}
+#event_title_input, .eventTitleEditLbl {
+    float: left;
+    width: 510px;
+}
+#event_title_input .size-f,
+.eventTitleEditLbl .size-f{
+    margin-bottom: 0;
+}
+.createEventField {
+    margin-bottom: 12px;
+}
+.div-h #cancel_an_event,
+.div-h #delete_an_event,
+.div-h #cancelled_event{
+    margin-top: 0;
+}
+.attendees {
+    float: right;
+    width: 270px;
+}
+.attendeesHeading {
+    height: 25px;
+    line-height: 25px;
+    background: #f1f1f1;
+    padding: 0 10px;
+    margin-bottom: 15px;
+
+}
+.attendees strong {
+    float: left;
+}
+.attendees .mCount {
+    float: right;
+}
+.ulg-expanded {
+    float: left;
+    width: 640px;
+}
+ul.attendeesList li {
+    display: block;
+    padding: 10px 0;
+    border-bottom: 1px dotted #c5c6c7;
+}
+ul.attendeesList li .imageHolder {
+    width: 30px;
+    height: 30px;
+    margin-right: 20px;
+    float: left;
+}
+ul.attendeesList li .nameHolder {
+    width: 220px;
+    float: left;
+    line-height: 30px;
+}
+.clr {
+    clear: both;
+}
