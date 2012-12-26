@@ -1,5 +1,6 @@
 - content_present = @event.agenda_and_speakers.present?
-%p.label-9{:style=>"font-size:20px;"} 
+.clr
+%p.label-9{:style=>"font-size:20px;"}
   Agenda and Speakers
   -if @current_user.present? and @event.can_i_delete?(@current_user.id, @event.chapter_id) and @event.agenda_and_speakers.present?
     %a.label-9{:style=>"font-size:15px;margin-left: 322px;font-weight: normal;", :href => "#", :id=>"edit_agenda"}  EDIT
@@ -10,6 +11,7 @@
 -if @current_user.present? and @event.can_i_delete?(@current_user.id, @event.chapter_id)
   - display_val = content_present ? "display:none" : "display:block"
   - submit_val  =  content_present ? "UPDATE" : "CREATE"
+  .clr
   #agenda_text_area{:style=>"#{display_val}"}
     = semantic_form_for  @event do |f|
       = f.input :agenda_and_speakers, :as => :ckeditor, :label => false, :input_html => { :toolbar => 'Easy' }
