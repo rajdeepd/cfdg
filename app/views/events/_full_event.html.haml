@@ -18,11 +18,13 @@
       -else
         -if !@event.am_i_member?(current_user.id) and @event.is_rsvp_allowed?
           %button.btn-a-small.flt-right.rsvp_me{:id=>"follow_an_event", :event_id => "#{@event.id}"} RSVP
-          %img.flt-right#rsvp_tick{:src => "/assets/Event.png",:style => "display:none"}
+          -#%img.flt-right#rsvp_tick{:src => "/assets/Event.png",:style => "display:none"}
+          %button.btn-a-small.flt-right{:id=>"rsvp_tick",:style => "display:none;opacity:0.35"} RSVP'ed
         -elsif !@event.am_i_member?(current_user.id) and !@event.is_rsvp_allowed?
           %button.btn-a-small.flt-right{:id=>"join_wait_list"} Limit Reached!
         -if @event.am_i_member?(current_user.id)
-          %img.flt-right{:src => "/assets/Event.png"}
+          -#%img.flt-right{:src => "/assets/Event.png"}
+          %button.btn-a-small.flt-right{:id=>"event_rsvped",:style => "opacity:0.35"} RSVP'ed
     %div.clr
     %div.label-26{:id => "short_content"}
       %div.dateAttendees
