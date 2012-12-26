@@ -36,7 +36,7 @@ Events ={
         $('#delete_an_event').die('click').live('click', function(e){
 
             var data = {event_id: $(this).attr('event_id')};
-            var confirmation = confirm("Are You Sure?")
+            var confirmation = confirm("Are you sure you want to delete this event?")
 
             if (confirmation == true)
             {
@@ -56,7 +56,7 @@ Events ={
         $('#cancel_an_event').die('click').live('click', function(e){
 
             var data = {event_id: $(this).attr('event_id')};
-            var confirmation = confirm("Are You Sure?")
+            var confirmation = confirm("Are you sure you want to cancel this event?")
 
             if (confirmation == true)
             {
