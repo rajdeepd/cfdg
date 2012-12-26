@@ -74,3 +74,6 @@ Released under the MIT License <http://www.opensource.org/licenses/mit-license.p
 /*
 Uploadify ends
 */
+#welcome .uploadImage {
+    margin: 23px 0 0 0
+}
