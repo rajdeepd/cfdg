@@ -195,10 +195,11 @@ span.LV_invalid {
 }
 .seeAllImages {
     width: 150px;
-    height: 150px;
+    /*height: 150px;*/
     text-align: center;
     vertical-align: bottom;
-    display: table-cell;
+    display: inline-block;
+    padding-top: 100px
 }
 .seeAllImages a {
     text-decoration: underline;
