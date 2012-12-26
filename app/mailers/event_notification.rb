@@ -5,7 +5,7 @@ class EventNotification < ActionMailer::Base
     logger.info "########## rsvp event ###############"
     @user = user
     @event = event
-    mail(:to => user.email, :subject => "RSVP event")
+    mail(:to => user.email, :subject => "R.S.V.P event")
   end
 
   def event_cancellation(event,emails)
