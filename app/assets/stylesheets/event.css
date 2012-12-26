@@ -224,3 +224,44 @@ span.LV_invalid {
 .div-h #cancelled_event{
     margin-top: 0;
 }
+.attendees {
+    float: right;
+    width: 270px;
+}
+.attendeesHeading {
+    height: 25px;
+    line-height: 25px;
+    background: #f1f1f1;
+    padding: 0 10px;
+    margin-bottom: 15px;
+
+}
+.attendees strong {
+    float: left;
+}
+.attendees .mCount {
+    float: right;
+}
+.ulg-expanded {
+    float: left;
+    width: 640px;
+}
+ul.attendeesList li {
+    display: block;
+    padding: 10px 0;
+    border-bottom: 1px dotted #c5c6c7;
+}
+ul.attendeesList li .imageHolder {
+    width: 30px;
+    height: 30px;
+    margin-right: 20px;
+    float: left;
+}
+ul.attendeesList li .nameHolder {
+    width: 220px;
+    float: left;
+    line-height: 30px;
+}
+.clr {
+    clear: both;
+}
