@@ -265,3 +265,6 @@ ul.attendeesList li .nameHolder {
 .clr {
     clear: both;
 }
+.div-h .location, .div-h .description{
+    margin-left: -80px
+}

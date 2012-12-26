@@ -17,16 +17,16 @@
         %label.flt-left.label-26 Starts On
         = f.input :event_start_date , :input_html => {:class => "input-b size-b size-of-inputs "} , :placeholder => "dd/mm/yyyy", :label => false
         = f.input :event_start_time ,  :placeholder => "hh:mm", :label => false,   :input_html => {:class => "input-b size-b size-of-inputs timepicker" }
-      .error{:class => "el-cont"}
-        %li{:style => "padding-left:72px;float:left;width:35%;", :class => "inline-errors event_event_start_date"} &nbsp;
-        %li{:style => "float:left;padding-left:14px;", :class => "inline-errors event_event_start_time"} &nbsp;
+        .error{:class => "el-cont", :style => "clear:both"}
+          %li{:style => "padding-left:74px;float:left;width:35%;", :class => "inline-errors event_event_start_date"}
+          %li{:style => "float:left;padding-left:74px;", :class => "inline-errors event_event_start_time"}
       .el-cont.createEventField
         %label.flt-left.label-26 Ends On
         = f.input :event_end_date , :input_html => {:class => "input-b size-b size-of-inputs"} , :placeholder => "dd/mm/yyyy", :label => false
         = f.input :event_end_time ,  :placeholder => "hh:mm", :label => false , :input_html => {:class => "input-b size-b size-of-inputs timepicker" }
-      .error{:class => "el-cont"}
-        %li{:style => "padding-left:72px;width:35%;", :class => "inline-errors event_event_end_date"} &nbsp;
-        %li{:style => "padding-left:14px;", :class => "inline-errors event_event_end_time"} &nbsp;
+        .error{:class => "el-cont", :style => "clear:both"}
+          %li{:style => "padding-left:74px;width:35%;", :class => "inline-errors event_event_end_date"}
+          %li{:style => "padding-left:74px;", :class => "inline-errors event_event_end_time"}
     .event-bottom
   .event-form
     .event-left
