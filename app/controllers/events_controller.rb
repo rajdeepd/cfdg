@@ -95,7 +95,7 @@ class EventsController < ApplicationController
 
   def follow_an_event
     @event = Event.find(params[:event_id])
-    if !@event.is_cancelled?
+    if !@event.is_cancelled? and !@event.am_i_member?(@current_user.id)
       @event_memeber = EventMember.new(:event_id => @event.id, :user_id => current_user.id)
       @event_memeber.save!
 
