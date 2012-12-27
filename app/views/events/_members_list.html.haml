@@ -1,0 +1,15 @@
+
+-#%h1
+%div.attendees
+  .attendeesHeading
+    %strong LIST OF ATTENDEES &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+    %div.mCount
+      #{@event.event_members.size}
+  %ul.attendeesList
+    -@members.each do |i|
+      %li
+        .imageHolder
+          = avatar_display_pic(i,'thumb', '30x30','profile.png',"profile-img img-a flt-left")
+        .nameHolder
+          = i.fullname
+        .clr

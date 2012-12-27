@@ -24,7 +24,7 @@ class ChaptersController < ApplicationController
   # GET /chapters/1.json
   def show
     @chapter = Chapter.find(params[:id])
-    @is_part_of_chapter =false
+    @is_part_of_chapter = false
     if current_user
        @is_part_of_chapter = @chapter.chapter_members.where({:user_id => current_user.id}).try(:first).present? 
     end

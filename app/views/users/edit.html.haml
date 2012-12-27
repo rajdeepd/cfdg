@@ -3,7 +3,7 @@
     .ca-left.flt-left
       =form_for(@user, :as => :user, :url => user_path(@user), :html => { :method => :put ,  :multipart => true}) do |f|
         #welcome
-          %h1.label-17 Welcome!
+          %h1.label-17 Welcome #{@user.fullname}!
           %div
             - if @user.avatar_file_name && (@user.errors[:avatar_content_type].blank? && @user.errors[:avatar_file_size].blank?)
               %img.profile-image{:src => @user.try(:avatar).url(:medium)}/
@@ -48,4 +48,8 @@
       },
       formData   : {'session_encoded': '#{session}', 'id': "#{@user.id}", 'authenticity_token': "#{form_authenticity_token}"  }
     });
+
+    var contact_number =   new LiveValidation("user_mobile",{validMessage:" ",onlyOnSubmit:true});
+    contact_number.add( Validate.Format , { pattern: /^[0-9]{0,15}$/, failureMessage: "Must be a Number" });
+    $("#SWFUpload_0").addClass("uploadImage")
   });
