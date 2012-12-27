@@ -20,6 +20,9 @@ Events ={
         $('#follow_an_event').die('click').live('click', function(e){
 
             var data = {event_id: $(this).attr('event_id')};
+            $(this).text("please wait...");
+            $(this).css("opacity",0.35);
+            $(this).attr("disabled","disabled");
 
             $.ajax({
                 url: '/events/follow_an_event',
@@ -56,19 +59,25 @@ Events ={
         $('#cancel_an_event').die('click').live('click', function(e){
 
             var data = {event_id: $(this).attr('event_id')};
+            $(this).text("please wait...");
+            $(this).css("opacity",0.35);
+            $(this).attr("disabled","disabled");
             var confirmation = confirm("Are you sure you want to cancel this event?")
-
             if (confirmation == true)
             {
                 $.ajax({
                     url: '/events/cancel_event',
                     data : data,
+                    async:false,
+                    dataType: 'html',
                     success: function(data){
                         $('#events').html(data);
-                    },
-                    async:false,
-                    dataType: 'html'
+                    }
                 });
+            }else{
+                $(this).text("CANCEL");
+                $(this).css("opacity",1);
+                $(this).attr("disabled",false);
             }
 
         });

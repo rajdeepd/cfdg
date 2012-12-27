@@ -95,7 +95,7 @@ class EventsController < ApplicationController
 
   def follow_an_event
     @event = Event.find(params[:event_id])
-    if !@event.is_cancelled?
+    if !@event.is_cancelled? and !@event.am_i_member?(@current_user.id)
       @event_memeber = EventMember.new(:event_id => @event.id, :user_id => current_user.id)
       @event_memeber.save!
 
@@ -199,7 +199,7 @@ class EventsController < ApplicationController
       if @event.update_attributes(params[:event])
         format.html { redirect_to @event, notice: 'Event was successfully updated.' }
         @chapter = Chapter.find(@event.chapter_id)
-        emails=@chapter.chapter_members.includes(:user).collect{|i| i.user.email}
+        emails = @event.event_members.includes(:user).collect{|i| i.user.email}
         #EventNotification.delay.event_edit(@event,emails,@chapter)
         EventNotification.event_edit(@event,emails,@chapter).deliver
         format.json { head :no_content }

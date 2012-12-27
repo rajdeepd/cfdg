@@ -195,10 +195,11 @@ span.LV_invalid {
 }
 .seeAllImages {
     width: 150px;
-    height: 150px;
+    /*height: 150px;*/
     text-align: center;
     vertical-align: bottom;
-    display: table-cell;
+    display: inline-block;
+    padding-top: 100px
 }
 .seeAllImages a {
     text-decoration: underline;
@@ -264,4 +265,7 @@ ul.attendeesList li .nameHolder {
 }
 .clr {
     clear: both;
+}
+.div-h .location, .div-h .description{
+    margin-left: -80px
 }

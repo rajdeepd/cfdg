@@ -35,9 +35,15 @@
             %label.label-20
               @secondary_coord.each |coord| do   #{coord.user.email}           end
       %ul.ul-e
-        %li
-          %h2.label-21 #{@totalcount}
-          %h5.label-39 Members
+        -if @chapter.id == 3
+
+          %li
+            %h2.label-21 #{@totalcount + 28}
+            %h5.label-39 Members
+        -else
+          %li
+            %h2.label-21 #{@totalcount}
+            %h5.label-39 Members
         %li
           %h2.label-21 #{@chapter.events.try(:size)}
           %h5.label-39 Events
@@ -65,7 +71,7 @@
         /   %i.bg-arrow-down-b
         -if @current_user.present? and (ChapterMember.am_i_coordinator?(@current_user.id, @chapter.id))
           %li{:style => "float:right"}
-            -#%a.cp{:href => "#{profile_path}" , :id=>"create_event_from_chapter", :chapter_id=> @chapter.id} + Create Event
+            %a.cp{:href => "#{profile_path}" , :id=>"create_event_from_chapter", :chapter_id=> @chapter.id} + Create Event
       #chapter_show_events
         = render '/events/events_list' 
     /=render '/events/comment_partial'
