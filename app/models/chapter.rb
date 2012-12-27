@@ -74,6 +74,10 @@ class Chapter < ActiveRecord::Base
     ChapterMember.find(:all , :conditions => [" user_id = ? and chapter_id = ? and memeber_type = ?", user_id, id,  ChapterMember::MEMBER]).present?
   end
 
+  def get_primary_coordinator
+     User.find(self.created_by)
+  end
+
   def persist_geocode
     logger.info "inside persist geocode"
     city = self.city_name.blank? ? "" : self.city_name + ","
