@@ -54,7 +54,8 @@ CloudfoundryUsergroups::Application.routes.draw do
 #resources :events, :has_many => :comments
 
 #scope ':locale' do
-  devise_for :users , :controllers => { :registrations => "registrations" } do
+  devise_for :users , :controllers => { :registrations => "registrations",
+  :confirmations => "confirmations"} do
     get '/signin' => 'devise/sessions#new'   
     get '/users/confirm', :to => 'devise/confirmations#new'
     get '/users/reset_password', :to => 'devise/passwords#new'
