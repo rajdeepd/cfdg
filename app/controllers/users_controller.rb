@@ -43,4 +43,5 @@ class UsersController < ApplicationController
       format.json { render json: @user.avatar.url(:medium)}
     end
   end
+
 end
