@@ -94,3 +94,7 @@ Released under the MIT License <http://www.opensource.org/licenses/mit-license.p
     color: #ffffff;
     font-weight: bold;
 }
+
+.uploadify-button-text {
+    margin: 134px 0 0 0; !important
+}

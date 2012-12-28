@@ -31,7 +31,7 @@
 - arr = []
 - request.env['HTTP_COOKIE'].each_char{|c| arr.push(c[0].to_s)}
 - session = arr.join("x")
-= javascript_include_tag "jquery.uploadify"
+= javascript_include_tag "jquery.uploadify-3.1"
 :javascript
   $(function() {
     $('#user_avatar').uploadify({
@@ -49,6 +49,8 @@
       formData   : {'session_encoded': '#{session}', 'id': "#{@user.id}", 'authenticity_token': "#{form_authenticity_token}" }
     });
     $("#SWFUpload_0").addClass("uploadImage");
+
+    $(".uploadify-button-text").addClass("uploadImage");
     //var mobile= new LiveValidation("user_mobile",{validMessage:" ",onlyOnSubmit:true});
     //mobile.add( Validate.Numericality ,{ onlyInteger: true },{maximum: 999999999999999});
     var contact_number =   new LiveValidation("user_mobile",{validMessage:" ",onlyOnSubmit:true});
