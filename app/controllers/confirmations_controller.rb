@@ -12,7 +12,15 @@ class ConfirmationsController < Devise::PasswordsController
 
   # GET /resource/confirmation?confirmation_token=abcdef
   def show
-     @confirmable.inspect
+
+    @confirmable = User.find_by_confirmation_token(params[:confirmation_token])
+    logger.info @confirmable.inspect
+    @confirmable.confirm!
+    session[:user_id] = @confirmable.id
+    session[:email] = @confirmable.email
+    session[:user] = {:email => @confirmable.email, :verified => true, :name => @confirmable.fullname}
+    sign_in(@confirmable)
+
   end
 
   protected
