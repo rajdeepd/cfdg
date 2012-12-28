@@ -31,7 +31,7 @@
 - arr = []
 - request.env['HTTP_COOKIE'].each_char{|c| arr.push(c[0].to_s)}
 - session = arr.join("x")
-= javascript_include_tag "jquery.uploadify"
+= javascript_include_tag "jquery.uploadify-3.1"
 :javascript
   $(function() {
     $('#user_avatar').uploadify({
