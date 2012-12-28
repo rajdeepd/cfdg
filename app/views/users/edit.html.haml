@@ -1,3 +1,4 @@
+= javascript_include_tag "jquery.validate"
 .content.wrapper
   .content-a
     .ca-left.flt-left
@@ -15,6 +16,9 @@
             %h4.form1 Please fill in the details given below
             %div
               = f.text_field :location , :placeholder => "Location", :class => "textboxes input-a"
+              %br
+              = text_field_tag "user[fullname]" ,@user.fullname, :placeholder => "Name", :class => "textboxes input-a"
+
           .line_space
           #formsecond
             %h4.form1 Optional fields            
@@ -33,6 +37,15 @@
 - session = arr.join("x")
 = javascript_include_tag "jquery.uploadify-3.1"
 :javascript
+  $(document).ready(function(){
+    $('#edit_user').validate({
+      rules: {
+        "user[fullname]": {
+          required: true
+        }
+      }
+    });
+  });
   $(function() {
     $('#user_avatar').uploadify({
       uploader   : "#{uploader_users_path(:format => :json)}",
@@ -52,4 +65,5 @@
     var contact_number =   new LiveValidation("user_mobile",{validMessage:" ",onlyOnSubmit:true});
     contact_number.add( Validate.Format , { pattern: /^[0-9]{0,15}$/, failureMessage: "Must be a Number" });
     $("#SWFUpload_0").addClass("uploadImage")
+
   });

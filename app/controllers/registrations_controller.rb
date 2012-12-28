@@ -9,7 +9,7 @@ class RegistrationsController  < Devise::RegistrationsController
 
   def create
     @user = User.new(params[:user])
-    @user.fullname = "#{params[:user][:first_name]} #{params[:user][:last_name]}"
+    #@user.fullname = "#{params[:user][:first_name]} #{params[:user][:last_name]}"
     if @user.save
       #session[:user], session[:user_id], session[:user_name] = {:name => @user.fullname, :email => @user.email, :id => @user.id}, @user.id, @user.fullname
       #@registered = true

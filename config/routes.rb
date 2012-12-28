@@ -57,7 +57,7 @@ CloudfoundryUsergroups::Application.routes.draw do
   devise_for :users , :controllers => { :registrations => "registrations",
   :confirmations => "confirmations",
   :sessions => "sessions"} do
-    get '/signin' => 'devise/sessions#new'   
+    get '/signin' => 'sessions#new'
     get '/users/confirm', :to => 'devise/confirmations#new'
     get '/users/reset_password', :to => 'devise/passwords#new'
     get '/users/change_password', :to => 'devise/passwords#edit'

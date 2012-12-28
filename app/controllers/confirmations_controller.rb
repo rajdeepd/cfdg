@@ -16,10 +16,11 @@ class ConfirmationsController < Devise::PasswordsController
     @confirmable = User.find_by_confirmation_token(params[:confirmation_token])
     logger.info @confirmable.inspect
     @confirmable.confirm!
-    session[:user_id] = @confirmable.id
-    session[:email] = @confirmable.email
-    session[:user] = {:email => @confirmable.email, :name => @confirmable.fullname}
-    sign_in_and_redirect(@confirmable)
+    #session[:user_id] = @confirmable.id
+    #session[:email] = @confirmable.email
+    #session[:user] = {:email => @confirmable.email, :verified => true,:name => @confirmable.fullname}
+    #sign_in_and_redirect(@confirmable)
+    redirect_to sign_up_path(:email => @confirmable.email)
 
   end
 
