@@ -46,6 +46,7 @@ class UsersController < ApplicationController
     end
   end
 
+
   def is_allowed_to_login
     can_login =  session[:is_allowed_to_login]
     session[:is_allowed_to_login] = nil

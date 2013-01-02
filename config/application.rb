@@ -78,6 +78,8 @@ module CloudfoundryUsergroups
     #    :authentication       => 'plain',
     #    :enable_starttls_auto => true  }
 
+
+
     require "tlsmail"
     config.action_mailer.delivery_method = :smtp
     config.action_mailer.smtp_settings = {
@@ -88,6 +90,9 @@ module CloudfoundryUsergroups
         :authentication       => 'plain',
         :enable_starttls_auto => true
     }
+
+
+
     #require "tlsmail"
     # # Net::SMTP.enable_tls( OpenSSL::SSL::VERIFY_NONE )
     #  ActionMailer::Base.smtp_settings = {

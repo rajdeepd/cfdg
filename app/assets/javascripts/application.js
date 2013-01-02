@@ -20,6 +20,7 @@ $(function(){
   $('.signin').click(function(){
     $('#navbar').accountChooser('showAccountChooser');   
   });
+
   $('.logout').click(function(){
     window.location = window.google.identitytoolkit.easyrp.config.logoutUrl;
   });
