@@ -1,8 +1,10 @@
 class UsersController < ApplicationController
   layout 'chapters'
+  before_filter "is_allowed_to_login" , :only => [:edit]
 
   def edit
     @user = User.find_by_email(params[:email])
+    #binding.remote_pry
   end
 
   def update
@@ -44,4 +46,10 @@ class UsersController < ApplicationController
     end
   end
 
+
+  def is_allowed_to_login
+    can_login =  session[:is_allowed_to_login]
+    session[:is_allowed_to_login] = nil
+    redirect_to root_path unless can_login == true
+  end
 end
