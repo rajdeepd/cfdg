@@ -61,8 +61,8 @@ CloudfoundryUsergroups::Application.routes.draw do
   :sessions => "sessions"} do
     get '/signin' => 'sessions#new'
     get '/users/confirm', :to => 'devise/confirmations#new'
-    get '/users/reset_password', :to => 'devise/passwords#new'
-    get '/users/change_password', :to => 'devise/passwords#edit'
+    get '/users/reset_password', :to => 'passwords#new'
+    get '/users/change_password', :to => 'passwords#edit'
   end
   get "admin/log_out" => "admin/sessions#destroy", :as => "log_out"
   get '/sign_up' , :to => 'users#edit'
