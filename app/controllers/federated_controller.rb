@@ -33,6 +33,7 @@ class FederatedController < ApplicationController
     if @user.nil? or @user.blank?
       @user = User.create!(:email => @email,:password => "cloudfoundry", :password_confirmation => "cloudfoundry", :fullname => @res["fullName"])
       session[:email] = @user.email
+      session[:is_allowed_to_login] = true
       @registered = false
     else
       session[:user_id] = @user.id
