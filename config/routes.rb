@@ -9,7 +9,6 @@ CloudfoundryUsergroups::Application.routes.draw do
   get '/about' => 'home#about' , :as => "about"
   get '/wiki' => 'home#wiki' , :as => "wiki"
   get '/'  => "home#index" , :as => :home_index
-  
   resources :chapters do
     resources :events
      collection do
@@ -24,17 +23,17 @@ CloudfoundryUsergroups::Application.routes.draw do
     end
   end
 
-  resources :posts do 
+  resources :posts do
     collection do
       get 'chapterposts'
-    end 
+    end
   end
   resources :comments
   resources :events do
-    collection do 
+    collection do
       get 'oauth_reader'
       get 'userevents'
-      get 'get_chapter_events'      
+      get 'get_chapter_events'
       get 'follow_an_event'
       get 'delete_an_event'
       get 'full_event_content'

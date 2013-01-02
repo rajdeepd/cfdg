@@ -142,11 +142,12 @@ class EventsController < ApplicationController
   def cancel_event
     @event = Event.find(params[:event_id])
     @chapter = @event.chapter
-    emails = @event.event_members.includes(:user).collect{|i| i.user.email}
+    to_email = @chapter.get_primary_coordinator.email
+    bcc_emails = @event.event_members.includes(:user).collect{|i| i.user.email} - [to_email]
     @event.is_cancelled = true
     @event.save
     #EventNotification.delay.event_cancellation(@event, emails)
-    EventNotification.event_cancellation(@event, emails).deliver
+    EventNotification.event_cancellation(@event,to_email,bcc_emails).deliver
     chapter_events = Event.find_all_by_chapter_id(@event.chapter_id) || []
     get_upcoming_and_past_events(chapter_events, true)
     @profile_page = false
@@ -177,10 +178,11 @@ class EventsController < ApplicationController
 
         @chapter = Chapter.find(@event.chapter_id)
         @chapter_events = @chapter.events.sort
-        emails=@chapter.chapter_members.includes(:user).collect{|i| i.user.email}
+        to_email = @chapter.get_primary_coordinator.email
+        bcc_emails=@chapter.chapter_members.includes(:user).collect{|i| i.user.email} - [to_email]
         @two_chapter_events = @chapter_events.take(2)
         #EventNotification.delay.event_creation(@event,emails,@chapter)
-        EventNotification.event_creation(@event,emails,@chapter).deliver
+        EventNotification.event_creation(@event,to_email,bcc_emails,@chapter).deliver
         format.js
       else
         format.js
@@ -199,9 +201,11 @@ class EventsController < ApplicationController
       if @event.update_attributes(params[:event])
         format.html { redirect_to @event, notice: 'Event was successfully updated.' }
         @chapter = Chapter.find(@event.chapter_id)
-        emails = @event.event_members.includes(:user).collect{|i| i.user.email}
+
+        to_email = @chapter.get_primary_coordinator.email
+        bcc_emails = @event.event_members.includes(:user).collect{|i| i.user.email} -[to_email]
         #EventNotification.delay.event_edit(@event,emails,@chapter)
-        EventNotification.event_edit(@event,emails,@chapter).deliver
+        EventNotification.event_edit(@event,to_email,bcc_emails,@chapter).deliver
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
