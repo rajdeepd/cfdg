@@ -8,8 +8,9 @@ CloudfoundryUsergroups::Application.routes.draw do
   get '/directory' => 'home#directory' , :as => "directory"
   get '/about' => 'home#about' , :as => "about"
   get '/wiki' => 'home#wiki' , :as => "wiki"
+  get '/'  => "home#index" , :as => :home_index
   match'/admin', :to => "admin/sessions#new"
-  
+
   resources :chapters do
     resources :events
      collection do
@@ -24,17 +25,17 @@ CloudfoundryUsergroups::Application.routes.draw do
     end
   end
 
-  resources :posts do 
+  resources :posts do
     collection do
       get 'chapterposts'
-    end 
+    end
   end
   resources :comments
   resources :events do
-    collection do 
+    collection do
       get 'oauth_reader'
       get 'userevents'
-      get 'get_chapter_events'      
+      get 'get_chapter_events'
       get 'follow_an_event'
       get 'delete_an_event'
       get 'full_event_content'
@@ -54,8 +55,10 @@ CloudfoundryUsergroups::Application.routes.draw do
 #resources :events, :has_many => :comments
 
 #scope ':locale' do
-  devise_for :users , :controllers => { :registrations => "registrations" } do
-    get '/signin' => 'devise/sessions#new'   
+  devise_for :users , :controllers => { :registrations => "registrations",
+  :confirmations => "confirmations",
+  :sessions => "sessions"} do
+    get '/signin' => 'sessions#new'
     get '/users/confirm', :to => 'devise/confirmations#new'
     get '/users/reset_password', :to => 'devise/passwords#new'
     get '/users/change_password', :to => 'devise/passwords#edit'
