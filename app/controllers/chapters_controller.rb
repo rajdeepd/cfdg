@@ -6,7 +6,8 @@ class ChaptersController < ApplicationController
   end
 
   def subregion_options
-    render partial: 'subregion_select'
+    #render partial: 'subregion_select'
+    logger.info "@@@@@@@@@@@@@@@@@@ inside subregion action @@@@@@@@@@@@@@@@@@@@#{params}"
   end
   
   # GET /chapters

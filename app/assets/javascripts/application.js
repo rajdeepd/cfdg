@@ -89,14 +89,15 @@ $(function(){
   });
 
        
-  $('select#chapter_country_name').change(function(event) {
-    var country_code, select_wrapper, url;
-    select_wrapper = $('#chapter_state_name_wrapper');
-    $('select', select_wrapper).attr('disabled', true);
-    country_code = $(this).val();
-    url = "/chapters/subregion_options?parent_region=" + country_code;
-    return select_wrapper.load(url);
-  });
+//  $('select#chapter_country_name').change(function(event) {
+//    var country_code, select_wrapper, url;
+//    select_wrapper = $('#chapter_state_name_wrapper');
+//    $('select', select_wrapper).attr('disabled', true);
+//    country_code = $(this).val();
+//    url = "/chapters/subregion_options?parent_region=" + country_code;
+//    return select_wrapper.load(url);
+//  });
+
 
   $('#comment_content').die('keypress').live('keypress', function(e){
       if(e.keyCode == 13){
@@ -137,4 +138,3 @@ function hideFlashMessages() {
 function showFlashMessages() {
   $('.alert').slideDown(200);
 }
-
