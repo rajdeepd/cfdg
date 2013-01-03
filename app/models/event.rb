@@ -86,7 +86,7 @@ class Event < ActiveRecord::Base
     #Rails.logger.info("time2  #{self.event_end_time_in_time}")
     #Rails.logger.info("comparing")
     #Rails.logger.info("date  #{self.event_start_date_in_date >= self.event_end_date_in_date}")
-    ##Rails.logger.info("time  #{self.event_start_time_in_time >= self.event_end_time_in_time}")
+    ##Rails.logger.info("time  #{self.event_start_time_in_time >= self.event_end_time_in_time}")                 city
     #Rails.logger.info("time with now  #{self.event_start_time_in_time <= Time.now}")
     if  self.event_start_date_in_date >= self.event_end_date_in_date
       Rails.logger.info "date compared"
