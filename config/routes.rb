@@ -112,6 +112,10 @@ CloudfoundryUsergroups::Application.routes.draw do
       end
     end
    end
+
+  resources :announcements do
+
+  end
    
   # The priority is based upon order of creation:
   # first created -> highest priority.
