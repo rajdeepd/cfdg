@@ -2,11 +2,12 @@ class SessionsController <  Devise::SessionsController
   #before_filter :redirect_to_initial_page_if_platform_is_not_configured_yet ,:only => [:new]
   skip_before_filter :require_no_authentication, :only => [ :new, :create ]
   before_filter :is_already_login ,:only => [:new, :create]
+  before_filter :admin_cant_sign_in ,:only => [:create]
   #prepend_before_filter :allow_params_authentication!, :only => :create
 
   # GET /resource/sign_in
   def new
-   logger.info "inside new"
+    logger.info "inside new"
   end
 
   # POST /resource/sign_in
@@ -37,6 +38,13 @@ class SessionsController <  Devise::SessionsController
   def is_already_login
     if @current_user.present?
       redirect_to root_path
+    end
+  end
+
+  def admin_cant_sign_in
+    user = User.find_by_email(params[:user][:email])
+    if user.present? and user.admin == true
+      redirect_to "/admin"
     end
   end
 
