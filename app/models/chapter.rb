@@ -100,8 +100,8 @@ class Chapter < ActiveRecord::Base
     city = City.find(param[:chapter_city_name])
     chapter = Chapter.new(:name => chapter_name,:chapter_type => param[:chapter][:chapter_type],:country_id => country.id,:state_id => state.id,
                           :city_id => city.id,:locality => param[:chapter][:locality],:address => param[:chapter][:address],:landmark => param[:chapter][:landmark],
-                          :institution => param[:chapter][:institution],:city_name => city.name,
-                          :state_name => state.name,:country_name => country.name)
+                          :institution => param[:chapter][:institution],:city_name => city.name.strip,
+                          :state_name => state.name.strip,:country_name => country.name.strip)
     chapter.save!
     return chapter
   end
