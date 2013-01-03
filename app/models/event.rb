@@ -105,6 +105,10 @@ class Event < ActiveRecord::Base
   end
 
   def self.search_events(query)
-    where("city_name like ?", "%#{query}%")
+    where("city_name like ?", query)
   end
+
+  #def self.get_upcoming_events
+  #    self.all.select{|i| i.event_start_date_in_date < Date.today}
+  #end
 end

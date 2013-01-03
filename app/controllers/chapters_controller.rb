@@ -162,7 +162,6 @@ class ChaptersController < ApplicationController
 
   def search
     @chapters = Chapter.search_chapters(params[:query])
-    render :json => @chapters
   end
 
 end

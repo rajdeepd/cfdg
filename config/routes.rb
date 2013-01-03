@@ -171,6 +171,10 @@ CloudfoundryUsergroups::Application.routes.draw do
 #  post '/local_selection/:local' , :to => "home#local_selection"
   root :to => 'home#index'
 
+  resources :home do
+    get :autocomplete_city_name, :on => :collection
+  end
+
   
 
   # See how all your routes lay out with "rake routes"

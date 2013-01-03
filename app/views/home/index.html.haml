@@ -71,9 +71,9 @@
                   %br
                   %label.label-13= ann.created_at.strftime("%B %d, %Y")
                 %h5.label-16= ann.body
-    %form.search(action="#{search_chapters_path}" data-method="get")
-      %input.input.input-append.search-query(name="query" type="text" placeholder="Search")
-      %button.btn(type="submit")
+    =form_tag search_chapters_path  , :method => :get  do
+      = autocomplete_field_tag 'query', '', autocomplete_city_name_home_index_path, :size => 75
+      =submit_tag "Search"
 
 
 

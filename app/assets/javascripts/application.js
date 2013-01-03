@@ -12,7 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui
 //= require jquery.remotipart
+//= require autocomplete-rails
 //= require_tree .
 
 $(function(){
