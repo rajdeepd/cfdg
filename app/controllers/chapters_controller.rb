@@ -160,4 +160,9 @@ class ChaptersController < ApplicationController
     @past_events = @past_events.paginate(:page => params[:page], :per_page => 10)
   end
 
+  def search
+    @chapters = Chapter.search_chapters(params[:query])
+    render :json => @chapters
+  end
+
 end

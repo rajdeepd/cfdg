@@ -16,6 +16,7 @@ CloudfoundryUsergroups::Application.routes.draw do
      collection do
       post 'join_a_chapter'
       get  'chapter_admin_home_page'
+      get 'search'
      end
   end
 

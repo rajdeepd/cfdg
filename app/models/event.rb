@@ -103,4 +103,8 @@ class Event < ActiveRecord::Base
        end
     end
   end
+
+  def self.search_events(query)
+    where("city_name like ?", "%#{query}%")
+  end
 end

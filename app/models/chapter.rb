@@ -93,4 +93,8 @@ class Chapter < ActiveRecord::Base
     end
   end
 
+  def self.search_chapters(query)
+     where("city_name like ?", "#{query}")
+  end
+
 end

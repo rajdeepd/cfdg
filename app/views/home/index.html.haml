@@ -71,6 +71,12 @@
                   %br
                   %label.label-13= ann.created_at.strftime("%B %d, %Y")
                 %h5.label-16= ann.body
+    %form.search(action="#{search_chapters_path}" data-method="get")
+      %input.input.input-append.search-query(name="query" type="text" placeholder="Search")
+      %button.btn(type="submit")
+
+
+
 
 :javascript
   google.load("identitytoolkit", "1", {packages: ["ac"], language:"#{lang}"});
