@@ -8,6 +8,24 @@ class ChaptersController < ApplicationController
   def subregion_options
     #render partial: 'subregion_select'
     logger.info "@@@@@@@@@@@@@@@@@@ inside subregion action @@@@@@@@@@@@@@@@@@@@#{params}"
+    @country = Country.find(params[:country_id])
+    @states = @country.states
+
+    logger.info "##################### states ##################{@states.inspect}"
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def select_city
+    logger.info "@@@@@@@@@@@@@@@@@@ inside subregion action @@@@@@@@@@@@@@@@@@@@#{params}"
+        @state = State.find(params[:state_id])
+        @cities = @state.cities
+
+        logger.info "##################### states ##################{@cities.inspect}"
+        respond_to do |format|
+          format.js
+        end
   end
   
   # GET /chapters

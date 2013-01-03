@@ -27,12 +27,13 @@
                 -#= f.country_select :country_name , priority: %w(US CA), prompt: 'Please select a country', :input_html =>  {:class => "textboxes"}
                 = f.input :country_name,  :label => false ,  :as => :select, :collection => Country.all, prompt: 'Please select a country', :input_html =>  {:style => "height:33px;width:292px",:class => "textboxes"}
                 = f.hidden_field :country_id, :value => 1
-              %div
+              %div#chapter_state
                 -#= render partial: 'subregion_select', locals: {parent_region: f.object.country_name}
-                = f.input :state_name,  :label => false ,  :as => :select, :collection => State.all.select{|i| i.country_id == 92 }, prompt: 'Please select a state', :input_html =>  {:style => "height:33px;width:292px",:class => "textboxes"}
+                = f.input :state_name,  :label => false ,  :as => :select, :collection => [""], prompt: 'Please select a state', :input_html =>  {:style => "height:33px;width:292px",:class => "textboxes"}
                 = f.hidden_field :state_id,  :value => 1
               %div
-                = f.input :city_name , :placeholder => 'City',  :label => false ,  :input_html =>  {:class => "textboxes"}
+                -#= f.input :city_name , :placeholder => 'City',  :label => false ,  :input_html =>  {:class => "textboxes"}
+                = f.input :city_name,  :label => false ,  :as => :select, :collection => [""], prompt: 'Please select a city', :input_html =>  {:style => "height:33px;width:292px",:class => "textboxes"}
                 = f.hidden_field :city_id,  :value => 1              
             .two_side{:id => "ct_selection" , :style => "#{showclass}"}
               %div
@@ -57,7 +58,15 @@
 
 :javascript
   $(document).ready(function(){
+
+    $('select#chapter_state_name').attr('disabled', 'disabled');
     $('select#chapter_country_name').change(function(event) {
+      if($('select#chapter_country_name').val() != ""){
+        $('select#chapter_state_name').attr('disabled',false);
+      }
+      else if($('select#chapter_country_name').val() == ""){
+        $('select#chapter_state_name').attr('disabled', 'disabled');
+      }
       var country_code = $(this).val();
       console.log("#######################"+country_code);
       //send_ajax_request("get","/chapters/subregion_options",country_code,"script");
@@ -75,4 +84,31 @@
         }
       });
     });
+
+    $('select#chapter_state_name').change(function(event) {
+      if($('select#chapter_state_name').val() != ""){
+        $('select#chapter_city_name').attr('disabled',false);
+      }
+      else if($('select#chapter_state_name').val() == ""){
+        $('select#chapter_city_name').attr('disabled', 'disabled');
+      }
+      var state_code = $(this).val();
+      console.log("#######################"+state_code);
+      //send_ajax_request("get","/chapters/subregion_options",country_code,"script");
+      $.ajax({
+        url:"/chapters/select_city",
+        dataType: "script",
+        data:{state_id:state_code},
+        type: "GET",
+        success:function(data){
+
+            console.log(data);
+        },
+        error:function(error){
+            console.log(error);
+        }
+      });
+    });
+
+
   });

@@ -4,6 +4,7 @@ CloudfoundryUsergroups::Application.routes.draw do
   mount Ckeditor::Engine => '/ckeditor'
 
   get '/chapters/subregion_options' => 'chapters#subregion_options'
+  get '/chapters/select_city' => 'chapters#select_city'
 
   get '/directory' => 'home#directory' , :as => "directory"
   get '/about' => 'home#about' , :as => "about"
