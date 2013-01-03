@@ -1,6 +1,7 @@
 class PasswordsController <  Devise::PasswordsController
   skip_before_filter :require_no_authentication
   before_filter :should_reset_password , :only => [:new]
+  before_filter :change_password_check, :only => [:create]
 
   def new
     super
@@ -11,7 +12,8 @@ class PasswordsController <  Devise::PasswordsController
   end
 
   def create
-    super
+    #super
+    render :text => "mailed"
   end
 
   def update
@@ -30,5 +32,14 @@ class PasswordsController <  Devise::PasswordsController
 
   def should_reset_password
     redirect_to root_path if @current_user.present?
+  end
+
+  def change_password_check
+    logger.info (params.inspect)
+    @user = User.find_by_email(params[:user][:email])
+    if @user.present? and !@user.is_proprietary_user
+      flash[:message] = "only proprietary user have this feature"
+      redirect_to "/"
+    end
   end
 end
