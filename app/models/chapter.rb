@@ -93,4 +93,17 @@ class Chapter < ActiveRecord::Base
     end
   end
 
+  def self.create_new_chapter(param,chapter_name)
+    Rails.logger.info "############### inside method create new chapter #{param.inspect}"
+    country = Country.find(param[:chapter][:country_name])
+    state = State.find(param[:chapter_state_name])
+    city = City.find(param[:chapter_city_name])
+    chapter = Chapter.new(:name => chapter_name,:chapter_type => param[:chapter][:chapter_type],:country_id => country.id,:state_id => state.id,
+                          :city_id => city.id,:locality => param[:chapter][:locality],:address => param[:chapter][:address],:landmark => param[:chapter][:landmark],
+                          :institution => param[:chapter][:institution],:city_name => city.name,
+                          :state_name => state.name,:country_name => country.name)
+    chapter.save!
+    return chapter
+  end
+
 end
