@@ -1,3 +1,9 @@
 .content.wrapper
   %ul
-    =@chapters.length
+    - @chapters.each_with_index do |i,j|
+      %li
+        = j+1
+        = link_to i.name,chapter_path(i),:style => "color:blue"
+        = "-"
+        = i.chapter_type
+      %br
