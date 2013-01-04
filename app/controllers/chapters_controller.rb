@@ -162,6 +162,9 @@ class ChaptersController < ApplicationController
 
   def search
     @chapters = Chapter.search_chapters(params[:query])
+    if @chapters.length ==1
+      redirect_to chapter_path(@chapters.first)
+    end
   end
 
 end
