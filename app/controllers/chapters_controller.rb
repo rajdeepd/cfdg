@@ -6,7 +6,22 @@ class ChaptersController < ApplicationController
   end
 
   def subregion_options
-    render partial: 'subregion_select'
+    #render partial: 'subregion_select'
+    logger.info "@@@@@@@@@@@@@@@@@@ inside subregion action @@@@@@@@@@@@@@@@@@@@#{params}"
+    @country = Country.find(params[:country_id])
+    @states = @country.states
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def select_city
+    logger.info "@@@@@@@@@@@@@@@@@@ inside select city action @@@@@@@@@@@@@@@@@@@@#{params}"
+        @state = State.find(params[:state_id])
+        @cities = @state.cities
+        respond_to do |format|
+          format.js
+        end
   end
   
   # GET /chapters
@@ -76,8 +91,12 @@ class ChaptersController < ApplicationController
 
   def create
      @admin = User.find_by_email("admin@cloudfoundry.com")
-     params[:chapter][:name] = "CFDG - " + params[:chapter][:city_name].try(:titleize)
-     @chapter = Chapter.new(params[:chapter])
+     #params[:chapter][:name] = "CFDG - " + params[:chapter][:city_name].try(:titleize)
+     city = City.find(params[:chapter_city_name])
+     chapter_name = "CFDG - " + city.name.try(:titleize)
+     #@chapter = Chapter.new(params[:chapter])
+     @chapter = Chapter.create_new_chapter(params,chapter_name)
+     logger.info "######################### inside created action #{@chapter.inspect}"
      member = ChapterMember.new({:memeber_type=>ChapterMember::PRIMARY_COORDINATOR, :user_id => @current_user.id})
     
     respond_to do |format|

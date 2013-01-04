@@ -1,0 +1,24 @@
+#chapter_city
+  = select_tag "chapter_city_name",options_from_collection_for_select(@cities, "id", "name"),:style => "height:33px;width:292px",:class => "textboxes"
+  -#= hidden_field_tag :state_id,  :value => 1
+
+:javascript
+  $(document).ready(function(){
+    $('select#chapter_state_name').change(function(event) {
+      if($('select#chapter_state_name').val() != ""){
+        $('select#chapter_city_name').attr('disabled',false);
+      }
+      else if($('select#chapter_state_name').val() == ""){
+        $('select#chapter_city_name').attr('disabled', 'disabled');
+      }
+    });
+
+    $('select#chapter_country_name').change(function(event) {
+      if($('select#chapter_country_name').val() != ""){
+        $('select#chapter_city_name').attr('disabled',false);
+      }
+      else if($('select#chapter_country_name').val() == ""){
+        $('select#chapter_city_name').attr('disabled', 'disabled');
+      }
+    });
+  });

@@ -1,3 +1,5 @@
+= javascript_include_tag "jquery.validate"
+= stylesheet_link_tag    "chapter", :media => "all"
 .content.wrapper
   .content-a
     .Creation-form
@@ -24,14 +26,17 @@
           .drop_list
             .one_side
               %div               
-                = f.country_select :country_name , priority: %w(US CA), prompt: 'Please select a country', :input_html =>  {:class => "textboxes"}
-                = f.hidden_field :country_id, :value => 1
-              %div
-                = render partial: 'subregion_select', locals: {parent_region: f.object.country_name}
-                = f.hidden_field :state_id,  :value => 1
-              %div
-                = f.input :city_name , :placeholder => 'City',  :label => false ,  :input_html =>  {:class => "textboxes"}
-                = f.hidden_field :city_id,  :value => 1              
+                -#= f.country_select :country_name , priority: %w(US CA), prompt: 'Please select a country', :input_html =>  {:class => "textboxes"}
+                = f.input :country_name,  :label => false ,  :as => :select, :collection => Country.all, prompt: 'Please select a country', :input_html =>  {:style => "height:33px;width:292px",:class => "textboxes"}
+                -#= f.hidden_field :country_id, :value => 1
+              %div#chapter_state
+                -#= render partial: 'subregion_select', locals: {parent_region: f.object.country_name}
+                = f.input :state_name,  :label => false ,  :as => :select, :collection => [""], prompt: 'Please select a state', :input_html =>  {:style => "height:33px;width:292px",:class => "textboxes"}
+                -#= f.hidden_field :state_id,  :value => 1
+              %div#chapter_city
+                -#= f.input :city_name , :placeholder => 'City',  :label => false ,  :input_html =>  {:class => "textboxes"}
+                = f.input :city_name,  :label => false ,  :as => :select, :collection => [""], prompt: 'Please select a city', :input_html =>  {:style => "height:33px;width:292px",:class => "textboxes"}
+                -#= f.hidden_field :city_id,  :value => 1
             .two_side{:id => "ct_selection" , :style => "#{showclass}"}
               %div
                 = f.input :locality ,  :placeholder => 'Locality' , :label => false ,  :input_html => {:class => "textboxes"}
@@ -53,3 +58,67 @@
             = f.submit 'SEND PROPOSAL' , :class => 'send'
 
 
+:javascript
+  $(document).ready(function(){
+
+    $('#new_chapter').validate({
+      rules: {
+        "chapter[country_name]": {
+          required: true
+        },
+        "chapter[state_name]": {
+          required: true
+        },
+        "chapter[city_id]": {
+          required: true
+        },
+        "chapter[locality]":{
+          required: true
+        },
+        "chapter[address]":{
+          required: true
+        },
+        "chapter[landmark]":{
+          required: true
+        },
+        "chapter[institution]":{
+          required: true
+        },
+        "chapter[messages_attributes][0][body]":{
+          required: true
+        }
+      }
+    });
+
+
+    $('select#chapter_state_name').attr('disabled', 'disabled');
+    $('select#chapter_country_name').change(function(event) {
+      if($('select#chapter_country_name').val() != ""){
+        $('select#chapter_state_name').attr('disabled',false);
+      }
+      else if($('select#chapter_country_name').val() == ""){
+        $('select#chapter_state_name').attr('disabled', 'disabled');
+      }
+      var country_code = $(this).val();
+      console.log("#######################"+country_code);
+      //send_ajax_request("get","/chapters/subregion_options",country_code,"script");
+      $.ajax({
+        url:"/chapters/subregion_options",
+        dataType: "script",
+        data:{country_id:country_code},
+        type: "GET",
+        success:function(data){
+
+            console.log(data);
+        },
+        error:function(error){
+            console.log(error);
+        }
+      });
+    });
+
+    $('select#chapter_city_name').attr('disabled', 'disabled');
+
+
+
+  });

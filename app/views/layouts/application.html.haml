@@ -57,7 +57,7 @@
 
     = csrf_meta_tags
   %body
-    = render "shared/debugger" if Rails.env.development?
+    -#= render "shared/debugger" if Rails.env.development?
     = render "shared/federated_header"
     = render "shared/header"
     = yield

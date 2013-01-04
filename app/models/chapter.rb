@@ -75,7 +75,7 @@ class Chapter < ActiveRecord::Base
   end
 
   def get_primary_coordinator
-     User.find(self.created_by)
+    User.find(self.created_by)
   end
 
   def persist_geocode
@@ -94,16 +94,28 @@ class Chapter < ActiveRecord::Base
   end
 
   def self.search_chapters(query)
-     query_arr = query.split(",")
-     puts query_arr.inspect
-     puts query_arr.length
-     city = query_arr[0]
-     state= query_arr[1]
-     country = query_arr[2]
-     puts city
-     puts state
-     puts country
-     where("city_name like ? and state_name like ? and country_name like ?", city.strip,state.strip,country.strip)
+    query_arr = query.split(",")
+    puts query_arr.inspect
+    puts query_arr.length
+    city = query_arr[0]
+    state= query_arr[1]
+    country = query_arr[2]
+    puts city
+    puts state
+    puts country
+    where("city_name like ? and state_name like ? and country_name like ?", city.strip,state.strip,country.strip)
   end
 
+  def self.create_new_chapter(param,chapter_name)
+    Rails.logger.info "############### inside method create new chapter #{param.inspect}"
+    country = Country.find(param[:chapter][:country_name])
+    state = State.find(param[:chapter_state_name])
+    city = City.find(param[:chapter_city_name])
+    chapter = Chapter.new(:name => chapter_name,:chapter_type => param[:chapter][:chapter_type],:country_id => country.id,:state_id => state.id,
+                          :city_id => city.id,:locality => param[:chapter][:locality],:address => param[:chapter][:address],:landmark => param[:chapter][:landmark],
+                          :institution => param[:chapter][:institution],:city_name => city.name.strip,
+                          :state_name => state.name.strip,:country_name => country.name.strip)
+    chapter.save!
+    return chapter
+  end
 end
