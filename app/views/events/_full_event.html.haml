@@ -1,6 +1,7 @@
 = javascript_include_tag "jquery.uploadify"
 = javascript_include_tag "jquery.validate"
 = stylesheet_link_tag "uploadify", :media => "all"
+
 -#= stylesheet_link_tag "event", :media => "all"
 %li.ulg-expanded{:style => "margin-top: -3px;"}
   .div-c
@@ -11,7 +12,7 @@
         %h1.label-23 #{Time.parse(@event.event_start_date.to_s).strftime('%d')}
         %h4.label-24 #{Time.parse(@event.event_start_date.to_s).strftime('%b')}
   .div-h
-    %a.label-9.event_expand{:href => "#", :event_id=> @event.id,:id => "event_title"} #{@event.title}
+    %a.label-9.event_expand.event_show_title{:href => "#", :event_id=> @event.id,:id => "event_title",:rel => @event.id} #{@event.title}
     -#-if !current_user.blank? and @profile_page != true  and !@event.am_i_member?(@current_user.id)
       %button.btn-a-small.flt-right{:id=>"follow_an_event", :event_id => "#{@event.id}"} FOLLOW
     -if !current_user.blank? and  (current_user.id != @event.created_by)
@@ -75,6 +76,7 @@
         = f.hidden_field   :commentable_type
         = f.hidden_field   :commentable_id
   %br
+  = gmaps("markers" => {"data" => @marker, "options" => { "draggable" => true  } } )
 
 
 - session_key = Rails.application.config.session_options[:key]
@@ -121,5 +123,29 @@
         $(".rsvp_me").hide();
         $("#rsvp_tick").show();
       });
+             Gmaps.map.HandleDragend = function(pos) {
+               var geocoder = new google.maps.Geocoder();
+               geocoder.geocode({
+                 latLng: pos
+               }, function(responses) {
+                 if (responses && responses.length > 0) {
+                   var markers = (responses[0].geometry.location).toString();
+                   var event_id = $(".event_show_title").attr("rel");
+                   console.log("#############3"+event_id);
+                   console.log(markers);
+                     $.get("/events/"+event_id+"/update_markers",{data:markers},"","script")
 
-    });
+                 } else {
+                 alert('Cannot determine address at this location.');
+                 }
+               });
+             };
+
+
+            Gmaps.map.callback = function() {
+              for (var i = 0; i <  this.markers.length; ++i) {
+                 google.maps.event.addListener(Gmaps.map.markers[i].serviceObject, 'dragend', function() { Gmaps.map.HandleDragend(this.getPosition()) });
+              }
+            };
+
+     });

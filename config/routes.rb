@@ -51,6 +51,7 @@ CloudfoundryUsergroups::Application.routes.draw do
       post 'image_gallery_upload'
       get 'image_gallery_upload'
       get 'show_all_event_images'
+      get 'update_markers'
     end
   end
 

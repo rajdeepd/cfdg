@@ -28,6 +28,7 @@ class EventsController < ApplicationController
     if @event.event_galleries.present?
       @all_event_images =  @event.event_galleries
     end
+    event_marker
 
     respond_to do |format|
       format.html # show.html.erb
@@ -268,7 +269,7 @@ class EventsController < ApplicationController
   def check_authorization
     @event = Event.find(params[:id])
     if @current_user.present?  and !@event.can_i_delete?(@current_user.id, @event.chapter_id)
-       redirect_to event_path(@event)
+      redirect_to event_path(@event)
     end
   end
 
@@ -288,10 +289,10 @@ class EventsController < ApplicationController
   def image_gallery_upload
     logger.info "inside action ######################################{params.inspect}"
     @event = Event.find(params[:id])
-   if params[:Filedata].present?
-    upload_image = @event.event_galleries.new(:image => params[:Filedata])
-    upload_image.save!
-   end
+    if params[:Filedata].present?
+      upload_image = @event.event_galleries.new(:image => params[:Filedata])
+      upload_image.save!
+    end
     @all_event_images = @event.event_galleries
     respond_to do |format|
       format.js {render :layout => false}
@@ -302,6 +303,17 @@ class EventsController < ApplicationController
   def show_all_event_images
     @event = Event.find(params[:id])
     @all_event_images = @event.event_galleries
+  end
+
+  def update_markers
+    markers = params[:data].gsub(/[^0-9A-Za-z,.]/, '').split(",")
+    logger.info(markers.inspect)
+    @event = Event.find(params[:id])
+    @geolocation = @event.event_geolocation
+    @geolocation.latitude = markers[0]
+    @geolocation.longitude = markers[1]
+    @geolocation.save
+    render :layout => false
   end
 
 
@@ -371,6 +383,17 @@ class EventsController < ApplicationController
 
     venue_id
 
+  end
+
+  def get_geocodes
+    marker = []
+    geo_tag= @event.event_geolocation
+    marker << {:lat => geo_tag.latitude, :lng => geo_tag.longitude, :title => geo_tag.title}
+    marker
+  end
+
+  def event_marker
+    @marker = get_geocodes.to_json
   end
 
 end
