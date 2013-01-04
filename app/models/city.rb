@@ -3,6 +3,6 @@ class City < ActiveRecord::Base
   belongs_to :state
   belongs_to :country
 
-  attr_accessible :name, :country_id , :state_id
+  attr_accessible :name, :country_id , :state_id, :details
 
 end
