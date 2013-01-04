@@ -387,8 +387,10 @@ class EventsController < ApplicationController
 
   def get_geocodes
     marker = []
-    geo_tag= @event.event_geolocation
-    marker << {:lat => geo_tag.latitude, :lng => geo_tag.longitude, :title => geo_tag.title}
+    if @event.event_geolocation.present?
+      geo_tag= @event.event_geolocation
+      marker << {:lat => geo_tag.latitude, :lng => geo_tag.longitude, :title => geo_tag.title}
+    end
     marker
   end
 

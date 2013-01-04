@@ -76,7 +76,7 @@
         = f.hidden_field   :commentable_type
         = f.hidden_field   :commentable_id
   %br
-  = gmaps("markers" => {"data" => @marker, "options" => { "draggable" => true  } } )
+  = gmaps("markers" => {"data" => @marker, "options" => { "draggable" => true  } } ) unless @marker = [].to_json
 
 
 - session_key = Rails.application.config.session_options[:key]
