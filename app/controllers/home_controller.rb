@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
   before_filter :announcements , :only => [:index, :wiki]
   before_filter :chapters , :only => [:index, :directory, :about]
-  autocomplete :city, :name
+  autocomplete :city, :details
 
   layout "application"
 

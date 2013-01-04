@@ -94,7 +94,16 @@ class Chapter < ActiveRecord::Base
   end
 
   def self.search_chapters(query)
-     where("city_name like ?", "#{query}")
+     query_arr = query.split(",")
+     puts query_arr.inspect
+     puts query_arr.length
+     city = query_arr[0]
+     state= query_arr[1]
+     country = query_arr[2]
+     puts city
+     puts state
+     puts country
+     where("city_name like ? and state_name like ? and country_name like ?", city.strip,state.strip,country.strip)
   end
 
 end

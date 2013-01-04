@@ -172,7 +172,7 @@ CloudfoundryUsergroups::Application.routes.draw do
   root :to => 'home#index'
 
   resources :home do
-    get :autocomplete_city_name, :on => :collection
+    get :autocomplete_city_details, :on => :collection
   end
 
   
