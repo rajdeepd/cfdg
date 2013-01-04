@@ -305,6 +305,17 @@ class EventsController < ApplicationController
     @all_event_images = @event.event_galleries
   end
 
+  def update_markers
+    markers = params[:data].gsub(/[^0-9A-Za-z,.]/, '').split(",")
+    logger.info(markers.inspect)
+    @event = Event.find(params[:id])
+    @geolocation = @event.event_geolocation
+    @geolocation.latitude = markers[0]
+    @geolocation.longitude = markers[1]
+    @geolocation.save
+    render :layout => false
+  end
+
 
   protected
 
