@@ -11,7 +11,6 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-
 ActiveRecord::Schema.define(:version => 20130103141303) do
 
   create_table "announcements", :force => true do |t|
@@ -62,17 +61,10 @@ ActiveRecord::Schema.define(:version => 20130103141303) do
   end
 
   create_table "cities", :force => true do |t|
-
-    t.string   "name"
-    t.integer  "state_id"
-    t.integer  "created_by"
-    t.integer  "updated_by"
-    t.datetime "deleted_at"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.integer  "country_id"
-    t.string   "details"
-
+    t.string  "name"
+    t.integer "country_id"
+    t.integer "state_id"
+    t.string  "details"
   end
 
   create_table "ckeditor_assets", :force => true do |t|
