@@ -100,7 +100,6 @@
         $('select#chapter_state_name').attr('disabled', 'disabled');
       }
       var country_code = $(this).val();
-      console.log("#######################"+country_code);
       //send_ajax_request("get","/chapters/subregion_options",country_code,"script");
       $.ajax({
         url:"/chapters/subregion_options",
@@ -108,17 +107,12 @@
         data:{country_id:country_code},
         type: "GET",
         success:function(data){
-
-            console.log(data);
         },
         error:function(error){
-            console.log(error);
         }
       });
     });
 
     $('select#chapter_city_name').attr('disabled', 'disabled');
-
-
 
   });

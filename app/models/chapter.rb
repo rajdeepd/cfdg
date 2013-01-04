@@ -100,14 +100,10 @@ class Chapter < ActiveRecord::Base
     city = query_arr[0]
     state= query_arr[1]
     country = query_arr[2]
-    puts city
-    puts state
-    puts country
     where("city_name like ? and state_name like ? and country_name like ?", city.strip,state.strip,country.strip)
   end
 
   def self.create_new_chapter(param,chapter_name)
-    Rails.logger.info "############### inside method create new chapter #{param.inspect}"
     country = Country.find(param[:chapter][:country_name])
     state = State.find(param[:chapter_state_name])
     city = City.find(param[:chapter_city_name])
