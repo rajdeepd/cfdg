@@ -1,6 +1,7 @@
 class RegistrationsController  < Devise::RegistrationsController 
     before_filter :authenticate_user!, :only => :token
     #before_filter :login_required, :except=>[:new, :create]
+    before_filter :is_already_login ,:only => [:new, :create]
 
     def new
       super      
@@ -22,6 +23,12 @@ class RegistrationsController  < Devise::RegistrationsController
 
   def update
     super
+  end
+
+  def is_already_login
+    if @current_user.present?
+      redirect_to root_path
+    end
   end
   
 

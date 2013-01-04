@@ -14,5 +14,6 @@
       = f.label :password_confirmation
       %br/
       = f.password_field :password_confirmation
+      = hidden_field_tag "user[is_proprietary_user]" , true
     %p= f.submit "Sign up"
   -#= render :partial => "devise/shared/links"
