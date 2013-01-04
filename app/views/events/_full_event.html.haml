@@ -1,6 +1,7 @@
 = javascript_include_tag "jquery.uploadify"
 = javascript_include_tag "jquery.validate"
 = stylesheet_link_tag "uploadify", :media => "all"
+
 -#= stylesheet_link_tag "event", :media => "all"
 %li.ulg-expanded{:style => "margin-top: -3px;"}
   .div-c
@@ -75,6 +76,7 @@
         = f.hidden_field   :commentable_type
         = f.hidden_field   :commentable_id
   %br
+  = gmaps4rails(@marker)
 
 
 - session_key = Rails.application.config.session_options[:key]
@@ -121,5 +123,23 @@
         $(".rsvp_me").hide();
         $("#rsvp_tick").show();
       });
+
+
+
+            function redirect_to(url) {
+              return function(){window.location = url;}
+            };
+
+            Gmaps.map.callback = function() {
+              if (Gmaps.map.markers.length == 0 ){
+                setTimeout(function() { Gmaps.map.serviceObject.setZoom(1);}, 50);
+              }
+              else{
+                setTimeout(function() { Gmaps.map.serviceObject.setZoom(4);}, 50);
+              }
+              for (var i = 0; i <  Gmaps.map.markers.length; i++) {
+                google.maps.event.addListener(Gmaps.map.markers[i].serviceObject, 'click',   redirect_to(Gmaps.map.markers[i].link));
+              }
+            };
 
     });

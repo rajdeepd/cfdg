@@ -1,11 +1,13 @@
 class Event < ActiveRecord::Base
   stampable
   acts_as_soft_deletable
+  after_create :persist_geocode
   has_many :event_members
   has_many :users , :through => :event_members
   has_many :comments, :as => :commentable
   has_many :posts
   has_many :event_galleries, :dependent => :destroy
+  has_one  :event_geolocation
   belongs_to :chapter
   belongs_to :user , :foreign_key => :created_by
   attr_accessible :title, :event_start_date, :event_end_date, :status, :description, :venue, :entry_fee, :chapter_id , :location,
@@ -97,10 +99,19 @@ class Event < ActiveRecord::Base
       end
     end
     if self.event_start_date_in_date == Date.today
-       if self.event_start_time_in_time <= Time.now
-         Rails.logger.info "inside second comp"
-         errors.add(:event_start_time, 'event start time and end time are not valid') if !self.errors.messages[:event_start_time].present?
-       end
+      if self.event_start_time_in_time <= Time.now
+        Rails.logger.info "inside second comp"
+        errors.add(:event_start_time, 'event start time and end time are not valid') if !self.errors.messages[:event_start_time].present?
+      end
+    end
+  end
+
+  def persist_geocode
+    logger.info "inside persist geocode"
+    chapter_geocode = self.chapter.geolocation
+    if chapter_geocode.present?
+      geotag = self.create_event_geolocation(:latitude => chapter_geocode.latitude, :longitude => chapter_geocode.longitude , :title => chapter_geocode.title )
     end
   end
 end
+
