@@ -20,8 +20,8 @@ class ConfirmationsController < Devise::PasswordsController
     #session[:email] = @confirmable.email
     #session[:user] = {:email => @confirmable.email, :verified => true,:name => @confirmable.fullname}
     #sign_in_and_redirect(@confirmable)
+    session[:is_allowed_to_login] = true
     redirect_to sign_up_path(:email => @confirmable.email)
-
   end
 
   protected
