@@ -12,8 +12,8 @@ class PasswordsController <  Devise::PasswordsController
   end
 
   def create
-    #super
-    render :text => "mailed"
+    super
+    #render :text => "mailed"
   end
 
   def update
