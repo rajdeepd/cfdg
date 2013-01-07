@@ -3,12 +3,12 @@
 .navigation
   %ul.clearfix
     %li
-      %a.home.active{:href => "#"}
+      %a.home{:href => "#{root_path}"}
     %li
-      %a.about{:href => "#"} About
+      %a.about{:href => "#{about_path}"} About
     %li
-      %a.chapter{:href => "#"} Chapter
+      %a.chapter{:href => "#{directory_path}"} Chapter
     %li
-      %a.event{:href => "#"} Event
+      %a.event{:href => ""} Event
     %li
-      %a.wiki Wiki
+      %a.wiki{:href =>"#{wiki_path}"} Wiki

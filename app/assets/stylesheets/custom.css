@@ -334,6 +334,9 @@ header ul li:first-child{
     padding: 5px 0 5px 10px;
     margin-bottom: 10px;
 }
+.citySearch form{
+    margin: 0px;
+}
 .citySeachIcon{
     background: url("city_icon.png") no-repeat center;
     width: 20px;
@@ -361,7 +364,7 @@ header ul li:first-child{
     box-shadow: none;
 }
 .map{
-    background: url("map.png") no-repeat center;
+    /*background: url("map.png") no-repeat center;*/
     width: 567px;
     height: 360px;
     margin: 0 auto;
@@ -506,4 +509,11 @@ ul.supportPrivacyLinks li{
 }
 .termsOfService{
     margin-top: 5px;
+}
+.ui-helper-hidden-accessible{
+    display: none;
+}
+.ui-autocomplete.ui-menu.ui-widget-content{
+    width: 490px;
+    top: -1426.5px !important;
 }

@@ -1,0 +1,28 @@
+.comingEvents.clearfix
+  .fullHeading
+    %h3 Upcoming Events
+  #ca-container.ca-container.clearfix
+    .ca-wrapper
+      -@upcoming_events.each do |event|
+        .ca-item.ca-item-1
+          .ca-item-main
+            .eventImg
+              -#%img{:src => "assets/event_img_1.png"}
+              = image_tag(event.image)
+            .eventContent
+              %h5
+                =event.title
+              .date
+                =event.created_at.strftime("%b %d,%Y")
+              .where
+                Where:
+                %span.lightGrayText
+                  =event.chapter.city_name
+                %a{:href => "#"} (map)
+              .description
+                Description:
+                %span.lightGrayText
+                  =event.description
+                %br/
+                %br/
+                %a{:href => "#{event_path(event)}"} Read more

@@ -119,7 +119,14 @@ class Event < ActiveRecord::Base
   end
 
   def self.get_upcoming_events
-    self.all.select{|i| i.event_start_date_in_date < Date.today}
+    #self.all.select{|i| i.event_start_date_in_date < Date.today}
+    upcoming_events = []
+    Event.all.each do |event|
+      if(Time.parse(event.event_start_date+" "+ event.event_start_time) >= Time.now)
+        upcoming_events.push(event)
+      end
+    end
+    upcoming_events
   end
 end
 
