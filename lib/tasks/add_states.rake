@@ -8,5 +8,3 @@ task :add_state => :environment do
     puts @state.inspect
   end
 end
-
-
