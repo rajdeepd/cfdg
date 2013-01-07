@@ -121,5 +121,13 @@ class Event < ActiveRecord::Base
   #def self.get_upcoming_events
   #    self.all.select{|i| i.event_start_date_in_date < Date.today}
   #end
+
+  def get_event_image
+    if self.image.present?
+      self.image
+    else
+      "profile.png"
+    end
+  end
 end
 
