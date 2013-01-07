@@ -1,0 +1,16 @@
+%header
+  .container.clearfix
+    %ul.clearfix
+      -#%li
+      -#  %a{:href => ""} FAQ'S
+      -if @current_user.present?
+        %li
+          %a{:href => "#{profile_path}"} MY PROFILE
+        %li
+          %a.logout{:href => "#"} LOGOUT
+      -else
+        %li
+          %a.signin{:href => "#"} LOGIN
+    -#.searchBox
+      %input{:placeholder => "Search", :type => "text"}
+      %button.searchIcon

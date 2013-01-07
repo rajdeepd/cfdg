@@ -118,8 +118,25 @@ class Event < ActiveRecord::Base
     where("city_name like ?", query)
   end
 
-  #def self.get_upcoming_events
-  #    self.all.select{|i| i.event_start_date_in_date < Date.today}
-  #end
+
+  def self.get_upcoming_events
+    #self.all.select{|i| i.event_start_date_in_date < Date.today}
+    upcoming_events = []
+    Event.all.each do |event|
+      if(Time.parse(event.event_start_date+" "+ event.event_start_time) >= Time.now)
+        upcoming_events.push(event)
+      end
+    end
+    upcoming_events
+  end
+
+  def get_event_image
+    if self.image.present?
+      self.image
+    else
+      "no_image.jpg"
+    end
+  end
+
 end
 

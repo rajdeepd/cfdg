@@ -6,6 +6,7 @@ class HomeController < ApplicationController
   layout "application"
 
   def index
+    @upcoming_events = Event.get_upcoming_events
   end
 
   def directory

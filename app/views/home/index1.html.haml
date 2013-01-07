@@ -1,0 +1,140 @@
+= javascript_include_tag "jquery.validate"
+.content.wrapper
+  .content-a
+    .ca-top
+      .ca-left.flt-left
+        = gmaps4rails(@markers)
+        - content_for :javascript do
+          :javascript
+            function redirect_to(url) {
+              return function(){window.location = url;}
+            };
+
+            Gmaps.map.callback = function() {
+              if (Gmaps.map.markers.length == 0 ){
+                setTimeout(function() { Gmaps.map.serviceObject.setZoom(1);}, 50);
+              }
+              else{
+                setTimeout(function() { Gmaps.map.serviceObject.setZoom(4);}, 50);
+              }
+              for (var i = 0; i <  Gmaps.map.markers.length; i++) {
+                google.maps.event.addListener(Gmaps.map.markers[i].serviceObject, 'click',   redirect_to(Gmaps.map.markers[i].link));
+              }
+            };
+
+
+        %ul{:id => "markers_list"}
+      .ca-right.flt-right
+        %h2.label-3
+          = t('welcome.desc')
+          %label.label-4{:style=> "font-size:35px;"}= t('welcome.title')
+        %br
+        %h5.label-5
+          = t('welcome.about')
+        - if current_user.blank?
+          %button.btn-a.signup
+            = "#{t('menu.signup')}!"
+
+
+    -if !current_user.blank?
+      - if !ChapterMember.is_primary_coordinator?(current_user.id)
+        .ca-bottom
+          .ca-down
+            %h2.label-6= t('chapter.create_title')
+            %h5.label-7= t('chapter.create_desc')
+            = link_to  t('chapter.create_create') , new_chapter_path, :class => "btn-b"
+    - else current_user.blank?
+      .ca-bottom
+        .ca-down
+          %h2.label-6= t('chapter.create_title')
+          %h5.label-7= t('chapter.create_desc')
+          %button.btn-b.signin.create_button= t('chapter.create_create')
+  .content-b
+    - unless @announcements.blank?
+      .cb-left.flt-left{:style=>"overflow:visible;"}
+        %h2.label-8= t('announcements.heading')
+        %div
+          = photo_display_pic(@announcements.first,"medium","360x245","img-a.png",'img-a flt-left','max-height:245px;')
+          %h3.label-9= @announcements.first.title
+          %h5.label-10= @announcements.first.created_at.strftime("%B %d, %Y")
+          %h5.label-1{:style => "word-wrap:break-word;text-align: justify;"}= @announcements.first.body
+    - if (@announcements || []).size > 1
+      .cb-right.flt-right
+        %h2.label-8= t('announcements.earlier')
+        %ul.ul-c
+          - @announcements.each_with_index do |ann,i|
+            - next if i == 0
+            %li
+              %div
+                %h3.label-12
+                  = photo_display_pic(ann,"mini","60x60","img-b.png",'img-c')
+                  = ann.title
+                  %br
+                  %label.label-13= ann.created_at.strftime("%B %d, %Y")
+                %h5.label-16= ann.body
+    =form_tag search_chapters_path  , :method => :get,:id => "search_chapter"  do
+      = autocomplete_field_tag 'query', '', autocomplete_city_details_home_index_path, :size => 75
+      =submit_tag "Search"
+
+
+
+
+:javascript
+  google.load("identitytoolkit", "1", {packages: ["ac"], language:"#{lang}"});
+:javascript
+  $(document).ready(function(){
+    $('#search_chapter').validate({
+      rules: {
+        "query": {
+          required: true
+        }
+      }
+    });
+  });
+
+  $(function() {
+    $(".create_button").on("click",function(){
+      window.google.identitytoolkit.setConfig({
+        developerKey: "#{FEDERATED_KEY}",
+        companyName: "cloudfoundry usergroups",
+        callbackUrl: "#{verify_user_url()}",
+        realm: "",
+        userStatusUrl: "/user_status",
+        loginUrl: "/login",
+        signupUrl: "/sign_up",
+        //homeUrl: "/profile",
+        homeUrl: "#{session[:url]}",
+        logoutUrl: "/logout",
+        idps: ["Gmail", "Yahoo"],
+        tryFederatedFirst: true,
+        useCachedUserStatus: false,
+        useContextParam: true
+      });
+      $("#navbar").accountChooser();
+    });
+
+    window.google.identitytoolkit.setConfig({
+      developerKey: "#{FEDERATED_KEY}",
+      companyName: "cloudfoundry usergroups",
+      callbackUrl: "#{verify_user_url()}",
+      realm: "",
+      userStatusUrl: "/user_status",
+      loginUrl: "/login",
+      signupUrl: "/sign_up",
+      homeUrl: "/profile",
+      //homeUrl: "#{session[:url]}",
+      logoutUrl: "/logout",
+      idps: ["Gmail", "Yahoo"],
+      tryFederatedFirst: true,
+      useCachedUserStatus: false,
+      useContextParam: true
+    });
+
+    $("#navbar").accountChooser();
+
+    $('.signup').click(function(){
+      $('#navbar').accountChooser('showAccountChooser');
+      $(".widget-header h1").text("#{t('menu.signup')}");
+      $(".widget-nascar-list h2").text("#{t('menu.signup_with')}");
+    });
+  });

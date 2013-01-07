@@ -16,11 +16,12 @@ test:
   username: root
   password: webonise6186
 
-
 production:
   adapter: mysql2
   encoding: utf8
   database: cf_usergroups_production
   username: root
+<<<<<<< HEAD:config/database_example.yml
   password: root
+  password: webonise6186
 

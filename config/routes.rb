@@ -1,5 +1,5 @@
 CloudfoundryUsergroups::Application.routes.draw do
- 
+
 
   mount Ckeditor::Engine => '/ckeditor'
 
@@ -14,11 +14,11 @@ CloudfoundryUsergroups::Application.routes.draw do
 
   resources :chapters do
     resources :events
-     collection do
+    collection do
       post 'join_a_chapter'
       get  'chapter_admin_home_page'
       get 'search'
-     end
+    end
   end
 
   resources :messages , :as => "mail_messages" do
@@ -59,9 +59,9 @@ CloudfoundryUsergroups::Application.routes.draw do
 
 #scope ':locale' do
   devise_for :users , :controllers => { :registrations => "registrations",
-  :confirmations => "confirmations",
-  :passwords => 'passwords',
-  :sessions => "sessions"} do
+                                        :confirmations => "confirmations",
+                                        :passwords => 'passwords',
+                                        :sessions => "sessions"} do
     get '/signin' => 'sessions#new'
     get '/users/confirm', :to => 'devise/confirmations#new'
     get '/users/reset_password', :to => 'passwords#new'
@@ -74,11 +74,11 @@ CloudfoundryUsergroups::Application.routes.draw do
   match '/login' => 'federated#login', :as => :login
   match '/logout' => 'federated#logout'
   match '/profile' => 'users#profile' , :as => :profile
-  
+
   match 'settings' => 'users#settings' , :as => :settings
   match 'settings_update/:id' => 'users#settings_update' , :as => :settings_update , :via => :put
 
-   
+
 
 #  match '/catchtoken' => 'home#catchtoken'
 #  get '/event' , :to => 'home#event'
@@ -90,7 +90,7 @@ CloudfoundryUsergroups::Application.routes.draw do
     end
   end
 
-   namespace :admin do
+  namespace :admin do
     resources :sessions
     resources :announcements do
       collection do
@@ -114,12 +114,18 @@ CloudfoundryUsergroups::Application.routes.draw do
         post 'chapter_reply'
       end
     end
-   end
+  end
 
   resources :announcements do
 
   end
-   
+
+  resources :html do
+    collection do
+      get :home_page
+    end
+  end
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -166,18 +172,18 @@ CloudfoundryUsergroups::Application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-#  root :to => 'home#index'
-#end
+  #  root :to => 'home#index'
+  #end
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-#  post '/local_selection/:local' , :to => "home#local_selection"
+  #  post '/local_selection/:local' , :to => "home#local_selection"
   root :to => 'home#index'
 
   resources :home do
     get :autocomplete_city_details, :on => :collection
   end
 
-  
+
 
   # See how all your routes lay out with "rake routes"
 
