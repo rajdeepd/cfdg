@@ -21,8 +21,7 @@
                 %a{:href => "#"} (map)
               .description
                 Description:
-                %span.lightGrayText #{event.description}
-
+                %span.lightGrayText #{event.description.truncate(15)}
 
                 %br/
                 %br/
