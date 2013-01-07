@@ -29,7 +29,8 @@ module ApplicationHelper
     if obj.photo_file_name && (obj.errors[:photo_content_type].blank? && obj.errors[:photo_file_size].blank?)
       image_tag(obj.photo.url(type.to_sym), :alt => 'Pic', :size => size,:class => class_name, :style => style)
     else
-      image_tag(path, :alt => 'Pic', :size => size , :class => class_name, :style => style)
+      #image_tag(path, :alt => 'Pic', :size => size , :class => class_name, :style => style)
+      image_tag("no_image.jpg", :alt => 'Pic', :size => size , :class => class_name, :style => style)
     end
   end
 

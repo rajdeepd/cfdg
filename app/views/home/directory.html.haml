@@ -16,22 +16,22 @@
       = gmaps4rails(@markers)
       - content_for :javascript do        
         :javascript
-            function redirect_to(url) {
-              return function(){window.location = url;}
-            };
+          function redirect_to(url) {
+            return function(){window.location = url;}
+          };
 
-            Gmaps.map.callback = function() {
-              if (Gmaps.map.markers.length == 0 ){
-                setTimeout(function() { Gmaps.map.serviceObject.setZoom(1);}, 50);
-              }
-              else{
-                setTimeout(function() { Gmaps.map.serviceObject.setZoom(4);}, 50);
-              }
-  
-              for (var i = 0; i <  Gmaps.map.markers.length; i++) {              
-                 google.maps.event.addListener(Gmaps.map.markers[i].serviceObject, 'click',   redirect_to(Gmaps.map.markers[i].link));
-              }                
-            };
+          Gmaps.map.callback = function() {
+            if (Gmaps.map.markers.length == 0 ){
+              setTimeout(function() { Gmaps.map.serviceObject.setZoom(1);}, 50);
+            }
+            else{
+              setTimeout(function() { Gmaps.map.serviceObject.setZoom(4);}, 50);
+            }
+
+            for (var i = 0; i <  Gmaps.map.markers.length; i++) {
+               google.maps.event.addListener(Gmaps.map.markers[i].serviceObject, 'click',   redirect_to(Gmaps.map.markers[i].link));
+            }
+          };
      
     / %input.input-a{:placeholder => "Find a group...", :style => "margin-left: 0px;"}
     /   %a.label-36{:href => "#"} + Create Group
@@ -39,7 +39,11 @@
       - Chapter.total_records.each_with_index do |chapter,i|
         .column-a
           %h3.label-37
-            = Carmen::Country.coded(chapter.country_name).try(:name) || "No Name"
+            -#= Carmen::Country.coded(chapter.country_name).try(:name) || chapter.country_name || "No Name"
+            -if chapter.country_name.present?
+              = chapter.country_name
+            -else
+              = "No Name"
           %ul.ui-j
             - main_chapters(chapter.country_name).each do |chp|
               %li{:style => "line-height:30px;"}
