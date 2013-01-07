@@ -9,7 +9,7 @@
               %img.profile-image{:src => @user.try(:avatar).url(:medium)}/
             - else
               %img.profile-image{:src => "/assets/default-Profile-Image.png"}/
-          = f.file_field :avatar
+          = f.file_field :avatar ,:class => "uploadImage"
         .forms_list
           #formfirst
             %h4.form1 Please fill in the details given below
@@ -53,6 +53,7 @@
     //mobile.add( Validate.Numericality ,{ onlyInteger: true },{maximum: 999999999999999});
     var contact_number =   new LiveValidation("user_mobile",{validMessage:" ",onlyOnSubmit:true});
     contact_number.add( Validate.Format , { pattern: /^[0-9]{0,15}$/, failureMessage: "Must be a Number" });
+    $("#SWFUpload_0").addClass("uploadImage")
   });
 :css
   .uploadify-queue-item{

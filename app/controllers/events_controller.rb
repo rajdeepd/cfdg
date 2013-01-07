@@ -1,10 +1,12 @@
 require 'eventbrite-client'
 require 'oauth2'
 class EventsController < ApplicationController
+  protect_from_forgery :except => [:image_gallery_upload]
   # GET /events
   # GET /events.json
   #before_filter :initialise_eventbrite_client, :except => ['create_event_comment', 'show']
   before_filter :set_profile_page
+  before_filter :check_authorization ,:only => [:download_list]
 
   def index
     @events = Event.all
@@ -18,8 +20,14 @@ class EventsController < ApplicationController
   # GET /events/1.json
   def show
     @event = Event.find(params[:id])
+    #@event = Event.find(9)
     @emails = ''
+    @members = @event.event_members.includes(:user).collect{|i| i.user}
     @event.event_members.each do |member| @emails << (member.user.try(:email).to_s+"\;")  end
+
+    if @event.event_galleries.present?
+      @all_event_images =  @event.event_galleries
+    end
 
     respond_to do |format|
       format.html # show.html.erb
@@ -87,14 +95,20 @@ class EventsController < ApplicationController
 
   def follow_an_event
     @event = Event.find(params[:event_id])
-    @event_memeber = EventMember.new(:event_id => @event.id, :user_id => current_user.id)
-    @event_memeber.save!
+    if !@event.is_cancelled? and !@event.am_i_member?(@current_user.id)
+      @event_memeber = EventMember.new(:event_id => @event.id, :user_id => current_user.id)
+      @event_memeber.save!
 
+      EventNotification.rsvped_event(@event,@current_user).deliver
+      #EventNotification.delay.rsvped_event(@event,@current_user)
+    end
     chapter_events = Event.find_all_by_chapter_id(@event.chapter_id) || []
     get_upcoming_and_past_events(chapter_events, true)
-
+    @chapter = Chapter.find(@event.chapter_id)
+    if !@chapter.am_i_chapter_memeber?(@current_user.id)
+      ChapterMember.create({:memeber_type=>ChapterMember::MEMBER, :user_id => @current_user.id, :chapter_id => @chapter.id})
+    end
     @profile_page = false
-
     respond_to do |format|
       format.js {render :partial => 'events_list' }# new.html.erb
     end
@@ -102,9 +116,38 @@ class EventsController < ApplicationController
 
   def delete_an_event
     @event = Event.find(params[:event_id])
+    @chapter = @event.chapter
     @event.event_members.each do|member| member.soft_delete! end
     @event.soft_delete!
 
+    chapter_events = Event.find_all_by_chapter_id(@event.chapter_id) || []
+    get_upcoming_and_past_events(chapter_events, true)
+    @profile_page = false
+
+    respond_to do |format|
+      format.js {render :partial => 'events_list' }# new.html.erb
+    end
+  end
+
+  def unfollow_an_event
+    @event = Event.find(params[:id])
+    @member = @event.event_members.includes(:user).select{|i| i.user == @current_user}.first
+    @member.delete
+    @profile_page = false
+    respond_to do |format|
+      format.js {render :partial => 'events_list' }# new.html.erb
+    end
+  end
+
+  def cancel_event
+    @event = Event.find(params[:event_id])
+    @chapter = @event.chapter
+    to_email = @chapter.get_primary_coordinator.email
+    bcc_emails = @event.event_members.includes(:user).collect{|i| i.user.email} - [to_email]
+    @event.is_cancelled = true
+    @event.save
+    #EventNotification.delay.event_cancellation(@event, emails)
+    EventNotification.event_cancellation(@event,to_email,bcc_emails).deliver
     chapter_events = Event.find_all_by_chapter_id(@event.chapter_id) || []
     get_upcoming_and_past_events(chapter_events, true)
     @profile_page = false
@@ -135,7 +178,11 @@ class EventsController < ApplicationController
 
         @chapter = Chapter.find(@event.chapter_id)
         @chapter_events = @chapter.events.sort
+        to_email = @chapter.get_primary_coordinator.email
+        bcc_emails=@chapter.chapter_members.includes(:user).collect{|i| i.user.email} - [to_email]
         @two_chapter_events = @chapter_events.take(2)
+        #EventNotification.delay.event_creation(@event,emails,@chapter)
+        EventNotification.event_creation(@event,to_email,bcc_emails,@chapter).deliver
         format.js
       else
         format.js
@@ -153,6 +200,12 @@ class EventsController < ApplicationController
     respond_to do |format|
       if @event.update_attributes(params[:event])
         format.html { redirect_to @event, notice: 'Event was successfully updated.' }
+        @chapter = Chapter.find(@event.chapter_id)
+
+        to_email = @chapter.get_primary_coordinator.email
+        bcc_emails = @event.event_members.includes(:user).collect{|i| i.user.email} -[to_email]
+        #EventNotification.delay.event_edit(@event,emails,@chapter)
+        EventNotification.event_edit(@event,to_email,bcc_emails,@chapter).deliver
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -171,10 +224,11 @@ class EventsController < ApplicationController
   def create_event_comment
     @event = Event.find(params[:comment][:commentable_id])
     @comment = Comment.new(params[:comment])
-
+    @all_event_images = @event.event_galleries
     respond_to do |format|
       if(@comment.save)
         format.js { render :partial => "/events/full_event" }
+
       end
     end
 
@@ -190,6 +244,34 @@ class EventsController < ApplicationController
     render json: data.to_json
   end
 
+  def download_list
+    require 'csv'
+    @event = Event.find(params[:id])
+    @members = @event.event_members.includes(:user).collect{|i| i.user}
+    logger.info("inside csv")
+    #render :json => @members
+    csv_string = CSV.generate do |csv|
+      csv << ["Full Name" , "Email" , "Contact Number"]
+      @members.each do |p|
+        csv << [ p.fullname,p.email,p.mobile]
+      end
+    end
+    respond_to do |format|
+
+      format.html  { send_data csv_string,
+                               :type => "text/csv; charset=iso-8859-1; header=present",
+                               :disposition => "attachment; filename=event.csv" }
+      format.json {render :json => @members}
+    end
+  end
+
+  def check_authorization
+    @event = Event.find(params[:id])
+    if @current_user.present?  and !@event.can_i_delete?(@current_user.id, @event.chapter_id)
+       redirect_to event_path(@event)
+    end
+  end
+
 
 
   def initialise_eventbrite_client
@@ -202,6 +284,26 @@ class EventsController < ApplicationController
       @accept_url = @auth_client_obj.auth_code.authorize_url( :redirect_uri => EVENTBRITE_REDIRECT_URL)
     end
   end
+
+  def image_gallery_upload
+    logger.info "inside action ######################################{params.inspect}"
+    @event = Event.find(params[:id])
+   if params[:Filedata].present?
+    upload_image = @event.event_galleries.new(:image => params[:Filedata])
+    upload_image.save!
+   end
+    @all_event_images = @event.event_galleries
+    respond_to do |format|
+      format.js {render :layout => false}
+    end
+
+  end
+
+  def show_all_event_images
+    @event = Event.find(params[:id])
+    @all_event_images = @event.event_galleries
+  end
+
 
   protected
 
@@ -270,7 +372,5 @@ class EventsController < ApplicationController
     venue_id
 
   end
-
-
 
 end

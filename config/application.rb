@@ -68,15 +68,42 @@ module CloudfoundryUsergroups
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
 
+    #config.action_mailer.delivery_method = :smtp
+    #config.action_mailer.smtp_settings = {
+    #    :address              => "smtp.gmail.com",
+    #    :port                 => 587,
+    #    :domain               => 'mail.weboniselab.com',
+    #    :user_name            => 'pansingh@weboniselab.com',
+    #    :password             => 'pansingh6186',
+    #    :authentication       => 'plain',
+    #    :enable_starttls_auto => true  }
+
+
+
+    require "tlsmail"
     config.action_mailer.delivery_method = :smtp
     config.action_mailer.smtp_settings = {
-        :address              => "smtp.gmail.com",
+        :address              => "smtp.sendgrid.net",
         :port                 => 587,
-        :domain               => 'mail.weboniselab.com',
-        :user_name            => 'pansingh@weboniselab.com',
-        :password             => 'pansingh6186',
+        :user_name            => 'locamotiv',
+        :password             => 'locamotiv',
         :authentication       => 'plain',
-        :enable_starttls_auto => true  }
+        :enable_starttls_auto => true
+    }
+
+
+
+    #require "tlsmail"
+    # # Net::SMTP.enable_tls( OpenSSL::SSL::VERIFY_NONE )
+    #  ActionMailer::Base.smtp_settings = {
+    #        :enable_starttls_auto => true,
+    #        :address => "smtp.sendgrid.net",
+    #        :port => 25,
+    #        :domain => "localhost",
+    #        :authentication => :plain,
+    #        :user_name => "locamotiv",
+    #       :password => "locamotiv"
+    # }
     config.autoload_paths += %W(#{config.root}/app/middleware/)
 
 

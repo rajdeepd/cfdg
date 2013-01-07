@@ -15,7 +15,7 @@
 /tmp
 
 /config/database.yml
-/db/schema.rb
+db/schema.rb
 /nbproject/
 *.swp
 .sass-cache
@@ -25,8 +25,6 @@
 .rvmrc
 
 ignored/*
-
-db/schema.rb
 
 lib/java/applets/*.class
 

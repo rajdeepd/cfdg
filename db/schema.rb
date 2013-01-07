@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121214124912) do
+ActiveRecord::Schema.define(:version => 20121220091714) do
 
   create_table "announcements", :force => true do |t|
     t.string   "title"
@@ -106,6 +106,29 @@ ActiveRecord::Schema.define(:version => 20121214124912) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "delayed_jobs", :force => true do |t|
+    t.integer  "priority",   :default => 0
+    t.integer  "attempts",   :default => 0
+    t.text     "handler"
+    t.text     "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string   "locked_by"
+    t.string   "queue"
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+  end
+
+  add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
+
+  create_table "event_galleries", :force => true do |t|
+    t.string   "image"
+    t.integer  "event_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "event_members", :force => true do |t|
     t.integer  "event_id",   :null => false
     t.integer  "user_id",    :null => false
@@ -153,6 +176,17 @@ ActiveRecord::Schema.define(:version => 20121214124912) do
     t.string   "eventbrite_id"
     t.text     "agenda_and_speakers"
     t.string   "image"
+    t.integer  "attendees_count"
+    t.boolean  "is_cancelled"
+  end
+
+  create_table "geolocations", :force => true do |t|
+    t.string   "latitude"
+    t.string   "longitude"
+    t.string   "title"
+    t.integer  "chapter_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "mail_messages", :force => true do |t|

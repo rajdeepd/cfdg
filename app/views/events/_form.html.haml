@@ -7,21 +7,26 @@
     .event-left{:style => "width:100%;"}
       .el-cont{:style => "margin-bottom: 16px;"}
         %h2.label-45.flt-left Create Event For #{@event.chapter.try(:name)}
-    .event-left{:style => "width:49%;"}
-      .el-cont
+    .event-left{:style => "width:95%;"}
+      .el-cont.createEventField
+        %label.label-26.eventTitle  Event Title
+        = f.input :title , :input_html => {:class => "input-b size-f flt-left"} , :placeholder => "Event Title", :label => false
+      -#.error{:class => "el-cont"}
+        %li{:style => "float:left;", :class => "inline-errors event_title"} &nbsp;
+      .el-cont.createEventField
         %label.flt-left.label-26 Starts On
-        = f.input :event_start_time ,  :placeholder => "hh:mm", :label => false,   :input_html => {:class => "input-b size-b size-of-inputs flt-right timepicker",:style => " margin:0px 10px 0px 10px;" }
-        = f.input :event_start_date , :input_html => {:class => "input-b size-b size-of-inputs flt-right"} , :placeholder => "dd/mm/yyyy", :label => false
-      .error{:class => "el-cont"}
-        %li{:style => "padding-left:72px;float:left;width:35%;", :class => "inline-errors event_event_start_date"} &nbsp;
-        %li{:style => "float:left;padding-left:14px;", :class => "inline-errors event_event_start_time"} &nbsp;
-      .el-cont
+        = f.input :event_start_date , :input_html => {:class => "input-b size-b size-of-inputs "} , :placeholder => "dd/mm/yyyy", :label => false
+        = f.input :event_start_time ,  :placeholder => "hh:mm", :label => false,   :input_html => {:class => "input-b size-b size-of-inputs timepicker" }
+        .error{:class => "el-cont", :style => "clear:both"}
+          %li{:style => "padding-left:74px;float:left;width:35%;", :class => "inline-errors event_event_start_date"}
+          %li{:style => "float:left;padding-left:74px;", :class => "inline-errors event_event_start_time"}
+      .el-cont.createEventField
         %label.flt-left.label-26 Ends On
-        = f.input :event_end_time ,  :placeholder => "hh:mm", :label => false , :input_html => {:class => "input-b size-b size-of-inputs flt-right timepicker", :style => " margin:0px 10px 0px 10px;" }
-        = f.input :event_end_date , :input_html => {:class => "input-b size-b size-of-inputs flt-right"} , :placeholder => "dd/mm/yyyy", :label => false
-      .error{:class => "el-cont"}
-        %li{:style => "padding-left:72px;float:left;width:35%;", :class => "inline-errors event_event_end_date"} &nbsp;
-        %li{:style => "float:left;padding-left:14px;", :class => "inline-errors event_event_end_time"} &nbsp;
+        = f.input :event_end_date , :input_html => {:class => "input-b size-b size-of-inputs"} , :placeholder => "dd/mm/yyyy", :label => false
+        = f.input :event_end_time ,  :placeholder => "hh:mm", :label => false , :input_html => {:class => "input-b size-b size-of-inputs timepicker" }
+        .error{:class => "el-cont", :style => "clear:both"}
+          %li{:style => "padding-left:74px;width:35%;", :class => "inline-errors event_event_end_date"}
+          %li{:style => "padding-left:74px;", :class => "inline-errors event_event_end_time"}
     .event-bottom
   .event-form
     .event-left
@@ -54,11 +59,10 @@
         = f.hidden_field :chapter_id
       .el-cont
         = f.input :postal_code , :input_html => {:class => "input-b size-text-event-create"} , :placeholder => "Postal code", :label => false
+      .el-cont
+        = f.text_field :attendees_count , :class => "input-b size-text-event-create", :placeholder => "Attendees Count", :label => false
   .event-form{:style => "padding-top:10px; padding-bottom: 20px;"}
-    .el-cont
-      = f.input :title , :input_html => {:class => "input-b size-f"} , :placeholder => "Event Title", :label => false
-    .error{:class => "el-cont"}
-      %li{:style => "float:left;", :class => "inline-errors event_title"} &nbsp;
+
     .el-cont
       = f.text_area :description , :class => "input-b size-f" , :placeholder => "Event description", :style => "height: 40px;margin:5px 0px;", :label => false
     #spinner.spinner{:style => 'display:none;margin-right:10px;float:right;'}
@@ -70,6 +74,7 @@
 
 :javascript
   $(document).ready(function(){
+
     $('#new_event').validate({
       rules: {
         "event[event_start_date]": {
@@ -86,6 +91,14 @@
         },
         "event[title]":{
           required: true
+        },
+        "event[attendees_count]":{
+          digits: true
+        }
+        ,
+        "event[postal_code]":{
+          required: true,
+          eventPostalCode:true
         }
       }
     });
@@ -95,58 +108,65 @@
       //$("#image_upload_link").text("Image Uploaded...100%");
     //});
 
-
-
   });
   $(function(){
   var today = new Date();
     $( "#event_event_start_date" ).datepicker({
         minDate: 0,
         dateFormat: "dd/mm/yy",
+        onSelect: function(selectedDate){
+          //$("input#event_event_start_date").siblings("label").hide();
+        },
         onClose: function( selectedDate ) {
             $( "#event_event_end_date" ).datepicker( "option", "minDate", selectedDate );
            if(selectedDate ==  $.datepicker.formatDate( "dd/mm/yy", today))
            {
              // here will skip some time values for the current date
-             $( "#event_event_start_time" ).timepicker( "option", "minTime", today.toTimeString() );
-
+             $("#event_event_start_time").timepicker( "option", "minTime", today.toTimeString());
            }
            else
           {
-            $( "#event_event_start_time" ).timepicker( "option", "minTime", new Date(0, 0, 0, 8, 0, 0) );
+            $("#event_event_start_time").timepicker( "option", "minTime", new Date(0, 0, 0, 8, 0, 0) );
+            //$("#event_event_start_time").siblings("label").hide();
           }
         }
     });
+
     $( "#event_event_end_date" ).datepicker({
         dateFormat: "dd/mm/yy",
+        onSelect: function(selectedDate){
+          //$("input#event_event_end_date").siblings("label").hide();
+        },
         onClose: function( selectedDate ) {
             $( "#event_event_start_date" ).datepicker( "option", "maxDate", selectedDate );
             if(selectedDate ==  $.datepicker.formatDate( "dd/mm/yy", today))
              {
                // here will skip some time values for the current date
-               $( "#event_event_end_time" ).timepicker( "option", "minTime", today.toTimeString() );
-
+               $("#event_event_end_time").timepicker( "option", "minTime", today.toTimeString() );
              }
              else
              {
-               $( "#event_event_end_time" ).timepicker( "option", "minTime", new Date(0, 0, 0, 8, 0, 0) );
+               $("#event_event_end_time").timepicker( "option", "minTime", new Date(0, 0, 0, 8, 0, 0) );
              }
         }
     });
 
+
     $('input.timepicker').timepicker({
-        timeFormat: 'hh:mm p',
-        minTime: new Date(0, 0, 0, 8, 0, 0),
-        interval: 15,
+      timeFormat: 'hh:mm p',
+      minTime: new Date(0, 0, 0, 8, 0, 0),
+      interval: 15
     });
 
-     //var postal_code= new LiveValidation("event_postal_code",{validMessage:" ",onlyOnSubmit:true});
-     //postal_code.add( Validate.Numericality ,{ onlyInteger: true },{maximum: 2000,failureMessage:"Should be Postal code"});
-    //var postal_code =   new LiveValidation("event_postal_code",{validMessage:" ",onlyOnSubmit:true});
-    //postal_code.add( Validate.Format , { pattern: /^[0-9]{5}$|^[0-9]{6}$/, failureMessage: "Must be a valid postal code" });
+    jQuery.validator.addMethod("eventPostalCode", function(value, element) {
+      var re = new RegExp(/^[0-9A-Za-z ]+$/);
+      return (value.match(re))
+    }, "Must be a valid postal code.");
+
+
 
     $('#event_event_start_date').dblclick(function(e){
-        e.preventDefault();
+      e.preventDefault();
     })
 
 
@@ -156,12 +176,3 @@
     //        $('#event_event_end_time').timepicker('option', 'startTime', time);
     //});
   })
-
-
-
-
-
-
-
-
-
