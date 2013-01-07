@@ -1,0 +1,52 @@
+#chapter_state
+  = select_tag "chapter_state_name",options_from_collection_for_select(@states, "id", "name"),:prompt => "Please select a state",:style => "height:33px;width:292px",:class => "textboxes"
+  -#= hidden_field_tag :state_id,  :value => 1
+
+:javascript
+  $(document).ready(function(){
+
+    //$('select#chapter_state_name').attr('disabled', 'disabled');
+    $('select#chapter_country_name').change(function(event) {
+      $('select#chapter_city_name').text("Please select a city");
+      if($('select#chapter_country_name').val() != ""){
+        $('select#chapter_state_name').attr('disabled',false);
+      }
+      else if($('select#chapter_country_name').val() == ""){
+        $('select#chapter_state_name').attr('disabled', 'disabled');
+      }
+      var country_code = $(this).val();
+      //send_ajax_request("get","/chapters/subregion_options",country_code,"script");
+      $.ajax({
+        url:"/chapters/subregion_options",
+        dataType: "script",
+        data:{country_id:country_code},
+        type: "GET",
+        success:function(data){
+        },
+        error:function(error){
+        }
+      });
+    });
+
+    $('select#chapter_state_name').change(function(event) {
+      if($('select#chapter_state_name').val() != ""){
+        $('select#chapter_city_name').attr('disabled',false);
+      }
+      else if($('select#chapter_state_name').val() == ""){
+        $('select#chapter_city_name').attr('disabled', 'disabled');
+      }
+      var state_code = $(this).val();
+      //send_ajax_request("get","/chapters/subregion_options",country_code,"script");
+      $.ajax({
+        url:"/chapters/select_city",
+        dataType: "script",
+        data:{state_id:state_code},
+        type: "GET",
+        success:function(data){
+        },
+        error:function(error){
+        }
+      });
+    });
+
+  });

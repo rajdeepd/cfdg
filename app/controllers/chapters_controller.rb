@@ -6,7 +6,22 @@ class ChaptersController < ApplicationController
   end
 
   def subregion_options
-    render partial: 'subregion_select'
+    #render partial: 'subregion_select'
+    logger.info "@@@@@@@@@@@@@@@@@@ inside subregion action @@@@@@@@@@@@@@@@@@@@#{params}"
+    @country = Country.find(params[:country_id])
+    @states = @country.states
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def select_city
+    logger.info "@@@@@@@@@@@@@@@@@@ inside select city action @@@@@@@@@@@@@@@@@@@@#{params}"
+        @state = State.find(params[:state_id])
+        @cities = @state.cities
+        respond_to do |format|
+          format.js
+        end
   end
   
   # GET /chapters
@@ -24,7 +39,7 @@ class ChaptersController < ApplicationController
   # GET /chapters/1.json
   def show
     @chapter = Chapter.find(params[:id])
-    @is_part_of_chapter =false
+    @is_part_of_chapter = false
     if current_user
        @is_part_of_chapter = @chapter.chapter_members.where({:user_id => current_user.id}).try(:first).present? 
     end
@@ -76,8 +91,12 @@ class ChaptersController < ApplicationController
 
   def create
      @admin = User.find_by_email("admin@cloudfoundry.com")
-     params[:chapter][:name] = "CFDG - " + params[:chapter][:city_name].try(:titleize)
-     @chapter = Chapter.new(params[:chapter])
+     #params[:chapter][:name] = "CFDG - " + params[:chapter][:city_name].try(:titleize)
+     city = City.find(params[:chapter_city_name])
+     chapter_name = "CFDG - " + city.name.try(:titleize)
+     #@chapter = Chapter.new(params[:chapter])
+     @chapter = Chapter.create_new_chapter(params,chapter_name)
+     logger.info "######################### inside created action #{@chapter.inspect}"
      member = ChapterMember.new({:memeber_type=>ChapterMember::PRIMARY_COORDINATOR, :user_id => @current_user.id})
     
     respond_to do |format|
@@ -158,6 +177,13 @@ class ChaptersController < ApplicationController
     #@upcoming_events = @upcoming_events.paginate(:page => params[:page], :per_page => 5)
     @past_events.sort!
     @past_events = @past_events.paginate(:page => params[:page], :per_page => 10)
+  end
+
+  def search
+    @chapters = Chapter.search_chapters(params[:query])
+    if @chapters.length ==1
+      redirect_to chapter_path(@chapters.first)
+    end
   end
 
 end

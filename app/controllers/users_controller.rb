@@ -1,8 +1,10 @@
 class UsersController < ApplicationController
   layout 'chapters'
+  before_filter "is_allowed_to_login" , :only => [:edit]
 
   def edit
     @user = User.find_by_email(params[:email])
+    #binding.remote_pry
   end
 
   def update
@@ -16,13 +18,13 @@ class UsersController < ApplicationController
 
   def profile
     @user = @current_user
-    @user_chapters = ChapterMember.get_chapters(@user.id) || []    
+    @user_chapters = ChapterMember.get_chapters(@user.id) || []
     @create_event_from_chapters = params[:from]
     @chapter_id = params[:chapter_id]
     chapter_member = ChapterMember.get_details_if_coordinator(current_user.id).try(:first)
-    @chapter = chapter_member.chapter if chapter_member    
+    @chapter = chapter_member.chapter if chapter_member
     @is_primary_coord = ChapterMember.is_primary_coordinator?(@user.id)
-    @is_secondary_coord = ChapterMember.is_secondary_coordinator?(@user_id)    
+    @is_secondary_coord = ChapterMember.is_secondary_coordinator?(@user_id)
   end
 
   def settings
@@ -34,13 +36,20 @@ class UsersController < ApplicationController
     redirect_to  profile_url
   end
 
-  def uploader    
+  def uploader
     @user = User.find(params[:id])
     @user.update_attributes(params[:user])
-    mime_type = MIME::Types.type_for(@user.avatar_file_name) 
+    mime_type = MIME::Types.type_for(@user.avatar_file_name)
     @user.update_attributes(:avatar_content_type => mime_type.first.content_type.to_s) if mime_type.first
     respond_to do |format|
       format.json { render json: @user.avatar.url(:medium)}
     end
+  end
+
+
+  def is_allowed_to_login
+    can_login =  session[:is_allowed_to_login]
+    session[:is_allowed_to_login] = nil
+    redirect_to root_path unless can_login == true
   end
 end

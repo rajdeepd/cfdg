@@ -1,26 +1,27 @@
+= javascript_include_tag "jquery.validate"
 .content.wrapper
   .content-a
     .ca-top
       .ca-left.flt-left
         = gmaps4rails(@markers)
-        - content_for :javascript do        
+        - content_for :javascript do
           :javascript
-              function redirect_to(url) {
-                return function(){window.location = url;}
-              };
-  
-              Gmaps.map.callback = function() {
-                if (Gmaps.map.markers.length == 0 ){
-                  setTimeout(function() { Gmaps.map.serviceObject.setZoom(1);}, 50);
-                }
-                else{
-                  setTimeout(function() { Gmaps.map.serviceObject.setZoom(4);}, 50);
-                }
-                for (var i = 0; i <  Gmaps.map.markers.length; i++) {
-                   google.maps.event.addListener(Gmaps.map.markers[i].serviceObject, 'click',   redirect_to(Gmaps.map.markers[i].link));
-                }                
-              };
-     
+            function redirect_to(url) {
+              return function(){window.location = url;}
+            };
+
+            Gmaps.map.callback = function() {
+              if (Gmaps.map.markers.length == 0 ){
+                setTimeout(function() { Gmaps.map.serviceObject.setZoom(1);}, 50);
+              }
+              else{
+                setTimeout(function() { Gmaps.map.serviceObject.setZoom(4);}, 50);
+              }
+              for (var i = 0; i <  Gmaps.map.markers.length; i++) {
+                google.maps.event.addListener(Gmaps.map.markers[i].serviceObject, 'click',   redirect_to(Gmaps.map.markers[i].link));
+              }
+            };
+
 
         %ul{:id => "markers_list"}
       .ca-right.flt-right
@@ -46,8 +47,8 @@
       .ca-bottom
         .ca-down
           %h2.label-6= t('chapter.create_title')
-          %h5.label-7= t('chapter.create_desc')    
-          %button.btn-b.signin= t('chapter.create_create')
+          %h5.label-7= t('chapter.create_desc')
+          %button.btn-b.signin.create_button= t('chapter.create_create')
   .content-b
     - unless @announcements.blank?
       .cb-left.flt-left{:style=>"overflow:visible;"}
@@ -71,4 +72,69 @@
                   %br
                   %label.label-13= ann.created_at.strftime("%B %d, %Y")
                 %h5.label-16= ann.body
-                
+    =form_tag search_chapters_path  , :method => :get,:id => "search_chapter"  do
+      = autocomplete_field_tag 'query', '', autocomplete_city_details_home_index_path, :size => 75
+      =submit_tag "Search"
+
+
+
+
+:javascript
+  google.load("identitytoolkit", "1", {packages: ["ac"], language:"#{lang}"});
+:javascript
+  $(document).ready(function(){
+    $('#search_chapter').validate({
+      rules: {
+        "query": {
+          required: true
+        }
+      }
+    });
+  });
+
+  $(function() {
+    $(".create_button").on("click",function(){
+      window.google.identitytoolkit.setConfig({
+        developerKey: "#{FEDERATED_KEY}",
+        companyName: "cloudfoundry usergroups",
+        callbackUrl: "#{verify_user_url()}",
+        realm: "",
+        userStatusUrl: "/user_status",
+        loginUrl: "/login",
+        signupUrl: "/sign_up",
+        //homeUrl: "/profile",
+        homeUrl: "#{session[:url]}",
+        logoutUrl: "/logout",
+        idps: ["Gmail", "Yahoo"],
+        tryFederatedFirst: true,
+        useCachedUserStatus: false,
+        useContextParam: true
+      });
+      $("#navbar").accountChooser();
+    });
+
+    window.google.identitytoolkit.setConfig({
+      developerKey: "#{FEDERATED_KEY}",
+      companyName: "cloudfoundry usergroups",
+      callbackUrl: "#{verify_user_url()}",
+      realm: "",
+      userStatusUrl: "/user_status",
+      loginUrl: "/login",
+      signupUrl: "/sign_up",
+      homeUrl: "/profile",
+      //homeUrl: "#{session[:url]}",
+      logoutUrl: "/logout",
+      idps: ["Gmail", "Yahoo"],
+      tryFederatedFirst: true,
+      useCachedUserStatus: false,
+      useContextParam: true
+    });
+
+    $("#navbar").accountChooser();
+
+    $('.signup').click(function(){
+      $('#navbar').accountChooser('showAccountChooser');
+      $(".widget-header h1").text("#{t('menu.signup')}");
+      $(".widget-nascar-list h2").text("#{t('menu.signup_with')}");
+    });
+  });

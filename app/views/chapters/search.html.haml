@@ -1,0 +1,12 @@
+.content.wrapper
+  -if @chapters.count == 0
+    ="Sorry no results found"
+  -else
+    %ul
+      - @chapters.each_with_index do |i,j|
+        %li
+          = j+1
+          = link_to i.name,chapter_path(i),:style => "color:blue"
+          = "-"
+          = i.chapter_type
+        %br

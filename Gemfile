@@ -45,16 +45,16 @@ group :assets do
 end
 
 group :test do
-    #gem 'factory_girl', '1.2.4'
-    gem 'shoulda', '2.10.3'
-    gem 'faker', '0.3.1'
-    gem 'factory_girl_rails', :require => false
+  #gem 'factory_girl', '1.2.4'
+  gem 'shoulda', '2.10.3'
+  gem 'faker', '0.3.1'
+  gem 'factory_girl_rails', :require => false
 end
 
-#group :development do
-#   # To use debugger
-	#gem 'debugger'
-#end
+group :development do
+  gem 'hirb'
+  gem "pry-remote"
+end
 
 
 gem 'jquery-rails'
@@ -69,6 +69,16 @@ gem 'remotipart', '~> 1.0'
 gem "ckeditor", "~> 3.7.3"
 
 gem 'aws-sdk'
+gem 'carrierwave'
+gem "tlsmail"
+gem "delayed_job"
+gem 'delayed_job_active_record'
+gem 'mini_magick'
+gem 'flash_cookie_session'
+gem 'fog'
+gem 'rails3-jquery-autocomplete'
+
+#gem 'pry-remote'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

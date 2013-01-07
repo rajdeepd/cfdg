@@ -3,18 +3,20 @@
     .ca-left.flt-left
       =form_for(@user, :as => :user, :url => settings_update_path(@user), :html => { :method => :put ,  :multipart => true}) do |f|
         #welcome
-          %h1.label-17 Welcome!
+          %h1.label-17 Welcome #{@user.fullname}!
           %div
             - if @user.avatar_file_name && (@user.errors[:avatar_content_type].blank? && @user.errors[:avatar_file_size].blank?)
               %img.profile-image{:src => @user.try(:avatar).url(:medium)}/
             - else
               %img.profile-image{:src => "/assets/default-Profile-Image.png"}/
-          = f.file_field :avatar
+          = f.file_field :avatar ,:class => "uploadImage"
         .forms_list
           #formfirst
             %h4.form1 Please fill in the details given below
             %div
               = f.text_field :location , :placeholder => "Location", :class => "textboxes input-a"
+              %br
+              = text_field_tag "user[fullname]" ,@user.fullname, :placeholder => "Name", :class => "textboxes input-a"
           .line_space
           #formsecond
             %h4.form1 Optional fields
@@ -48,6 +50,12 @@
       },
       formData   : {'session_encoded': '#{session}', 'id': "#{@user.id}", 'authenticity_token': "#{form_authenticity_token}" }
     });
+    $("#SWFUpload_0").addClass("uploadImage");
+    //var mobile= new LiveValidation("user_mobile",{validMessage:" ",onlyOnSubmit:true});
+    //mobile.add( Validate.Numericality ,{ onlyInteger: true },{maximum: 999999999999999});
+    var contact_number =   new LiveValidation("user_mobile",{validMessage:" ",onlyOnSubmit:true});
+    contact_number.add( Validate.Format , { pattern: /^[0-9]{0,15}$/, failureMessage: "Must be a Number" });
+
   });
 :css
   .uploadify-queue-item{

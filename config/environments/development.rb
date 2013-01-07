@@ -14,7 +14,7 @@ CloudfoundryUsergroups::Application.configure do
   config.action_controller.perform_caching = false
 
   # Don't care if the mailer can't send
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
 
   # Print deprecation notices to the Rails logger
   config.active_support.deprecation = :log
@@ -37,9 +37,10 @@ CloudfoundryUsergroups::Application.configure do
 
   config.serve_static_assets = true
 
-  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  config.action_mailer.default_url_options = { :host => 'local.cfdg.com' }
 
-  FEDERATED_KEY = 'AIzaSyB8IrA9iaoSnQZbagf2rGxbIOk41IRKUA8'
+  #FEDERATED_KEY = 'AIzaSyB8IrA9iaoSnQZbagf2rGxbIOk41IRKUA8'
+  FEDERATED_KEY = 'AIzaSyBU01mSxFQ5efyknhwxX46tBFhbi5wj-PY' # new test api key
 
   FEDERATED_BASE_URL = "https://www.googleapis.com/identitytoolkit/v1/relyingparty/verifyAssertion?key=#{FEDERATED_KEY}"
 
@@ -47,6 +48,7 @@ CloudfoundryUsergroups::Application.configure do
    EVENTBRITE_CLIENT_SECRET = 'SZ6KSV4WFJ6NLDP2OXLPJLSKW6W6JPAXOZEI5EAXPO6S33R6EL'
    EVENTBRITE_URL = 'https://www.eventbrite.com'
    EVENTBRITE_REDIRECT_URL = 'http://localhost:3000/events/oauth_reader'
+   #EVENTBRITE_REDIRECT_URL = 'http://local.cfdg.com//events/oauth_reader'
    EVENTBRITE_ORGANIZATION_ID = '2894467429'
 
 end

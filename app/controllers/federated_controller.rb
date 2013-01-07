@@ -32,14 +32,15 @@ class FederatedController < ApplicationController
     @user = User.find_by_email(@email)
     if @user.nil? or @user.blank?
       @user = User.create!(:email => @email,:password => "cloudfoundry", :password_confirmation => "cloudfoundry", :fullname => @res["fullName"])
-      session[:email] = @user.email      
+      session[:email] = @user.email
+      session[:is_allowed_to_login] = true
       @registered = false
     else
       session[:user_id] = @user.id
       session[:email] = @user.email
       session[:user] = {:email => @user.email, :verified => true, :name => @user.fullname}
-     @registered = true
-    end    
+      @registered = true
+    end
   end
 
   def user_status
@@ -55,7 +56,7 @@ class FederatedController < ApplicationController
 
   def login
     user = User.find(:first, :conditions => ["email = ?", params[:email]])
-    status = user.valid_password?(params[:password]) unless user.nil?    
+    status = user.valid_password?(params[:password]) unless user.nil?
     if status
       session[:user_id] = user.id
       session[:user],session[:user_type],session[:user_name], @status = {:name => user.fullname, :email => params[:email], :id => session[:user_id], :from => 'Normal'},user.fullname,user.fullname, 'OK'
@@ -70,7 +71,7 @@ class FederatedController < ApplicationController
   def get_assertion(url, params)
     begin
       api_response = RestClient.post(url, params.to_json, :content_type => :json )
-      verified_assertion = JSON.parse(api_response)      
+      verified_assertion = JSON.parse(api_response)
       puts verified_assertion.inspect
       if verified_assertion.include? "verifiedEmail" or verified_assertion.include? "email"
         return verified_assertion

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121119142612) do
+ActiveRecord::Schema.define(:version => 20130104062042) do
 
   create_table "announcements", :force => true do |t|
     t.string   "title"
@@ -50,23 +50,21 @@ ActiveRecord::Schema.define(:version => 20121119142612) do
     t.integer  "created_by"
     t.integer  "updated_by"
     t.datetime "deleted_at"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
     t.string   "city_name"
     t.string   "state_name"
     t.string   "country_name"
     t.datetime "approved_on"
     t.datetime "rejected_on"
+    t.string   "institution",    :default => ""
   end
 
   create_table "cities", :force => true do |t|
-    t.string   "name"
-    t.integer  "state_id"
-    t.integer  "created_by"
-    t.integer  "updated_by"
-    t.datetime "deleted_at"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string  "name"
+    t.integer "country_id"
+    t.integer "state_id"
+    t.string  "details"
   end
 
   create_table "ckeditor_assets", :force => true do |t|
@@ -97,10 +95,37 @@ ActiveRecord::Schema.define(:version => 20121119142612) do
   end
 
   create_table "countries", :force => true do |t|
-    t.string   "name"
-    t.integer  "created_by"
-    t.integer  "updated_by"
-    t.datetime "deleted_at"
+    t.string "name"
+  end
+
+  create_table "delayed_jobs", :force => true do |t|
+    t.integer  "priority",   :default => 0
+    t.integer  "attempts",   :default => 0
+    t.text     "handler"
+    t.text     "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string   "locked_by"
+    t.string   "queue"
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+  end
+
+  add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
+
+  create_table "event_galleries", :force => true do |t|
+    t.string   "image"
+    t.integer  "event_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "event_geolocations", :force => true do |t|
+    t.string   "latitude"
+    t.string   "longitude"
+    t.string   "title"
+    t.integer  "event_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -151,6 +176,18 @@ ActiveRecord::Schema.define(:version => 20121119142612) do
     t.string   "country_name"
     t.string   "eventbrite_id"
     t.text     "agenda_and_speakers"
+    t.string   "image"
+    t.integer  "attendees_count"
+    t.boolean  "is_cancelled"
+  end
+
+  create_table "geolocations", :force => true do |t|
+    t.string   "latitude"
+    t.string   "longitude"
+    t.string   "title"
+    t.integer  "chapter_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "mail_messages", :force => true do |t|
@@ -196,13 +233,8 @@ ActiveRecord::Schema.define(:version => 20121119142612) do
   end
 
   create_table "states", :force => true do |t|
-    t.string   "name"
-    t.integer  "country_id"
-    t.integer  "created_by"
-    t.integer  "updated_by"
-    t.datetime "deleted_at"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer "country_id"
+    t.string  "name"
   end
 
   create_table "users", :force => true do |t|
@@ -235,8 +267,14 @@ ActiveRecord::Schema.define(:version => 20121119142612) do
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
     t.string   "profile_picture"
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string   "unconfirmed_email"
+    t.boolean  "is_proprietary_user"
   end
 
+  add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
 

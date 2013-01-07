@@ -4,15 +4,20 @@ CloudfoundryUsergroups::Application.routes.draw do
   mount Ckeditor::Engine => '/ckeditor'
 
   get '/chapters/subregion_options' => 'chapters#subregion_options'
+  get '/chapters/select_city' => 'chapters#select_city'
 
   get '/directory' => 'home#directory' , :as => "directory"
   get '/about' => 'home#about' , :as => "about"
   get '/wiki' => 'home#wiki' , :as => "wiki"
-  
+  get '/'  => "home#index" , :as => :home_index
+  match'/admin', :to => "admin/sessions#new"
+
   resources :chapters do
+    resources :events
      collection do
       post 'join_a_chapter'
       get  'chapter_admin_home_page'
+      get 'search'
      end
   end
 
@@ -22,37 +27,50 @@ CloudfoundryUsergroups::Application.routes.draw do
     end
   end
 
-  resources :posts do 
+  resources :posts do
     collection do
       get 'chapterposts'
-    end 
+    end
   end
   resources :comments
   resources :events do
-    collection do 
+    collection do
       get 'oauth_reader'
       get 'userevents'
-      get 'get_chapter_events'      
+      get 'get_chapter_events'
       get 'follow_an_event'
       get 'delete_an_event'
       get 'full_event_content'
       get 'title_list'
       post 'create_event_comment'
-    end  
+      get 'cancel_event'
+    end
+    member do
+      get :download_list
+      get :unfollow_an_event
+      post 'image_gallery_upload'
+      get 'image_gallery_upload'
+      get 'show_all_event_images'
+      get 'update_markers'
+    end
   end
-resources :events, :has_many => :comments
+
+#resources :events, :has_many => :comments
 
 #scope ':locale' do
-  devise_for :users , :controllers => { :registrations => "registrations" } do
-    get '/signin' => 'devise/sessions#new'   
+  devise_for :users , :controllers => { :registrations => "registrations",
+  :confirmations => "confirmations",
+  :passwords => 'passwords',
+  :sessions => "sessions"} do
+    get '/signin' => 'sessions#new'
     get '/users/confirm', :to => 'devise/confirmations#new'
-    get '/users/reset_password', :to => 'devise/passwords#new'
-    get '/users/change_password', :to => 'devise/passwords#edit'
+    get '/users/reset_password', :to => 'passwords#new'
+    get '/users/change_password', :to => 'passwords#edit'
   end
   get "admin/log_out" => "admin/sessions#destroy", :as => "log_out"
   get '/sign_up' , :to => 'users#edit'
   match '/verify_user' => 'federated#verify_user'
-  match '/user_status' => 'federated#user_status' 
+  match '/user_status' => 'federated#user_status'
   match '/login' => 'federated#login', :as => :login
   match '/logout' => 'federated#logout'
   match '/profile' => 'users#profile' , :as => :profile
@@ -97,6 +115,10 @@ resources :events, :has_many => :comments
       end
     end
    end
+
+  resources :announcements do
+
+  end
    
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -150,6 +172,10 @@ resources :events, :has_many => :comments
   # just remember to delete public/index.html.
 #  post '/local_selection/:local' , :to => "home#local_selection"
   root :to => 'home#index'
+
+  resources :home do
+    get :autocomplete_city_details, :on => :collection
+  end
 
   
 

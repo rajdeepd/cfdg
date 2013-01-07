@@ -7,7 +7,7 @@
       %a{:href => "#", :chapter_id => @chapter.id} Events
       %i.bg-arrow-down-b
     %li
-      -if @current_user.present? and ChapterMember.am_i_coordiantor?(@current_user.id , @chapter.id)
+      -if @current_user.present? and ChapterMember.am_i_coordinator?(@current_user.id , @chapter.id)
         %a{:href => "#", :chapter_id => @chapter.id ,:id =>"group_admin_ref"} Chapter Admin
         %i.bg-arrow-down-b
 #events
@@ -15,7 +15,7 @@
     /Upload Post & Media
     - value = @posts.present? ? "Posts" : "No Posts"
     #{value}
-    - if @current_user.present? and ChapterMember.am_i_coordiantor?(@current_user.id, @chapter.id) and !@chapter_home
+    - if @current_user.present? and ChapterMember.am_i_coordinator?(@current_user.id, @chapter.id) and !@chapter_home
       %a.label-46.flt-right{:href => "#", :id=> "create_post"} + Create Post
   %table.table-f
     -(@posts || []).each do |post|
@@ -27,7 +27,8 @@
           %h5.label-26
             Posted on #{Time.parse(post.created_at.to_s).strftime('%b %d, %Y')} by
             %a.label-25{:href => "#"} #{post.user.try(:fullname)}
-          %h5.label-26 #{post.event.try(:title)}, #{Time.parse(post.created_at.to_s).strftime('%b %d, %Y')}
+          %h5.label-26 #{post.event.try(:title)}
+
           
         /   %img{:src => "/assets/slideshare.png", :style => "margin-top:10px;"}
         /   %img{:src => "/assets/youtube.png", :style => "margin-top:10px;"}
