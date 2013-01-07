@@ -31,7 +31,7 @@
 
 
 .bodyWrapper
-  %header
+  -#%header
     .container.clearfix
       %ul.clearfix
         %li
@@ -41,10 +41,12 @@
       .searchBox
         %input{:placeholder => "Search", :type => "text"}
         %button.searchIcon
+  =render :partial => "/shared/new_header"
   .content
-    .logo
-      %img{:src => "img/logo%20.png"}
-    .navigation
+    -#.logo
+      -#%img{:src => "img/logo%20.png"}
+      =image_tag("logo.png")
+    -#.navigation
       %ul.clearfix
         %li
           %a.home.active{:href => "#"}
@@ -56,6 +58,7 @@
           %a.event{:href => "#"} Event
         %li
           %a.wiki Wiki
+    =render :partial => "/shared/user_nav"
     #slider-id.coda-slider
       %div
         %h2.title 1
