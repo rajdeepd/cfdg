@@ -71,5 +71,9 @@ class Chapter < ActiveRecord::Base
   def am_i_chapter_memeber?(user_id)
    ChapterMember.find(:all , :conditions => [" user_id = ? and chapter_id = ? and memeber_type = ?", user_id, id,  ChapterMember::MEMBER]).present?
   end
+
+  def get_all_members
+     self.chapter_members.select{|i| i.memeber_type == ChapterMember::MEMBER}
+  end
   
 end
