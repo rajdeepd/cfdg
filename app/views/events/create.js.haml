@@ -3,6 +3,8 @@ $('#spinner').hide();
 -if @event.errors.blank?
   $("#events").html("#{escape_javascript render(:partial => 'chapters/chapter_admin_home_page')}");
   $('.success_msg').show();
+  $('.success_msg').fadeOut(5000);
+
 -else    
   $("#event_content li.inline-errors").html("&nbsp;");
   - @event.errors.messages.each do |attribute, errors|

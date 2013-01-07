@@ -121,6 +121,7 @@
     background-image: none;
     opacity: 0.35;
 }
+
 .success_msg{
     padding:2px 4px;
     margin:0px;
@@ -130,4 +131,141 @@
     font-family:Arial, Helvetica, sans-serif; font-size:14px;
     font-weight:bold;
     text-align:center;
+}
+
+#join_wait_list  {
+    opacity: 0.35;
+}
+
+.cancelled_event  {
+    opacity: 0.35;
+}
+
+.event_date{
+    margin-right: 20px;
+}
+
+.event_time_edit{
+    margin-right: 140px;
+}
+#event_event_start_date_input, #event_event_start_time_input, #event_event_end_date_input, #event_event_end_time_input {
+    width: 120px;
+    float: left;
+    margin: 0 5px;
+}
+
+.el-cont label.label-26 {
+    top: 7px;
+    width: 70px;
+}
+.size-text-event-create {
+    width: 295px;
+}
+#event_event_start_date_input label.error, #event_event_start_time_input label.error, #event_event_end_date_input label.error, #event_event_end_time_input label.error, .el-cont label.error  {
+    display: block;
+    float: left;
+    margin-top: 5px;
+    color: #ff0000;
+    font-size: 12px;
+}
+.el-cont.error .inline-errors.event_event_start_date, .el-cont.error .inline-errors.event_event_start_time  {
+    display: block;
+    float: none !important;
+}
+span.LV_invalid {
+    display: block;
+    color: #ff0000;
+    font-size: 12px;
+    margin-bottom: 10px;
+    margin-top: -5px;
+}
+.eventImageHolder {
+    float: left;
+    width: 150px;
+    height: 150px;
+    text-align: center;
+    vertical-align: middle;
+    display: table-cell;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+.eventImageHolder img {
+    width: 150px;
+    height: 150px;
+}
+.seeAllImages {
+    width: 150px;
+    /*height: 150px;*/
+    text-align: center;
+    vertical-align: bottom;
+    display: inline-block;
+    padding-top: 100px
+}
+.seeAllImages a {
+    text-decoration: underline;
+    color: #0097D7;
+}
+.eventTitle {
+    float: left;
+    margin-right: 5px;
+}
+#event_title_input, .eventTitleEditLbl {
+    float: left;
+    width: 510px;
+}
+#event_title_input .size-f,
+.eventTitleEditLbl .size-f{
+    margin-bottom: 0;
+}
+.createEventField {
+    margin-bottom: 12px;
+}
+.div-h #cancel_an_event,
+.div-h #delete_an_event,
+.div-h #cancelled_event{
+    margin-top: 0;
+}
+.attendees {
+    float: right;
+    width: 270px;
+}
+.attendeesHeading {
+    height: 25px;
+    line-height: 25px;
+    background: #f1f1f1;
+    padding: 0 10px;
+    margin-bottom: 15px;
+
+}
+.attendees strong {
+    float: left;
+}
+.attendees .mCount {
+    float: right;
+}
+.ulg-expanded {
+    float: left;
+    width: 640px;
+}
+ul.attendeesList li {
+    display: block;
+    padding: 10px 0;
+    border-bottom: 1px dotted #c5c6c7;
+}
+ul.attendeesList li .imageHolder {
+    width: 30px;
+    height: 30px;
+    margin-right: 20px;
+    float: left;
+}
+ul.attendeesList li .nameHolder {
+    width: 220px;
+    float: left;
+    line-height: 30px;
+}
+.clr {
+    clear: both;
+}
+.div-h .location, .div-h .description{
+    margin-left: -80px
 }

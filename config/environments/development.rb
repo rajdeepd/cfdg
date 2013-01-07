@@ -14,7 +14,7 @@ CloudfoundryUsergroups::Application.configure do
   config.action_controller.perform_caching = false
 
   # Don't care if the mailer can't send
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
 
   # Print deprecation notices to the Rails logger
   config.active_support.deprecation = :log
@@ -37,7 +37,7 @@ CloudfoundryUsergroups::Application.configure do
 
   config.serve_static_assets = true
 
-  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  config.action_mailer.default_url_options = { :host => 'local.cfdg.com' }
 
   #FEDERATED_KEY = 'AIzaSyB8IrA9iaoSnQZbagf2rGxbIOk41IRKUA8'
   FEDERATED_KEY = 'AIzaSyBU01mSxFQ5efyknhwxX46tBFhbi5wj-PY' # new test api key

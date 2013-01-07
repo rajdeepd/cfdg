@@ -8,6 +8,7 @@ CloudfoundryUsergroups::Application.routes.draw do
   get '/directory' => 'home#directory' , :as => "directory"
   get '/about' => 'home#about' , :as => "about"
   get '/wiki' => 'home#wiki' , :as => "wiki"
+  match'/admin', :to => "admin/sessions#new"
   
   resources :chapters do
     resources :events
@@ -39,8 +40,17 @@ CloudfoundryUsergroups::Application.routes.draw do
       get 'full_event_content'
       get 'title_list'
       post 'create_event_comment'
-    end  
+      get 'cancel_event'
+    end
+    member do
+      get :download_list
+      get :unfollow_an_event
+      post 'image_gallery_upload'
+      get 'image_gallery_upload'
+      get 'show_all_event_images'
+    end
   end
+
 #resources :events, :has_many => :comments
 
 #scope ':locale' do
