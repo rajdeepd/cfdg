@@ -1,0 +1,355 @@
+= stylesheet_link_tag    "bootstrap", :media => "all"
+= stylesheet_link_tag    "coda-slider", :media => "all"
+= stylesheet_link_tag    "style", :media => "all"
+= stylesheet_link_tag    "custom", :media => "all"
+= javascript_include_tag "bootstrap"
+= javascript_include_tag "bootstrap-dropdown"
+= javascript_include_tag "jquery.coda-slider-3.0"
+= javascript_include_tag "jquery.vticker-min"
+= javascript_include_tag "jquery.mousewheel"
+= javascript_include_tag "jquery.contentcarousel"
+= javascript_include_tag "jquery.easing.1.3"
+
+
+%title Coda Slider 3.0
+:javascript
+  $(function(){
+      /* Here is the slider using default settings */
+    $('#slider-id').codaSlider({
+      autoSlide:true,
+      autoHeight:false
+    });
+    $('h2.title').hide();
+    $('#news-container').vTicker({
+      speed: 500,
+      pause: 3000,
+      animation: 'fade',
+      mousePause: false,
+      showItems: 3
+    });
+  });
+
+
+.bodyWrapper
+  %header
+    .container.clearfix
+      %ul.clearfix
+        %li
+          %a{:href => ""} FAQ'S
+        %li
+          %a{:href => ""} LOGIN
+      .searchBox
+        %input{:placeholder => "Search", :type => "text"}
+        %button.searchIcon
+  .content
+    .logo
+      %img{:src => "img/logo%20.png"}
+    .navigation
+      %ul.clearfix
+        %li
+          %a.home.active{:href => "#"}
+        %li
+          %a.about{:href => "#"} About
+        %li
+          %a.chapter{:href => "#"} Chapter
+        %li
+          %a.event{:href => "#"} Event
+        %li
+          %a.wiki Wiki
+    #slider-id.coda-slider
+      %div
+        %h2.title 1
+        .leftSlider
+          %h1
+            Liberal World of
+            Knowledge Sharing for
+            Developers
+          %p Your key of an awesome knowledge cloud
+          %button.orangeBtn.signUp Sign Up
+        .rightSlider
+      %div
+        %h2.title 2
+        .leftSlider
+          %h1
+            Liberal World of
+            Knowledge Sharing for
+            Developers
+          %p Your key of an awesome knowledge cloud
+          %button.orangeBtn.signUp Sign Up
+        .rightSlider
+      %div
+        %h2.title 3
+        .leftSlider
+          %h1
+            Liberal World of
+            Knowledge Sharing for
+            Developers
+          %p Your key of an awesome knowledge cloud
+          %button.orangeBtn.signUp Sign Up
+        .rightSlider
+
+    .clearfix
+      .latestAnnouncement
+        .smallHeading
+          %h3 Latest Announcements
+        #news-container{:style => "overflow: hidden; position: relative; height: 114px;"}
+          %ul{:style => "position: absolute; margin: 0pt; padding: 0pt; top: 0px;"}
+            %li
+              %div
+                .imgBox
+                  -#%img{:alt => "", :src => "assets/images/user_img_1.jpg"}
+                  = image_tag("user_img_1.jpg")
+                .textBox
+                  %span.date November 08,2012
+                  %h4 Preserving Cloud Application...
+                  %p We are excited to announce a new version of Micro...
+                  %button.btn Learn More
+            %li
+              %div
+                .imgBox
+                  -#%img{:alt => "", :src => "assets/images/user_img_2.jpg"}
+                  = image_tag("user_img_2.jpg")
+                .textBox
+                  %span.date November 08,2012
+                  %h4 Preserving Cloud Application...
+                  %p We are excited to announce a new version of Micro...
+                  %button.btn Learn More
+            %li
+              %div
+                .imgBox
+                  -#%img{:alt => "", :src => "assets/user_img_3.jpg"}
+                  = image_tag("user_img_3.jpg")
+                .textBox
+                  %span.date November 08,2012
+                  %h4 Preserving Cloud Application...
+                  %p We are excited to announce a new version of Micro...
+                  %button.btn Learn More
+      .cfdgChapter
+        .longHeading
+          %h3 Check whether your city has a CFDG chapter?
+        .citySearch
+          %span.citySeachIcon
+          %input{:placeholder => "City Name", :type => "text"}
+            %button.citySeachBtn
+        .map
+        .createChapter.clearfix
+          %p Couldnt find a chapter in your city?
+          %button.orangeBtn.createChapterBtn CREATE A CHAPTER
+    .comingEvents.clearfix
+      .fullHeading
+        %h3 Upcoming Events
+      #ca-container.ca-container.clearfix
+        .ca-wrapper
+          .ca-item.ca-item-1
+            .ca-item-main
+              .eventImg
+                -#%img{:src => "assets/event_img_1.png"}
+                = image_tag("event_img_1.png")
+              .eventContent
+                %h5 Gluecon
+                .date Sep 14, 2012
+                .where
+                  Where:
+                  %span.lightGrayText Denver
+                  %a{:href => "#"} (map)
+                .description
+                  Description:
+                  %span.lightGrayText Lorem Ipsum is simply dummy text of the printing and
+                  %br/
+                  %br/
+                  %a{:href => "#"} Read more
+          .ca-item.ca-item-2
+            .ca-item-main
+              .eventImg
+                -#%img{:src => "assets/event_img_2.png"}
+                = image_tag("event_img_2.png")
+              .eventContent
+                %h5 Jakarta
+                .date Sep 21, 2012
+                .where
+                  Where:
+                  %span.lightGrayText Denver
+                  %a{:href => "#"} (map)
+                .description
+                  Description:
+                  %span.lightGrayText Lorem Ipsum is simply dummy text of the printing and
+                  %br/
+                  %br/
+                  %a{:href => "#"} Read more
+          .ca-item.ca-item-3
+            .ca-item-main
+              .eventImg
+                -#%img{:src => "assets/event_img_3.png"}
+                = image_tag("event_img_3.png")
+              .eventContent
+                %h5 London
+                .date Sep 16, 2012
+                .where
+                  Where:
+                  %span.lightGrayText Denver
+                  %a{:href => "#"} (map)
+                .description
+                  Description:
+                  %span.lightGrayText Lorem Ipsum is simply dummy text of the printing and
+                  %br/
+                  %br/
+                  %a{:href => "#"} Read more
+          .ca-item.ca-item-4
+            .ca-item-main
+              .eventImg
+                %img{:src => "img/event_img_4.png"}
+              .eventContent
+                %h5 Mysore
+                .date Sep 14, 2012
+                .where
+                  Where:
+                  %span.lightGrayText Denver
+                  %a{:href => "#"} (map)
+                .description
+                  Description:
+                  %span.lightGrayText Lorem Ipsum is simply dummy text of the printing and
+                  %br/
+                  %br/
+                  %a{:href => "#"} Read more
+%footer
+  .footerContent
+    .clearfix
+      %span.footerText Cloud Foundry
+      %ul.footerLinks.clearfix
+        %li
+          %a{:href => "#"} About
+          %span.lightGrayText /
+        %li
+          %a{:href => "#"} Partners
+          %span.lightGrayText /
+        %li
+          %a{:href => "#"} Events
+          %span.lightGrayText /
+        %li
+          %a{:href => "#"} Gallery
+          %span.lightGrayText /
+        %li
+          %a{:href => "#"} Pricing
+          %span.lightGrayText /
+        %li
+          %a{:href => "#"} Jobs
+          %span.lightGrayText /
+        %li
+          %a{:href => "#"} Forums
+          %span.lightGrayText /
+        %li
+          %a{:href => "#"} Get an Account
+    .clearfix
+      %span.footerText Features
+      %ul.footerLinks.clearfix
+        %li
+          %a{:href => "#"} Feature one
+          %span.lightGrayText /
+        %li
+          %a{:href => "#"} Feature two
+          %span.lightGrayText /
+        %li
+          %a{:href => "#"} Feature three
+          %span.lightGrayText /
+        %li
+          %a{:href => "#"} Feature four
+          %span.lightGrayText /
+        %li
+          %a{:href => "#"} Feature five
+    .clearfix
+      %span.footerText Frameworks & Languages
+      %ul.footerLinks.clearfix
+        %li
+          %a{:href => "#"} Ruby
+          %span.lightGrayText /
+        %li
+          %a{:href => "#"} Rails % Sinatra
+          %span.lightGrayText /
+        %li
+          %a{:href => "#"} Java
+          %span.lightGrayText /
+        %li
+          %a{:href => "#"} Spring
+          %span.lightGrayText /
+        %li
+          %a{:href => "#"} Scala
+          %span.lightGrayText /
+        %li
+          %a{:href => "#"} Play
+          %span.lightGrayText /
+        %li
+          %a{:href => "#"} JavaScript
+          %span.lightGrayText /
+        %li
+          %a{:href => "#"} Node.js
+    .clearfix
+      %span.footerText Services
+      %ul.footerLinks.clearfix
+        %li
+          %a{:href => "#"} Redis
+          %span.lightGrayText /
+        %li
+          %a{:href => "#"} RabbitMQ
+          %span.lightGrayText /
+        %li
+          %a{:href => "#"} MongoDB
+          %span.lightGrayText /
+        %li
+          %a{:href => "#"} MySQL
+          %span.lightGrayText /
+        %li
+          %a{:href => "#"} PostgreSQL
+    .clearfix
+      %span.footerText Cloud
+      %ul.footerLinks.clearfix
+        %li
+          %a{:href => "#"} Public
+          %span.lightGrayText /
+        %li
+          %a{:href => "#"} Private
+          %span.lightGrayText /
+        %li
+          %a{:href => "#"} Micro
+    .clearfix
+      %span.footerText Dev Center
+      %ul.footerLinks.clearfix
+        %li
+          %a{:href => "#"} Documentation
+          %span.lightGrayText /
+        %li
+          %a{:href => "#"} Get Started
+          %span.lightGrayText /
+        %li
+          %a{:href => "#"} Get Involved
+          %span.lightGrayText /
+        %li
+          %a{:href => "#"} Core Compatibility
+    .socialLinks
+      .linksCenter.clearfix
+        %a.twitterIcon{:href => ""}
+        %a.faceBookIcon{:href => ""}
+        %a.youTubeIcon{:href => ""}
+    .footerBottom
+      %ul.supportPrivacyLinks.clearfix
+        %li
+          %a{:href => ""} support
+        %li
+          %a{:href => ""} Status
+        %li
+          %a{:href => ""} faq
+        %li
+          %a{:href => ""} blog
+        %li
+          %a{:href => ""} legal
+        %li
+          %a{:href => ""} privacy
+      %p.termsOfService
+        \© 2012 Cloud Foundry, by VMware. All Rights Reserved.
+        %a{:href => "#"} Terms of Service
+        and Trademark Standards.
+%script{:src => "js/jquery.easing.1.3.js", :type => "text/javascript"}
+/ the jScrollPane script
+%script{:src => "js/jquery.mousewheel.js", :type => "text/javascript"}
+%script{:src => "js/jquery.contentcarousel.js", :type => "text/javascript"}
+:javascript
+  $('#ca-container').contentcarousel();
