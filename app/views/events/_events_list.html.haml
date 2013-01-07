@@ -74,7 +74,7 @@
             %div.clr
             %label.label-25
               -if(!event.event_start_date.blank?)
-                #{Time.parse(event.event_start_time.to_s).strftime('%A %I:%M %p')} #{Date.parse(event.event_start_date.to_s).strftime("%b %d, %Y")} I #{event.entry_fee}  per person
+                #{Time.parse(event.event_start_time_in_time.to_s).strftime('%I:%M %p')} #{Date.parse(event.event_start_date_in_date.to_s).strftime(",%A %b %d, %Y")} I #{event.entry_fee}  per person
               Location: #{event.venue}
             %p.label-26{:id => "short_content"}
               #{raw truncate(event.description, :length => 30, :omission => '...')}
@@ -145,7 +145,7 @@
             %div.clr
             %label.label-25
               -if(!event.event_start_date.blank?)
-                #{Time.parse(event.event_start_time.to_s).strftime('%A %I:%M %p')} #{Date.parse(event.event_start_date.to_s).strftime("%b %d, %Y")} I #{event.entry_fee}  per person
+                #{Time.parse(event.event_start_time_in_time.to_s).strftime('%I:%M %p')} #{Date.parse(event.event_start_date_in_date.to_s).strftime(",%A %b %d, %Y")} I #{event.entry_fee}  per person
               Location: #{event.venue}
             %p.label-26{:id => "full_content"}
               #{event.description}

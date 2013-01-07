@@ -32,7 +32,7 @@
       %div.dateAttendees
         %div.date
           -if(!@event.event_start_date.blank?)
-            #{Time.parse(@event.event_start_time.to_s).strftime('%A %I:%M %p')}, #{Date.parse(@event.event_start_date.to_s).strftime('%b %d, %Y')}
+            #{Time.parse(@event.event_start_time_in_time.to_s).strftime('%I:%M %p')}, #{Date.parse(@event.event_start_date_in_date.to_s).strftime('%A %b %d, %Y')}
             -#I #{@event.entry_fee}  per person
 
         .clr
