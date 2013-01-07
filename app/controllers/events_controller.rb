@@ -29,7 +29,6 @@ class EventsController < ApplicationController
       @all_event_images =  @event.event_galleries
     end
     event_marker
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @event }

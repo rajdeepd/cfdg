@@ -1,3 +1,4 @@
+= javascript_include_tag "jquery.validate"
 .content.wrapper
   .content-a
     .ca-top
@@ -71,7 +72,7 @@
                   %br
                   %label.label-13= ann.created_at.strftime("%B %d, %Y")
                 %h5.label-16= ann.body
-    =form_tag search_chapters_path  , :method => :get  do
+    =form_tag search_chapters_path  , :method => :get,:id => "search_chapter"  do
       = autocomplete_field_tag 'query', '', autocomplete_city_details_home_index_path, :size => 75
       =submit_tag "Search"
 
@@ -81,6 +82,16 @@
 :javascript
   google.load("identitytoolkit", "1", {packages: ["ac"], language:"#{lang}"});
 :javascript
+  $(document).ready(function(){
+    $('#search_chapter').validate({
+      rules: {
+        "query": {
+          required: true
+        }
+      }
+    });
+  });
+
   $(function() {
     $(".create_button").on("click",function(){
       window.google.identitytoolkit.setConfig({

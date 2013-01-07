@@ -76,9 +76,11 @@
         = f.hidden_field   :commentable_type
         = f.hidden_field   :commentable_id
   %br
-  = gmaps("markers" => {"data" => @marker, "options" => { "draggable" => true  } } ) unless @marker == [].to_json
-
-
+  - if @current_user.present? and   @event.can_i_delete?(@current_user.id, @event.chapter_id)
+    = gmaps("markers" => {"data" => @marker, "options" => { "draggable" => true } }, "map_options" => {"auto_zoom" => false, "zoom" => 15 } ) unless @marker == [].to_json
+  -else
+    -#= gmaps4rails(@marker)
+    = gmaps("markers" => {"data" => @marker }, "map_options" => {"auto_zoom" => false, "zoom" => 15 } ) unless @marker == [].to_json
 - session_key = Rails.application.config.session_options[:key]
 
 = content_for :scripts do
@@ -140,7 +142,6 @@
                  }
                });
              };
-
 
             Gmaps.map.callback = function() {
               for (var i = 0; i <  this.markers.length; ++i) {
