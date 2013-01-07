@@ -1,1820 +1,1820 @@
-3,Skikda,
-10,Shirak,
-28,Amazonas,
-28,Bahia,
-28,Espirito Santo,
-28,Maranhao,
-28,Mato Grosso do Sul,
-28,Minas Gerais,
-31,Kourweogo,
-31,Passore,
-31,Yatenga,
-36,Sao Vicente,
-37,Little Cayman,
-48,Alajuela,
-68,Ahvenanmaa,
-68,Pohjois-Karjala,
-68,Uusimaa,
-69,Aquitaine,
-69,Bourgogne,
-69,Centre,
-69,Champagne-Ardenne,
-69,Nord - Pas de Calais,
-69,Poitou-Charentes,
-69,Provence - Alpes - Cote d Azur,
-69,St Pierre et Miquelon,
-72,Estuaire,
-87,Centre,
-87,Sud-Est,
-89,Hong Kong,
-99,Calabria,
-99,Lazio,
-99,Lombardia,
-99,Puglia,
-99,Toscana,
-99,Trentino-Alto Adige,
-106,강원도 (Gangwon-do),
-106,경기도 (Gyeonggi-do),
-106,인천 (Incheon),
-106,전라북도 (Jeollabuk-do),
-106,제주도 (Jeju-do),
-121,Melaka,
-121,Negeri Sembilan,
-121,Terengganu,
-125,Marshall Islands,
-132,Chisinau,
-138,Yangon,
-145,Fiordland,
-145,Rotorua,
-146,Atlantico Sur,
-146,Esteli,
-146,Managua,
-146,Masaya,
-146,Rivas,
-155,Azad Kashmir,
-155,Balochistan,
-159,Itapua,
-159,neembucu,
-161,Leyte,
-161,Pangasinan,
-161,Quezon,
-162,Pitcairn Islands,
-171,Saint George Basseterre,
-180,Kosovo,
-185,Dolenjska (Jugovzhodna Slovenija),
-185,Gorenjska,
-185,Savinjska,
-187,Banaadir,
-190,alava,
-190,Almeria,
-190,Barcelona,
-190,Cordoba,
-190,Huesca,
-190,Madrid,
-190,Toledo,
-190,Valladolid,
-190,Zamora,
-199,Basel-Stadt - Bale-Ville,
-199,Luzern-Lucerne,
-199,Nidwalden - Nidwald,
-199,Uri - Uri,
-199,Wallis - Valais,
-201,台南 (Tainan),
-201,桃園 (Taoyuan),
-201,苗栗(Miaoli),
-201,連江(Lienchiang),
-201,金門 (Kinmen),
-201,雲林 (Yunlin),
-221,Amazonas,
-221,Barinas,
-221,Bolivar,
-221,Cojedes,
-221,Falcon,
-221,Monagas,
-221,Nueva Esparta,
-221,Portuguesa,
-225,Blaenau Gwent,
-225,Bridgend,
-225,Clwyd,
-225,Flintshire,
-225,Neath Port Talbot,
-225,Vale of Glamorgan,
-229,Lusaka,
-230,Manicaland,
-230,Mashonaland Central,
-230,Midlands,
-1,Kabul,
-3,Alger,
-3,Constantine,
-6,Cuanza Sul,
-10,Yerevan,
-28,Acre,
-28,Ceara,
-28,Goias,
-28,Pernambuco,
-28,Rio Grande do Norte,
-28,Roraima,
-28,Santa Catarina,
-28,Sergipe,
-32,Bujumbura,
-36,Sao Tiago,
-48,Cartago,
-48,Heredia,
-48,Puerto Limon - Limon,
-48,San Jose,
-68,Etelä-Karjala,
-68,Etelä-Pohjanmaa,
-68,Etelä-Savo,
-68,Keski-Pohjanmaa,
-69,Franche Comte,
-69,Guyane,
-69,Haute Normandie,
-69,Languedoc-Roussillon,
-69,Martinique,
-69,Rhone-Alpes,
-87,Ouest,
-91,Sudhurland,
-99,Basilicata,
-99,Campania,
-99,Friuli-Venezia Giulia,
-99,Molise,
-99,Piemonte,
-99,Valle d'Aosta,
-106,광주 (Gwangju),
-106,대전 (Daejeon),
-106,충청북도 (Chungcheongbuk-do),
-111,Liban-Nord,
-121,Pahang,
-121,Sabah,
-121,Sarawak,
-121,Wilayah persekutuan Labuan,
-129,Mayotte,
-131,Micronesia,
-145,Coromandel,
-145,Dunedin,
-145,Hawke's Bay,
-145,Horowhenua,
-145,Taranaki,
-145,Taupo/Ruapehu,
-145,Wairarapa,
-145,Wanganui-Manawatu,
-145,Westcoast,
-146,Carazo,
-146,Chontales,
-146,Leon,
-159,Alto Parana,
-159,Asuncion,
-159,Caaguazu,
-159,Canindeyu,
-159,Paraguari,
-159,San Pedro,
-161,Davao del Norte,
-161,Ilocos Norte,
-161,Iloilo,
-161,Laguna,
-161,Mindoro Oriental,
-161,Misamis Oriental,
-161,National Capital Region (Manila),
-161,Palawan,
-161,Pampanga,
-180,Serbia,
-185,Podravska,
-185,Pomurska,
-5,Andorra la Vella,
-5,Escaldes-Engordany,
-9,Buenos Aires,
-9,Capital Federal,
-9,Formosa,
-9,Neuquen,
-9,San Juan,
-9,Tucuman,
-12,Australian Capital Territory,
-12,Northern Territory,
-12,Western Australia,
-15,Inagua Islands,
-18,Saint Michael,
-19,Minskaya,
-21,Cayo,
-22,Atakora,
-33,Battambang,
-33,Kampong Speu,
-33,Svay Rieng,
-33,Takeo,
-34,Centre,
-34,Sud-Ouest,
-35,Alberta,
-35,Manitoba,
-43,Cocos (Keeling) Islands,
-49,Istarska,
-49,Pozesko-Slavonska,
-49,Varazdinska,
-49,Zagreb,
-59,Ad Daqahliyah,
-59,Al Qahirah,
-59,Sinai Desert,
-60,Chalatenango,
-60,Cuscatlan,
-60,La Libertad,
-60,La Paz,
-60,San Miguel,
-60,Usulutan,
-61,Buckinghamshire,
-61,Cleveland,
-61,Hertfordshire,
-61,Isle of Man,
-61,Lancashire,
-61,Leicestershire,
-61,Lincolnshire,
-61,North Yorkshire,
-61,Northamptonshire,
-61,Oxfordshire,
-61,Suffolk,
-61,West Midlands,
-61,West Sussex,
-61,Worcestershire,
-74,T'bilisi,
-78,Ahaia,
-78,Argolis,
-78,Attiki,
-78,Dodekanisos,
-78,Hania,
-78,Larisa,
-78,Lesvos,
-78,Trikala,
-78,Voiotia,
-82,Guam,
-92,Chandigarh,
-92,Chhattisgarh,
-92,Delhi,
-92,Himachal Pradesh,
-92,Orissa,
-92,Punjab,
-92,Rajasthan,
-93,Bali,
-93,Jakarta Raya,
-93,Nusa Tenggara Barat - West Nusa Tenggara,
-93,Sulawesi Utara - North Sulawesi,
-93,Sumatera Barat - West Sumatra,
-104,Rift Valley,
-104,Western,
-113,Bong,
-135,Montserrat,
-141,Kosi,
-148,Edo,
-148,Rivers,
-150,Norfolk Island,
-151,Down,
-151,Tyrone,
-158,Madang,
-158,Western Highlands,
-164,Azores,
-164,Coimbra,
-164,Faro,
-164,Madeira,
-164,Porto,
-175,San Marino,
-177,Ar Riyad,
-177,Makkah,
-179,Louga,
-188,Gauteng,
-188,KwaZulu-Natal,
-188,Mpumalanga,
-196,Svalbard And Jan Mayen Islands,
-216,Ajman,
-216,Dubai,
-217,Alabama,
-217,Missouri,
-217,New Hampshire,
-217,Oregon,
-217,Pennsylvania,
-217,Rhode Island,
-217,Texas,
-217,Vermont,
-217,Virginia,
-217,Washington,
-217,Wyoming,
-219,Khorezm,
-219,Tashkent,
-9,Catamarca,
-9,Chaco,
-9,Cordoba,
-9,Corrientes,
-9,La Pampa,
-12,Tasmania,
-15,Acklins Island,
-15,Eleuthera,
-16,Al Manamah,
-16,Ash Shamaliyah,
-18,Saint Peter,
-33,Pursat,
-33,Stung Treng,
-35,British Columbia,
-35,Newfoundland,
-35,Northwest Territories,
-35,Nunavut,
-35,Quebec,
-35,Saskatchewan,
-35,Yukon Territory,
-49,Krapinsko-Zagorska,
-49,Primorsko-Goranska,
-49,Sisacko-Moslavacka,
-60,Ahuachapan,
-61,Bristol,
-61,Devon,
-61,Durham,
-61,Hampshire,
-61,Herefordshire,
-61,Kent,
-61,Merseyside,
-61,Norfolk,
-61,Nottinghamshire,
-61,Rutland,
-61,Staffordshire,
-61,Tyne and Wear,
-61,Yorkshire,
-78,Kerkira,
-78,Kiklades,
-78,Korinthia,
-78,Messinia,
-78,Samos,
-92,Andhra Pradesh,
-92,Madhya Pradesh,
-93,Jawa Barat - West Java,
-93,Kalimantan Timur - East Kalimantan,
-93,Sumatera Selatan - South Sumatra,
-104,Central,
-104,Eastern,
-109,Viangchan,
-110,Cesu,
-110,Liepajas,
-110,Ventspils,
-113,Montserrado,
-117,Luxembourg,
-119,Antananarivo,
-139,Oshikoto,
-141,Bagmati,
-144,New Caledonia,
-148,Delta,
-148,Kaduna,
-148,Lagos,
-151,Antrim,
-151,Londonderry,
-158,Morobe,
-164,Aveiro,
-164,evora,
-164,Guarda,
-164,Lisboa,
-164,Portalegre,
-2,Tiranes,
-25,Chuquisaca,
-25,Oruro,
-25,Pando,
-25,Tarija,
-29,Tutong,
-40,Bio-Bio,
-40,Maule,
-44,Antioquia,
-44,Atlantico,
-44,Caldas,
-44,Magdalena,
-44,Risaralda,
-45,Comoros,
-46,Kouilou,
-51,Famagusta,
-53,Nordjylland,
-53,Syddanmark,
-76,Central,
-76,Eastern,
-76,Northern,
-79,Nuuk,
-84,Conakry,
-85,Guinea-Bissau,
-86,East Berbice-Corentyne,
-86,Essequibo Islands-West Demerara,
-86,Mahaica-Berbice,
-90,Csongrad,
-90,Heves,
-90,Zala,
-94,Esfahan,
-94,Fars,
-95,Baghdad,
-100,Kingston,
-100,Saint Thomas,
-101,千葉県,
-101,宮崎県,
-101,富山県,
-101,岐阜県,
-101,島根県,
-101,徳島県,
-101,愛媛県,
-101,新潟県,
-101,神奈川県,
-101,福島県,
-101,秋田県,
-101,青森県,
-101,高知県,
-101,鳥取県,
-101,鹿児島県,
-130,Coahuila,
-130,Hidalgo,
-130,Mexico,
-130,Nayarit,
-130,Nuevo Leon,
-133,Monaco,
-134,Dornod,
-134,Hentiy,
-134,Orhon,
-136,Casablanca,
-136,Sous-Massa-Draa,
-137,Nampula,
-153,Oppland,
-153,Oslo,
-153,Østfold,
-153,Rogaland,
-153,Telemark,
-153,Vestfold,
-157,Colon,
-157,Herrera,
-160,Amazonas,
-160,Ancash,
-160,Apurimac,
-160,Ayacucho,
-160,Huancavelica,
-160,Huanuco,
-160,Lambayeque,
-160,Tumbes,
-160,Ucayali,
-163,Podkarpackie,
-165,Aguadilla,
-165,Aguas Buenas,
-165,Camuy,
-165,Catano,
-165,Ceiba,
-165,Dorado,
-165,Florida,
-165,Guayama,
-165,Loiza,
-165,Manati,
-165,Maricao,
-165,Mayaguez,
-165,Morovis,
-165,Naguabo,
-165,Quebradillas,
-165,Toa Alta,
-165,Utuado,
-165,Vega Alta,
-165,Villalba,
-178,Angus,
-178,Argyll and Bute,
-178,City of Edinburgh,
-178,Clackmannanshire,
-178,Isle of Skye,
-178,Lothian,
-178,South Ayrshire,
-184,Banskobystricky,
-184,Kosicky,
-184,Nitriansky,
-184,Presovsky,
-184,Trenciansky,
-184,Trnavsky,
-184,Zilinsky,
-203,Arusha,
-203,Pemba,
-204,Chonburi,
-204,Nakhon Ratchasima,
-204,Nonthanburi,
-204,Suratthani,
-204,Trat,
-204,Udon Thani,
-208,Arima,
-208,Port-of-Spain,
-208,San Fernando,
-208,Tobago,
-210,Balikesir,
-210,Bursa,
-210,Diyarbakir,
-210,Kocaeli,
-210,Manisa,
-215,Dnipropetrovsk,
-215,Luhansk,
-215,Mykolayiv,
-215,Odesa,
-215,Vinnytsya,
-25,Potosi,
-40,Aisen,
-40,Atacama,
-40,Tarapaca,
-44,Amazonas,
-44,Casanare,
-44,Cauca,
-44,Cesar,
-44,Meta,
-44,Norte de Santander,
-46,Brazzaville,
-51,Kyrenia,
-51,Larnaca,
-51,Limassol,
-51,Nicosia,
-76,Ashanti,
-86,Upper Demerara-Berbice,
-90,Bacs-Kiskun,
-90,Baranya,
-90,Budapest,
-90,Fejer,
-90,Hajdu-Bihar,
-90,Jasz-Nagkyun-Szolnok,
-90,Komarom-Esztergom,
-90,Vas,
-94,Azarbayjan-e Gharbi,
-100,Clarendon,
-100,Saint Andrew,
-100,Saint Catherine,
-100,Saint James,
-100,Saint Mary,
-101,京都府,
-101,山形県,
-101,山梨県,
-101,愛知県,
-101,東京都,
-101,滋賀県,
-101,長崎県,
-101,長野県,
-101,香川県,
-108,Ysyk-Kol (Karakol),
-115,Balzers,
-115,Planken,
-115,Schellenberg,
-123,Mopti,
-130,Aguascalientes,
-130,Baja California,
-130,Baja California Sur,
-130,Chihuahua,
-130,Distrito Federal,
-130,Durango,
-130,Oaxaca,
-130,Puebla,
-130,San Luis Potosi,
-130,Sinaloa,
-130,Sonora,
-130,Tabasco,
-130,Tamaulipas,
-130,Yucatan,
-130,Zacatecas,
-134,Arhangay,
-134,Bulgan,
-134,Hovd,
-134,Selenge,
-134,Ulaanbaatar,
-136,Marrakech-Tensift-El Haouz,
-136,Oriental,
-153,Akershus,
-153,Aust-Adger,
-13,Wien,
-20,Brabant Wallon,
-20,Hainaut - Henegouwen,
-30,Burgas,
-30,Plovdiv,
-30,Razgrad,
-30,Stara Zagora,
-41,云南省 (Yunnan),
-41,北京市 (Beijing),
-41,吉林省 (Jilin),
-41,山东省 (Shandong),
-41,河北省 (Hebei),
-41,甘肃省 (Gansu),
-41,青海省 (Qinghai),
-50,Ciudad de La Habana,
-50,La Habana,
-52,Liberecký Kraj,
-52,Olomoucký Kraj,
-52,Středoceský Kraj,
-56,Azua,
-56,Bahoruco,
-56,Duarte,
-56,Salcedo,
-58,Azuay,
-58,Orellana,
-58,Tungurahua,
-63,Laane-Viru,
-63,Tartu,
-75,Bayern,
-75,Berlin,
-75,Niedersachsen,
-75,Nordrhein-Westfalen,
-83,El Progreso,
-83,Guatemala,
-83,Sacatepequez,
-88,Atlantida,
-88,Copan,
-88,Cortes,
-88,El Paraiso,
-88,Francisco Morazan,
-88,Islas de la Bahia,
-88,Lempira,
-88,Ocotepeque,
-96,Cavan,
-96,Kildare,
-96,Offaly,
-102,Al Balqa',
-102,Amman,
-103,Almaty,
-116,Vilniaus,
-118,Ohrid,
-118,Tetovo,
-142,Gelderland,
-142,Groningen,
-142,Noord-Holland,
-142,Utrecht,
-147,Niger,
-168,Bacau,
-168,Hunedoara,
-168,Mures,
-168,Satu Mare,
-168,Sibiu,
-168,Tulcea,
-168,Vaslui,
-169,Buryatia (Ulan-Ude),
-169,Dagestan (Makhachkala),
-169,Jewish (Yevreyskaya) A.O. (Birobidzhan),
-169,Komi-Permyak (Kudymkar),
-169,Krasnoiarsk Krai (Krasnoyarsk),
-169,Magadan Oblast (Magadan),
-169,Moscow City,
-169,Nizhny Novgorod Oblast (Nizhny Novgorod),
-169,Perm Oblast (Perm),
-172,Castries,
-198,Gotlands län,
-198,Halland län,
-198,Kronobergs län,
-198,orebro län,
-198,Uppsala län,
-198,Västernorrlands län,
-198,Västra Gotalands län,
-200,Al Ladhiqiyah,
-218,Durazno,
-218,Florida,
-218,Maldonado,
-218,Paysandu,
-218,Rivera,
-218,Tacuarembo,
-218,Treinta y Tres,
-13,Kärnten,
-17,Dhaka,
-17,Khulna,
-41,内蒙古自治区 (Neimenggu),
-41,山西省(Shanxi),
-41,新疆维吾尔自治区 (Xinjiang Uygur),
-41,湖南省 (Hunan),
-41,香港 (Hong Kong),
-50,Ciego de Avila,
-52,Jihomoravský Kraj,
-52,Karlovarský Kraj,
-52,Moravskoslezský Kraj,
-52,Plzeňský Kraj,
-56,Dajabon,
-56,Distrito Nacional,
-56,Independencia,
-56,La Altagracia,
-56,Maria Trinidad Sanchez,
-56,Pedernales,
-56,San Cristobal,
-56,Sanchez Ramirez,
-56,Santiago,
-56,Santiago Rodriguez,
-58,Canar,
-58,Chimborazo,
-58,Cotopaxi,
-58,Esmeraldas,
-58,Galapagos,
-58,Guayas,
-58,Imbabura,
-58,Manabi,
-58,Pastaza,
-58,Sucumbios,
-63,Saare,
-73,Brikama,
-75,Hessen,
-75,Rheinland-Pfalz,
-75,Sachsen-Anhalt,
-75,Schleswig-Holstein,
-83,Alta Verapaz,
-83,Chimaltenango,
-83,Huehuetenango,
-83,Izabal,
-83,Jutiapa,
-83,Quetzaltenango,
-83,San Marcos,
-83,Suchitepequez,
-88,Colon,
-88,Gracias a Dios,
-88,La Paz,
-88,Olancho,
-88,Valle,
-96,Carlow,
-96,Cork,
-96,Dublin,
-96,Galway,
-96,Longford,
-96,Meath,
-96,Monaghan,
-96,Waterford,
-96,Wicklow,
-98,Haifa - Hefa,
-98,Jerusalem,
-98,Tel Aviv,
-103,Shyghys Kazakstan (Oskemen),
-116,Kauno,
-118,Skopje,
-122,Maale,
-142,Flevoland,
-142,Friesland,
-142,Noord-Brabant,
-152,Saipan,
-168,Bucuresti,
-168,Buzau,
-168,Constanta,
-168,Maramures,
-169,Amur Oblast (Blagoveshchensk),
-169,Arkhangelsk Oblast (Arkhangelsk),
-169,Chelyabinsk Oblast (Chelyabinsk),
-169,Chuvashia (Cheboksary),
-169,Kaliningrad Oblast (Kaliningrad),
-169,Karelia (Petrozavodsk),
-169,Kemerovo,
-169,Krasnodar Krai (Krasnodar),
-169,Omsk Oblast (Omsk),
-169,Sakhalin Oblast (Yuzhno-Sakhalinsk),
-169,Samara Oblast (Samara),
-169,Saratov Oblast (Saratov),
-169,Smolensk Oblast (Smolensk),
-169,St. Petersburg,
-169,Stavropol Krai (Stavropol),
-169,Yaroslavl Oblast (Yaroslavl),
-173,Saint George,
-198,Blekinge län,
-198,Dalarnas län,
-198,Gävleborgs län,
-198,Jämtlands län,
-198,Stockholms län,
-198,Värmlands län,
-200,Hims,
-218,Canelones,
-218,Cerro Largo,
-218,Salto,
-218,San Jose,
-4,Eastern,
-13,Niederosterreich,
-13,Oberosterreich,
-13,Salzburg,
-13,Steiermark,
-13,Tirol,
-13,Vorarlberg,
-14,Abseron,
-17,Chittagong,
-17,Rajshahi,
-20,Oost Vlaanderen - Flandre Orientale,
-20,West Vlaanderen - Flandre Occidentale,
-24,Bhutan,
-26,Beni,
-30,Grad Sofiya,
-41,天津市 (Tianjin),
-41,安徽省 (Anhui),
-41,广东省 (Guangdong),
-41,江苏省 (Jiangsu),
-41,江西省 (Jiangxi),
-41,河南省 (Henan),
-41,湖北省 (Hubei),
-41,福建省 (Fujian),
-41,辽宁省 (Liaoning),
-41,陕西省 (Shanxi),
-50,Cienfuegos,
-50,Granma,
-50,Guantanamo,
-50,Holguin,
-50,Sancti Spiritus,
-50,Santiago de Cuba,
-52,Hlavni Mesto Praha,
-52,JihoCeský Kraj,
-52,Kralovehradecký Kraj,
-52,ustecký Kraj,
-52,Zlinský Kraj,
-56,Barahona,
-56,El Seibo,
-56,Espaillat,
-56,La Romana,
-56,Monte Cristi,
-56,Monte Plata,
-56,San Jose De Ocoa,
-56,San Juan,
-56,San Pedro de Macoris,
-58,Bolivar,
-58,Loja,
-58,Morona-Santiago,
-58,Napo,
-58,Pichincha,
-63,Jogeva,
-75,Brandenburg,
-75,Hamburg,
-75,Thuringen,
-77,Gibraltar,
-81,Guadeloupe,
-83,Chiquimula,
-83,Jalapa,
-83,Quiche,
-83,Totonicapan,
-88,Comayagua,
-88,Yoro,
-96,Clare,
-96,Donegal,
-96,Laois,
-96,Leitrim,
-96,Limerick,
-96,Roscommon,
-96,Tipperary,
-98,Hadaron (Southern Dsitrict),
-98,Hamerkaz (Central district),
-98,Hazafon (Northern District),
-102,Al Karak,
-103,Pavlodar,
-103,Soltustik Kazakstan (Petropavlovsk),
-103,Zhambyl (Taraz),
-114,Tarabulus,
-120,Blantyre,
-142,Drenthe,
-142,Overijssel,
-142,Zuid-Holland,
-168,Arad,
-168,Arges,
-168,Brasov,
-168,Cluj,
-168,Galati,
-168,Harghita,
-168,Iasi,
-168,Prahova,
-169,Irkutsk Oblast (Irkutsk),
-169,Ivanovo Oblast (Ivanovo),
-169,Kamchatka (Petropavlovsk-Kamchatsky),
-169,Khabarovsk Krai (Khabarovsk),
-169,Khanti-Mansiiski A.O. (Khanty-Mansiysk),
-169,Leningrad Oblast,
-169,Moscow Oblast,
-169,Novosibirsk Oblast (Novosibirsk),
-169,Sakha (Yakutsk),
-169,Sverdlovsk Oblast (Yekaterinburg),
-169,Taimirski A.O. (Dudinka),
-169,Tver Oblast (Tver),
-169,Udmurtia (Izhevsk),
-169,Volgograd Oblast (Volgograd),
-193,Saint Pierre and Miquelon,
-198,Jonkopings län,
-198,Kalmar län,
-198,Norrbottens län,
-198,ostergotlands län,
-207,Tonga,
-218,Artigas,
-218,Colonia,
-218,Lavalleja,
-218,Rio Negro,
-218,Rocha,
-13,Burgenland,
-20,Antwerpen - Anvers,
-20,Bruxelles - Brussel,
-20,Liège - Luik,
-20,Limburg - Limbourg,
-20,Luxembourg - Luxemburg,
-20,Namur - Namen,
-20,Vlaams Brabant - Brabant Flamand,
-30,Lovech,
-30,Varna,
-38,Lobaye,
-41,上海市 (Shanghai),
-41,四川省 (Sichuan),
-41,宁夏回族自治区 (Ningxia Hui),
-41,广西壮族自治区 (Guangxi Zhuang),
-41,浙江省 (Zhejiang),
-41,海南省 (Hainan),
-41,澳门 (Macao),
-41,臺灣 (Taiwan),
-41,西藏自治区 (Sitsang/Xizang),
-41,贵州省 (Guizhou),
-41,重庆市 (Chongqing),
-41,黑龙江省 (Heilongjiang),
-47,Rarotonga,
-50,Camaguey,
-50,Las Tunas,
-50,Matanzas,
-50,Pinar del Rio,
-185,Zasavska,
-190,Albacete,
-190,Asturias,
-190,avila,
-190,Gerona,
-190,Guipuzcoa,
-190,La Coruna,
-190,Las Palmas,
-190,Leon,
-190,Lugo,
-190,Melilla,
-190,Salamanca,
-190,Sevilla,
-190,Soria,
-190,Valencia,
-192,Saint Helena,
-199,Appenzell Innerrhoden – Appenzell Rh.(Int.),
-199,Bern - Berne,
-199,Freiburg - Fribourg,
-199,Neuenburg - Neuchatel,
-199,Tessin - Tessin,
-199,Thurgau - Thurgovie,
-199,Zurich - Zurich,
-201,南投(Nantou),
-201,台北 (Taipei),
-201,基隆 (Keelung),
-201,宜蘭 (Yilan),
-201,屏東 (Pingtung),
-201,高雄 (Kaohsiung),
-206,Tokelau,
-209,Medenine (Madanin),
-209,Monastir (Al Munastir),
-209,Sousse (Susah),
-221,Anzoategui,
-221,Apure,
-221,Aragua,
-221,Carabobo,
-221,Merida,
-221,Trujillo,
-225,Cardiff,
-225,Carmarthenshire,
-225,Conwy,
-225,Merthyr Tydfil,
-225,Monmouthshire,
-225,Powys,
-225,Rhondda Cynon Taff,
-225,S. Glamorgan,
-225,Torfaen,
-225,West Glamorgan,
-227,Western Sahara,
-229,Copperbelt,
-230,Matabeleland North,
-6,Benguela,
-6,Huila,
-6,Luanda,
-6,Uige,
-11,Aruba,
-28,Alagoas,
-28,Amapa,
-28,Mato Grosso,
-28,Paraiba,
-28,Parana,
-28,Piaui,
-28,Tocantins,
-65,Falkland Islands (Islas Malvinas),
-66,Faroe Islands,
-68,Lappi,
-68,Pirkanmaa,
-68,Pohjois-Pohjanmaa,
-68,Varsinais-Suomi,
-69,Auvergne,
-69,Basse Normandie,
-69,Corse,
-69,La Reunion,
-69,Limousin,
-69,Nouvelle Caledonie,
-69,Pays de la Loire,
-69,Picardie,
-70,Cayenne,
-91,Nordhurland Vestra,
-91,Sudhurnes,
-99,Abruzzo,
-99,Liguria,
-99,Marche,
-99,Sardegna,
-99,Umbria,
-99,Veneto,
-105,Kiribati,
-106,경상북도 (Gyeongsangbuk-do),
-106,대구 (Daegu),
-106,부산 (Busan),
-106,전라남도 (Jeollanam-do),
-106,충청남도 (Chungchong-namdo),
-111,Beyrouth,
-121,Johor,
-121,Kelantan,
-121,Perak,
-121,Perlis,
-132,Transnistria,
-140,Nauru,
-145,Canterbury,
-145,Chatham islands,
-145,Christchurch,
-145,Eastland,
-145,Mt Cook,
-145,Northland,
-145,Southland,
-145,Waikato,
-146,Atlantico Norte,
-146,Jinotega,
-146,Matagalpa,
-155,Islamabad Capital Territory,
-155,N.W.F.P (Surhad),
-155,Sindh,
-159,Central,
-159,Guaira,
-159,Misiones,
-161,Albay,
-161,Batangas,
-161,Cagayan,
-161,Cavite,
-161,La Union,
-161,Negros Oriental,
-161,South Cotabato,
-182,Western,
-187,Gedo,
-190,Alicante,
-190,Badajoz,
-190,Caceres,
-190,Cadiz,
-190,Cantabria,
-190,Ceuta,
-190,Granada,
-190,Huelva,
-190,Lerida,
-190,Navarra,
-190,Ourense,
-190,Palencia,
-190,Santa Cruz de Tenerife,
-190,Segovia,
-199,Appenzell Ausserrhoden – Appenzell Rh.(Ext.),
-199,Basel-Landschaft - Bale-Campagne,
-199,Genf - Genève,
-199,Glarus - Glaris,
-199,Graubunden - Grisons,
-199,Jura - Jura,
-199,Sankt Gallen - Saint-Gall,
-199,Schaffhausen - Schaffhouse,
-201,臺中 (Taichung),
-201,臺東 (Taitung),
-205,Maritime,
-209,Tunis,
-220,Vanuatu,
-221,Dependencias Federales,
-221,Distrito Federal,
-221,Guarico,
-221,Sucre,
-221,Vargas,
-225,Caerphilly,
-225,Denbighshire,
-225,Dyfed,
-225,Gwent,
-225,Gwynedd,
-225,Isle of Anglesey,
-225,Mid Glamorgan,
-225,Newport,
-225,Wrexham,
-230,Harare,
-3,Mascara,
-3,Oran,
-10,Lorri,
-28,Distrito Federal,
-28,Para,
-28,Rio de Janeiro,
-28,Rio Grande do Sul,
-28,Rondonia,
-28,Sao Paulo,
-48,Guanacaste,
-48,Puntarenas,
-55,Saint George,
-68,Häme,
-68,Itä-Uusimaa,
-153,Hordaland,
-153,Møre og Romsdal,
-153,Nordland,
-157,Chiriqui,
-157,Darien,
-157,Los Santos,
-157,Panama,
-157,Veraguas,
-160,Cajamarca,
-160,Loreto,
-160,Madre de Dios,
-160,Piura,
-160,Puno,
-160,San Martin,
-160,Tacna,
-163,Malopolskie,
-163,Slaskie,
-165,Adjuntas,
-165,Aguada,
-165,Bayamon,
-165,Canovanas,
-165,Ciales,
-165,Comerio,
-165,Culebra,
-165,Guanica,
-165,Hatillo,
-165,Jayuya,
-165,Lajas,
-165,Las Marias,
-165,Luquillo,
-165,Rincon,
-165,San Juan,
-165,San Sebastian,
-176,Sao Tome,
-178,Dumfries and Galloway,
-178,Perth and Kinross,
-178,Stirling,
-178,West Dunbartonshire,
-178,West Lothian,
-181,Seychelles,
-184,Bratislavsky,
-203,Shinyanga,
-203,Tanga,
-204,Bangkok,
-204,Phetchaburi,
-204,Phitsanulok,
-204,Rayong,
-208,Saint Patrick,
-210,Antalya,
-210,Eskisehir,
-214,Central,
-214,Eastern,
-215,Donetsk,
-215,Kyvivs'ka,
-215,Kyyiv,
-215,Zakarpats'ka,
-228,Ibb,
-25,La Paz,
-25,Santa Cruz,
-40,Antofagasta,
-40,Araucania,
-40,los Lagos,
-40,Valparaiso,
-44,Arauca,
-44,Bolivar,
-44,Boyaca,
-44,Caqueta,
-44,Choco,
-44,Distrito Capital,
-44,La Guajira,
-44,Narino,
-44,San Andres y Providencia,
-44,Santander,
-44,Tolima,
-51,Paphos,
-53,Hovedstaden,
-53,Sjælland,
-76,Upper East,
-90,Tolna,
-94,Hormozgan,
-94,Khorasan,
-94,Markazi,
-94,Semnan,
-100,Saint Ann,
-100,Westmoreland,
-101,佐賀県,
-101,兵庫県,
-101,大分県,
-101,奈良県.,
-101,宮城県,
-101,山口県,
-101,岡山県,
-101,岩手県,
-101,広島県,
-101,栃木県,
-101,沖縄県,
-101,福岡県,
-101,群馬県,
-101,茨城県,
-108,Bishkek Shaary,
-115,Triesen,
-128,Port Louis,
-130,Campeche,
-130,Colima,
-130,Guanajuato,
-130,Jalisco,
-130,Michoacan,
-130,Quintana Roo,
-134,Hovsgol,
-134,Uvs,
-136,Fes-Boulmane,
-136,Laayoune-Boujdour-Sakia El Hamra,
-136,Tangier-Tetouan,
-153,Sør-Trøndelag,
-153,Troms,
-157,Bocas del Toro,
-157,Cocle,
-160,Callao,
-160,Cusco,
-160,La Libertad,
-160,Lima,
-160,Moquegua,
-160,Pasco,
-163,Dolnoslaskie,
-163,Kujawsko-Pomorskie,
-163,Mazowieckie,
-163,Pomorskie,
-163,Wielkopolskie,
-165,Aibonito,
-165,Arecibo,
-165,Arroyo,
-165,Barceloneta,
-165,Caguas,
-165,Cidra,
-165,Coamo,
-165,Guayanilla,
-165,Guaynabo,
-165,Gurabo,
-165,Hormigueros,
-165,Isabela,
-165,Juana Diaz,
-165,Juncos,
-165,Moca,
-165,Naranjito,
-165,Orocovis,
-165,Patillas,
-165,Penuelas,
-165,Rio Grande,
-165,Sabana Grande,
-165,Salinas,
-165,San Lorenzo,
-165,Vega Baja,
-178,East Ayrshire,
-178,East Lothian,
-178,Fife,
-178,North Lanarkshire,
-178,South Lanarkshire,
-178,Tarbert Argyll,
-178,Tayside,
-178,The Scottish Borders,
-203,Dar es Salaam,
-203,Zanzibar,
-204,Chiang Mai,
-204,Nakhon Pathom,
-204,Phuket,
-208,Mayaro,
-208,Saint Andrew,
-210,Aydin,
-210,Gaziantep,
-210,Isparta,
-210,Izmir,
-210,Nigde,
-210,Samsun,
-210,Tokat,
-211,Ahal (Ashgabat),
-215,Kharkiv,
-215,Poltava,
-226,Wallis And Futuna Islands,
-228,Hadramawt,
-8,Saint John,
-8,Saint Paul,
-25,Beni,
-25,Cochabamba,
-29,Belait,
-29,Brunei and Muara,
-40,Coquimbo,
-40,Libertador General,
-40,Magall. Y Ant. Chilena,
-40,Metrop. De Santiago,
-42,Christmas Island,
-44,Bogota,
-44,Cordoba,
-44,Cundinamarca,
-44,Huila,
-44,Putumayo,
-44,Valle del Cauca,
-53,Midtjylland,
-164,Santarem,
-164,Setubal,
-166,Ar Rayyan,
-177,Ash Sharqiyah (Eastern Province),
-188,Eastern Cape,
-188,Free State,
-188,Northern Cape,
-202,Kuhistoni-Badakhshan,
-202,Sughd,
-216,Ash Shariqah,
-216,Fujairah,
-217,Colorado,
-217,Connecticut,
-217,District of Columbia,
-217,Louisiana,
-217,Maryland,
-217,Massachusetts,
-217,Nebraska,
-217,New Mexico,
-217,New York,
-217,Ohio,
-217,West Virginia,
-219,Bukhara,
-219,Samarkand,
-223,British Virgin Islands,
-7,Anguilla,
-9,Chubut,
-9,Jujuy,
-9,La Rioja,
-9,Mendoza,
-9,Rio Negro,
-9,Salta,
-9,Santa Fe,
-9,Santiago del Estero,
-9,Tierra del Fuego,
-12,Christmas Island,
-12,New South Wales,
-12,South Australia,
-12,Victoria,
-15,Grand Bahama,
-16,Al Muharraq,
-16,Madinat 'Isa,
-21,Orange Walk,
-21,Toledo,
-23,Hamilton,
-23,Saint George's,
-27,South East,
-34,Littoral,
-35,Ontario,
-39,Chad,
-49,Koprivnicko-Krizevacka,
-49,Splitsko-Dalmatinska,
-49,Vukovarsko-Srijemska,
-59,Al Bahr al Ahmar,
-59,Qina,
-59,Suhaj,
-60,Cabanas,
-60,La Union,
-60,San Salvador,
-60,San Vicente,
-60,Santa Ana,
-60,Sonsonate,
-61,Bedfordshire,
-61,Berkshire,
-61,Cheshire,
-61,Cumbria,
-61,Dorset,
-61,Gloucestershire,
-61,Isle of Wight,
-61,London,
-61,Manchester,
-61,Middlesex,
-61,Shropshire,
-61,Somerset,
-61,Sussex,
-61,Warwickshire,
-61,Wiltshire,
-71,French Polynesia,
-78,Evvoia,
-78,Kavala,
-78,Lasithi,
-78,Pieria,
-78,Serrai,
-78,Thessaloniki,
-78,Zakinthos,
-92,Assam,
-92,Gujarat,
-92,Jammu and Kashmir,
-92,Jharkhand,
-92,Karnataka,
-92,Kerala,
-92,Maharashtra,
-92,Pondicherry,
-92,Sikkim,
-92,Uttar Pradesh,
-92,Uttranchal,
-93,Banten,
-93,Jawa Tengah - Central Java,
-93,Lampung,
-93,Papua,
-93,Riau Kepulauan,
-93,Sulawesi Selatan - South Sulawesi,
-93,Sumatera Utara - North Sumatra,
-93,Yogyakarta,
-104,Coast,
-104,Nairobi Area,
-104,Nyanza,
-112,Maseru,
-127,Nouakchott,
-139,Kavango,
-139,Otjozondjupa,
-148,Abuja Federal Capital Territory,
-148,Oyo,
-164,Braganca,
-164,Viseu,
-177,Al Jawf,
-179,Kaolack,
-191,Sri Lanka,
-197,Hhohho,
-212,Turks And Caicos Islands,
-216,Ras al-Khaymah,
-217,Alaska,
-217,Arkansas,
-217,Florida,
-217,Hawaii,
-217,Idaho,
-217,Illinois,
-217,Indiana,
-217,Iowa,
-217,Kentucky,
-217,Maine,
-217,Michigan,
-217,Mississippi,
-217,North Dakota,
-217,Oklahoma,
-217,South Dakota,
-217,Tennessee,
-217,Utah,
-217,Wisconsin,
-222,Dong Bang Song Hong,
-222,Dong Nam Bo,
-224,St. Croix,
-9,Entre Rios,
-9,Misiones,
-9,San Luis,
-9,Santa Cruz,
-12,Queensland,
-15,Abaco,
-15,Andros,
-15,Cat Island,
-15,Exuma and Cays,
-15,New Providence,
-15,San Salvador,
-19,Mahilyowskaya,
-21,Belize,
-22,Atlantique,
-22,Oueme,
-23,Sandys,
-33,Kampong Cham,
-33,Kampong Thom,
-33,Kracheh,
-33,Phnom Penh Municipality,
-33,Prey Veng,
-33,Siem Reap,
-35,New Brunswick,
-35,Nova Scotia,
-35,Prince Edward Island,
-49,Brodsko-Posavska,
-49,Dubrovacko-Neretvanska,
-49,Osjecko-Baranjska,
-49,Zadarska,
-49,Zagrebacka,
-59,Al Jizah,
-60,Morazan,
-61,Cambridgeshire,
-61,Cornwall,
-61,Derbyshire,
-61,East Riding of Yorkshire,
-61,Essex,
-61,Northumberland,
-61,South Yorkshire,
-61,Surrey,
-78,Iraklion,
-50,Villa Clara,
-52,Pardubický Kraj,
-52,VysoCina,
-54,Djibouti,
-56,Elias Pina,
-56,Hato Mayor,
-56,La Vega,
-56,Monsenor Nouel,
-56,Peravia,
-56,Puerto Plata,
-56,Samana,
-56,Santo Domingo,
-56,Valverde,
-58,Carchi,
-58,El Oro,
-58,Los Rios,
-58,Zamora Chinchipe,
-63,Harju,
-63,Parnu,
-63,Viljandi,
-64,Adis Abeba,
-64,Tigray,
-67,Central,
-73,Banjul,
-75,Baden-Wurttemberg,
-75,Bremen,
-75,Mecklenburg-Vorpommern,
-75,Saarland,
-75,Sachsen,
-83,Baja Verapaz,
-83,Escuintla,
-83,Peten,
-83,Retalhuleu,
-83,Santa Rosa,
-83,Solola,
-83,Zacapa,
-88,Choluteca,
-88,Intibuca,
-88,Santa Barbara,
-96,Kerry,
-96,Kilkenny,
-96,Louth,
-96,Mayo,
-96,Sligo,
-96,Westmeath,
-96,Wexford,
-102,Irbid,
-103,Qaraghandy,
-107,Al Ahmadi,
-107,Al Farwaniyah,
-116,Klaipedos,
-124,Malta,
-142,Limburg,
-142,Zeeland,
-143,Netherlands Antilles,
-167,Reunion,
-168,Bihor,
-168,Caras-Severin,
-168,Dolj,
-168,Timis,
-169,Altay (Barnaul),
-169,Bashkortostan (Ufa),
-169,Kaluga Oblast (Kaluga),
-169,Kurgan Oblast (Kurgan),
-169,Mordovia (Saransk),
-169,Murmansk Oblast (Murmansk),
-169,Novgorod Oblast (Novgorod),
-169,Orenburg Oblast (Orenburg),
-169,Penza Oblast (Penza),
-169,Primorski Krai (Vladivostok),
-169,Rostov Oblast (Rostov na Donu),
-169,Tambov Oblast (Tambov),
-169,Tomsk Oblast (Tomsk),
-170,Kigali Ngali,
-186,Guadalcanal,
-189,"South Georgia, Sth Sandwich Islands"
-194,Al Khartum,
-198,Skåne län,
-198,Sodermanlands län,
-198,Västerbottens län,
-198,Västmanlands län,
-200,Dimashq,
-200,Halab,
-213,Tuvalu,
-218,Flores,
-218,Montevideo,
-218,Soriano,
-68,Kainuu,
-68,Keski-Suomi,
-68,Kymenlaakso,
-68,Päijät-Häme,
-68,Pohjanmaa,
-68,Pohjois-Savo,
-68,Satakunta,
-69,Alsace,
-69,Bretagne,
-69,Guadeloupe,
-69,Ile de France,
-69,Lorraine,
-69,Midi-Pyrenees,
-69,Polynesie Francaise,
-91,Hofudborgarsvaedi,
-99,Emilia-Romagna,
-99,Sicilia,
-106,경상남도 (Gyeongsangnam-do),
-106,서울 (Seoul),
-106,울산 (Ulsan),
-121,Kedah,
-121,Pulau Pinang,
-121,Selangor,
-138,Mon State,
-145,Auckland,
-145,Bay of Plenty,
-145,Nelson,
-145,Otago,
-145,Wanaka,
-145,Wellington,
-146,Boaco,
-146,Chinandega,
-146,Granada,
-146,Madriz,
-146,Nueva Segovia,
-146,Rio San Juan,
-154,Ash Sharqiyah,
-154,Masqat,
-155,Northern Areas,
-155,Punjab,
-156,Palau,
-159,Alto Paraguay,
-159,Amambay,
-159,Caazapa,
-159,Concepcion,
-159,Cordillera,
-159,Presidente Hayes,
-161,Agusan del Norte,
-161,Benguet,
-161,Camarines Norte,
-161,Capiz,
-161,Cebu,
-161,Negros Occidental,
-161,Rizal,
-161,Sorsogon,
-161,Tarlac,
-161,Tawitawi,
-161,Zambales,
-161,Zamboanga del norte,
-174,Samoa,
-180,Montenegro,
-180,Vojvodina,
-182,Southern,
-183,Singapore,
-185,Notranjsko-kraška,
-185,Obalno-kraška,
-185,Osrednjeslovenska,
-190,Baleares,
-190,Burgos,
-190,Castellon,
-190,Ciudad Real,
-190,Cuenca,
-190,Guadalajara,
-190,Jaen,
-190,La Rioja,
-190,Malaga,
-190,Murcia,
-190,Pontevedra,
-190,Tarragona,
-190,Teruel,
-190,Vizcaya,
-190,Zaragoza,
-199,Aargau - Argovie,
-199,Obwalden - Obwald,
-199,Schwyz - Schwytz,
-199,Solothurn - Soleure,
-199,Waadt - Vaud,
-199,Zug - Zoug,
-201,嘉義 (Chiayi),
-201,彰化 (Changhua),
-201,新竹 (Hsinchu),
-201,澎湖 (Penghu),
-201,花蓮 (Hualien),
-209,Gafsa (Qafsah),
-221,Delta Amacuro,
-221,Lara,
-221,Miranda,
-221,Tachira,
-221,Yaracuy,
-221,Zulia,
-225,Ceredigion,
-225,Pembrokeshire,
-225,Swansea,
-78,Kefallinia,
-78,Kilkis,
-78,Kozani,
-78,Magnisia,
-80,Carriacou and Petit Martinique,
-92,Bihar,
-92,Goa,
-92,Haryana,
-92,Manipur,
-92,Tamil Nadu,
-92,West Bengal,
-93,Jawa Timur - East Java,
-93,Kalimantan Barat - West Kalimantan,
-110,Rigas,
-117,Diekirch,
-117,Grevenmacher,
-139,Erongo,
-139,Khomas,
-139,Oshana,
-148,Osun,
-149,Niue,
-151,Armagh,
-151,Fermanagh,
-158,Eastern Highlands,
-158,National Capital,
-164,Leiria,
-164,Viana do Castelo,
-166,Ad Dawhah,
-177,Al Qasim,
-177,Asir,
-179,Ziguinchor,
-188,North-West,
-188,Western Cape,
-216,Abu Dhabi,
-217,Arizona,
-217,California,
-217,Delaware,
-217,Georgia,
-217,Kansas,
-217,Minnesota,
-217,Montana,
-217,Nevada,
-217,New Jersey,
-217,North Carolina,
-217,South Carolina,
-222,Khu Bon Cu,
-57,East Timor,
-62,Equatorial Guinea,
-76,Greater Accra,
-86,Demerara-Mahaica,
-86,Pomeroon-Supenaam,
-90,Borsod-Abauj-Zemblen,
-90,Gyor-Moson-Sopron,
-90,Nograd,
-90,Pest,
-90,Somogy,
-90,Szabolcs-Szatmar-Bereg,
-94,Kermanshah,
-94,Khuzestan,
-94,Mazandaran,
-94,Sistan va Baluchestan,
-94,Tehran,
-95,Al Basrah,
-97,Isle of Man,
-100,Hanover,
-100,Manchester,
-100,Saint Elizabeth,
-100,Trelawny,
-101,三重県,
-101,北海道,
-101,和歌山県,
-101,埼玉県,
-101,大阪府,
-101,熊本県,
-101,石川県,
-101,福井県,
-101,静岡県,
-115,Ruggell,
-115,Schaan,
-115,Vaduz,
-123,Bamako,
-126,Fort-de-France,
-128,Plaines Wilhems,
-130,Chiapas,
-130,Guerrero,
-130,Morelos,
-130,Queretaro,
-130,Tlaxcala,
-130,Veracruz,
-134,Bayan-Olgiy,
-134,Govi-Altay,
-136,Meknes-Tafilalet,
-136,Rabat-Sale-Zemmour-Zaer,
-137,Maputo City,
-153,Buskerud,
-153,Finnmark,
-153,Hedmark,
-153,Nord-Trøndelag,
-153,Sogn og Fjordane,
-153,Vest-Agder,
-160,Arequipa,
-160,Ica,
-160,Junin,
-163,Lodzkie,
-163,Lubelskie,
-163,Lubuskie,
-163,Podlaskie,
-163,Swietokrzyskie,
-163,Warminsko-Mazurskie,
-163,Zachodniopomorskie,
-165,Anasco,
-165,Barranquitas,
-165,Cabo Rojo,
-165,Carolina,
-165,Cayey,
-165,Corozal,
-165,Fajardo,
-165,Humacao,
-165,Lares,
-165,Las Piedras,
-165,Maunabo,
-165,Ponce,
-165,San German,
-165,Santa Isabel,
-165,Toa Baja,
-165,Trujillo Alto,
-165,Vieques,
-165,Yabucoa,
-165,Yauco,
-178,Aberdeenshire,
-178,City of Glasgow,
-178,East Dunbartonshire,
-178,Falkirk,
-178,Highland,
-178,Inverclyde,
-178,Kincardineshire,
-178,Lanarkshire,
-178,Midlothian,
-178,Moray,
-178,North Ayrshire,
-178,Orkney Islands,
-178,Renfrewshire,
-178,Shetland Islands,
-178,Strathclyde,
-178,Western Isles,
-195,Paramaribo,
-204,Chachoengsao,
-204,Samut Prakan,
-208,Caroni,
-208,Nariva,
-208,Saint David,
-208,Saint George,
-208,Victoria,
-210,Adana,
-210,Ankara,
-210,Icel,
-210,Istanbul,
-210,Mugla,
-215,Avtonomna Respublika Krym,
-215,Cherkasy,
-215,Rivne,
-228,San'a',
+3;"Skikda"
+10;"Shirak"
+28;"Amazonas"
+28;"Bahia"
+28;"Espirito Santo"
+28;"Maranhao"
+28;"Mato Grosso do Sul"
+28;"Minas Gerais"
+31;"Kourweogo"
+31;"Passore"
+31;"Yatenga"
+36;"Sao Vicente"
+37;"Little Cayman"
+48;"Alajuela"
+68;"Ahvenanmaa"
+68;"Pohjois-Karjala"
+68;"Uusimaa"
+69;"Aquitaine"
+69;"Bourgogne"
+69;"Centre"
+69;"Champagne-Ardenne"
+69;"Nord - Pas de Calais"
+69;"Poitou-Charentes"
+69;"Provence - Alpes - Cote d Azur"
+69;"St Pierre et Miquelon"
+72;"Estuaire"
+87;"Centre"
+87;"Sud-Est"
+89;"Hong Kong"
+99;"Calabria"
+99;"Lazio"
+99;"Lombardia"
+99;"Puglia"
+99;"Toscana"
+99;"Trentino-Alto Adige"
+106;"강원도 (Gangwon-do)"
+106;"경기도 (Gyeonggi-do)"
+106;"인천 (Incheon)"
+106;"전라북도 (Jeollabuk-do)"
+106;"제주도 (Jeju-do)"
+121;"Melaka"
+121;"Negeri Sembilan"
+121;"Terengganu"
+125;"Marshall Islands"
+132;"Chisinau"
+138;"Yangon"
+145;"Fiordland"
+145;"Rotorua"
+146;"Atlantico Sur"
+146;"Esteli"
+146;"Managua"
+146;"Masaya"
+146;"Rivas"
+155;"Azad Kashmir"
+155;"Balochistan"
+159;"Itapua"
+159;"neembucu"
+161;"Leyte"
+161;"Pangasinan"
+161;"Quezon"
+162;"Pitcairn Islands"
+171;"Saint George Basseterre"
+180;"Kosovo"
+185;"Dolenjska (Jugovzhodna Slovenija)"
+185;"Gorenjska"
+185;"Savinjska"
+187;"Banaadir"
+190;"alava"
+190;"Almeria"
+190;"Barcelona"
+190;"Cordoba"
+190;"Huesca"
+190;"Madrid"
+190;"Toledo"
+190;"Valladolid"
+190;"Zamora"
+199;"Basel-Stadt - Bale-Ville"
+199;"Luzern-Lucerne"
+199;"Nidwalden - Nidwald"
+199;"Uri - Uri"
+199;"Wallis - Valais"
+201;"台南 (Tainan)"
+201;"桃園 (Taoyuan)"
+201;"苗栗(Miaoli)"
+201;"連江(Lienchiang)"
+201;"金門 (Kinmen)"
+201;"雲林 (Yunlin)"
+221;"Amazonas"
+221;"Barinas"
+221;"Bolivar"
+221;"Cojedes"
+221;"Falcon"
+221;"Monagas"
+221;"Nueva Esparta"
+221;"Portuguesa"
+225;"Blaenau Gwent"
+225;"Bridgend"
+225;"Clwyd"
+225;"Flintshire"
+225;"Neath Port Talbot"
+225;"Vale of Glamorgan"
+229;"Lusaka"
+230;"Manicaland"
+230;"Mashonaland Central"
+230;"Midlands"
+1;"Kabul"
+3;"Alger"
+3;"Constantine"
+6;"Cuanza Sul"
+10;"Yerevan"
+28;"Acre"
+28;"Ceara"
+28;"Goias"
+28;"Pernambuco"
+28;"Rio Grande do Norte"
+28;"Roraima"
+28;"Santa Catarina"
+28;"Sergipe"
+32;"Bujumbura"
+36;"Sao Tiago"
+48;"Cartago"
+48;"Heredia"
+48;"Puerto Limon - Limon"
+48;"San Jose"
+68;"Etelä-Karjala"
+68;"Etelä-Pohjanmaa"
+68;"Etelä-Savo"
+68;"Keski-Pohjanmaa"
+69;"Franche Comte"
+69;"Guyane"
+69;"Haute Normandie"
+69;"Languedoc-Roussillon"
+69;"Martinique"
+69;"Rhone-Alpes"
+87;"Ouest"
+91;"Sudhurland"
+99;"Basilicata"
+99;"Campania"
+99;"Friuli-Venezia Giulia"
+99;"Molise"
+99;"Piemonte"
+99;"Valle d'Aosta"
+106;"광주 (Gwangju)"
+106;"대전 (Daejeon)"
+106;"충청북도 (Chungcheongbuk-do)"
+111;"Liban-Nord"
+121;"Pahang"
+121;"Sabah"
+121;"Sarawak"
+121;"Wilayah persekutuan Labuan"
+129;"Mayotte"
+131;"Micronesia"
+145;"Coromandel"
+145;"Dunedin"
+145;"Hawke's Bay"
+145;"Horowhenua"
+145;"Taranaki"
+145;"Taupo/Ruapehu"
+145;"Wairarapa"
+145;"Wanganui-Manawatu"
+145;"Westcoast"
+146;"Carazo"
+146;"Chontales"
+146;"Leon"
+159;"Alto Parana"
+159;"Asuncion"
+159;"Caaguazu"
+159;"Canindeyu"
+159;"Paraguari"
+159;"San Pedro"
+161;"Davao del Norte"
+161;"Ilocos Norte"
+161;"Iloilo"
+161;"Laguna"
+161;"Mindoro Oriental"
+161;"Misamis Oriental"
+161;"National Capital Region (Manila)"
+161;"Palawan"
+161;"Pampanga"
+180;"Serbia"
+185;"Podravska"
+185;"Pomurska"
+5;"Andorra la Vella"
+5;"Escaldes-Engordany"
+9;"Buenos Aires"
+9;"Capital Federal"
+9;"Formosa"
+9;"Neuquen"
+9;"San Juan"
+9;"Tucuman"
+12;"Australian Capital Territory"
+12;"Northern Territory"
+12;"Western Australia"
+15;"Inagua Islands"
+18;"Saint Michael"
+19;"Minskaya"
+21;"Cayo"
+22;"Atakora"
+33;"Battambang"
+33;"Kampong Speu"
+33;"Svay Rieng"
+33;"Takeo"
+34;"Centre"
+34;"Sud-Ouest"
+35;"Alberta"
+35;"Manitoba"
+43;"Cocos (Keeling) Islands"
+49;"Istarska"
+49;"Pozesko-Slavonska"
+49;"Varazdinska"
+49;"Zagreb"
+59;"Ad Daqahliyah"
+59;"Al Qahirah"
+59;"Sinai Desert"
+60;"Chalatenango"
+60;"Cuscatlan"
+60;"La Libertad"
+60;"La Paz"
+60;"San Miguel"
+60;"Usulutan"
+61;"Buckinghamshire"
+61;"Cleveland"
+61;"Hertfordshire"
+61;"Isle of Man"
+61;"Lancashire"
+61;"Leicestershire"
+61;"Lincolnshire"
+61;"North Yorkshire"
+61;"Northamptonshire"
+61;"Oxfordshire"
+61;"Suffolk"
+61;"West Midlands"
+61;"West Sussex"
+61;"Worcestershire"
+74;"T'bilisi"
+78;"Ahaia"
+78;"Argolis"
+78;"Attiki"
+78;"Dodekanisos"
+78;"Hania"
+78;"Larisa"
+78;"Lesvos"
+78;"Trikala"
+78;"Voiotia"
+82;"Guam"
+92;"Chandigarh"
+92;"Chhattisgarh"
+92;"Delhi"
+92;"Himachal Pradesh"
+92;"Orissa"
+92;"Punjab"
+92;"Rajasthan"
+93;"Bali"
+93;"Jakarta Raya"
+93;"Nusa Tenggara Barat - West Nusa Tenggara"
+93;"Sulawesi Utara - North Sulawesi"
+93;"Sumatera Barat - West Sumatra"
+104;"Rift Valley"
+104;"Western"
+113;"Bong"
+135;"Montserrat"
+141;"Kosi"
+148;"Edo"
+148;"Rivers"
+150;"Norfolk Island"
+151;"Down"
+151;"Tyrone"
+158;"Madang"
+158;"Western Highlands"
+164;"Azores"
+164;"Coimbra"
+164;"Faro"
+164;"Madeira"
+164;"Porto"
+175;"San Marino"
+177;"Ar Riyad"
+177;"Makkah"
+179;"Louga"
+188;"Gauteng"
+188;"KwaZulu-Natal"
+188;"Mpumalanga"
+196;"Svalbard And Jan Mayen Islands"
+216;"Ajman"
+216;"Dubai"
+217;"Alabama"
+217;"Missouri"
+217;"New Hampshire"
+217;"Oregon"
+217;"Pennsylvania"
+217;"Rhode Island"
+217;"Texas"
+217;"Vermont"
+217;"Virginia"
+217;"Washington"
+217;"Wyoming"
+219;"Khorezm"
+219;"Tashkent"
+9;"Catamarca"
+9;"Chaco"
+9;"Cordoba"
+9;"Corrientes"
+9;"La Pampa"
+12;"Tasmania"
+15;"Acklins Island"
+15;"Eleuthera"
+16;"Al Manamah"
+16;"Ash Shamaliyah"
+18;"Saint Peter"
+33;"Pursat"
+33;"Stung Treng"
+35;"British Columbia"
+35;"Newfoundland"
+35;"Northwest Territories"
+35;"Nunavut"
+35;"Quebec"
+35;"Saskatchewan"
+35;"Yukon Territory"
+49;"Krapinsko-Zagorska"
+49;"Primorsko-Goranska"
+49;"Sisacko-Moslavacka"
+60;"Ahuachapan"
+61;"Bristol"
+61;"Devon"
+61;"Durham"
+61;"Hampshire"
+61;"Herefordshire"
+61;"Kent"
+61;"Merseyside"
+61;"Norfolk"
+61;"Nottinghamshire"
+61;"Rutland"
+61;"Staffordshire"
+61;"Tyne and Wear"
+61;"Yorkshire"
+78;"Kerkira"
+78;"Kiklades"
+78;"Korinthia"
+78;"Messinia"
+78;"Samos"
+92;"Andhra Pradesh"
+92;"Madhya Pradesh"
+93;"Jawa Barat - West Java"
+93;"Kalimantan Timur - East Kalimantan"
+93;"Sumatera Selatan - South Sumatra"
+104;"Central"
+104;"Eastern"
+109;"Viangchan"
+110;"Cesu"
+110;"Liepajas"
+110;"Ventspils"
+113;"Montserrado"
+117;"Luxembourg"
+119;"Antananarivo"
+139;"Oshikoto"
+141;"Bagmati"
+144;"New Caledonia"
+148;"Delta"
+148;"Kaduna"
+148;"Lagos"
+151;"Antrim"
+151;"Londonderry"
+158;"Morobe"
+164;"Aveiro"
+164;"evora"
+164;"Guarda"
+164;"Lisboa"
+164;"Portalegre"
+2;"Tiranes"
+25;"Chuquisaca"
+25;"Oruro"
+25;"Pando"
+25;"Tarija"
+29;"Tutong"
+40;"Bio-Bio"
+40;"Maule"
+44;"Antioquia"
+44;"Atlantico"
+44;"Caldas"
+44;"Magdalena"
+44;"Risaralda"
+45;"Comoros"
+46;"Kouilou"
+51;"Famagusta"
+53;"Nordjylland"
+53;"Syddanmark"
+76;"Central"
+76;"Eastern"
+76;"Northern"
+79;"Nuuk"
+84;"Conakry"
+85;"Guinea-Bissau"
+86;"East Berbice-Corentyne"
+86;"Essequibo Islands-West Demerara"
+86;"Mahaica-Berbice"
+90;"Csongrad"
+90;"Heves"
+90;"Zala"
+94;"Esfahan"
+94;"Fars"
+95;"Baghdad"
+100;"Kingston"
+100;"Saint Thomas"
+101;"千葉県"
+101;"宮崎県"
+101;"富山県"
+101;"岐阜県"
+101;"島根県"
+101;"徳島県"
+101;"愛媛県"
+101;"新潟県"
+101;"神奈川県"
+101;"福島県"
+101;"秋田県"
+101;"青森県"
+101;"高知県"
+101;"鳥取県"
+101;"鹿児島県"
+130;"Coahuila"
+130;"Hidalgo"
+130;"Mexico"
+130;"Nayarit"
+130;"Nuevo Leon"
+133;"Monaco"
+134;"Dornod"
+134;"Hentiy"
+134;"Orhon"
+136;"Casablanca"
+136;"Sous-Massa-Draa"
+137;"Nampula"
+153;"Oppland"
+153;"Oslo"
+153;"Østfold"
+153;"Rogaland"
+153;"Telemark"
+153;"Vestfold"
+157;"Colon"
+157;"Herrera"
+160;"Amazonas"
+160;"Ancash"
+160;"Apurimac"
+160;"Ayacucho"
+160;"Huancavelica"
+160;"Huanuco"
+160;"Lambayeque"
+160;"Tumbes"
+160;"Ucayali"
+163;"Podkarpackie"
+165;"Aguadilla"
+165;"Aguas Buenas"
+165;"Camuy"
+165;"Catano"
+165;"Ceiba"
+165;"Dorado"
+165;"Florida"
+165;"Guayama"
+165;"Loiza"
+165;"Manati"
+165;"Maricao"
+165;"Mayaguez"
+165;"Morovis"
+165;"Naguabo"
+165;"Quebradillas"
+165;"Toa Alta"
+165;"Utuado"
+165;"Vega Alta"
+165;"Villalba"
+178;"Angus"
+178;"Argyll and Bute"
+178;"City of Edinburgh"
+178;"Clackmannanshire"
+178;"Isle of Skye"
+178;"Lothian"
+178;"South Ayrshire"
+184;"Banskobystricky"
+184;"Kosicky"
+184;"Nitriansky"
+184;"Presovsky"
+184;"Trenciansky"
+184;"Trnavsky"
+184;"Zilinsky"
+203;"Arusha"
+203;"Pemba"
+204;"Chonburi"
+204;"Nakhon Ratchasima"
+204;"Nonthanburi"
+204;"Suratthani"
+204;"Trat"
+204;"Udon Thani"
+208;"Arima"
+208;"Port-of-Spain"
+208;"San Fernando"
+208;"Tobago"
+210;"Balikesir"
+210;"Bursa"
+210;"Diyarbakir"
+210;"Kocaeli"
+210;"Manisa"
+215;"Dnipropetrovsk"
+215;"Luhansk"
+215;"Mykolayiv"
+215;"Odesa"
+215;"Vinnytsya"
+25;"Potosi"
+40;"Aisen"
+40;"Atacama"
+40;"Tarapaca"
+44;"Amazonas"
+44;"Casanare"
+44;"Cauca"
+44;"Cesar"
+44;"Meta"
+44;"Norte de Santander"
+46;"Brazzaville"
+51;"Kyrenia"
+51;"Larnaca"
+51;"Limassol"
+51;"Nicosia"
+76;"Ashanti"
+86;"Upper Demerara-Berbice"
+90;"Bacs-Kiskun"
+90;"Baranya"
+90;"Budapest"
+90;"Fejer"
+90;"Hajdu-Bihar"
+90;"Jasz-Nagkyun-Szolnok"
+90;"Komarom-Esztergom"
+90;"Vas"
+94;"Azarbayjan-e Gharbi"
+100;"Clarendon"
+100;"Saint Andrew"
+100;"Saint Catherine"
+100;"Saint James"
+100;"Saint Mary"
+101;"京都府"
+101;"山形県"
+101;"山梨県"
+101;"愛知県"
+101;"東京都"
+101;"滋賀県"
+101;"長崎県"
+101;"長野県"
+101;"香川県"
+108;"Ysyk-Kol (Karakol)"
+115;"Balzers"
+115;"Planken"
+115;"Schellenberg"
+123;"Mopti"
+130;"Aguascalientes"
+130;"Baja California"
+130;"Baja California Sur"
+130;"Chihuahua"
+130;"Distrito Federal"
+130;"Durango"
+130;"Oaxaca"
+130;"Puebla"
+130;"San Luis Potosi"
+130;"Sinaloa"
+130;"Sonora"
+130;"Tabasco"
+130;"Tamaulipas"
+130;"Yucatan"
+130;"Zacatecas"
+134;"Arhangay"
+134;"Bulgan"
+134;"Hovd"
+134;"Selenge"
+134;"Ulaanbaatar"
+136;"Marrakech-Tensift-El Haouz"
+136;"Oriental"
+153;"Akershus"
+153;"Aust-Adger"
+13;"Wien"
+20;"Brabant Wallon"
+20;"Hainaut - Henegouwen"
+30;"Burgas"
+30;"Plovdiv"
+30;"Razgrad"
+30;"Stara Zagora"
+41;"云南省 (Yunnan)"
+41;"北京市 (Beijing)"
+41;"吉林省 (Jilin)"
+41;"山东省 (Shandong)"
+41;"河北省 (Hebei)"
+41;"甘肃省 (Gansu)"
+41;"青海省 (Qinghai)"
+50;"Ciudad de La Habana"
+50;"La Habana"
+52;"Liberecký Kraj"
+52;"Olomoucký Kraj"
+52;"Středoceský Kraj"
+56;"Azua"
+56;"Bahoruco"
+56;"Duarte"
+56;"Salcedo"
+58;"Azuay"
+58;"Orellana"
+58;"Tungurahua"
+63;"Laane-Viru"
+63;"Tartu"
+75;"Bayern"
+75;"Berlin"
+75;"Niedersachsen"
+75;"Nordrhein-Westfalen"
+83;"El Progreso"
+83;"Guatemala"
+83;"Sacatepequez"
+88;"Atlantida"
+88;"Copan"
+88;"Cortes"
+88;"El Paraiso"
+88;"Francisco Morazan"
+88;"Islas de la Bahia"
+88;"Lempira"
+88;"Ocotepeque"
+96;"Cavan"
+96;"Kildare"
+96;"Offaly"
+102;"Al Balqa'"
+102;"Amman"
+103;"Almaty"
+116;"Vilniaus"
+118;"Ohrid"
+118;"Tetovo"
+142;"Gelderland"
+142;"Groningen"
+142;"Noord-Holland"
+142;"Utrecht"
+147;"Niger"
+168;"Bacau"
+168;"Hunedoara"
+168;"Mures"
+168;"Satu Mare"
+168;"Sibiu"
+168;"Tulcea"
+168;"Vaslui"
+169;"Buryatia (Ulan-Ude)"
+169;"Dagestan (Makhachkala)"
+169;"Jewish (Yevreyskaya) A.O. (Birobidzhan)"
+169;"Komi-Permyak (Kudymkar)"
+169;"Krasnoiarsk Krai (Krasnoyarsk)"
+169;"Magadan Oblast (Magadan)"
+169;"Moscow City"
+169;"Nizhny Novgorod Oblast (Nizhny Novgorod)"
+169;"Perm Oblast (Perm)"
+172;"Castries"
+198;"Gotlands län"
+198;"Halland län"
+198;"Kronobergs län"
+198;"orebro län"
+198;"Uppsala län"
+198;"Västernorrlands län"
+198;"Västra Gotalands län"
+200;"Al Ladhiqiyah"
+218;"Durazno"
+218;"Florida"
+218;"Maldonado"
+218;"Paysandu"
+218;"Rivera"
+218;"Tacuarembo"
+218;"Treinta y Tres"
+13;"Kärnten"
+17;"Dhaka"
+17;"Khulna"
+41;"内蒙古自治区 (Neimenggu)"
+41;"山西省(Shanxi)"
+41;"新疆维吾尔自治区 (Xinjiang Uygur)"
+41;"湖南省 (Hunan)"
+41;"香港 (Hong Kong)"
+50;"Ciego de Avila"
+52;"Jihomoravský Kraj"
+52;"Karlovarský Kraj"
+52;"Moravskoslezský Kraj"
+52;"Plzeňský Kraj"
+56;"Dajabon"
+56;"Distrito Nacional"
+56;"Independencia"
+56;"La Altagracia"
+56;"Maria Trinidad Sanchez"
+56;"Pedernales"
+56;"San Cristobal"
+56;"Sanchez Ramirez"
+56;"Santiago"
+56;"Santiago Rodriguez"
+58;"Canar"
+58;"Chimborazo"
+58;"Cotopaxi"
+58;"Esmeraldas"
+58;"Galapagos"
+58;"Guayas"
+58;"Imbabura"
+58;"Manabi"
+58;"Pastaza"
+58;"Sucumbios"
+63;"Saare"
+73;"Brikama"
+75;"Hessen"
+75;"Rheinland-Pfalz"
+75;"Sachsen-Anhalt"
+75;"Schleswig-Holstein"
+83;"Alta Verapaz"
+83;"Chimaltenango"
+83;"Huehuetenango"
+83;"Izabal"
+83;"Jutiapa"
+83;"Quetzaltenango"
+83;"San Marcos"
+83;"Suchitepequez"
+88;"Colon"
+88;"Gracias a Dios"
+88;"La Paz"
+88;"Olancho"
+88;"Valle"
+96;"Carlow"
+96;"Cork"
+96;"Dublin"
+96;"Galway"
+96;"Longford"
+96;"Meath"
+96;"Monaghan"
+96;"Waterford"
+96;"Wicklow"
+98;"Haifa - Hefa"
+98;"Jerusalem"
+98;"Tel Aviv"
+103;"Shyghys Kazakstan (Oskemen)"
+116;"Kauno"
+118;"Skopje"
+122;"Maale"
+142;"Flevoland"
+142;"Friesland"
+142;"Noord-Brabant"
+152;"Saipan"
+168;"Bucuresti"
+168;"Buzau"
+168;"Constanta"
+168;"Maramures"
+169;"Amur Oblast (Blagoveshchensk)"
+169;"Arkhangelsk Oblast (Arkhangelsk)"
+169;"Chelyabinsk Oblast (Chelyabinsk)"
+169;"Chuvashia (Cheboksary)"
+169;"Kaliningrad Oblast (Kaliningrad)"
+169;"Karelia (Petrozavodsk)"
+169;"Kemerovo"
+169;"Krasnodar Krai (Krasnodar)"
+169;"Omsk Oblast (Omsk)"
+169;"Sakhalin Oblast (Yuzhno-Sakhalinsk)"
+169;"Samara Oblast (Samara)"
+169;"Saratov Oblast (Saratov)"
+169;"Smolensk Oblast (Smolensk)"
+169;"St. Petersburg"
+169;"Stavropol Krai (Stavropol)"
+169;"Yaroslavl Oblast (Yaroslavl)"
+173;"Saint George"
+198;"Blekinge län"
+198;"Dalarnas län"
+198;"Gävleborgs län"
+198;"Jämtlands län"
+198;"Stockholms län"
+198;"Värmlands län"
+200;"Hims"
+218;"Canelones"
+218;"Cerro Largo"
+218;"Salto"
+218;"San Jose"
+4;"Eastern"
+13;"Niederosterreich"
+13;"Oberosterreich"
+13;"Salzburg"
+13;"Steiermark"
+13;"Tirol"
+13;"Vorarlberg"
+14;"Abseron"
+17;"Chittagong"
+17;"Rajshahi"
+20;"Oost Vlaanderen - Flandre Orientale"
+20;"West Vlaanderen - Flandre Occidentale"
+24;"Bhutan"
+26;"Beni"
+30;"Grad Sofiya"
+41;"天津市 (Tianjin)"
+41;"安徽省 (Anhui)"
+41;"广东省 (Guangdong)"
+41;"江苏省 (Jiangsu)"
+41;"江西省 (Jiangxi)"
+41;"河南省 (Henan)"
+41;"湖北省 (Hubei)"
+41;"福建省 (Fujian)"
+41;"辽宁省 (Liaoning)"
+41;"陕西省 (Shanxi)"
+50;"Cienfuegos"
+50;"Granma"
+50;"Guantanamo"
+50;"Holguin"
+50;"Sancti Spiritus"
+50;"Santiago de Cuba"
+52;"Hlavni Mesto Praha"
+52;"JihoCeský Kraj"
+52;"Kralovehradecký Kraj"
+52;"ustecký Kraj"
+52;"Zlinský Kraj"
+56;"Barahona"
+56;"El Seibo"
+56;"Espaillat"
+56;"La Romana"
+56;"Monte Cristi"
+56;"Monte Plata"
+56;"San Jose De Ocoa"
+56;"San Juan"
+56;"San Pedro de Macoris"
+58;"Bolivar"
+58;"Loja"
+58;"Morona-Santiago"
+58;"Napo"
+58;"Pichincha"
+63;"Jogeva"
+75;"Brandenburg"
+75;"Hamburg"
+75;"Thuringen"
+77;"Gibraltar"
+81;"Guadeloupe"
+83;"Chiquimula"
+83;"Jalapa"
+83;"Quiche"
+83;"Totonicapan"
+88;"Comayagua"
+88;"Yoro"
+96;"Clare"
+96;"Donegal"
+96;"Laois"
+96;"Leitrim"
+96;"Limerick"
+96;"Roscommon"
+96;"Tipperary"
+98;"Hadaron (Southern Dsitrict)"
+98;"Hamerkaz (Central district)"
+98;"Hazafon (Northern District)"
+102;"Al Karak"
+103;"Pavlodar"
+103;"Soltustik Kazakstan (Petropavlovsk)"
+103;"Zhambyl (Taraz)"
+114;"Tarabulus"
+120;"Blantyre"
+142;"Drenthe"
+142;"Overijssel"
+142;"Zuid-Holland"
+168;"Arad"
+168;"Arges"
+168;"Brasov"
+168;"Cluj"
+168;"Galati"
+168;"Harghita"
+168;"Iasi"
+168;"Prahova"
+169;"Irkutsk Oblast (Irkutsk)"
+169;"Ivanovo Oblast (Ivanovo)"
+169;"Kamchatka (Petropavlovsk-Kamchatsky)"
+169;"Khabarovsk Krai (Khabarovsk)"
+169;"Khanti-Mansiiski A.O. (Khanty-Mansiysk)"
+169;"Leningrad Oblast"
+169;"Moscow Oblast"
+169;"Novosibirsk Oblast (Novosibirsk)"
+169;"Sakha (Yakutsk)"
+169;"Sverdlovsk Oblast (Yekaterinburg)"
+169;"Taimirski A.O. (Dudinka)"
+169;"Tver Oblast (Tver)"
+169;"Udmurtia (Izhevsk)"
+169;"Volgograd Oblast (Volgograd)"
+193;"Saint Pierre and Miquelon"
+198;"Jonkopings län"
+198;"Kalmar län"
+198;"Norrbottens län"
+198;"ostergotlands län"
+207;"Tonga"
+218;"Artigas"
+218;"Colonia"
+218;"Lavalleja"
+218;"Rio Negro"
+218;"Rocha"
+13;"Burgenland"
+20;"Antwerpen - Anvers"
+20;"Bruxelles - Brussel"
+20;"Liège - Luik"
+20;"Limburg - Limbourg"
+20;"Luxembourg - Luxemburg"
+20;"Namur - Namen"
+20;"Vlaams Brabant - Brabant Flamand"
+30;"Lovech"
+30;"Varna"
+38;"Lobaye"
+41;"上海市 (Shanghai)"
+41;"四川省 (Sichuan)"
+41;"宁夏回族自治区 (Ningxia Hui)"
+41;"广西壮族自治区 (Guangxi Zhuang)"
+41;"浙江省 (Zhejiang)"
+41;"海南省 (Hainan)"
+41;"澳门 (Macao)"
+41;"臺灣 (Taiwan)"
+41;"西藏自治区 (Sitsang/Xizang)"
+41;"贵州省 (Guizhou)"
+41;"重庆市 (Chongqing)"
+41;"黑龙江省 (Heilongjiang)"
+47;"Rarotonga"
+50;"Camaguey"
+50;"Las Tunas"
+50;"Matanzas"
+50;"Pinar del Rio"
+185;"Zasavska"
+190;"Albacete"
+190;"Asturias"
+190;"avila"
+190;"Gerona"
+190;"Guipuzcoa"
+190;"La Coruna"
+190;"Las Palmas"
+190;"Leon"
+190;"Lugo"
+190;"Melilla"
+190;"Salamanca"
+190;"Sevilla"
+190;"Soria"
+190;"Valencia"
+192;"Saint Helena"
+199;"Appenzell Innerrhoden – Appenzell Rh.(Int.)"
+199;"Bern - Berne"
+199;"Freiburg - Fribourg"
+199;"Neuenburg - Neuchatel"
+199;"Tessin - Tessin"
+199;"Thurgau - Thurgovie"
+199;"Zurich - Zurich"
+201;"南投(Nantou)"
+201;"台北 (Taipei)"
+201;"基隆 (Keelung)"
+201;"宜蘭 (Yilan)"
+201;"屏東 (Pingtung)"
+201;"高雄 (Kaohsiung)"
+206;"Tokelau"
+209;"Medenine (Madanin)"
+209;"Monastir (Al Munastir)"
+209;"Sousse (Susah)"
+221;"Anzoategui"
+221;"Apure"
+221;"Aragua"
+221;"Carabobo"
+221;"Merida"
+221;"Trujillo"
+225;"Cardiff"
+225;"Carmarthenshire"
+225;"Conwy"
+225;"Merthyr Tydfil"
+225;"Monmouthshire"
+225;"Powys"
+225;"Rhondda Cynon Taff"
+225;"S. Glamorgan"
+225;"Torfaen"
+225;"West Glamorgan"
+227;"Western Sahara"
+229;"Copperbelt"
+230;"Matabeleland North"
+6;"Benguela"
+6;"Huila"
+6;"Luanda"
+6;"Uige"
+11;"Aruba"
+28;"Alagoas"
+28;"Amapa"
+28;"Mato Grosso"
+28;"Paraiba"
+28;"Parana"
+28;"Piaui"
+28;"Tocantins"
+65;"Falkland Islands (Islas Malvinas)"
+66;"Faroe Islands"
+68;"Lappi"
+68;"Pirkanmaa"
+68;"Pohjois-Pohjanmaa"
+68;"Varsinais-Suomi"
+69;"Auvergne"
+69;"Basse Normandie"
+69;"Corse"
+69;"La Reunion"
+69;"Limousin"
+69;"Nouvelle Caledonie"
+69;"Pays de la Loire"
+69;"Picardie"
+70;"Cayenne"
+91;"Nordhurland Vestra"
+91;"Sudhurnes"
+99;"Abruzzo"
+99;"Liguria"
+99;"Marche"
+99;"Sardegna"
+99;"Umbria"
+99;"Veneto"
+105;"Kiribati"
+106;"경상북도 (Gyeongsangbuk-do)"
+106;"대구 (Daegu)"
+106;"부산 (Busan)"
+106;"전라남도 (Jeollanam-do)"
+106;"충청남도 (Chungchong-namdo)"
+111;"Beyrouth"
+121;"Johor"
+121;"Kelantan"
+121;"Perak"
+121;"Perlis"
+132;"Transnistria"
+140;"Nauru"
+145;"Canterbury"
+145;"Chatham islands"
+145;"Christchurch"
+145;"Eastland"
+145;"Mt Cook"
+145;"Northland"
+145;"Southland"
+145;"Waikato"
+146;"Atlantico Norte"
+146;"Jinotega"
+146;"Matagalpa"
+155;"Islamabad Capital Territory"
+155;"N.W.F.P (Surhad)"
+155;"Sindh"
+159;"Central"
+159;"Guaira"
+159;"Misiones"
+161;"Albay"
+161;"Batangas"
+161;"Cagayan"
+161;"Cavite"
+161;"La Union"
+161;"Negros Oriental"
+161;"South Cotabato"
+182;"Western"
+187;"Gedo"
+190;"Alicante"
+190;"Badajoz"
+190;"Caceres"
+190;"Cadiz"
+190;"Cantabria"
+190;"Ceuta"
+190;"Granada"
+190;"Huelva"
+190;"Lerida"
+190;"Navarra"
+190;"Ourense"
+190;"Palencia"
+190;"Santa Cruz de Tenerife"
+190;"Segovia"
+199;"Appenzell Ausserrhoden – Appenzell Rh.(Ext.)"
+199;"Basel-Landschaft - Bale-Campagne"
+199;"Genf - Genève"
+199;"Glarus - Glaris"
+199;"Graubunden - Grisons"
+199;"Jura - Jura"
+199;"Sankt Gallen - Saint-Gall"
+199;"Schaffhausen - Schaffhouse"
+201;"臺中 (Taichung)"
+201;"臺東 (Taitung)"
+205;"Maritime"
+209;"Tunis"
+220;"Vanuatu"
+221;"Dependencias Federales"
+221;"Distrito Federal"
+221;"Guarico"
+221;"Sucre"
+221;"Vargas"
+225;"Caerphilly"
+225;"Denbighshire"
+225;"Dyfed"
+225;"Gwent"
+225;"Gwynedd"
+225;"Isle of Anglesey"
+225;"Mid Glamorgan"
+225;"Newport"
+225;"Wrexham"
+230;"Harare"
+3;"Mascara"
+3;"Oran"
+10;"Lorri"
+28;"Distrito Federal"
+28;"Para"
+28;"Rio de Janeiro"
+28;"Rio Grande do Sul"
+28;"Rondonia"
+28;"Sao Paulo"
+48;"Guanacaste"
+48;"Puntarenas"
+55;"Saint George"
+68;"Häme"
+68;"Itä-Uusimaa"
+153;"Hordaland"
+153;"Møre og Romsdal"
+153;"Nordland"
+157;"Chiriqui"
+157;"Darien"
+157;"Los Santos"
+157;"Panama"
+157;"Veraguas"
+160;"Cajamarca"
+160;"Loreto"
+160;"Madre de Dios"
+160;"Piura"
+160;"Puno"
+160;"San Martin"
+160;"Tacna"
+163;"Malopolskie"
+163;"Slaskie"
+165;"Adjuntas"
+165;"Aguada"
+165;"Bayamon"
+165;"Canovanas"
+165;"Ciales"
+165;"Comerio"
+165;"Culebra"
+165;"Guanica"
+165;"Hatillo"
+165;"Jayuya"
+165;"Lajas"
+165;"Las Marias"
+165;"Luquillo"
+165;"Rincon"
+165;"San Juan"
+165;"San Sebastian"
+176;"Sao Tome"
+178;"Dumfries and Galloway"
+178;"Perth and Kinross"
+178;"Stirling"
+178;"West Dunbartonshire"
+178;"West Lothian"
+181;"Seychelles"
+184;"Bratislavsky"
+203;"Shinyanga"
+203;"Tanga"
+204;"Bangkok"
+204;"Phetchaburi"
+204;"Phitsanulok"
+204;"Rayong"
+208;"Saint Patrick"
+210;"Antalya"
+210;"Eskisehir"
+214;"Central"
+214;"Eastern"
+215;"Donetsk"
+215;"Kyvivs'ka"
+215;"Kyyiv"
+215;"Zakarpats'ka"
+228;"Ibb"
+25;"La Paz"
+25;"Santa Cruz"
+40;"Antofagasta"
+40;"Araucania"
+40;"los Lagos"
+40;"Valparaiso"
+44;"Arauca"
+44;"Bolivar"
+44;"Boyaca"
+44;"Caqueta"
+44;"Choco"
+44;"Distrito Capital"
+44;"La Guajira"
+44;"Narino"
+44;"San Andres y Providencia"
+44;"Santander"
+44;"Tolima"
+51;"Paphos"
+53;"Hovedstaden"
+53;"Sjælland"
+76;"Upper East"
+90;"Tolna"
+94;"Hormozgan"
+94;"Khorasan"
+94;"Markazi"
+94;"Semnan"
+100;"Saint Ann"
+100;"Westmoreland"
+101;"佐賀県"
+101;"兵庫県"
+101;"大分県"
+101;"奈良県."
+101;"宮城県"
+101;"山口県"
+101;"岡山県"
+101;"岩手県"
+101;"広島県"
+101;"栃木県"
+101;"沖縄県"
+101;"福岡県"
+101;"群馬県"
+101;"茨城県"
+108;"Bishkek Shaary"
+115;"Triesen"
+128;"Port Louis"
+130;"Campeche"
+130;"Colima"
+130;"Guanajuato"
+130;"Jalisco"
+130;"Michoacan"
+130;"Quintana Roo"
+134;"Hovsgol"
+134;"Uvs"
+136;"Fes-Boulmane"
+136;"Laayoune-Boujdour-Sakia El Hamra"
+136;"Tangier-Tetouan"
+153;"Sør-Trøndelag"
+153;"Troms"
+157;"Bocas del Toro"
+157;"Cocle"
+160;"Callao"
+160;"Cusco"
+160;"La Libertad"
+160;"Lima"
+160;"Moquegua"
+160;"Pasco"
+163;"Dolnoslaskie"
+163;"Kujawsko-Pomorskie"
+163;"Mazowieckie"
+163;"Pomorskie"
+163;"Wielkopolskie"
+165;"Aibonito"
+165;"Arecibo"
+165;"Arroyo"
+165;"Barceloneta"
+165;"Caguas"
+165;"Cidra"
+165;"Coamo"
+165;"Guayanilla"
+165;"Guaynabo"
+165;"Gurabo"
+165;"Hormigueros"
+165;"Isabela"
+165;"Juana Diaz"
+165;"Juncos"
+165;"Moca"
+165;"Naranjito"
+165;"Orocovis"
+165;"Patillas"
+165;"Penuelas"
+165;"Rio Grande"
+165;"Sabana Grande"
+165;"Salinas"
+165;"San Lorenzo"
+165;"Vega Baja"
+178;"East Ayrshire"
+178;"East Lothian"
+178;"Fife"
+178;"North Lanarkshire"
+178;"South Lanarkshire"
+178;"Tarbert Argyll"
+178;"Tayside"
+178;"The Scottish Borders"
+203;"Dar es Salaam"
+203;"Zanzibar"
+204;"Chiang Mai"
+204;"Nakhon Pathom"
+204;"Phuket"
+208;"Mayaro"
+208;"Saint Andrew"
+210;"Aydin"
+210;"Gaziantep"
+210;"Isparta"
+210;"Izmir"
+210;"Nigde"
+210;"Samsun"
+210;"Tokat"
+211;"Ahal (Ashgabat)"
+215;"Kharkiv"
+215;"Poltava"
+226;"Wallis And Futuna Islands"
+228;"Hadramawt"
+8;"Saint John"
+8;"Saint Paul"
+25;"Beni"
+25;"Cochabamba"
+29;"Belait"
+29;"Brunei and Muara"
+40;"Coquimbo"
+40;"Libertador General"
+40;"Magall. Y Ant. Chilena"
+40;"Metrop. De Santiago"
+42;"Christmas Island"
+44;"Bogota"
+44;"Cordoba"
+44;"Cundinamarca"
+44;"Huila"
+44;"Putumayo"
+44;"Valle del Cauca"
+53;"Midtjylland"
+164;"Santarem"
+164;"Setubal"
+166;"Ar Rayyan"
+177;"Ash Sharqiyah (Eastern Province)"
+188;"Eastern Cape"
+188;"Free State"
+188;"Northern Cape"
+202;"Kuhistoni-Badakhshan"
+202;"Sughd"
+216;"Ash Shariqah"
+216;"Fujairah"
+217;"Colorado"
+217;"Connecticut"
+217;"District of Columbia"
+217;"Louisiana"
+217;"Maryland"
+217;"Massachusetts"
+217;"Nebraska"
+217;"New Mexico"
+217;"New York"
+217;"Ohio"
+217;"West Virginia"
+219;"Bukhara"
+219;"Samarkand"
+223;"British Virgin Islands"
+7;"Anguilla"
+9;"Chubut"
+9;"Jujuy"
+9;"La Rioja"
+9;"Mendoza"
+9;"Rio Negro"
+9;"Salta"
+9;"Santa Fe"
+9;"Santiago del Estero"
+9;"Tierra del Fuego"
+12;"Christmas Island"
+12;"New South Wales"
+12;"South Australia"
+12;"Victoria"
+15;"Grand Bahama"
+16;"Al Muharraq"
+16;"Madinat 'Isa"
+21;"Orange Walk"
+21;"Toledo"
+23;"Hamilton"
+23;"Saint George's"
+27;"South East"
+34;"Littoral"
+35;"Ontario"
+39;"Chad"
+49;"Koprivnicko-Krizevacka"
+49;"Splitsko-Dalmatinska"
+49;"Vukovarsko-Srijemska"
+59;"Al Bahr al Ahmar"
+59;"Qina"
+59;"Suhaj"
+60;"Cabanas"
+60;"La Union"
+60;"San Salvador"
+60;"San Vicente"
+60;"Santa Ana"
+60;"Sonsonate"
+61;"Bedfordshire"
+61;"Berkshire"
+61;"Cheshire"
+61;"Cumbria"
+61;"Dorset"
+61;"Gloucestershire"
+61;"Isle of Wight"
+61;"London"
+61;"Manchester"
+61;"Middlesex"
+61;"Shropshire"
+61;"Somerset"
+61;"Sussex"
+61;"Warwickshire"
+61;"Wiltshire"
+71;"French Polynesia"
+78;"Evvoia"
+78;"Kavala"
+78;"Lasithi"
+78;"Pieria"
+78;"Serrai"
+78;"Thessaloniki"
+78;"Zakinthos"
+92;"Assam"
+92;"Gujarat"
+92;"Jammu and Kashmir"
+92;"Jharkhand"
+92;"Karnataka"
+92;"Kerala"
+92;"Maharashtra"
+92;"Pondicherry"
+92;"Sikkim"
+92;"Uttar Pradesh"
+92;"Uttranchal"
+93;"Banten"
+93;"Jawa Tengah - Central Java"
+93;"Lampung"
+93;"Papua"
+93;"Riau Kepulauan"
+93;"Sulawesi Selatan - South Sulawesi"
+93;"Sumatera Utara - North Sumatra"
+93;"Yogyakarta"
+104;"Coast"
+104;"Nairobi Area"
+104;"Nyanza"
+112;"Maseru"
+127;"Nouakchott"
+139;"Kavango"
+139;"Otjozondjupa"
+148;"Abuja Federal Capital Territory"
+148;"Oyo"
+164;"Braganca"
+164;"Viseu"
+177;"Al Jawf"
+179;"Kaolack"
+191;"Sri Lanka"
+197;"Hhohho"
+212;"Turks And Caicos Islands"
+216;"Ras al-Khaymah"
+217;"Alaska"
+217;"Arkansas"
+217;"Florida"
+217;"Hawaii"
+217;"Idaho"
+217;"Illinois"
+217;"Indiana"
+217;"Iowa"
+217;"Kentucky"
+217;"Maine"
+217;"Michigan"
+217;"Mississippi"
+217;"North Dakota"
+217;"Oklahoma"
+217;"South Dakota"
+217;"Tennessee"
+217;"Utah"
+217;"Wisconsin"
+222;"Dong Bang Song Hong"
+222;"Dong Nam Bo"
+224;"St. Croix"
+9;"Entre Rios"
+9;"Misiones"
+9;"San Luis"
+9;"Santa Cruz"
+12;"Queensland"
+15;"Abaco"
+15;"Andros"
+15;"Cat Island"
+15;"Exuma and Cays"
+15;"New Providence"
+15;"San Salvador"
+19;"Mahilyowskaya"
+21;"Belize"
+22;"Atlantique"
+22;"Oueme"
+23;"Sandys"
+33;"Kampong Cham"
+33;"Kampong Thom"
+33;"Kracheh"
+33;"Phnom Penh Municipality"
+33;"Prey Veng"
+33;"Siem Reap"
+35;"New Brunswick"
+35;"Nova Scotia"
+35;"Prince Edward Island"
+49;"Brodsko-Posavska"
+49;"Dubrovacko-Neretvanska"
+49;"Osjecko-Baranjska"
+49;"Zadarska"
+49;"Zagrebacka"
+59;"Al Jizah"
+60;"Morazan"
+61;"Cambridgeshire"
+61;"Cornwall"
+61;"Derbyshire"
+61;"East Riding of Yorkshire"
+61;"Essex"
+61;"Northumberland"
+61;"South Yorkshire"
+61;"Surrey"
+78;"Iraklion"
+50;"Villa Clara"
+52;"Pardubický Kraj"
+52;"VysoCina"
+54;"Djibouti"
+56;"Elias Pina"
+56;"Hato Mayor"
+56;"La Vega"
+56;"Monsenor Nouel"
+56;"Peravia"
+56;"Puerto Plata"
+56;"Samana"
+56;"Santo Domingo"
+56;"Valverde"
+58;"Carchi"
+58;"El Oro"
+58;"Los Rios"
+58;"Zamora Chinchipe"
+63;"Harju"
+63;"Parnu"
+63;"Viljandi"
+64;"Adis Abeba"
+64;"Tigray"
+67;"Central"
+73;"Banjul"
+75;"Baden-Wurttemberg"
+75;"Bremen"
+75;"Mecklenburg-Vorpommern"
+75;"Saarland"
+75;"Sachsen"
+83;"Baja Verapaz"
+83;"Escuintla"
+83;"Peten"
+83;"Retalhuleu"
+83;"Santa Rosa"
+83;"Solola"
+83;"Zacapa"
+88;"Choluteca"
+88;"Intibuca"
+88;"Santa Barbara"
+96;"Kerry"
+96;"Kilkenny"
+96;"Louth"
+96;"Mayo"
+96;"Sligo"
+96;"Westmeath"
+96;"Wexford"
+102;"Irbid"
+103;"Qaraghandy"
+107;"Al Ahmadi"
+107;"Al Farwaniyah"
+116;"Klaipedos"
+124;"Malta"
+142;"Limburg"
+142;"Zeeland"
+143;"Netherlands Antilles"
+167;"Reunion"
+168;"Bihor"
+168;"Caras-Severin"
+168;"Dolj"
+168;"Timis"
+169;"Altay (Barnaul)"
+169;"Bashkortostan (Ufa)"
+169;"Kaluga Oblast (Kaluga)"
+169;"Kurgan Oblast (Kurgan)"
+169;"Mordovia (Saransk)"
+169;"Murmansk Oblast (Murmansk)"
+169;"Novgorod Oblast (Novgorod)"
+169;"Orenburg Oblast (Orenburg)"
+169;"Penza Oblast (Penza)"
+169;"Primorski Krai (Vladivostok)"
+169;"Rostov Oblast (Rostov na Donu)"
+169;"Tambov Oblast (Tambov)"
+169;"Tomsk Oblast (Tomsk)"
+170;"Kigali Ngali"
+186;"Guadalcanal"
+189;"South Georgia, Sth Sandwich Islands"
+194;"Al Khartum"
+198;"Skåne län"
+198;"Sodermanlands län"
+198;"Västerbottens län"
+198;"Västmanlands län"
+200;"Dimashq"
+200;"Halab"
+213;"Tuvalu"
+218;"Flores"
+218;"Montevideo"
+218;"Soriano"
+68;"Kainuu"
+68;"Keski-Suomi"
+68;"Kymenlaakso"
+68;"Päijät-Häme"
+68;"Pohjanmaa"
+68;"Pohjois-Savo"
+68;"Satakunta"
+69;"Alsace"
+69;"Bretagne"
+69;"Guadeloupe"
+69;"Ile de France"
+69;"Lorraine"
+69;"Midi-Pyrenees"
+69;"Polynesie Francaise"
+91;"Hofudborgarsvaedi"
+99;"Emilia-Romagna"
+99;"Sicilia"
+106;"경상남도 (Gyeongsangnam-do)"
+106;"서울 (Seoul)"
+106;"울산 (Ulsan)"
+121;"Kedah"
+121;"Pulau Pinang"
+121;"Selangor"
+138;"Mon State"
+145;"Auckland"
+145;"Bay of Plenty"
+145;"Nelson"
+145;"Otago"
+145;"Wanaka"
+145;"Wellington"
+146;"Boaco"
+146;"Chinandega"
+146;"Granada"
+146;"Madriz"
+146;"Nueva Segovia"
+146;"Rio San Juan"
+154;"Ash Sharqiyah"
+154;"Masqat"
+155;"Northern Areas"
+155;"Punjab"
+156;"Palau"
+159;"Alto Paraguay"
+159;"Amambay"
+159;"Caazapa"
+159;"Concepcion"
+159;"Cordillera"
+159;"Presidente Hayes"
+161;"Agusan del Norte"
+161;"Benguet"
+161;"Camarines Norte"
+161;"Capiz"
+161;"Cebu"
+161;"Negros Occidental"
+161;"Rizal"
+161;"Sorsogon"
+161;"Tarlac"
+161;"Tawitawi"
+161;"Zambales"
+161;"Zamboanga del norte"
+174;"Samoa"
+180;"Montenegro"
+180;"Vojvodina"
+182;"Southern"
+183;"Singapore"
+185;"Notranjsko-kraška"
+185;"Obalno-kraška"
+185;"Osrednjeslovenska"
+190;"Baleares"
+190;"Burgos"
+190;"Castellon"
+190;"Ciudad Real"
+190;"Cuenca"
+190;"Guadalajara"
+190;"Jaen"
+190;"La Rioja"
+190;"Malaga"
+190;"Murcia"
+190;"Pontevedra"
+190;"Tarragona"
+190;"Teruel"
+190;"Vizcaya"
+190;"Zaragoza"
+199;"Aargau - Argovie"
+199;"Obwalden - Obwald"
+199;"Schwyz - Schwytz"
+199;"Solothurn - Soleure"
+199;"Waadt - Vaud"
+199;"Zug - Zoug"
+201;"嘉義 (Chiayi)"
+201;"彰化 (Changhua)"
+201;"新竹 (Hsinchu)"
+201;"澎湖 (Penghu)"
+201;"花蓮 (Hualien)"
+209;"Gafsa (Qafsah)"
+221;"Delta Amacuro"
+221;"Lara"
+221;"Miranda"
+221;"Tachira"
+221;"Yaracuy"
+221;"Zulia"
+225;"Ceredigion"
+225;"Pembrokeshire"
+225;"Swansea"
+78;"Kefallinia"
+78;"Kilkis"
+78;"Kozani"
+78;"Magnisia"
+80;"Carriacou and Petit Martinique"
+92;"Bihar"
+92;"Goa"
+92;"Haryana"
+92;"Manipur"
+92;"Tamil Nadu"
+92;"West Bengal"
+93;"Jawa Timur - East Java"
+93;"Kalimantan Barat - West Kalimantan"
+110;"Rigas"
+117;"Diekirch"
+117;"Grevenmacher"
+139;"Erongo"
+139;"Khomas"
+139;"Oshana"
+148;"Osun"
+149;"Niue"
+151;"Armagh"
+151;"Fermanagh"
+158;"Eastern Highlands"
+158;"National Capital"
+164;"Leiria"
+164;"Viana do Castelo"
+166;"Ad Dawhah"
+177;"Al Qasim"
+177;"Asir"
+179;"Ziguinchor"
+188;"North-West"
+188;"Western Cape"
+216;"Abu Dhabi"
+217;"Arizona"
+217;"California"
+217;"Delaware"
+217;"Georgia"
+217;"Kansas"
+217;"Minnesota"
+217;"Montana"
+217;"Nevada"
+217;"New Jersey"
+217;"North Carolina"
+217;"South Carolina"
+222;"Khu Bon Cu"
+57;"East Timor"
+62;"Equatorial Guinea"
+76;"Greater Accra"
+86;"Demerara-Mahaica"
+86;"Pomeroon-Supenaam"
+90;"Borsod-Abauj-Zemblen"
+90;"Gyor-Moson-Sopron"
+90;"Nograd"
+90;"Pest"
+90;"Somogy"
+90;"Szabolcs-Szatmar-Bereg"
+94;"Kermanshah"
+94;"Khuzestan"
+94;"Mazandaran"
+94;"Sistan va Baluchestan"
+94;"Tehran"
+95;"Al Basrah"
+97;"Isle of Man"
+100;"Hanover"
+100;"Manchester"
+100;"Saint Elizabeth"
+100;"Trelawny"
+101;"三重県"
+101;"北海道"
+101;"和歌山県"
+101;"埼玉県"
+101;"大阪府"
+101;"熊本県"
+101;"石川県"
+101;"福井県"
+101;"静岡県"
+115;"Ruggell"
+115;"Schaan"
+115;"Vaduz"
+123;"Bamako"
+126;"Fort-de-France"
+128;"Plaines Wilhems"
+130;"Chiapas"
+130;"Guerrero"
+130;"Morelos"
+130;"Queretaro"
+130;"Tlaxcala"
+130;"Veracruz"
+134;"Bayan-Olgiy"
+134;"Govi-Altay"
+136;"Meknes-Tafilalet"
+136;"Rabat-Sale-Zemmour-Zaer"
+137;"Maputo City"
+153;"Buskerud"
+153;"Finnmark"
+153;"Hedmark"
+153;"Nord-Trøndelag"
+153;"Sogn og Fjordane"
+153;"Vest-Agder"
+160;"Arequipa"
+160;"Ica"
+160;"Junin"
+163;"Lodzkie"
+163;"Lubelskie"
+163;"Lubuskie"
+163;"Podlaskie"
+163;"Swietokrzyskie"
+163;"Warminsko-Mazurskie"
+163;"Zachodniopomorskie"
+165;"Anasco"
+165;"Barranquitas"
+165;"Cabo Rojo"
+165;"Carolina"
+165;"Cayey"
+165;"Corozal"
+165;"Fajardo"
+165;"Humacao"
+165;"Lares"
+165;"Las Piedras"
+165;"Maunabo"
+165;"Ponce"
+165;"San German"
+165;"Santa Isabel"
+165;"Toa Baja"
+165;"Trujillo Alto"
+165;"Vieques"
+165;"Yabucoa"
+165;"Yauco"
+178;"Aberdeenshire"
+178;"City of Glasgow"
+178;"East Dunbartonshire"
+178;"Falkirk"
+178;"Highland"
+178;"Inverclyde"
+178;"Kincardineshire"
+178;"Lanarkshire"
+178;"Midlothian"
+178;"Moray"
+178;"North Ayrshire"
+178;"Orkney Islands"
+178;"Renfrewshire"
+178;"Shetland Islands"
+178;"Strathclyde"
+178;"Western Isles"
+195;"Paramaribo"
+204;"Chachoengsao"
+204;"Samut Prakan"
+208;"Caroni"
+208;"Nariva"
+208;"Saint David"
+208;"Saint George"
+208;"Victoria"
+210;"Adana"
+210;"Ankara"
+210;"Icel"
+210;"Istanbul"
+210;"Mugla"
+215;"Avtonomna Respublika Krym"
+215;"Cherkasy"
+215;"Rivne"
+228;"San'a'"

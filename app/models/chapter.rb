@@ -106,7 +106,6 @@ class Chapter < ActiveRecord::Base
   end
 
   def self.create_new_chapter(param,chapter_name)
-    Rails.logger.info "############### inside method create new chapter #{param.inspect}"
     country = Country.find(param[:chapter][:country_name])
     state = State.find(param[:chapter_state_name])
     city = City.find(param[:chapter_city_name])

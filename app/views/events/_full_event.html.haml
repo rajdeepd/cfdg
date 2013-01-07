@@ -81,8 +81,6 @@
   -else
     -#= gmaps4rails(@marker)
     = gmaps("markers" => {"data" => @marker }, "map_options" => {"auto_zoom" => false, "zoom" => 15 } ) unless @marker == [].to_json
-
-
 - session_key = Rails.application.config.session_options[:key]
 
 = content_for :scripts do
