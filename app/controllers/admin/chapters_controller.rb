@@ -74,6 +74,14 @@ class Admin::ChaptersController < ApplicationController
   end
 
   def add_secondary_coordinator
+    @chapter = Chapter.find(params[:id])
+    @members = @chapter.get_all_members
+  end
 
+  def create_secondary_coordinator
+    member= ChapterMember.find(params[:member])
+    @chapter = Chapter.find(params[:id])
+    @chapter.save_secondary_coordinator(member)
+    redirect_to add_secondary_coordinator_admin_chapter_path(@chapter)
   end
 end

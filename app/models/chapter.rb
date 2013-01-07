@@ -98,4 +98,11 @@ class Chapter < ActiveRecord::Base
       end
     end
   end
+
+  def save_secondary_coordinator(member)
+     #chapter_coordinator = self.chapter_members.create(:memeber_type => ChapterMember::SECONDARY_COORDINATOR, :user_id => user.id )
+     chapter_coordinator = member
+     chapter_coordinator.memeber_type =  ChapterMember::SECONDARY_COORDINATOR
+     chapter_coordinator.save
+  end
 end

@@ -106,6 +106,7 @@ CloudfoundryUsergroups::Application.routes.draw do
         get 'change_status'
         post 'chapter_reply'
         post 'add_secondary_coordinator'
+        post 'create_secondary_coordinator'
       end
     end
    end
