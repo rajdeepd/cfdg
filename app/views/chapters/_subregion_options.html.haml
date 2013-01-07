@@ -1,5 +1,5 @@
 #chapter_state
-  = select_tag "chapter_state_name",options_from_collection_for_select(@states, "id", "name"),:style => "height:33px;width:292px",:class => "textboxes"
+  = select_tag "chapter_state_name",options_from_collection_for_select(@states, "id", "name"),:prompt => "Please select a state",:style => "height:33px;width:292px",:class => "textboxes"
   -#= hidden_field_tag :state_id,  :value => 1
 
 :javascript
