@@ -34,4 +34,13 @@ class User < ActiveRecord::Base
     self.reset_password_token =  User.reset_password_token
     self.save
   end
+
+  def get_user_image
+    if self.avatar_file_name.present?
+      self.avatar_file_name
+    else
+      "no_image.jpg"
+    end
+  end
+
 end

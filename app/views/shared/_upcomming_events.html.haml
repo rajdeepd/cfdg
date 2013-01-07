@@ -8,7 +8,7 @@
           .ca-item-main
             .eventImg
               -#%img{:src => "assets/event_img_1.png"}
-              = image_tag(event.image)
+              = image_tag(event.get_event_image,:size => "190x91")
             .eventContent
               %h5
                 =event.title
@@ -21,8 +21,9 @@
                 %a{:href => "#"} (map)
               .description
                 Description:
-                %span.lightGrayText
-                  =event.description
+                %span.lightGrayText #{event.description}
+
+
                 %br/
                 %br/
                 %a{:href => "#{event_path(event)}"} Read more
