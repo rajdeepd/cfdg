@@ -72,4 +72,8 @@ class Admin::ChaptersController < ApplicationController
       format.js{}
     end
   end
+
+  def add_secondary_coordinator
+
+  end
 end
