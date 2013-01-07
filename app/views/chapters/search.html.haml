@@ -1,6 +1,6 @@
 .content.wrapper
-  -if @chapters.count > 0
-    =Sorry no results found
+  -if @chapters.count == 0
+    ="Sorry no results found"
   -else
     %ul
       - @chapters.each_with_index do |i,j|
