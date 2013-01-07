@@ -1,14 +1,15 @@
-.logo
-  =image_tag("logo.png")
-.navigation
-  %ul.clearfix
-    %li
-      %a.home{:href => "#{root_path}"}
-    %li
-      %a.about{:href => "#{about_path}"} About
-    %li
-      %a.chapter{:href => "#{directory_path}"} Chapter
-    %li
-      %a.event{:href => ""} Event
-    %li
-      %a.wiki{:href =>"#{wiki_path}"} Wiki
+.container
+  .logo
+    =image_tag("logo.png")
+  .navigation
+    %ul.clearfix
+      %li
+        %a.home{:href => "#{root_path}"}
+      %li
+        %a.about{:href => "#{about_path}"} About
+      %li
+        %a.chapter{:href => "#{directory_path}"} Chapter
+      %li
+        %a.event{:href => ""} Event
+      %li
+        %a.wiki{:href =>"#{wiki_path}"} Wiki

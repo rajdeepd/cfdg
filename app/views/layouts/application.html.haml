@@ -33,6 +33,20 @@
     = javascript_include_tag "jquery.easing.1.3"
 
 
+    = stylesheet_link_tag    "bootstrap", :media => "all"
+    = stylesheet_link_tag    "coda-slider", :media => "all"
+    = stylesheet_link_tag    "style", :media => "all"
+    = stylesheet_link_tag    "custom", :media => "all"
+    -#= javascript_include_tag "bootstrap"
+    -#= javascript_include_tag "bootstrap-dropdown"
+    -#= javascript_include_tag "jquery.coda-slider-3.0"
+    -#= javascript_include_tag "jquery.vticker-min"
+    -#= javascript_include_tag "jquery.mousewheel"
+    -#= javascript_include_tag "jquery.contentcarousel"
+    -#= javascript_include_tag "jquery.easing.1.3"
+
+
+
     %script{:src => "http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"}
     %script{:src => "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"}
     %script{:src => "//ajax.googleapis.com/ajax/libs/googleapis/0.0.4/googleapis.min.js", :type => "text/javascript"}
@@ -68,10 +82,12 @@
 
     = csrf_meta_tags
   %body
-    -#= render "shared/debugger" if Rails.env.development?
-    = render "shared/federated_header"
-    = render "shared/header"
-    = yield
-    = render "shared/footer"
-    = yield :scripts
-    = content_for(:javascript)
+    .bodyWrapper
+      -#= render "shared/debugger" if Rails.env.development?
+      = render "shared/federated_header"
+      = render "shared/new_header"
+      = render "shared/user_nav"
+      = yield
+      = render "shared/new_footer"
+      = yield :scripts
+      = content_for(:javascript)
