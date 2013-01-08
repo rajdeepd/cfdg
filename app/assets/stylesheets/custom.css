@@ -97,8 +97,8 @@ header ul li:first-child{
     box-shadow: 0 1px 2px 1px #BFD3E8;
     border-radius: 5px;
     padding: 0;
-    min-height: 60px;
-    box-shadow: none;
+    min-height: 52px;
+    background-color: inherit;
 }
 .navbar ul.nav{
     border-radius: 5px;
@@ -111,7 +111,7 @@ ul.nav li{
     line-height: 63px;
     text-align: center;
     border-radius: 5px;
-    height: 54px;
+    height: 52px;
     vertical-align: bottom;
     font-size: 14px;
 }
@@ -119,16 +119,21 @@ ul.nav li:first-child{
     width: 80px;
     background: none;
 }
+ul.nav li:first-child a{
+    border-radius: 7px 0 0 5px;
+}
 .navbar ul.nav li a{
     display: block;
     color: #333333;
-    font-family: HelveticaNeue;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
     padding: 0;
     line-height: 60px;
+    text-transform: uppercase;
 }
 .navbar ul.nav li a:hover{
     border-bottom: 2px solid #00bde7;
     color: #333333;
+    height: 50px;
 }
 .home{
     background: url("home_normal.png") no-repeat 26px 16px;
@@ -139,42 +144,42 @@ ul.nav li:first-child{
 .home.activeTab{
     background: url("home_test.jpg") no-repeat center 2px;
     width: 80px;
-    height: 52px;
+    height: 50px;
     display: block;
     border-bottom: 2px solid #00bde7;
 }
 .about{
-    background: url("about_normal.png") no-repeat 62px 18px;
+    background: url("about_normal.png") no-repeat 61px 18px;
     height: 52px;
     display: block;
 }
 .navbar ul.nav li a.about.activeTab{
     background: url("about_bg.png") no-repeat 1px 2px;
-    height: 52px;
+    height: 50px;
     display: block;
     border-bottom: 2px solid #00bde7;
     padding-left: 10px;
 }
 .chapter{
-    background: url("chapter_normal.png") no-repeat 63px 18px;
+    background: url("chapter_normal.png") no-repeat 55px 19px;
     height: 52px;
     display: block;
 }
 .navbar ul.nav li a.chapter.activeTab{
     background: url("chapter_bg.png") no-repeat 1px 1px;
-    height: 52px;
+    height: 50px;
     display: block;
     border-bottom: 2px solid #00bde7;
     padding-left: 2px;
 }
 .event{
-    background: url("event_normal.png") no-repeat 68px 18px;
+    background: url("event_normal.png") no-repeat 64px 18px;
     height: 52px;
     display: block;
 }
 .event.activeTab{
     background: url("event_bg.png") no-repeat 3px 2px;
-    height: 52px;
+    height: 50px;
     display: block;
     border-bottom: 2px solid #00bde7;
 }
@@ -185,7 +190,7 @@ ul.nav li:first-child{
 }
 .navbar ul.nav li a.wiki.activeTab{
     background: url("wiki_bg.png") no-repeat 1px 2px;
-    height: 52px;
+    height: 50px;
     display: block;
     border-bottom: 2px solid #00bde7;
     padding-left: 5px;
@@ -209,7 +214,8 @@ ul.nav li:first-child{
     border-radius: 5px 0 0 5px;
     color: #ffffff;
     padding: 40px;
-    font-family: helvetica_light;
+    font-family: helvetica;
+    font-weight: lighter;
 }
 .rightSlider{
     background: url("slider_img.png") no-repeat center #0684b8;
@@ -223,11 +229,11 @@ ul.nav li:first-child{
     margin: 0;
     width: 477px;
     line-height: 50px;
-    font-family: helvetica_light;
+    font-family: helvetica;
+    font-weight: lighter;
     letter-spacing: 1px;
     margin-bottom: 20px;
     font-size: 44px;
-    font-weight: lighter;
 }
 .leftSlider p{
     font-size: 22px;
@@ -238,13 +244,14 @@ ul.nav li:first-child{
 .orangeBtn{
     background: url("sign_up_btn_bg.png") repeat-x;
     border: 1px solid #813516;
-    height: 36px;
+    line-height: 24px;
     font-size: 14px;
     color: #ffffff;
     border-radius: 5px;
     font-weight: bold;
-    text-shadow: 1px -1px #666;
+    text-shadow: 0 -1px rgba(0, 0, 0, 0.5);;
     padding: 5px 8px;
+    text-align: center;
 }
 .orangeBtn:hover{
     background: #F9672C;
@@ -255,9 +262,12 @@ ul.nav li:first-child{
     background: -ms-linear-gradient(top, #F9672C 0%,#E26638 100%);
     background: linear-gradient(top, #F9672C 0%,#E26638 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9672c', endColorstr='#e26638',GradientType=0 );
+    color: #ffffff;
+    cursor: pointer;
 }
 .signUp{
-    width: 136px;
+    width: 120px;
+    display: block;
 }
 .latestAnnouncement{
     height: 540px;
@@ -305,14 +315,14 @@ ul.nav li:first-child{
     margin-bottom: 5px;
 }
 .smallHeading{
-    background: url("short_heading_bg.jpg") no-repeat #f9f9f9;
+    background: url("short_heading_bg.jpg") no-repeat -17px 0 #f9f9f9;
     width: 300px;
     height: 41px;
     border-bottom: 1px solid #cccccc;
     border-radius: 5px 5px 0 0 ;
 }
 .longHeading{
-    background: url("long_heading_bg.png") no-repeat #f9f9f9;
+    background: url("long_heading_bg.png") no-repeat 4px 0 #f9f9f9;
     width: 620px;
     height: 41px;
     border-bottom: 1px solid #cccccc;
@@ -388,6 +398,7 @@ ul.nav li:first-child{
     float: left;
     font-size: 16px;
     line-height: 36px;
+    color: #666666;
 }
 .createChapterBtn{
     float: right;
@@ -404,7 +415,7 @@ ul.nav li:first-child{
     margin-left: 25px;
 }
 .fullHeading{
-    background: url("full_heading_bg.jpg") no-repeat #f9f9f9;
+    background: url("full_heading_bg.jpg") no-repeat -5px 0 #f9f9f9;
     width: 938px;
     height: 41px;
     border-bottom: 1px solid #cccccc;
