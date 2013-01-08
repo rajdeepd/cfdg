@@ -106,6 +106,7 @@ class Event < ActiveRecord::Base
     end
   end
 
+
   def persist_geocode
     logger.info "inside persist geocode"
     chapter_geocode = self.chapter.geolocation
@@ -126,9 +127,11 @@ class Event < ActiveRecord::Base
       if(Time.parse(event.event_start_date+" "+ event.event_start_time) >= Time.now)
         upcoming_events.push(event)
       end
+
     end
     upcoming_events
   end
+
 
   def get_event_image
     if self.image.present?
@@ -152,4 +155,3 @@ class Event < ActiveRecord::Base
   end
 
 end
-

@@ -1,12 +1,12 @@
 require 'will_paginate/array'
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  include Userstamp 
+  include Userstamp
   before_filter :set_locale, :current_location
   before_filter :set_cache_buster
 
   helper_method :current_user , :admin_user
- 
+
 
   def current_user
     #session[:user_id] = 1
@@ -35,16 +35,18 @@ class ApplicationController < ActionController::Base
   end
 
   def set_cache_buster
-      response.headers["Cache-Control"] = "no-cache, no-store, max-age=0, must-revalidate"
-      response.headers["Pragma"] = "no-cache"
-      response.headers["Expires"] = "Fri, 01 Jan 1990 00:00:00 GMT"
-    end
+
+    response.headers["Cache-Control"] = "no-cache, no-store, max-age=0, must-revalidate"
+    response.headers["Pragma"] = "no-cache"
+    response.headers["Expires"] = "Fri, 01 Jan 1990 00:00:00 GMT"
+  end
+
 
   private
 
   def current_location
-      session[:url] = nil
-      session[:url] = request.url
+    session[:url] = nil
+    session[:url] = request.url
   end
 
 
