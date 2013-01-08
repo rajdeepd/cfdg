@@ -1,0 +1,17 @@
+.content.wrapper
+  %h1 Add secondary Co-ordinator
+  %br
+  %br
+
+  %ul
+    Email &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    Full Name &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp
+    Action
+  %br
+    - @members.each do |m|
+      %li
+        = m.user.email
+        = m.user.fullname
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp      &nbsp;&nbsp
+        = link_to "Add secondary co-odrinator" , create_secondary_coordinator_admin_chapter_path(:member => m) , :method => "POST"
+      %br

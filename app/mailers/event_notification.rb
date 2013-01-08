@@ -1,5 +1,5 @@
 class EventNotification < ActionMailer::Base
-  default from: "admin@cfdg.com"
+  default from: "kunalb@weboniselab.com"
 
   def rsvped_event(event,user)
     logger.info "########## rsvp event ###############"
