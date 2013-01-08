@@ -2,6 +2,7 @@
 -#  = link_to 'Connect to Eventbrite', "#{@accept_url}", :class => "btn-a-small" , :style => "margin-left:30%;"
 -#-else
 = javascript_include_tag "jquery.validate"
+= javascript_include_tag "jquery.blockUI"
 = semantic_form_for @event ,:url => chapter_events_path(params[:chapter_id]),:method => :post,:remote=> true do |f|
   .event-form
     .event-left{:style => "width:100%;"}
@@ -107,6 +108,13 @@
     //  $("#event_image").trigger("click");
       //$("#image_upload_link").text("Image Uploaded...100%");
     //});
+    $("#event_form_submit").live("click",function(){
+      //var form =  $(this).attr("rel");
+      if($(form).valid()){
+          $.blockUI();
+          //$.unblockUI();
+      };
+    });
 
   });
   $(function(){
