@@ -114,6 +114,16 @@
         $("#event_form_submit").text("CREATING...");
       };
     });
+    $("#event_event_start_time").on("click",function(){
+      $("#event_form_submit").css("opacity",1);
+      $("#event_form_submit").attr("disabled",false);
+      $("#event_form_submit").text("CREATE");
+    });
+    $("#event_event_end_time").on("click",function(){
+      $("#event_form_submit").css("opacity",1);
+      $("#event_form_submit").attr("disabled",false);
+      $("#event_form_submit").text("CREATE");
+    });
 
   });
   $(function(){
@@ -130,6 +140,7 @@
            {
              // here will skip some time values for the current date
              $("#event_event_start_time").timepicker( "option", "minTime", today.toTimeString());
+
            }
            else
           {
