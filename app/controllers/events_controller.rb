@@ -99,7 +99,9 @@ class EventsController < ApplicationController
       @event_memeber = EventMember.new(:event_id => @event.id, :user_id => current_user.id)
       @event_memeber.save!
 
+      #EventNotification.rsvped_event(@event,@current_user).deliver
       EventNotification.rsvped_event(@event,@current_user).deliver
+      #SES.send_raw_email(EventNotification.rsvped_event(@event,@current_user))
       #EventNotification.delay.rsvped_event(@event,@current_user)
     end
     chapter_events = Event.find_all_by_chapter_id(@event.chapter_id) || []
@@ -148,6 +150,7 @@ class EventsController < ApplicationController
     @event.save
     #EventNotification.delay.event_cancellation(@event, emails)
     EventNotification.event_cancellation(@event,to_email,bcc_emails).deliver
+    #SES.send_raw_email(EventNotification.event_cancellation(@event,to_email,bcc_emails))
     chapter_events = Event.find_all_by_chapter_id(@event.chapter_id) || []
     get_upcoming_and_past_events(chapter_events, true)
     @profile_page = false
@@ -184,6 +187,7 @@ class EventsController < ApplicationController
         @two_chapter_events = @chapter_events.take(2)
         #EventNotification.delay.event_creation(@event,emails,@chapter)
         EventNotification.event_creation(@event,to_email,bcc_emails,@chapter).deliver
+        #SES.send_raw_email(EventNotification.event_creation(@event,to_email,bcc_emails,@chapter))
         format.js
       else
         format.js
@@ -207,6 +211,7 @@ class EventsController < ApplicationController
         bcc_emails = @event.event_members.includes(:user).collect{|i| i.user.email} -[to_email]
         #EventNotification.delay.event_edit(@event,emails,@chapter)
         EventNotification.event_edit(@event,to_email,bcc_emails,@chapter).deliver
+        #SES.send_raw_email(EventNotification.event_edit(@event,to_email,bcc_emails,@chapter))
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
