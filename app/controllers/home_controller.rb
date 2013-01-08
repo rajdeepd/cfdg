@@ -5,6 +5,7 @@ class HomeController < ApplicationController
   layout "application"
 
   def index
+    #SES.send_raw_email(UserMailer.welcome_mail(@current_user))
   end
 
   def directory

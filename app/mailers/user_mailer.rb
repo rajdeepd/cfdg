@@ -1,5 +1,5 @@
 class UserMailer < ActionMailer::Base
-  default :from => "admin@cfdg.com"
+  default :from => "kunalb@weboniselab.com"
 
   def welcome_mail(user)
     logger.info "########## inside welcome mail method ###############"
