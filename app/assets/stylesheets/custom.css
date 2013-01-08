@@ -3,9 +3,6 @@ ul, ol{
     margin: 0;
     padding: 0;
 }
-.container{
-    width: 960px;
-}
 
 @font-face {
  font-family: 'helvetica_light';
@@ -95,17 +92,21 @@ header ul li:first-child{
 .logo{
     margin-bottom: 20px;
 }
-.navigation{
+.container .navbar .navbar-inner{
     background: url("navigation_bg.jpg") repeat-x ;
     box-shadow: 0 1px 2px 1px #BFD3E8;
     border-radius: 5px;
+    padding: 0;
+    min-height: 60px;
+    box-shadow: none;
 }
-.navigation ul{
+.navbar ul.nav{
     border-radius: 5px;
+    margin: 0;
 }
-.navigation ul li{
+ul.nav li{
     float: left;
-    width: 220px;
+    width: 215px;
     background: url("navigation_divider.png") no-repeat left center;
     line-height: 63px;
     text-align: center;
@@ -114,17 +115,20 @@ header ul li:first-child{
     vertical-align: bottom;
     font-size: 14px;
 }
-.navigation ul li:first-child{
+ul.nav li:first-child{
     width: 80px;
     background: none;
 }
-.navigation ul li a{
+.navbar ul.nav li a{
     display: block;
     color: #333333;
     font-family: HelveticaNeue;
+    padding: 0;
+    line-height: 60px;
 }
-.navigation ul li a:hover{
+.navbar ul.nav li a:hover{
     border-bottom: 2px solid #00bde7;
+    color: #333333;
 }
 .home{
     background: url("home_normal.png") no-repeat 26px 16px;
@@ -132,7 +136,7 @@ header ul li:first-child{
     height: 52px;
     display: block;
 }
-.home.active{
+.home.activeTab{
     background: url("home_test.jpg") no-repeat center 2px;
     width: 80px;
     height: 52px;
@@ -140,57 +144,58 @@ header ul li:first-child{
     border-bottom: 2px solid #00bde7;
 }
 .about{
-    background: url("about_normal.png") no-repeat 66px 18px;
+    background: url("about_normal.png") no-repeat 62px 18px;
     height: 52px;
     display: block;
 }
-.about.active{
-    background: url("about_bg.png") no-repeat center 2px;
+.navbar ul.nav li a.about.activeTab{
+    background: url("about_bg.png") no-repeat 1px 2px;
     height: 52px;
     display: block;
     border-bottom: 2px solid #00bde7;
-    padding-left: 6px;
+    padding-left: 10px;
 }
 .chapter{
-    background: url("chapter_normal.png") no-repeat 67px 19px;
+    background: url("chapter_normal.png") no-repeat 63px 18px;
     height: 52px;
     display: block;
 }
-.chapter.active{
-    background: url("chapter_bg.png") no-repeat 3px 2px;
+.navbar ul.nav li a.chapter.activeTab{
+    background: url("chapter_bg.png") no-repeat 1px 1px;
     height: 52px;
     display: block;
     border-bottom: 2px solid #00bde7;
+    padding-left: 2px;
 }
 .event{
-    background: url("event_normal.png") no-repeat 71px 19px;
+    background: url("event_normal.png") no-repeat 68px 18px;
     height: 52px;
     display: block;
 }
-.event.active{
+.event.activeTab{
     background: url("event_bg.png") no-repeat 3px 2px;
     height: 52px;
     display: block;
     border-bottom: 2px solid #00bde7;
 }
 .wiki{
-    background: url("wiki_normal.png") no-repeat 80px 19px;
+    background: url("wiki_normal.png") no-repeat 75px 18px;
     height: 52px;
     display: block;
 }
-.wiki.active{
+.navbar ul.nav li a.wiki.activeTab{
     background: url("wiki_bg.png") no-repeat 1px 2px;
     height: 52px;
     display: block;
     border-bottom: 2px solid #00bde7;
-    padding-left: 3px;
+    padding-left: 5px;
 }
 
 .bodyWrapper .content{
-    width: 960px;
+    width: 940px;
     background: url("lower_bg.png") no-repeat center bottom;
     margin: 0 auto;
-    padding:0 0 80px 0;
+    padding:0 0 40px 0;
 }
 .map_container{
     margin: 5px auto;
@@ -198,8 +203,8 @@ header ul li:first-child{
 /* slider css*/
 .leftSlider{
     background: #073053;
-    width: 492px;
-    height: 350px;
+    width: 482px;
+    height: 290px;
     float: left;
     border-radius: 5px 0 0 5px;
     color: #ffffff;
@@ -209,8 +214,8 @@ header ul li:first-child{
 .rightSlider{
     background: url("slider_img.png") no-repeat center #0684b8;
     float: right;
-    width: 388px;
-    height: 350px;
+    width: 378px;
+    height: 360px;
     border-radius: 5px;
 
 }
@@ -255,7 +260,6 @@ header ul li:first-child{
     width: 136px;
 }
 .latestAnnouncement{
-    width: 320px;
     height: 540px;
     float: left;
     background: #e9f4fa;
@@ -302,7 +306,7 @@ header ul li:first-child{
 }
 .smallHeading{
     background: url("short_heading_bg.jpg") no-repeat #f9f9f9;
-    width: 320px;
+    width: 300px;
     height: 41px;
     border-bottom: 1px solid #cccccc;
     border-radius: 5px 5px 0 0 ;
@@ -401,7 +405,7 @@ header ul li:first-child{
 }
 .fullHeading{
     background: url("full_heading_bg.jpg") no-repeat #f9f9f9;
-    width: 960px;
+    width: 938px;
     height: 41px;
     border-bottom: 1px solid #cccccc;
     border-radius: 5px 5px 0 0 ;
@@ -436,7 +440,7 @@ footer{
     padding-top: 30px;
 }
 footer .footerContent{
-    width: 960px;
+    width: 940px;
     margin: 0 auto;
 }
 footer .footerText{
@@ -529,4 +533,8 @@ ul.supportPrivacyLinks li{
 .ui-autocomplete.ui-menu.ui-widget-content{
     width: 490px;
     top: -1388.5px !important;
+}
+.coda-slider-wrapper .coda-slider, .coda-slider-wrapper .coda-slider .panel{
+    width: 940px;
+    margin-bottom: 20px;
 }

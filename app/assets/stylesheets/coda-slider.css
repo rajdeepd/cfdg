@@ -236,6 +236,7 @@ css-tricks.com/musings-on-preprocessing/
   clear: both;
   overflow: auto;
   position: relative;
+  padding: 0px;
 }
   
   .coda-slider-wrapper .coda-slider {
