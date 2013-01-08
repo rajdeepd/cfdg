@@ -97,10 +97,24 @@ class Event < ActiveRecord::Base
       end
     end
     if self.event_start_date_in_date == Date.today
-       if self.event_start_time_in_time <= Time.now
-         Rails.logger.info "inside second comp"
-         errors.add(:event_start_time, 'event start time and end time are not valid') if !self.errors.messages[:event_start_time].present?
-       end
+      if self.event_start_time_in_time <= Time.now
+        Rails.logger.info "inside second comp"
+        errors.add(:event_start_time, 'event start time and end time are not valid') if !self.errors.messages[:event_start_time].present?
+      end
     end
   end
+
+  def is_past_event?
+    if self.event_start_date_in_date < Date.today
+      return true
+
+    elsif self.event_start_date_in_date == Date.today
+      if self.event_start_time_in_time < Time.now
+        return true
+      end
+    else
+      return false
+    end
+  end
+
 end
