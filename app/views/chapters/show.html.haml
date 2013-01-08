@@ -29,11 +29,12 @@
           -if !@current_user.blank? and member.present?
             %br
             %span{:style=> "color:green;font-size:14px;"} Role: #{member.memeber_type.try(:titleize)}
-        -if @secondary_coord.present?
+        -if @secondary_coords.present?
           %h5.label-19
             Group Coordinator:
             %label.label-20
-              @secondary_coord.each |coord| do   #{coord.user.email}           end
+              -@secondary_coords.each do |coord|
+                #{coord.user.email}
       %ul.ul-e
         -if @chapter.id == 3
 
