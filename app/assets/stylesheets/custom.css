@@ -81,8 +81,12 @@ header ul li{
     font-size: 11px;
     font-family: arial;
 }
-header ul li a, header ul li a:hover{
+header ul li a{
     color: #ffffff;
+
+}
+header ul li a:hover{
+    color: #cccccc;
     text-decoration: none;
 }
 
@@ -95,7 +99,7 @@ header ul li:first-child{
 .container .navbar .navbar-inner{
     background: url("navigation_bg.jpg") repeat-x ;
     box-shadow: 0 1px 2px 1px #BFD3E8;
-    border-radius: 5px;
+    border-radius: 4px;
     padding: 0;
     min-height: 52px;
     background-color: inherit;
@@ -110,7 +114,6 @@ ul.nav li{
     background: url("navigation_divider.png") no-repeat left center;
     line-height: 63px;
     text-align: center;
-    border-radius: 5px;
     height: 52px;
     vertical-align: bottom;
     font-size: 14px;
@@ -126,9 +129,11 @@ ul.nav li:first-child a{
     display: block;
     color: #333333;
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
     padding: 0;
     line-height: 60px;
     text-transform: uppercase;
+    text-shadow: 0 1px 1px #ffffff;
 }
 .navbar ul.nav li a:hover{
     border-bottom: 2px solid #00bde7;
@@ -198,9 +203,9 @@ ul.nav li:first-child a{
 
 .bodyWrapper .content{
     width: 940px;
-    background: url("lower_bg.png") no-repeat center bottom;
+    background: url("lower_bg.png") no-repeat center 109%;
     margin: 0 auto;
-    padding:0 0 40px 0;
+    padding:0 0 20px 0;
 }
 .map_container{
     margin: 5px auto;
@@ -249,7 +254,7 @@ ul.nav li:first-child a{
     color: #ffffff;
     border-radius: 5px;
     font-weight: bold;
-    text-shadow: 0 -1px rgba(0, 0, 0, 0.5);;
+    text-shadow: 0 -1px rgba(0, 0, 0, 0.5);
     padding: 5px 8px;
     text-align: center;
 }
@@ -332,6 +337,7 @@ ul.nav li:first-child a{
 .smallHeading h3{
     line-height: 40px;
     margin-left: 25px;
+    font-weight: 600;
 }
 .cfdgChapter{
     float: left;
@@ -343,6 +349,7 @@ ul.nav li:first-child a{
 .longHeading h3{
     line-height: 40px;
     margin-left: 25px;
+    font-weight: 600;
 }
 .citySearch{
     width: 555px;
@@ -455,7 +462,7 @@ footer .footerContent{
     margin: 0 auto;
 }
 footer .footerText{
-    color: #cccccc;
+    color:rgba(225, 225, 225, 0.5);
     float: left;
     margin-right: 20px;
     display: block;
