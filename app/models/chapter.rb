@@ -131,3 +131,4 @@ class Chapter < ActiveRecord::Base
   end
 
 end
+
