@@ -77,7 +77,8 @@ gem 'mini_magick'
 gem 'flash_cookie_session'
 gem 'fog'
 gem 'rails3-jquery-autocomplete'
-gem 'aws-ses'
+#gem 'aws-ses'
+
 
 #gem 'pry-remote'
 # To use ActiveModel has_secure_password
