@@ -99,7 +99,7 @@ CloudfoundryUsergroups::Application.configure do
   FEDERATED_BASE_URL = "https://www.googleapis.com/identitytoolkit/v1/relyingparty/verifyAssertion?key=#{FEDERATED_KEY}"
   
   EVENTBRITE_URL = 'https://www.eventbrite.com'
-  config.action_mailer.delivery_method = :ses
-
+  #config.action_mailer.delivery_method = :ses
+  config.action_mailer.delivery_method = :amazon_ses
 
 end
