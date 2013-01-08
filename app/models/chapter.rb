@@ -74,6 +74,12 @@ class Chapter < ActiveRecord::Base
     ChapterMember.find(:all , :conditions => [" user_id = ? and chapter_id = ? and memeber_type = ?", user_id, id,  ChapterMember::MEMBER]).present?
   end
 
+
+  def get_all_members
+    self.chapter_members.select{|i| i.memeber_type == ChapterMember::MEMBER}
+  end
+
+
   def get_primary_coordinator
     User.find(self.created_by)
   end
@@ -92,6 +98,7 @@ class Chapter < ActiveRecord::Base
       end
     end
   end
+
 
   def self.search_chapters(query)
     chapters = []
@@ -115,5 +122,12 @@ class Chapter < ActiveRecord::Base
                           :state_name => state.name.strip,:country_name => country.name.strip)
     chapter.save!
     return chapter
+  end
+  def save_secondary_coordinator(member)
+    #chapter_coordinator = self.chapter_members.create(:memeber_type => ChapterMember::SECONDARY_COORDINATOR, :user_id => user.id )
+    chapter_coordinator = member
+    chapter_coordinator.memeber_type =  ChapterMember::SECONDARY_COORDINATOR
+    chapter_coordinator.save
+
   end
 end
