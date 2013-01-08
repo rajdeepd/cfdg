@@ -176,6 +176,7 @@ class EventsController < ApplicationController
         @event_memeber = EventMember.new(:event_id => @event.id, :user_id => current_user.id)
         @event_memeber.save!
 
+
         @chapter = Chapter.find(@event.chapter_id)
         @chapter_events = @chapter.events.sort
         to_email = @chapter.get_primary_coordinator.email
