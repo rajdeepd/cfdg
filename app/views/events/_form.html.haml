@@ -109,8 +109,10 @@
       //$("#image_upload_link").text("Image Uploaded...100%");
     //});
     $('#new_event').submit(function(event){
-      $("#event_form_submit").css("opacity",0.35);
-      $("#event_form_submit").attr("disabled","disabled");
+      if($(this).valid()){
+        $("#event_form_submit").css("opacity",0.35);
+        $("#event_form_submit").attr("disabled","disabled");
+      };
     });
 
   });
