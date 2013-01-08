@@ -51,12 +51,14 @@ CloudfoundryUsergroups::Application.configure do
    #EVENTBRITE_REDIRECT_URL = 'http://local.cfdg.com//events/oauth_reader'
    EVENTBRITE_ORGANIZATION_ID = '2894467429'
 
-  require 'aws/ses'
+  #require 'aws/ses'
 
-  SES = AWS::SES::Base.new(
-      :access_key_id     => 'AKIAI7K4DV63EWHI5DSA',
-      :secret_access_key => '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'
-  )
+  config.action_mailer.delivery_method = :ses
+
+  #SES = AWS::SES::Base.new(
+  #    :access_key_id     => 'AKIAI7K4DV63EWHI5DSA',
+  #    :secret_access_key => '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'
+  #)
 
 
 
