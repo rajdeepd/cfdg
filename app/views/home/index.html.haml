@@ -68,8 +68,12 @@
       .map
         = gmaps4rails(@markers)
       .createChapter.clearfix
-        %p Couldnt find a chapter in your city?
-        %button.orangeBtn.createChapterBtn CREATE A CHAPTER
+        -if current_user.blank?
+          %p Couldnt find a chapter in your city?
+          %a.orangeBtn.signin.createChapterBtn CREATE A CHAPTER
+        -else
+          -if !ChapterMember.is_primary_coordinator?(current_user.id)
+            %a.orangeBtn.createChapterBtn{:href => "#{new_chapter_path}"} CREATE A CHAPTER
   = render :partial => "/shared/upcomming_events"
 
 
