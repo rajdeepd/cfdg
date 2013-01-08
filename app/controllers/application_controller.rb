@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   include Userstamp 
   before_filter :set_locale, :current_location
+  before_filter :set_cache_buster
 
   helper_method :current_user , :admin_user
  
@@ -32,6 +33,12 @@ class ApplicationController < ActionController::Base
   def default_url_options(options = {})
     options.merge!({ :locale => I18n.locale })
   end
+
+  def set_cache_buster
+      response.headers["Cache-Control"] = "no-cache, no-store, max-age=0, must-revalidate"
+      response.headers["Pragma"] = "no-cache"
+      response.headers["Expires"] = "Fri, 01 Jan 1990 00:00:00 GMT"
+    end
 
   private
 
