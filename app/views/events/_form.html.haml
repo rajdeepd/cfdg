@@ -108,12 +108,9 @@
     //  $("#event_image").trigger("click");
       //$("#image_upload_link").text("Image Uploaded...100%");
     //});
-    $("#event_form_submit").live("click",function(){
-      //var form =  $(this).attr("rel");
-      if($(form).valid()){
-          $.blockUI();
-          //$.unblockUI();
-      };
+    $('#new_event').submit(function(event){
+      $("#event_form_submit").css("opacity",0.35);
+      $("#event_form_submit").attr("disabled","disabled");
     });
 
   });

@@ -1,5 +1,6 @@
 $('#options').show();
 $('#spinner').hide();
+
 -if @event.errors.blank?
   $("#events").html("#{escape_javascript render(:partial => 'chapters/chapter_admin_home_page')}");
   $('.success_msg').show();
