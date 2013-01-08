@@ -22,7 +22,7 @@ body{
 }
 
 .bodyWrapper{
-    background: url("body_bg.png") no-repeat ;
+    background: url("body_bg.png") no-repeat fixed;
     margin: 0 auto;
     width: 100%;
 }
@@ -206,6 +206,9 @@ ul.nav li:first-child a{
     background: url("lower_bg.png") no-repeat center 109%;
     margin: 0 auto;
     padding:0 0 20px 0;
+    height: 100%;
+    min-height: 400px;
+
 }
 .map_container{
     margin: 5px auto;
@@ -362,7 +365,7 @@ ul.nav li:first-child a{
 .citySearch form{
     margin: 0px;
 }
-.citySeachIcon{
+.citySearchIcon{
     background: url("city_icon.png") no-repeat center;
     width: 20px;
     height: 20px;
@@ -370,7 +373,7 @@ ul.nav li:first-child a{
     float: left;
     margin-top: 3px;
 }
-.citySeachBtn{
+.citySearchBtn{
     background: url("search_icon_white.png") no-repeat center;
     width: 20px;
     height: 20px;
@@ -555,4 +558,25 @@ ul.supportPrivacyLinks li{
 .coda-slider-wrapper .coda-slider, .coda-slider-wrapper .coda-slider .panel{
     width: 940px;
     margin-bottom: 20px;
+}
+.coda-slider-wrapper .coda-nav ul li a{
+    font-weight: bold;
+}
+
+/* event detailed page*/
+.breadCrumb{
+    color: #333333;
+    font-size: 12px;
+    padding-top: 5px;
+}
+.breadCrumbDivider{
+    color: #808faa;
+}
+.activePage{
+    color: #777777;
+}
+.eventHeader{
+    background: url("blue_header_bg.jpg") no-repeat;
+    width: 940px;
+    height: 120px;
 }
