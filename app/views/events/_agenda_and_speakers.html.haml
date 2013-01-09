@@ -21,7 +21,9 @@
       Attendees List
     %br
 -if @current_user.present? and @event.can_i_delete?(@current_user.id, @event.chapter_id)
-  .attendeesEmailList
+  .attendeesEmailList.clr
+    %p.label-9{:href => '#', :style=>"font-size:20px;", :id=>"attendees_list"}
+      Attendees List
     = text_area_tag 'attendes_emails', @emails, :style => "width:940px;padding-top:4px;", :readonly => 'readonly'
     = link_to "Download list",download_list_event_path(@event) ,:class=>"btn-a-small flt-right"
 
