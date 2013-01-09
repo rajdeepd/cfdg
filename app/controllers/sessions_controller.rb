@@ -18,11 +18,17 @@ class SessionsController <  Devise::SessionsController
     if !user.nil?
       status = user.valid_password?(params[:user][:password]) unless user.nil?
       if status
+        if(user.confirmed?)
+          session[:user_id] = user.id
+          session[:email] = user.email
+          session[:user] = {:email => user.email,:verified => true, :name => user.fullname}
+          sign_in_and_redirect(user)
+        else
+          flash.now.alert = "You need to confirm your account"
+          #redirect_to(root_path)
+          render "new"
+        end
 
-        session[:user_id] = user.id
-        session[:email] = user.email
-        session[:user] = {:email => user.email,:verified => true, :name => user.fullname}
-        sign_in_and_redirect(user)
       else
         logger.info "inside if status"
         flash.now.alert = "Invalid email or password"
