@@ -54,28 +54,35 @@
       %input#Uploadify{:name => "Uploadify", :type => "file"}
 
   .div-d
-    - (@event.comments || []).each do |comment|
-      .divd-comment-pos
-        -#%br
-        %table.table-c
-          %tr
-            %td
-              = avatar_display_pic(comment.user,'thumb', '40x40','profile.png',"img-c flt-left")
-              /%img.img-c.flt-left{:src => "/assets/img-d.png"}
-            %td
-              %h5.label-27
-                #{comment.user.fullname} -
+    .all_events_comments
+      -#=render :partial => "all_events_comments"
+      -(@event.comments || []).each do |comment|
+        .divd-comment-pos
+          -#%br
+          %table.table-c
+            %tr
+              %td
+                = avatar_display_pic(comment.user,'thumb', '40x40','profile.png',"img-c flt-left")
+                /%img.img-c.flt-left{:src => "/assets/img-d.png"}
+              %td
+                %h5.label-27
+                  #{comment.user.fullname} -
 
-                %label.label-25 #{Time.parse(comment.created_at.to_s).strftime('%d, %b')}
-              %p.label-16
-                #{comment.content}
-    - @comment =  @event.comments.build
-    -if @current_user.present?
-      = semantic_form_for  @comment do |f|
-        .add_a_new_comment
+                  %label.label-25 #{Time.parse(comment.created_at.to_s).strftime('%d, %b')}
+                %p.label-16
+                  #{comment.content}
+    -#- @comment =  @event.comments.build
+    %div
+      -if @current_user.present?
+        -#= form_for  @comment ,:url => create_event_comment_events_path , :remote => true do |f|
           = f.text_area :content, :placeholder => "comment", :label => false, :class => " content_comment_class ta-a"
-        = f.hidden_field   :commentable_type
-        = f.hidden_field   :commentable_id
+          = f.hidden_field   :commentable_type
+          = f.hidden_field   :commentable_id
+        = form_tag(create_event_comment_events_path,:method => "POST",:class => "create_comment",:remote => true) do
+          = text_area_tag "comment[content]","", :placeholder => "comment", :label => false, :class => " content_comment_class ta-a"
+          = hidden_field_tag "comment[commentable_type]","Event"
+          = hidden_field_tag "comment[commentable_id]",@event.id
+          = button_tag "add comment",:class => "add_comment_button",:style => "display:none;"
   %br
   .eventMap.clr
     - if @current_user.present? and   @event.can_i_delete?(@current_user.id, @event.chapter_id)
@@ -83,18 +90,26 @@
     -else
       -#= gmaps4rails(@marker)
       = gmaps("markers" => {"data" => @marker }, "map_options" => {"auto_zoom" => false, "zoom" => 15 } ) unless @marker == [].to_json
-- session_key = Rails.application.config.session_options[:key]
+  - session_key = Rails.application.config.session_options[:key]
 
 = content_for :scripts do
   :javascript
     Events.init();
     $(document).ready(function(e){
 
-    $('#new_comment').validate({
+    $('.create_comment').validate({
       rules: {
         "comment[content]": {
           required: true
         }
+      }
+    });
+
+    $('#comment_content').on('keypress', function(e){
+
+      if(e.keyCode == 13){
+        e.preventDefault();
+        $(".add_comment_button").trigger("click");
       }
     });
 

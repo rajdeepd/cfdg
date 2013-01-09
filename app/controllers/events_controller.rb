@@ -24,7 +24,6 @@ class EventsController < ApplicationController
     @emails = ''
     @members = @event.event_members.includes(:user).collect{|i| i.user}
     @event.event_members.each do |member| @emails << (member.user.try(:email).to_s+"\;")  end
-
     if @event.event_galleries.present?
       @all_event_images =  @event.event_galleries
     end
@@ -233,8 +232,7 @@ class EventsController < ApplicationController
     @all_event_images = @event.event_galleries
     respond_to do |format|
       if(@comment.save)
-        format.js { render :partial => "/events/full_event" }
-
+        format.js
       end
     end
 
