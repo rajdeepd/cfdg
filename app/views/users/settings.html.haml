@@ -4,11 +4,11 @@
       =form_for(@user, :as => :user, :url => settings_update_path(@user), :html => { :method => :put ,  :multipart => true}) do |f|
         #welcome
           %h1.label-17 Welcome #{@user.fullname}!
-          %div
+          %div.userFixImage
             - if @user.avatar_file_name && (@user.errors[:avatar_content_type].blank? && @user.errors[:avatar_file_size].blank?)
-              %img.profile-image{:src => @user.try(:avatar).url(:medium)}/
+              %img.profile-image{:src => @user.try(:avatar).url(:medium)}
             - else
-              %img.profile-image{:src => "/assets/default-Profile-Image.png"}/
+              %img.profile-image{:src => "/assets/default-Profile-Image.png"}
           = f.file_field :avatar ,:class => "uploadImage"
         .forms_list
           #formfirst

@@ -1461,3 +1461,7 @@ p.label-53{margin-bottom: 15px;}
 .content {
     min-height: 500px;
 }
+.userFixImage img{
+    width: 157px;
+    height: 157px;
+}
