@@ -192,9 +192,7 @@ header ul li:first-child{
     margin: 0 auto;
     padding:0 0 80px 0;
 }
-.map_container{
-    margin: 5px auto;
-}
+
 /* slider css*/
 .leftSlider{
     background: #073053;
