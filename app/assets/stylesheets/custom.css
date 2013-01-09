@@ -11,7 +11,9 @@ ul, ol{
  font-weight: normal;
  font-style: normal;
 }
-
+a{
+    color: #ffffff;
+}
 a:hover{
     text-decoration: none;
 }
@@ -568,6 +570,7 @@ ul.supportPrivacyLinks li{
     color: #333333;
     font-size: 12px;
     padding-top: 5px;
+    margin-bottom: 10px;
 }
 .breadCrumbDivider{
     color: #808faa;
@@ -576,7 +579,267 @@ ul.supportPrivacyLinks li{
     color: #777777;
 }
 .eventHeader{
-    background: url("blue_header_bg.jpg") no-repeat;
-    width: 940px;
-    height: 120px;
+    background: url("blue_header_bg.jpg") no-repeat 0 -2px;
+    width: 910px;
+    height: 90px;
+    padding: 30px 0 0 30px;
+    text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+    margin-top: 2px;
+    border-radius: 4px;
+    box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.2);
+}
+.eventHeader h1{
+    float: left;
+    color: #ffffff;
+    font-size: 36px;
+
+}
+.eventHeader .chapterLocation{
+    float: left;
+    color: #ffffff;
+    line-height: 46px;
+    font-size: 20px;
+    font-weight: 500;
+
+}
+.chapterDateAndPlace{
+    line-height: 20px;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 500;
+}
+.chapterDate{
+    background: url("calander_white.jpg") no-repeat;
+    padding-left: 23px;
+    margin-right: 15px;
+    color: #ffffff;
+    font-size: 16px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 500;
+}
+.chapterPlace{
+    background: url("place_icon.png") no-repeat;
+    padding-left: 18px;
+    color: #ffffff;
+    font-size: 16px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 500;
+}
+.chapterContent{
+    background-color: rgba(224, 239, 248, 0.5);
+    padding: 30px 0 40px;
+    margin: -2px 0 30px;
+    border: 1px solid #96B0C1;
+    box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.2);
+}
+.chapterContent .row{
+    width: 962px;
+}
+.eventTour{
+    padding: 0 0 0 30px;
+}
+.chapterNameWithThumbnail{
+    margin-bottom: 30px;
+}
+.chapterNameWithThumbnail .chapterThumbnail{
+    width: 60px;
+    height: 60px;
+    float: left;
+    margin-right: 20px;
+}
+.chapterNameWithThumbnail h3{
+    color: #0094d4;
+    font-size: 23px;
+    float: left;
+    width: 120px;
+}
+.eventPeopleList{
+    width: 270px;
+    border-radius: 4px;
+    border: 1px solid #CCC;
+    background-color: #eff6fb;
+    margin-bottom: 20px;
+}
+.listHeader{
+    background: url("listing_header_bg.jpg") repeat-x;
+    padding: 6px 10px;
+    border-radius: 4px;
+    border-bottom: 1px solid #CCC;
+    font-size: 13px;
+    color:#333333;
+    text-shadow:0 -1px rgba(225, 225, 225 ,0.7);
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+.listHeader span{
+    font-size: 13px;
+    color:#333333;
+    text-shadow:0 -1px rgba(225, 225, 225 ,0.7);
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+.numberOfPeople{
+    float: right;
+    margin-right: 10px;
+}
+.eventPeopleList ul{
+    /*padding-bottom: 10px;*/
+}
+.eventPeopleList ul li{
+    margin: 20px 0 10px 20px;
+    overflow: hidden;
+}
+.eventPeopleList ul li img{
+    float: left;
+    width: 38px;
+    height: 38px;
+    border: 1px solid #cccccc;
+    margin-right: 10px;
+}
+.personDetails{
+    float: left;
+    width: 180px;
+    text-transform: capitalize;
+}
+.personDetails .personName{
+    color: #0094d4;
+    font-size: 16px;
+}
+.personRole{
+    color: #666666;
+}
+.eventPeopleList a{
+    color: #0094d4;
+    margin: 0 0 20px 20px;
+    display: block;
+}
+.eventTour .coda-slider-wrapper , .eventTour .coda-slider-wrapper .coda-slider, .eventTour .coda-slider-wrapper .coda-slider .panel{
+    width: 590px !important;
+}
+.eventTour .coda-slider-wrapper .coda-slider{
+    margin: 0;
+}
+.eventTour .coda-slider-wrapper{
+    margin-bottom: 5px;
+    border: 1px solid #cccccc;
+}
+.eventTour .panel-container .panel-wrapper img{
+    width: 590px;
+    height: 370px;
+}
+.eventTour .coda-slider-wrapper .coda-nav-left a{
+    top: 185px;
+    left: 15px;
+}
+.eventTour .coda-slider-wrapper .coda-nav-right a{
+    top: 185px;
+    right: 15px;
+}
+.viewEventGallery{
+    text-align: right;
+    margin-bottom: 8px;
+}
+.viewEventGallery a{
+    color: #0094d4;
+    text-decoration: underline;
+}
+.viewEventGallery a:hover{
+    color: #005580;
+    text-decoration: none;
+}
+.eventDetail{
+    border-bottom: 1px solid #cccccc;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+.eventDetail h4{
+    color: #0094D4;
+    font-size: 20px;
+    line-height: 22px;
+    margin-bottom: 13px;
+}
+.eventDetail p{
+    font-size: 14px;
+    line-height: 20px;
+    color: #333;
+    margin-bottom: 20px;
+}
+.eventDetail a{
+    color: #0094d4;
+}
+.eventDetail .orangeBtn{
+    float: right;
+    width: 101px;
+}
+.eventDetail a.orangeBtn{
+    color: #ffffff;
+}
+.comments{
+    margin-left: 30px;
+}
+.comments h4{
+    font-size: 18px;
+    text-shadow: 0 1px white;
+    margin-bottom: 20px;
+}
+.comments ul li{
+    overflow: hidden;
+    margin-bottom: 40px;
+}
+.comments ul li img{
+    float: left;
+    margin-right: 10px;
+}
+.comments .commentText{
+    float: left;
+}
+.comments .commentText p{
+    width: 475px;
+    font-size: 14px;
+    font-family: helvetica;
+}
+.comments .commentDate{
+    font-size: 12px;
+    color: #666;
+    line-height: 16px;
+}
+.comments .addCommentBox{
+    margin-right: 15px;
+}
+.comments .addCommentBox img{
+    margin-right: 15px;
+}
+.comments .addCommentBox textarea{
+    resize: none;
+    width: 480px;
+    height: 100px;
+}
+.comments .addCommentBox a.addBtn{
+    margin: 10px 0 0  70px;
+    width: 115px;
+    line-height: 25px;
+    font-size: 16px;
+    color: #333;
+    border-radius: 6px;
+    text-shadow: 0 2px white;
+}
+.viewMap{
+    color: #ffffff;
+    cursor: pointer;
+}
+.mapDiv{
+    width: 530px;
+    height: 350px;
+    z-index: 1000;
+    border: 1px solid #CCC;
+    position: absolute;
+    top: 140px;
+    left: 68px;
+    background: white;
+}
+.mapDiv .close{
+    float: right;
+    font-size: 12px;
+    color: #000000;
+    margin-right: 5px;
 }
