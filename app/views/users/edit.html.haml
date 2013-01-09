@@ -42,7 +42,10 @@
       rules: {
         "user[fullname]": {
           required: true
-        }
+        },
+         "user[mobile]": {
+           digits: true
+         }
       }
     });
   });
@@ -64,6 +67,7 @@
 
     var contact_number =   new LiveValidation("user_mobile",{validMessage:" ",onlyOnSubmit:true});
     contact_number.add( Validate.Format , { pattern: /^[0-9]{0,15}$/, failureMessage: "Must be a Number" });
-    $("#SWFUpload_0").addClass("uploadImage")
+    $("#SWFUpload_0").addClass("uploadImage");
+    $("#SWFUpload_0").css("margin-top","153px");
 
   });
