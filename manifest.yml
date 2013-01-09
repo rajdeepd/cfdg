@@ -1,0 +1,14 @@
+---
+applications:
+- name: cfdg-cn-2
+  framework: rails3
+  runtime: ruby19
+  memory: 256M
+  instances: 1
+  url: cfdg-cn-2.${target-base}
+  path: .
+  services:
+    mysql-cfdg-cn-2:
+      vendor: mysql
+      version: '5.1'
+      tier: free
