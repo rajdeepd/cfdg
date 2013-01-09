@@ -1461,3 +1461,7 @@ p.label-53{margin-bottom: 15px;}
 .content {
     min-height: 500px;
 }
+.agendaAndSpeakers{
+    float:left;
+    width: 635px;
+}
