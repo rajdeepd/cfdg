@@ -14,6 +14,7 @@
 /log/*.log
 /tmp
 
+
 /config/database.yml
 db/schema.rb
 /nbproject/
@@ -51,6 +52,12 @@ public/uploads
 /config/database.yml
 /vendor/bundle/*
 /vendor/cache/*
+
+
+#Ignore all .Idea(RubyMine Project Directory)
+/.idea/
+.idea/*
+/.idea/workspace.xml
 
 
 *#*

@@ -126,6 +126,7 @@ CloudfoundryUsergroups::Application.routes.draw do
   resources :html do
     collection do
       get :home_page
+      get :event_detail
     end
   end
 

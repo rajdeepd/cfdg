@@ -1,15 +1,17 @@
 .container
   .logo
     =image_tag("cfdg_logo.png")
-  .navigation
-    %ul.clearfix
-      %li
-        %a.home{:href => "#{root_path}"}
-      %li
-        %a.about{:href => "#{about_path}"} About
-      %li
-        %a.chapter{:href => "#{directory_path}"} Chapter
-      %li
-        %a.event{:href => "#{event_listing_events_path}"} Event
-      %li
-        %a.wiki{:href =>"#{wiki_path}"} Wiki
+  .navbar
+    .navbar-inner
+
+      %ul.clearfix.nav
+        %li
+          %a.home{:href => "#{root_path}"}
+        %li
+          %a.about{:href => "#{about_path}"} About
+        %li
+          %a.chapter{:href => "#{directory_path}"} Chapter
+        %li
+          %a.event{:href => "#{event_listing_events_path}"} Event
+        %li
+          %a.wiki{:href =>"#{wiki_path}"} Wiki

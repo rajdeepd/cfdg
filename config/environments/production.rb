@@ -74,6 +74,7 @@ CloudfoundryUsergroups::Application.configure do
   #EVENTBRITE_REDIRECT_URL = 'http://user-groups.cloudfoundry.com/events/oauth_reader'
   #EVENTBRITE_ORGANIZATION_ID = '2835415942'
 
+
   #cfdg-test
   #FEDERATED_KEY = 'AIzaSyBDzBczQ51lkKiXLaS2Inx1iSRtf3SdjsI'
 
