@@ -1,5 +1,5 @@
 class City < ActiveRecord::Base
-  # attr_accessible :title, :body
+  attr_accessible :name, :state_id, :detail 
+
   belongs_to :state
-  attr_accessible :name
 end

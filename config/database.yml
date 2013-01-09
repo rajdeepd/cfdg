@@ -3,7 +3,7 @@ development:
   encoding: utf8
   database: cf_usergroups
   username: root
-  password: webonise6186
+  password: admin
   
 
 # Warning: The database defined as "test" will be erased and
@@ -22,4 +22,4 @@ production:
   encoding: utf8
   database: cf_usergroups_production
   username: root
-  password: root
+  password: admin
