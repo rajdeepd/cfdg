@@ -5,5 +5,5 @@
       = render '/events/members_list'
     -if @current_user.present?  and !@event.can_i_delete?(@current_user.id, @event.chapter_id)
       = render '/events/members_list'
-    -if @current_user.present? and (@event.can_i_delete?(@current_user.id, @event.chapter_id) or @event.agenda_and_speakers.present?)
+    -if @event.agenda_and_speakers.present?
       = render '/events/agenda_and_speakers'

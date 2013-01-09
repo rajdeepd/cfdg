@@ -4,11 +4,11 @@
       =form_for(@user, :as => :user, :url => settings_update_path(@user), :html => { :method => :put ,  :multipart => true}) do |f|
         #welcome
           %h1.label-17 Welcome #{@user.fullname}!
-          %div
+          %div.userFixImage
             - if @user.avatar_file_name && (@user.errors[:avatar_content_type].blank? && @user.errors[:avatar_file_size].blank?)
-              %img.profile-image{:src => @user.try(:avatar).url(:medium)}/
+              %img.profile-image{:src => @user.try(:avatar).url(:medium)}
             - else
-              %img.profile-image{:src => "/assets/default-Profile-Image.png"}/
+              %img.profile-image{:src => "/assets/default-Profile-Image.png"}
           = f.file_field :avatar ,:class => "uploadImage"
         .forms_list
           #formfirst
@@ -35,6 +35,10 @@
 - session = arr.join("x")
 = javascript_include_tag "jquery.uploadify-3.1"
 :javascript
+  $(document).ready(function(){
+
+  });
+
   $(function() {
     $('#user_avatar').uploadify({
       uploader   : "#{uploader_users_path(:format => :json)}",
@@ -55,6 +59,9 @@
     //mobile.add( Validate.Numericality ,{ onlyInteger: true },{maximum: 999999999999999});
     var contact_number =   new LiveValidation("user_mobile",{validMessage:" ",onlyOnSubmit:true});
     contact_number.add( Validate.Format , { pattern: /^[0-9]{0,15}$/, failureMessage: "Must be a Number" });
+
+    $("#SWFUpload_0").addClass("uploadImage");
+    $("#SWFUpload_0").css("margin-top","153px");
 
   });
 :css
