@@ -1,9 +1,7 @@
-.comingEvents.clearfix
-  .fullHeading
-    %h3 Upcoming Events
-  #ca-container.ca-container.clearfix
+.content.wrapper
+  #ca-container.ca-container.clearfix{:style => "margin-top:-20px;"}
     .ca-wrapper
-      -@upcoming_events.each do |event|
+      -@upcoming_events.first(7).each do |event|
         .ca-item.ca-item-1
           .ca-item-main
             .eventImg

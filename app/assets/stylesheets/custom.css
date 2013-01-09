@@ -421,7 +421,7 @@ header ul li:first-child{
     margin-bottom: 20px;
     font-size: 12px;
 }
-.eventContent h5{
+.eventContent h5 a{
     color: #0078ac;
     font-size: 16px;
     font-family: helvetica;

@@ -321,6 +321,10 @@ class EventsController < ApplicationController
     render :layout => false
   end
 
+  def event_listing
+  @upcoming_events = Event.get_upcoming_events
+  end
+
 
   protected
 
