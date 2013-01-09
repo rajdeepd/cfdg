@@ -17,7 +17,7 @@
         = f.input :agenda_and_speakers, :as => :ckeditor, :label => false, :input_html => { :toolbar => 'Easy' }
         = f.submit "#{submit_val}" ,:class=>"btn-a-small flt-right", :style => "margin-right:10px;", :id=>"event_agnda_form_submit"
     %br
-    
+
     %br
 -if @current_user.present? and @event.can_i_delete?(@current_user.id, @event.chapter_id)
   .attendeesEmailList.clr
