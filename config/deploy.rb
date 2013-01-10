@@ -16,7 +16,7 @@ set :application, "vmware-cfdg"
 default_run_options[:pty] = true
 
 # setup scm:
-set :repository,  "git@bitbucket.org:larryzhao/maleskine.git"
+set :repository,  "git@bitbucket.org:larryzhao/vmare-cfdg.git"
 set :deploy_via, :remote_cache
 set :scm_username, "larryzhao"
 set :scm, :git
