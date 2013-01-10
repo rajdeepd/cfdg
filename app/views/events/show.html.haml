@@ -88,7 +88,7 @@
                   %button.btn-a-small.flt-right{:id=>"cancelled_event", :event_id => "#{@event.id}" ,:disable => true,:style => "opacity:0.35"} CANCELLED
                 -else
                   -if !@event.am_i_member?(current_user.id) and @event.is_rsvp_allowed?
-                    %button.btn-a-small.flt-right.rsvp_me{:id=>"follow_an_event", :event_id => "#{@event.id}"} R.S.V.P
+                    %button.btn-a-small.flt-right.rsvp_me{:id=>"follow_event", :event_id => "#{@event.id}"} R.S.V.P
                     -#%img.flt-right#rsvp_tick{:src => "/assets/Event.png",:style => "display:none"}
                     %button.btn-a-small.flt-right{:id=>"rsvp_tick",:style => "display:none;opacity:0.35"} Attending
                   -elsif !@event.am_i_member?(current_user.id) and !@event.is_rsvp_allowed?
@@ -98,7 +98,10 @@
                     %button.btn-a-small.flt-right{:id=>"event_rsvped",:style => "opacity:0.35"} Attending
             -#%a.orangeBtn{:href => "#"} R.S.V.P
         .comments.clearfix
-          %h4 Comments
+          -if @current_user.present?
+            %h4.logged_in_user{:rel => @current_user.id} Comments
+          -else
+            %h4 Comments
           %ul
             .all_events_comments
               -(@event.comments || []).each do |comment|
@@ -126,8 +129,25 @@
       .span4
         .chapterNameWithThumbnail.clearfix
           %img.chapterThumbnail{:src => "/assets/pune_chapter.jpg"}/
-          %h3 Pune Chapter
-        = render '/events/members_list'
+          %h3 #{@event.chapter.name}
+        -#= render '/events/members_list'
+        .eventPeopleList
+          .listHeader
+            %span list of attendees
+            -if @event.id ==2
+              %span.numberOfPeople 37
+            -else
+              %span.numberOfPeople #{@event.event_members.size}
+            -#%span.numberOfPeople 06
+          %ul.clearfix
+            -@members.each do |i|
+              %li
+                -#%img{:src => "/assets/human_face_4.jpg"}
+                = avatar_display_pic(i,'thumb', '40x40','profile.png',"profile-img img-a flt-left")
+                .personDetails
+                  .personName #{i.fullname}
+
+              -#%a{:href => "#"} View more
         -#.eventPeopleList
           .listHeader
             %span Organisers
@@ -192,7 +212,17 @@
 :javascript
   $(document).ready(function(){
     $(".rsvp_me").on("click",function(){
-      $(".rsvp_me").hide();
-      $("#rsvp_tick").show();
+      //$(".rsvp_me").hide();
+      //$("#rsvp_tick").show();
     });
+
+    $("#follow_event").live("click", function(){
+      $(".rsvp_me").text("Please Wait...");
+      var  current_user =  $(".logged_in_user").attr("rel");
+      var event_id = $(".viewEventGallery").attr("rel");
+      $.get("/events/"+event_id+"/join_event",{data:current_user},function(){
+         $(".rsvp_me").hide();
+         $("#rsvp_tick").show();
+      },"script");
+    })
   });

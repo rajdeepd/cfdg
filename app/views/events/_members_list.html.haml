@@ -37,11 +37,11 @@
       %span.numberOfPeople #{@event.event_members.size}
     -#%span.numberOfPeople 06
   %ul.clearfix
-    -@members.each do |i|
+    -@event.event_members.each do |i|
       %li
         -#%img{:src => "/assets/human_face_4.jpg"}
-        = avatar_display_pic(i,'thumb', '40x40','profile.png',"profile-img img-a flt-left")
+        = avatar_display_pic(i.user,'thumb', '40x40','profile.png',"profile-img img-a flt-left")
         .personDetails
-          .personName #{i.fullname}
+          .personName #{i.user.fullname}
 
       -#%a{:href => "#"} View more
