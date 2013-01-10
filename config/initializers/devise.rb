@@ -4,7 +4,7 @@ Devise.setup do |config|
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class with default "from" parameter.
-  config.mailer_sender = "contact.cfdg@gmail.com"
+  config.mailer_sender = "noreply-cfdg@cloudfoundry.cn"
 
   # Configure the class responsible to send e-mails.
   # config.mailer = "Devise::Mailer"
@@ -15,6 +15,14 @@ Devise.setup do |config|
   # available as additional gems.
   require 'devise/orm/active_record'
 
+  require "omniauth-weibo-oauth2"
+  config.omniauth :weibo, ENV['WEIBO_ID'], ENV['WEIBO_SECRET']
+
+  #require "omniauth-qq-connect"
+  #use OmniAuth::Builder do
+    #provider :qq_connect, ENV['QQ_ID'], ENV['QQ_SECRET']
+  #end
+  #config.omniauth :qq_connect, ENV['QQ_ID'], ENV['QQ_SECRET']
   # ==> Configuration for any authentication mechanism
   # Configure which keys are used when authenticating a user. The default is
   # just :email. You can configure it to use [:username, :subdomain], so for

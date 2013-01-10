@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  school_name: MyString
+  institution: MyString
+  major: MyString
+  graduated_at: 2013-01-10 15:53:16
+
+two:
+  school_name: MyString
+  institution: MyString
+  major: MyString
+  graduated_at: 2013-01-10 15:53:16

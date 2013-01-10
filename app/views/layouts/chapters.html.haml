@@ -15,35 +15,10 @@
     = stylesheet_link_tag    "event", :media => "all"
     = stylesheet_link_tag    "jquery.timepicker-1.2.2", :media => "all"
     = javascript_include_tag "application"
-    %script{:src => "http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"}
-    %script{:src => "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"}
-    %script{:src => "//ajax.googleapis.com/ajax/libs/googleapis/0.0.4/googleapis.min.js", :type => "text/javascript"}
-    %script{:src => "//ajax.googleapis.com/jsapi", :type => "text/javascript"}
-    %script{:src => "http://code.jquery.com/jquery-1.8.2.js"}
-    %script{:src => "http://code.jquery.com/ui/1.9.0/jquery-ui.js"}
+    %script{:src => "http://cfdg.qiniudn.com/jquery-1.8.3.min.js"}
+    %script{:src => "http://cfdg.qiniudn.com/jquery-ui-1.9.2.custom.min.js"}
+
     = javascript_include_tag "jquery.timepicker-1.2.2"
-    :javascript
-      google.load("identitytoolkit", "1", {packages: ["ac"], language:"en"});
-    :javascript
-      $(function() {
-        window.google.identitytoolkit.setConfig({
-            developerKey: "#{FEDERATED_KEY}",
-            companyName: "cloudfoundry usergroups",
-            callbackUrl: "#{verify_user_url()}",
-            realm: "",
-            userStatusUrl: "/user_status",
-            loginUrl: "/login",
-            signupUrl: "/sign_up",
-            //homeUrl: "/profile",
-            homeUrl: "#{session[:url]}",
-            logoutUrl: "/logout",
-            idps: ["Gmail", "Yahoo"],
-            tryFederatedFirst: true,
-            useCachedUserStatus: false,
-            useContextParam: true
-        });
-        $("#navbar").accountChooser();
-      });
     = csrf_meta_tags
   %body
     = render "shared/federated_header"

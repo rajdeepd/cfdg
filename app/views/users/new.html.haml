@@ -1,0 +1,59 @@
+.content.wrapper
+  .content-a
+    .ca-left.flt-left
+      =form_for(@user, :html => { :method => :post ,  :multipart => true}) do |f|
+        #welcome
+          %h1.label-17 Welcome #{@user.fullname}!
+          %div
+            - if @user.avatar_file_name && (@user.errors[:avatar_content_type].blank? && @user.errors[:avatar_file_size].blank?)
+              %img.profile-image{:src => @user.try(:avatar).url(:medium)}/
+            - else
+              %img.profile-image{:src => "/assets/default-Profile-Image.png"}/
+          = f.file_field :avatar
+        .forms_list
+          #formfirst
+            %h4.form1 Personal Information
+            %div
+              = f.text_field :last_name ,  :placeholder => "Last Name", :class => "textboxes input-a"
+              = f.text_field :first_name , :placeholder => "Last Name", :class => "textboxes input-a"
+              = f.text_field :mobile ,     :placeholder => "Mobile",    :class => "textboxes input-a"
+              = f.select :country, @countries.collect { |c| [c.name, c.name]}
+              = f.select :state, @states.collect { |s| [s.name, s.name]}
+              = f.select :city, @cities.collect { |c| [c.name, c.id]}
+          .line_space
+          #formsecond
+            %h4.form1 Role Information            
+            %div
+              - User::ROLES.each do |role|
+                = f.radio_button :role, role
+                = label "user_role_#{role}".to_sym, role
+            %div.info-block
+              = render 'users/info_blocks/company_info'
+
+            .styled
+              = f.submit "CONTINUE" , :class => "continue btn-a-small flt-right"
+- arr = []
+- request.env['HTTP_COOKIE'].each_char{|c| arr.push(c[0].to_s)}
+- session = arr.join("x")
+= javascript_include_tag "jquery.uploadify-3.1"
+:javascript
+  $(function() {
+    $('#user_avatar').uploadify({
+      uploader   : "#{uploader_users_path(:format => :json)}",
+      swf        : '/assets/uploadify.swf',
+      auto       : true,
+      fileSizeLimit : '1MB',
+      fileTypeExts : '*.gif; *.jpg; *.jpeg; *.png',
+      fileObjName : 'user[avatar]',
+      buttonText : 'Edit Profile Picture',
+      buttonClass : 'fileuploader-text',
+      onUploadSuccess : function(file, data, response) {
+             $('.profile-image').attr('src',data);            
+      },
+      formData   : {'session_encoded': '#{session}', 'id': "#{@user.id}", 'authenticity_token': "#{form_authenticity_token}"  }
+    });
+
+    var contact_number =   new LiveValidation("user_mobile",{validMessage:" ",onlyOnSubmit:true});
+    contact_number.add( Validate.Format , { pattern: /^[0-9]{0,15}$/, failureMessage: "Must be a Number" });
+    $("#SWFUpload_0").addClass("uploadImage")
+  });

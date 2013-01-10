@@ -1,8 +1,8 @@
 #the file name should be "_XXXXX" is Init the contant before devise
 case Rails.env
 when 'development'
-  ENV['WEIBO_ID'] = '542047457'
-  ENV['WEIBO_SECRET'] = '0d78128235733a26ff012f150dda25b8'
+  ENV['WEIBO_ID'] = '2047193824'
+  ENV['WEIBO_SECRET'] = '9601d3f9a89da07386ae671ac19e1328'
 when 'staging'
   ENV['WEIBO_ID'] = '2317805385'
   ENV['WEIBO_SECRET'] = '197738a4abd28e89dcb40a0a802e9eb7'

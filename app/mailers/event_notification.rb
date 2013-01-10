@@ -2,7 +2,7 @@ class EventNotification < ActionMailer::Base
   default from: "contact.cfdg@gmail.com"
 
   def rsvped_event(event,user)
-    logger.info "########## rsvp event ###############"
+    #logger.info "########## rsvp event ###############"
     @user = user
     @event = event
     mail(:to => user.email, :subject => "R.S.V.P event")

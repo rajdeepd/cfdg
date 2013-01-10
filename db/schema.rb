@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130109083550) do
+ActiveRecord::Schema.define(:version => 20130110080313) do
 
   create_table "announcements", :force => true do |t|
     t.string   "title"
@@ -96,6 +96,16 @@ ActiveRecord::Schema.define(:version => 20130109083550) do
     t.datetime "deleted_at"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
+  end
+
+  create_table "company_infos", :force => true do |t|
+    t.string   "company_name"
+    t.string   "industry"
+    t.string   "department"
+    t.string   "title"
+    t.string   "tel"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
   create_table "countries", :force => true do |t|
@@ -232,6 +242,15 @@ ActiveRecord::Schema.define(:version => 20130109083550) do
     t.string   "event_title"
   end
 
+  create_table "school_infos", :force => true do |t|
+    t.string   "school_name"
+    t.string   "institution"
+    t.string   "major"
+    t.datetime "graduated_at"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
   create_table "states", :force => true do |t|
     t.string   "name"
     t.integer  "country_id"
@@ -243,7 +262,7 @@ ActiveRecord::Schema.define(:version => 20130109083550) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "email",                  :default => "",    :null => false
+    t.string   "email"
     t.string   "encrypted_password",     :default => "",    :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
@@ -272,9 +291,20 @@ ActiveRecord::Schema.define(:version => 20130109083550) do
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
     t.string   "profile_picture"
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "access_token"
+    t.string   "expires_at"
+    t.string   "refresh_token"
+    t.integer  "city_id"
+    t.string   "infoable_type"
+    t.integer  "infoable_id"
+    t.string   "role"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+  add_index "users", ["infoable_type", "infoable_id"], :name => "index_users_on_infoable_type_and_infoable_id", :unique => true
+  add_index "users", ["provider", "uid"], :name => "index_users_on_provider_and_uid", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
 
 end

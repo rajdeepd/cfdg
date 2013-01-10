@@ -1,25 +1,61 @@
-%h2 Sign up
-= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
-  = devise_error_messages!
-  %p
-    = f.label :first_name
-    %br/
-    = f.text_field :first_name
-  %p
-    = f.label :last_name
-    %br/
-    = f.text_field :last_name
-  %p
-    = f.label :email
-    %br/
-    = f.email_field :email,:value => session[:email]
-  %p
-    = f.label :password
-    %br/
-    = f.password_field :password
-  %p
-    = f.label :password_confirmation
-    %br/
-    = f.password_field :password_confirmation
-  %p= f.submit "Sign up"
-= render :partial => "devise/shared/links"
+.content.wrapper
+  .content-a
+    .ca-left.flt-left
+      =form_for(@user, :html => { :method => :post ,  :multipart => true}) do |f|
+        #welcome
+          %h1.label-17 Welcome #{@user.fullname}!
+          %div
+            - if @user.avatar_file_name && (@user.errors[:avatar_content_type].blank? && @user.errors[:avatar_file_size].blank?)
+              %img.profile-image{:src => @user.try(:avatar).url(:medium)}/
+            - else
+              %img.profile-image{:src => "/assets/default-Profile-Image.png"}/
+          = f.file_field :avatar
+        .forms_list
+          #formfirst
+            %h4.form1 Please fill in the details given below
+            %div
+              = f.text_field :last_name ,  :placeholder => "Last Name", :class => "textboxes input-a"
+              = f.text_field :first_name , :placeholder => "Last Name", :class => "textboxes input-a"
+              = f.text_field :mobile ,     :placeholder => "Mobile",    :class => "textboxes input-a"
+              = f.select :country, @countries.collect { |c| [c.name, c.id]}
+              = f.select :state, @states.collect { |s| [s.name, s.id]}
+              = f.select :city_id, @cities.collect { |c| [c.name, c.id]}
+
+          .line_space
+          #formsecond
+            %h4.form1 Optional fields            
+            %div
+              = f.text_field :mobile,:class => "textboxes input-a", :placeholder => "Contact Number "
+            %div
+              = f.url_field :website_url, :class => "textboxes input-a", :placeholder => "URL for website"
+            %div
+              = f.url_field :linkedin_url, :class => "textboxes input-a", :placeholder => "URL for linkedin"
+            = f.url_field :twitter_url, :class => "textboxes input-a", :placeholder => "URL for twitter"
+            .styled
+              = f.submit "CONTINUE" , :class => "continue btn-a-small flt-right"
+
+- arr = []
+- request.env['HTTP_COOKIE'].each_char{|c| arr.push(c[0].to_s)}
+- session = arr.join("x")
+= javascript_include_tag "jquery.uploadify-3.1"
+:javascript
+  $(function() {
+    $('#user_avatar').uploadify({
+      uploader   : "#{uploader_users_path(:format => :json)}",
+      swf        : '/assets/uploadify.swf',
+      auto       : true,
+      fileSizeLimit : '1MB',
+      fileTypeExts : '*.gif; *.jpg; *.jpeg; *.png',
+      fileObjName : 'user[avatar]',
+      buttonText : 'Edit Profile Picture',
+      buttonClass : 'fileuploader-text',
+      onUploadSuccess : function(file, data, response) {
+             $('.profile-image').attr('src',data);            
+      },
+      formData   : {'session_encoded': '#{session}', 'id': "#{@user.id}", 'authenticity_token': "#{form_authenticity_token}"  }
+    });
+
+    var contact_number =   new LiveValidation("user_mobile",{validMessage:" ",onlyOnSubmit:true});
+    contact_number.add( Validate.Format , { pattern: /^[0-9]{0,15}$/, failureMessage: "Must be a Number" });
+    $("#SWFUpload_0").addClass("uploadImage")
+  });

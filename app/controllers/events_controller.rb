@@ -254,7 +254,7 @@ class EventsController < ApplicationController
     require 'csv'
     @event = Event.find(params[:id])
     @members = @event.event_members.includes(:user).collect{|i| i.user}
-    logger.info("inside csv")
+    #logger.info("inside csv")
     #render :json => @members
     csv_string = CSV.generate do |csv|
       csv << ["Full Name" , "Email" , "Contact Number"]
@@ -281,7 +281,7 @@ class EventsController < ApplicationController
 
 
   def initialise_eventbrite_client
-    logger.info("#############################{@current_user.inspect}")
+    #logger.info("#############################{@current_user.inspect}")
     event_brite_oauthtoken = EventbriteOauthToken.find_by_user_id(@current_user.id)
     if(!event_brite_oauthtoken.nil?)
       @eb_client = EventbriteClient.new({ access_token: event_brite_oauthtoken.event_brite_token})
@@ -292,7 +292,7 @@ class EventsController < ApplicationController
   end
 
   def image_gallery_upload
-    logger.info "inside action ######################################{params.inspect}"
+    #logger.info "inside action ######################################{params.inspect}"
     @event = Event.find(params[:id])
    if params[:Filedata].present?
     upload_image = @event.event_galleries.new(:image => params[:Filedata])

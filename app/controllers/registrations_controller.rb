@@ -1,9 +1,13 @@
 class RegistrationsController  < Devise::RegistrationsController 
-    before_filter :authenticate_user!, :only => :token
+  before_filter :authenticate_user!, :only => :token
 
-    def new
-      super      
-    end
+  def new
+    @countries = Country.all
+    @states = @countries.first.states
+    @cities = @states.first.cities
+
+    @user = session[:new_user]
+  end
 
 
   def create
@@ -22,6 +26,4 @@ class RegistrationsController  < Devise::RegistrationsController
   def update
     super
   end
-  
-
 end

@@ -1,18 +1,54 @@
 class UsersController < ApplicationController
   layout 'chapters'
 
+
+  def index
+    respond_to do |format|
+      format.json { render json: @uploads.map{|upload| upload.to_jq_upload } }
+    end
+  end
+
+  def new
+    binding.pry
+    @countries = Country.all
+    @states = @countries.first.states
+    @cities = @states.first.cities
+
+    @user = User.new
+  end
+
   def edit
-    @user = User.find_by_email(params[:email])
+    @countries = Country.all
+    @states = @countries.first.states
+    @cities = @states.first.cities
+
+    @user = User.find(params[:id])
   end
 
   def update
     @user = User.find(params[:id])
-    @user.update_attributes(params[:user])
-    session[:user_id] = @user.id
-    session[:user] = {:email => @user.email, :verified => true, :name => @user.fullname}
-    redirect_to profile_url
+    @user.update_attributes(params[:user].slice(:avatar))
+
+    #session[:user_id] = @user.id
+    #session[:user] = {:email => @user.email, :verified => true, :name => @user.fullname}
+    
+    #redirect_to profile_url
+    redirect_to root_path()
   end
 
+  def avatar
+    binding.pry
+    @user = User.find(params[:user_id])
+    
+    respond_to do |format|
+      if @user.update_attributes(params[:user].slice(:avatar))
+        binding.pry
+        format.json { render json: [@user.to_jq_upload].to_json, status: :created, location: @user }
+      else
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 
   def profile
     @user = @current_user
@@ -44,4 +80,8 @@ class UsersController < ApplicationController
     end
   end
 
+  def sign_out
+    sign_out current_user
+    redirect_to root_path()
+  end
 end

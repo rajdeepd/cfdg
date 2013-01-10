@@ -89,16 +89,16 @@ class Event < ActiveRecord::Base
     ##Rails.logger.info("time  #{self.event_start_time_in_time >= self.event_end_time_in_time}")
     #Rails.logger.info("time with now  #{self.event_start_time_in_time <= Time.now}")
     if  self.event_start_date_in_date >= self.event_end_date_in_date
-      Rails.logger.info "date compared"
+      #Rails.logger.info "date compared"
       if self.event_start_time_in_time >= self.event_end_time_in_time
-        Rails.logger.info "Time Compared with now"
-        Rails.logger.info "inside first comp"
+        #Rails.logger.info "Time Compared with now"
+        #Rails.logger.info "inside first comp"
         errors.add(:event_start_time, 'event start time and end time are not valid')
       end
     end
     if self.event_start_date_in_date == Date.today
       if self.event_start_time_in_time <= Time.now
-        Rails.logger.info "inside second comp"
+        #Rails.logger.info "inside second comp"
         errors.add(:event_start_time, 'event start time and end time are not valid') if !self.errors.messages[:event_start_time].present?
       end
     end

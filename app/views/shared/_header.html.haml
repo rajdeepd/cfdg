@@ -29,7 +29,7 @@
             %label.label-2.bold{:style => "position: relative;top: -2px;font-size: 18px;color:#afafaf;"}
 
           %li
-            %a.label-2.signin{:href => "#"}= t('menu.login')
+            = link_to t('menu.login'), user_omniauth_authorize_path(:provider => :weibo), :class => "label-2"
   .header-b
     .wrapper
       %ul.ul-b.flt-left

@@ -3,6 +3,15 @@ CloudfoundryUsergroups::Application.routes.draw do
 
   mount Ckeditor::Engine => '/ckeditor'
 
+  
+  resources :users do
+    put 'avatar'
+  end
+
+  devise_for :users, :skip => [:sessions, :registrations, :passwords], :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
+
+  match '/sign_out' => 'users#sign_out'
+
   get '/chapters/subregion_options' => 'chapters#subregion_options'
 
   get '/directory' => 'home#directory' , :as => "directory"
@@ -54,18 +63,18 @@ CloudfoundryUsergroups::Application.routes.draw do
 #resources :events, :has_many => :comments
 
 #scope ':locale' do
-  devise_for :users , :controllers => { :registrations => "registrations" } do
-    get '/signin' => 'devise/sessions#new'   
-    get '/users/confirm', :to => 'devise/confirmations#new'
-    get '/users/reset_password', :to => 'devise/passwords#new'
-    get '/users/change_password', :to => 'devise/passwords#edit'
-  end
+  #devise_for :users , :controllers => { :registrations => "registrations" } do
+    #get '/signin' => 'devise/sessions#new'   
+    #get '/users/confirm', :to => 'devise/confirmations#new'
+    #get '/users/reset_password', :to => 'devise/passwords#new'
+    #get '/users/change_password', :to => 'devise/passwords#edit'
+  #end
   get "admin/log_out" => "admin/sessions#destroy", :as => "log_out"
   get '/sign_up' , :to => 'users#edit'
+
   match '/verify_user' => 'federated#verify_user'
   match '/user_status' => 'federated#user_status'
   match '/login' => 'federated#login', :as => :login
-  match '/logout' => 'federated#logout'
   match '/profile' => 'users#profile' , :as => :profile
   
   match 'settings' => 'users#settings' , :as => :settings
@@ -77,11 +86,6 @@ CloudfoundryUsergroups::Application.routes.draw do
 #  get '/event' , :to => 'home#event'
 #  get '/mine' , :to => "home#mine"
 
-  resources :users do
-    collection do
-      post 'uploader'
-    end
-  end
 
    namespace :admin do
     resources :sessions

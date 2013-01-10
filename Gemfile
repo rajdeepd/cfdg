@@ -8,19 +8,18 @@ gem 'rails', '3.2.7'
 #gem 'mysql' , '2.8.1'
 
 gem 'mysql2' , '0.3.11'
-
 gem 'haml-rails' , '0.3.5'
 gem 'formtastic' , '2.2.1'
-gem "paperclip", "~> 3.0"
-gem 'mime-types', :require => 'mime/types'
-gem 'rmagick4j', '0.3.7'
+gem "paperclip"
+gem 'paperclip-qiniu'
+#gem 'mime-types', :require => 'mime/types'
+#gem 'RMagick', '0.3.7'
 gem 'cancan', '1.6.5'
 gem 'eventbrite-client'
 gem 'userstamp', :git=>'https://github.com/sowmyadumpa/userstamp.git' #forked and added. will remove once the latest version of userstamp is inplace
-#gem 'therubyracer'
-#gem 'libv8'
 gem 'thin', '~> 1.2.11'
 gem 'gmaps4rails'
+gem 'jquery-rails'
 
 
 # Authentication with Federated Google identity tool kit
@@ -69,10 +68,11 @@ group :development do
   gem 'capistrano-ext', "~> 1.2.1"
   gem 'capistrano_colors'
   gem 'rvm-capistrano'
+  gem "binding_of_caller"
+  gem "better_errors"
 end
 
 
-gem 'jquery-rails'
 gem 'oauth2'
 
 gem "state_machine"
@@ -107,3 +107,4 @@ gem 'fog'
 # gem 'capistrano'
 
 
+  gem 'coffee-rails', '~> 3.2.1'

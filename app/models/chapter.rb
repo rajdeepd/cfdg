@@ -85,7 +85,7 @@ class Chapter < ActiveRecord::Base
   end
 
   def persist_geocode
-    logger.info "inside persist geocode"
+    #logger.info "inside persist geocode"
     city = self.city_name.blank? ? "" : self.city_name + ","
     state = self.state_name.blank? ? "" : self.state_name + ","
     country = self.country_name.blank? ? "" : self.country_name
