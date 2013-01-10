@@ -16,6 +16,12 @@ test:
   username: root
   password: root
   
+staging:
+  adapter: mysql2
+  encoding: utf8
+  database: cf_usergroups
+  username: root
+  password: chicago-mysql-admin
 
 production:
   adapter: mysql2
