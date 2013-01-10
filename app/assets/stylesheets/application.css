@@ -1490,3 +1490,6 @@ label.error{
 .content #welcome{
     width: 200px;
 }
+.event_detail_error{
+    margin-left: 66px !important;
+}
