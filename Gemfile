@@ -57,6 +57,12 @@ group :development do
    # To use debugger
   gem 'hirb'
   gem "pry-remote"
+  gem 'pry'
+  gem 'pry-rails'
+  gem 'pry-nav'
+  gem "capistrano", "~> 2.12.0"
+  gem 'capistrano-ext', "~> 1.2.1"
+  gem 'capistrano_colors'
 end
 
 
