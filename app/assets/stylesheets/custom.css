@@ -929,6 +929,27 @@ ul.supportPrivacyLinks li{
     display: block;
     float: left;
 }
+.googleLink{
+    background: url("gmail_icon.png") no-repeat;
+    width: 16px;
+    height: 16px;
+    display: block;
+    float: left;
+    margin-right: 10px;
+}
+.yahooLink{
+    background: url("yahoo_icon.png") no-repeat;
+    width: 16px;
+    height: 16px;
+    display: block;
+    float: left;
+}
+.googleYahooBtn span.text{
+    float: left;
+}
+.loginRightPanel .socialNetworks a.googleYahooBtn{
+    width: 120px;
+}
 .loginRightPanel{
     float: left;
     width: 398px;

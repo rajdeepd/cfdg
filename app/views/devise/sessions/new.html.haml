@@ -42,20 +42,28 @@
               %span.upperCaseBold devlopers world
         .loginRightPanel
           .loginText Login with
-          -#.socialNetworks.clearfix
-            %a{:href => "#"}
-              %span.facebookLink
+          .socialNetworks.clearfix
+            -#%a{:href => "#"}
+            -#  %span.facebookLink
+            -#  %span.divider
+            -#  Facebook
+            -#%a{:href => "#"}
+            -#  %span.twitterLink
+            -#  %span.divider
+            -#  Twitter
+            -#%a{:href => "#"}
+            -#  %span.linkedInLink
+            -#  %span.divider
+            -#  Linked In
+
+            %a.signin.googleYahooBtn{:href => "#"}
+              %span.text Login With
               %span.divider
-              Facebook
-            %a{:href => "#"}
-              %span.twitterLink
-              %span.divider
-              Twitter
-            %a{:href => "#"}
-              %span.linkedInLink
-              %span.divider
-              Linked In
-          =link_to "Google/Yahoo" ,"#",:class => "signin"
+              %span.googleLink
+              %span.yahooLink
+
+
+
           .orWithBorder
             %span OR
 
