@@ -66,7 +66,7 @@
         .createChapter.clearfix
           -if current_user.blank?
             %p Couldnt find a chapter in your city?
-            %a.orangeBtn.signin.createChapterBtn CREATE A CHAPTER
+            %a.orangeBtn.createChapterBtn{:href=>"#{signin_path}"} CREATE A CHAPTER
           -else
             -if !ChapterMember.is_primary_coordinator?(current_user.id)
               %a.orangeBtn.createChapterBtn{:href => "#{new_chapter_path}"} CREATE A CHAPTER

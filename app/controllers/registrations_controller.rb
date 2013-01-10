@@ -14,7 +14,7 @@ class RegistrationsController  < Devise::RegistrationsController
     if @user.save
       #session[:user], session[:user_id], session[:user_name] = {:name => @user.fullname, :email => @user.email, :id => @user.id}, @user.id, @user.fullname
       #@registered = true
-      flash[:notice] = "You have signed up successfully. "
+      flash[:notice] = "Please check your email and confirm your account"
       redirect_to home_index_path
     else
       render :action => :new
