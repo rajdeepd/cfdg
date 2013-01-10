@@ -357,7 +357,7 @@ body {
 }
 
 .ul-g .btn-a-small{
-	
+	margin-top:0;
     font-size: 12px;
     padding: 5px 10px;
 
@@ -1460,4 +1460,22 @@ p.label-53{margin-bottom: 15px;}
 }
 .content {
     min-height: 500px;
+}
+
+.userFixImage img{
+    width: 157px;
+    height: 157px;
+}
+.agendaAndSpeakers{
+    float:left;
+    width: 635px;
+}
+#event_agenda_and_speakers_input{
+    margin-bottom:10px;
+}
+.content-c li.ulg-expanded{
+    margin-bottom: 20px;
+}
+.eventMap{
+    margin-bottom: 20px;
 }

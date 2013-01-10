@@ -44,6 +44,7 @@ CloudfoundryUsergroups::Application.routes.draw do
       get 'title_list'
       post 'create_event_comment'
       get 'cancel_event'
+      get 'event_listing'
     end
     member do
       get :download_list
@@ -125,6 +126,8 @@ CloudfoundryUsergroups::Application.routes.draw do
   resources :html do
     collection do
       get :home_page
+      get :event_detail
+      get :login_signup
     end
   end
 

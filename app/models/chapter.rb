@@ -123,11 +123,18 @@ class Chapter < ActiveRecord::Base
     chapter.save!
     return chapter
   end
+
   def save_secondary_coordinator(member)
     #chapter_coordinator = self.chapter_members.create(:memeber_type => ChapterMember::SECONDARY_COORDINATOR, :user_id => user.id )
     chapter_coordinator = member
     chapter_coordinator.memeber_type =  ChapterMember::SECONDARY_COORDINATOR
     chapter_coordinator.save
-
   end
+
+
+  def am_i_secondary_coordinator?(user)
+    ChapterMember.where(" user_id = ? and chapter_id = ? and memeber_type = ?",user.id, self.id,  ChapterMember::SECONDARY_COORDINATOR).present?
+  end
+
 end
+

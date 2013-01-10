@@ -82,12 +82,21 @@
 
     = csrf_meta_tags
   %body
-    .bodyWrapper
-      -#= render "shared/debugger" if Rails.env.development?
+    - @controller = params["controller"]
+    - @action = params["action"]
+    -if @controller == "home" && @action == "index"
+      .bodyWrapper
+        = render "shared/federated_header"
+        = render "shared/new_header"
+        = render "shared/user_nav"
+        = yield
+        = render "shared/new_footer"
+        = yield :scripts
+        = content_for(:javascript)
+    -else
       = render "shared/federated_header"
-      = render "shared/new_header"
-      = render "shared/user_nav"
+      = render "shared/header"
       = yield
-      = render "shared/new_footer"
+      = render "shared/footer"
       = yield :scripts
       = content_for(:javascript)

@@ -2,6 +2,7 @@ class FederatedController < ApplicationController
   require 'uri'
   require 'restclient' # https://github.com/archiloque/rest-client
   require 'net/http'
+  #before_filter :check_is_proprietary_user  , :only => [:login]
 
   def verify_user
     api_params = {'requestUri' => request.url, 'postBody' => request.post? ? request.raw_post : URI.parse(request.url).query }
@@ -58,6 +59,9 @@ class FederatedController < ApplicationController
     user = User.find(:first, :conditions => ["email = ?", params[:email]])
     status = user.valid_password?(params[:password]) unless user.nil?
     if status
+      #if user.confirmed? == false
+      #  @status = 'Need to confirm Your Account'
+      #end
       session[:user_id] = user.id
       session[:user],session[:user_type],session[:user_name], @status = {:name => user.fullname, :email => params[:email], :id => session[:user_id], :from => 'Normal'},user.fullname,user.fullname, 'OK'
     else
@@ -65,6 +69,14 @@ class FederatedController < ApplicationController
     end
     render :json => {'status' => @status}
   end
+
+  #def  check_is_proprietary_user
+  #  user = User.where("email = ?", params[:email]).first
+  #  if user.present? and user.is_proprietary_user == true
+  #    flash.now.alert = "Please Sign in Form this page"
+  #    redirect_to signin_path
+  #  end
+  #end
 
   protected
 

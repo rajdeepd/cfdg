@@ -11,7 +11,7 @@
               = image_tag(event.get_event_image,:size => "190x91")
             .eventContent
               %h5
-                =event.title
+                = link_to event.title,event_path(event),:class => "event_title"
               .date
                 =event.created_at.strftime("%b %d,%Y")
               .where

@@ -15,6 +15,7 @@
 //= require jquery-ui
 //= require jquery.remotipart
 //= require autocomplete-rails
+//= require custom.js
 //= require_tree .
 
 $(function(){
@@ -101,30 +102,30 @@ $(function(){
 //  });
 
 
-  $('#comment_content').die('keypress').live('keypress', function(e){
-      if(e.keyCode == 13){
-      $(this).parents('#new_comment').submit();
-         
-    }         
-
-  });
-
- $('.comment').die('submit').live('submit', function(e){    
-   if(e.preventDefault) {
-      e.preventDefault();
-    }
-    $.ajax({
-      context: this,
-      type: "POST",
-      data : $(this).serialize(),
-      url: '/events/create_event_comment',
-      success: function(data){      
-            $(this).parents("li").replaceWith(data);            
-      },
-      async:false,        
-      dataType: 'html'
-    });
-  });
+//  $('#comment_content').die('keypress').live('keypress', function(e){
+//      if(e.keyCode == 13){
+//      $(this).parents('#new_comment').submit();
+//
+//    }
+//
+//  });
+//
+// $('.comment').die('submit').live('submit', function(e){
+//   if(e.preventDefault) {
+//      e.preventDefault();
+//    }
+//    $.ajax({
+//      context: this,
+//      type: "POST",
+//      data : $(this).serialize(),
+//      url: '/events/create_event_comment',
+//      success: function(data){
+//            $(this).parents("li").replaceWith(data);
+//      },
+//      async:false,
+//      dataType: 'html'
+//    });
+//  });
          
 });
 
