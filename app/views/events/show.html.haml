@@ -96,6 +96,19 @@
                   -if @event.am_i_member?(current_user.id)
                     -#%img.flt-right{:src => "/assets/Event.png"}
                     %button.btn-a-small.flt-right{:id=>"event_rsvped",:style => "opacity:0.35"} Attending
+              - else
+                -if @event.is_cancelled?
+                  %button.btn-a-small.flt-right{:id=>"cancelled_event", :event_id => "#{@event.id}" ,:disable => true,:style => "opacity:0.35"} CANCELLED
+                -else
+                  -if @event.is_rsvp_allowed?
+                    %button.btn-a-small.flt-right.rsvp_me.signin{:id=>"follow_event", :event_id => "#{@event.id}"} R.S.V.P
+                  -else
+                    %button.btn-a-small.flt-right{:id=>"join_wait_list"} Limit Reached!
+
+
+
+
+
             -#%a.orangeBtn{:href => "#"} R.S.V.P
         .comments.clearfix
           -if @current_user.present?
