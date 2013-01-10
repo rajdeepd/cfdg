@@ -1,9 +1,18 @@
 $(document).ready(function(){
-    $(".mapDiv").hide();
-    $(".viewMap").click(function(){
-        $(".mapDiv").slideToggle("fast");
+    $(".viewMap").on("click",function(){
+        $(".mapDiv").css("opacity" , 1);
+//        $(".mapDiv").addClass("slide");
+//        if($(".mapDiv").hasClass("slide")){
+//            $(".mapDiv").removeClass("slide");
+//        }
+//        else{
+//            $(".mapDiv").css("opacity", 1);
+//            $(".viewMap").click(function(){
+//                $(".mapDiv").toggle();
+//            });
+//        }
     });
-    $(".close").click(function(){
-        $(".mapDiv").slideUp("fast");
+    $(".close").on("click",function(){
+        $(".mapDiv").css("opacity" , 0);
     });
 });

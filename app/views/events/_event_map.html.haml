@@ -1,0 +1,39 @@
+%span.viewMap ( View Map )
+.mapDiv
+  %span.close x
+  -#%img{:src => "/assets/map.png"}
+
+  - if @current_user.present? and   @event.can_i_delete?(@current_user.id, @event.chapter_id)
+    = gmaps("markers" => {"data" => @marker, "options" => { "draggable" => true } }, "map_options" => {"auto_zoom" => false, "zoom" => 15 } ) unless @marker == [].to_json
+  -else
+    -#= gmaps4rails(@marker)
+    = gmaps("markers" => {"data" => @marker }, "map_options" => {"auto_zoom" => false, "zoom" => 15 } ) unless @marker == [].to_json
+= content_for :scripts do
+  :javascript
+    Events.init();
+    $(document).ready(function(e){
+      Gmaps.map.HandleDragend = function(pos) {
+        var geocoder = new google.maps.Geocoder();
+        geocoder.geocode({
+          latLng: pos
+        }, function(responses) {
+          if (responses && responses.length > 0) {
+            var markers = (responses[0].geometry.location).toString();
+            var event_id = $(".viewEventGallery").attr("rel");
+            console.log("#############3"+event_id);
+            console.log(markers);
+              $.get("/events/"+event_id+"/update_markers",{data:markers},"","script")
+
+          } else {
+            alert('Cannot determine address at this location.');
+          }
+        });
+      };
+
+      Gmaps.map.callback = function() {
+        for (var i = 0; i <  this.markers.length; ++i) {
+          google.maps.event.addListener(Gmaps.map.markers[i].serviceObject, 'dragend', function() { Gmaps.map.HandleDragend(this.getPosition()) });
+        }
+      };
+
+    });
