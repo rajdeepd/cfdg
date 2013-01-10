@@ -128,6 +128,7 @@ CloudfoundryUsergroups::Application.routes.draw do
       get :home_page
       get :event_detail
       get :login_signup
+      get :event_list
     end
   end
 
