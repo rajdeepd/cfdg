@@ -53,6 +53,7 @@ CloudfoundryUsergroups::Application.routes.draw do
       get 'image_gallery_upload'
       get 'show_all_event_images'
       get 'update_markers'
+      get 'join_event'
     end
   end
 
@@ -187,6 +188,7 @@ CloudfoundryUsergroups::Application.routes.draw do
 
   resources :home do
     get :autocomplete_city_details, :on => :collection
+    get :login , :on => :collection
   end
 
 

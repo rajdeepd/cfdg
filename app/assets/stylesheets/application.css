@@ -1476,6 +1476,17 @@ p.label-53{margin-bottom: 15px;}
 .content-c li.ulg-expanded{
     margin-bottom: 20px;
 }
+
 .eventMap{
     margin-bottom: 20px;
+}
+
+label.error{
+    display: block;
+    color: red;
+    font-size: 12px;
+}
+
+.content #welcome{
+    width: 200px;
 }

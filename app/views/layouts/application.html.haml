@@ -63,8 +63,8 @@
           userStatusUrl: "/user_status",
           loginUrl: "/login",
           signupUrl: "/sign_up",
-          homeUrl: "/profile",
-          //homeUrl: "#{session[:url]}",
+          //homeUrl: "/profile",
+          homeUrl: "#{session[:url]}",
           logoutUrl: "/logout",
           idps: ["Gmail", "Yahoo"],
           tryFederatedFirst: true,
@@ -84,11 +84,14 @@
   %body
     - @controller = params["controller"]
     - @action = params["action"]
-    -if (@controller == "home" && @action == "index") or @controller == "html"
+
+    -if (@controller == "home" && (@action == "index" or @action == "login"))   or @controller == "html" or (@controller == "events" && @action == "show") or (@controller == "sessions") or (@controller == "passwords")
+
       .bodyWrapper
         = render "shared/federated_header"
         = render "shared/new_header"
         = render "shared/user_nav"
+        = render 'shared/errors_or_notifications'
         = yield
         = render "shared/new_footer"
         = yield :scripts

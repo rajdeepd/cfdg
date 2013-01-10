@@ -21,6 +21,10 @@ class HomeController < ApplicationController
     end
   end
 
+  def login
+
+  end
+
   protected
 
   def get_markers
