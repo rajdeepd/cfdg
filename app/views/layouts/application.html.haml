@@ -85,7 +85,7 @@
     - @controller = params["controller"]
     - @action = params["action"]
 
-    -if (@controller == "home" && @action == "index")   or @controller == "html" or (@controller == "events" && @action == "show")
+    -if (@controller == "home" && (@action == "index" or @action == "login"))   or @controller == "html" or (@controller == "events" && @action == "show")
 
       .bodyWrapper
         = render "shared/federated_header"

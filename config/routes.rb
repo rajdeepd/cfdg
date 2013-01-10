@@ -187,6 +187,7 @@ CloudfoundryUsergroups::Application.routes.draw do
 
   resources :home do
     get :autocomplete_city_details, :on => :collection
+    get :login , :on => :collection
   end
 
 

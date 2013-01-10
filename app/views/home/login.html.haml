@@ -1,0 +1,50 @@
+.content
+  .row
+    .span10.offset1
+      .loginLayout.clearfix
+        .plainBlueHeader
+          %h3 Member Login
+        .loginLeftPanel.loginVisual
+          %ul
+            %li
+              Create & Attend the
+              %span.upperCaseBold events
+              in you city.
+            %li
+              Share your
+              %span.upperCaseBold knowledge
+            %li
+              Discuss your
+              %span.upperCaseBold thoughts
+            %li
+              Explore the
+              %span.upperCaseBold devlopers world
+        .loginRightPanel
+          .loginText Login with
+          .socialNetworks.clearfix
+            %a{:href => "#"}
+              %span.facebookLink
+              %span.divider
+              Facebook
+            %a{:href => "#"}
+              %span.twitterLink
+              %span.divider
+              Twitter
+            %a{:href => "#"}
+              %span.linkedInLink
+              %span.divider
+              Linked In
+          .orWithBorder
+            %span OR
+          .loginText Login with email
+          %input{:placeholder => "Email*", :type => "text"}/
+          %input{:placeholder => "Password*", :type => "text"}/
+          %label.checkbox
+            %input{:type => "checkbox"}
+              Remember Me
+          %a.orangeBtn{:href => "#"} LOGIN
+          %a.forgotPassword{:href => "#"} Forgot your password?
+          %p
+            Need an account?
+            %a{:href => "#"} Sign Up
+
