@@ -12,7 +12,7 @@ ul, ol{
  font-style: normal;
 }
 a{
-    color: #ffffff;
+    color: #0094D4;
 }
 a:hover{
     text-decoration: none;
@@ -553,7 +553,7 @@ ul.supportPrivacyLinks li{
 }
 .ui-autocomplete.ui-menu.ui-widget-content{
     width: 490px;
-    top: -1388.5px !important;
+    top: -1326.5px !important;
 }
 .coda-slider-wrapper .coda-slider, .coda-slider-wrapper .coda-slider .panel{
     width: 940px;
@@ -836,7 +836,7 @@ ul.supportPrivacyLinks li{
     z-index: 1000;
     border: 1px solid #CCC;
     position: absolute;
-    top: 140px;
+    top: 190px;
     left: 68px;
     background: white;
 }
