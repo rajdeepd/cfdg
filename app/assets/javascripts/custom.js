@@ -1,0 +1,9 @@
+$(document).ready(function(){
+    $(".mapDiv").hide();
+    $(".viewMap").click(function(){
+        $(".mapDiv").slideToggle("fast");
+    });
+    $(".close").click(function(){
+        $(".mapDiv").slideUp("fast");
+    });
+});

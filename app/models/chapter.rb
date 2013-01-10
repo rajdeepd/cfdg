@@ -99,6 +99,7 @@ class Chapter < ActiveRecord::Base
     end
   end
 
+
   def self.search_chapters(query)
     chapters = []
     query_arr = query.split(",") if query.present?
