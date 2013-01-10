@@ -63,6 +63,7 @@ group :development do
   gem "capistrano", "~> 2.12.0"
   gem 'capistrano-ext', "~> 1.2.1"
   gem 'capistrano_colors'
+  gem 'rvm-capistrano'
 end
 
 
