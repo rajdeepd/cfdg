@@ -37,7 +37,6 @@ public/assets/*.js.gz
 
 tmp/
 tmp/**/*
-/Gemfile.lock
 
 #Ignore all .Idea
 /.idea/
