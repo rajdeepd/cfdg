@@ -576,7 +576,7 @@ ul.supportPrivacyLinks li{
 .activePage{
     color: #777777;
 }
-.eventHeader{
+.blueHeader{
     background: url("blue_header_bg.jpg") no-repeat 0 -2px;
     width: 910px;
     height: 90px;
@@ -586,13 +586,13 @@ ul.supportPrivacyLinks li{
     border-radius: 4px;
     box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.2);
 }
-.eventHeader h1{
+.blueHeader h1{
     float: left;
     color: #ffffff;
     font-size: 36px;
 
 }
-.eventHeader .chapterLocation{
+.blueHeader .chapterLocation{
     float: left;
     color: #ffffff;
     line-height: 46px;
@@ -623,21 +623,25 @@ ul.supportPrivacyLinks li{
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
     font-weight: 500;
 }
-.chapterContent{
+.layoutWrapper{
     background-color: rgba(224, 239, 248, 0.5);
-    padding: 30px 0 40px;
+    padding: 30px 30px 40px;
     margin: -2px 0 30px;
     border: 1px solid #96B0C1;
     box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
 }
-.chapterContent .row{
-    width: 962px;
+.layoutWrapper .span8{
+    width: 578px;
+}
+.layoutWrapper .span4{
+    width: 280px;
 }
 .eventTour{
-    padding: 0 0 0 30px;
+    /*padding: 0 0 0 30px;*/
 }
 .chapterNameWithThumbnail{
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 .chapterNameWithThumbnail .chapterThumbnail{
     width: 60px;
@@ -650,9 +654,10 @@ ul.supportPrivacyLinks li{
     font-size: 23px;
     float: left;
     width: 120px;
+    margin-top: 10px;
 }
 .eventPeopleList{
-    width: 270px;
+    /*width: 270px;*/
     border-radius: 4px;
     border: 1px solid #CCC;
     background-color: #eff6fb;
@@ -712,7 +717,7 @@ ul.supportPrivacyLinks li{
     display: block;
 }
 .eventTour .coda-slider-wrapper , .eventTour .coda-slider-wrapper .coda-slider, .eventTour .coda-slider-wrapper .coda-slider .panel{
-    width: 590px !important;
+    width: 578px !important;
 }
 .eventTour .coda-slider-wrapper .coda-slider{
     margin: 0;
@@ -722,7 +727,7 @@ ul.supportPrivacyLinks li{
     border: 1px solid #cccccc;
 }
 .eventTour .panel-container .panel-wrapper img{
-    width: 590px;
+    width: 580px;
     height: 370px;
 }
 .eventTour .coda-slider-wrapper .coda-nav-left a{
@@ -773,7 +778,7 @@ ul.supportPrivacyLinks li{
     color: #ffffff;
 }
 .comments{
-    margin-left: 30px;
+    /*margin-left: 30px;*/
 }
 .comments h4{
     font-size: 18px;
@@ -809,7 +814,7 @@ ul.supportPrivacyLinks li{
 }
 .comments .addCommentBox textarea{
     resize: none;
-    width: 480px;
+    width: 484px;
     height: 100px;
 }
 .comments .addCommentBox a.addBtn{
@@ -840,4 +845,150 @@ ul.supportPrivacyLinks li{
     font-size: 12px;
     color: #000000;
     margin-right: 5px;
+}
+
+/* login page layout */
+.plainBlueHeader{
+    background: url("blue_header_bg.jpg") no-repeat 0 -2px;
+    width: 780px;
+    height: 50px;
+    border-radius: 5px 5px 0 0;
+    text-align: center;
+    color: white;
+    text-shadow: 0 -1px rgba(0, 0, 0, 0.5);
+    text-transform: uppercase;
+}
+.plainBlueHeader h3{
+    line-height: 50px;
+}
+.loginLayout{
+    padding: 0 0 30px 0;
+    background: rgba(235, 246, 254, 0.5);
+    margin-bottom: 150px;
+    border: 1px solid #96B0C1;
+    box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+}
+.loginLeftPanel{
+    float: left;
+}
+.loginVisual{
+    background: url("login_visual_bg.png") no-repeat center 30px;
+    width: 380px;
+    text-align: center;
+    padding-top: 215px;
+}
+.loginLeftPanel ul{
+    width: 250px;
+    margin: 0 auto;
+}
+.loginLeftPanel ul li{
+    text-align: left;
+    background: url("list_style_img.jpg") no-repeat 0 7px;
+    color: #666666;
+    padding-left: 15px;
+}
+.upperCaseBold{
+    text-transform: uppercase;
+    font-weight: bold;
+}
+.facebookLink{
+    background: url("facebook_icon.png") no-repeat;
+    width: 16px;
+    height: 16px;
+    display: block;
+    float: left;
+}
+.twitterLink{
+    background: url("twitter_icon.png") no-repeat;
+    width: 16px;
+    height: 16px;
+    display: block;
+    float: left;
+}
+.linkedInLink{
+    background: url("linked_in_icon.png") no-repeat;
+    width: 16px;
+    height: 16px;
+    display: block;
+    float: left;
+}
+.loginRightPanel{
+    float: left;
+    width: 398px;
+    padding-top: 30px;
+}
+.socialNetworks{
+   margin-bottom: 18px;
+}
+.divider{
+    background: url("social_icon_divider.jpg") no-repeat;
+    width: 1px;
+    height: 18px;
+    display: block;
+    margin: 0 7px;
+    float: left;
+}
+.loginRightPanel .socialNetworks a{
+    display: block;
+    width: 88px;
+    float: left;
+    margin-right: 10px;
+    background-color: white;
+    color: #333;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid #b5d7e5;
+}
+.loginRightPanel .socialNetworks a:hover{
+    background-color: #efefef;
+}
+.loginRightPanel .loginText{
+    font-size: 16px;
+    color: #666666;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+.orWithBorder span{
+    position: absolute;
+    top: -9px;
+    width: 60px;
+    background-color: #d3e6f5;
+    left: 136px;
+    text-align: center;
+    color: #666;
+    font-weight: bolder;
+    font-size: 14px;
+}
+.orWithBorder{
+    border-top: 1px solid #C2DEF0;
+    width: 350px;
+    position: relative;
+    margin-bottom: 20px;
+}
+.loginRightPanel input[text]{
+    width: 245px;
+    height: 18px;
+    margin-bottom: 15px;
+    border-radius: 6px;
+}
+.loginRightPanel .checkbox{
+    margin-bottom:  15px;
+}
+.forgotPassword{
+    margin-left: 25px;
+    color: black;
+    margin-bottom: 30px;
+    display: inline-block;
+}
+.loginRightPanel p{
+    color: #666666;
+    font-size: 18px;
+}
+.loginRightPanel p a{
+    color: #000000;
+    font-size: 18px;
+}
+.loginRightPanel p a:hover{
+    color: #333333;
 }

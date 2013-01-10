@@ -6,4 +6,8 @@ class HtmlController < ApplicationController
   def event_detail
 
   end
+
+  def login_signup
+    
+  end
 end
