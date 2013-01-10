@@ -210,7 +210,14 @@ ul.nav li:first-child a{
     padding:0 0 20px 0;
     height: 100%;
     min-height: 400px;
-
+}
+.loginContent{
+    width: 940px;
+    background: url("lower_bg.png") no-repeat center 170%;
+    margin: 0 auto;
+    padding:0 0 20px 0;
+    height: 100%;
+    min-height: 400px;
 }
 
 /* slider css*/
@@ -255,7 +262,7 @@ ul.nav li:first-child a{
     line-height: 24px;
     font-size: 14px;
     color: #ffffff;
-    border-radius: 5px;
+    border-radius: 4px;
     font-weight: bold;
     text-shadow: 0 -1px rgba(0, 0, 0, 0.5);
     padding: 5px 8px;
@@ -629,7 +636,7 @@ ul.supportPrivacyLinks li{
     margin: -2px 0 30px;
     border: 1px solid #96B0C1;
     box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.2);
-    border-radius: 5px;
+    border-radius: 0 0 5px 5px;
 }
 .layoutWrapper .span8{
     width: 578px;
@@ -864,7 +871,7 @@ ul.supportPrivacyLinks li{
 .loginLayout{
     padding: 0 0 30px 0;
     background: rgba(235, 246, 254, 0.5);
-    margin-bottom: 150px;
+    margin-bottom: 142px;
     border: 1px solid #96B0C1;
     box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.2);
     border-radius: 5px;
@@ -953,7 +960,7 @@ ul.supportPrivacyLinks li{
     position: absolute;
     top: -9px;
     width: 60px;
-    background-color: #d3e6f5;
+    background-color: #dfeefa;
     left: 136px;
     text-align: center;
     color: #666;
@@ -974,6 +981,8 @@ ul.supportPrivacyLinks li{
 }
 .loginRightPanel .checkbox{
     margin-bottom:  15px;
+    color: #666666;
+    font-size: 16px;
 }
 .forgotPassword{
     margin-left: 25px;
