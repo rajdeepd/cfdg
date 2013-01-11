@@ -25,6 +25,10 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def test
+    render :layout => false
+  end
+
   def update
     @user = User.find(params[:id])
     @user.update_attributes(params[:user].slice(:avatar))

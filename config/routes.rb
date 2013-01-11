@@ -8,9 +8,14 @@ CloudfoundryUsergroups::Application.routes.draw do
     put 'avatar'
   end
 
-  devise_for :users, :skip => [:sessions, :registrations, :passwords], :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
+  #match '/test' => 'users#test'
 
+  devise_for :users, :skip => [:sessions, :registrations, :passwords], :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
   match '/sign_out' => 'users#sign_out'
+
+  resources :regions, :only => [:index]
+
+  # Above this line is revised.
 
   get '/chapters/subregion_options' => 'chapters#subregion_options'
 

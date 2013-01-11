@@ -31,7 +31,7 @@
             %h4.form1 Role Information            
             %div.roles
               - User::ROLES.each do |role|
-                = f.radio_button :role, role, :'data-tab' => role == 'student' ? '#school-info' : '#company-info'
+                = f.radio_button :role, role
                 = label "user_role_#{role}".to_sym, role
             %div.info-blocks
               %div.tab{ :id => "company-info" }
@@ -88,11 +88,9 @@
 
     //infoable blocks
     $('#formsecond div.tab').hide();
-    $('#formsecond div.tab:first').show();
+    $('#formsecond div:first').show();
     $('#formsecond input[type=radio]:first').attr('checked', true);
     $('#formsecond input[type=radio]').click(function(e){
       var tabId = $(e.target).data('tab');
-      $('#formsecond div.tab').hide();
-      $(tabId).show();
     });
   });

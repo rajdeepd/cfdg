@@ -4,7 +4,6 @@
     %link{:href => "/assets/favicon.ico",:rel => "shortcut icon"}
     %title Cloud Foundry Developer Group
     = stylesheet_link_tag "application"
-    = stylesheet_link_tag "file-uploadify"
     /= stylesheet_link_tag    "chapter-admin-page-style", :media => "all"
     /TODO will have to create a separate layout for the Chapter Admin - Edit Chapter  Info page.html
     /= stylesheet_link_tag    "chapter", :media => "all"
@@ -15,13 +14,10 @@
     = stylesheet_link_tag    "event", :media => "all"
     = stylesheet_link_tag    "jquery.timepicker-1.2.2", :media => "all"
 
-    %script{:src => "http://commons.qiniudn.com/jquery-1.8.3.min.js"}
-    %script{:src => "http://commons.qiniudn.com/jquery-ui-1.9.2.custom.min.js"}
+    %script{:src => "http://cfdg.qiniudn.com/jquery-1.8.3.min.js"}
+    %script{:src => "http://cfdg.qiniudn.com/jquery-ui-1.9.2.custom.min.js"}
 
     = csrf_meta_tags
   %body
-    = render "shared/federated_header"
-    = render "shared/header"
-    = yield
-    = render "shared/footer"
-    = content_for(:javascript)
+    %file 'abc'
+    %script{:src => "http://cfdg.qiniudn.com/jquery.fileupload.min.js"}
