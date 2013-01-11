@@ -286,6 +286,7 @@ header ul li:first-child{
 }
 .signUp{
     width: 120px;
+    line-height: 33px;
     display: block;
 }
 .latestAnnouncement{
@@ -294,7 +295,6 @@ header ul li:first-child{
     background: #e9f4fa;
     border-radius: 5px;
     border: 1px solid #cccccc;
-    margin-right: 16px;
     margin-bottom: 20px;
 }
 #news-container ul li{
@@ -423,6 +423,8 @@ header ul li:first-child{
 }
 .createChapterBtn{
     float: right;
+    width: 156px;
+    line-height: 33px;
 }
 .comingEvents{
     border: 1px solid #cccccc;
@@ -637,7 +639,7 @@ ul.supportPrivacyLinks li{
 .layoutWrapper .span8{
     width: 578px;
 }
-.content .span4{
+..layoutWrapper .span4{
     width: 278px;
 }
 .eventTour{
@@ -1126,6 +1128,9 @@ ul.supportPrivacyLinks li{
     margin-bottom: 15px;
     display: block;
 }
+.eventListWrapper .eventContent p.lightGrayText{
+    min-height: 38px;
+}
 .eventListFooter{
     background: #f1f1f1;
     line-height: 35px;
@@ -1206,6 +1211,7 @@ ul.supportPrivacyLinks li{
 }
 .content .comingEvents .ca-container{
     height: 405px;
+    width: 891px;
 }
 .content .comingEvents .ca-item{
     width: 288px;
@@ -1228,3 +1234,10 @@ ul.supportPrivacyLinks li{
     padding-bottom: 4px;
     padding: 4px 35px 4px 14px;
 }
+.content .ca-nav .ca-nav-prev{
+    left: -15px;
+}
+.content .ca-nav .ca-nav-next{
+    right: -20px;
+}
+
