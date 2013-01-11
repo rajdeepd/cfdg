@@ -37,13 +37,12 @@ class UsersController < ApplicationController
   end
 
   def avatar
-    binding.pry
     @user = User.find(params[:user_id])
     
     respond_to do |format|
       if @user.update_attributes(params[:user].slice(:avatar))
         binding.pry
-        format.json { render json: [@user.to_jq_upload].to_json, status: :created, location: @user }
+        format.json { render json: [@user.avatar.url(:medium)], status: :created, location: @user }
       else
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end

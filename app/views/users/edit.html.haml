@@ -42,6 +42,15 @@
     $('#avatar-upload').fileupload({
       url: "avatar",
       add: function (e, data) {        
-         data.submit() 
+        var jqXHR = data.submit()
+          .success(function (result, textStatus, jqXHR) {
+            $('.profile-image').attr('src', result[0]);
+          })
+          .error(function (jqXHR, textStatus, errorThrown) {
+            console.log("error")
+          })
+          .complete(function (result, textStatus, jqXHR) {
+            console.log("complete")
+          });
       } 
     });

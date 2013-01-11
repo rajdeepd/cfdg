@@ -3,7 +3,7 @@ case Rails.env
 when 'development'
   ENV['QINIU_ACCESS_KEY'] = '_OrITNvuapwhPQ29D4AtyiTmAJT9BScZhQZUnk4o'
   ENV['QINIU_SECRET_KEY'] = 'yL5Vy-kaoFUftMZGiTIul6LGwBsqlJDdl2byz75O'
-  ENV['QINIU_BUCKET'] = 'cfdg'
+  ENV['QINIU_BUCKET'] = 'cfdg_uploads'
 when 'staging'
   ENV['QINIU_ACCESS_KEY'] = '_OrITNvuapwhPQ29D4AtyiTmAJT9BScZhQZUnk4o'
   ENV['QINIU_SECRET_KEY'] = 'yL5Vy-kaoFUftMZGiTIul6LGwBsqlJDdl2byz75O'

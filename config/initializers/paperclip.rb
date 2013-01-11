@@ -5,4 +5,4 @@ Paperclip::Attachment.default_options[:qiniu_credentials] = {
 }
 Paperclip::Attachment.default_options[:bucket] = ENV['QINIU_BUCKET']
 Paperclip::Attachment.default_options[:use_timestamp] = false
-Paperclip::Attachment.default_options[:qiniu_host] = 'http://cfdg.qiniudn.com'
+Paperclip::Attachment.default_options[:qiniu_host] = 'http://cfdg-uploads.qiniudn.com'

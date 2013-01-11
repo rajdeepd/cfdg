@@ -43,7 +43,6 @@ class User < ActiveRecord::Base
   end
 
   def to_jq_upload
-    binding.pry
     {
       "name" => read_attribute(:avatar_file_name),
       "size" => read_attribute(:avatar_file_size),
