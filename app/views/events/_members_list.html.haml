@@ -1,6 +1,6 @@
 
 -#%h1
-%div.attendees
+-#%div.attendees
   .attendeesHeading
     %strong LIST OF ATTENDEES &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
     %div.mCount
@@ -26,3 +26,22 @@
           .nameHolder
             = i.fullname
           .clr
+
+
+.eventPeopleList
+  .listHeader
+    %span list of attendees
+    -if @event.id ==2
+      %span.numberOfPeople 37
+    -else
+      %span.numberOfPeople #{@event.event_members.size}
+    -#%span.numberOfPeople 06
+  %ul.clearfix
+    -@event.event_members.each do |i|
+      %li
+        -#%img{:src => "/assets/human_face_4.jpg"}
+        = avatar_display_pic(i.user,'thumb', '40x40','profile.png',"profile-img img-a flt-left")
+        .personDetails
+          .personName #{i.user.fullname}
+
+      -#%a{:href => "#"} View more

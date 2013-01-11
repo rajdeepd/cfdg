@@ -323,6 +323,27 @@ class EventsController < ApplicationController
   @upcoming_events = Event.get_upcoming_events
   end
 
+  def join_event
+    @event = Event.find(params[:id])
+    if !@event.is_cancelled? and !@event.am_i_member?(@current_user.id)
+      @event_memeber = EventMember.new(:event_id => @event.id, :user_id => current_user.id)
+      @event_memeber.save!
+
+      EventNotification.rsvped_event(@event,@current_user).deliver
+    end
+    chapter_events = Event.find_all_by_chapter_id(@event.chapter_id) || []
+    get_upcoming_and_past_events(chapter_events, true)
+    @chapter = Chapter.find(@event.chapter_id)
+    if !@chapter.am_i_chapter_memeber?(@current_user.id)
+      ChapterMember.create({:memeber_type=>ChapterMember::MEMBER, :user_id => @current_user.id, :chapter_id => @chapter.id})
+    end
+    @profile_page = false
+    #@members = @event.event_members
+    respond_to do |format|
+      format.js
+    end
+  end
+
 
   protected
 
