@@ -1,26 +1,31 @@
-.content.wrapper
+-#.content.wrapper
+.content.loginLayout
   #ca-container.ca-container.clearfix{:style => "margin-top:-20px;"}
     .ca-wrapper
-      -@upcoming_events.first(7).each do |event|
-        .ca-item.ca-item-1
-          .ca-item-main
-            .eventImg
-              -#%img{:src => "assets/event_img_1.png"}
-              = image_tag(event.get_event_image,:size => "190x91")
-            .eventContent
-              %h5
-                = link_to event.title,event_path(event),:class => "event_title"
-              .date
-                =event.created_at.strftime("%b %d,%Y")
-              .where
-                Where:
-                %span.lightGrayText
-                  =event.chapter.city_name
-                %a{:href => "#"} (map)
-              .description
-                Description:
-                %span.lightGrayText #{event.description.truncate(15)}
+      - if @upcoming_events.present?
+        -@upcoming_events.first(7).each do |event|
+          .ca-item.ca-item-1
+            .ca-item-main
+              .eventImg
+                -#%img{:src => "assets/event_img_1.png"}
+                = image_tag(event.get_event_image,:size => "190x91")
+              .eventContent
+                %h5
+                  = link_to event.title,event_path(event),:class => "event_title"
+                .date
+                  =event.created_at.strftime("%b %d,%Y")
+                .where
+                  Where:
+                  %span.lightGrayText
+                    =event.chapter.city_name
+                  %a{:href => "#"} (map)
+                .description
+                  Description:
+                  %span.lightGrayText #{event.description.truncate(15)}
 
-                %br/
-                %br/
-                %a{:href => "#{event_path(event)}"} Read more
+                  %br/
+                  %br/
+                  %a{:href => "#{event_path(event)}"} Read more
+      -else
+        %h1.label-17
+        = "No Upcoming Event"
