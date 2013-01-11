@@ -1,19 +1,118 @@
-.content.wrapper
-  = render 'shared/flashes'
-  -#%h2 Sign in
+-#.content.wrapper
+-#  = render 'shared/flashes'
+-#  -#%h2 Sign in
+-#
+-#  = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
+-#    %p
+-#      = f.label :email
+-#      %br/
+-#      = f.email_field :email
+-#    %p
+-#      = f.label :password
+-#      %br/
+-#      = f.password_field :password
+-#    - if devise_mapping.rememberable?
+-#      %p
+-#        = f.check_box :remember_me
+-#        = f.label :remember_me
+-#    %p= f.submit "Sign in"
+-#  -#= render :partial => "devise/shared/links"
 
-  = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
-    %p
-      = f.label :email
-      %br/
-      = f.email_field :email
-    %p
-      = f.label :password
-      %br/
-      = f.password_field :password
-    - if devise_mapping.rememberable?
-      %p
-        = f.check_box :remember_me
-        = f.label :remember_me
-    %p= f.submit "Sign in"
-  -#= render :partial => "devise/shared/links"
+
+.content
+  .row
+    .span10.offset1
+      .loginLayout.clearfix
+        .plainBlueHeader
+          %h3 Member Login
+        .loginLeftPanel.loginVisual
+          %ul
+            %li
+              Create & Attend the
+              %span.upperCaseBold events
+              in you city.
+            %li
+              Share your
+              %span.upperCaseBold knowledge
+            %li
+              Discuss your
+              %span.upperCaseBold thoughts
+            %li
+              Explore the
+              %span.upperCaseBold devlopers world
+        .loginRightPanel
+          .loginText Login with
+          .socialNetworks.clearfix
+            -#%a{:href => "#"}
+            -#  %span.facebookLink
+            -#  %span.divider
+            -#  Facebook
+            -#%a{:href => "#"}
+            -#  %span.twitterLink
+            -#  %span.divider
+            -#  Twitter
+            -#%a{:href => "#"}
+            -#  %span.linkedInLink
+            -#  %span.divider
+            -#  Linked In
+
+            %a.signin.googleYahooBtn{:href => "#"}
+              %span.text Login With
+              %span.divider
+              %span.googleLink
+              %span.yahooLink
+
+
+
+          .orWithBorder
+            %span OR
+
+          .loginText Login with email
+          = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
+
+            = f.email_field :email , :placeholder => "Email*"
+
+
+
+            = f.password_field :password ,:placeholder => "Password*"
+            - if devise_mapping.rememberable?
+              %label.checkbox
+                = f.check_box :remember_me
+                = f.label :remember_me
+              = f.submit "LOGIN" , :class => "orangeBtn"
+
+              %a.forgotPassword{:href => "#{users_reset_password_path}"} Forgot your password?
+          %p
+            Need an account?
+            %a{:href => "#{new_user_registration_path}"} Sign Up
+
+:javascript
+  google.load("identitytoolkit", "1", {packages: ["ac"], language:"#{lang}"});
+:javascript
+  $(function() {
+    $(".signin").on("click",function(){
+      window.google.identitytoolkit.setConfig({
+        developerKey: "#{FEDERATED_KEY}",
+        companyName: "cloudfoundry usergroups",
+        callbackUrl: "#{verify_user_url()}",
+        realm: "",
+        userStatusUrl: "/user_status",
+        loginUrl: "/login",
+        signupUrl: "/sign_up",
+        homeUrl: "/profile",
+        //homeUrl: "#{session[:url]}",
+        logoutUrl: "/logout",
+        idps: ["Gmail", "Yahoo"],
+        tryFederatedFirst: true,
+        useCachedUserStatus: false,
+        useContextParam: true
+      });
+      $("#navbar").accountChooser();
+    });
+
+    $('.signup').click(function(){
+      $('#navbar').accountChooser('showAccountChooser');
+      $(".widget-header h1").text("#{t('menu.signup')}");
+      $(".widget-nascar-list h2").text("#{t('menu.signup_with')}");
+    });
+  });

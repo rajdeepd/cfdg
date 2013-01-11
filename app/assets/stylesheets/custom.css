@@ -110,7 +110,7 @@ header ul li:first-child{
     border-radius: 5px;
     margin: 0;
 }
-ul.nav li{
+.navbar-inner ul.nav li{
     float: left;
     width: 215px;
     background: url("navigation_divider.png") no-repeat left center;
@@ -120,11 +120,11 @@ ul.nav li{
     vertical-align: bottom;
     font-size: 14px;
 }
-ul.nav li:first-child{
+.navbar-inner ul.nav li:first-child{
     width: 80px;
     background: none;
 }
-ul.nav li:first-child a{
+.navbar-inner ul.nav li:first-child a{
     border-radius: 7px 0 0 5px;
 }
 .navbar ul.nav li a{
@@ -210,7 +210,14 @@ ul.nav li:first-child a{
     padding:0 0 20px 0;
     height: 100%;
     min-height: 400px;
-
+}
+.loginContent{
+    width: 940px;
+    background: url("lower_bg.png") no-repeat center 170%;
+    margin: 0 auto;
+    padding:0 0 20px 0;
+    height: 100%;
+    min-height: 400px;
 }
 
 /* slider css*/
@@ -255,7 +262,7 @@ ul.nav li:first-child a{
     line-height: 24px;
     font-size: 14px;
     color: #ffffff;
-    border-radius: 5px;
+    border-radius: 4px;
     font-weight: bold;
     text-shadow: 0 -1px rgba(0, 0, 0, 0.5);
     padding: 5px 8px;
@@ -433,23 +440,14 @@ ul.nav li:first-child a{
     margin-bottom: 20px;
 }
 .eventImg{
-    width: 190px;
-    height: 91px;
+    height: 150px;
     margin-bottom: 15px;
 }
-.jakartaImg{}
-.eventContent{
-    padding-left: 10px;
-}
-.eventContent .date{
-    color:#999999;
-    margin-bottom: 20px;
-    font-size: 12px;
-}
-.eventContent h5 a{
+.eventContent h5{
     color: #0078ac;
     font-size: 16px;
     font-family: helvetica;
+    margin-bottom: 15px;
 }
 .lightGrayText{
     color:#666666;
@@ -577,7 +575,7 @@ ul.supportPrivacyLinks li{
     color: #777777;
 }
 .blueHeader{
-    background: url("blue_header_bg.jpg") no-repeat 0 -2px;
+    background: url("blue_header_with_tag_bg.jpg") no-repeat 0 -2px;
     width: 910px;
     height: 90px;
     padding: 30px 0 0 30px;
@@ -629,13 +627,13 @@ ul.supportPrivacyLinks li{
     margin: -2px 0 30px;
     border: 1px solid #96B0C1;
     box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.2);
-    border-radius: 5px;
+    border-radius: 0 0 5px 5px;
 }
 .layoutWrapper .span8{
     width: 578px;
 }
 .layoutWrapper .span4{
-    width: 280px;
+    width: 278px;
 }
 .eventTour{
     /*padding: 0 0 0 30px;*/
@@ -867,7 +865,7 @@ ul.supportPrivacyLinks li{
 }
 /* login page layout */
 .plainBlueHeader{
-    background: url("blue_header_bg.jpg") no-repeat 0 -2px;
+    background: url("blue_header_with_tag_bg.jpg") no-repeat 0 -2px;
     width: 780px;
     height: 50px;
     border-radius: 5px 5px 0 0;
@@ -882,7 +880,7 @@ ul.supportPrivacyLinks li{
 .loginLayout{
     padding: 0 0 30px 0;
     background: rgba(235, 246, 254, 0.5);
-    margin-bottom: 150px;
+    margin-bottom: 142px;
     border: 1px solid #96B0C1;
     box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.2);
     border-radius: 5px;
@@ -931,6 +929,27 @@ ul.supportPrivacyLinks li{
     display: block;
     float: left;
 }
+.googleLink{
+    background: url("gmail_icon.png") no-repeat;
+    width: 16px;
+    height: 16px;
+    display: block;
+    float: left;
+    margin-right: 10px;
+}
+.yahooLink{
+    background: url("yahoo_icon.png") no-repeat;
+    width: 16px;
+    height: 16px;
+    display: block;
+    float: left;
+}
+.googleYahooBtn span.text{
+    float: left;
+}
+.loginRightPanel .socialNetworks a.googleYahooBtn{
+    width: 120px;
+}
 .loginRightPanel{
     float: left;
     width: 398px;
@@ -971,7 +990,7 @@ ul.supportPrivacyLinks li{
     position: absolute;
     top: -9px;
     width: 60px;
-    background-color: #d3e6f5;
+    background-color: #dfeefa;
     left: 136px;
     text-align: center;
     color: #666;
@@ -992,6 +1011,8 @@ ul.supportPrivacyLinks li{
 }
 .loginRightPanel .checkbox{
     margin-bottom:  15px;
+    color: #666666;
+    font-size: 16px;
 }
 .forgotPassword{
     margin-left: 25px;
@@ -1009,4 +1030,149 @@ ul.supportPrivacyLinks li{
 }
 .loginRightPanel p a:hover{
     color: #333333;
+}
+/* event listing page */
+.blueHeaderWithoutTag{
+    background: url("blue_header.png") no-repeat;
+    width: 910px;
+    height: 51px;
+    padding: 20px 0 0 30px;
+    text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+    margin-top: 2px;
+    border-radius: 4px;
+    box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.2);
+}
+.blueHeaderWithoutTag h1{
+    color: #ffffff;
+}
+.eventSearchBox{
+    background: #ffffff;
+    padding: 18px 25px;
+    border-radius: 5px;
+    border: 1px solid #cccccc;
+    margin-bottom: 40px;
+}
+.eventSearchBox input{
+    width: 320px;
+    height: 25px;
+    float: left;
+}
+.eventSearchBox input::-moz-placeholder, .eventSearchBox input::-webkit-placeholder{
+    font-weight: bold;
+    color: #cccccc;
+}
+.eventCitySearch{
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    width: 340px;
+    height: 35px;
+    float: left;
+    margin: 0 20px;
+}
+.eventCitySearch input{
+    width: 310px;
+    border: none;
+}
+.eventCitySearch input:focus{
+    box-shadow: none;
+}
+.eventCitySearch .citySearchIcon{
+    margin-top: 8px;
+}
+.eventSearchBox button.search{
+    width: 110px;
+}
+#myTab{
+    margin-bottom: 0;
+}
+.eventListWrapper{
+    background: #ffffff;
+    border: 1px solid #CCC;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+.eventListInner{
+    padding: 0 8px;
+}
+.eventListWrapper .place{
+    color:#666666;
+    margin-bottom: 10px;
+}
+.eventListWrapper .dateAndPlace{
+    float: left;
+    padding-top: 8px;
+    font-size: 12px;
+}
+.eventListWrapper .tag {
+    float: right;
+    position: relative;
+    margin: -2px 5px 0 0;
+}
+.eventListWrapper .personName{
+    background: url("person_icon.png") no-repeat 0 2px;
+    padding-left: 20px;
+    font-size: 14px;
+}
+.eventListWrapper .eventContent a{
+    margin-bottom: 15px;
+    display: block;
+}
+.eventListFooter{
+    background: #f1f1f1;
+    line-height: 35px;
+    color: #666666;
+    padding-left: 15px;
+    border-radius: 0 0 5px 5px;
+}
+.eventListFooter span{
+    color: #666666;
+}
+.eventListFooter .numberPeopleAttending{
+    font-weight: bold;
+    color: #333333;
+    font-size: 15px;
+}
+.eventContent{
+    margin-left: 6px;
+}
+.fullWidthContainer{
+    background: #edf7fd;
+    padding: 30px 30px;
+    margin-left: -30px;
+    margin-right: -30px;
+}
+.layoutWrapper ul.nav-tabs li{
+    width: 220px;
+    border: 1px solid #cccccc;
+    border-radius: 2px 2px 0 0;
+    border-bottom: none;
+    height: 45px;
+    margin-right: 10px;
+    box-shadow: 0px -2px 6px -2px rgba(0, 0, 0, 0.3);
+
+}
+.layoutWrapper ul.nav-tabs li.active{
+    background: #EDF7FD;
+    height: 56px;
+    margin-top: -10px;
+
+}
+.layoutWrapper ul.nav-tabs li.active a{
+    color: #0078ac;
+}
+.layoutWrapper .nav-tabs > .active > a, .layoutWrapper .nav-tabs > .active > a:hover {
+    background: none;
+    border: none;
+}
+.layoutWrapper .nav-tabs > li > a{
+    line-height: 28px;
+    text-align: center;
+    font-size: 16px;
+    color: #666666;
+}
+.eventListing .layoutWrapper{
+    padding-bottom: 0;
+}
+.content.eventListing{
+    background-position: center 130%;
 }

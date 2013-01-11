@@ -129,6 +129,7 @@ CloudfoundryUsergroups::Application.routes.draw do
       get :home_page
       get :event_detail
       get :login_signup
+      get :event_list
     end
   end
 
@@ -187,6 +188,7 @@ CloudfoundryUsergroups::Application.routes.draw do
 
   resources :home do
     get :autocomplete_city_details, :on => :collection
+    get :login , :on => :collection
   end
 
 
