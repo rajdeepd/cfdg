@@ -10,7 +10,9 @@
           %a.logout{:href => "#"} LOGOUT
       -else
         %li
-          %a.signin{:href => "#"} LOGIN
+          -#%a.signin{:href => "#"} LOGIN
+          %a{:href => "#{signin_path}"} LOGIN
     -#.searchBox
       %input{:placeholder => "Search", :type => "text"}
       %button.searchIcon
+

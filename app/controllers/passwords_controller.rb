@@ -38,8 +38,8 @@ class PasswordsController <  Devise::PasswordsController
     logger.info (params.inspect)
     @user = User.find_by_email(params[:user][:email])
     if @user.present? and !@user.is_proprietary_user
-      flash[:message] = "only proprietary user have this feature"
-      redirect_to "/"
+      flash[:alert] = "only proprietary user have this feature"
+      redirect_to home_index_path
     end
   end
 end

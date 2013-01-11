@@ -1,15 +1,280 @@
-.content.wrapper
-  .content-c
-    = render '/events/full_event'
-    -if !@current_user.present?
-      = render '/events/members_list'
-    -if @current_user.present?  and !@event.can_i_delete?(@current_user.id, @event.chapter_id)
-      = render '/events/members_list'
-    - if !@current_user.present?
-      -if @event.agenda_and_speakers.present?
-        = render '/events/agenda_and_speakers'
-    - else
-      - if @event.can_i_delete?(@current_user.id, @event.chapter_id)
-        = render '/events/agenda_and_speakers'
-      -elsif @event.agenda_and_speakers.present?
-        = render '/events/agenda_and_speakers'
+-#.content.wrapper
+-#  .content-c
+-#    = render '/events/full_event'
+-#    -if !@current_user.present?
+-#      = render '/events/members_list'
+-#    -if @current_user.present?  and !@event.can_i_delete?(@current_user.id, @event.chapter_id)
+-#      = render '/events/members_list'
+-#    - if !@current_user.present?
+-#      -if @event.agenda_and_speakers.present?
+-#        = render '/events/agenda_and_speakers'
+-#    - else
+-#      - if @event.can_i_delete?(@current_user.id, @event.chapter_id)
+-#        = render '/events/agenda_and_speakers'
+-#      -elsif @event.agenda_and_speakers.present?
+-#        = render '/events/agenda_and_speakers'
+= javascript_include_tag "jquery.coda-slider-3.0"
+= javascript_include_tag "jquery.vticker-min"
+= javascript_include_tag "jquery.mousewheel"
+= javascript_include_tag "jquery.contentcarousel"
+= javascript_include_tag "jquery.easing.1.3"
+= javascript_include_tag "jquery.validate"
+
+%title Coda Slider 3.0
+:javascript
+  $(function(){
+      /* Here is the slider using default settings */
+    $('#slider-id').codaSlider({
+      autoSlide:true,
+      autoHeight:false
+    });
+    $('h2.title').hide();
+    $('#news-container').vTicker({
+      speed: 500,
+      pause: 3000,
+      animation: 'fade',
+      mousePause: false,
+      showItems: 3
+    });
+  });
+
+
+
+-#=render :partial => "/shared/new_header"
+.content.eventDetails
+  .breadCrumb
+    %span Events
+    %span.breadCrumbDivider /
+    %span.activePage
+      =@event.title
+  .blueHeader
+    .chapterName.clearfix
+      %h1
+        =@event.title
+      %span.chapterLocation  &nbsp;/ #{@event.chapter.name}
+    .chapterDateAndPlace.clearfix
+      %span.chapterDate #{@event.event_start_date_in_date.strftime("%b %d, %Y")}
+      %span.chapterPlace #{@event.location}, #{@event.city_name}
+      -#%span.viewMap ( View Map )
+      -#.mapDiv
+      -#  %span.close x
+      -#  %img{:src => "/assets/map.png"}
+      = render :partial => "event_map"
+  .layoutWrapper
+    .row
+      .span8
+        .eventTour
+          #slider-id.coda-slider
+            -if @all_event_images.present?
+              -@all_event_images.each do |i|
+                %div
+                  -#%img{:src => "/assets/event_photo.jpg"}
+                  =image_tag(i.image)
+            -else
+              %div
+                %img{:src => "/assets/event_photo.jpg"}
+              %div
+                %img{:src => "/assets/event_photo.jpg"}
+          .viewEventGallery{:rel => @event.id}
+            %a{:href => "#{show_all_event_images_event_path(@event)}"} View Event Gallery
+          .eventDetail.clearfix
+            %h4 Description
+            -#%p What if you could deploy and scale your applications within seconds? And never had to wait again for infrastructure to be provisioned? With Cloud Foundry, which is a modern, open-source Platform as a Service, you can deploy your application instantly. Use Cloud Foundry for development, testing and production.
+            %p #{@event.description}
+            %a{:href => "#"} View more
+            -if !@event.is_past_event?
+              -if !current_user.blank? and  (current_user.id != @event.created_by)
+                -if @event.is_cancelled?
+                  %button.btn-a-small.flt-right{:id=>"cancelled_event", :event_id => "#{@event.id}" ,:disable => true,:style => "opacity:0.35"} CANCELLED
+                -else
+                  -if !@event.am_i_member?(current_user.id) and @event.is_rsvp_allowed?
+                    %button.btn-a-small.flt-right.rsvp_me{:id=>"follow_event", :event_id => "#{@event.id}"} R.S.V.P
+                    -#%img.flt-right#rsvp_tick{:src => "/assets/Event.png",:style => "display:none"}
+                    %button.btn-a-small.flt-right{:id=>"rsvp_tick",:style => "display:none;opacity:0.35"} Attending
+                  -elsif !@event.am_i_member?(current_user.id) and !@event.is_rsvp_allowed?
+                    %button.btn-a-small.flt-right{:id=>"join_wait_list"} Limit Reached!
+                  -if @event.am_i_member?(current_user.id)
+                    -#%img.flt-right{:src => "/assets/Event.png"}
+                    %button.btn-a-small.flt-right{:id=>"event_rsvped",:style => "opacity:0.35"} Attending
+              - else
+                -if @event.is_cancelled?
+                  %button.btn-a-small.flt-right{:id=>"cancelled_event", :event_id => "#{@event.id}" ,:disable => true,:style => "opacity:0.35"} CANCELLED
+                -else
+                  -if @event.is_rsvp_allowed?
+                    %button.btn-a-small.flt-right.rsvp_me.signin{:id=>"follow_event", :event_id => "#{@event.id}"} R.S.V.P
+                  -else
+                    %button.btn-a-small.flt-right{:id=>"join_wait_list"} Limit Reached!
+
+
+
+
+
+            -#%a.orangeBtn{:href => "#"} R.S.V.P
+        .comments.clearfix
+          -if @current_user.present?
+            %h4.logged_in_user{:rel => @current_user.id} Comments
+          -else
+            %h4 Comments
+          %ul
+            .all_events_comments
+              -(@event.comments || []).each do |comment|
+                %li
+                  = avatar_display_pic(comment.user,'thumb', '50x50','profile.png',"img-c flt-left")
+                  %h5.label-27
+                    #{comment.user.fullname}
+                  .commentText
+                    %p #{comment.content}
+                    %span.commentDate #{Time.parse(comment.created_at.to_s).strftime("%b %d, %Y")}
+
+          .addCommentBox
+            -if @current_user.present?
+              = avatar_display_pic(@current_user,'thumb', '50x50','profile.png',"img-c flt-left")
+              -#%img{:src => "/assets/default_human_face.jpg"}
+              = form_tag(create_event_comment_events_path,:method => "POST",:class => "create_comment",:remote => true) do
+                = text_area_tag "comment[content]","", :placeholder => "comment", :label => false, :class => " content_comment_class ta-a"
+                = hidden_field_tag "comment[commentable_type]","Event"
+                = hidden_field_tag "comment[commentable_id]",@event.id
+                = button_tag "Add Comment",:class => "addBtn btn add_comment_button"
+
+
+
+
+      .span4
+        .chapterNameWithThumbnail.clearfix
+          %img.chapterThumbnail{:src => "/assets/pune_chapter.jpg"}/
+          %h3 #{@event.chapter.name}
+        -#= render '/events/members_list'
+        .eventPeopleList
+          .listHeader
+            %span list of attendees
+            -if @event.id ==2
+              %span.numberOfPeople 37
+            -else
+              %span.numberOfPeople #{@event.event_members.size}
+            -#%span.numberOfPeople 06
+          %ul.clearfix
+            -@members.each do |i|
+              %li
+                -#%img{:src => "/assets/human_face_4.jpg"}
+                = avatar_display_pic(i,'thumb', '40x40','profile.png',"profile-img img-a flt-left")
+                .personDetails
+                  .personName #{i.fullname}
+
+              -#%a{:href => "#"} View more
+        -#.eventPeopleList
+          .listHeader
+            %span Organisers
+            %span.numberOfPeople 07
+          %ul.clearfix
+            %li
+              %img{:src => "/assets/human_face_1.jpg"}/
+              .personDetails
+                .personName Victor Jieh
+                .personRole Senior Solutions Architect
+            %li
+              %img{:src => "/assets/human_face_2.jpg"}/
+              .personDetails
+                .personName Ramnivas Laddad
+                .personRole Principal Engineer, SpringSource
+            %li
+              %img{:src => "/assets/human_face_3.jpg"}/
+              .personDetails
+                .personName Josh Long
+                .personRole Developer Advocate, SpringSource
+          %a{:href => "#"} View more
+        -#.eventPeopleList
+          .listHeader
+            %span Speakers
+            %span.numberOfPeople 06
+          %ul.clearfix
+            %li
+              %img{:src => "/assets/human_face_4.jpg"}/
+              .personDetails
+                .personName Gary Russell
+                .personRole Staff engineer, springSource
+            %li
+              %img{:src => "/assets/human_face_5.jpg"}/
+              .personDetails
+                .personName Jeremy Grelle
+                .personRole Sr Software Engineer, Spring...
+            %li
+              %img{:src => "/assets/human_face_6.jpg"}/
+              .personDetails
+                .personName Patrick Chanezon
+                .personRole Sr Director of Developer...
+          %a{:href => "#"} View more
+        -#.eventPeopleList
+          .listHeader
+            %span list of attendees
+            %span.numberOfPeople 06
+          %ul.clearfix
+            %li
+              %img{:src => "/assets/human_face_4.jpg"}/
+              .personDetails
+                .personName Chris Richardson
+
+            %li
+              %img{:src => "/assets/human_face_5.jpg"}/
+              .personDetails
+                .personName Jennifer Hickey
+            %li
+              %img{:src => "/assets/human_face_6.jpg"}/
+              .personDetails
+                .personName Oliver Gierke
+          %a{:href => "#"} View more
+:javascript
+  $(document).ready(function(){
+    $(".rsvp_me").on("click",function(){
+      //$(".rsvp_me").hide();
+      //$("#rsvp_tick").show();
+    });
+
+    $('.create_comment').validate({
+      rules: {
+        "comment[content]": {
+          required: true
+        }
+      },
+      errorPlacement:function(error,element){
+        error.insertAfter(element).addClass("event_detail_error");
+      }
+    });
+
+
+
+    $("#follow_event").live("click", function(){
+      $(".rsvp_me").text("Please Wait...");
+      var  current_user =  $(".logged_in_user").attr("rel");
+      var event_id = $(".viewEventGallery").attr("rel");
+      $.get("/events/"+event_id+"/join_event",{data:current_user},function(){
+         $(".rsvp_me").hide();
+         $("#rsvp_tick").show();
+      },"script");
+    })
+  });
+
+  $(function() {
+    window.google.identitytoolkit.setConfig({
+        developerKey: "#{FEDERATED_KEY}",
+        companyName: "cloudfoundry usergroups",
+        callbackUrl: "#{verify_user_url()}",
+        realm: "",
+        userStatusUrl: "/user_status",
+        loginUrl: "/login",
+        signupUrl: "/sign_up",
+        //homeUrl: "/profile",
+        homeUrl: "#{session[:url]}",
+        logoutUrl: "/logout",
+        idps: ["Gmail", "Yahoo"],
+        tryFederatedFirst: true,
+        useCachedUserStatus: false,
+        useContextParam: true
+    });
+    $("#navbar").accountChooser();
+
+    $('.signup').click(function(){
+      $('#navbar').accountChooser('showAccountChooser');
+      $(".widget-header h1").text("#{t('menu.signup')}");
+      $(".widget-nascar-list h2").text("#{t('menu.signup_with')}");
+    });
+  });

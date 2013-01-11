@@ -65,8 +65,10 @@
           = gmaps4rails(@markers)
         .createChapter.clearfix
           -if current_user.blank?
+
             %p Couldn't find a chapter in your city?
             %a.orangeBtn.signin.createChapterBtn CREATE A CHAPTER
+
           -else
             -if !ChapterMember.is_primary_coordinator?(current_user.id)
               %a.orangeBtn.createChapterBtn{:href => "#{new_chapter_path}"} CREATE A CHAPTER
@@ -99,3 +101,43 @@
       google.maps.event.addListener(Gmaps.map.markers[i].serviceObject, 'click',   redirect_to(Gmaps.map.markers[i].link));
     }
   };
+
+  $(document).ready(function(){
+      $('#search_chapter').validate({
+        rules: {
+          "query": {
+            required: true
+          }
+        }
+      });
+    });
+:javascript
+  google.load("identitytoolkit", "1", {packages: ["ac"], language:"#{lang}"});
+:javascript
+  $(function() {
+    $(".createChapterBtn").on("click",function(){
+      window.google.identitytoolkit.setConfig({
+        developerKey: "#{FEDERATED_KEY}",
+        companyName: "cloudfoundry usergroups",
+        callbackUrl: "#{verify_user_url()}",
+        realm: "",
+        userStatusUrl: "/user_status",
+        loginUrl: "/login",
+        signupUrl: "/sign_up",
+        //homeUrl: "/profile",
+        homeUrl: "#{session[:url]}",
+        logoutUrl: "/logout",
+        idps: ["Gmail", "Yahoo"],
+        tryFederatedFirst: true,
+        useCachedUserStatus: false,
+        useContextParam: true
+      });
+      $("#navbar").accountChooser();
+    });
+
+    $('.signup').click(function(){
+      $('#navbar').accountChooser('showAccountChooser');
+      $(".widget-header h1").text("#{t('menu.signup')}");
+      $(".widget-nascar-list h2").text("#{t('menu.signup_with')}");
+    });
+  });
