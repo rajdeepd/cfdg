@@ -168,7 +168,7 @@ header ul li:first-child{
     padding-left: 10px;
 }
 .chapter{
-    background: url("chapter_normal.png") no-repeat 55px 19px;
+    background: url("chapter_normal.png") no-repeat 48px 19px;
     height: 52px;
     display: block;
 }
@@ -185,7 +185,7 @@ header ul li:first-child{
     margin-bottom: 10px;
 }
 .event{
-    background: url("event_normal.png") no-repeat 64px 18px;
+    background: url("event_normal.png") no-repeat 59px 18px;
     height: 52px;
     display: block;
 }
@@ -270,7 +270,6 @@ header ul li:first-child{
     border-radius: 4px;
     font-weight: bold;
     text-shadow: 0 -1px rgba(0, 0, 0, 0.5);
-    padding: 5px 8px;
     text-align: center;
 }
 .orangeBtn:hover{
@@ -494,7 +493,8 @@ footer .footerBottom{
 }
 footer .footerBottom ul li{
     text-align: center;
-    color: #ffffff
+    color: #ffffff;
+    text-transform: uppercase;
 }
 footer .footerBottom p{
     text-align: center;
@@ -537,7 +537,7 @@ footer .footerBottom p{
 ul.supportPrivacyLinks{
     list-style: circle;
     color: #ffffff;
-    width: 400px;
+    width: 470px;
     margin: 0 auto;
 
 }
@@ -637,7 +637,7 @@ ul.supportPrivacyLinks li{
 .layoutWrapper .span8{
     width: 578px;
 }
-.layoutWrapper .span4{
+.content .span4{
     width: 278px;
 }
 .eventTour{
@@ -1190,4 +1190,34 @@ ul.supportPrivacyLinks li{
 }
 .signUpWrapper a.orangeBtn{
     margin-bottom: 30px;
+}
+.signUpWrapper input{
+    display: block;
+}
+.signUpWrapper .loginRightPanel{
+    margin-top: 40px;
+}
+.content .comingEvents .ca-container{
+    height: 405px;
+}
+.content .comingEvents .ca-item{
+    width: 288px;
+    height: 395px;
+}
+.content .comingEvents .ca-item-main{
+    padding: 0;
+    border: none;
+    box-shadow: none;
+}
+.content .comingEvents .span4{
+    margin-left: 0;
+}
+.alert{
+    width: 880px;
+    margin: 0 auto;
+    height: 15px;
+    margin-bottom: 10px;
+    text-align: center;
+    padding-bottom: 4px;
+    padding: 4px 35px 4px 14px;
 }
