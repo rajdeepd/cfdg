@@ -1126,6 +1126,9 @@ ul.supportPrivacyLinks li{
     margin-bottom: 15px;
     display: block;
 }
+.eventListWrapper .eventContent p.lightGrayText{
+    min-height: 38px;
+}
 .eventListFooter{
     background: #f1f1f1;
     line-height: 35px;
@@ -1206,6 +1209,7 @@ ul.supportPrivacyLinks li{
 }
 .content .comingEvents .ca-container{
     height: 405px;
+    width: 891px;
 }
 .content .comingEvents .ca-item{
     width: 288px;
@@ -1227,6 +1231,12 @@ ul.supportPrivacyLinks li{
     text-align: center;
     padding-bottom: 4px;
     padding: 4px 35px 4px 14px;
+}
+.content .ca-nav .ca-nav-prev{
+    left: -15px;
+}
+.content .ca-nav .ca-nav-next{
+    right: -20px;
 }
 .div-h a.btn-a-small.flt-right{
     padding-top: 6px;
