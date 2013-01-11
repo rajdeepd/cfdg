@@ -101,7 +101,8 @@
                   %button.btn-a-small.flt-right{:id=>"cancelled_event", :event_id => "#{@event.id}" ,:disable => true,:style => "opacity:0.35"} CANCELLED
                 -else
                   -if @event.is_rsvp_allowed?
-                    %button.btn-a-small.flt-right.rsvp_me.signin{:id=>"follow_event", :event_id => "#{@event.id}"} R.S.V.P
+                    -#%button.btn-a-small.flt-right.rsvp_me{:href => "#{signin_path}",:id=>"follow_the_event", :event_id => "#{@event.id}"} R.S.V.P
+                    = link_to "R.S.V.P",signin_path,:class => "btn-a-small flt-right rsvp_me",:id=>"follow_the_event", :event_id => "#{@event.id}"
                   -else
                     %button.btn-a-small.flt-right{:id=>"join_wait_list"} Limit Reached!
 
@@ -141,7 +142,8 @@
 
       .span4
         .chapterNameWithThumbnail.clearfix
-          %img.chapterThumbnail{:src => "/assets/pune_chapter.jpg"}/
+          -#%img.chapterThumbnail{:src => "/assets/pune_chapter.jpg"}/
+          =image_tag("logo-b.png",:size => "60x60",:class => "chapterThumbnail")
           %h3 #{@event.chapter.name}
         -#= render '/events/members_list'
         .eventPeopleList
@@ -161,27 +163,21 @@
                   .personName #{i.fullname}
 
               -#%a{:href => "#"} View more
-        -#.eventPeopleList
-          .listHeader
-            %span Organisers
-            %span.numberOfPeople 07
-          %ul.clearfix
-            %li
-              %img{:src => "/assets/human_face_1.jpg"}/
-              .personDetails
-                .personName Victor Jieh
-                .personRole Senior Solutions Architect
-            %li
-              %img{:src => "/assets/human_face_2.jpg"}/
-              .personDetails
-                .personName Ramnivas Laddad
-                .personRole Principal Engineer, SpringSource
-            %li
-              %img{:src => "/assets/human_face_3.jpg"}/
-              .personDetails
-                .personName Josh Long
-                .personRole Developer Advocate, SpringSource
-          %a{:href => "#"} View more
+        -if @coordinaters.present?
+          .eventPeopleList
+            .listHeader
+              %span Organisers
+              %span.numberOfPeople #{@coordinaters.size}
+            %ul.clearfix
+              -@coordinaters.each do |i|
+                %li
+                  -#%img{:src => "/assets/human_face_1.jpg"}/
+                  = avatar_display_pic(i,'thumb', '40x40','profile.png',"profile-img img-a flt-left")
+                  .personDetails
+                    .personName #{i.fullname}
+                    -#.personRole Senior Solutions Architect
+
+            -#%a{:href => "#"} View more
         -#.eventPeopleList
           .listHeader
             %span Speakers
@@ -224,6 +220,7 @@
           %a{:href => "#"} View more
 :javascript
   $(document).ready(function(){
+    $(".rsvp_me").css("color","white");
     $(".rsvp_me").on("click",function(){
       //$(".rsvp_me").hide();
       //$("#rsvp_tick").show();

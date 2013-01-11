@@ -30,7 +30,7 @@ module ApplicationHelper
       image_tag(obj.photo.url(type.to_sym), :alt => 'Pic', :size => size,:class => class_name, :style => style)
     else
       #image_tag(path, :alt => 'Pic', :size => size , :class => class_name, :style => style)
-      image_tag("no_image.jpg", :alt => 'Pic', :size => size , :class => class_name, :style => style)
+      image_tag("logo-b.png", :alt => 'Pic', :size => size , :class => class_name, :style => style)
     end
   end
 

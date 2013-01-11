@@ -179,6 +179,11 @@ header ul li:first-child{
     border-bottom: 2px solid #00bde7;
     padding-left: 2px;
 }
+.noEventText{
+    text-align: center;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
 .event{
     background: url("event_normal.png") no-repeat 64px 18px;
     height: 52px;
@@ -1176,4 +1181,13 @@ ul.supportPrivacyLinks li{
 }
 .content.eventListing{
     background-position: center 130%;
+}
+.signUpWrapper .loginVisual{
+    background: url("login_visual_bg.png") no-repeat center 53px;
+    width: 380px;
+    text-align: center;
+    padding-top: 230px;
+}
+.signUpWrapper a.orangeBtn{
+    margin-bottom: 30px;
 }

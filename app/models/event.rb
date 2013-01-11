@@ -137,7 +137,7 @@ class Event < ActiveRecord::Base
     if self.image.present?
       self.image
     else
-      "no_image.jpg"
+      "logo-b.png"
     end
   end
 
