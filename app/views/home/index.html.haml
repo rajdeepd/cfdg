@@ -65,8 +65,9 @@
                     %h4
                       =i.title
                     %p
-                      =i.body
-                    %button.btn Learn More
+                      =i.body.truncate(25)
+                    -#%button.btn Learn More
+              
     .span8
       .cfdgChapter
         .longHeading
