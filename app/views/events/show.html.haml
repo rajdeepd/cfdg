@@ -101,7 +101,8 @@
                   %button.btn-a-small.flt-right{:id=>"cancelled_event", :event_id => "#{@event.id}" ,:disable => true,:style => "opacity:0.35"} CANCELLED
                 -else
                   -if @event.is_rsvp_allowed?
-                    %button.btn-a-small.flt-right.rsvp_me.signin{:id=>"follow_event", :event_id => "#{@event.id}"} R.S.V.P
+                    -#%button.btn-a-small.flt-right.rsvp_me{:href => "#{signin_path}",:id=>"follow_the_event", :event_id => "#{@event.id}"} R.S.V.P
+                    = link_to "R.S.V.P",signin_path,:class => "btn-a-small flt-right rsvp_me",:id=>"follow_the_event", :event_id => "#{@event.id}"
                   -else
                     %button.btn-a-small.flt-right{:id=>"join_wait_list"} Limit Reached!
 
@@ -219,6 +220,7 @@
           %a{:href => "#"} View more
 :javascript
   $(document).ready(function(){
+    $(".rsvp_me").css("color","white");
     $(".rsvp_me").on("click",function(){
       //$(".rsvp_me").hide();
       //$("#rsvp_tick").show();
