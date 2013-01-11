@@ -1137,3 +1137,12 @@ ul.supportPrivacyLinks li{
 .content.eventListing{
     background-position: center 130%;
 }
+.signUpWrapper .loginVisual{
+    background: url("login_visual_bg.png") no-repeat center 53px;
+    width: 380px;
+    text-align: center;
+    padding-top: 230px;
+}
+.signUpWrapper a.orangeBtn{
+    margin-bottom: 30px;
+}
