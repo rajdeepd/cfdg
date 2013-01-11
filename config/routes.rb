@@ -131,6 +131,8 @@ CloudfoundryUsergroups::Application.routes.draw do
       get :login_signup
       get :event_list
       get :sign_up
+      get :forgot_password
+      get :reset_password
     end
   end
 

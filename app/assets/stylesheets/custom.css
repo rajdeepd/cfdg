@@ -265,7 +265,6 @@ header ul li:first-child{
     border-radius: 4px;
     font-weight: bold;
     text-shadow: 0 -1px rgba(0, 0, 0, 0.5);
-    padding: 5px 8px;
     text-align: center;
 }
 .orangeBtn:hover{
@@ -1185,4 +1184,10 @@ ul.supportPrivacyLinks li{
 }
 .signUpWrapper a.orangeBtn{
     margin-bottom: 30px;
+}
+.signUpWrapper input{
+    display: block;
+}
+.signUpWrapper .loginRightPanel{
+    margin-top: 40px;
 }
