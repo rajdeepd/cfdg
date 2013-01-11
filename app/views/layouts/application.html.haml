@@ -82,10 +82,15 @@
 
     = csrf_meta_tags
   %body
+    -#todo HACK need to change this after getting all designs
     - @controller = params["controller"]
     - @action = params["action"]
+    -@is_i_admin = false
+    - if @current_user.present? && @controller == "events" && @action == "show"
+      -event = Event.find(params[:id])
+      -@is_i_admin = event.can_i_delete?(@current_user,event.chapter)
 
-    -if (@controller == "home" && (@action == "index" or @action == "login"))   or @controller == "html" or (@controller == "events" && @action == "show") or (@controller == "sessions") or (@controller == "passwords")
+    -if (@controller == "home" && (@action == "index" or @action == "login"))   or @controller == "html" or (@controller == "events" && @action == "show" && @is_i_admin == false) or (@controller == "sessions") or (@controller == "passwords") or  (@controller == "registrations")
 
       .bodyWrapper
         = render "shared/federated_header"
@@ -96,6 +101,14 @@
         = render "shared/new_footer"
         = yield :scripts
         = content_for(:javascript)
+    -elsif (@controller == "events" && @action == "show" && @is_i_admin == true)
+      = render "shared/federated_header"
+      = render "shared/header"
+      = yield
+      = render "shared/footer"
+      = yield :scripts
+      = content_for(:javascript)
+
     -else
       = render "shared/federated_header"
       = render "shared/header"

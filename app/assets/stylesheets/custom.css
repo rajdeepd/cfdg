@@ -179,6 +179,11 @@ header ul li:first-child{
     border-bottom: 2px solid #00bde7;
     padding-left: 2px;
 }
+.noEventText{
+    text-align: center;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
 .event{
     background: url("event_normal.png") no-repeat 59px 18px;
     height: 52px;
@@ -842,6 +847,7 @@ ul.supportPrivacyLinks li{
     left: 32px;
     background: white;
     opacity: 0;
+    z-index: -1;
 }
 .mapDiv .close{
     float: right;
@@ -1033,6 +1039,9 @@ ul.supportPrivacyLinks li{
 .loginRightPanel p a:hover{
     color: #333333;
 }
+#error_explanation h4{
+    margin-bottom: 20px;
+}
 /* event listing page */
 .blueHeaderWithoutTag{
     background: url("blue_header.png") no-repeat;
@@ -1183,15 +1192,19 @@ ul.supportPrivacyLinks li{
     width: 380px;
     text-align: center;
     padding-top: 230px;
+    margin-bottom: 40px;
 }
-.signUpWrapper a.orangeBtn{
+.signUpWrapper a.orangeBtn , .forgotPasswordWrapper a.orangeBtn{
     margin-bottom: 30px;
 }
-.signUpWrapper input{
+.signUpWrapper input , .forgotPasswordWrapper input{
     display: block;
 }
 .signUpWrapper .loginRightPanel{
-    margin-top: 40px;
+    margin-top: 45px;
+}
+.forgotPasswordWrapper .loginRightPanel{
+    margin-top: 80px;
 }
 .content .comingEvents .ca-container{
     height: 405px;

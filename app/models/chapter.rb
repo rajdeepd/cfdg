@@ -136,5 +136,8 @@ class Chapter < ActiveRecord::Base
     ChapterMember.where(" user_id = ? and chapter_id = ? and memeber_type = ?",user.id, self.id,  ChapterMember::SECONDARY_COORDINATOR).present?
   end
 
+  def get_secondary_coordinators
+    self.chapter_members.select{|i| i.memeber_type == ChapterMember::SECONDARY_COORDINATOR}.collect{|i| i.user}
+  end
 end
 
