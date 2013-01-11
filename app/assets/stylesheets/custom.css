@@ -840,6 +840,7 @@ ul.supportPrivacyLinks li{
     left: 32px;
     background: white;
     opacity: 0;
+    z-index: -1;
 }
 .mapDiv .close{
     float: right;
