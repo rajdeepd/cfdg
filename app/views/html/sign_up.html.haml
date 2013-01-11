@@ -1,4 +1,4 @@
-.loginContent
+.loginContent.signUpWrapper
   .row
     .span10.offset1
       .loginLayout.clearfix
@@ -20,7 +20,7 @@
               Explore the
               %span.upperCaseBold devlopers world
         .loginRightPanel
-          .loginText Login with
+          .loginText Sign Up with
           .socialNetworks.clearfix
             %a{:href => "#"}
               %span.facebookLink
@@ -36,14 +36,15 @@
               Linked In
           .orWithBorder
             %span OR
-          .loginText Login with email
+          .loginText Sign Up with email
+          %input{:placeholder => "Name*", :type => "text"}/
           %input{:placeholder => "Email*", :type => "text"}/
           %input{:placeholder => "Password*", :type => "text"}/
+          %input{:placeholder => "Confirm Password*", :type => "text"}/
           %label.checkbox
             %input{:type => "checkbox"}
               Remember Me
-          %a.orangeBtn{:href => "#"} LOGIN
-          %a.forgotPassword{:href => "#"} Forgot your password?
+          %a.orangeBtn{:href => "#"} Sign Up
           %p
             Need an account?
             %a{:href => "#"} Sign Up
