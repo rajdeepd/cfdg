@@ -632,7 +632,7 @@ ul.supportPrivacyLinks li{
 .layoutWrapper .span8{
     width: 578px;
 }
-.layoutWrapper .span4{
+.content .span4{
     width: 278px;
 }
 .eventTour{
@@ -1190,4 +1190,28 @@ ul.supportPrivacyLinks li{
 }
 .signUpWrapper .loginRightPanel{
     margin-top: 40px;
+}
+.content .comingEvents .ca-container{
+    height: 405px;
+}
+.content .comingEvents .ca-item{
+    width: 288px;
+    height: 395px;
+}
+.content .comingEvents .ca-item-main{
+    padding: 0;
+    border: none;
+    box-shadow: none;
+}
+.content .comingEvents .span4{
+    margin-left: 0;
+}
+.alert{
+    width: 880px;
+    margin: 0 auto;
+    height: 15px;
+    margin-bottom: 10px;
+    text-align: center;
+    padding-bottom: 4px;
+    padding: 4px 35px 4px 14px;
 }
