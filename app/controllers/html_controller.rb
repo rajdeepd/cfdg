@@ -22,4 +22,7 @@ class HtmlController < ApplicationController
   def reset_password
 
   end
+  def chapter_list
+
+  end
 end

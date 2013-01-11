@@ -558,7 +558,6 @@ ul.supportPrivacyLinks li{
 }
 .ui-autocomplete.ui-menu.ui-widget-content{
     width: 490px;
-    top: -1326.5px !important;
 }
 .coda-slider-wrapper .coda-slider, .coda-slider-wrapper .coda-slider .panel{
     width: 940px;
@@ -639,7 +638,7 @@ ul.supportPrivacyLinks li{
 .layoutWrapper .span8{
     width: 578px;
 }
-..layoutWrapper .span4{
+.layoutWrapper .span4{
     width: 278px;
 }
 .eventTour{
@@ -1056,7 +1055,7 @@ ul.supportPrivacyLinks li{
 .blueHeaderWithoutTag h1{
     color: #ffffff;
 }
-.eventSearchBox{
+.eventSearchBox, .chapterSearchBox{
     background: #ffffff;
     padding: 18px 25px;
     border-radius: 5px;
@@ -1240,4 +1239,6 @@ ul.supportPrivacyLinks li{
 .content .ca-nav .ca-nav-next{
     right: -20px;
 }
-
+.div-h a.btn-a-small.flt-right{
+    padding-top: 6px;
+}

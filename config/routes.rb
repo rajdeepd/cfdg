@@ -133,6 +133,7 @@ CloudfoundryUsergroups::Application.routes.draw do
       get :sign_up
       get :forgot_password
       get :reset_password
+      get :chapter_list
     end
   end
 
