@@ -23,6 +23,7 @@ class EventsController < ApplicationController
     #@event = Event.find(9)
     @emails = ''
     @members = @event.event_members.includes(:user).collect{|i| i.user}
+    @coordinaters = @event.chapter.get_secondary_coordinators
     @event.event_members.each do |member| @emails << (member.user.try(:email).to_s+"\;")  end
     if @event.event_galleries.present?
       @all_event_images =  @event.event_galleries

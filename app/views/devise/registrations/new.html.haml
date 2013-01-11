@@ -1,19 +1,81 @@
-.wrapper.content
-  %h2 Sign up
-  = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
-    = devise_error_messages!
-    %p
-      = f.label :email
-      %br/
-      = f.email_field :email,:value => session[:email]
-    %p
-      = f.label :password
-      %br/
-      = f.password_field :password
-    %p
-      = f.label :password_confirmation
-      %br/
-      = f.password_field :password_confirmation
-      = hidden_field_tag "user[is_proprietary_user]" , true
-    %p= f.submit "Sign up"
+-#.wrapper.content
+-#  %h2 Sign up
+-#  = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
+-#    = devise_error_messages!
+-#    %p
+-#      = f.label :email
+-#      %br/
+-#      = f.email_field :email,:value => session[:email]
+-#    %p
+-#      = f.label :password
+-#      %br/
+-#      = f.password_field :password
+-#    %p
+-#      = f.label :password_confirmation
+-#      %br/
+-#      = f.password_field :password_confirmation
+-#      = hidden_field_tag "user[is_proprietary_user]" , true
+-#    %p= f.submit "Sign up"
   -#= render :partial => "devise/shared/links"
+
+.loginContent.signUpWrapper
+  .row
+    .span10.offset1
+      .loginLayout.clearfix
+        .plainBlueHeader
+          %h3 Signup
+        .loginLeftPanel.loginVisual
+          %ul
+            %li
+              Create & Attend the
+              %span.upperCaseBold events
+              in your city.
+            %li
+              Share your
+              %span.upperCaseBold knowledge
+            %li
+              Discuss your
+              %span.upperCaseBold thoughts
+            %li
+              Explore the
+              %span.upperCaseBold devlopers world
+        .loginRightPanel
+          -#.loginText Sign Up with
+          -#.socialNetworks.clearfix
+          -#  %a{:href => "#"}
+          -#    %span.facebookLink
+          -#    %span.divider
+          -#    Facebook
+          -#  %a{:href => "#"}
+          -#    %span.twitterLink
+          -#    %span.divider
+          -#    Twitter
+          -#  %a{:href => "#"}
+          -#    %span.linkedInLink
+          -#    %span.divider
+          -#    Linked In
+          -#.orWithBorder
+          -#  %span OR
+          .loginText Sign Up with email
+          = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
+            = devise_error_messages!
+
+            = f.email_field :email,:value => session[:email] , :placeholder => "Email*"
+            = f.password_field :password    ,:placeholder => "Password*"
+            = f.password_field :password_confirmation ,:placeholder => "Confirm Password*"
+            = hidden_field_tag "user[is_proprietary_user]" , true
+            = f.submit "Sign up" , :class => "orangeBtn"
+          -#%input{:placeholder => "Email*", :type => "text"}/
+          -#%input{:placeholder => "Password*", :type => "text"}/
+          -#%input{:placeholder => "Confirm Password*", :type => "text"}/
+          -#%label.checkbox
+            %input{:type => "checkbox"}
+              Remember Me
+          -#%a.orangeBtn{:href => "#"} Sign Up
+          %p
+            Already Have An Account?
+            %a{:href => "#{signin_path}"} Login
+
+
+
+
