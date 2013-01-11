@@ -1037,6 +1037,9 @@ ul.supportPrivacyLinks li{
 .loginRightPanel p a:hover{
     color: #333333;
 }
+#error_explanation h4{
+    margin-bottom: 20px;
+}
 /* event listing page */
 .blueHeaderWithoutTag{
     background: url("blue_header.png") no-repeat;
@@ -1187,15 +1190,19 @@ ul.supportPrivacyLinks li{
     width: 380px;
     text-align: center;
     padding-top: 230px;
+    margin-bottom: 40px;
 }
-.signUpWrapper a.orangeBtn{
+.signUpWrapper a.orangeBtn , .forgotPasswordWrapper a.orangeBtn{
     margin-bottom: 30px;
 }
-.signUpWrapper input{
+.signUpWrapper input , .forgotPasswordWrapper input{
     display: block;
 }
 .signUpWrapper .loginRightPanel{
-    margin-top: 40px;
+    margin-top: 45px;
+}
+.forgotPasswordWrapper .loginRightPanel{
+    margin-top: 80px;
 }
 .content .comingEvents .ca-container{
     height: 405px;

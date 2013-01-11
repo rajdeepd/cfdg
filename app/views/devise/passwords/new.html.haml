@@ -10,7 +10,7 @@
 -#  -#= render :partial => "devise/shared/links"
 -#
 
-.loginContent.signUpWrapper
+.loginContent.forgotPasswordWrapper
   .row
     .span10.offset1
       .loginLayout.clearfix
@@ -34,10 +34,10 @@
         .loginRightPanel
           .loginText
             Enter Your Email
-            =form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f|
-              = devise_error_messages!
-              = f.email_field :email , :placeholder => "Email*"
-              = f.submit "Continue" ,:class => "orangeBtn"
+          =form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f|
+            = devise_error_messages!
+            = f.email_field :email , :placeholder => "Email*"
+            = f.submit "Continue" ,:class => "orangeBtn"
 
 
 
