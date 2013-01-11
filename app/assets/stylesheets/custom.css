@@ -835,6 +835,10 @@ ul.supportPrivacyLinks li{
 .viewMap{
     color: #ffffff;
     cursor: pointer;
+    text-decoration: underline;
+}
+.viewMap:hover{
+    text-decoration: none;
 }
 .mapDiv{
     width: 576px;
@@ -851,7 +855,7 @@ ul.supportPrivacyLinks li{
 .mapDiv .close{
     float: right;
     font-size: 10px;
-    color: black;
+    color: #ffffff;
     margin-right: 5px;
     position: absolute;
     right: -10px;
@@ -859,8 +863,8 @@ ul.supportPrivacyLinks li{
     z-index: 1000;
     padding: 0 5px;
     opacity: 1;
-    background: #EEE;
-    border-radius: 63px;
+    background: #0094B6;
+    border-radius: 18px;
 }
 .mapDiv .map_container{
     width: 579px;
@@ -1206,7 +1210,7 @@ ul.supportPrivacyLinks li{
     margin-top: 45px;
 }
 .forgotPasswordWrapper .loginRightPanel{
-    margin-top: 80px;
+    margin-top: 60px;
 }
 .content .comingEvents .ca-container{
     height: 405px;
