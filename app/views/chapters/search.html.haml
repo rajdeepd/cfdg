@@ -1,9 +1,7 @@
 .content.loginLayout
 
-  .div-l
-    .dd-b.flt-left
-      %h1.label-17
-        Search Results
+  %h1.label-17
+    Search Results
   - if @chapters.present?
     %table.table-e
       %thead
@@ -30,5 +28,6 @@
 
         %tr
   - else
-    Sorry no results found
+    %h5.label-17
+      Sorry no results found
 

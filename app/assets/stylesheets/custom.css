@@ -878,6 +878,9 @@ ul.supportPrivacyLinks li{
     width: 576px;
     height: 368px;
 }
+.layoutWrapper .div-l{
+    border: none;
+}
 /* login page layout */
 .plainBlueHeader{
     background: url("blue_header_with_tag_bg.jpg") no-repeat 0 -2px;
