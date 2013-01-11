@@ -141,7 +141,8 @@
 
       .span4
         .chapterNameWithThumbnail.clearfix
-          %img.chapterThumbnail{:src => "/assets/pune_chapter.jpg"}/
+          -#%img.chapterThumbnail{:src => "/assets/pune_chapter.jpg"}/
+          =image_tag("logo-b.png",:size => "60x60",:class => "chapterThumbnail")
           %h3 #{@event.chapter.name}
         -#= render '/events/members_list'
         .eventPeopleList
