@@ -65,7 +65,7 @@
           = gmaps4rails(@markers)
         .createChapter.clearfix
           -if current_user.blank?
-            %p Couldnt find a chapter in your city?
+            %p Couldn't find a chapter in your city?
             %a.orangeBtn.signin.createChapterBtn CREATE A CHAPTER
           -else
             -if !ChapterMember.is_primary_coordinator?(current_user.id)

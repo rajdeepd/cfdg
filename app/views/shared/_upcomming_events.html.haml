@@ -6,23 +6,44 @@
       -@upcoming_events.each do |event|
         .ca-item.ca-item-1
           .ca-item-main
-            .eventImg
-              -#%img{:src => "assets/event_img_1.png"}
-              = image_tag(event.get_event_image,:size => "190x91")
-            .eventContent
-              %h5
-                = link_to event.title,event_path(event),:class => "event_title"
-              .date
-                =event.created_at.strftime("%b %d,%Y")
-              .where
-                Where:
-                %span.lightGrayText
-                  =event.chapter.city_name
-                %a{:href => "#"} (map)
-              .description
-                Description:
-                %span.lightGrayText #{event.description.truncate(15)}
-
-                %br/
-                %br/
-                %a{:href => "#{event_path(event)}"} Read more
+            -#.eventImg
+            -#  -#%img{:src => "assets/event_img_1.png"}
+            -#  = image_tag(event.get_event_image,:size => "190x91")
+            -#.eventContent
+            -#  %h5
+            -#    = link_to event.title,event_path(event),:class => "event_title"
+            -#  .date
+            -#    =event.created_at.strftime("%b %d,%Y")
+            -#  .where
+            -#    Where:
+            -#    %span.lightGrayText
+            -#      =event.chapter.city_name
+            -#    %a{:href => "#"} (map)
+            -#  .description
+            -#    Description:
+            -#    %span.lightGrayText #{event.description.truncate(15)}
+            -#
+            -#    %br/
+            -#    %br/
+            -#    %a{:href => "#{event_path(event)}"} Read more
+            .span4
+              .eventListWrapper
+                .eventListInner
+                  .clearfix
+                    .dateAndPlace
+                      .date
+                        Jan 09,2013
+                      .place
+                        Bangalore, India
+                    .tag
+                      %img{:src => "/assets/student_event.png"}
+                  .eventImg
+                    %img{:alt => "No_image", :src => "/assets/event_snap_5.jpg"}
+                  .eventContent
+                    %h5 Cloud Foundry Open Tour
+                    .personName Rajdeep Dua
+                    %p.lightGrayText At this Developer Day you will meet the experts and learn...
+                    %a{:href => "/events/137?locale=en"} Read more
+                .eventListFooter
+                  %span.numberPeopleAttending 16
+                  %span People Attending

@@ -168,7 +168,7 @@ header ul li:first-child{
     padding-left: 10px;
 }
 .chapter{
-    background: url("chapter_normal.png") no-repeat 55px 19px;
+    background: url("chapter_normal.png") no-repeat 48px 19px;
     height: 52px;
     display: block;
 }
@@ -180,7 +180,7 @@ header ul li:first-child{
     padding-left: 2px;
 }
 .event{
-    background: url("event_normal.png") no-repeat 64px 18px;
+    background: url("event_normal.png") no-repeat 59px 18px;
     height: 52px;
     display: block;
 }
@@ -489,7 +489,8 @@ footer .footerBottom{
 }
 footer .footerBottom ul li{
     text-align: center;
-    color: #ffffff
+    color: #ffffff;
+    text-transform: uppercase;
 }
 footer .footerBottom p{
     text-align: center;
@@ -532,7 +533,7 @@ footer .footerBottom p{
 ul.supportPrivacyLinks{
     list-style: circle;
     color: #ffffff;
-    width: 400px;
+    width: 470px;
     margin: 0 auto;
 
 }
