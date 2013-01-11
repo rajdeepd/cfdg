@@ -3,11 +3,13 @@
 
 %div.content.wrapper
   %h1.label-17{:style => "padding-bottom:10px;"}
-    = @event.title
+    = "Event Gallery - " "#{@event.title}"
   -if @all_event_images.present?
     - @all_event_images.each do |i|
       .eventImageHolder
         = link_to(image_tag(i.image),"#{i.image}")
+  - else
+    = "No image for event yet"
 
 :javascript
   $(document).ready(function(){
