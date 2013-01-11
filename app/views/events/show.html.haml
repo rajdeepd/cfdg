@@ -117,7 +117,7 @@
         %span.chapterLocation  &nbsp;/ #{@event.chapter.name}
       .chapterDateAndPlace.clearfix
         %span.chapterDate #{@event.event_start_date_in_date.strftime("%b %d, %Y")}
-        %span.chapterPlace #{@event.location}, #{@event.city_name}
+        %span.chapterPlace #{@event.venue}, #{@event.city_name}
         -#%span.viewMap ( View Map )
         -#.mapDiv
         -#  %span.close x
