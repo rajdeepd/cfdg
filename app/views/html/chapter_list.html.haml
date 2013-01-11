@@ -1,0 +1,171 @@
+= javascript_include_tag "jquery.coda-slider-3.0"
+= javascript_include_tag "jquery.vticker-min"
+= javascript_include_tag "jquery.mousewheel"
+= javascript_include_tag "jquery.contentcarousel"
+= javascript_include_tag "jquery.easing.1.3"
+
+
+%title Coda Slider 3.0
+:javascript
+  $(function(){
+      /* Here is the slider using default settings */
+    $('#slider-id').codaSlider({
+      autoSlide:true,
+      autoHeight:false
+    });
+    $('h2.title').hide();
+    $('#news-container').vTicker({
+      speed: 500,
+      pause: 3000,
+      animation: 'fade',
+      mousePause: false,
+      showItems: 3
+    });
+  });
+
+
+
+-#=render :partial => "/shared/new_header"
+.content.eventListing
+  .blueHeaderWithoutTag
+    .chapterName.clearfix
+      %h1 Chapters
+  .layoutWrapper
+    %form
+      .chapterSearchBox
+        %input{:placeholder => "Type Keyword", :type => "text"}/
+        .eventCitySearch.clearfix
+          %span.citySearchIcon
+          %input{:placeholder => "Location", :type => "text"}/
+        %button.search.orangeBtn Search
+    .fullWidthContainer
+      .row
+        .span4
+          .eventListWrapper
+            .eventListInner
+              .clearfix
+                .dateAndPlace
+                  .date
+                    Jan 09,2013
+                  .place
+                    Bangalore, India
+                .tag
+                  %img{:src => "/assets/professional_event.png"}
+              .eventImg
+                %img{:alt => "No_image", :src => "/assets/event_snap_1.jpg"}
+              .eventContent
+                %h5 Cloud Foundry Open Tour
+                .personName Rajdeep Dua
+                %p.lightGrayText At this Developer Day you will meet the experts and learn...
+                %a{:href => "/events/137?locale=en"} Read more
+            .eventListFooter
+              %span.numberPeopleAttending 16
+              %span People Attending
+        .span4
+          .eventListWrapper
+            .eventListInner
+              .clearfix
+                .tag
+                  %img{:src => "/assets/student_event.png"}
+              .eventImg
+                %img{:alt => "No_image", :src => "/assets/event_snap_2.jpg"}
+              .dateAndPlace
+                .date
+                  Jan 09,2013
+                .place
+                  Bangalore, India
+
+              .eventContent
+                %h5 Cloud Foundry Open Tour
+                .personName Rajdeep Dua
+                %p.lightGrayText At this Developer Day you will meet the experts and learn...
+                %a{:href => "/events/137?locale=en"} Read more
+            .eventListFooter
+              %span.numberPeopleAttending 16
+              %span People Attending
+        .span4
+          .eventListWrapper
+            .eventListInner
+              .clearfix
+                .dateAndPlace
+                  .date
+                    Jan 09,2013
+                  .place
+                    Bangalore, India
+                .tag
+                  %img{:src => "/assets/student_event.png"}
+              .eventImg
+                %img{:alt => "No_image", :src => "/assets/event_snap_3.jpg"}
+              .eventContent
+                %h5 Cloud Foundry Open Tour
+                .personName Rajdeep Dua
+                %p.lightGrayText At this Developer Day you will meet the experts and learn...
+                %a{:href => "/events/137?locale=en"} Read more
+            .eventListFooter
+              %span.numberPeopleAttending 16
+              %span People Attending
+        .span4
+          .eventListWrapper
+            .eventListInner
+              .clearfix
+                .dateAndPlace
+                  .date
+                    Jan 09,2013
+                  .place
+                    Bangalore, India
+                .tag
+                  %img{:src => "/assets/professional_event.png"}
+              .eventImg
+                %img{:alt => "No_image", :src => "/assets/event_snap_4.jpg"}
+              .eventContent
+                %h5 Cloud Foundry Open Tour
+                .personName Rajdeep Dua
+                %p.lightGrayText At this Developer Day you will meet the experts and learn...
+                %a{:href => "/events/137?locale=en"} Read more
+            .eventListFooter
+              %span.numberPeopleAttending 16
+              %span People Attending
+        .span4
+          .eventListWrapper
+            .eventListInner
+              .clearfix
+                .dateAndPlace
+                  .date
+                    Jan 09,2013
+                  .place
+                    Bangalore, India
+                .tag
+                  %img{:src => "/assets/student_event.png"}
+              .eventImg
+                %img{:alt => "No_image", :src => "/assets/event_snap_5.jpg"}
+              .eventContent
+                %h5 Cloud Foundry Open Tour
+                .personName Rajdeep Dua
+                %p.lightGrayText At this Developer Day you will meet the experts and learn...
+                %a{:href => "/events/137?locale=en"} Read more
+            .eventListFooter
+              %span.numberPeopleAttending 16
+              %span People Attending
+        .span4
+          .eventListWrapper
+            .eventListInner
+              .clearfix
+                .dateAndPlace
+                  .date
+                    Jan 09,2013
+                  .place
+                    Bangalore, India
+                .tag
+                  %img{:src => "/assets/student_event.png"}
+              .eventImg
+                %img{:alt => "No_image", :src => "/assets/event_snap_6.jpg"}
+              .eventContent
+                %h5 Cloud Foundry Open Tour
+                .personName Rajdeep Dua
+                %p.lightGrayText At this Developer Day you will meet the experts and learn...
+                %a{:href => "/events/137?locale=en"} Read more
+            .eventListFooter
+              %span.numberPeopleAttending 16
+              %span People Attending
+
+
