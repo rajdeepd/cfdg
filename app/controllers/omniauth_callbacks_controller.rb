@@ -4,6 +4,12 @@ class OmniauthCallbacksController < ApplicationController
   end
 
   def handle_callback
+    logger.info("*** oauth data *****")
+    logger.info(env['omniauth.auth'].inspect)
+    logger.info("*" * 10)
+    
+    binding.pry
+
     auth_data = extract_oauth_data(env['omniauth.auth'])
     
     @user = User.find_for_auth(auth_data)

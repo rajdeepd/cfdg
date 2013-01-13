@@ -124,7 +124,5 @@ module CloudfoundryUsergroups
     #       :password => "locamotiv"
     # }
     config.autoload_paths += %W(#{config.root}/app/middleware/)
-
-
   end
 end
