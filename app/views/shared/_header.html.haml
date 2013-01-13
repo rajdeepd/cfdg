@@ -21,13 +21,10 @@
             %label.label-2.bold{:style => "position: relative;top: -2px;font-size: 18px;color:#afafaf;"}
               |
           %li
-            %a.label-2.logout{:href => "#"}= t('menu.logout')
+            = link_to t('menu.logout'), destroy_user_session_path(), :class => "label-2 logout"
         - else
-          -#%li
-          -#  %a.label-2.signup{:href => "#"}= t('menu.signup')
           %li
             %label.label-2.bold{:style => "position: relative;top: -2px;font-size: 18px;color:#afafaf;"}
-
           %li
             = link_to t('menu.login'), user_omniauth_authorize_path(:provider => :weibo), :class => "label-2"
   .header-b

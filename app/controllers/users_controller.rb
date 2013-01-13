@@ -89,9 +89,4 @@ class UsersController < ApplicationController
       #format.json { render json: @user.avatar.url(:medium)}
     #end
   #end
-
-  def sign_out
-    sign_out current_user
-    redirect_to root_path()
-  end
 end

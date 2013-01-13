@@ -9,14 +9,15 @@ CloudfoundryUsergroups::Application.routes.draw do
   end
 
   get '/settings' => 'users#edit', :as => 'settings'
+  get '/profile' => 'users#profile' , :as => :profile
 
   devise_for :users, :skip => [:sessions, :registrations, :passwords], :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
-
-  match '/sign_out' => 'users#sign_out'
+  devise_scope :user do
+    get 'sign_out', :to => 'sessions#destroy', :as => :destroy_user_session
+  end
 
   resources :regions, :only => [:index]
-  match '/profile' => 'users#profile' , :as => :profile
-  #match 'settings' => 'users#edit' , :as => :settings
+
 
   # Above this line is revised.
 
