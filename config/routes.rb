@@ -4,16 +4,19 @@ CloudfoundryUsergroups::Application.routes.draw do
   mount Ckeditor::Engine => '/ckeditor'
 
   
-  resources :users do
+  resources :users, :except => [:edit] do
     put 'avatar'
   end
 
-  #match '/test' => 'users#test'
+  get '/settings' => 'users#edit', :as => 'settings'
 
   devise_for :users, :skip => [:sessions, :registrations, :passwords], :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
+
   match '/sign_out' => 'users#sign_out'
 
   resources :regions, :only => [:index]
+  match '/profile' => 'users#profile' , :as => :profile
+  #match 'settings' => 'users#edit' , :as => :settings
 
   # Above this line is revised.
 
@@ -80,9 +83,7 @@ CloudfoundryUsergroups::Application.routes.draw do
   match '/verify_user' => 'federated#verify_user'
   match '/user_status' => 'federated#user_status'
   match '/login' => 'federated#login', :as => :login
-  match '/profile' => 'users#profile' , :as => :profile
   
-  match 'settings' => 'users#settings' , :as => :settings
   match 'settings_update/:id' => 'users#settings_update' , :as => :settings_update , :via => :put
 
    

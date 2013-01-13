@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
   layout 'chapters'
 
-
   def index
     respond_to do |format|
       format.json { render json: @uploads.map{|upload| upload.to_jq_upload } }
@@ -18,28 +17,36 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @user = current_user
+    
     @countries = Country.all
     @states = @countries.first.states
     @cities = @states.first.cities
 
-    @user = User.find(params[:id])
-  end
-
-  def test
-    render :layout => false
+    @user.build_company_info unless @user.company_info
+    @user.build_school_info unless @user.school_info
   end
 
   def update
     @user = User.find(params[:id])
-    @user.update_attributes(params[:user].slice(:avatar))
-
-    #session[:user_id] = @user.id
-    #session[:user] = {:email => @user.email, :verified => true, :name => @user.fullname}
     
-    #redirect_to profile_url
-    redirect_to root_path()
+    attrs = params[:user]
+    
+    case attrs[:role]
+    when "professional", "fan"
+      attrs.slice!(:last_name, :first_name, :email, :mobile, :city_id, :role, :company_info_attributes)
+    when "student"
+      attrs.slice!(:last_name, :first_name, :email, :mobile, :city_id, :role, :school_info_attributes)
+    end
+
+    if @user.update_attributes(attrs)
+      redirect_to profile_url
+    else
+
+    end
   end
 
+  # Receives the avatar upload 
   def avatar
     @user = User.find(params[:user_id])
     
@@ -54,7 +61,7 @@ class UsersController < ApplicationController
   end
 
   def profile
-    @user = @current_user
+    @user = current_user
     @user_chapters = ChapterMember.get_chapters(@user.id) || []
     @create_event_from_chapters = params[:from]
     @chapter_id = params[:chapter_id]
@@ -64,24 +71,24 @@ class UsersController < ApplicationController
     @is_secondary_coord = ChapterMember.is_secondary_coordinator?(@user_id)
   end
 
-  def settings
-    @user = current_user
-  end
+  #def settings
+    #@user = current_user
+  #end
 
-  def settings_update
-    current_user.update_attributes(params[:user])
-    redirect_to  profile_url
-  end
+  #def settings_update
+    #current_user.update_attributes(params[:user])
+    #redirect_to  profile_url
+  #end
 
-  def uploader
-    @user = User.find(params[:id])
-    @user.update_attributes(params[:user])
-    mime_type = MIME::Types.type_for(@user.avatar_file_name)
-    @user.update_attributes(:avatar_content_type => mime_type.first.content_type.to_s) if mime_type.first
-    respond_to do |format|
-      format.json { render json: @user.avatar.url(:medium)}
-    end
-  end
+  #def uploader
+    #@user = User.find(params[:id])
+    #@user.update_attributes(params[:user])
+    #mime_type = MIME::Types.type_for(@user.avatar_file_name)
+    #@user.update_attributes(:avatar_content_type => mime_type.first.content_type.to_s) if mime_type.first
+    #respond_to do |format|
+      #format.json { render json: @user.avatar.url(:medium)}
+    #end
+  #end
 
   def sign_out
     sign_out current_user

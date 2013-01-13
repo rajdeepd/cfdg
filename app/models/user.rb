@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :omniauthable#, :validatable 
+         :recoverable, :rememberable, :trackable, :omniauthable
 
   include Rails.application.routes.url_helpers
   
@@ -17,39 +17,30 @@ class User < ActiveRecord::Base
   has_many :chapter_members
   has_many :chapters , :through => :chapter_members
   has_many :events , :through => :event_members
-  belongs_to :infoable, :polymorphic => true
   belongs_to :city
+  
+  has_one :company_info
+  has_one :school_info
+
+  accepts_nested_attributes_for :company_info, :school_info
 
   ROLES = %w(professional student fan)
-  
-  
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name, :last_name, :fullname,:mobile, :website_url, :linkedin_url, :twitter_url, 
-                  :avatar, #:avatar_content_type, :avatar_file_name, :avatar_file_size, :avatar_updated_at,
+                  :avatar, :company_info_attributes, :school_info_attributes, :city_id, :role,
                   :location, :admin, :profile_picture, :provider, :uid, :access_token, :expires_at, :refresh_token 
 
   attr_accessor :country, :state
-#  has_attached_file :avatar,
-#    :styles => { :medium => "157x161>", :thumb => "100x100>" },
-#    :path => ":rails_root/public/system/:attachment/:id/:style/:filename",
-#    :url => "/system/:attachment/:id/:style/:filename"
 
   has_attached_file :avatar, :styles => { :medium => "157x161>", :thumb => "100x100>" , :mini => "60x60>" }, :path => ":attachment/:id/:style/:filename"
   before_post_process :set_content_type
 
+
+  before_save :make_fullname
+
   def set_content_type
     self.avatar.instance_write(:content_type, MIME::Types.type_for(self.avatar_file_name).to_s)
-  end
-
-  def to_jq_upload
-    {
-      "name" => read_attribute(:avatar_file_name),
-      "size" => read_attribute(:avatar_file_size),
-      "url" => avatar.url(:original),
-      #"delete_url" => user_path(self),
-      #"delete_type" => "DELETE" 
-    }
   end
 
   def admin_user
@@ -79,5 +70,10 @@ class User < ActiveRecord::Base
 
   def is_fan
     self.role == 'fan'
+  end
+  
+  private
+  def make_fullname
+    self.fullname = "#{self.last_name}#{self.first_name}"  
   end
 end

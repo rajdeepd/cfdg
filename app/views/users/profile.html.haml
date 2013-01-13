@@ -2,19 +2,20 @@
   .content-c
     .cc-top
       = avatar_display_pic(@user,'thumb', '100x100','profile.png',"profile-img img-a flt-left")
-      %h2.label-34 Welcome #{@user.fullname}!
-      %h5.label-20 Location: #{@user.location}
-      %a.label-35{:href => "#{settings_path}"} My Account
+      %h2.label-34 
+        = t('profile.welcome') #{@user.fullname}!
+      %h5.label-20 
+        = t('profile.location') #{@user.city.detail}
+      %a.label-35{:href => "#{settings_path}"} 
+        = t('profile.my_account')
+
     .cc-left   
-              
-      
       %ul.ul-i.profile_content
         - @user_chapters.each do |chaptermember|
           %li
             %a{:href => "#{userevents_events_url(chaptermember.chapter.id)}", :id=>"#{chaptermember.chapter.id}", :class=>"chapter_link", :style=>"font-size:16px"} #{chaptermember.chapter.name}
                      
       #event_content{:style => "min-height: 10px;"}
-    /=render "/events/comment_partial"
 
 :javascript 
   Chapters.init();

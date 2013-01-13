@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130110080313) do
+ActiveRecord::Schema.define(:version => 20130113050819) do
 
   create_table "announcements", :force => true do |t|
     t.string   "title"
@@ -106,7 +106,10 @@ ActiveRecord::Schema.define(:version => 20130110080313) do
     t.string   "tel"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
+    t.integer  "user_id"
   end
+
+  add_index "company_infos", ["user_id"], :name => "index_company_infos_on_user_id"
 
   create_table "countries", :force => true do |t|
     t.string   "name"
@@ -249,7 +252,10 @@ ActiveRecord::Schema.define(:version => 20130110080313) do
     t.datetime "graduated_at"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
+    t.integer  "user_id"
   end
+
+  add_index "school_infos", ["user_id"], :name => "index_school_infos_on_user_id"
 
   create_table "states", :force => true do |t|
     t.string   "name"
@@ -297,13 +303,10 @@ ActiveRecord::Schema.define(:version => 20130110080313) do
     t.string   "expires_at"
     t.string   "refresh_token"
     t.integer  "city_id"
-    t.string   "infoable_type"
-    t.integer  "infoable_id"
     t.string   "role"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
-  add_index "users", ["infoable_type", "infoable_id"], :name => "index_users_on_infoable_type_and_infoable_id", :unique => true
   add_index "users", ["provider", "uid"], :name => "index_users_on_provider_and_uid", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
 

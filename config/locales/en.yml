@@ -15,6 +15,7 @@ en:
     myprofile: "My Profile"
     english: "English"
     chinese: "Chinese"
+
   footer:
     faq: "FAQ"
     forums: "Forums"
@@ -27,6 +28,7 @@ en:
     details: "For details and restrictions on using Cloud Foundry Logo and Trademarks refer to this"
     license: "Content License"
     copyright: "Copyright © 2012 VMware, Inc. All rights reserved"
+
   welcome:
     about:  "These groups are focussed on learning and sharing information about Cloud foundry Open Source Paas. "
     title: "Cloud Foundry PLATFORM"
@@ -41,6 +43,30 @@ en:
     heading: "Announcements"
     earlier: "Earlier Announcements"
 
+  user_info:
+    last_name: "Last Name"
+    first_name: "First Name"
+    email: "Email"
+    mobile: "Mobile"
 
+  company_info:
+    company_name: "Company Name"
+    industry: "Industry"
+    department: "Department"
+    title: "Tile"
+    tel: "Tel"
 
+  school_info:
+    school_name: "School Name"
+    institution: "Institution"
+    major: "Major"
+    graduated_at: "Graduated At"
   
+  settings:
+    personal_info: "Please enter your personal info:"
+    role_info: "Specify your role:"
+
+  profile:
+    welcome: "Welcome"
+    location: "Location:"
+    my_account: "My Account"
