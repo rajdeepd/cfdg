@@ -26,7 +26,7 @@
           %li
             %label.label-2.bold{:style => "position: relative;top: -2px;font-size: 18px;color:#afafaf;"}
           %li
-            = link_to t('menu.login'), user_omniauth_authorize_path(:provider => :weibo), :class => "label-2"
+            = link_to t('menu.login'), "javascript:void(0)", :class => "label-2", :id => 'login'
   .header-b
     .wrapper
       %ul.ul-b.flt-left

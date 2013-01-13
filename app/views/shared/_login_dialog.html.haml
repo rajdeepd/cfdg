@@ -1,0 +1,6 @@
+#login-dialog{:title => "Sign in"}
+  %ul
+    %li
+      = link_to 'Weibo', user_omniauth_authorize_path(:provider => :weibo)
+    %li
+      = link_to 'qq', user_omniauth_authorize_path(:provider => :qq_connect)

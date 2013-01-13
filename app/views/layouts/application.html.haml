@@ -16,21 +16,19 @@
     = stylesheet_link_tag    "chapterAdmin", :media => "all"
     = stylesheet_link_tag    "site-admin", :media => "all"
     = stylesheet_link_tag    "event", :media => "all"
-
-    -#= stylesheet_link_tag    "jquery.timepicker-1.2.2", :media => "all"
-
-
-    = javascript_include_tag "ckeditor/init"
-    = javascript_include_tag "application"
+    = stylesheet_link_tag    "jquery.timepicker-1.2.2", :media => "all"
 
 
     %script{:src => "http://commons.qiniudn.com/jquery-1.8.3.min.js"}
     %script{:src => "http://commons.qiniudn.com/jquery-ui-1.9.2.custom.min.js"}
+    = javascript_include_tag "ckeditor/init"
+    = javascript_include_tag "application"
 
     = csrf_meta_tags
   %body
     = render "shared/header"
     = yield
     = render "shared/footer"
+    = render "shared/login_dialog"
     = yield :scripts
     = content_for(:javascript)

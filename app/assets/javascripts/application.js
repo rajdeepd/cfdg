@@ -12,15 +12,9 @@
 //
 //= require jquery_ujs
 //= require jquery.widget.js
-
+//= require_tree .
+//
 $(function(){
-
-  $('.signin').click(function(){
-    $('#navbar').accountChooser('showAccountChooser');   
-  });
-  $('.logout').click(function(){
-    window.location = window.google.identitytoolkit.easyrp.config.logoutUrl;
-  });
 
   // Admin Tab System
   $( "#tabs" ).tabs({
@@ -119,7 +113,6 @@ $(function(){
       dataType: 'html'
     });
   });
-         
 });
 
 function alertInfo() {
@@ -134,4 +127,3 @@ function hideFlashMessages() {
 function showFlashMessages() {
   $('.alert').slideDown(200);
 }
-

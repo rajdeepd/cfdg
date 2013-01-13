@@ -18,10 +18,9 @@ Devise.setup do |config|
   require "omniauth-weibo-oauth2"
   config.omniauth :weibo, ENV['WEIBO_ID'], ENV['WEIBO_SECRET']
 
-  #require "omniauth-qq-connect"
-  #use OmniAuth::Builder do
-    #provider :qq_connect, ENV['QQ_ID'], ENV['QQ_SECRET']
-  #end
+  require "omniauth-qq-connect"
+  config.omniauth :qq_connect, ENV['QQ_ID'], ENV['QQ_SECRET'], :strategy_class => OmniAuth::Strategies::QQConnect
+
   #config.omniauth :qq_connect, ENV['QQ_ID'], ENV['QQ_SECRET']
   # ==> Configuration for any authentication mechanism
   # Configure which keys are used when authenticating a user. The default is
