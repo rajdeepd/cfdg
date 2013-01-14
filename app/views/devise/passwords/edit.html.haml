@@ -45,3 +45,10 @@
             = f.password_field :password_confirmation ,:placeholder => "Confirm New Password"
 
             %button.orangeBtn{:href => "#"} Reset Password
+
+:javascript
+  $(document).ready(function(){
+    $("#user_password").bind("cut copy paste",function(e) {
+      e.preventDefault();
+    });
+  });
