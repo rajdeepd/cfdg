@@ -2,6 +2,7 @@ class PasswordsController <  Devise::PasswordsController
   skip_before_filter :require_no_authentication
   before_filter :should_reset_password , :only => [:new]
   before_filter :change_password_check, :only => [:create]
+  before_filter :get_user_for_reset_password , :only => [:edit]
 
   def new
     super
@@ -17,10 +18,11 @@ class PasswordsController <  Devise::PasswordsController
   end
 
   def update
-    @user=User.find_by_reset_password_token(params[:user][:reset_password_token])
+    @user=User.find_by_reset_password_token(params[:reset_password_token])
     #@user.password = params[:password]
     #@user.password_confirmation = params[:password_confirmation]
     if @user.reset_password!(params[:user][:password],params[:user][:password_confirmation])
+      @user.change_reset_password_token
       session[:user_id] = @user.id
       session[:email] = @user.email
       session[:user] = {:email => @user.email,:verified => true, :name => @user.fullname}
@@ -41,5 +43,15 @@ class PasswordsController <  Devise::PasswordsController
       flash[:alert] = "only proprietary user have this feature"
       redirect_to home_index_path
     end
+  end
+
+  def get_user_for_reset_password
+     #binding.remote_pry
+    @user=User.find_by_reset_password_token(params[:reset_password_token])
+     #user = User.where(:reset_password_token => params[:reset_password_token]).first
+     logger.info "inside get user reset password"
+     redirect_to  home_index_path, :notice => "PAGE EXPIRED"   if @user.nil?
+
+
   end
 end
