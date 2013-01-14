@@ -286,6 +286,7 @@ header ul li:first-child{
 }
 .signUp{
     width: 120px;
+    line-height: 33px;
     display: block;
 }
 .latestAnnouncement{
@@ -294,7 +295,6 @@ header ul li:first-child{
     background: #e9f4fa;
     border-radius: 5px;
     border: 1px solid #cccccc;
-    margin-right: 16px;
     margin-bottom: 20px;
 }
 #news-container ul li{
@@ -423,6 +423,8 @@ header ul li:first-child{
 }
 .createChapterBtn{
     float: right;
+    width: 156px;
+    line-height: 33px;
 }
 .comingEvents{
     border: 1px solid #cccccc;
@@ -556,7 +558,6 @@ ul.supportPrivacyLinks li{
 }
 .ui-autocomplete.ui-menu.ui-widget-content{
     width: 490px;
-    top: -1326.5px !important;
 }
 .coda-slider-wrapper .coda-slider, .coda-slider-wrapper .coda-slider .panel{
     width: 940px;
@@ -641,7 +642,7 @@ ul.supportPrivacyLinks li{
 .layoutWrapper .span8{
     width: 578px;
 }
-.content .span4{
+.layoutWrapper .span4{
     width: 278px;
 }
 .eventTour{
@@ -838,6 +839,10 @@ ul.supportPrivacyLinks li{
 .viewMap{
     color: #ffffff;
     cursor: pointer;
+    text-decoration: underline;
+}
+.viewMap:hover{
+    text-decoration: none;
 }
 .mapDiv{
     width: 576px;
@@ -854,7 +859,7 @@ ul.supportPrivacyLinks li{
 .mapDiv .close{
     float: right;
     font-size: 10px;
-    color: black;
+    color: #ffffff;
     margin-right: 5px;
     position: absolute;
     right: -10px;
@@ -862,8 +867,8 @@ ul.supportPrivacyLinks li{
     z-index: 1000;
     padding: 0 5px;
     opacity: 1;
-    background: #EEE;
-    border-radius: 63px;
+    background: #0094B6;
+    border-radius: 18px;
 }
 .mapDiv .map_container{
     width: 579px;
@@ -872,6 +877,9 @@ ul.supportPrivacyLinks li{
 .mapDiv .gmaps4rails_map{
     width: 576px;
     height: 368px;
+}
+.layoutWrapper .div-l{
+    border: none;
 }
 /* login page layout */
 .plainBlueHeader{
@@ -1058,7 +1066,7 @@ ul.supportPrivacyLinks li{
 .blueHeaderWithoutTag h1{
     color: #ffffff;
 }
-.eventSearchBox{
+.eventSearchBox, .chapterSearchBox{
     background: #ffffff;
     padding: 18px 25px;
     border-radius: 5px;
@@ -1129,6 +1137,9 @@ ul.supportPrivacyLinks li{
 .eventListWrapper .eventContent a{
     margin-bottom: 15px;
     display: block;
+}
+.eventListWrapper .eventContent p.lightGrayText{
+    min-height: 38px;
 }
 .eventListFooter{
     background: #f1f1f1;
@@ -1206,10 +1217,11 @@ ul.supportPrivacyLinks li{
     margin-top: 45px;
 }
 .forgotPasswordWrapper .loginRightPanel{
-    margin-top: 80px;
+    margin-top: 60px;
 }
 .content .comingEvents .ca-container{
     height: 405px;
+    width: 891px;
 }
 .content .comingEvents .ca-item{
     width: 288px;
@@ -1231,4 +1243,13 @@ ul.supportPrivacyLinks li{
     text-align: center;
     padding-bottom: 4px;
     padding: 4px 35px 4px 14px;
+}
+.content .ca-nav .ca-nav-prev{
+    left: -15px;
+}
+.content .ca-nav .ca-nav-next{
+    right: -20px;
+}
+.div-h a.btn-a-small.flt-right{
+    padding-top: 6px;
 }
