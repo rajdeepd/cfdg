@@ -44,8 +44,8 @@ end
 namespace :deploy do
   desc "Zero-downtime restart of Unicorn"
   task :restart, :except => { :no_release => true } do
-    #run "cd #{shared_path}/pids && kill -s USR2 `cat unicorn.pid`"
-    run "cd #{release_path} && bundle exec unicorn_rails -E #{rails_env} -c #{release_path}/config/unicorn.rb -D"
+    run "cd #{shared_path}/pids && kill -s USR2 `cat unicorn.pid`"
+    #run "cd #{release_path} && bundle exec unicorn_rails -E #{rails_env} -c #{release_path}/config/unicorn.rb -D"
   end
 
   desc "Start unicorn"
