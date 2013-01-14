@@ -19,7 +19,12 @@
                       %img{:src => "/assets/student_event.png"}
                   .eventImg
                     -#%img{:alt => "No_image", :src => "/assets/event_snap_5.jpg"}
-                    = image_tag(event.get_event_image,:size => "260x150")
+                    -if event.image.event_landscape.present?
+                      = image_tag(event.image.event_landscape.url,:size => "260x150")
+                    -elsif event.image.present?
+                      = image_tag(event.image.url,:size => "260x150")
+                    -else
+                      =image_tag("logo-b.png",:size => "260x150")
                   .eventContent
                     %h5
                       =event.title

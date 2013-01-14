@@ -43,6 +43,7 @@
             = devise_error_messages!
             = f.password_field :password , :placeholder => "New Password"
             = f.password_field :password_confirmation ,:placeholder => "Confirm New Password"
+            = hidden_field_tag :reset_password_token , params[:reset_password_token]
 
             %button.orangeBtn{:href => "#"} Reset Password
 
