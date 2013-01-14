@@ -137,7 +137,7 @@ header ul li:first-child{
     text-transform: uppercase;
     text-shadow: 0 1px 1px #ffffff;
 }
-.navbar ul.nav li a:hover{
+.navbar ul.nav li:hover{
     border-bottom: 2px solid #00bde7;
     color: #333333;
     height: 50px;
@@ -1252,4 +1252,10 @@ ul.supportPrivacyLinks li{
 }
 .div-h a.btn-a-small.flt-right{
     padding-top: 6px;
+}
+
+.activeTab {
+    border-bottom: 2px solid #00bde7;
+    color: #333333;
+    height: 50px;
 }

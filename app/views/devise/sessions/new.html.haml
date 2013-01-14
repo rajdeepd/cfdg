@@ -76,9 +76,9 @@
 
             = f.password_field :password ,:placeholder => "Password*"
             - if devise_mapping.rememberable?
-              %label.checkbox
+              %label.checkbox{:style => "width:85px;"}
                 = f.check_box :remember_me
-                = f.label :remember_me
+                = f.label :remember_me,:id => "remember_me_text"
               = f.submit "LOGIN" , :class => "orangeBtn"
 
               %a.forgotPassword{:href => "#{users_reset_password_path}"} Forgot your password?
@@ -89,6 +89,9 @@
 :javascript
   google.load("identitytoolkit", "1", {packages: ["ac"], language:"#{lang}"});
 :javascript
+  $(document).ready(function(){
+    $("#remember_me_text").attr('disabled',true);
+  });
   $(function() {
     $(".signin").on("click",function(){
       window.google.identitytoolkit.setConfig({
