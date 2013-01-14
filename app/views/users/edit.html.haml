@@ -52,9 +52,23 @@
               %div.tab{ :id => "school-info" }
                 = f.fields_for :school_info do |builder|
                   %div
-                    = builder.text_field :school_name, :placeholder => t('school_info.school_name'), :class => "textboxes input-a"
+                    %div(id="select-college")
+                      = builder.select :college_id, options_from_collection_for_select(@colleges, "id", "name")
+                      %a(href="javascript:0" id="school-not-found")
+                        = t('settings.college_not_found')
+                    %div.hide(id="input-college")
+                      = builder.text_field :other_school_name, :placeholder => t('school_info.school_name'), :class => "textboxes input-a"
+                      %a(href="javascript:0" id="back-to-college-select")
+                        = t('settings.college_not_found')
                   %div
-                    = builder.text_field :institution, :placeholder => t('school_info.institution'), :class => "textboxes input-a"
+                    %div(id="select-institution")
+                      = builder.select :institution_id, @institutions.collect { |i| [i.name, i.id]}
+                      %a(href="javascript:0" id="institution-not-found")
+                        = t('settings.institution_not_found')
+                    %div.hide(id="input-institution")
+                      = builder.text_field :other_institution, :placeholder => t('school_info.institution'), :class => "textboxes input-a hide"
+                      %a(href="javascript:0" id="back-to-institution-select")
+                        = t('settings.back_to_select')
                   %div
                     = builder.text_field :major, :placeholder => t('school_info.major'), :class => "textboxes input-a"
                   %div
@@ -68,7 +82,7 @@
 :javascript
   $(document).ready( function() {
     $('#avatar-upload').fileupload({
-      url: "avatar",
+      url: "/users/avatar",
       add: function(e, data){
         var jqXHR = data.submit()
         .success(function (result, textStatus, jqXHR) {
@@ -91,18 +105,41 @@
     $.get("/regions", function(data, status, xhr){
       $('#user_county').data('countries', data.countries);
       $('#user_state').data('states', data.states);
-      $('#user_city').data('cities', data.cities);
+      $('#user_city_id').data('cities', data.cities);
     });
 
     $('#user_state').change(function(e){
-      var cityEl = $('#user_city');
+      var cityEl = $('#user_city_id');
       var allCities = cityEl.data('cities');
       var state_id = $(e.target).val();
+      var $colleges = $('#user_school_info_attributes_college_id')
+      
+      // refresh colleges
+      $.get("/educations/colleges", { "state_id": state_id }, function(data, status, xhr){
+         console.log(data);
+         $colleges.empty();
+         $.each(data, function(i, val){
+           $colleges.append("<option value='" + val.id + "'>" + val.name + "</option>");
+         });
+      });
+
       cityEl.empty();
       $.each(allCities, function(i, val){
         if( val.state_id == state_id){
           cityEl.append("<option value='" + val.id + "'>" + val.name + "</option>");
         }
+      });
+    });
+
+    $("#user_school_info_attributes_college_id").change(function(e){
+      var collegeId = $(e.target).val();
+      var $institutions = $('#user_school_info_attributes_institution_id')
+      
+      $.get("/educations/institutions", { "college_id": collegeId }, function(data, status, xhr){
+        $institutions.empty();
+        $.each(data, function(i, val){
+          $institutions.append("<option value='" + val.id + "'>" + val.name + "</option>");
+        });
       });
     });
 

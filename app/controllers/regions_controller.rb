@@ -1,5 +1,4 @@
 class RegionsController < ApplicationController
-
   def index
     @countries = Country.all
     @states = State.all

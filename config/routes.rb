@@ -2,10 +2,11 @@ CloudfoundryUsergroups::Application.routes.draw do
  
 
   mount Ckeditor::Engine => '/ckeditor'
-
   
   resources :users, :except => [:edit] do
-    put 'avatar'
+    collection do
+      put 'avatar'
+    end
   end
 
   get '/settings' => 'users#edit', :as => 'settings'
@@ -17,6 +18,12 @@ CloudfoundryUsergroups::Application.routes.draw do
   end
 
   resources :regions, :only => [:index]
+  resources :educations, :only => [] do
+    collection do
+      get 'colleges'
+      get 'institutions'
+    end
+  end
 
 
   # Above this line is revised.

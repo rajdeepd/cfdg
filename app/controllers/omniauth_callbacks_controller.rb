@@ -8,17 +8,17 @@ class OmniauthCallbacksController < ApplicationController
     logger.info(env['omniauth.auth'].inspect)
     logger.info("*" * 10)
     
-    binding.pry
-
     auth_data = extract_oauth_data(env['omniauth.auth'])
     
     @user = User.find_for_auth(auth_data)
 
-    if @user.email.nil?
-      redirect_to edit_user_path(@user)
-    else
-      sign_in_and_redirect @user, :event => :authentication
-    end
+    #if @user.email.nil?
+      #redirect_to settings_path()
+    #else
+      #sign_in_and_redirect @user, :event => :authentication
+    #end
+
+    sign_in_and_redirect @user, :event => :authentication
   end
 
   private

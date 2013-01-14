@@ -1492,3 +1492,8 @@ p.label-53{margin-bottom: 15px;}
 #tabs div p {
 	line-height: 150%;
 }
+
+
+.hide {
+  display: none;
+}

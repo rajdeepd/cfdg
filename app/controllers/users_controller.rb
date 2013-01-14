@@ -23,6 +23,9 @@ class UsersController < ApplicationController
     @states = @countries.first.states
     @cities = @states.first.cities
 
+    @colleges = @states.first.colleges
+    @institutions = @colleges.first.institutions
+    
     @user.build_company_info unless @user.company_info
     @user.build_school_info unless @user.school_info
   end
@@ -48,11 +51,10 @@ class UsersController < ApplicationController
 
   # Receives the avatar upload 
   def avatar
-    @user = User.find(params[:user_id])
+    @user = current_user
     
     respond_to do |format|
       if @user.update_attributes(params[:user].slice(:avatar))
-        binding.pry
         format.json { render json: [@user.avatar.url(:medium)], status: :created, location: @user }
       else
         format.json { render json: @user.errors, status: :unprocessable_entity }

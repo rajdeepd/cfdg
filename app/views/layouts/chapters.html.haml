@@ -19,7 +19,8 @@
     %script{:src => "http://commons.qiniudn.com/jquery-ui-1.9.2.custom.min.js"}
 
     = csrf_meta_tags
-  %body
+
+  %body{ :"data-controller" => controller_name, :"data-action" => action_name }
     = render "shared/header"
     = yield
     = render "shared/footer"

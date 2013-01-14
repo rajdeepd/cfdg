@@ -17,6 +17,14 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def after_sign_in_path_for(user)
+    if @user.email.nil?
+      settings_path()
+    else
+      root_path()
+    end
+  end
+
   def admin_user
     @admin_user ||= User.find(session[:admin_user_id]) if session[:admin_user_id]
   end
