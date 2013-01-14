@@ -28,6 +28,10 @@ class UsersController < ApplicationController
     
     @user.build_company_info unless @user.company_info
     @user.build_school_info unless @user.school_info
+
+    respond_to do |format|
+      format.html
+    end
   end
 
   def update
