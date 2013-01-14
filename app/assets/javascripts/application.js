@@ -12,10 +12,10 @@
 //
 //= require jquery_ujs
 //= require jquery.widget.js
+//= require init
 //= require_tree .
-//
-$(function(){
 
+$(function(){
   // Admin Tab System
   $( "#tabs" ).tabs({
     beforeLoad: function( event, ui ) {

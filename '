@@ -18,22 +18,36 @@ class UsersController < ApplicationController
 
   def edit
     @user = current_user
-
+    
     @countries = Country.all
     @states = @countries.first.states
 
-    @state = current_user.city.nil? ? @states.first : @user.city.state 
-    @cities = @state.cities
-    @city = current_user.city.nil? ? @cities.first : @user.city 
+    if current_user.city.nil?
+      @state = @states.first
+      @cities = @state.cities
+      @city = @cities.first
+    else
+      @state = current_user.city.state
+      @cities = @state.cities
+      @city = current_user.city    
+    end
 
 
-    @colleges = @state.colleges
-    @college = @user.school_info.college.nil? ? @colleges.first : @user.school_info.college
-    @institutions = @college.institutions
-    @institution = @user.school_info.institution.nil? ? @institutions.first : @user.school_info.institution
+    @colleges = @states.first.colleges
+    @institutions = @colleges.first.institutions
+
 
     @user.build_company_info unless @user.company_info
-    @user.build_school_info unless @user.school_info
+
+    if @user.school_info.nil?
+      @user.build_school_info
+    else
+      if @user.school_info.college.nil?
+        @college = @colleges.first
+      else
+      
+      end
+    end
 
     respond_to do |format|
       format.html
@@ -42,9 +56,9 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-
+    
     attrs = params[:user]
-
+    
     case attrs[:role]
     when "professional", "fan"
       attrs.slice!(:last_name, :first_name, :email, :mobile, :city_id, :role, :company_info_attributes)
@@ -62,7 +76,7 @@ class UsersController < ApplicationController
   # Receives the avatar upload 
   def avatar
     @user = current_user
-
+    
     respond_to do |format|
       if @user.update_attributes(params[:user].slice(:avatar))
         format.json { render json: [@user.avatar.url(:medium)], status: :created, location: @user }
