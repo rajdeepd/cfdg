@@ -306,6 +306,7 @@ DEPENDENCIES
   eventbrite-client
   factory_girl_rails
   faker (= 0.3.1)
+  faraday
   flash_cookie_session
   fog
   formtastic (= 2.2.1)
@@ -315,6 +316,7 @@ DEPENDENCIES
   jquery-rails
   mini_magick
   mysql2 (= 0.3.11)
+  nokogiri
   oa-core (~> 0.3.2)
   oauth2
   omniauth (>= 0.2.6)

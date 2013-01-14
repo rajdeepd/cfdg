@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130113050819) do
+ActiveRecord::Schema.define(:version => 20130114073617) do
 
   create_table "announcements", :force => true do |t|
     t.string   "title"
@@ -86,6 +86,14 @@ ActiveRecord::Schema.define(:version => 20130113050819) do
 
   add_index "ckeditor_assets", ["assetable_type", "assetable_id"], :name => "idx_ckeditor_assetable"
   add_index "ckeditor_assets", ["assetable_type", "type", "assetable_id"], :name => "idx_ckeditor_assetable_type"
+
+  create_table "colleges", :force => true do |t|
+    t.string   "name"
+    t.integer  "state_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.string   "renren_code"
+  end
 
   create_table "comments", :force => true do |t|
     t.string   "content"
@@ -203,6 +211,13 @@ ActiveRecord::Schema.define(:version => 20130113050819) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "institutions", :force => true do |t|
+    t.string   "name"
+    t.integer  "college_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "mail_messages", :force => true do |t|
     t.integer  "sender_id"
     t.integer  "received_id"
@@ -246,13 +261,15 @@ ActiveRecord::Schema.define(:version => 20130113050819) do
   end
 
   create_table "school_infos", :force => true do |t|
-    t.string   "school_name"
-    t.string   "institution"
+    t.string   "other_school_name"
+    t.string   "other_institution"
     t.string   "major"
     t.datetime "graduated_at"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
     t.integer  "user_id"
+    t.integer  "college_id"
+    t.integer  "institution_id"
   end
 
   add_index "school_infos", ["user_id"], :name => "index_school_infos_on_user_id"

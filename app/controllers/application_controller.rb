@@ -6,6 +6,17 @@ class ApplicationController < ActionController::Base
   before_filter :set_cache_buster
   helper_method :admin_user
 
+
+  def authenticate!
+    if current_user.nil?
+      redirect_to root_path()
+    else 
+      if current_user.email.blank?
+        redirect_to settings_path()
+      end
+    end
+  end
+
   def admin_user
     @admin_user ||= User.find(session[:admin_user_id]) if session[:admin_user_id]
   end

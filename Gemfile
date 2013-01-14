@@ -20,6 +20,8 @@ gem 'userstamp', :git=>'https://github.com/sowmyadumpa/userstamp.git' #forked an
 gem 'thin', '~> 1.2.11'
 gem 'gmaps4rails'
 gem 'jquery-rails'
+gem 'nokogiri'
+gem 'faraday'
 
 
 # Authentication with Federated Google identity tool kit
