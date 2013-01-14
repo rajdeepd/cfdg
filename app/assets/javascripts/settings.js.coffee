@@ -44,3 +44,9 @@ $ ->
 
     $("#user_school_info_attributes_college_id").change (e) ->
       App.loadInstitution( $(e.target).val() );
+
+    # tab
+    $('input[data-tab]').click (e) ->
+      $onTab = $( $(e.target).data('tab') )
+      $('.info-blocks .tab').hide()
+      $onTab.show()
