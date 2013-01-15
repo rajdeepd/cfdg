@@ -9,8 +9,8 @@ $ ->
     $('#avatar-upload').fileupload
       url: "/users/avatar",
       add: (e, data) ->
-        jqXHR = data.submit().success () ->
-          $('.profile-image').attr('src', result[0])
+        jqXHR = data.submit().success (data, status, xhr) ->
+          $('.profile-image').attr('src', data[0])
 
       progressall: (e, data) ->        
         progress = parseInt(data.loaded / data.total * 100, 10)
