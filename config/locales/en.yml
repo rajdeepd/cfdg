@@ -73,3 +73,6 @@ en:
     welcome: "Welcome"
     location: "Location:"
     my_account: "My Account"
+
+  chapter:
+    chapter_proposal: "Chapter Proposal"

@@ -11,8 +11,10 @@ CloudfoundryUsergroups::Application.routes.draw do
 
   get '/settings' => 'users#edit', :as => 'settings'
   get '/profile' => 'users#profile' , :as => :profile
+  match'/admin', :to => "admin/sessions#new"
 
   devise_for :users, :skip => [:sessions, :registrations, :passwords], :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
+
   devise_scope :user do
     get 'sign_out', :to => 'sessions#destroy', :as => :destroy_user_session
   end
@@ -33,7 +35,6 @@ CloudfoundryUsergroups::Application.routes.draw do
   get '/directory' => 'home#directory' , :as => "directory"
   get '/about' => 'home#about' , :as => "about"
   get '/wiki' => 'home#wiki' , :as => "wiki"
-  match'/admin', :to => "admin/sessions#new"
   
   resources :chapters do
     resources :events

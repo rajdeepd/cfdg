@@ -7,6 +7,7 @@
         %h4.info_label Name: #{@current_user.fullname}
         %br
         %h4.info_label Email Id: #{@current_user.email}
+
       %h3.label-11{:style => "padding-top: 25px;"} Chapter Details
       = semantic_form_for @chapter do |f|
         - showclass = (f.object.chapter_type == "professional" ? "display:none" : "display:block")
@@ -39,9 +40,10 @@
                 = f.input :address,   :placeholder => 'Address' , :label => false,  :input_html => {:class => "textboxes"}
               %div
                 = f.input :landmark,   :placeholder => 'Landmark' , :label => false,  :input_html => {:class => "textboxes"}
-              %div
-                = f.input :institution,   :placeholder => 'Institution' , :label => false,  :input_html => {:class => "textboxes"}
-          %h3.label-11{:style => "padding-top: 20px;"} Chapter Proposal
+
+          %h3.label-11{:style => "padding-top: 20px;"}
+            = t('chapter.chapter_proposal')
+
           .proposal
             %h4.ch_label To: admin@cloudfoundry.com
             %div{:style=> "height:15px;"} &nbsp;
