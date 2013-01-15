@@ -4,8 +4,8 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
-  #include CarrierWave::MiniMagick
-
+  include CarrierWave::MiniMagick
+  #include CarrierWave::RMagick
   # Include the Sprockets helpers for Rails 3.1+ asset pipeline compatibility:
   # include Sprockets::Helpers::RailsHelper
   # include Sprockets::Helpers::IsolatedHelper
@@ -31,14 +31,20 @@ class ImageUploader < CarrierWave::Uploader::Base
   # Process files as they are uploaded:
   # process :scale => [200, 300]
   #
-  # def scale(width, height)
-  #   # do something
-  # end
+  def scale(width, height)
+     # do something
+  end
 
   # Create different versions of your uploaded files:
-  # version :thumb do
+
+  #version :thumb do
   #   process :scale => [50, 50]
-  # end
+  #end
+
+  version :event_landscape do
+     process :resize_and_pad => [260, 150]
+  end
+
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
@@ -52,4 +58,18 @@ class ImageUploader < CarrierWave::Uploader::Base
   #   "something.jpg" if original_filename
   # end
 
+  def resize(width, height, gravity = 'Center')
+    manipulate! do |img|
+      img.combine_options do |cmd|
+        cmd.resize width.to_s
+        if img[:width] < img[:height]
+          cmd.gravity gravity
+          cmd.background "rgba(255,255,255,0.0)"
+          cmd.extent "#{width}x#{height}"
+        end
+      end
+      img = yield(img) if block_given?
+      img
+    end
+  end
 end

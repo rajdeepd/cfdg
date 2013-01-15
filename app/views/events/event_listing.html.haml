@@ -1,26 +1,70 @@
-.content.wrapper
-  #ca-container.ca-container.clearfix{:style => "margin-top:-20px;"}
-    .ca-wrapper
-      -@upcoming_events.first(7).each do |event|
-        .ca-item.ca-item-1
-          .ca-item-main
-            .eventImg
-              -#%img{:src => "assets/event_img_1.png"}
-              = image_tag(event.get_event_image,:size => "190x91")
-            .eventContent
-              %h5
-                = link_to event.title,event_path(event),:class => "event_title"
-              .date
-                =event.created_at.strftime("%b %d,%Y")
-              .where
-                Where:
-                %span.lightGrayText
-                  =event.chapter.city_name
-                %a{:href => "#"} (map)
-              .description
-                Description:
-                %span.lightGrayText #{event.description.truncate(15)}
+-#-#.content.wrapper
+-#.content.loginLayout
+-#  #ca-container.ca-container.clearfix{:style => "margin-top:-20px;"}
+-#    .ca-wrapper
+-#      - if @upcoming_events.present?
+-#        -@upcoming_events.first(7).each do |event|
+-#          .ca-item.ca-item-1
+-#            .ca-item-main
+-#              .eventImg
+-#                -#%img{:src => "assets/event_img_1.png"}
+-#                = image_tag(event.get_event_image,:size => "190x91")
+-#              .eventContent
+-#                %h5
+-#                  = link_to event.title,event_path(event),:class => "event_title"
+-#                .date
+-#                  =event.created_at.strftime("%b %d,%Y")
+-#                .where
+-#                  Where:
+-#                  %span.lightGrayText
+-#                    =event.chapter.city_name
+-#                  %a{:href => "#"} (map)
+-#                .description
+-#                  Description:
+-#                  %span.lightGrayText #{event.description.truncate(15)}
+-#
+-#                  %br/
+-#                  %br/
+-#                  %a{:href => "#{event_path(event)}"} Read more
+-#      -else
+-#        %h1.label-17
+-#        = "No Upcoming Event"
+.content.layoutWrapper
+  .comingEvents.clearfix
+    .fullHeading
+      %h3 Upcoming Events
+    -if @upcoming_events.present?
+      #ca-container.ca-container.clearfix
+        .ca-wrapper
+          -@upcoming_events.each do |event|
+            .ca-item.ca-item-1
+              .ca-item-main
+                .eventListWrapper
+                  .eventListInner
+                    .clearfix
+                      .dateAndPlace
+                        .date
+                          =event.event_start_date_in_date.strftime("%b %d,%Y")
+                        .place
+                          ="#{event.chapter.city_name},#{event.chapter.country_name}"
+                      .tag
+                        %img{:src => "/assets/student_event.png"}
+                    .eventImg
+                      -#%img{:alt => "No_image", :src => "/assets/event_snap_5.jpg"}
+                      = image_tag(event.get_event_image,:size => "260x150")
+                    .eventContent
+                      %h5
+                        =event.title
+                      .personName
+                        =event.user.fullname
+                      %p.lightGrayText
+                        =event.description.truncate(70)
+                      %a{:href => "#{event_path(event)}"} Read more
+                  .eventListFooter
+                    %span.numberPeopleAttending
+                      =event.event_members.length
+                    %span People Attending
 
-                %br/
-                %br/
-                %a{:href => "#{event_path(event)}"} Read more
+
+    -else
+      .noEventText No Events

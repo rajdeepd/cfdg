@@ -114,10 +114,9 @@
       .chapterName.clearfix
         %h1
           =@event.title
-        %span.chapterLocation  &nbsp;/ #{@event.chapter.name}
       .chapterDateAndPlace.clearfix
         %span.chapterDate #{@event.event_start_date_in_date.strftime("%b %d, %Y")}
-        %span.chapterPlace #{@event.venue}, #{@event.city_name}
+        %span.chapterPlace #{@event.venue}, #{@event.city_name} (
         -#%span.viewMap ( View Map )
         -#.mapDiv
         -#  %span.close x
@@ -144,7 +143,7 @@
               %h4 Description
               -#%p What if you could deploy and scale your applications within seconds? And never had to wait again for infrastructure to be provisioned? With Cloud Foundry, which is a modern, open-source Platform as a Service, you can deploy your application instantly. Use Cloud Foundry for development, testing and production.
               %p #{@event.description}
-              %a{:href => "#"} View more
+              -#%a{:href => "#"} View more
               -if !@event.is_past_event?
                 -if !current_user.blank? and  (current_user.id != @event.created_by)
                   -if @event.is_cancelled?
@@ -209,6 +208,31 @@
             =image_tag("logo-b.png",:size => "60x60",:class => "chapterThumbnail")
             %h3 #{@event.chapter.name}
           -#= render '/events/members_list'
+
+          .eventPeopleList
+            .listHeader
+              %span administrator
+              %span.numberOfPeople 1
+            %ul.clearfix
+              %li
+                -#%img{:src => "/assets/human_face_4.jpg"}
+                = avatar_display_pic(@event.user,'thumb', '40x40','profile.png',"profile-img img-a flt-left")
+                .personDetails
+                  .personName #{@event.user.fullname}
+
+          -if @coordinaters.present?
+            .eventPeopleList
+              .listHeader
+                %span Organisers
+                %span.numberOfPeople #{@coordinaters.size}
+              %ul.clearfix
+                -@coordinaters.each do |i|
+                  %li
+                    -#%img{:src => "/assets/human_face_1.jpg"}/
+                    = avatar_display_pic(i,'thumb', '40x40','profile.png',"profile-img img-a flt-left")
+                    .personDetails
+                      .personName #{i.fullname}
+                      -#.personRole Senior Solutions Architect
           .eventPeopleList
             .listHeader
               %span list of attendees
@@ -226,16 +250,3 @@
                     .personName #{i.fullname}
 
                 -#%a{:href => "#"} View more
-          -if @coordinaters.present?
-            .eventPeopleList
-              .listHeader
-                %span Organisers
-                %span.numberOfPeople #{@coordinaters.size}
-              %ul.clearfix
-                -@coordinaters.each do |i|
-                  %li
-                    -#%img{:src => "/assets/human_face_1.jpg"}/
-                    = avatar_display_pic(i,'thumb', '40x40','profile.png',"profile-img img-a flt-left")
-                    .personDetails
-                      .personName #{i.fullname}
-                      -#.personRole Senior Solutions Architect

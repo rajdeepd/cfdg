@@ -2,8 +2,8 @@
   .logo
     -#=image_tag("cfdg_logo.png")
     =image_tag("cfdg_logo1.png")
-  .navbar
-    .navbar-inner
+  .navbar{:controller => params["controller"]}
+    .navbar-inner{:action => params["action"]}
       %ul.clearfix.nav
         %li
           %a.home{:href => "#{root_path}"}
@@ -15,3 +15,26 @@
           %a.event{:href => "#{event_listing_events_path}"} Events
         %li
           %a.wiki{:href =>"#{wiki_path}"} Wiki
+
+:javascript
+  $(document).ready(function(){
+    if($(".navbar").attr("controller") == "home" && $(".navbar-inner").attr("action") == "index"){
+      $(".home").parent().addClass("activeTab");
+    }
+    else if($(".navbar").attr("controller") == "home" && $(".navbar-inner").attr("action") == "wiki"){
+      $(".wiki").parent().addClass("activeTab");
+    }
+    else if($(".navbar").attr("controller") == "home" && $(".navbar-inner").attr("action") == "about"){
+      $(".about").parent().addClass("activeTab");
+    }
+    else if($(".navbar").attr("controller") == "home" && $(".navbar-inner").attr("action") == "directory"){
+      $(".chapter").parent().addClass("activeTab");
+    }
+    else if($(".navbar").attr("controller") == "events"){
+      $(".event").parent().addClass("activeTab");
+    }
+
+    //$("ul.clearfix li a").hover(function(){
+    //  $(this).addClass("activeTab");
+    //});
+  });

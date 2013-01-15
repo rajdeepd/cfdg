@@ -31,8 +31,13 @@ class User < ActiveRecord::Base
   end
 
   def change_reset_password_token
-    self.reset_password_token =  User.reset_password_token
+    Rails.logger.info "RESET PASSWORD TOKEN MAKING Nil"
+    Rails.logger.info self.reset_password_token.inspect
+    Rails.logger.info self.inspect
+    self.reset_password_token =  nil
     self.save
+    Rails.logger.info self.reset_password_token.inspect
+    Rails.logger.info self.inspect
   end
 
   def get_user_image

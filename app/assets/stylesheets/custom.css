@@ -137,7 +137,7 @@ header ul li:first-child{
     text-transform: uppercase;
     text-shadow: 0 1px 1px #ffffff;
 }
-.navbar ul.nav li a:hover{
+.navbar ul.nav li:hover{
     border-bottom: 2px solid #00bde7;
     color: #333333;
     height: 50px;
@@ -634,6 +634,10 @@ ul.supportPrivacyLinks li{
     box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.2);
     border-radius: 0 0 5px 5px;
 }
+.loginLayout .label-17 {
+    text-align: center;
+    margin-top: 30px;
+}
 .layoutWrapper .span8{
     width: 578px;
 }
@@ -834,6 +838,10 @@ ul.supportPrivacyLinks li{
 .viewMap{
     color: #ffffff;
     cursor: pointer;
+    text-decoration: underline;
+}
+.viewMap:hover{
+    text-decoration: none;
 }
 .mapDiv{
     width: 576px;
@@ -850,7 +858,7 @@ ul.supportPrivacyLinks li{
 .mapDiv .close{
     float: right;
     font-size: 10px;
-    color: black;
+    color: #ffffff;
     margin-right: 5px;
     position: absolute;
     right: -10px;
@@ -858,8 +866,8 @@ ul.supportPrivacyLinks li{
     z-index: 1000;
     padding: 0 5px;
     opacity: 1;
-    background: #EEE;
-    border-radius: 63px;
+    background: #0094B6;
+    border-radius: 18px;
 }
 .mapDiv .map_container{
     width: 579px;
@@ -868,6 +876,9 @@ ul.supportPrivacyLinks li{
 .mapDiv .gmaps4rails_map{
     width: 576px;
     height: 368px;
+}
+.layoutWrapper .div-l{
+    border: none;
 }
 /* login page layout */
 .plainBlueHeader{
@@ -1205,7 +1216,7 @@ ul.supportPrivacyLinks li{
     margin-top: 45px;
 }
 .forgotPasswordWrapper .loginRightPanel{
-    margin-top: 80px;
+    margin-top: 60px;
 }
 .content .comingEvents .ca-container{
     height: 405px;
@@ -1240,4 +1251,10 @@ ul.supportPrivacyLinks li{
 }
 .div-h a.btn-a-small.flt-right{
     padding-top: 6px;
+}
+
+.activeTab {
+    border-bottom: 2px solid #00bde7;
+    color: #333333;
+    height: 50px;
 }

@@ -1,7 +1,7 @@
 = javascript_include_tag "jquery.colorbox-min"
 = stylesheet_link_tag    "colorbox", :media => "all"
 
-%div.content.wrapper
+%div.content.loginLayout
   %h1.label-17{:style => "padding-bottom:10px;"}
     = "Event Gallery - " "#{@event.title}"
   -if @all_event_images.present?
@@ -9,7 +9,8 @@
       .eventImageHolder
         = link_to(image_tag(i.image),"#{i.image}")
   - else
-    = "No image for event yet"
+    %h4{:style => "text-align: center;"}
+      ="No image for event yet"
 
 :javascript
   $(document).ready(function(){
