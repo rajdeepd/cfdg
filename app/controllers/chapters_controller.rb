@@ -57,7 +57,7 @@ class ChaptersController < ApplicationController
   # GET /chapters/new
   # GET /chapters/new.json
   def new
-    binding.pry
+    #binding.pry
     @chapter = Chapter.find_chapter_for_user(current_user)
 
     if @chapter
@@ -93,7 +93,6 @@ class ChaptersController < ApplicationController
   # POST /chapters.json
 
   def create
-    binding.pry
 
     @admin = User.find_by_email("admin@cloudfoundry.com")
 
@@ -104,13 +103,11 @@ class ChaptersController < ApplicationController
 
     respond_to do |format|
       if @chapter.save
-        binding.pry
         member.chapter_id = @chapter.id
         member.save
         format.html { redirect_to @chapter, notice: 'Chapter was successfully created.' }
         format.json { render json: @chapter, status: :created, location: @chapter }
       else
-        binding.pry
         format.html { render action: "new" , :layout => "create_chapter"}
         format.json { render json: @chapter.errors, status: :unprocessable_entity }
       end

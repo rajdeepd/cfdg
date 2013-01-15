@@ -8,7 +8,6 @@ class UsersController < ApplicationController
   end
 
   def new
-    binding.pry
     @countries = Country.all
     @states = @countries.first.states
     @cities = @states.first.cities

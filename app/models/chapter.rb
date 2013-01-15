@@ -21,7 +21,7 @@ class Chapter < ActiveRecord::Base
   attr_accessible :name, :chapter_type, :country_id , :state_id, :city_id , :locality, :address ,:landmark,:chapter_status, :country_name, :state_name, :city_name,:messages_attributes,:rejected_on , :approved_on,:institution
 
   #validations
-  validates  :city_id, :chapter_type, presence: true
+  validates  :chapter_type, presence: true
   #validates :locality, :address ,:landmark, presence: true , :if => lambda { |o| o.chapter_type == "student"}
   #validates_uniqueness_of :city_name, :scope => [:state_name , :country_name], :if => lambda { |o| o.chapter_type == "professional"}
   
@@ -110,7 +110,6 @@ class Chapter < ActiveRecord::Base
       address = "#{self.city.state.country.name}#{self.city.detail}"
     end
 
-    binding.pry
 
     if(!address.blank?)
       begin
