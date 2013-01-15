@@ -60,16 +60,20 @@ class User < ActiveRecord::Base
     user
   end
 
-  def is_professional
+  def is_professional?
     self.role == 'professional'
   end
 
-  def is_student
+  def is_student?
     self.role == 'student'
   end
 
-  def is_fan
+  def is_fan?
     self.role == 'fan'
+  end
+
+  def college
+    self.try(:school_info).college
   end
   
   private

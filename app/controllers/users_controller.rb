@@ -49,8 +49,10 @@ class UsersController < ApplicationController
     case attrs[:role]
     when "professional", "fan"
       attrs.slice!(:last_name, :first_name, :email, :mobile, :city_id, :role, :company_info_attributes)
+      @user.school_info.try(:destroy)
     when "student"
       attrs.slice!(:last_name, :first_name, :email, :mobile, :city_id, :role, :school_info_attributes)
+      @user.company_info.try(:destroy)
     end
 
     if @user.update_attributes(attrs)

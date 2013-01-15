@@ -12,12 +12,6 @@ class OmniauthCallbacksController < ApplicationController
     
     @user = User.find_for_auth(auth_data)
 
-    #if @user.email.nil?
-      #redirect_to settings_path()
-    #else
-      #sign_in_and_redirect @user, :event => :authentication
-    #end
-
     sign_in_and_redirect @user, :event => :authentication
   end
 

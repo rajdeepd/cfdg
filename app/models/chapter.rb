@@ -62,9 +62,11 @@ class Chapter < ActiveRecord::Base
   end
 
   def location
-    location = city_name
-    location += "," + state_name if !state_name.blank?
-    location += "," + country_name if !country_name.blank?
+    if self.chapter_type == "student"
+      self.college.name
+    else
+      self.city.detail
+    end
   end
 
   def self.total_records
