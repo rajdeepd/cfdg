@@ -27,13 +27,14 @@ class UsersController < ApplicationController
     @city = current_user.city.nil? ? @cities.first : @user.city 
 
 
+    @user.build_company_info unless @user.company_info
+    @user.build_school_info unless @user.school_info
+    
     @colleges = @state.colleges
     @college = @user.school_info.college.nil? ? @colleges.first : @user.school_info.college
     @institutions = @college.institutions
     @institution = @user.school_info.institution.nil? ? @institutions.first : @user.school_info.institution
 
-    @user.build_company_info unless @user.company_info
-    @user.build_school_info unless @user.school_info
 
     respond_to do |format|
       format.html
