@@ -37,21 +37,31 @@ h1,h2,h3,h4,h5,h6 {
 }
 h1 {
 	font-size: 40px;
+	margin-bottom: 20px;
 }
 h2 {
 	font-size: 30px;
+	margin-bottom: 15px;
 }
 h3 {
 	font-size: 23px;
+	margin-bottom: 10px;
 }
 h4 {
 	font-size: 20px;
+	margin-bottom: 10px;
 }
 h5 {
 	font-size: 16px;
+	margin-bottom: 10px;
 }
 h6 {
 	font-size: 14px;
+	margin-bottom: 10px;
+}
+
+input {
+	margin-bottom: 10px;
 }
 
 textarea{
@@ -144,29 +154,6 @@ body {
 	text-transform: uppercase;
 	color: #80cbeb;
 	font-weight: bold;
-}
-
-/*登录后的编辑个人资料页面*/
-.content #welcome {
-	width: 200px;
-}
-.forms_list {
-	float: right;
-}
-.formsecond {
-	border-left: 1px solid #d9d9d9;
-	padding-left: 30px;
-}
-.roles {
-	margin-bottom:10px;
-	margin-top: 10px;
-	font-size: 13px;
-}
-.select-college {
-	margin-bottom: 10px;
-}
-.select-institution {
-	margin-bottom: 10px;
 }
 
 .content{
@@ -580,7 +567,7 @@ textarea.size-b{height: 84px;width: 163px;margin-bottom:0px;}
 	height: 25px;
 	box-shadow: inset 0px 1px 1px 0px #ccc;
 	width:280px;
-	margin-left:10px;
+	/*margin-left:10px;*/
 }
 .div-k{
 	border: 1px solid #cccccc;

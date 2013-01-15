@@ -1,9 +1,9 @@
 .content.wrapper
   .content-a
-    .ca-left.flt-left
+    .ca-left
       =form_for(@user, :as => :user, :url => user_path(@user), :html => { :method => :put ,  :multipart => true}) do |f|
         #welcome
-          %h1.label-17 Welcome #{@user.fullname}!
+          %h3 Welcome #{@user.fullname}!
           %div
             - if @user.avatar_file_name && (@user.errors[:avatar_content_type].blank? && @user.errors[:avatar_file_size].blank?)
               %img.profile-image{:src => @user.try(:avatar).url(:medium)}/
@@ -11,7 +11,7 @@
               %img.profile-image{:src => "/assets/default-Profile-Image.png"}/
           = f.file_field :avatar, :id => 'avatar-upload'
         .forms_list
-          #formfirst
+          #formfirst.formfirst
             %h4.form1
               = t('settings.personal_info')
             %div
