@@ -19,19 +19,19 @@
 :javascript
   $(document).ready(function(){
     if($(".navbar").attr("controller") == "home" && $(".navbar-inner").attr("action") == "index"){
-      $(".home").parent().addClass("activeTab");
+      $(".home").addClass("activeTab");
     }
     else if($(".navbar").attr("controller") == "home" && $(".navbar-inner").attr("action") == "wiki"){
-      $(".wiki").parent().addClass("activeTab");
+      $(".wiki").addClass("activeTab");
     }
     else if($(".navbar").attr("controller") == "home" && $(".navbar-inner").attr("action") == "about"){
-      $(".about").parent().addClass("activeTab");
+      $(".about").addClass("activeTab");
     }
     else if($(".navbar").attr("controller") == "home" && $(".navbar-inner").attr("action") == "directory"){
-      $(".chapter").parent().addClass("activeTab");
+      $(".chapter").addClass("activeTab");
     }
     else if($(".navbar").attr("controller") == "events"){
-      $(".event").parent().addClass("activeTab");
+      $(".event").addClass("activeTab");
     }
 
     //$("ul.clearfix li a").hover(function(){

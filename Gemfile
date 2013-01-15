@@ -86,7 +86,7 @@ gem 'rails3-jquery-autocomplete'
 
 # To use Jbuilder templates for JSON
 gem 'jbuilder'
-gem "rmagick"
+#gem "rmagick"
 
 # Use unicorn as the app server
 # gem 'unicorn'
