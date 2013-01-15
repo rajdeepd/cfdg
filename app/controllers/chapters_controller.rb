@@ -57,6 +57,9 @@ class ChaptersController < ApplicationController
   # GET /chapters/new.json
   def new
     @chapter = Chapter.new
+
+    @chapter.chapter_type = current_user.is_student? ? "student" : "professional"    
+    
     @chapter.messages.build
     @admin = User.find_by_email("admin@cloudfoundry.com")
     
