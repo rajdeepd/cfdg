@@ -3,7 +3,6 @@ ul, ol{
     margin: 0;
     padding: 0;
 }
-
 @font-face {
  font-family: 'helvetica_light';
  src: url('../fonts/ufonts.com_helvetica-light-webfont.eot');
@@ -22,13 +21,11 @@ body{
     padding: 0;
     background-color: #dfeff9;
 }
-
 .bodyWrapper{
-    background: url("body_bg.png") no-repeat fixed;
+    background: url("body_bg.png") no-repeat fixed center #B3D6ED;
     margin: 0 auto;
     width: 100%;
 }
-
 header{
     background: url("header_bg.png") repeat-x ;
     height: 40px;
@@ -85,13 +82,11 @@ header ul li{
 }
 header ul li a{
     color: #ffffff;
-
 }
 header ul li a:hover{
     color: #cccccc;
     text-decoration: none;
 }
-
 header ul li:first-child{
     background: none;
 }
@@ -923,7 +918,7 @@ ul.supportPrivacyLinks li{
     padding-top: 215px;
 }
 .loginLeftPanel ul{
-    width: 250px;
+    width: 260px;
     margin: 0 auto;
 }
 .loginLeftPanel ul li{
@@ -976,11 +971,11 @@ ul.supportPrivacyLinks li{
     float: left;
 }
 .loginRightPanel .socialNetworks a.googleYahooBtn{
-    width: 120px;
+    width: 125px;
 }
 .loginRightPanel{
     float: left;
-    width: 398px;
+    width: 390px;
     padding-top: 30px;
 }
 .socialNetworks{
