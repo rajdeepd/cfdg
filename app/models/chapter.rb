@@ -21,10 +21,12 @@ class Chapter < ActiveRecord::Base
   attr_accessible :name, :chapter_type, :country_id , :state_id, :city_id , :locality, :address ,:landmark,:chapter_status, :country_name, :state_name, :city_name,:messages_attributes,:rejected_on , :approved_on,:institution
 
   #validations
-  validates  :country_id , :state_id, :city_id,:country_name, :state_name, :city_name,:chapter_type, presence: true
-  validates :locality, :address ,:landmark, presence: true , :if => lambda { |o| o.chapter_type == "student"}
-  validates_uniqueness_of :city_name, :scope => [:state_name , :country_name], :if => lambda { |o| o.chapter_type == "professional"}
-  validates_with CityNameValidator
+  validates  :city_id, :chapter_type, presence: true
+  #validates :locality, :address ,:landmark, presence: true , :if => lambda { |o| o.chapter_type == "student"}
+  #validates_uniqueness_of :city_name, :scope => [:state_name , :country_name], :if => lambda { |o| o.chapter_type == "professional"}
+  
+  #validates_with CityNameValidator
+  
   #Scopes
   scope :applied_chapters, where(:chapter_status => [:applied, :incubated,:denied])
   scope :incubated_chapters, where(:chapter_status => :incubated)
@@ -88,11 +90,15 @@ class Chapter < ActiveRecord::Base
   end
 
   def persist_geocode
-    #logger.info "inside persist geocode"
-    city = self.city_name.blank? ? "" : self.city_name + ","
-    state = self.state_name.blank? ? "" : self.state_name + ","
-    country = self.country_name.blank? ? "" : self.country_name
-    address=city + state + country
+    if self.chapter_type == "student"
+      college = self.college
+      address = "#{college.state.country.name}#{college.state.name}#{college.name}" 
+    else
+      address = "#{self.city.state.country.name}#{self.city.detail}"
+    end
+
+    binding.pry
+
     if(!address.blank?)
       begin
         options = Gmaps4rails.geocode(address)
@@ -111,5 +117,17 @@ class Chapter < ActiveRecord::Base
 
   def am_i_secondary_coordinator?(user)
     ChapterMember.where(" user_id = ? and chapter_id = ? and memeber_type = ?",user.id, self.id,  ChapterMember::SECONDARY_COORDINATOR).present?
+  end
+
+  def setup_with_user(user)
+    if user.is_student?
+      self.name = "CFDG - #{user.college.name}"
+      self.chapter_type = "student"
+      self.college = user.college
+    else
+      self.name = "CFDG - #{user.city.name}"
+      self.chapter_type = "professional"
+      self.city = user.city
+    end
   end
 end

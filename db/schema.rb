@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130115015536) do
+ActiveRecord::Schema.define(:version => 20130115080901) do
 
   create_table "announcements", :force => true do |t|
     t.string   "title"
@@ -41,8 +41,6 @@ ActiveRecord::Schema.define(:version => 20130115015536) do
     t.string   "name"
     t.string   "chapter_type"
     t.string   "chapter_status"
-    t.string   "country_id"
-    t.string   "state_id"
     t.string   "city_id"
     t.string   "locality"
     t.string   "address"
@@ -52,9 +50,6 @@ ActiveRecord::Schema.define(:version => 20130115015536) do
     t.datetime "deleted_at"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
-    t.string   "city_name"
-    t.string   "state_name"
-    t.string   "country_name"
     t.datetime "approved_on"
     t.datetime "rejected_on"
     t.integer  "college_id"

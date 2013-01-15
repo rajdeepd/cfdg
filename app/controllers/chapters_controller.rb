@@ -25,6 +25,7 @@ class ChaptersController < ApplicationController
   # GET /chapters/1.json
   def show
     @chapter = Chapter.find(params[:id])
+
     @is_part_of_chapter = false
     if current_user
        @is_part_of_chapter = @chapter.chapter_members.where({:user_id => current_user.id}).try(:first).present? 
@@ -84,18 +85,24 @@ class ChaptersController < ApplicationController
   # POST /chapters.json
 
   def create
+     binding.pry
+
      @admin = User.find_by_email("admin@cloudfoundry.com")
-     params[:chapter][:name] = "CFDG - " + params[:chapter][:city_name].try(:titleize)
+
      @chapter = Chapter.new(params[:chapter])
-     member = ChapterMember.new({:memeber_type=>ChapterMember::PRIMARY_COORDINATOR, :user_id => @current_user.id})
+     @chapter.setup_with_user(current_user)
+
+     member = ChapterMember.new({ :memeber_type=>ChapterMember::PRIMARY_COORDINATOR, :user_id => @current_user.id })
     
     respond_to do |format|
       if @chapter.save
+        binding.pry
         member.chapter_id = @chapter.id
         member.save
         format.html { redirect_to @chapter, notice: 'Chapter was successfully created.' }
         format.json { render json: @chapter, status: :created, location: @chapter }
       else
+        binding.pry
         format.html { render action: "new" , :layout => "create_chapter"}
         format.json { render json: @chapter.errors, status: :unprocessable_entity }
       end
