@@ -24,8 +24,8 @@
               = f.text_field :mobile ,     :placeholder => t('user_info.mobile'),    :class => "textboxes input-a"
             %div
               = f.select :country, @countries.collect { |c| [c.name, c.name]}
-              = f.select :state, @states.collect { |s| [s.name, s.id]}
-              = f.select :city_id, @cities.collect { |c| [c.name, c.id]}
+              = f.select :state, options_for_select(@states.collect { |s| [s.name, s.id]}, @state.id) 
+              = f.select :city_id, options_for_select(@cities.collect { |c| [c.name, c.id]}, @city.id)
 
           / .line_space
           #formsecond.formsecond
@@ -36,7 +36,7 @@
                 = f.radio_button :role, role, :'data-tab' => role == 'student' ? '#school-info' : '#company-info'
                 = label "user_role_#{role}".to_sym, role
             %div.info-blocks
-              %div.tab{ :id => "company-info" }
+              %div.tab{ :id => "company-info", :class => ("hide" if current_user.role == 'student') }
                 = f.fields_for :company_info do |builder|
                   %div
                     = builder.text_field :company_name, :placeholder => t('company_info.company_name'), :class => "textboxes input-a"
@@ -49,11 +49,11 @@
                   %div
                     = builder.text_field :tel, :placeholder => t('company_info.tel'),  :class => "textboxes input-a"
 
-              %div.tab{ :id => "school-info" }
+              %div.tab{ :id => "school-info", :class => ("hide" unless current_user.role == 'student') }
                 = f.fields_for :school_info do |builder|
                   %div.select-college
                     %div(id="select-college")
-                      = builder.select :college_id, options_from_collection_for_select(@colleges, "id", "name")
+                      = builder.select :college_id, options_for_select(@colleges.collect { |c| [c.name, c.id]}, @college.id)
                       %a(href="javascript:0" id="school-not-found")
                         = t('settings.college_not_found')
                     %div.hide(id="input-college")
@@ -62,7 +62,7 @@
                         = t('settings.college_not_found')
                   %div.select-institution
                     %div(id="select-institution")
-                      = builder.select :institution_id, @institutions.collect { |i| [i.name, i.id]}
+                      = builder.select :institution_id, options_for_select(@institutions.collect { |i| [i.name, i.id]}, @institution.id) 
                       %a(href="javascript:0" id="institution-not-found")
                         = t('settings.institution_not_found')
                     %div.hide(id="input-institution")

@@ -27,7 +27,7 @@ namespace :init do
   task :colleges => :environment do
     require 'csv'
     CSV.foreach(Rails.root.join("cn_universities.csv"), {:col_sep =>","} ) do |row|
-      @state = State.find_by_name(row[0])
+      @state = State.where("name like ?", "%#{row[0]}%").first
       @college = College.create(:name => row[1], :state_id => @state.id, :renren_code => row[2])
       puts @college.inspect
     end
@@ -45,17 +45,48 @@ namespace :init do
     end
 
     College.all.each do |college|
-      response = conn.get "/GetDep.do?id=#{college.renren_code}"
-      doc = Nokogiri::Slop(response.body).remove_namespaces!
+      if college.renren_code.to_i > 0
+        response = conn.get "/GetDep.do?id=#{college.renren_code}"
+        doc = Nokogiri::Slop(response.body).remove_namespaces!
 
-      doc.css('option').each do |institution|
-        college.institutions.create!(:name => institution['value']) unless institution['value'].blank?
+        doc.css('option').each do |institution|
+          college.institutions.create!(:name => institution['value']) unless institution['value'].blank?
+        end
       end
     end
   end
 
+  task :find => :environment do
+    require 'faraday'
+    
+    conn = Faraday.new(:url => 'http://www.moe.gov.cn') do |faraday|
+      faraday.request  :url_encoded             # form-encode POST params
+      faraday.response :logger                  # log requests to STDOUT
+      faraday.adapter  Faraday.default_adapter  # make requests with Net::HTTP
+    end
+
+    response = conn.get "/publicfiles/business/htmlfiles/moe/moe_94/201002/82762.html"
+    
+    colleges = Array.new
+
+    doc = Nokogiri::Slop(response.body).remove_namespaces!
+    doc.css('table.MsoNormalTable td').each do |row|
+      colleges << row.css('p span').text
+    end
+    
+    db_colleges = College.all.map(&:name)
+    
+    db_colleges.each_with_index do |c, index|
+      cc = colleges.include?(c) ? c : "***"
+      puts "#{index} - #{c} | #{cc}" 
+    end
+
+    binding.pry
+
+  end
+
   task :regions => [:countries, :states, :cities]
-  task :unis => [:colleges, :institutions]
+  task :educations => [:colleges, :institutions]
 
   task :all => [:regions, :unis]
 end
