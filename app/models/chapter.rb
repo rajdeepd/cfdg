@@ -85,7 +85,10 @@ class Chapter < ActiveRecord::Base
   end
 
   def self.total_records
-    Chapter.select('country_name').group('country_name').where(:chapter_status => [:active,:incubated])
+    { 
+      :professional => Chapter.where(:chapter_type => :professional, :chapter_status => [:active,:incubated]),
+      :student => Chapter.where(:chapter_type => :student, :chapter_status => [:active,:incubated])
+    }
   end
 
   def am_i_chapter_memeber?(user_id)

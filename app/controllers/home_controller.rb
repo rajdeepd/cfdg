@@ -9,6 +9,7 @@ class HomeController < ApplicationController
   end
 
   def directory
+    @chapters = Chapter.total_records
   end
 
   def about

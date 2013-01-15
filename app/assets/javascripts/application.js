@@ -11,7 +11,6 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery_ujs
-//= require jquery.widget.js
 //= require init
 //= require_tree .
 

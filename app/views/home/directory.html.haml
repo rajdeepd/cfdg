@@ -36,16 +36,15 @@
     / %input.input-a{:placeholder => "Find a group...", :style => "margin-left: 0px;"}
     /   %a.label-36{:href => "#"} + Create Group
     .div-g
-      - Chapter.total_records.each_with_index do |chapter,i|
+      - @chapters.each do |type,chapters|
         .column-a
           %h3.label-37
-            = Carmen::Country.coded(chapter.country_name).try(:name) || "No Name"
+            = type
           %ul.ui-j
-            - main_chapters(chapter.country_name).each do |chp|
+            - chapters.each do |chp|
               %li{:style => "line-height:30px;"}
                 %img{:src => "/assets/"+"#{chp.chapter_status.try(:capitalize)}"+".png", :style=> "width:15px;height:16px;margin-bottom: -3px;"}/
-                %a.label-28{:href => "#{chapter_path(chp)}"}= "#{chp.name}"
-                /%span{:title => "Chapter Status"}= "(#{chp.chapter_status})"
+                = link_to chp.name, chapter_path(chp), :class => "label-28"
                 %span{:title => "Chapter type"}= "(#{chp.chapter_type.first})"
 
         

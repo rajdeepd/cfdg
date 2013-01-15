@@ -41,7 +41,6 @@ class UsersController < ApplicationController
   end
 
   def update
-    binding.pry
 
     @user = User.find(params[:id])
 

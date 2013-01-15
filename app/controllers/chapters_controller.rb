@@ -1,5 +1,5 @@
 class ChaptersController < ApplicationController
-  before_filter :authenticate!
+  before_filter :authenticate!, :except => [:show]
 
   before_filter do
     locale = params[:locale]
