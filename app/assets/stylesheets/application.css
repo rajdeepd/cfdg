@@ -11,23 +11,49 @@
  *= require_self
  *= require jquery.timepicker-1.2.2
  *= require jquery.ui.theme
+ *= require login-form
  */
  /*reset begins*/
 
 /*reset begins*/
 
 
-html, body, div, span, applet, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+html, body, div, span, applet, iframe, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
 	margin: 0;
 	padding: 0;
 	border: 0;
 	font-size: 12px;
-	font: inherit;
+	/*font: inherit;*/
 	vertical-align: baseline;
 	font-weight: normal;
 	color: #333;
 	font-family: Helvetica, sans-serif;
 }
+
+h1,h2,h3,h4,h5,h6 {
+	margin: 0;
+	padding: 0;
+	font-weight: bold;
+}
+h1 {
+	font-size: 40px;
+}
+h2 {
+	font-size: 30px;
+}
+h3 {
+	font-size: 23px;
+}
+h4 {
+	font-size: 20px;
+}
+h5 {
+	font-size: 16px;
+}
+h6 {
+	font-size: 14px;
+}
+
 textarea{
 	font-family: inherit;
 }
@@ -1284,18 +1310,18 @@ li{
   .ui-autocomplete .ui-widget-content a {
       color: #222222;
   }
-  .ui-corner-all, .ui-corner-bottom, .ui-corner-right, .ui-corner-br {
-      border-bottom-right-radius: 4px;
+  /*.ui-corner-all, .ui-corner-bottom, .ui-corner-right, .ui-corner-br {
+      border-bottom-right-radius: 0px;
   }
  .ui-corner-all, .ui-corner-bottom, .ui-corner-left, .ui-corner-bl {
-      border-bottom-left-radius: 4px;
+      border-bottom-left-radius: 0px;
   }
    .ui-corner-all, .ui-corner-top, .ui-corner-right, .ui-corner-tr {
       border-top-right-radius: 4px;
   }
    .ui-corner-all, .ui-corner-top, .ui-corner-left, .ui-corner-tl {
     border-top-left-radius: 4px;
-  }
+  }*/
   .ui-menu .ui-menu-item a {
     padding-left: 3px;
    }

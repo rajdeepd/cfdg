@@ -1,6 +1,8 @@
-#login-dialog{:title => "Sign in"}
+#login-dialog.login-dialog{:title => "Sign in"}
   %ul
+    %li 
+      %h6 请用新浪微博或者QQ的帐号授权登录：
     %li
-      = link_to 'Weibo', user_omniauth_authorize_path(:provider => :weibo)
+      = link_to image_tag("http://www.sinaimg.cn/blog/developer/wiki/32.png"), user_omniauth_authorize_path(:provider => :weibo)
     %li
-      = link_to 'qq', user_omniauth_authorize_path(:provider => :qq_connect)
+      = link_to image_tag("http://qzonestyle.gtimg.cn/qzone/vas/opensns/res/img/Connect_logo_4.png"), user_omniauth_authorize_path(:provider => :qq_connect)
