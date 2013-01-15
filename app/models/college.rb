@@ -4,4 +4,5 @@ class College < ActiveRecord::Base
   has_many :school_infos
   belongs_to :state
   has_many :institutions
+  has_many :chapters
 end
