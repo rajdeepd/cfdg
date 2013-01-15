@@ -12,11 +12,15 @@
                   .clearfix
                     .dateAndPlace
                       .date
+                        -chapter = event.chapter
                         =event.event_start_date_in_date.strftime("%b %d,%Y")
                       .place
-                        ="#{event.chapter.city_name},#{event.chapter.country_name}"
+                        ="#{event.chapter.city_name},#{chapter.country_name}"
                     .tag
-                      %img{:src => "/assets/student_event.png"}
+                      -if chapter.chapter_type == "student"
+                        %img{:src => "/assets/student_event.png"}
+                      -else
+                        %img{:src => "/assets/professional_event.png"}
                   .eventImg
                     -#%img{:alt => "No_image", :src => "/assets/event_snap_5.jpg"}
                     -if event.image.event_landscape.present?
@@ -24,7 +28,7 @@
                     -elsif event.image.present?
                       = image_tag(event.image.url,:size => "260x150")
                     -else
-                      =image_tag("logo-b.png",:size => "260x150")
+                      =image_tag("event_landscape_logo-b.png",:size => "260x150")
                   .eventContent
                     %h5
                       =event.title
