@@ -49,7 +49,6 @@ class ChaptersController < ApplicationController
         format.html # show.html.erb
         format.json { render json: @chapter }
        end
-
     end
   end
 

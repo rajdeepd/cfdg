@@ -5,46 +5,17 @@
     %title Cloud Foundry Developer Group
     = stylesheet_link_tag    "application", :media => "all"
     = stylesheet_link_tag    "create_chapter_style", :media => "all"   
-    = stylesheet_link_tag    "file-uploadify", :media => "all"
-    = javascript_include_tag "application"    
-    %script{:src => "http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"}
-    %script{:src => "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"}
-    %script{:src => "//ajax.googleapis.com/ajax/libs/googleapis/0.0.4/googleapis.min.js", :type => "text/javascript"}
-    %script{:src => "//ajax.googleapis.com/jsapi", :type => "text/javascript"}   
-   
-    :javascript
-      google.load("identitytoolkit", "1", {packages: ["ac"], language:"#{lang}"});
-    :javascript
-      $(function() {
-        window.google.identitytoolkit.setConfig({
-            developerKey: "#{FEDERATED_KEY}",
-            companyName: "cloudfoundry usergroups",
-            callbackUrl: "#{verify_user_url()}",
-            realm: "",
-            userStatusUrl: "/user_status",
-            loginUrl: "/login",
-            signupUrl: "/sign_up",
-            //homeUrl: "/profile",
-            homeUrl: "#{session[:url]}",
-            logoutUrl: "/logout",
-            idps: ["Gmail", "Yahoo"],
-            tryFederatedFirst: true,
-            useCachedUserStatus: false,
-            useContextParam: true
-        });
-        $("#navbar").accountChooser();
 
-        $('.signup').click(function(){
-          $('#navbar').accountChooser('showAccountChooser');
-          $(".widget-header h1").text("#{t('menu.signup')}");
-          $(".widget-nascar-list h2").text("#{t('menu.signup_with')}");
-        });
-      });
+    = javascript_include_tag "application"    
+    %script{:src => "http://commons.qiniudn.com/jquery-1.8.3.min.js"}
+    %script{:src => "http://commons.qiniudn.com/jquery-ui-1.9.2.custom.min.js"}
+
     = csrf_meta_tags
   %body
-    = render "shared/federated_header"
     = render "shared/header"
     = yield
     = render "shared/footer"
+    %script{:src => "http://commons.qiniudn.com/jquery-1.8.3.min.js"}
+    %script{:src => "http://commons.qiniudn.com/jquery-ui-1.9.2.custom.min.js"}
+    = javascript_include_tag :application
     = yield :scripts
-    = content_for(:javascript)
