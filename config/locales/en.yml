@@ -75,4 +75,9 @@ en:
     my_account: "My Account"
 
   chapter:
-    chapter_proposal: "Chapter Proposal"
+    types:
+      student: "Student"
+      professional: "Professional"
+    proposal: "Chapter Proposal"
+    type: "Chapter Type"
+    location: "Chapter Location"

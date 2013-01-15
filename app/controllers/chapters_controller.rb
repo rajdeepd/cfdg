@@ -60,6 +60,12 @@ class ChaptersController < ApplicationController
 
     @chapter.chapter_type = current_user.is_student? ? "student" : "professional"    
     
+    if @chapter.chapter_type == "student"
+      @chapter.college = current_user.college
+    else
+      @chapter.city = current_user.city
+    end
+
     @chapter.messages.build
     @admin = User.find_by_email("admin@cloudfoundry.com")
     
