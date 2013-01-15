@@ -46,3 +46,10 @@
             = hidden_field_tag :reset_password_token , params[:reset_password_token]
 
             %button.orangeBtn{:href => "#"} Reset Password
+
+:javascript
+  $(document).ready(function(){
+    $("#user_password").bind("cut copy paste",function(e) {
+      e.preventDefault();
+    });
+  });

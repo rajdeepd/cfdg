@@ -71,9 +71,6 @@
           = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
 
             = f.email_field :email , :placeholder => "Email*"
-
-
-
             = f.password_field :password ,:placeholder => "Password*"
             - if devise_mapping.rememberable?
               %label.checkbox{:style => "width:85px;"}
@@ -90,7 +87,9 @@
   google.load("identitytoolkit", "1", {packages: ["ac"], language:"#{lang}"});
 :javascript
   $(document).ready(function(){
-    $("#remember_me_text").attr('disabled',true);
+    $("#user_password").bind("cut copy paste",function(e) {
+      e.preventDefault();
+    });
   });
   $(function() {
     $(".signin").on("click",function(){
