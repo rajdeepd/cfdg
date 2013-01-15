@@ -27,8 +27,8 @@
               = f.select :state, @states.collect { |s| [s.name, s.id]}
               = f.select :city_id, @cities.collect { |c| [c.name, c.id]}
 
-          .line_space
-          #formsecond
+          / .line_space
+          #formsecond.formsecond
             %h4.form1      
               = t('settings.role_info')
             %div.roles
@@ -51,7 +51,7 @@
 
               %div.tab{ :id => "school-info" }
                 = f.fields_for :school_info do |builder|
-                  %div
+                  %div.select-college
                     %div(id="select-college")
                       = builder.select :college_id, options_from_collection_for_select(@colleges, "id", "name")
                       %a(href="javascript:0" id="school-not-found")
@@ -60,7 +60,7 @@
                       = builder.text_field :other_school_name, :placeholder => t('school_info.school_name'), :class => "textboxes input-a"
                       %a(href="javascript:0" id="back-to-college-select")
                         = t('settings.college_not_found')
-                  %div
+                  %div.select-institution
                     %div(id="select-institution")
                       = builder.select :institution_id, @institutions.collect { |i| [i.name, i.id]}
                       %a(href="javascript:0" id="institution-not-found")

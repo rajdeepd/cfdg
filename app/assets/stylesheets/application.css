@@ -118,6 +118,30 @@ body {
 	color: #80cbeb;
 	font-weight: bold;
 }
+
+/*登录后的编辑个人资料页面*/
+.content #welcome {
+	width: 200px;
+}
+.forms_list {
+	float: right;
+}
+.formsecond {
+	border-left: 1px solid #d9d9d9;
+	padding-left: 30px;
+}
+.roles {
+	margin-bottom:10px;
+	margin-top: 10px;
+	font-size: 13px;
+}
+.select-college {
+	margin-bottom: 10px;
+}
+.select-institution {
+	margin-bottom: 10px;
+}
+
 .content{
 	position: relative;
 	width:950px;
@@ -129,9 +153,7 @@ body {
 	margin-bottom: -45px;
         min-height: 800px;
 }
-.content #welcome {
-	width: 200px;
-}
+
 .content #select-college a, .content #select-institution a{
 	font-size: 12px;
 	color: #0097D7;
