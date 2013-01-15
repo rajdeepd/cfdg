@@ -52,22 +52,22 @@
               %div.tab{ :id => "school-info", :class => ("hide" unless current_user.role == 'student') }
                 = f.fields_for :school_info do |builder|
                   %div.select-college
-                    %div(id="select-college")
+                    %div(id="select-college"){ :class => ("hide" unless current_user.school_info.try(:other_college_name).blank?) }
                       = builder.select :college_id, options_for_select(@colleges.collect { |c| [c.name, c.id]}, @college.id)
-                      %a(href="javascript:0" id="school-not-found")
+                      %a(href="javascript:0" id="college-not-found")
                         = t('settings.college_not_found')
-                    %div.hide(id="input-college")
-                      = builder.text_field :other_school_name, :placeholder => t('school_info.school_name'), :class => "textboxes input-a"
+                    %div(id="input-college"){ :class => ("hide" if current_user.school_info.try(:other_college_name).blank?) }
+                      = builder.text_field :other_college_name, :placeholder => t('school_info.school_name'), :class => "textboxes input-a"
                       %a(href="javascript:0" id="back-to-college-select")
-                        = t('settings.college_not_found')
+                        = t('settings.back_to_select')
                   %div.select-institution
-                    %div(id="select-institution")
+                    %div(id="select-institution"){ :class => ("hide" unless current_user.school_info.try(:other_institution_name).blank?) }
                       = builder.select :institution_id, options_for_select(@institutions.collect { |i| [i.name, i.id]}, @institution.id) 
                       %a(href="javascript:0" id="institution-not-found")
                         = t('settings.institution_not_found')
-                    %div.hide(id="input-institution")
-                      = builder.text_field :other_institution, :placeholder => t('school_info.institution'), :class => "textboxes input-a hide"
-                      %a(href="javascript:0" id="back-to-institution-select")
+                    %div(id="input-institution"){ :class => ("hide" if current_user.school_info.try(:other_institution_name).blank?) }
+                      = builder.text_field :other_institution_name, :placeholder => t('school_info.institution'), :class => "textboxes input-a"
+                      %a(href="javascript:0" id="back-to-institution-select"){ :class => ("hide" if current_user.school_info.try(:college_id).nil?) }
                         = t('settings.back_to_select')
                   %div
                     = builder.text_field :major, :placeholder => t('school_info.major'), :class => "textboxes input-a"

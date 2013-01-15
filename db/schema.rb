@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130115080901) do
+ActiveRecord::Schema.define(:version => 20130115135218) do
 
   create_table "announcements", :force => true do |t|
     t.string   "title"
@@ -256,12 +256,12 @@ ActiveRecord::Schema.define(:version => 20130115080901) do
   end
 
   create_table "school_infos", :force => true do |t|
-    t.string   "other_school_name"
-    t.string   "other_institution"
+    t.string   "other_college_name"
+    t.string   "other_institution_name"
     t.string   "major"
     t.datetime "graduated_at"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
+    t.datetime "created_at",             :null => false
+    t.datetime "updated_at",             :null => false
     t.integer  "user_id"
     t.integer  "college_id"
     t.integer  "institution_id"

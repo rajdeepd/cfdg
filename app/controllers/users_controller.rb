@@ -41,6 +41,8 @@ class UsersController < ApplicationController
   end
 
   def update
+    binding.pry
+
     @user = User.find(params[:id])
 
     attrs = params[:user]
@@ -51,6 +53,10 @@ class UsersController < ApplicationController
       @user.school_info.try(:destroy)
     when "student"
       attrs.slice!(:last_name, :first_name, :email, :mobile, :city_id, :role, :school_info_attributes)
+
+      attrs[:school_info_attributes][:college_id] = nil unless attrs[:school_info_attributes][:other_college_name].blank?
+      attrs[:school_info_attributes][:institution_id] = nil unless attrs[:school_info_attributes][:other_institution_name].blank?
+
       @user.company_info.try(:destroy)
     end
 

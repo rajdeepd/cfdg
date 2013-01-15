@@ -50,3 +50,24 @@ $ ->
       $onTab = $( $(e.target).data('tab') )
       $('.info-blocks .tab').hide()
       $onTab.show()
+
+    # college not found toggle
+    $("#college-not-found").click () ->
+      $("#select-college").fadeOut "fast", () -> $("#input-college").fadeIn "fast"
+      $("#select-institution").fadeOut "fast", () -> $("#input-institution").fadeIn "fast"
+      $("#back-to-institution-select").fadeOut "fast"
+
+    $("#institution-not-found").click () ->
+      $("#select-institution").fadeOut "fast", () -> 
+        $("#input-institution").fadeIn "fast"
+
+    $("#back-to-college-select").click () ->
+      $("#input-college").fadeOut "fast", () -> 
+        $("#user_school_info_attributes_other_college_name").val("")
+        $("#select-college").fadeIn "fast"
+        $("#back-to-institution-select").fadeIn "fast"
+
+    $("#back-to-institution-select").click () ->
+      $("#input-institution").fadeOut "fast", () -> 
+        $("#user_school_info_attributes_other_institution_name").val("")
+        $("#select-institution").fadeIn "fast"
