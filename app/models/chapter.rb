@@ -63,6 +63,19 @@ class Chapter < ActiveRecord::Base
 
   end
 
+  def self.find_chapter_for_user(user)
+    case user.role
+    when "professional", "fan"
+      user.city.chapters.first  
+    when ""
+      unless user.college.nil?
+        user.college.chapters.first
+      else
+        nil
+      end
+    end
+  end
+
   def location
     if self.chapter_type == "student"
       self.college.name

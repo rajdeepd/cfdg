@@ -9,7 +9,7 @@ class ChaptersController < ApplicationController
   def subregion_options
     render partial: 'subregion_select'
   end
-  
+
   # GET /chapters
   # GET /chapters.json
   def index
@@ -28,7 +28,7 @@ class ChaptersController < ApplicationController
 
     @is_part_of_chapter = false
     if current_user
-       @is_part_of_chapter = @chapter.chapter_members.where({:user_id => current_user.id}).try(:first).present? 
+      @is_part_of_chapter = @chapter.chapter_members.where({:user_id => current_user.id}).try(:first).present? 
     end
 
     @primary_coord = @chapter.chapter_members.where({:memeber_type => ChapterMember::PRIMARY_COORDINATOR}).try(:first)
@@ -36,7 +36,7 @@ class ChaptersController < ApplicationController
     @members = @chapter.chapter_members.where({:memeber_type => ChapterMember::MEMBER}) || []
 
     @totalcount = @chapter.chapter_members.size    
-    
+
     get_upcoming_and_past_events
     @announcements = Announcement.all
     respond_to do |format|
@@ -49,7 +49,7 @@ class ChaptersController < ApplicationController
       else
         format.html # show.html.erb
         format.json { render json: @chapter }
-       end
+      end
     end
   end
 
@@ -57,22 +57,30 @@ class ChaptersController < ApplicationController
   # GET /chapters/new
   # GET /chapters/new.json
   def new
-    @chapter = Chapter.new
+    binding.pry
+    @chapter = Chapter.find_chapter_for_user(current_user)
 
-    @chapter.chapter_type = current_user.is_student? ? "student" : "professional"    
-    
-    if @chapter.chapter_type == "student"
-      @chapter.college = current_user.college
+    if @chapter
+      redirect_to @chapter
     else
-      @chapter.city = current_user.city
-    end
 
-    @chapter.messages.build
-    @admin = User.find_by_email("admin@cloudfoundry.com")
-    
-    respond_to do |format|
-      format.html {render :layout => "create_chapter"}
-      format.json { render json: @chapter }
+      @chapter = Chapter.new
+
+      @chapter.chapter_type = current_user.is_student? ? "student" : "professional"    
+
+      if @chapter.chapter_type == "student"
+        @chapter.college = current_user.college
+      else
+        @chapter.city = current_user.city
+      end
+
+      @chapter.messages.build
+      @admin = User.find_by_email("admin@cloudfoundry.com")
+
+      respond_to do |format|
+        format.html {render :layout => "create_chapter"}
+        format.json { render json: @chapter }
+      end
     end
   end
 
@@ -85,15 +93,15 @@ class ChaptersController < ApplicationController
   # POST /chapters.json
 
   def create
-     binding.pry
+    binding.pry
 
-     @admin = User.find_by_email("admin@cloudfoundry.com")
+    @admin = User.find_by_email("admin@cloudfoundry.com")
 
-     @chapter = Chapter.new(params[:chapter])
-     @chapter.setup_with_user(current_user)
+    @chapter = Chapter.new(params[:chapter])
+    @chapter.setup_with_user(current_user)
 
-     member = ChapterMember.new({ :memeber_type=>ChapterMember::PRIMARY_COORDINATOR, :user_id => @current_user.id })
-    
+    member = ChapterMember.new({ :memeber_type=>ChapterMember::PRIMARY_COORDINATOR, :user_id => @current_user.id })
+
     respond_to do |format|
       if @chapter.save
         binding.pry
@@ -141,8 +149,8 @@ class ChaptersController < ApplicationController
     member = ChapterMember.new({:memeber_type=>ChapterMember::MEMBER, :user_id => @current_user.id, :chapter_id => @chapter.id}) 
     respond_to do |format|
       if member.save
-         format.html { redirect_to @chapter }
-         format.json { render json: @chapter, status: :success, location: @chapter }
+        format.html { redirect_to @chapter }
+        format.json { render json: @chapter, status: :success, location: @chapter }
       else
         format.html { redirect_to @chapter }
         format.json { render json: @chapter.errors, status: :unprocessable_entity }
@@ -154,9 +162,9 @@ class ChaptersController < ApplicationController
     @chapter = Chapter.find(params[:chapter_id])    
     @chapter_events = @chapter.events.sort
     @two_chapter_events = @chapter_events.take(2)
-     respond_to do |format|
+    respond_to do |format|
       format.js {render :partial => 'chapter_admin_home_page' }
-     end
+    end
   end 
 
   def get_upcoming_and_past_events
@@ -175,5 +183,4 @@ class ChaptersController < ApplicationController
     @past_events.sort!
     @past_events = @past_events.paginate(:page => params[:page], :per_page => 10)
   end
-
 end
