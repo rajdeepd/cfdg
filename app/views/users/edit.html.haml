@@ -58,6 +58,7 @@
                         = t('settings.college_not_found')
                     %div(id="input-college"){ :class => ("hide" if current_user.school_info.try(:other_college_name).blank?) }
                       = builder.text_field :other_college_name, :placeholder => t('school_info.school_name'), :class => "textboxes input-a"
+                      %br
                       %a(href="javascript:0" id="back-to-college-select")
                         = t('settings.back_to_select')
                   %div.select-institution
@@ -67,6 +68,7 @@
                         = t('settings.institution_not_found')
                     %div(id="input-institution"){ :class => ("hide" if current_user.school_info.try(:other_institution_name).blank?) }
                       = builder.text_field :other_institution_name, :placeholder => t('school_info.institution'), :class => "textboxes input-a"
+                      %br
                       %a(href="javascript:0" id="back-to-institution-select"){ :class => ("hide" if current_user.school_info.try(:college_id).nil?) }
                         = t('settings.back_to_select')
                   %div

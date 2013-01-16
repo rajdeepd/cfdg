@@ -92,6 +92,7 @@ table {
 	float: right;
 }
 a {
+	color: #0097D7;
 	text-decoration: none;
 }
 .bold {
@@ -166,11 +167,6 @@ body {
 	margin-top:-70px;
 	margin-bottom: -45px;
         min-height: 800px;
-}
-
-.content #select-college a, .content #select-institution a{
-	font-size: 12px;
-	color: #0097D7;
 }
 .content-a {
 	overflow: hidden;
