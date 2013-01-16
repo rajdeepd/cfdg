@@ -785,6 +785,10 @@ ul.supportPrivacyLinks li{
     color: #333;
     margin-bottom: 20px;
 }
+.viewMore , .viewLess{
+    color: #0094D4;
+    cursor: pointer;
+}
 .eventDetail a{
     color: #0094d4;
 }

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130104062042) do
+ActiveRecord::Schema.define(:version => 20130116061517) do
 
   create_table "announcements", :force => true do |t|
     t.string   "title"
@@ -166,7 +166,7 @@ ActiveRecord::Schema.define(:version => 20130104062042) do
     t.string   "event_start_date"
     t.string   "event_end_date"
     t.string   "status"
-    t.string   "description"
+    t.text     "description"
     t.string   "entry_fee"
     t.string   "venue"
     t.integer  "chapter_id"
