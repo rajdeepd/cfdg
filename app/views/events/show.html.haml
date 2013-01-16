@@ -145,7 +145,7 @@
               %h4 Description
               -#%p What if you could deploy and scale your applications within seconds? And never had to wait again for infrastructure to be provisioned? With Cloud Foundry, which is a modern, open-source Platform as a Service, you can deploy your application instantly. Use Cloud Foundry for development, testing and production.
               %p #{@event.description}
-              -#%a{:href => "#"} View more
+              %a{:href => "#"} View more
               -if !@event.is_past_event?
                 -if !current_user.blank? and  (current_user.id != @event.created_by)
                   -if @event.is_cancelled?
