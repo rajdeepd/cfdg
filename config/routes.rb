@@ -134,6 +134,7 @@ CloudfoundryUsergroups::Application.routes.draw do
       get :forgot_password
       get :reset_password
       get :chapter_list
+      get :chapter_detail
     end
   end
 

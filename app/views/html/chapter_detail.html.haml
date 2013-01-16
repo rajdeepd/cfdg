@@ -1,0 +1,169 @@
+= javascript_include_tag "jquery.coda-slider-3.0"
+= javascript_include_tag "jquery.vticker-min"
+= javascript_include_tag "jquery.mousewheel"
+= javascript_include_tag "jquery.contentcarousel"
+= javascript_include_tag "jquery.easing.1.3"
+
+
+%title Coda Slider 3.0
+:javascript
+  $(function(){
+      /* Here is the slider using default settings */
+    $('#slider-id').codaSlider({
+      autoSlide:true,
+      autoHeight:false
+    });
+    $('h2.title').hide();
+    $('#news-container').vTicker({
+      speed: 500,
+      pause: 3000,
+      animation: 'fade',
+      mousePause: false,
+      showItems: 3
+    });
+  });
+
+
+
+-#=render :partial => "/shared/new_header"
+.content.ChapterDetails
+  .breadCrumb
+    %span Events
+    %span.breadCrumbDivider /
+    %span.activePage Gluecon
+  .blueHeader
+    .chapterName.clearfix
+      %h1 Gluecon
+      %span.chapterLocation  &nbsp;/ Pune Chapter
+    .chapterDateAndPlace.clearfix
+      %span.chapterDate December 13,2012
+      %span.chapterPlace Varad Hall, Pune
+      %span.viewMap ( View Map )
+      .mapDiv
+        %span.close x
+        %img{:src => "/assets/map.png"}
+  .layoutWrapper
+    .row
+      .span8
+        .eventTour
+          .comingEvents
+            .fullHeading
+              %h3 Upcoming Events
+            #ca-container.ca-container.clearfix
+              .ca-wrapper{:style => "overflow: hidden;"}
+                .ca-item.ca-item-1{:style => "position: absolute; left: 0px;"}
+                  .ca-item-main
+                    .eventListWrapper
+                      .eventListInner
+                        .clearfix
+                          .dateAndPlace
+                            .date
+                              Jan 18,2013
+                            .place
+                              Ahmedabad,India
+                          .tag
+                            %img{:src => "/assets/student_event.png"}
+                        .eventImg
+                          %img{:alt => "Logo-b", :height => "150", :src => "/assets/logo-b.png", :width => "260"}
+                        .eventContent
+                          %h5
+                            bhatia
+                          .personName
+                            Akash
+                          %p.lightGrayText
+                          %a{:href => "/events/1?locale=en"} Read more
+                      .eventListFooter
+                        %span.numberPeopleAttending
+                          1
+                        %span People Attending
+          .viewEventGallery
+            %a{:href => "#"} View Event Gallery
+          .eventDetail.clearfix
+            %h4 Cloud Foundry Open Tour
+            %p What if you could deploy and scale your applications within seconds? And never had to wait again for infrastructure to be provisioned? With Cloud Foundry, which is a modern, open-source Platform as a Service, you can deploy your application instantly. Use Cloud Foundry for development, testing and production.
+            %a{:href => "#"} View more
+            %a.orangeBtn{:href => "#"} R.S.V.P
+        .comments.clearfix
+          %h4 Comments
+          %ul
+            %li
+              %img{:src => "/assets/default_human_face.jpg"}
+              .commentText
+                %p We are excited to announce a new version of Micro Cloud Foundry™ with a new set.
+                %span.commentDate November 08,2012
+            %li
+              %img{:src => "/assets/default_human_face.jpg"}
+              .commentText
+                %p A new release of Cloud Foundry Integration for Eclipse is available which features
+                %span.commentDate November 07,2012
+          .addCommentBox
+            %img{:src => "/assets/default_human_face.jpg"}
+            %textarea
+            %a.addBtn.btn{:href => ""} Add Comment
+      .span4
+        .chapterNameWithThumbnail.clearfix
+          %img.chapterThumbnail{:src => "/assets/pune_chapter.jpg"}/
+          %h3 Pune Chapter
+        .eventPeopleList
+          .listHeader
+            %span Organisers
+            %span.numberOfPeople 07
+          %ul.clearfix
+            %li
+              %img{:src => "/assets/human_face_1.jpg"}/
+              .personDetails
+                .personName Victor Jieh
+                .personRole Senior Solutions Architect
+            %li
+              %img{:src => "/assets/human_face_2.jpg"}/
+              .personDetails
+                .personName Ramnivas Laddad
+                .personRole Principal Engineer, SpringSource
+            %li
+              %img{:src => "/assets/human_face_3.jpg"}/
+              .personDetails
+                .personName Josh Long
+                .personRole Developer Advocate, SpringSource
+          %a{:href => "#"} View more
+        .eventPeopleList
+          .listHeader
+            %span Speakers
+            %span.numberOfPeople 06
+          %ul.clearfix
+            %li
+              %img{:src => "/assets/human_face_4.jpg"}/
+              .personDetails
+                .personName Gary Russell
+                .personRole Staff engineer, springSource
+            %li
+              %img{:src => "/assets/human_face_5.jpg"}/
+              .personDetails
+                .personName Jeremy Grelle
+                .personRole Sr Software Engineer, Spring...
+            %li
+              %img{:src => "/assets/human_face_6.jpg"}/
+              .personDetails
+                .personName Patrick Chanezon
+                .personRole Sr Director of Developer...
+          %a{:href => "#"} View more
+        .eventPeopleList
+          .listHeader
+            %span list of attendees
+            %span.numberOfPeople 06
+          %ul.clearfix
+            %li
+              %img{:src => "/assets/human_face_4.jpg"}/
+              .personDetails
+                .personName Chris Richardson
+
+            %li
+              %img{:src => "/assets/human_face_5.jpg"}/
+              .personDetails
+                .personName Jennifer Hickey
+            %li
+              %img{:src => "/assets/human_face_6.jpg"}/
+              .personDetails
+                .personName Oliver Gierke
+          %a{:href => "#"} View more
+:javascript
+  $('#ca-container').contentcarousel();

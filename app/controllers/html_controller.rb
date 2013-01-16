@@ -25,4 +25,7 @@ class HtmlController < ApplicationController
   def chapter_list
 
   end
+  def chapter_detail
+
+  end
 end
