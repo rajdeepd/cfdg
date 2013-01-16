@@ -22,6 +22,7 @@ gem 'gmaps4rails'
 gem 'jquery-rails'
 gem 'nokogiri'
 gem 'faraday'
+gem 'noty-rails'
 
 
 # Authentication with Federated Google identity tool kit

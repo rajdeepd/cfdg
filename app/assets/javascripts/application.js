@@ -12,6 +12,9 @@
 //
 //= require jquery_ujs
 //= require init
+//= require noty/jquery.noty
+//= require noty/layouts/topCenter
+//= require noty/themes/default
 //= require_tree .
 
 $(function(){
