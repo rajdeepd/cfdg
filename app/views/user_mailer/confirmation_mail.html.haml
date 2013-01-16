@@ -1,0 +1,9 @@
+Hi
+%br/
+%p
+  = @user.fullname
+  Welcome to CloudFoundry.
+%p
+  = "Please confirm: #{confirm_users_path(:token => @user.confirmation_token)}"
+%p
+  CloudFoundry Team

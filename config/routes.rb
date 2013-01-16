@@ -6,6 +6,7 @@ CloudfoundryUsergroups::Application.routes.draw do
   resources :users, :except => [:edit] do
     collection do
       put 'avatar'
+      get 'confirm'
     end
   end
 

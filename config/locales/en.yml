@@ -77,7 +77,16 @@ en:
   chapter:
     types:
       student: "Student"
-      professional: "Professional"
+      professional: "City"
     proposal: "Chapter Proposal"
     type: "Chapter Type"
     location: "Chapter Location"
+  
+  confirmation:
+    user:
+      notice: "We've just send you an email to confirm your email address. Please click the link provided in the mail within 30 minutes to complete your registration."
+
+
+  mail:
+    confirmation:
+      subject: "We need to confirm your email address." 

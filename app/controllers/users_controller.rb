@@ -1,19 +1,7 @@
 class UsersController < ApplicationController
   layout 'chapters'
 
-  def index
-    respond_to do |format|
-      format.json { render json: @uploads.map{|upload| upload.to_jq_upload } }
-    end
-  end
-
-  def new
-    @countries = Country.all
-    @states = @countries.first.states
-    @cities = @states.first.cities
-
-    @user = User.new
-  end
+  before_filter :user_required!, :only => [:edit, :update, :avatar, :profile, :confirm]
 
   def edit
     @user = current_user
@@ -60,9 +48,17 @@ class UsersController < ApplicationController
     end
 
     if @user.update_attributes(attrs)
-      redirect_to profile_url
-    else
+      if @user.is_confirmed?
+        redirect_to profile_url
+      else
+        # sending confirmation email
+        @user.generate_confirmation_token!
+        UserMailer.confirmation_mail(@user).deliver
 
+        respond_to do |format|
+          format.html { render "email_confirmation_notice", :layout => "chapters" }
+        end
+      end
     end
   end
 
@@ -88,5 +84,27 @@ class UsersController < ApplicationController
     @chapter = chapter_member.chapter if chapter_member
     @is_primary_coord = ChapterMember.is_primary_coordinator?(@user.id)
     @is_secondary_coord = ChapterMember.is_secondary_coordinator?(@user_id)
+  end
+
+  def confirm
+    @user = User.find_by_confirmation_token(params[:token])
+    
+    # if it is not timed out, 30 minutes.
+    if Time.now.to_i - @user.confirmation_sent_at.to_i <= 1800
+
+      # email address is confirmed
+      @user.update_attribute(:confirmed_at, Time.now)
+
+      sign_in_and_redirect @user, :event => :authentication
+    else
+      # send another
+      
+      @user.generate_confirmation_token! 
+      UserMailer.confirmation_mail(@user).deliver 
+      
+      respond_to do |format|
+        format.html { render "email_confirmation_notice", :layout => "chapters" }
+      end
+    end
   end
 end

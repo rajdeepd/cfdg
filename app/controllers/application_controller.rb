@@ -7,11 +7,17 @@ class ApplicationController < ActionController::Base
   helper_method :admin_user
 
 
-  def authenticate!
-    if current_user.nil?
-      redirect_to root_path()
+  def user_required!
+    redirect_to root_path() if current_user.nil?
+  end
+
+  def authenticate_member!
+    user_required!
+
+    if current_user.email.blank?
+      redirect_to settings_path()
     else 
-      if current_user.email.blank?
+      if !current_user.is_confirmed?
         redirect_to settings_path()
       end
     end

@@ -7,4 +7,9 @@ class UserMailer < ActionMailer::Base
     @user = user
     mail(:to => "kunalb@weboniselab.com",:bcc => ["aditya@weboniselab.com", "apurva@weboniselab.com"], :subject => "Welcome mail")
   end
+
+  def confirmation_mail(user)
+    @user = user
+    mail(:to => @user.email, :subject => I18n.t("mail.confirmation.subject"))
+  end
 end
