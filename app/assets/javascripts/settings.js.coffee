@@ -6,7 +6,12 @@ App.loadInstitution = (collegeId) ->
       $institution.append("<option value='#{institution.id}'>#{institution.name}</option>"); 
 $ ->
   if $("body").data('controller') == 'users' && $("body").data('action') == 'edit'
-    $('#avatar-upload').fileupload
+
+    $avatarUpload = $("#avatar-upload")
+    $avatarLoader = $("#upload-loader")
+
+    # avatar upload:
+    $avatarUpload.fileupload
       url: "/users/avatar",
       add: (e, data) ->
         jqXHR = data.submit().success (data, status, xhr) ->
@@ -15,6 +20,9 @@ $ ->
       progressall: (e, data) ->        
         progress = parseInt(data.loaded / data.total * 100, 10)
         console.log("Now progress..." + progress)
+
+    $avatarUpload.bind 'fileuploadstart', () -> $avatarLoader.show()
+    $avatarUpload.bind 'fileuploadstop', () -> $avatarLoader.hide()
 
     $.get "/regions", (data, status, xhr) ->
       $('#user_county').data('countries', data.countries);

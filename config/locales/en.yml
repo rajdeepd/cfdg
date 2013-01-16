@@ -64,7 +64,7 @@ en:
   
   settings:
     personal_info: "Please enter your personal info:"
-    role_info: "Specify your role:"
+    role_info: "Please enter your professional info:"
     college_not_found: "School Not Found"
     institution_not_found: "Institution Not Found"
     back_to_select: "Back To Select"

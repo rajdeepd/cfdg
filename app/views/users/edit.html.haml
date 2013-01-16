@@ -10,6 +10,7 @@
             - else
               %img.profile-image{:src => "/assets/default-Profile-Image.png"}/
           = f.file_field :avatar, :id => 'avatar-upload'
+          = image_tag "loader-tiny.gif", :id => "upload-loader", :class => "hide"
         .forms_list
           #formfirst.formfirst
             %h4.form1
