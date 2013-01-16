@@ -1,0 +1,12 @@
+= javascript_include_tag "jquery.timepicker.min"
+:javascript
+  $(document).ready(function(){
+     $('#onselectExample').timepicker();
+     $('#onselectExample').on('changeTime', function() {
+     	$('#onselectTarget').text($(this).val());
+     });
+  });
+
+
+.content
+  %input#onselectExample.time.ui-timepicker-input{:autocomplete => "off", :type => "text"}/
