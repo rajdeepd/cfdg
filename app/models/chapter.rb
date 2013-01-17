@@ -72,21 +72,21 @@ class Chapter < ActiveRecord::Base
   end
 
   def self.find_chapter_for_user(user)
-    chatpers = Hash.new
+    chapters = { Chapter::CITY => [], Chapter::STUDENT => [] } 
 
     case user.role.to_sym
     when :professional, :fan
-      chapters[:city] = user.city.chapters
+      chapters[Chapter::CITY] = user.city.chapters
     when :student
-      chapters[:student] = user.college.try(:chapters)
-      chapters[:city] = user.city.chapters
+      chapters[Chapter::STUDENT] = user.college.try(:chapters)
+      chapters[Chapter::CITY] = user.city.chapters
     end
 
     chapters
   end
 
   def location
-    if self.chapter_type == "student"
+    if self.is_type_student?
       self.college.name
     else
       self.city.detail
@@ -146,11 +146,11 @@ class Chapter < ActiveRecord::Base
   def setup_with_user(user)
     if user.is_student?
       self.name = "CFDG - #{user.college.name}"
-      self.chapter_type = "student"
+      self.chapter_type = Chapter::STUDENT
       self.college = user.college
     else
       self.name = "CFDG - #{user.city.name}"
-      self.chapter_type = "professional"
+      self.chapter_type = Chapter::CITY
       self.city = user.city
     end
   end

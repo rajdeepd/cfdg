@@ -47,6 +47,8 @@ class UsersController < ApplicationController
       @user.company_info.try(:destroy)
     end
 
+    binding.pry
+
     if @user.update_attributes(attrs)
       if @user.is_confirmed?
         redirect_to profile_url, :notice => "Your settings have been updated."

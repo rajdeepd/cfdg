@@ -5,6 +5,10 @@ class ChaptersController < ApplicationController
     Carmen.i18n_backend.locale = locale if locale
   end
 
+  def recommend_chapters
+      
+  end
+
   def subregion_options
     render partial: 'subregion_select'
   end
@@ -88,7 +92,6 @@ class ChaptersController < ApplicationController
   # POST /chapters.json
 
   def create
-
     @admin = User.find_by_email("admin@cloudfoundry.com")
 
     @chapter = Chapter.new(params[:chapter])
@@ -100,9 +103,10 @@ class ChaptersController < ApplicationController
       if @chapter.save
         member.chapter_id = @chapter.id
         member.save
-        format.html { redirect_to @chapter, notice: 'Chapter was successfully created.' }
+        format.html { redirect_to @chapter, notice: ['Chapter was successfully created.'] }
         format.json { render json: @chapter, status: :created, location: @chapter }
       else
+        flash[:error] = @chapter.errors.to_a
         format.html { render action: "new" , :layout => "create_chapter"}
         format.json { render json: @chapter.errors, status: :unprocessable_entity }
       end
@@ -177,6 +181,10 @@ class ChaptersController < ApplicationController
   end
 
   def recommend
-
+    @chapters = Chapter.find_chapter_for_user(current_user)
+    
+    respond_to do |format|
+      format.html
+    end
   end
 end

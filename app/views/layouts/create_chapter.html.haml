@@ -12,6 +12,7 @@
 
     = csrf_meta_tags
   %body
+    = render "shared/flash_messages"
     = render "shared/header"
     = yield
     = render "shared/footer"
