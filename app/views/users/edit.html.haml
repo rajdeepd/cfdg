@@ -3,7 +3,7 @@
     .ca-left
       =form_for(@user, :as => :user, :url => user_path(@user), :html => { :method => :put ,  :multipart => true}) do |f|
         #welcome
-          %h3 Welcome #{@user.fullname}!
+          %h3 Welcome #{@user.name}!
           %div
             - if @user.avatar_file_name && (@user.errors[:avatar_content_type].blank? && @user.errors[:avatar_file_size].blank?)
               %img.profile-image{:src => @user.try(:avatar).url(:medium)}/
@@ -16,17 +16,18 @@
             %h4.form1
               = t('settings.personal_info')
             %div
-              = f.text_field :last_name ,  :placeholder => t('user_info.last_name'), :class => "textboxes input-a"
-            %div
-              = f.text_field :first_name , :placeholder => t('user_info.first_name'), :class => "textboxes input-a"
+              = f.text_field :name ,  :placeholder => t('user_info.name'), :class => "textboxes input-a"
             %div
               = f.text_field :email ,      :placeholder => t('user_info.email'),    :class => "textboxes input-a"
             %div
               = f.text_field :mobile ,     :placeholder => t('user_info.mobile'),    :class => "textboxes input-a"
             %div
               = f.select :country, @countries.collect { |c| [c.name, c.name]}
+              %br
               = f.select :state, options_for_select(@states.collect { |s| [s.name, s.id]}, @state.id) 
+              %br
               = f.select :city_id, options_for_select(@cities.collect { |c| [c.name, c.id]}, @city.id)
+              %br
 
           / .line_space
           #formsecond.formsecond

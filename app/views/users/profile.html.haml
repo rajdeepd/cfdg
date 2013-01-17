@@ -3,7 +3,7 @@
     .cc-top
       = avatar_display_pic(@user,'thumb', '100x100','profile.png',"profile-img img-a flt-left")
       %h2.label-34 
-        = "#{t('profile.welcome')} #{@user.fullname}"
+        = "#{t('profile.welcome')} #{@user.name}"
       %h5.label-20 
         = "#{t('profile.location')} #{@user.city.detail}"
       %a.label-35{:href => "#{settings_path}"} 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130116141022) do
+ActiveRecord::Schema.define(:version => 20130117020356) do
 
   create_table "announcements", :force => true do |t|
     t.string   "title"
@@ -292,8 +292,6 @@ ActiveRecord::Schema.define(:version => 20130116141022) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                                :null => false
     t.datetime "updated_at",                                :null => false
-    t.string   "first_name"
-    t.string   "last_name"
     t.string   "fullname"
     t.integer  "created_by"
     t.integer  "updated_by"
@@ -319,6 +317,7 @@ ActiveRecord::Schema.define(:version => 20130116141022) do
     t.string   "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
+    t.string   "name"
   end
 
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true
