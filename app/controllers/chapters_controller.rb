@@ -1,5 +1,4 @@
 class ChaptersController < ApplicationController
-  #before_filter :authenticate!, :except => [:show]
 
   before_filter do
     locale = params[:locale]
@@ -57,12 +56,9 @@ class ChaptersController < ApplicationController
   # GET /chapters/new
   # GET /chapters/new.json
   def new
-    @chapter = Chapter.find_chapter_for_user(current_user)
-
     if @chapter
       redirect_to @chapter
     else
-
       @chapter = Chapter.new
 
       @chapter.chapter_type = current_user.is_student? ? Chapter::STUDENT : Chapter::CITY    
@@ -181,6 +177,6 @@ class ChaptersController < ApplicationController
   end
 
   def recommend
-    render :layout => "chapters" 
+
   end
 end
