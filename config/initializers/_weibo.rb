@@ -7,6 +7,6 @@ when 'staging'
   ENV['WEIBO_ID'] = '3847688790'
   ENV['WEIBO_SECRET'] = 'cd73aebcfcd2d34096bd46300a8ad4a9'
 when 'production'
-  ENV['WEIBO_ID'] = '1881139527'
-  ENV['WEIBO_SECRET'] = 'e8025df11a3c78164dbbb06f8e5ee1b8'
+  ENV['WEIBO_ID'] = '3014686913'
+  ENV['WEIBO_SECRET'] = '9929ae903db46e0ac73332ca6a10d081'
 end
