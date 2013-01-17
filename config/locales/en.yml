@@ -47,6 +47,7 @@ en:
     name: "Name" 
     email: "Email"
     mobile: "Mobile"
+    upload_avatar: "Edit Profile Picture"
 
   company_info:
     company_name: "Company Name"

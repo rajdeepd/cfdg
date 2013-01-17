@@ -1536,3 +1536,25 @@ p.label-53{margin-bottom: 15px;}
 .hide {
   display: none;
 }
+
+/* file upload style in user#edit */
+.upload-button {
+  position: relative;
+  overflow: hidden;
+}
+
+.upload-button span {
+  color: #0097d8;
+}
+
+.upload-button input {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+  border: solid transparent;
+  border-width: 0 0 0px 0px;
+  opacity: 0;
+  direction: ltr;
+  cursor: pointer;
+}

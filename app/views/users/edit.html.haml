@@ -9,7 +9,10 @@
               %img.profile-image{:src => @user.try(:avatar).url(:medium)}/
             - else
               %img.profile-image{:src => "/assets/default-Profile-Image.png"}/
-          = f.file_field :avatar, :id => 'avatar-upload'
+          %span.upload-button
+            %span
+              = t("user_info.upload_avatar")
+            = f.file_field :avatar, :id => 'avatar-upload'
           = image_tag "loader-tiny.gif", :id => "upload-loader", :class => "hide"
         .forms_list
           #formfirst.formfirst
