@@ -1,5 +1,5 @@
 class ChaptersController < ApplicationController
-  before_filter :authenticate!, :except => [:show]
+  #before_filter :authenticate!, :except => [:show]
 
   before_filter do
     locale = params[:locale]
@@ -57,7 +57,6 @@ class ChaptersController < ApplicationController
   # GET /chapters/new
   # GET /chapters/new.json
   def new
-    #binding.pry
     @chapter = Chapter.find_chapter_for_user(current_user)
 
     if @chapter
@@ -66,9 +65,9 @@ class ChaptersController < ApplicationController
 
       @chapter = Chapter.new
 
-      @chapter.chapter_type = current_user.is_student? ? "student" : "professional"    
+      @chapter.chapter_type = current_user.is_student? ? Chapter::STUDENT : Chapter::CITY    
 
-      if @chapter.chapter_type == "student"
+      if @chapter.is_type_student?
         @chapter.college = current_user.college
       else
         @chapter.city = current_user.city
@@ -179,5 +178,9 @@ class ChaptersController < ApplicationController
     #@upcoming_events = @upcoming_events.paginate(:page => params[:page], :per_page => 5)
     @past_events.sort!
     @past_events = @past_events.paginate(:page => params[:page], :per_page => 10)
+  end
+
+  def recommend
+    render :layout => "chapters" 
   end
 end

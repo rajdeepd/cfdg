@@ -1,8 +1,8 @@
 CloudfoundryUsergroups::Application.routes.draw do
- 
+
 
   mount Ckeditor::Engine => '/ckeditor'
-  
+
   resources :users, :except => [:edit] do
     collection do
       put 'avatar'
@@ -28,6 +28,14 @@ CloudfoundryUsergroups::Application.routes.draw do
     end
   end
 
+  resources :chapters do
+    resources :events
+    collection do
+      post 'join_a_chapter'
+      get  'chapter_admin_home_page'
+      get 'recommend'
+    end
+  end
 
   # Above this line is revised.
 
@@ -36,14 +44,8 @@ CloudfoundryUsergroups::Application.routes.draw do
   get '/directory' => 'home#directory' , :as => "directory"
   get '/about' => 'home#about' , :as => "about"
   get '/wiki' => 'home#wiki' , :as => "wiki"
-  
-  resources :chapters do
-    resources :events
-     collection do
-      post 'join_a_chapter'
-      get  'chapter_admin_home_page'
-     end
-  end
+
+
 
   resources :messages , :as => "mail_messages" do
     collection do
@@ -78,14 +80,14 @@ CloudfoundryUsergroups::Application.routes.draw do
     end
   end
 
-#resources :events, :has_many => :comments
+  #resources :events, :has_many => :comments
 
-#scope ':locale' do
+  #scope ':locale' do
   #devise_for :users , :controllers => { :registrations => "registrations" } do
-    #get '/signin' => 'devise/sessions#new'   
-    #get '/users/confirm', :to => 'devise/confirmations#new'
-    #get '/users/reset_password', :to => 'devise/passwords#new'
-    #get '/users/change_password', :to => 'devise/passwords#edit'
+  #get '/signin' => 'devise/sessions#new'   
+  #get '/users/confirm', :to => 'devise/confirmations#new'
+  #get '/users/reset_password', :to => 'devise/passwords#new'
+  #get '/users/change_password', :to => 'devise/passwords#edit'
   #end
   get "admin/log_out" => "admin/sessions#destroy", :as => "log_out"
   get '/sign_up' , :to => 'users#edit'
@@ -93,17 +95,17 @@ CloudfoundryUsergroups::Application.routes.draw do
   match '/verify_user' => 'federated#verify_user'
   match '/user_status' => 'federated#user_status'
   match '/login' => 'federated#login', :as => :login
-  
+
   match 'settings_update/:id' => 'users#settings_update' , :as => :settings_update , :via => :put
 
-   
-
-#  match '/catchtoken' => 'home#catchtoken'
-#  get '/event' , :to => 'home#event'
-#  get '/mine' , :to => "home#mine"
 
 
-   namespace :admin do
+  #  match '/catchtoken' => 'home#catchtoken'
+  #  get '/event' , :to => 'home#event'
+  #  get '/mine' , :to => "home#mine"
+
+
+  namespace :admin do
     resources :sessions
     resources :announcements do
       collection do
@@ -129,8 +131,8 @@ CloudfoundryUsergroups::Application.routes.draw do
         post 'create_secondary_coordinator'
       end
     end
-   end
-   
+  end
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -177,14 +179,14 @@ CloudfoundryUsergroups::Application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-#  root :to => 'home#index'
-#end
+  #  root :to => 'home#index'
+  #end
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-#  post '/local_selection/:local' , :to => "home#local_selection"
+  #  post '/local_selection/:local' , :to => "home#local_selection"
   root :to => 'home#index'
 
-  
+
 
   # See how all your routes lay out with "rake routes"
 
