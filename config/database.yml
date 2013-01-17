@@ -14,7 +14,7 @@ test:
   encoding: utf8
   database: cf_usergroups_test
   username: root
-  password: root
+  password: admin
   
 staging:
   adapter: mysql2
