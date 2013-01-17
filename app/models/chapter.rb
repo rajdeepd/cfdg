@@ -3,6 +3,9 @@ class Chapter < ActiveRecord::Base
   after_create :persist_geocode
   acts_as_soft_deletable
 
+  # Chapter Types
+  CITY = :city
+  STUDENT = :student
 
   has_many :chapter_members ,:dependent => :destroy
 
@@ -21,11 +24,7 @@ class Chapter < ActiveRecord::Base
   attr_accessible :name, :chapter_type, :country_id , :state_id, :city_id , :locality, :address ,:landmark,:chapter_status, :country_name, :state_name, :city_name,:messages_attributes,:rejected_on , :approved_on,:institution
 
   #validations
-  validates  :chapter_type, presence: true
-  #validates :locality, :address ,:landmark, presence: true , :if => lambda { |o| o.chapter_type == "student"}
-  #validates_uniqueness_of :city_name, :scope => [:state_name , :country_name], :if => lambda { |o| o.chapter_type == "professional"}
-  
-  #validates_with CityNameValidator
+  validates  :chapter_type, presence: true, :inclusion => [CITY, STUDENT]
   
   #Scopes
   scope :applied_chapters, where(:chapter_status => [:applied, :incubated,:denied])
@@ -63,21 +62,31 @@ class Chapter < ActiveRecord::Base
 
   end
 
+
+  def is_type_student?
+    self.chapter_type == Chapter::STUDENT
+  end
+
+  def is_type_city?
+    self.chapter_type == Chapter::CITY
+  end
+
   def self.find_chapter_for_user(user)
-    case user.role
-    when "professional", "fan"
-      user.city.chapters.first  
-    when ""
-      unless user.college.nil?
-        user.college.chapters.first
-      else
-        nil
-      end
+    chapters = { Chapter::CITY => [], Chapter::STUDENT => [] } 
+
+    case user.role.to_sym
+    when :professional, :fan
+      chapters[Chapter::CITY] = user.city.chapters
+    when :student
+      chapters[Chapter::STUDENT] = user.college.try(:chapters)
+      chapters[Chapter::CITY] = user.city.chapters
     end
+
+    chapters
   end
 
   def location
-    if self.chapter_type == "student"
+    if self.is_type_student?
       self.college.name
     else
       self.city.detail
@@ -137,11 +146,11 @@ class Chapter < ActiveRecord::Base
   def setup_with_user(user)
     if user.is_student?
       self.name = "CFDG - #{user.college.name}"
-      self.chapter_type = "student"
+      self.chapter_type = Chapter::STUDENT
       self.college = user.college
     else
       self.name = "CFDG - #{user.city.name}"
-      self.chapter_type = "professional"
+      self.chapter_type = Chapter::CITY
       self.city = user.city
     end
   end

@@ -1,0 +1,43 @@
+.content.wrapper
+  - if @chapters[Chapter::CITY].length == 0
+    %span
+      %h3
+        = t("chapter.recommendations.no_city_chapter")
+      - unless current_user.is_student?
+        = link_to t("chapter.recommendations.create_one"), new_chapter_path() 
+  - else
+    %span
+      %h3
+        = t("chapter.recommendations.city_chapter_found")
+        %br
+        %br
+        %ul.ui-j
+          - @chapters[Chapter::CITY].each do |chp|
+            %li{:style => "line-height:30px;"}
+              %img{:src => "/assets/"+"#{chp.chapter_status.try(:capitalize)}"+".png", :style=> "width:15px;height:16px;margin-bottom: -3px;"}/
+              = link_to chp.name, chapter_path(chp), :class => "label-28"
+              %span{:title => "Chapter type"}= "(#{chp.chapter_type.first})"
+
+
+  %br
+  %br
+  %br
+  %br
+  - if @chapters[Chapter::STUDENT].length == 0
+    %span
+      %h3
+        = t("chapter.recommendations.no_college_chapter")
+      - if current_user.is_student?
+        = link_to t("chapter.recommendations.create_one"), new_chapter_path() 
+  - else
+    %span
+      %h3
+        = t("chapter.recommendations.college_chapter_found")
+        %br
+        %br
+        %ul.ui-j
+          - @chapters[Chapter::STUDENT].each do |chp|
+            %li{:style => "line-height:30px;"}
+              %img{:src => "/assets/"+"#{chp.chapter_status.try(:capitalize)}"+".png", :style=> "width:15px;height:16px;margin-bottom: -3px;"}/
+              = link_to chp.name, chapter_path(chp), :class => "label-28"
+              %span{:title => "Chapter type"}= "(#{chp.chapter_type.first})"

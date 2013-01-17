@@ -1,9 +1,12 @@
 class ChaptersController < ApplicationController
-  before_filter :authenticate!, :except => [:show]
 
   before_filter do
     locale = params[:locale]
     Carmen.i18n_backend.locale = locale if locale
+  end
+
+  def recommend_chapters
+      
   end
 
   def subregion_options
@@ -57,18 +60,14 @@ class ChaptersController < ApplicationController
   # GET /chapters/new
   # GET /chapters/new.json
   def new
-    #binding.pry
-    @chapter = Chapter.find_chapter_for_user(current_user)
-
     if @chapter
       redirect_to @chapter
     else
-
       @chapter = Chapter.new
 
-      @chapter.chapter_type = current_user.is_student? ? "student" : "professional"    
+      @chapter.chapter_type = current_user.is_student? ? Chapter::STUDENT : Chapter::CITY    
 
-      if @chapter.chapter_type == "student"
+      if @chapter.is_type_student?
         @chapter.college = current_user.college
       else
         @chapter.city = current_user.city
@@ -93,7 +92,6 @@ class ChaptersController < ApplicationController
   # POST /chapters.json
 
   def create
-
     @admin = User.find_by_email("admin@cloudfoundry.com")
 
     @chapter = Chapter.new(params[:chapter])
@@ -105,9 +103,10 @@ class ChaptersController < ApplicationController
       if @chapter.save
         member.chapter_id = @chapter.id
         member.save
-        format.html { redirect_to @chapter, notice: 'Chapter was successfully created.' }
+        format.html { redirect_to @chapter, notice: ['Chapter was successfully created.'] }
         format.json { render json: @chapter, status: :created, location: @chapter }
       else
+        flash[:error] = @chapter.errors.to_a
         format.html { render action: "new" , :layout => "create_chapter"}
         format.json { render json: @chapter.errors, status: :unprocessable_entity }
       end
@@ -179,5 +178,13 @@ class ChaptersController < ApplicationController
     #@upcoming_events = @upcoming_events.paginate(:page => params[:page], :per_page => 5)
     @past_events.sort!
     @past_events = @past_events.paginate(:page => params[:page], :per_page => 10)
+  end
+
+  def recommend
+    @chapters = Chapter.find_chapter_for_user(current_user)
+    
+    respond_to do |format|
+      format.html
+    end
   end
 end

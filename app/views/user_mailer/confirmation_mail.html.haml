@@ -4,6 +4,6 @@ Hi
   = @user.fullname
   Welcome to CloudFoundry.
 %p
-  = "Please confirm: #{confirm_users_path(:token => @user.confirmation_token)}"
+  = "Please confirm: #{link_to confirm_users_url(:token => @user.confirmation_token), confirm_users_path(:token => @user.confirmation_token)}"
 %p
   CloudFoundry Team
