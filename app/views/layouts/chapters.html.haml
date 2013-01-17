@@ -18,18 +18,8 @@
     = csrf_meta_tags
 
   %body{ :"data-controller" => controller_name, :"data-action" => action_name }
-    - if flash[:notice] 
-      %p.flash.hide{ :"data-noty" => "information" }
-        - flash[:notice].each do |notice|
-          %span 
-            = notice
 
-    - if flash[:error]
-      %p.flash.hide{ :"data-noty" => "error" }
-        - flash[:error].each do |error|
-          %span
-            = error 
-
+    = render "shared/flash_messages"
     = render "shared/header"
     = yield
     = render "shared/footer"
