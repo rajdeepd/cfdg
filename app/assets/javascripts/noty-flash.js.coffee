@@ -6,6 +6,12 @@ $ ->
   
   if $flash.length > 0
     notyType = $flash.data("noty")
-    notyMessage = $flash.text()
+    msgSpans = $flash.children("span")
+
+    notyMessage = ""
+
+    for spn in msgSpans
+      notyMessage = "#{notyMessage}<br />" if notyMessage.length > 0
+      notyMessage = "#{notyMessage}#{$(spn).text()}"
 
     noty { text: notyMessage, type: notyType }

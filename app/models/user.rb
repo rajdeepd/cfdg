@@ -32,13 +32,17 @@ class User < ActiveRecord::Base
 
   attr_accessor :country, :state
 
+
   has_attached_file :avatar, :styles => { :medium => "157x161>", :thumb => "100x100>" , :mini => "60x60>" }, :path => ":attachment/:id/:style/:filename"
-  #before_post_process :set_content_type
 
 
-  #def set_content_type
-    #self.avatar.instance_write(:content_type, MIME::Types.type_for(self.avatar_file_name).to_s)
-  #end
+  # Validations
+  validates :name, :presence => true
+  validates :email, :presence => true, :format => { :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i, :message => "Invalid Email Address." }
+  validates :mobile, :presence => true
+
+  validates_associated :company_info, :if => "role == 'professional' || role == 'role'"
+  validates_associated :school_info, :if => "role == 'student'"
 
   def is_confirmed?
     !self.confirmed_at.nil?

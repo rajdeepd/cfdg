@@ -16,7 +16,7 @@ class UsersController < ApplicationController
 
     @user.build_company_info unless @user.company_info
     @user.build_school_info unless @user.school_info
-    
+
     @colleges = @state.colleges
     @college = @user.school_info.college.nil? ? @colleges.first : @user.school_info.college
     @institutions = @college.institutions
@@ -59,6 +59,25 @@ class UsersController < ApplicationController
           format.html { render "email_confirmation_notice", :layout => "chapters" }
         end
       end
+    else
+      flash[:error] = @user.errors.to_a
+
+      @countries = Country.all
+      @states = @countries.first.states
+
+      @state = current_user.city.nil? ? @states.first : @user.city.state 
+      @cities = @state.cities
+      @city = current_user.city.nil? ? @cities.first : @user.city 
+
+      @user.build_company_info unless @user.company_info
+      @user.build_school_info unless @user.school_info
+
+      @colleges = @state.colleges
+      @college = @user.school_info.college.nil? ? @colleges.first : @user.school_info.college
+      @institutions = @college.institutions
+      @institution = @user.school_info.institution.nil? ? @institutions.first : @user.school_info.institution
+
+      render "edit"
     end
   end
 
@@ -88,7 +107,7 @@ class UsersController < ApplicationController
 
   def confirm
     @user = User.find_by_confirmation_token(params[:token])
-    
+
     # if it is not timed out, 30 minutes.
     if Time.now.to_i - @user.confirmation_sent_at.to_i <= 1800
 
@@ -98,10 +117,10 @@ class UsersController < ApplicationController
       sign_in_and_redirect @user, :event => :authentication
     else
       # send another
-      
+
       @user.generate_confirmation_token! 
       UserMailer.confirmation_mail(@user).deliver 
-      
+
       respond_to do |format|
         format.html { render "email_confirmation_notice", :layout => "chapters" }
       end
