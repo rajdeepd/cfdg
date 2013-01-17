@@ -48,6 +48,7 @@ en:
     email: "Email"
     mobile: "Mobile"
     upload_avatar: "Edit Profile Picture"
+    updated: "Your settings have been updated."
 
   company_info:
     company_name: "Company Name"

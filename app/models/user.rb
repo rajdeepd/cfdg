@@ -41,8 +41,8 @@ class User < ActiveRecord::Base
   validates :email, :presence => true, :format => { :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i, :message => "Invalid Email Address." }
   validates :mobile, :presence => true
 
-  #validates_associated :company_info, :if => "role == 'professional' || role == 'role'"
-  #validates_associated :school_info, :if => "role == 'student'"
+  validates_associated :company_info, :if => "role == 'professional' || role == 'role'"
+  validates_associated :school_info, :if => "role == 'student'"
 
   def is_confirmed?
     !self.confirmed_at.nil?

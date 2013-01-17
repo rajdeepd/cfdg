@@ -5,7 +5,7 @@ class SchoolInfo < ActiveRecord::Base
   belongs_to :college
   belongs_to :institution
 
-  validates :other_college_name, :presence => true, :if => "college_id == NULL"
-  validates :industry, :presence => true, :if => "institution_id == NULL"
+  validates :other_college_name, :presence => true, :if => "college_id == nil"
+  validates :industry, :presence => true, :if => "institution_id == nil || college_id == nil"
   validates :graduated_at, :presence => true 
 end
