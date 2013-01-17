@@ -15,6 +15,10 @@ class OmniauthCallbacksController < ApplicationController
     sign_in_and_redirect @user, :event => :authentication
   end
 
+  def failure
+    redirect_to root_path, :notice => "error"
+  end
+
   private
   def extract_oauth_data(data)
     access_data = Hash.new
