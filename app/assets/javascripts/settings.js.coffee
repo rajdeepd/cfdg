@@ -79,3 +79,8 @@ $ ->
       $("#input-institution").fadeOut "fast", () -> 
         $("#user_school_info_attributes_other_institution_name").val("")
         $("#select-institution").fadeIn "fast"
+
+    # datepicker
+    $("#user_school_info_attributes_graduated_at").datepicker({
+      dateFormat: "yy-mm-dd" 
+    })
