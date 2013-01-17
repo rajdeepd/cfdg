@@ -15,6 +15,7 @@
 //= require noty/jquery.noty
 //= require noty/layouts/topCenter
 //= require noty/themes/default
+//= require jquery-ui-timepicker-addon.js
 //= require_tree .
 
 $(function(){

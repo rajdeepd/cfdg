@@ -44,10 +44,10 @@ en:
     earlier: "Earlier Announcements"
 
   user_info:
-    last_name: "Last Name"
-    first_name: "First Name"
+    name: "Name" 
     email: "Email"
     mobile: "Mobile"
+    upload_avatar: "Edit Profile Picture"
 
   company_info:
     company_name: "Company Name"

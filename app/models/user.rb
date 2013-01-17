@@ -26,7 +26,7 @@ class User < ActiveRecord::Base
   ROLES = %w(professional student fan)
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name, :last_name, :fullname,:mobile, :website_url, :linkedin_url, :twitter_url, 
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :mobile, :website_url, :linkedin_url, :twitter_url, 
                   :avatar, :company_info_attributes, :school_info_attributes, :city_id, :role, :confirmation_token, :confirmation_sent_at,
                   :location, :admin, :profile_picture, :provider, :uid, :access_token, :expires_at, :refresh_token 
 
@@ -35,8 +35,6 @@ class User < ActiveRecord::Base
   has_attached_file :avatar, :styles => { :medium => "157x161>", :thumb => "100x100>" , :mini => "60x60>" }, :path => ":attachment/:id/:style/:filename"
   #before_post_process :set_content_type
 
-
-  before_save :make_fullname
 
   #def set_content_type
     #self.avatar.instance_write(:content_type, MIME::Types.type_for(self.avatar_file_name).to_s)
@@ -81,10 +79,5 @@ class User < ActiveRecord::Base
 
   def college
     self.try(:school_info).college
-  end
-  
-  private
-  def make_fullname
-    self.fullname = "#{self.last_name}#{self.first_name}"  
   end
 end
