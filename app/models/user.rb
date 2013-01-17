@@ -30,7 +30,7 @@ class User < ActiveRecord::Base
                   :avatar, :company_info_attributes, :school_info_attributes, :city_id, :role, :confirmation_token, :confirmation_sent_at,
                   :location, :admin, :profile_picture, :provider, :uid, :access_token, :expires_at, :refresh_token 
 
-  attr_accessor :country, :state
+  attr_accessor :state
 
 
   has_attached_file :avatar, :styles => { :medium => "157x161>", :thumb => "100x100>" , :mini => "60x60>" }, :path => ":attachment/:id/:style/:filename"
