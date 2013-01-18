@@ -37,7 +37,8 @@
                 %button.btn-a-small.flt-right{:id=>"cancelled_event", :event_id => "#{event.id}" ,:disable => true,:style => "opacity:0.35"} CANCELLED
               -else
                 -if event.is_rsvp_allowed?
-                  %button.btn-a-small.flt-right.signin{:id=>"follow_an_event", :event_id => "#{event.id}"} R.S.V.P
+                  -#%button.btn-a-small.flt-right.signin{:id=>"follow_an_event", :event_id => "#{event.id}"} R.S.V.P
+                  = link_to "R.S.V.P",signin_path,:class => "btn-a-small flt-right",:id=>"follow_an_event", :event_id => "#{event.id}"
                 -elsif !event.is_rsvp_allowed?
 
                   %button.btn-a-small.flt-right{:id=>"join_wait_list"} Limit Reached!
