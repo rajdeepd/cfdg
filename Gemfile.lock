@@ -1,4 +1,11 @@
 GIT
+  remote: https://github.com/37signals/mail_view.git
+  revision: c8cc1315026ce85973ef56e628ac2e38a7a95563
+  specs:
+    mail_view (1.0.1)
+      tilt
+
+GIT
   remote: https://github.com/sowmyadumpa/userstamp.git
   revision: 5a6c5d8d86881603e1afa74faf80ef799e20626b
   specs:
@@ -315,6 +322,7 @@ DEPENDENCIES
   haml-rails (= 0.3.5)
   hirb
   jquery-rails
+  mail_view!
   mini_magick
   mysql2 (= 0.3.11)
   nokogiri

@@ -7,11 +7,6 @@ when 'staging'
   ENV['QQ_ID'] = '100361074'
   ENV['QQ_SECRET'] = '6fadb81eeaea40fb0af24bbd6c34fb45'
 when 'production'
-  ENV['QQ_ID'] = '100361074'
-  ENV['QQ_SECRET'] = '6fadb81eeaea40fb0af24bbd6c34fb45'
+  ENV['QQ_ID'] = '100365389'
+  ENV['QQ_SECRET'] = 'add24588ea1802bb4fdc8df31eef7820'
 end
-
-#use OmniAuth::Builder do
-  #provider :qq_connect,
-    #ENV['QQ_CONNECT_API_KEY'], ENV['QQ_CONNECT_API_SECRET'], scope: "get_user_info,add_share"
-#end

@@ -14,6 +14,7 @@ gem "paperclip"
 gem 'paperclip-qiniu'
 #gem 'mime-types', :require => 'mime/types'
 #gem 'RMagick', '0.3.7'
+gem 'mail_view', :git => 'https://github.com/37signals/mail_view.git'
 gem 'cancan', '1.6.5'
 gem 'eventbrite-client'
 gem 'userstamp', :git=>'https://github.com/sowmyadumpa/userstamp.git' #forked and added. will remove once the latest version of userstamp is inplace

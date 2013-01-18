@@ -3,6 +3,10 @@ class OmniauthCallbacksController < ApplicationController
     handle_callback
   end
 
+  def qq_connect
+    handle_callback
+  end
+
   def handle_callback
     logger.info("*** oauth data *****")
     logger.info(env['omniauth.auth'].inspect)
@@ -25,8 +29,8 @@ class OmniauthCallbacksController < ApplicationController
     provider = data['provider']
 
     access_data[:provider] = data["provider"]
-    access_data[:email] = data['info']['email']
     access_data[:uid] = data["uid"]                
+    access_data[:email] = data['info']['email']
     access_data[:name] = data['info']['name']                
     access_data[:access_token] = data['credentials']['token']
     access_data[:expires_at] = data['credentials']['expires_at']   

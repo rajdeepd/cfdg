@@ -1,9 +1,19 @@
-Hi
-%br/
-%p
-  = @user.fullname
-  Welcome to CloudFoundry.
-%p
-  = "Please confirm: #{link_to "Click Here to confirm:", confirm_users_url(:token => @user.confirmation_token)}"
-%p
-  CloudFoundry Team
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+  %body{:style => "font-family:'lucida grande','lucida sans unicode',lucida,'Helvetica Neue', helvetica,'Hiragino Sans GB', 'Microsoft YaHei', 'WenQuanYi Micro Hei',sans-serif; background-color:#FFF; margin:0; padding:20px;font-size:13px;"}
+    .container{:style => "width:80%;margin:0 auto;padding:20px;"}
+      .main{:style => "padding:20px;background-color:#FCFAF2;border:1px solid #d9d9d9;"}
+        .content{:style => "border-top:1px solid #d9d9d9;"}
+          %h3 请确认您的邮件
+          %p 请点击以下链接确认你的邮件，您的邮件将成为您在 Cloud Foundry 同学会 最重要的身份认证。
+          = link_to "Click Here to confirm:", confirm_users_url(:token => @user.confirmation_token)
+      .footer{:style => "font-size:12px;text-align:center"}
+        %p Copyright © 2012 Cloud Foundry 同学会
+        %p
+          %a{:href => "http://jianshu.io", :style => "color:#888;margin-right:15px"} 首页
+          %a{:href => "mailto:contact@jianshu.io", :style => "color:#888;margin-right:15px"} 电子邮件
+          %a{:href => "http://jianshu.io/notebooks/561/list", :style => "color:#888;margin-right:15px"} 博客
+          %a{:href => "http://weibo.com/jianshuio", :style => "color:#888;margin-right:20px"} 微博
+          %a{:href => "http://site.douban.com/181032/", :style => "color:#888;"} 豆瓣小站
