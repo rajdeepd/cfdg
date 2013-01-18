@@ -57,18 +57,32 @@
          $(".rsvp_me").hide();
          $("#rsvp_tick").show();
       },"script");
-    })
+    });
 
-     $(".less_info").show();
-          $(".more_info").hide();
-      $(".viewMore").click(function(){
-          $(".less_info").hide();
-          $(".more_info").show();
-      })
-      $(".viewLess").click(function(){
-            $(".less_info").show();
-            $(".more_info").hide();
-        })
+    $(".less_info").show();
+    $(".more_info").hide();
+    $(".viewMore").click(function(){
+      $(".less_info").hide();
+      $(".more_info").show();
+    });
+    $(".viewLess").click(function(){
+      $(".less_info").show();
+      $(".more_info").hide();
+    });
+
+
+    $(".less_comments").show();
+    $(".more_comments").hide();
+    $(".viewMoreComments").click(function(){
+      $(".less_comments").hide();
+      $(".more_comments").show();
+    });
+    $(".viewLessComments").click(function(){
+      $(".less_comments").show();
+      $(".more_comments").hide();
+    });
+
+
   });
 
   $(function() {
@@ -200,7 +214,35 @@
               %h4 Comments
             %ul
               .all_events_comments
-                -(@event.comments || []).each do |comment|
+
+                .less_comments
+                  -(@event.comments.last(4) || []).each do |comment|
+                    %li
+                      = avatar_display_pic(comment.user,'thumb', '50x50','profile.png',"img-c flt-left")
+                      %h5.label-27
+                        #{comment.user.fullname}
+                      .commentText
+                        %p #{comment.content}
+                        %span.commentDate #{Time.parse(comment.created_at.to_s).strftime("%b %d, %Y")}
+                  -if @event.comments.size < 4
+                    %span.viewMoreComments{:style => "display:none;"} View All
+                  -else
+                    %span.viewMoreComments View All
+                .more_comments
+                  -(@event.comments || []).each do |comment|
+                    %li
+                      = avatar_display_pic(comment.user,'thumb', '50x50','profile.png',"img-c flt-left")
+                      %h5.label-27
+                        #{comment.user.fullname}
+                      .commentText
+                        %p #{comment.content}
+                        %span.commentDate #{Time.parse(comment.created_at.to_s).strftime("%b %d, %Y")}
+                  %span.viewLessComments View Less
+
+
+
+
+                -#-(@event.comments.last(6) || []).each do |comment|
                   %li
                     = avatar_display_pic(comment.user,'thumb', '50x50','profile.png',"img-c flt-left")
                     %h5.label-27

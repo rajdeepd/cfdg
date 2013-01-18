@@ -61,15 +61,10 @@ ActiveRecord::Schema.define(:version => 20130116061517) do
   end
 
   create_table "cities", :force => true do |t|
-    t.string   "name"
-    t.integer  "state_id"
-    t.integer  "created_by"
-    t.integer  "updated_by"
-    t.datetime "deleted_at"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.integer  "country_id"
-    t.string   "details"
+    t.string  "name"
+    t.integer "country_id"
+    t.integer "state_id"
+    t.string  "details"
   end
 
   create_table "ckeditor_assets", :force => true do |t|
@@ -100,12 +95,7 @@ ActiveRecord::Schema.define(:version => 20130116061517) do
   end
 
   create_table "countries", :force => true do |t|
-    t.string   "name"
-    t.integer  "created_by"
-    t.integer  "updated_by"
-    t.datetime "deleted_at"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string "name"
   end
 
   create_table "delayed_jobs", :force => true do |t|
@@ -243,13 +233,8 @@ ActiveRecord::Schema.define(:version => 20130116061517) do
   end
 
   create_table "states", :force => true do |t|
-    t.string   "name"
-    t.integer  "country_id"
-    t.integer  "created_by"
-    t.integer  "updated_by"
-    t.datetime "deleted_at"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer "country_id"
+    t.string  "name"
   end
 
   create_table "users", :force => true do |t|
