@@ -38,7 +38,7 @@
                 = f.radio_button :role, role, :'data-tab' => role == 'student' ? '#school-info' : '#company-info'
                 = label "user_role_#{role}".to_sym, t("user_info.roles.#{role}")
             %div.info-blocks
-              %div.tab{ :id => "company-info", :class => ("hide" if current_user.role == 'student') }
+              %div.tab{ :id => "company-info", :class => ("hide" if @user.role == 'student') }
                 = f.fields_for :company_info do |builder|
                   %div
                     = builder.text_field :company_name, :placeholder => t('company_info.company_name'), :class => "textboxes input-a"
@@ -51,7 +51,7 @@
                   %div
                     = builder.text_field :tel, :placeholder => t('company_info.tel'),  :class => "textboxes input-a"
 
-              %div.tab{ :id => "school-info", :class => ("hide" unless current_user.role == 'student') }
+              %div.tab{ :id => "school-info", :class => ("hide" unless @user.role == 'student') }
                 = f.fields_for :school_info do |builder|
                   %div.select-college
                     %div(id="select-college"){ :class => ("hide" unless current_user.school_info.try(:other_college_name).blank?) }
