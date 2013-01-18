@@ -56,9 +56,9 @@ class UsersController < ApplicationController
         @user.generate_confirmation_token!
         UserMailer.confirmation_mail(@user).deliver
 
-        respond_to do |format|
-          format.html { render "email_confirmation_notice", :layout => "chapters" }
-        end
+        flash[:notice] = [I18n.t("confirmation.user.notice")]
+
+        redirect_to profile_path()
       end
     else
       flash[:error] = @user.errors.to_a
