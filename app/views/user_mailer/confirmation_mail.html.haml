@@ -7,10 +7,10 @@
       .main{:style => "padding:20px;background-color:#FCFAF2;border:1px solid #d9d9d9;"}
         .content{:style => "border-top:1px solid #d9d9d9;"}
           %h3 请确认您的邮件
-          %p 请点击以下链接确认你的邮件，您的邮件将成为您在「简书」最重要的身份认证。
+          %p 请点击以下链接确认你的邮件，您的邮件将成为您在 Cloud Foundry 同学会 最重要的身份认证。
           = link_to "Click Here to confirm:", confirm_users_url(:token => @user.confirmation_token)
       .footer{:style => "font-size:12px;text-align:center"}
-        %p Copyright © 2012 简书・属于写作者的笔记本
+        %p Copyright © 2012 Cloud Foundry 同学会
         %p
           %a{:href => "http://jianshu.io", :style => "color:#888;margin-right:15px"} 首页
           %a{:href => "mailto:contact@jianshu.io", :style => "color:#888;margin-right:15px"} 电子邮件
