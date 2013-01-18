@@ -18,7 +18,7 @@
         .commentText
           %p #{comment.content}
           %span.commentDate #{Time.parse(comment.created_at.to_s).strftime("%b %d, %Y")}
-    -if @event.comments.size < 4
+    -if @event.comments.size <= 4
       %span.viewMoreComments{:style => "display:none;"} View All
     -else
       %span.viewMoreComments View All

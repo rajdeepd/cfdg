@@ -139,5 +139,10 @@ class Chapter < ActiveRecord::Base
   def get_secondary_coordinators
     self.chapter_members.select{|i| i.memeber_type == ChapterMember::SECONDARY_COORDINATOR}.collect{|i| i.user}
   end
+
+  def get_secondary_coordinator_count
+    self.chapter_members.find_all_by_memeber_type("secondary coordinator")
+  end
+
 end
 
