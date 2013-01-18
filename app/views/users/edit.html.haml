@@ -26,7 +26,6 @@
               = f.text_field :mobile ,     :placeholder => t('user_info.mobile'),    :class => "textboxes input-a"
             %div
               = f.select :state, options_for_select(@states.collect { |s| [s.name, s.id]}, @state.id) 
-              %br
               = f.select :city_id, options_for_select(@cities.collect { |c| [c.name, c.id]}, @city.id)
               %br
 
