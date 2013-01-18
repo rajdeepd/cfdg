@@ -36,7 +36,7 @@
             %div.roles
               - User::ROLES.each do |role|
                 = f.radio_button :role, role, :'data-tab' => role == 'student' ? '#school-info' : '#company-info'
-                = label "user_role_#{role}".to_sym, role
+                = label "user_role_#{role}".to_sym, t("user_info.roles.#{role}")
             %div.info-blocks
               %div.tab{ :id => "company-info", :class => ("hide" if current_user.role == 'student') }
                 = f.fields_for :company_info do |builder|

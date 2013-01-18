@@ -186,6 +186,9 @@ CloudfoundryUsergroups::Application.routes.draw do
   #  post '/local_selection/:local' , :to => "home#local_selection"
   root :to => 'home#index'
 
+  if Rails.env.development?
+    mount MailPreview => 'mail_view'
+  end
 
 
   # See how all your routes lay out with "rake routes"

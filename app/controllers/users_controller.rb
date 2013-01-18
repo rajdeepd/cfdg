@@ -109,22 +109,28 @@ class UsersController < ApplicationController
   def confirm
     @user = User.find_by_confirmation_token(params[:token])
 
-    # if it is not timed out, 30 minutes.
-    if Time.now.to_i - @user.confirmation_sent_at.to_i <= 1800
+    unless @user.nil?
 
-      # email address is confirmed
-      @user.update_attribute(:confirmed_at, Time.now)
+      # if it is not timed out, 30 minutes.
+      if Time.now.to_i - @user.confirmation_sent_at.to_i <= 1800
 
-      sign_in_and_redirect @user, :event => :authentication
-    else
-      # send another
+        # email address is confirmed
+        @user.update_attribute(:confirmed_at, Time.now)
 
-      @user.generate_confirmation_token! 
-      UserMailer.confirmation_mail(@user).deliver 
+        flash[:notice] = [I18n.t("welcome.user_confirmed")]
 
-      respond_to do |format|
-        format.html { render "email_confirmation_notice", :layout => "chapters" }
+        sign_in_and_redirect @user, :event => :authentication
+      else
+        # send another
+
+        @user.generate_confirmation_token! 
+        UserMailer.confirmation_mail(@user).deliver 
+
+        flash[:notice] = [I18n.t("welcome.confirmation_resend")]
+        redirect_to profile_path() 
       end
+    else
+      redirect_to root_path()
     end
   end
 end

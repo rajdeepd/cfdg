@@ -33,6 +33,8 @@ en:
     about:  "These groups are focussed on learning and sharing information about Cloud foundry Open Source Paas. "
     title: "Cloud Foundry PLATFORM"
     desc: "CFDGs are groups for developers who are interested in "
+    user_confirmed: "You're account is confirmed and activated."
+    confirmation_resend: "Your confirmation has expired. We have sent a new confirmation to your email address, please confirm it in 30 minutes." 
 
   chapter:
     create_title: "Create a Chapter!"
@@ -49,6 +51,10 @@ en:
     mobile: "Mobile"
     upload_avatar: "Edit Profile Picture"
     updated: "Your settings have been updated."
+    roles:
+      professional: "Professional"
+      student: "Student"
+      fan: "Fan"
 
   company_info:
     company_name: "Company Name"

@@ -32,7 +32,7 @@ module CloudfoundryUsergroups
 
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
-    # config.i18n.default_locale = :de
+    config.i18n.default_locale = :cn
 
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = "utf-8"
@@ -56,11 +56,10 @@ module CloudfoundryUsergroups
 
     # Enable the asset pipeline
     config.assets.enabled = true
-    config.time_zone = 'Kolkata'
+    config.time_zone = 'Beijing'
     config.autoload_paths += %W(#{config.root}/app/models/ckeditor)
 
     config.action_mailer.default_url_options = {:host => "cfdg.cloudfoundry.com"}
-    #config.action_mailer.default_url_options = {:host => "local.cfdg.com"}
 
     config.generators do |g|
       g.template_engine :haml
