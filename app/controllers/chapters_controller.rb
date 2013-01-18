@@ -144,6 +144,7 @@ class ChaptersController < ApplicationController
     member = ChapterMember.new({:memeber_type=>ChapterMember::MEMBER, :user_id => @current_user.id, :chapter_id => @chapter.id}) 
     respond_to do |format|
       if member.save
+        ChapterNotifications.chapter_joined(@chapter,@current_user).deliver
          format.html { redirect_to @chapter }
          format.json { render json: @chapter, status: :success, location: @chapter }
       else
