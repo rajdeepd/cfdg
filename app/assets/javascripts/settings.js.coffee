@@ -5,7 +5,7 @@ App.loadInstitution = (collegeId) ->
     for institution in data
       $institution.append("<option value='#{institution.id}'>#{institution.name}</option>")
 $ ->
-  if $("body").data('controller') == 'users' && $("body").data('action') == 'edit'
+  if $("body").data('controller') == 'users' and ($("body").data('action') == 'edit' or $("body").data('action') == 'update')
 
     $avatarUpload = $("#avatar-upload")
     $avatarLoader = $("#upload-loader")
