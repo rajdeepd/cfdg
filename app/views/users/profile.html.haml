@@ -5,7 +5,7 @@
       %h2.label-34 
         = "#{t('profile.welcome')} #{@user.name}"
       %h5.label-20 
-        = "#{t('profile.location')} #{@user.city.detail}"
+        = "#{t('profile.location')} #{@user.city.try(:detail)}"
       %a.label-35{:href => "#{settings_path}"} 
         = t('profile.my_account')
 

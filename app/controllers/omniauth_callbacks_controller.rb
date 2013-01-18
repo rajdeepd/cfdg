@@ -29,8 +29,8 @@ class OmniauthCallbacksController < ApplicationController
     provider = data['provider']
 
     access_data[:provider] = data["provider"]
-    access_data[:email] = data['info']['email']
     access_data[:uid] = data["uid"]                
+    access_data[:email] = data['info']['email']
     access_data[:name] = data['info']['name']                
     access_data[:access_token] = data['credentials']['token']
     access_data[:expires_at] = data['credentials']['expires_at']   
