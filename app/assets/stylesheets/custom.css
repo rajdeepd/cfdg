@@ -137,7 +137,7 @@ header ul li:first-child{
     text-transform: uppercase;
     text-shadow: 0 1px 1px #ffffff;
 }
-.navbar ul.nav li:hover{
+.navbar ul.nav li:hover a{
     border-bottom: 2px solid #00bde7;
     color: #333333;
     height: 50px;
@@ -165,7 +165,7 @@ header ul li:first-child{
     height: 50px;
     display: block;
     border-bottom: 2px solid #00bde7;
-    padding-left: 10px;
+    padding-left: 23px;
 }
 .chapter{
     background: url("chapter_normal.png") no-repeat 48px 19px;
@@ -177,7 +177,7 @@ header ul li:first-child{
     height: 50px;
     display: block;
     border-bottom: 2px solid #00bde7;
-    padding-left: 2px;
+    padding-left: 32px;
 }
 .noEventText{
     text-align: center;
@@ -189,11 +189,12 @@ header ul li:first-child{
     height: 52px;
     display: block;
 }
-.event.activeTab{
-    background: url("event_bg.png") no-repeat 3px 2px;
+.nav li a.event.activeTab{
+    background: url("event_bg.png") no-repeat 1px 2px;
     height: 50px;
     display: block;
     border-bottom: 2px solid #00bde7;
+    padding-left: 17px;
 }
 .wiki{
     background: url("wiki_normal.png") no-repeat 75px 18px;
@@ -205,7 +206,7 @@ header ul li:first-child{
     height: 50px;
     display: block;
     border-bottom: 2px solid #00bde7;
-    padding-left: 5px;
+    padding-left: 10px;
 }
 
 .bodyWrapper .content{
@@ -298,9 +299,12 @@ header ul li:first-child{
     margin-bottom: 20px;
 }
 #news-container ul li{
-    margin:20px 20px 25px 20px !important;
+    margin:10px 20px 15px 20px !important;
+    padding: 10px 0 !important;
     height: 130px !important;
     display: block;
+    border-bottom: 1px solid #cccccc;
+    overflow: hidden;
 }
 #news-container{
     height: 490px !important;
@@ -324,10 +328,13 @@ header ul li:first-child{
 .textBox .date{
     font-size: 12px;
     font-weight: normal;
-    color: #333333;
+    color: #888888;
     font-family: helvetica;
     display: block;
     margin-bottom: 5px;
+}
+.textBox p{
+    color: #888888;
 }
 .textBox h4{
     font-size: 16px;
@@ -539,9 +546,8 @@ footer .footerBottom p{
 ul.supportPrivacyLinks{
     list-style: circle;
     color: #ffffff;
-    width: 470px;
+    width: 475px;
     margin: 0 auto;
-
 }
 ul.supportPrivacyLinks li{
     float: left;
@@ -549,7 +555,6 @@ ul.supportPrivacyLinks li{
     margin-right: 20px;
     list-style-position: inside;
 }
-
 .termsOfService{
     margin-top: 5px;
 }
@@ -584,7 +589,7 @@ ul.supportPrivacyLinks li{
     background: url("blue_header_with_tag_bg.jpg") no-repeat 0 -2px;
     width: 910px;
     height: 90px;
-    padding: 30px 0 0 30px;
+    padding: 27px 0 0 30px;
     text-shadow: 0 1px rgba(0, 0, 0, 0.3);
     margin-top: 2px;
     border-radius: 4px;
@@ -594,7 +599,11 @@ ul.supportPrivacyLinks li{
     float: left;
     color: #ffffff;
     font-size: 36px;
-
+}
+.blueHeader .tag{
+    float: right;
+    margin-top: -30px;
+    margin-right: 20px;
 }
 .blueHeader .chapterLocation{
     float: left;
@@ -694,7 +703,8 @@ ul.supportPrivacyLinks li{
     margin-right: 10px;
 }
 .eventPeopleList ul{
-    /*padding-bottom: 10px;*/
+    height: 190px;
+    overflow-y: auto;
 }
 .eventPeopleList ul li{
     margin: 20px 0 10px 20px;
@@ -774,6 +784,10 @@ ul.supportPrivacyLinks li{
     line-height: 20px;
     color: #333;
     margin-bottom: 20px;
+}
+.viewMore , .viewLess{
+    color: #0094D4;
+    cursor: pointer;
 }
 .eventDetail a{
     color: #0094d4;
@@ -858,17 +872,17 @@ ul.supportPrivacyLinks li{
 }
 .mapDiv .close{
     float: right;
-    font-size: 10px;
+    font-size: 12px;
     color: #ffffff;
     margin-right: 5px;
     position: absolute;
-    right: -10px;
-    top: -11px;
-    z-index: 1000;
-    padding: 0 5px;
+    right: 4px;
+    top: -17px;
+    z-index: -1;
+    padding: 0 4px;
     opacity: 1;
     background: #0094B6;
-    border-radius: 18px;
+    line-height: 16px;
 }
 .mapDiv .map_container{
     width: 579px;
@@ -1220,12 +1234,12 @@ ul.supportPrivacyLinks li{
     margin-top: 60px;
 }
 .content .comingEvents .ca-container{
-    height: 405px;
+    height: 415px;
     width: 891px;
 }
 .content .comingEvents .ca-item{
     width: 288px;
-    height: 395px;
+    height: 397px;
 }
 .content .comingEvents .ca-item-main{
     padding: 0;
@@ -1234,6 +1248,12 @@ ul.supportPrivacyLinks li{
 }
 .content .comingEvents .span4{
     margin-left: 0;
+}
+.alert.alert-error p{
+    color: #B94A48 !important;
+}
+.alert.alert-info p{
+    color: #3A87AD;
 }
 .alert{
     width: 880px;
@@ -1252,10 +1272,4 @@ ul.supportPrivacyLinks li{
 }
 .div-h a.btn-a-small.flt-right{
     padding-top: 6px;
-}
-
-.activeTab {
-    border-bottom: 2px solid #00bde7;
-    color: #333333;
-    height: 50px;
 }

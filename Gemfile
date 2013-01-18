@@ -54,6 +54,7 @@ end
 group :development do
   gem 'hirb'
   gem "pry-remote"
+  gem 'meta_request', '0.2.1'
 end
 
 
@@ -86,7 +87,7 @@ gem 'rails3-jquery-autocomplete'
 
 # To use Jbuilder templates for JSON
 gem 'jbuilder'
-gem "rmagick"
+#gem "rmagick"
 
 # Use unicorn as the app server
 # gem 'unicorn'

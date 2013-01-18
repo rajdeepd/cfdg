@@ -58,6 +58,17 @@
          $("#rsvp_tick").show();
       },"script");
     })
+
+     $(".less_info").show();
+          $(".more_info").hide();
+      $(".viewMore").click(function(){
+          $(".less_info").hide();
+          $(".more_info").show();
+      })
+      $(".viewLess").click(function(){
+            $(".less_info").show();
+            $(".more_info").hide();
+        })
   });
 
   $(function() {
@@ -111,6 +122,8 @@
       %span.activePage
         =@event.title
     .blueHeader
+      .tag
+        %img{:src => "/assets/student_event_header_tag.png"}
       .chapterName.clearfix
         %h1
           =@event.title
@@ -142,8 +155,15 @@
             .eventDetail.clearfix
               %h4 Description
               -#%p What if you could deploy and scale your applications within seconds? And never had to wait again for infrastructure to be provisioned? With Cloud Foundry, which is a modern, open-source Platform as a Service, you can deploy your application instantly. Use Cloud Foundry for development, testing and production.
-              %p #{@event.description}
-              -#%a{:href => "#"} View more
+              .less_info
+                %p #{@event.description.truncate(300)}
+                -if @event.description.length < 300
+                  %span.viewMore{:style => "display:none;"} View More
+                -else
+                  %span.viewMore View More
+              .more_info
+                %p #{@event.description}
+                %span.viewLess Less Info
               -if !@event.is_past_event?
                 -if !current_user.blank? and  (current_user.id != @event.created_by)
                   -if @event.is_cancelled?
@@ -250,3 +270,4 @@
                     .personName #{i.fullname}
 
                 -#%a{:href => "#"} View more
+
