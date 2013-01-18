@@ -1397,6 +1397,7 @@ li.ui-timepicker-selected .ui-timepicker-duration,
 .formBox .form-horizontal .timeBox input{
     width: 130px;
     float: left;
+    background: url("dropdown_arrow.png") #ffffff no-repeat right center;
 }
 .formBox .form-horizontal .timeBox img{
     margin: 1px 0 0 -30px;
@@ -1427,4 +1428,15 @@ li.ui-timepicker-selected .ui-timepicker-duration,
 .blueBtn:hover{
     background-image: none;
     background-color: #e0f2fd;
+}
+.postalCode{
+    width: 140px;
+    font-size: 12px;
+    color: #777777;
+    line-height: 18px;
+    float: left;
+}
+.formBox .form-horizontal .postalCode input{
+    width: 130px;
+
 }

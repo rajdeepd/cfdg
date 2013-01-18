@@ -21,14 +21,6 @@
      	$('#onselectTarget').text($(this).val());
      });
 
-     $('.ui-timepicker-input').timepicker({
-     					 showOtherMonths: true,
-                         selectOtherMonths: true,
-                         showOn: "button",
-                         buttonImage: "../assets/calander.png",
-                         buttonImageOnly: true,
-     });
-
 
   });
 .content
@@ -66,22 +58,19 @@
                   %span.asterisk *
                 .controls
                   %div.dateBox
-                    Starts Date
+                    Start Date
                     %div.dateInput
                       %input.datepicker{:type => "text"}/
                   %span.timeBox
-                    %div Time
-                    %div.timeInput
-                      %input.time.ui-timepicker-input{:autocomplete => "on", :type => "text"}/
-                      = image_tag("dropdown_arrow.png")
+                    Start Time
+                    %input.time.ui-timepicker-input{:autocomplete => "on", :type => "text"}/
                   %div.dateBox
-                    Starts Date
+                    End Date
                     %div.dateInput
                       %input.datepicker{:type => "text"}/
                   %span.timeBox
-                    Time
-                    %select.time.ui-timepicker-input{:autocomplete => "ons", :type => "text"}/
-                    = image_tag("dropdown_arrow.png")
+                    Start Time
+                    %input.time.ui-timepicker-input{:autocomplete => "ons", :type => "text"}/
           .formBox
             %h5 Enter Event address
             %form.form-horizontal
@@ -105,7 +94,7 @@
                   From
                 .controls
                   %span.dateBox
-                    City
+                    Country
                     %select.selectID{:name => "country_id", :tabindex => "1"}
                       %option India
                   %span.timeBox
@@ -113,10 +102,10 @@
                     %select.selectID{:name => "country_id", :tabindex => "1"}
                       %option India
                   %span.dateBox
-                    Country
+                    City
                     %select.selectID{:name => "country_id", :tabindex => "1"}
                       %option India
-                  %span.timeBox
+                  %span.postalCode
                     Postal Code
                     %input{:type => "text"}
           .formBox
