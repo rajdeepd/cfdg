@@ -1,4 +1,4 @@
-$ -> 
+$ ->
   $loginDialog = $("#login-dialog")
   $loginLink = $('#login')
 
