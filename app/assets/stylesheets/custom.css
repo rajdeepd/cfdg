@@ -648,10 +648,10 @@ ul.supportPrivacyLinks li{
     text-align: center;
     margin-top: 30px;
 }
-.layoutWrapper .span8{
+.layoutWrapper .span8, .chapterLayout .span8{
     width: 578px;
 }
-.layoutWrapper .span4{
+.layoutWrapper .span4, .chapterLayout .span4{
     width: 278px;
 }
 .eventTour{
@@ -1438,5 +1438,43 @@ li.ui-timepicker-selected .ui-timepicker-duration,
 }
 .formBox .form-horizontal .postalCode input{
     width: 130px;
+}
 
+/*chapter detailed */
+.sliderHeading{
+    background: url("slider-heading.png") no-repeat;
+    width: 579px;
+    height: 57px;
+    display: block;
+}
+.chapterLayout{
+    background-color: rgba(232, 243, 250, 1);
+    padding: 30px 30px 40px;
+    margin: -2px 0 30px;
+    border: 1px solid #96B0C1;
+    box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.2);
+    border-radius: 0 0 5px 5px;
+}
+.chapterLayout .ca-container{
+    margin: 0;
+    width: 578px;
+}
+.chapterLayout .ca-item{
+    width: 280px;
+}
+.chapterLayout .ca-item-main{
+    padding: 0;
+    background: none;
+    box-shadow: none;
+    border: none;
+    border-radius: 0;
+    color: inherit;
+}
+ul.listOfAttendees{
+    height: 610px;
+    overflow-y: auto;
+}
+ul.adminPanel{
+    height: 70px;
+    overflow-y: auto;
 }

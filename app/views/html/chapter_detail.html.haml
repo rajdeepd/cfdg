@@ -19,7 +19,7 @@
       pause: 3000,
       animation: 'fade',
       mousePause: false,
-      showItems: 2
+      showItems: 3
     });
   });
 
@@ -42,65 +42,34 @@
       .mapDiv
         %span.close x
         %img{:src => "/assets/map.png"}
-  .layoutWrapper
+  .chapterLayout
     .row
       .span8
         .eventTour
-          .comingEvents
-            .fullHeading
+          .clearfix
+            .sliderHeading
               %h3 Upcoming Events
             #ca-container.ca-container.clearfix
-              .ca-wrapper{:style => "overflow: hidden;"}
-                .ca-item.ca-item-1{:style => "position: absolute; left: 0px;"}
+              .ca-wrapper
+                .ca-item.ca-item-1
                   .ca-item-main
                     .eventListWrapper
                       .eventListInner
                         .clearfix
                           .dateAndPlace
                             .date
-                              Jan 18,2013
                             .place
-                              Ahmedabad,India
                           .tag
                             %img{:src => "/assets/student_event.png"}
                         .eventImg
-                          %img{:alt => "Logo-b", :height => "150", :src => "/assets/logo-b.png", :width => "260"}
                         .eventContent
                           %h5
-                            bhatia
                           .personName
-                            Akash
                           %p.lightGrayText
-                          %a{:href => "/events/1?locale=en"} Read more
                       .eventListFooter
                         %span.numberPeopleAttending
-                          1
                         %span People Attending
-                .ca-item.ca-item-2{:style => "position: absolute; left: 0px;"}
-                  .ca-item-main
-                    .eventListWrapper
-                      .eventListInner
-                        .clearfix
-                          .dateAndPlace
-                            .date
-                              Jan 18,2013
-                            .place
-                              Ahmedabad,India
-                          .tag
-                            %img{:src => "/assets/student_event.png"}
-                        .eventImg
-                          %img{:alt => "Logo-b", :height => "150", :src => "/assets/logo-b.png", :width => "260"}
-                        .eventContent
-                          %h5
-                            bhatia
-                          .personName
-                            Akash
-                          %p.lightGrayText
-                          %a{:href => "/events/1?locale=en"} Read more
-                      .eventListFooter
-                        %span.numberPeopleAttending
-                          1
-                        %span People Attending
+
           .viewEventGallery
             %a{:href => "#"} View Event Gallery
           .eventDetail.clearfix
