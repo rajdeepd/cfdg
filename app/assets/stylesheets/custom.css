@@ -336,14 +336,14 @@ header ul li:first-child{
     margin-bottom: 5px;
 }
 .smallHeading{
-    background: url("short_heading_bg.jpg") no-repeat -17px 0 #f9f9f9;
+    background: url("heading_bg.png") repeat-x #f9f9f9;
     width: 300px;
     height: 41px;
     border-bottom: 1px solid #cccccc;
     border-radius: 5px 5px 0 0 ;
 }
 .longHeading{
-    background: url("long_heading_bg.png") no-repeat 4px 0 #f9f9f9;
+    background: url("heading_bg.png") repeat-x #f9f9f9;
     width: 620px;
     height: 41px;
     border-bottom: 1px solid #cccccc;
@@ -445,7 +445,7 @@ header ul li:first-child{
     margin-left: 25px;
 }
 .fullHeading{
-    background: url("full_heading_bg.jpg") no-repeat -5px 0 #f9f9f9;
+    background: url("heading_bg.png") repeat-x #f9f9f9;
     width: 938px;
     height: 41px;
     border-bottom: 1px solid #cccccc;
@@ -907,7 +907,7 @@ ul.supportPrivacyLinks li{
 }
 .loginLayout{
     padding: 0 0 30px 0;
-    background: rgba(235, 246, 254, 0.5);
+    background: rgba(235, 246, 254, 0.8);
     margin-bottom: 142px;
     border: 1px solid #96B0C1;
     box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.2);
@@ -923,7 +923,7 @@ ul.supportPrivacyLinks li{
     padding-top: 215px;
 }
 .loginLeftPanel ul{
-    width: 260px;
+    width: 265px;
     margin: 0 auto;
 }
 .loginLeftPanel ul li{
@@ -1269,7 +1269,7 @@ ul.supportPrivacyLinks li{
 .ui-timepicker-list {
     overflow-y: auto;
     height: 150px;
-    width: 6.5em;
+    width: 138px;
     background: #fff;
     border: 1px solid #ddd;
     margin: 0;
@@ -1316,4 +1316,115 @@ li.ui-timepicker-selected,
 li.ui-timepicker-selected .ui-timepicker-duration,
 .ui-timepicker-list li:hover .ui-timepicker-duration {
     color: #ccc;
+}
+.eventHeader{
+    background: url("event_header.png") no-repeat center;
+    display: block;
+    width: 140px;
+    height: 135px;
+    margin: 0 auto;
+}
+.borderWithShadow{
+    background: url("border_with_shadow.png") repeat-x;
+    width: 100%;
+    height: 5px;
+    margin-bottom: 20px;
+}
+.loginLayout .formBox{
+    width: 620px;
+    margin: 0 auto;
+    border-top: 1px solid #cce6f6;
+    padding-top: 30px;
+}
+.loginLayout .formBox.borderNone{
+    border: none;
+    padding-top: 0;
+}
+.formBox h5{
+    text-transform: capitalize;
+    color: #777777;
+    font-size: 20px;
+    font-weight: 500;
+    margin: 0 0 20px 220px;
+}
+.formBox .form-horizontal .control-label{
+    width: 200px;
+    color: #777777;
+    font-size: 16px;
+    line-height: 18px;
+}
+.formBox .form-horizontal input{
+    border: 1px solid #7faac5;
+    width: 290px;
+    height: 20px;
+}
+.formBox .form-horizontal textarea{
+    border: 1px solid #7faac5;
+    width: 290px;
+    resize: none;
+    height: 60px;
+}
+.formBox .form-horizontal .controls{
+    margin-left: 220px;
+}
+.asterisk{
+    color: red;
+    font-size: 16px;
+}
+.formBox .form-horizontal .dateBox , .formBox .form-horizontal .timeBox{
+    width: 140px;
+    font-size: 12px;
+    color: #777777;
+    line-height: 18px;
+    float: left;
+    margin: 0 20px 15px 0;
+}
+.formBox .form-horizontal .dateInput{
+    border:1px solid #7faac5;
+    border-radius: 4px;
+}
+.formBox .form-horizontal .timeInput{
+
+}
+.formBox .form-horizontal .timeBox{
+    margin-right: 0;
+}
+.formBox .form-horizontal .dateBox input{
+    width: 100px;
+    float: left;
+    border: none;
+}
+.formBox .form-horizontal .timeBox input{
+    width: 130px;
+    float: left;
+}
+.formBox .form-horizontal .timeBox img{
+    margin: 1px 0 0 -30px;
+}
+.formBox .form-horizontal .bigButton{
+    width: 300px;
+    padding: 12px 10px;
+    text-align: left;
+}
+.plusIcon{
+    background: url("plus_icon.png") no-repeat;
+    width: 17px;
+    height: 16px;
+    display: block;
+    float: left;
+    margin-right: 7px;
+}
+.blueBtn{
+    background: url("blue_btn_bg.png") repeat-x;
+    border: 1px solid #7faac5;
+    font-size: 14px;
+    color: #222222;
+    border-radius: 4px;
+    font-weight: 500;
+    padding: 6px 10px;
+    line-height: 16px;
+}
+.blueBtn:hover{
+    background-image: none;
+    background-color: #e0f2fd;
 }
