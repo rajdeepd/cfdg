@@ -1,0 +1,22 @@
+-#=@marker.inspect
+-#= gmaps4rails(@marker)
+.map
+  = gmaps("markers" => {"data" => @marker }, "map_options" => {"auto_zoom" => false, "zoom" => 15 } )
+- content_for :javascript do
+  :javascript
+    function redirect_to(url) {
+      return function(){window.location = url;}
+    };
+
+    Gmaps.map.callback = function() {
+      if (Gmaps.map.markers.length == 0 ){
+        setTimeout(function() { Gmaps.map.serviceObject.setZoom(1);}, 50);
+      }
+      else{
+        setTimeout(function() { Gmaps.map.serviceObject.setZoom(4);}, 50);
+      }
+      for (var i = 0; i <  Gmaps.map.markers.length; i++) {
+        google.maps.event.addListener(Gmaps.map.markers[i].serviceObject, 'click',   redirect_to("#{chapter_path(@chapter)}"));
+      }
+    };
+
