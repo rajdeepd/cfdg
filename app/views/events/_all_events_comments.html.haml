@@ -10,7 +10,7 @@
 
 .all_events_comments
   .less_comments
-    -(@event.comments.last(4) || []).each do |comment|
+    -(@event.comments.last(6) || []).each do |comment|
       %li
         = avatar_display_pic(comment.user,'thumb', '50x50','profile.png',"img-c flt-left")
         %h5.label-27
@@ -18,7 +18,7 @@
         .commentText
           %p #{comment.content}
           %span.commentDate #{Time.parse(comment.created_at.to_s).strftime("%b %d, %Y")}
-    -if @event.comments.size <= 4
+    -if @event.comments.size <= 6
       %span.viewMoreComments{:style => "display:none;"} View All
     -else
       %span.viewMoreComments View All
