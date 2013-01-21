@@ -1,6 +1,6 @@
 $ ->
   $loginDialog = $("#login-dialog")
-  $loginLink = $('#login')
+  $loginLink = $('.login')
 
   if $loginDialog.length > 0
     $loginDialog.dialog
