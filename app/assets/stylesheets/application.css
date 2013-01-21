@@ -1546,6 +1546,8 @@ p.label-53{margin-bottom: 15px;}
   position: relative;
   overflow: hidden;
   font-size: 12px;
+  text-align: center;
+  margin-left: 28px;
 }
 
 .upload-button span {
