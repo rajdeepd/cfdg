@@ -19,12 +19,3 @@
             %a{:href => "#{userevents_events_url(chaptermember.chapter.id)}", :id=>"#{chaptermember.chapter.id}", :class=>"chapter_link", :style=>"font-size:16px"} #{chaptermember.chapter.name}
                      
       #event_content{:style => "min-height: 10px;"}
-
-:javascript 
-  Chapters.init();
-  Chapters.firstChapterClick();
-  Events.init();
-  Posts.init();
--if (@create_event_from_chapters.present?)
-  :javascript
-    Chapters.fireclicks(#{@chapter_id});
