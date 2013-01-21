@@ -9,4 +9,4 @@
 #User.create(:email=>"siteadmin@gmail.com",:fullname=>"SiteAdmin",:password=>"admincloud", :password_confirmation => "admincloud",:admin => true)
 
 
-User.create(:email=>"admin@cloudfoundry.com",:name => "Admin", :password => "vmware123", :password_confirmation => "vmware123",:admin => true)
+User.create(:email=>"admin@cloudfoundry.com",:name => "Admin", :password => "vmware123", :password_confirmation => "vmware123", :admin => true, :mobile => "13564676636" )
