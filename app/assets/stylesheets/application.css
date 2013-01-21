@@ -9,6 +9,7 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
+ *= require variables
  *= require jquery.timepicker-1.2.2
  *= require jquery.ui.theme
  *= require login-form
@@ -1514,8 +1515,6 @@ p.label-53{margin-bottom: 15px;}
     float:left;
     width: 635px;
 }
-
-
 
 /* User# Edit Tabs */
 #info-blocks {
