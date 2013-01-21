@@ -7,6 +7,7 @@ class EventsController < ApplicationController
   #before_filter :initialise_eventbrite_client, :except => ['create_event_comment', 'show']
   before_filter :set_profile_page
   before_filter :check_authorization ,:only => [:download_list]
+  before_filter :find_chapter, :only => [:new, :edit]
 
   def index
     @events = Event.all
@@ -38,8 +39,7 @@ class EventsController < ApplicationController
   # GET /events/new
   # GET /events/new.json
   def new
-    @event = Event.new
-    @event.chapter_id = params[:chapter_id]
+    @event = @chapter.events.build
     respond_to do |format|
       format.js {render :partial => 'form'} # new.html.erb
       format.json { render json: @event }
@@ -379,4 +379,8 @@ class EventsController < ApplicationController
 
   end
 
+  private 
+  def find_chapter
+    @chapter = Chapter.find(params[:chapter_id])
+  end
 end
