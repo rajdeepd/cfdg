@@ -28,8 +28,7 @@
           %td
             %h5.label-48
               %button.btn-a-small.change_status{"data-url" => "#"} Approve
-              -#%button.btn-a-small.change_status{"data-url" => "#{add_secondary_coordinator_admin_chapter_path(chapter)}"} Add Secondary Co-ordinator
-              =link_to "Add Secondary Coordinator", "#", :class => "btn-a-small change_status" ,:method => "get"
+              =link_to "Deny", "#", :class => "btn-a-small change_status" ,:method => "get"
 
       %tr
 - else
