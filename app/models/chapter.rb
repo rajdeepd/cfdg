@@ -64,11 +64,11 @@ class Chapter < ActiveRecord::Base
 
 
   def is_type_student?
-    self.chapter_type == Chapter::STUDENT
+    self.chapter_type.to_sym == Chapter::STUDENT
   end
 
   def is_type_city?
-    self.chapter_type == Chapter::CITY
+    self.chapter_type.to_sym == Chapter::CITY
   end
 
   def self.find_chapter_for_user(user)
@@ -115,7 +115,7 @@ class Chapter < ActiveRecord::Base
   end
 
   def persist_geocode
-    if self.chapter_type == "student"
+    if self.is_type_student?
       college = self.college
       address = "#{college.state.country.name}#{college.state.name}#{college.name}" 
     else
