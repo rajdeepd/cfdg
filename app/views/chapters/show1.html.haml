@@ -34,10 +34,8 @@
   .blueHeader
     .chapterName.clearfix
       %h1 #{@chapter.try(:name)}
-      %span.chapterLocation  &nbsp;/ #{@chapter.try(:city_name)}
     .chapterDateAndPlace.clearfix
-      %span.chapterDate #{Time.parse(@chapter.try(:created_at).to_s).strftime('%b %d, %Y')}
-      %span.chapterPlace #{@chapter.try(:locality)}, #{@chapter.try(:city_name)}
+      %span.chapterPlace #{@chapter.try(:city_name)}
       %span.viewMap ( View Map )
       .mapDiv
         %span.close x
@@ -60,26 +58,39 @@
               %h3 Upcoming Events
             .ca-container.ca-container.clearfix
               .ca-wrapper
-                .ca-item.ca-item-1
-                  .ca-item-main
-                    .eventListWrapper
-                      .eventListInner
-                        .clearfix
-                          .dateAndPlace
-                            .date Jan 9,2013
-                            .place Pune, India
-                          .tag
-                            %img{:src => "/assets/student_event.png"}
-                        .eventImg
-                          %img{:src => "/assets/event_snap_4.jpg"}
-                        .eventContent
-                          %h5 Cloud foundry open tour
-                          .personName Rajdeep Dua
-                          %p.lightGrayText At this Developer Day you will meet the experts and learn...
-                          %a{:href => "#"} Read More
-                      .eventListFooter
-                        %span.numberPeopleAttending 16
-                        %span People Attending
+                - if @upcoming_events.blank?
+                  = "No upcoming events for this chapter."
+                -else
+                  - @upcoming_events.each do |event|
+                    .ca-item.ca-item-1
+                      .ca-item-main
+                        .eventListWrapper
+                          .eventListInner
+                            .clearfix
+                              .dateAndPlace
+                                -chapter = event.chapter
+                                .date #{Time.parse(event.event_start_date.to_s).strftime('%b')} #{Time.parse(event.event_start_date.to_s).strftime('%d')}, #{Time.parse(event.event_start_date.to_s).strftime('%Y')}
+                                .place #{event.chapter.city_name}, #{chapter.country_name}
+                              .tag
+                                -if chapter.chapter_type == "student"
+                                  %img{:src => "/assets/student_event.png"}
+                                -else
+                                  %img{:src => "/assets/professional_event.png"}
+                            .eventImg
+                              -if event.image.event_landscape.present?
+                                = image_tag(event.image.event_landscape.url,:size => "260x150")
+                              -elsif event.image.present?
+                                = image_tag(event.image.url,:size => "260x150")
+                              -else
+                                =image_tag("event_landscape_logo-b.png",:size => "260x150")
+                            .eventContent
+                              %h5 #{event.title}
+                              .personName #{event.user.fullname}
+                              %p.lightGrayText #{event.description.truncate(70)}
+                              %a{:href => "#{event_path(event)}"} Read more
+                          .eventListFooter
+                            %span.numberPeopleAttending #{event.event_members.length}
+                            %span People Attending
 
 
                 -#.ca-item.ca-item-1
