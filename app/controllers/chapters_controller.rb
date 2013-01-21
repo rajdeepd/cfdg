@@ -73,8 +73,6 @@ class ChaptersController < ApplicationController
       @chapter.city = current_user.city
     end
 
-    binding.pry
-
     @chapter.messages.build
     @admin = User.find_by_email("admin@cloudfoundry.com")
 

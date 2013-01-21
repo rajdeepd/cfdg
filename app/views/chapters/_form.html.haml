@@ -1,14 +1,20 @@
 .content.wrapper
   .content-a
     .Creation-form
-      %h1.label-34 Chapter Creation
-      %h3.label-11{:style => "padding-top: 25px;"} Founder Information
+      %h1.label-34
+        = t("chapter.creation.title")
+      %h3.label-11{:style => "padding-top: 25px;"}
+        = t("chapter.creation.founder_information")
       .Info
-        %h4.info_label Name: #{@current_user.fullname}
+        %h4.info_label 
+          = "#{t('chapter.creation.founder_name')}: #{@current_user.name}"
         %br
-        %h4.info_label Email Id: #{@current_user.email}
+        %h4.info_label 
+          = "#{t('chapter.creation.founder_email')}: #{@current_user.email}"
 
-      %h3.label-11{:style => "padding-top: 25px;"} Chapter Details
+      %h3.label-11{:style => "padding-top: 25px;"} 
+        = t('chapter.details')
+
       = semantic_form_for @chapter do |f|
         - showclass = (f.object.chapter_type == "professional" ? "display:none" : "display:block")
         #Form_ch        

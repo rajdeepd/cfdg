@@ -88,12 +88,19 @@ en:
     proposal: "Chapter Proposal"
     type: "Chapter Type"
     location: "Chapter Location"
+    details: "Chapter Details"
     recommendations:
       city_chapter_found: "Recommend city chapter: "
       college_chapter_found: "Recommend college chapter: "
       no_city_chapter: "No chapter in your city found"
       no_college_chapter: "No chapter in your college found"
       create_one: "Create One"
+    creation:
+      title: "Chapter Creation" 
+      founder_information: "Founder Information"
+      founder_name: "Name"
+      founder_email: "Email"
+      
     
   
   confirmation:
