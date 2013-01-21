@@ -1,4 +1,4 @@
-Events ={
+Events = {
 
     init:function(){
         $('#create_event').die('click').live('click',function(e){

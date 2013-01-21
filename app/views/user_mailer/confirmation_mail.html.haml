@@ -8,9 +8,9 @@
         %img{:src => "http://127.0.0.1:3000/assets/logo.png"}
       .main{:style => "padding:20px;background-color:#fff;"}
         .content{:style => ""}
-          %h2 请确认您的邮件
-          %p 请点击以下链接确认你的邮件，您的邮件将成为您在 Cloud Foundry 同学会 最重要的身份认证:
-          = link_to "Click Here to confirm", confirm_users_url(:token => @user.confirmation_token), :style => "color:#0097d7;"
+          %h2 邮件确认 
+          %p 你好, 欢迎加入Cloud Foundry同学会。确认注册后，你将成为Cloud Foundry同学会的正式同学。确认请点击： 
+          = link_to "确认注册", confirm_users_url(:token => @user.confirmation_token), :style => "color:#0097d7;"
       .footer{:style => "background-color:#666;font-size:11px;padding:10px;"}
         %div{:style => "color:#fff;"} 
           Copyright © 2012 
