@@ -81,6 +81,7 @@
 
         .map
           = gmaps4rails(@markers)
+          -#= gmaps("markers" => {"data" => @markers }, "map_options" => {"auto_zoom" => false, "zoom" => 15 } )
         .createChapter.clearfix
           -if current_user.blank?
 
