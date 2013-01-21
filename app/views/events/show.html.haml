@@ -275,7 +275,7 @@
             .listHeader
               %span administrator
               %span.numberOfPeople 1
-            %ul.clearfix
+            %ul.clearfix.adminPanel
               %li
                 -#%img{:src => "/assets/human_face_4.jpg"}
                 = avatar_display_pic(@event.user,'thumb', '40x40','profile.png',"profile-img img-a flt-left")
@@ -303,7 +303,7 @@
               -else
                 %span.numberOfPeople #{@event.event_members.size}
               -#%span.numberOfPeople 06
-            %ul.clearfix
+            %ul.clearfix.listOfAttendees
               -@members.each do |i|
                 %li
                   -#%img{:src => "/assets/human_face_4.jpg"}
