@@ -8,7 +8,7 @@ class ChaptersController < ApplicationController
   end
 
   def recommend_chapters
-      
+
   end
 
   def subregion_options
@@ -62,27 +62,27 @@ class ChaptersController < ApplicationController
   # GET /chapters/new
   # GET /chapters/new.json
   def new
-    if @chapter
-      redirect_to @chapter
+    #if @chapter
+    #redirect_to @chapter
+    #else
+    @chapter = Chapter.new
+
+    @chapter.chapter_type = current_user.is_student? ? Chapter::STUDENT : Chapter::CITY    
+
+    if @chapter.is_type_student?
+      @chapter.college = current_user.college
     else
-      @chapter = Chapter.new
-
-      @chapter.chapter_type = current_user.is_student? ? Chapter::STUDENT : Chapter::CITY    
-
-      if @chapter.is_type_student?
-        @chapter.college = current_user.college
-      else
-        @chapter.city = current_user.city
-      end
-
-      @chapter.messages.build
-      @admin = User.find_by_email("admin@cloudfoundry.com")
-
-      respond_to do |format|
-        format.html {render :layout => "create_chapter"}
-        format.json { render json: @chapter }
-      end
+      @chapter.city = current_user.city
     end
+
+    @chapter.messages.build
+    @admin = User.find_by_email("admin@cloudfoundry.com")
+
+    respond_to do |format|
+      format.html {render :layout => "create_chapter"}
+      format.json { render json: @chapter }
+    end
+    #end
   end
 
   # GET /chapters/1/edit
@@ -184,7 +184,7 @@ class ChaptersController < ApplicationController
 
   def recommend
     @chapters = Chapter.find_chapter_for_user(current_user)
-    
+
     respond_to do |format|
       format.html
     end

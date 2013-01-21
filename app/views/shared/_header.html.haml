@@ -7,12 +7,12 @@
       %h5.flt-right.label-2
         %form
           %select.target.label-2
-            - if params[:locale].blank? || params[:locale] == 'en'
-              %option{:value => "en" , :selected=>'selected'} EN
-              %option{:value => "cn"} ZH-CN
-            - else
+            - if params[:locale].blank? || params[:locale] == 'cn'
               %option{:value => "en"} EN
               %option{:value => "cn",  :selected=>'selected'} ZH-CN
+            - else
+              %option{:value => "en", :selected=>'selected'} EN
+              %option{:value => "cn"} ZH-CN
       %ul.ul-a.flt-right        
         - if !current_user.blank?
           %li
