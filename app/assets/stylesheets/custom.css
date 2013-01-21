@@ -3,7 +3,6 @@ ul, ol{
     margin: 0;
     padding: 0;
 }
-
 @font-face {
  font-family: 'helvetica_light';
  src: url('../fonts/ufonts.com_helvetica-light-webfont.eot');
@@ -22,13 +21,11 @@ body{
     padding: 0;
     background-color: #dfeff9;
 }
-
 .bodyWrapper{
-    background: url("body_bg.png") no-repeat fixed;
+    background: url("body_bg.png") no-repeat fixed center #B3D6ED;
     margin: 0 auto;
     width: 100%;
 }
-
 header{
     background: url("header_bg.png") repeat-x ;
     height: 40px;
@@ -85,13 +82,11 @@ header ul li{
 }
 header ul li a{
     color: #ffffff;
-
 }
 header ul li a:hover{
     color: #cccccc;
     text-decoration: none;
 }
-
 header ul li:first-child{
     background: none;
 }
@@ -341,14 +336,14 @@ header ul li:first-child{
     margin-bottom: 5px;
 }
 .smallHeading{
-    background: url("short_heading_bg.jpg") no-repeat -17px 0 #f9f9f9;
+    background: url("heading_bg.png") repeat-x #f9f9f9;
     width: 300px;
     height: 41px;
     border-bottom: 1px solid #cccccc;
     border-radius: 5px 5px 0 0 ;
 }
 .longHeading{
-    background: url("long_heading_bg.png") no-repeat 4px 0 #f9f9f9;
+    background: url("heading_bg.png") repeat-x #f9f9f9;
     width: 620px;
     height: 41px;
     border-bottom: 1px solid #cccccc;
@@ -415,6 +410,11 @@ header ul li:first-child{
     height: 360px;
     margin: 0 auto;
     margin-bottom: 10px;
+    border: none;
+}
+.map .gmaps4rails_map{
+    width: 567px;
+    height: 360px;
 }
 .createChapter{
     width: 567px;
@@ -445,7 +445,7 @@ header ul li:first-child{
     margin-left: 25px;
 }
 .fullHeading{
-    background: url("full_heading_bg.jpg") no-repeat -5px 0 #f9f9f9;
+    background: url("heading_bg.png") repeat-x #f9f9f9;
     width: 938px;
     height: 41px;
     border-bottom: 1px solid #cccccc;
@@ -648,10 +648,10 @@ ul.supportPrivacyLinks li{
     text-align: center;
     margin-top: 30px;
 }
-.layoutWrapper .span8{
+.layoutWrapper .span8, .chapterLayout .span8{
     width: 578px;
 }
-.layoutWrapper .span4{
+.layoutWrapper .span4, .chapterLayout .span4{
     width: 278px;
 }
 .eventTour{
@@ -683,7 +683,7 @@ ul.supportPrivacyLinks li{
 .listHeader{
     background: url("listing_header_bg.jpg") repeat-x;
     padding: 6px 10px;
-    border-radius: 4px;
+    border-radius: 4px 4px 0 0;
     border-bottom: 1px solid #CCC;
     font-size: 13px;
     color:#333333;
@@ -907,7 +907,7 @@ ul.supportPrivacyLinks li{
 }
 .loginLayout{
     padding: 0 0 30px 0;
-    background: rgba(235, 246, 254, 0.5);
+    background: rgba(235, 246, 254, 0.8);
     margin-bottom: 142px;
     border: 1px solid #96B0C1;
     box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.2);
@@ -923,7 +923,7 @@ ul.supportPrivacyLinks li{
     padding-top: 215px;
 }
 .loginLeftPanel ul{
-    width: 250px;
+    width: 265px;
     margin: 0 auto;
 }
 .loginLeftPanel ul li{
@@ -976,11 +976,11 @@ ul.supportPrivacyLinks li{
     float: left;
 }
 .loginRightPanel .socialNetworks a.googleYahooBtn{
-    width: 120px;
+    width: 125px;
 }
 .loginRightPanel{
     float: left;
-    width: 398px;
+    width: 390px;
     padding-top: 30px;
 }
 .socialNetworks{
@@ -1165,6 +1165,7 @@ ul.supportPrivacyLinks li{
     font-weight: bold;
     color: #333333;
     font-size: 15px;
+    margin-right: 5px;
 }
 .eventContent{
     margin-left: 6px;
@@ -1262,4 +1263,367 @@ ul.supportPrivacyLinks li{
 }
 .div-h a.btn-a-small.flt-right{
     padding-top: 6px;
+}
+
+
+/* time picker css*/
+.ui-timepicker-list {
+    overflow-y: auto;
+    height: 150px;
+    width: 138px;
+    background: #fff;
+    border: 1px solid #ddd;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    -webkit-box-shadow:0 5px 10px rgba(0,0,0,0.2);
+    -moz-box-shadow:0 5px 10px rgba(0,0,0,0.2);
+    box-shadow:0 5px 10px rgba(0,0,0,0.2);
+    outline: none;
+    z-index: 10001;
+}
+
+.ui-timepicker-list.ui-timepicker-with-duration {
+    width: 11em;
+}
+
+.ui-timepicker-duration {
+    margin-left: 5px; color: #888;
+}
+
+.ui-timepicker-list:hover .ui-timepicker-duration {
+    color: #888;
+}
+
+.ui-timepicker-list li {
+    padding: 3px 0 3px 5px;
+    cursor: pointer;
+    white-space: nowrap;
+    color: #000;
+    list-style: none;
+    margin: 0;
+}
+
+.ui-timepicker-list:hover .ui-timepicker-selected {
+    background: #fff; color: #000;
+}
+
+li.ui-timepicker-selected,
+.ui-timepicker-list li:hover,
+.ui-timepicker-list:hover .ui-timepicker-selected:hover {
+    background: #1980EC; color: #fff;
+}
+
+li.ui-timepicker-selected .ui-timepicker-duration,
+.ui-timepicker-list li:hover .ui-timepicker-duration {
+    color: #ccc;
+}
+.eventHeader{
+    background: url("event_header.png") no-repeat center;
+    display: block;
+    width: 140px;
+    height: 135px;
+    margin: 0 auto;
+}
+.borderWithShadow{
+    background: url("border_with_shadow.png") repeat-x;
+    width: 100%;
+    height: 5px;
+    margin-bottom: 20px;
+}
+.loginLayout .formBox{
+    width: 620px;
+    margin: 0 auto;
+    border-top: 1px solid #cce6f6;
+    padding-top: 30px;
+}
+.loginLayout .formBox.borderNone{
+    border: none;
+    padding-top: 0;
+}
+.formBox h5{
+    text-transform: capitalize;
+    color: #777777;
+    font-size: 20px;
+    font-weight: 500;
+    margin: 0 0 20px 220px;
+}
+.formBox .form-horizontal .control-label{
+    width: 200px;
+    color: #777777;
+    font-size: 16px;
+    line-height: 18px;
+}
+.formBox .form-horizontal input{
+    border: 1px solid #7faac5;
+    width: 290px;
+    height: 20px;
+}
+.formBox .form-horizontal textarea{
+    border: 1px solid #7faac5;
+    width: 290px;
+    resize: none;
+    height: 60px;
+}
+.formBox .form-horizontal .controls{
+    margin-left: 220px;
+}
+.asterisk{
+    color: red;
+    font-size: 16px;
+}
+.formBox .form-horizontal .dateBox , .formBox .form-horizontal .timeBox{
+    width: 140px;
+    font-size: 12px;
+    color: #777777;
+    line-height: 18px;
+    float: left;
+    margin: 0 20px 15px 0;
+}
+.formBox .form-horizontal .dateInput{
+    border:1px solid #7faac5;
+    border-radius: 4px;
+}
+.formBox .form-horizontal .timeInput{
+
+}
+.formBox .form-horizontal .timeBox{
+    margin-right: 0;
+}
+.formBox .form-horizontal .dateBox input{
+    width: 100px;
+    float: left;
+    border: none;
+}
+.formBox .form-horizontal .timeBox input{
+    width: 130px;
+    float: left;
+    background: url("dropdown_arrow.png") #ffffff no-repeat right center;
+}
+.formBox .form-horizontal .timeBox img{
+    margin: 1px 0 0 -30px;
+}
+.formBox .form-horizontal .bigButton{
+    width: 300px;
+    padding: 12px 10px;
+    text-align: left;
+}
+.plusIcon{
+    background: url("plus_icon.png") no-repeat;
+    width: 17px;
+    height: 16px;
+    display: block;
+    float: left;
+    margin-right: 7px;
+}
+.blueBtn{
+    background: url("blue_btn_bg.png") repeat-x;
+    border: 1px solid #7faac5;
+    font-size: 14px;
+    color: #222222;
+    border-radius: 4px;
+    font-weight: 500;
+    padding: 6px 10px;
+    line-height: 16px;
+}
+.blueBtn:hover{
+    background-image: none;
+    background-color: #e0f2fd;
+}
+.postalCode{
+    width: 140px;
+    font-size: 12px;
+    color: #777777;
+    line-height: 18px;
+    float: left;
+}
+.formBox .form-horizontal .postalCode input{
+    width: 130px;
+}
+
+/*chapter detailed */
+.sliderHeading{
+    background: url("slider-heading.png") no-repeat;
+    width: 579px;
+    height: 40px;
+    display: block;
+    padding: 20px 10px 0 10px;
+}
+.sliderHeading h3{
+    font-size: 20px;
+    color: #333333;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    float: left;
+}
+.chapterLayout{
+    background-color: rgba(232, 243, 250, 1);
+    padding: 30px 30px 40px;
+    margin: -2px 0 30px;
+    border: 1px solid #96B0C1;
+    box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.2);
+    border-radius: 0 0 5px 5px;
+}
+.chapterLayout .ca-container{
+    margin: 0;
+    width: 578px;
+    height: 400px;
+}
+.chapterLayout .ca-item{
+    width: 280px;
+    height: 398px;
+}
+.chapterLayout .ca-item-main{
+    padding: 0;
+    background: none;
+    box-shadow: none;
+    border: none;
+    border-radius: 0;
+    color: inherit;
+    overflow: visible;
+}
+.chapterLayout .clearfix .tag{
+    float: right;
+    position: absolute;
+    right: 12px;
+    top: -1px;
+    z-index: 1000;
+    margin: 0;
+}
+ul.listOfAttendees{
+    max-height: 610px;
+    overflow-y: auto;
+}
+ul.adminPanel{
+    max-height: 70px;
+    overflow-y: auto;
+}
+.chapterLayout .ca-container .ca-nav span{
+    top: -22px;
+    text-indent:0;
+    height: 20px;
+    background: url("prev_next_bg.png") repeat-x;
+    width: 60px;
+    height: 29px;
+}
+.chapterLayout .ca-container .ca-nav span:hover{
+    background: url("prev_next_hover_bg.png") repeat-x;
+}
+.chapterLayout .ca-container .ca-nav .ca-nav-prev{
+    left: 448px;
+    box-shadow: -1px 1px 3px -1px #cccccc;
+}
+.chapterLayout .ca-container .ca-nav .ca-nav-prev:hover{
+    box-shadow: none;
+}
+.chapterLayout .ca-container .ca-nav .prevArrow{
+    padding: 5px 15px 5px 19px;
+    background: url(prev_arrow.png) no-repeat 8px 10px;
+    border: 1px solid #cccccc;
+    border-right: none;
+    width: 25px;
+    height: 17px;
+    color: #222222;
+}
+.chapterLayout .ca-container .ca-nav .prevArrow:hover{
+    background: url("prev_hover_arrow.png") no-repeat 8px 10px;
+    color: #888888;
+}
+.chapterLayout .ca-container .ca-nav .ca-nav-next{
+    right: 10px;
+    box-shadow: 2px 1px 3px -1px #cccccc;
+}
+.chapterLayout .ca-container .ca-nav .ca-nav-next:hover{
+    box-shadow: none;
+}
+.chapterLayout .ca-container .ca-nav .nextArrow{
+    padding: 5px 20px 5px 13px;
+    background: url(next_arrow.png) no-repeat 45px 10px;
+    border: 1px solid #cccccc;
+    width: 25px;
+    height: 17px;
+    color: #222222;
+}
+.chapterLayout .ca-container .ca-nav .nextArrow:hover{
+    background: url("next_hover_arrow.png") no-repeat 45px 10px;
+    color: #888888;
+}
+.slider{
+    margin-bottom: 30px;
+}
+.pastEvent{
+    width: 246px;
+    padding: 10px 15px;
+    border: 1px solid #cfcfcf;
+    border-radius: 5px;
+}
+.chapterLayout .ca-container.PastEventsContainer, .chapterLayout .ca-container.PastEventsContainer .ca-item{
+    height: 85px;
+}
+.pastEvent .pastEventDate{
+    background: url("past_event_date_bg.png") no-repeat center;
+    width: 52px;
+    height: 56px;
+    float: left;
+    text-align: center;
+    margin-right: 15px;
+}
+.pastEvent:hover{
+    background: #ffffff;
+    cursor: pointer;
+    box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.15);
+}
+.pastEvent .pastEventDate .date{
+    color: #0078ac;
+    font-size: 20px;
+    display: block;
+    margin-top: 19px;
+    font-weight: bold;
+}
+.pastEvent .pastEventDate .month{
+    color: #333333;
+    font-size: 11px;
+    margin-top: -2px;
+    display: block;
+}
+.pastEventDetails{
+    font-size: 12px;
+    color: #888888;
+    line-height: 18px;
+    font-family: helvetica;
+}
+.chapterLayout .ca-container.galleryThumbnailsContainer, .chapterLayout .ca-container.galleryThumbnailsContainer .ca-item{
+    height: 240px;
+}
+.galleryThumbnails{
+    background: url("galary_thumbnail_bg.png") no-repeat;
+    width: 280px;
+    height: 178px;
+}
+.galleryThumbnails img{
+    margin: 13px 6px;
+}
+.galleryThumbnails p{
+    text-align: center;
+    width: 192px;
+    margin: 0 auto;
+    line-height: 20px;
+}
+.galleryThumbnails .lightGrayText{
+    font-size: 14px;
+    width: 90px;
+    margin: 0 auto;
+    display: block;
+}
+.comments ul.posts li{
+    border-top: 1px solid #aaaaaa;
+    padding-top: 20px;
+    margin-bottom: 20px;
+}
+.posts li:first-child{
+    border-top: none;
+}
+.joinChapter{
+    background: #ffffff;
+    padding: 30px 7px;
+    border-bottom: 1px solid #d8dee2;
 }
