@@ -31,10 +31,15 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(user)
+
     if @user.email.nil?
       settings_path()
     else
-      root_path()
+      if flash[:notice].blank?
+        root_path()
+      else
+        profile_path()
+      end
     end
   end
 
