@@ -30,20 +30,27 @@
   .breadCrumb
     %span Chapters
     %span.breadCrumbDivider /
-    %span.activePage CFDG Pune Chapter
+    %span.activePage #{@chapter.try(:name)}
   .blueHeader
     .chapterName.clearfix
-      %h1 Gluecon
-      %span.chapterLocation  &nbsp;/ Pune Chapter
+      %h1 #{@chapter.try(:name)}
+      %span.chapterLocation  &nbsp;/ #{@chapter.try(:city_name)}
     .chapterDateAndPlace.clearfix
-      %span.chapterDate December 13,2012
-      %span.chapterPlace Varad Hall, Pune
+      %span.chapterDate #{Time.parse(@chapter.try(:created_at).to_s).strftime('%b %d, %Y')}
+      %span.chapterPlace #{@chapter.try(:locality)}, #{@chapter.try(:city_name)}
       %span.viewMap ( View Map )
       .mapDiv
         %span.close x
         %img{:src => "/assets/map.png"}
   .joinChapter
-    %button.orangeBtn Join Chapter
+    -#%button.orangeBtn Join Chapter
+    -if !@is_part_of_chapter
+      = form_tag join_a_chapter_chapters_path, :method => :post do
+        = hidden_field_tag "chapter_id", "#{@chapter.id}"
+        - if @current_user.blank?
+          = link_to 'Join Chapter' ,signin_path, :class => "join_us orangeBtn"
+        - else
+          = submit_tag 'Join Chapter' , :class => "join_us orangeBtn"
   .chapterLayout
     .row
       .span8
@@ -73,7 +80,9 @@
                       .eventListFooter
                         %span.numberPeopleAttending 16
                         %span People Attending
-                .ca-item.ca-item-2
+
+
+                -#.ca-item.ca-item-1
                   .ca-item-main
                     .eventListWrapper
                       .eventListInner
@@ -93,7 +102,11 @@
                       .eventListFooter
                         %span.numberPeopleAttending 16
                         %span People Attending
-                .ca-item.ca-item-3
+
+
+
+
+                -#.ca-item.ca-item-2
                   .ca-item-main
                     .eventListWrapper
                       .eventListInner
@@ -113,54 +126,76 @@
                       .eventListFooter
                         %span.numberPeopleAttending 16
                         %span People Attending
-          .slider.clearfix
-            .sliderHeading
-              %h3 Past Events
-            .ca-container.PastEventsContainer.clearfix
-              .ca-wrapper
-                .ca-item.ca-item-1
+                -#.ca-item.ca-item-3
                   .ca-item-main
-                    .pastEvent
-                      .clearfix
-                        .pastEventDate
-                          %span.date 04
-                          %span.month Dec
-                        .pastEventDetails Lorem ipsum dolor sit amet, cons ectetur adipiscing elit. Aenean ornare interdum...
-                .ca-item.ca-item-2
-                  .ca-item-main
-                    .pastEvent
-                      .clearfix
-                        .pastEventDate
-                          %span.date 04
-                          %span.month Dec
-                        .pastEventDetails Lorem ipsum dolor sit amet, cons ectetur adipiscing elit. Aenean ornare interdum...
-                .ca-item.ca-item-3
-                  .ca-item-main
-                    .pastEvent
-                      .clearfix
-                        .pastEventDate
-                          %span.date 04
-                          %span.month Dec
-                        .pastEventDetails Lorem ipsum dolor sit amet, cons ectetur adipiscing elit. Aenean ornare interdum...
-          .slider.clearfix
-            .sliderHeading
-              %h3 Past Events Gallery
-            .ca-container.galleryThumbnailsContainer.clearfix
-              .ca-wrapper
-                .ca-item.ca-item-1
-                  .ca-item-main
-                    .galleryThumbnails
-                      = image_tag("event_gallery_thumbnail.jpg")
-                      %p Cloud Foundry introduced npm support, we added serval
-                      %a.lightGrayText{:href => "#"} (54 Photos)
-                .ca-item.ca-item-2
-                  .ca-item-main
-                    .galleryThumbnails
-                      = image_tag("event_gallery_thumbnail.jpg")
-                .ca-item.ca-item-3
-                  .ca-item-main
-                    .galleryThumbnails
-                      = image_tag("event_gallery_thumbnail.jpg")
+                    .eventListWrapper
+                      .eventListInner
+                        .clearfix
+                          .dateAndPlace
+                            .date Jan 9,2013
+                            .place Pune, India
+                          .tag
+                            %img{:src => "/assets/student_event.png"}
+                        .eventImg
+                          %img{:src => "/assets/event_snap_4.jpg"}
+                        .eventContent
+                          %h5 Cloud foundry open tour
+                          .personName Rajdeep Dua
+                          %p.lightGrayText At this Developer Day you will meet the experts and learn...
+                          %a{:href => "#"} Read More
+                      .eventListFooter
+                        %span.numberPeopleAttending 16
+                        %span People Attending
+          .past_events
+            -#.slider.clearfix
+            -#  .sliderHeading
+            -#    %h3 Past Events
+            -#  .ca-container.PastEventsContainer.clearfix
+            -#    .ca-wrapper
+            -#      .ca-item.ca-item-1
+            -#        .ca-item-main
+            -#          .pastEvent
+            -#            .clearfix
+            -#              .pastEventDate
+            -#                %span.date 04
+            -#                %span.month Dec
+            -#              .pastEventDetails Lorem ipsum dolor sit amet, cons ectetur adipiscing elit. Aenean ornare interdum...
+            -#      .ca-item.ca-item-2
+            -#        .ca-item-main
+            -#          .pastEvent
+            -#            .clearfix
+            -#              .pastEventDate
+            -#                %span.date 04
+            -#                %span.month Dec
+            -#              .pastEventDetails Lorem ipsum dolor sit amet, cons ectetur adipiscing elit. Aenean ornare interdum...
+            -#      .ca-item.ca-item-3button_tag
+            -#        .ca-item-main
+            -#          .pastEvent
+            -#            .clearfix
+            -#              .pastEventDate
+            -#                %span.date 04
+            -#                %span.month Dec
+            -#              .pastEventDetails Lorem ipsum dolor sit amet, cons ectetur adipiscing elit. Aenean ornare interdum...
+            -#.slider.clearfix
+            -#  .sliderHeading
+            -#    %h3 Past Events Gallery
+            -#  .ca-container.galleryThumbnailsContainer.clearfix
+            -#    .ca-wrapper
+            -#      .ca-item.ca-item-1
+            -#        .ca-item-main
+            -#          .galleryThumbnails
+            -#            = image_tag("event_gallery_thumbnail.jpg")
+            -#            %p Cloud Foundry introduced npm support, we added serval
+            -#            %a.lightGrayText{:href => "#"} (54 Photos)
+            -#      .ca-item.ca-item-2
+            -#        .ca-item-main
+            -#          .galleryThumbnails
+            -#            = image_tag("event_gallery_thumbnail.jpg")
+            -#      .ca-item.ca-item-3
+            -#        .ca-item-main
+            -#          .galleryThumbnails
+            -#            = image_tag("event_gallery_thumbnail.jpg")
+            =render :partial => "past_events"
         .comments.clearfix
           %h4 Posts
           %ul.posts
@@ -180,7 +215,8 @@
                   %span.commentDate November 08,2012
               %p Since Cloud Foundry introduced npm support, we added several improvements that make deploying Node.js applications with dependencies easier, faster and more transparent to developers. Easy development When we introduced npm support...
               %a{:href => "#"} View more
-      .span4
+      =render :partial => "event_admin_and_members_list"
+      -#.span4
         .chapterNameWithThumbnail.clearfix
           %img.chapterThumbnail{:src => "/assets/pune_chapter.jpg"}/
           %h3 Pune Chapter
@@ -235,6 +271,11 @@
                 .personName Oliver Gierke
           %a{:href => "#"} View more
 :javascript
-  $('.ca-container').contentcarousel({
-         minNum          : 2
-     });
+  Chapters.init();
+  Events.init();
+  $(document).ready(function(){
+    $('.ca-container').contentcarousel({
+      minNum          : 2
+    });
+
+  });

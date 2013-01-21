@@ -73,6 +73,53 @@ class ChaptersController < ApplicationController
     end
   end
 
+  def show1
+      @chapter = Chapter.find(params[:id])
+      @is_part_of_chapter = false
+      if current_user
+        @is_part_of_chapter = @chapter.chapter_members.where({:user_id => current_user.id}).try(:first).present?
+      end
+
+      @primary_coordinator = @chapter.chapter_members.where({:memeber_type => ChapterMember::PRIMARY_COORDINATOR}).try(:first)
+      @secondary_coordinators = @chapter.chapter_members.where({:memeber_type => ChapterMember::SECONDARY_COORDINATOR}) || []
+      @members = @chapter.chapter_members.where({:memeber_type => ChapterMember::MEMBER}) || []
+
+      @totalcount = @chapter.chapter_members.size
+
+      get_upcoming_and_past_events
+      marker =[]
+      if @chapter.geolocation.present?
+        geo_tag =@chapter.geolocation
+        marker <<{:lat => geo_tag.latitude, :lng => geo_tag.longitude, :title => geo_tag.title}
+      end
+      @marker =marker.to_json
+      @announcements = Announcement.all
+      respond_to do |format|
+        if request.xhr?
+          if(params[:chapter_home] == "true" and params[:page].blank?)
+            format.html{render :partial => '/events/events_list'}
+          else      #this is used for pagination
+            format.js {}
+          end
+        else
+          format.html # show.html.erb
+          format.json { render json: @chapter }
+        end
+
+      end
+    end
+
+
+
+
+
+
+
+
+
+
+
+
 
   # GET /chapters/new
   # GET /chapters/new.json
@@ -183,7 +230,7 @@ class ChaptersController < ApplicationController
     @two_upcoming_events = @upcoming_events.sort!.reverse!.take(2)
     #@upcoming_events = @upcoming_events.paginate(:page => params[:page], :per_page => 5)
     @past_events.sort!
-    @past_events = @past_events.paginate(:page => params[:page], :per_page => 10)
+    #@past_events = @past_events.paginate(:page => params[:page], :per_page => 10)
   end
 
   def search
