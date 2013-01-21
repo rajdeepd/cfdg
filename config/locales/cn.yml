@@ -78,6 +78,7 @@ cn:
     welcome: "欢迎"
     location: "所在城市"
     my_account: "我的账户"
+    account_not_confirmed: 请完善你的信息，并验证账号
 
   chapter:
     types:

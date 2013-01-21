@@ -1,4 +1,6 @@
 class ChaptersController < ApplicationController
+  before_filter :user_required!, :only => [:new]
+  before_filter :user_confirm_required!, :only => [:new]
 
   before_filter do
     locale = params[:locale]
