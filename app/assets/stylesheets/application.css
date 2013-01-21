@@ -23,12 +23,16 @@ html, body, div, span, applet, iframe, p, blockquote, pre, a, abbr, acronym, add
 	margin: 0;
 	padding: 0;
 	border: 0;
-	font-size: 12px;
-	/*font: inherit;*/
-	vertical-align: baseline;
-	font-weight: normal;
-	color: #333;
-	font-family: Helvetica, sans-serif;
+	/*font-size: 12px;
+	font: inherit;*/
+	/*vertical-align: baseline;*/
+	/*font-weight: normal;*/
+	/*color: #333;*/
+	/*font-family: Helvetica, sans-serif;*/
+}
+
+body {
+	font-family: "Helvetica Neue", Helvetica, Arial,'Hiragino Sans GB', sans-serif;
 }
 
 h1,h2,h3,h4,h5,h6 {
