@@ -11,6 +11,13 @@ class ApplicationController < ActionController::Base
     redirect_to root_path() if current_user.nil?
   end
 
+  def user_confirm_required!
+    return if current_user.nil?
+    unless current_user.is_confirmed?
+      redirect_to root_path, :notice => 'please confirm you email'
+    end
+  end
+
   def authenticate_member!
     user_required!
 
