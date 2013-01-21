@@ -1,0 +1,129 @@
+= javascript_include_tag "jquery.timepicker.min"
+= javascript_include_tag "jquery.ui.datepicker"
+= javascript_include_tag "jquery-ui"
+= javascript_include_tag "jquery.selectbox-0.2.min"
+= stylesheet_link_tag    "jquery.selectbox", :media => "all"
+:javascript
+  $(function() {
+    $( ".datepicker" ).datepicker({
+      showOtherMonths: true,
+      selectOtherMonths: true,
+      showOn: "button",
+      buttonImage: "../assets/calander.png",
+      buttonImageOnly: true,
+    });
+    $(".selectID").selectbox();
+  });
+:javascript
+  $(document).ready(function(){
+     $('.ui-timepicker-input').timepicker();
+     $('.ui-timepicker-input').on('changeTime', function() {
+     	$('#onselectTarget').text($(this).val());
+     });
+
+
+  });
+.content
+  .loginContent.signUpWrapper
+    .row
+      .span10.offset1
+        .loginLayout.clearfix
+          .plainBlueHeader
+            %h3 create an event
+          .eventHeader
+          .borderWithShadow
+          .formBox.borderNone
+            %h5 Enter Event details
+            %form.form-horizontal
+              .control-group
+                %label.control-label
+                  Event Title
+                  %span.asterisk *
+                .controls
+                  %input{:type => "text"}
+              .control-group
+                %label.control-label
+                  Event Description
+                  %span.asterisk *
+                .controls
+                  %textarea
+              .control-group
+                %label.control-label
+                  Attendees Count
+                .controls
+                  %input{:type => "text"}
+              .control-group
+                %label.control-label
+                  Event Day & Date Details
+                  %span.asterisk *
+                .controls
+                  %div.dateBox
+                    Start Date
+                    %div.dateInput
+                      %input.datepicker{:type => "text"}/
+                  %span.timeBox
+                    Start Time
+                    %input.time.ui-timepicker-input{:autocomplete => "on", :type => "text"}/
+                  %div.dateBox
+                    End Date
+                    %div.dateInput
+                      %input.datepicker{:type => "text"}/
+                  %span.timeBox
+                    Start Time
+                    %input.time.ui-timepicker-input{:autocomplete => "ons", :type => "text"}/
+          .formBox
+            %h5 Enter Event address
+            %form.form-horizontal
+              .control-group
+                %label.control-label
+                  Venue Name
+                .controls
+                  %input{:type => "text"}
+              .control-group
+                %label.control-label
+                  Street Address1
+                .controls
+                  %textarea
+              .control-group
+                %label.control-label
+                  Street Address2
+                .controls
+                  %textarea
+              .control-group
+                %label.control-label
+                  From
+                .controls
+                  %span.dateBox
+                    Country
+                    %select.selectID{:name => "country_id", :tabindex => "1"}
+                      %option India
+                  %span.timeBox
+                    State
+                    %select.selectID{:name => "country_id", :tabindex => "1"}
+                      %option India
+                  %span.dateBox
+                    City
+                    %select.selectID{:name => "country_id", :tabindex => "1"}
+                      %option India
+                  %span.postalCode
+                    Postal Code
+                    %input{:type => "text"}
+          .formBox
+            %h5 Enter Event agenda
+            %form.form-horizontal
+              .control-group
+                .controls
+                  %button.bigButton.blueBtn
+                    %i.plusIcon
+                    %span Add Session to Agenda
+
+              .control-group
+                %label.control-label
+                  Event Session Detail
+                .controls
+                  %textarea
+              .control-group
+                .controls
+                  %button.blueBtn Done
+
+
