@@ -41,29 +41,12 @@
           %li{:style => "float:left;padding-left:14px;", :class => "inline-errors event_event_end_time"} &nbsp;
       .event-bottom
     .event-form
-      .event-left
-        .el-cont{:style => "text-align: center;margin-top:10px;"}
-          %div{:style => " width: 250px;height:160px;background: #ccc;margin: 0 auto;"}
-            -if @event.image.present?
-              = image_tag(@event.image, :style => "width:250px;height:160px")
-            -else
-              %img{:alt => "", :src => "/assets/img-h.png", :style => "width:250px;height:160px"}
-
-          = f.file_field :image, :class => "label-14"
-          -#%a.label-14{:href=>"",:id => "image_upload_link",:style => " width: 250px;height:160px;margin: 0 auto;"}
-            Upload Image
-          -#%div{:style => "display:none"}
-            = f.file_field :image, :class => "label-14"
-
-
-
-        .el-cont
       .event-right
         .el-cont
           %h5.label-26.flt-left Location
         .el-cont
         .el-cont{:style => "margin-bottom:2px;"}
-          = f.text_field :venue , :class => "input-b size-text-event-create", :placeholder => "Venue",:rel => @event.attendees_count
+          = @chapter.location
 
         .el-cont
           = f.text_field :address_line1, :class => "input-b size-text-event-create",:placeholder => "Address Line 1",:event_member => EventMember.get_count(@event.id)
@@ -72,7 +55,6 @@
           = f.text_field :address_line2 , :class => "input-b size-text-event-create",:placeholder => "Address Line 2"
 
         .el-cont
-          = f.text_field :city_name , :class => "input-b size-text-event-create",:placeholder => "City"
           = f.hidden_field :chapter_id
         .el-cont
           = f.text_field :postal_code , :class => "input-b size-text-event-create",:placeholder => "Postal code"
