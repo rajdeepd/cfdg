@@ -103,7 +103,18 @@
 -#%script{:src => "js/jquery.mousewheel.js", :type => "text/javascript"}
 -#%script{:src => "js/jquery.contentcarousel.js", :type => "text/javascript"}
 :javascript
-  $('#ca-container').contentcarousel();
+  $('#ca-container').contentcarousel({
+     // speed for the sliding animation
+     sliderSpeed     : 500,
+     // easing for the sliding animation
+     sliderEasing    : 'easeOutExpo',
+     // speed for the item animation (open / close)
+     itemSpeed       : 500,
+     // easing for the item animation (open / close)
+     itemEasing      : 'easeOutExpo',
+     // number of items to scroll at a time
+     scroll          : 2
+ });
 
 
   function redirect_to(url) {

@@ -1176,6 +1176,7 @@ ul.supportPrivacyLinks li{
     font-weight: bold;
     color: #333333;
     font-size: 15px;
+    margin-right: 5px;
 }
 .eventContent{
     margin-left: 6px;
@@ -1461,8 +1462,15 @@ li.ui-timepicker-selected .ui-timepicker-duration,
 .sliderHeading{
     background: url("slider-heading.png") no-repeat;
     width: 579px;
-    height: 57px;
+    height: 40px;
     display: block;
+    padding: 20px 10px 0 10px;
+}
+.sliderHeading h3{
+    font-size: 20px;
+    color: #333333;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    float: left;
 }
 .chapterLayout{
     background-color: rgba(232, 243, 250, 1);
@@ -1475,9 +1483,11 @@ li.ui-timepicker-selected .ui-timepicker-duration,
 .chapterLayout .ca-container{
     margin: 0;
     width: 578px;
+    height: 400px;
 }
 .chapterLayout .ca-item{
     width: 280px;
+    height: 398px;
 }
 .chapterLayout .ca-item-main{
     padding: 0;
@@ -1486,12 +1496,152 @@ li.ui-timepicker-selected .ui-timepicker-duration,
     border: none;
     border-radius: 0;
     color: inherit;
+    overflow: visible;
+}
+.chapterLayout .clearfix .tag{
+    float: right;
+    position: absolute;
+    right: 12px;
+    top: -1px;
+    z-index: 1000;
+    margin: 0;
 }
 ul.listOfAttendees{
-    height: 610px;
+    max-height: 610px;
     overflow-y: auto;
 }
 ul.adminPanel{
-    height: 70px;
+    max-height: 70px;
     overflow-y: auto;
+
+}
+.chapterLayout .ca-container .ca-nav span{
+    top: -22px;
+    text-indent:0;
+    height: 20px;
+    background: url("prev_next_bg.png") repeat-x;
+    width: 60px;
+    height: 29px;
+}
+.chapterLayout .ca-container .ca-nav span:hover{
+    background: url("prev_next_hover_bg.png") repeat-x;
+}
+.chapterLayout .ca-container .ca-nav .ca-nav-prev{
+    left: 448px;
+    box-shadow: -1px 1px 3px -1px #cccccc;
+}
+.chapterLayout .ca-container .ca-nav .ca-nav-prev:hover{
+    box-shadow: none;
+}
+.chapterLayout .ca-container .ca-nav .prevArrow{
+    padding: 5px 15px 5px 19px;
+    background: url(prev_arrow.png) no-repeat 8px 10px;
+    border: 1px solid #cccccc;
+    border-right: none;
+    width: 25px;
+    height: 17px;
+    color: #222222;
+}
+.chapterLayout .ca-container .ca-nav .prevArrow:hover{
+    background: url("prev_hover_arrow.png") no-repeat 8px 10px;
+    color: #888888;
+}
+.chapterLayout .ca-container .ca-nav .ca-nav-next{
+    right: 10px;
+    box-shadow: 2px 1px 3px -1px #cccccc;
+}
+.chapterLayout .ca-container .ca-nav .ca-nav-next:hover{
+    box-shadow: none;
+}
+.chapterLayout .ca-container .ca-nav .nextArrow{
+    padding: 5px 20px 5px 13px;
+    background: url(next_arrow.png) no-repeat 45px 10px;
+    border: 1px solid #cccccc;
+    width: 25px;
+    height: 17px;
+    color: #222222;
+}
+.chapterLayout .ca-container .ca-nav .nextArrow:hover{
+    background: url("next_hover_arrow.png") no-repeat 45px 10px;
+    color: #888888;
+}
+.slider{
+    margin-bottom: 30px;
+}
+.pastEvent{
+    width: 246px;
+    padding: 10px 15px;
+    border: 1px solid #cfcfcf;
+    border-radius: 5px;
+}
+.chapterLayout .ca-container.PastEventsContainer, .chapterLayout .ca-container.PastEventsContainer .ca-item{
+    height: 85px;
+}
+.pastEvent .pastEventDate{
+    background: url("past_event_date_bg.png") no-repeat center;
+    width: 52px;
+    height: 56px;
+    float: left;
+    text-align: center;
+    margin-right: 15px;
+}
+.pastEvent:hover{
+    background: #ffffff;
+    cursor: pointer;
+    box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.15);
+}
+.pastEvent .pastEventDate .date{
+    color: #0078ac;
+    font-size: 20px;
+    display: block;
+    margin-top: 19px;
+    font-weight: bold;
+}
+.pastEvent .pastEventDate .month{
+    color: #333333;
+    font-size: 11px;
+    margin-top: -2px;
+    display: block;
+}
+.pastEventDetails{
+    font-size: 12px;
+    color: #888888;
+    line-height: 18px;
+    font-family: helvetica;
+}
+.chapterLayout .ca-container.galleryThumbnailsContainer, .chapterLayout .ca-container.galleryThumbnailsContainer .ca-item{
+    height: 240px;
+}
+.galleryThumbnails{
+    background: url("galary_thumbnail_bg.png") no-repeat;
+    width: 280px;
+    height: 178px;
+}
+.galleryThumbnails img{
+    margin: 13px 6px;
+}
+.galleryThumbnails p{
+    text-align: center;
+    width: 192px;
+    margin: 0 auto;
+    line-height: 20px;
+}
+.galleryThumbnails .lightGrayText{
+    font-size: 14px;
+    width: 90px;
+    margin: 0 auto;
+    display: block;
+}
+.comments ul.posts li{
+    border-top: 1px solid #aaaaaa;
+    padding-top: 20px;
+    margin-bottom: 20px;
+}
+.posts li:first-child{
+    border-top: none;
+}
+.joinChapter{
+    background: #ffffff;
+    padding: 30px 7px;
+    border-bottom: 1px solid #d8dee2;
 }

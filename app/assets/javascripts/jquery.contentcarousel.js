@@ -146,7 +146,9 @@
 						sliderEasing	: 'easeOutExpo',// easing for the sliding animation
 						itemSpeed		: 500,			// speed for the item animation (open / close)
 						itemEasing		: 'easeOutExpo',// easing for the item animation (open / close)
-						scroll			: 1				// number of items to scroll at a time
+						scroll			: 1,				// number of items to scroll at a time
+                        minNum			: 3				// number of items to scroll at a time
+
 					};
 
 					return this.each(function() {
@@ -167,14 +169,14 @@
 						cache.totalItems	= $items.length;
 
 						// add navigation buttons
-						if( cache.totalItems > 3 )
-							$el.prepend('<div class="ca-nav"><span class="ca-nav-prev">Previous</span><span class="ca-nav-next">Next</span></div>')
+						if( cache.totalItems > settings.minNum )
+							$el.prepend('<div class="ca-nav"><span class="ca-nav-prev"><div class="prevArrow">Prev</div></span><span class="ca-nav-next"><div class="nextArrow">Next</div></span></div>')
 
 						// control the scroll value
 						if( settings.scroll < 1 )
 							settings.scroll = 1;
-						else if( settings.scroll > 3 )
-							settings.scroll = 3;
+						else if( settings.scroll > settings.minNum )
+							settings.scroll = settings.minNum;
 
 						var $navPrev		= $el.find('span.ca-nav-prev'),
 							$navNext		= $el.find('span.ca-nav-next');
