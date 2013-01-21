@@ -27,6 +27,10 @@ class Event < ActiveRecord::Base
   } , :unless => Proc.new{|event| event.event_end_date.blank?}
 
 
+  scope :applied_events, where(:status => [:applied])
+  scope :active_events, where(:status => [:applied])
+  scope :freezed_events, where(:status => [:applied])
+
   state_machine :status, :initial => :applied do
     event :deny do
       transition :applied => :denied

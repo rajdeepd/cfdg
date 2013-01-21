@@ -131,6 +131,13 @@ CloudfoundryUsergroups::Application.routes.draw do
         post 'create_secondary_coordinator'
       end
     end
+    resources :events do
+      collection do
+        get 'applied'
+        get 'active'
+        get 'freezed'
+      end
+    end
   end
 
   # The priority is based upon order of creation:

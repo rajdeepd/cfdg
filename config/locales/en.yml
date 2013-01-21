@@ -101,7 +101,6 @@ en:
       founder_information: "Founder Information"
       founder_name: "Name"
       founder_email: "Email"
-      
     
   
   confirmation:
@@ -112,3 +111,8 @@ en:
   mail:
     confirmation:
       subject: "We need to confirm your email address." 
+
+  admin:
+    chapter_status: "Chapter Status"
+    announcement: "Announcement"
+    events: "Events"
