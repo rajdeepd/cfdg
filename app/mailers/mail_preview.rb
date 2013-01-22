@@ -29,4 +29,9 @@ class MailPreview < MailView
     @user = User.all.first
     ChapterMailer.newly_created_mail(@chapter, @user)
   end
+
+  def new_event_mail
+    @event = Event.all.first
+    EventMailer.new_event_mail(@event)
+  end
 end

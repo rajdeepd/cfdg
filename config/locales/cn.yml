@@ -105,6 +105,9 @@ cn:
         subject: 感谢申请新分会
       newly_created:
         subject: "%{chapter_name} 分会成立了" 
+    event_mailer:
+      new_event:
+        subject: 新活动申请
 
   admin: 
     chapter_status: "Chapter Status"
