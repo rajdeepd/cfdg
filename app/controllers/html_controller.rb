@@ -31,4 +31,7 @@ class HtmlController < ApplicationController
   def create_event
 
   end
+  def create_event_step2
+
+  end
 end
