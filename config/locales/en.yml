@@ -80,7 +80,7 @@ en:
     welcome: "Welcome"
     location: "Location:"
     my_account: "My Account"
-    account_not_confirmed: Please complete your information and confirm your account.
+    account_not_confirmed: "Please complete your information and confirm your account." 
 
   chapter:
     types:

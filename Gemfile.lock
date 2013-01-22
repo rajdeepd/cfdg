@@ -12,7 +12,7 @@ GIT
     userstamp (2.0.1)
 
 GEM
-  remote: https://rubygems.org/
+  remote: http://ruby.taobao.org/
   specs:
     actionmailer (3.2.11)
       actionpack (= 3.2.11)
@@ -291,6 +291,7 @@ GEM
     warden (1.2.1)
       rack (>= 1.0)
     will_paginate (3.0.4)
+    ya2yaml (0.31)
 
 PLATFORMS
   ruby
@@ -353,3 +354,4 @@ DEPENDENCIES
   unicorn
   userstamp!
   will_paginate (~> 3.0)
+  ya2yaml (~> 0.31)

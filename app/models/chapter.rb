@@ -95,8 +95,8 @@ class Chapter < ActiveRecord::Base
 
   def self.total_records
     { 
-      :professional => Chapter.where(:chapter_type => :professional, :chapter_status => [:active,:incubated]),
-      :student => Chapter.where(:chapter_type => :student, :chapter_status => [:active,:incubated])
+      Chapter::CITY => Chapter.where(:chapter_type => Chapter::CITY, :chapter_status => [:active,:incubated]),
+      Chapter::STUDENT => Chapter.where(:chapter_type => Chapter::STUDENT, :chapter_status => [:active,:incubated])
     }
   end
 

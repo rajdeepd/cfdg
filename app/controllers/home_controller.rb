@@ -9,6 +9,7 @@ class HomeController < ApplicationController
   end
 
   def directory
+    binding.pry
     @chapters = Chapter.total_records
   end
 
