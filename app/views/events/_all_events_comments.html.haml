@@ -1,5 +1,5 @@
-.all_events_comments
-  -(@event.comments || []).each do |comment|
+-#.all_events_comments
+  -(@event.comments.last(6) || []).each do |comment|
     %li
       = avatar_display_pic(comment.user,'thumb', '50x50','profile.png',"img-c flt-left")
       %h5.label-27
@@ -7,3 +7,42 @@
       .commentText
         %p #{comment.content}
         %span.commentDate #{Time.parse(comment.created_at.to_s).strftime("%b %d, %Y")}
+
+.all_events_comments
+  .less_comments
+    -(@event.comments.last(6) || []).each do |comment|
+      %li
+        = avatar_display_pic(comment.user,'thumb', '50x50','profile.png',"img-c flt-left")
+        %h5.label-27
+          #{comment.user.fullname}
+        .commentText
+          %p #{comment.content}
+          %span.commentDate #{Time.parse(comment.created_at.to_s).strftime("%b %d, %Y")}
+    -if @event.comments.size <= 6
+      %span.viewMoreComments{:style => "display:none;"} View All
+    -else
+      %span.viewMoreComments View All
+  .more_comments
+    -(@event.comments || []).each do |comment|
+      %li
+        = avatar_display_pic(comment.user,'thumb', '50x50','profile.png',"img-c flt-left")
+        %h5.label-27
+          #{comment.user.fullname}
+        .commentText
+          %p #{comment.content}
+          %span.commentDate #{Time.parse(comment.created_at.to_s).strftime("%b %d, %Y")}
+    %span.viewLessComments View Less
+
+:javascript
+  $(document).ready(function(){
+    $(".less_comments").show();
+    $(".more_comments").hide();
+    $(".viewMoreComments").click(function(){
+      $(".less_comments").hide();
+      $(".more_comments").show();
+    });
+    $(".viewLessComments").click(function(){
+      $(".less_comments").show();
+      $(".more_comments").hide();
+    });
+  });

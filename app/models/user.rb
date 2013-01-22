@@ -48,4 +48,44 @@ class User < ActiveRecord::Base
     end
   end
 
+  def user_profile_completion_status
+    user_profile_status = 10
+    if self.location.empty?
+      user_profile_status = user_profile_status - 1
+    end
+    if self.avatar.nil?
+      user_profile_status = user_profile_status - 1
+    end
+    if self.twitter_url.empty?
+      user_profile_status = user_profile_status - 1
+    end
+    if self.linkedin_url.empty?
+      user_profile_status = user_profile_status - 1
+    end
+    if self.website_url.empty?
+      user_profile_status = user_profile_status - 1
+    end
+    if self.mobile.empty?
+      user_profile_status = user_profile_status - 1
+    end
+    if self.first_name.nil?
+      user_profile_status = user_profile_status - 1
+    end
+    if self.last_name.nil?
+      user_profile_status = user_profile_status - 1
+    end
+    if self.fullname.nil?
+      user_profile_status = user_profile_status - 1
+    end
+    if self.email.nil?
+      user_profile_status = user_profile_status - 1
+    end
+    #user_profile_status.to_i
+    if user_profile_status.to_i == 10
+      puts "Profile complete"
+    else
+      puts "plz complete ur profile"
+    end
+  end
+
 end

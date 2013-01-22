@@ -13,6 +13,9 @@ CloudfoundryUsergroups::Application.routes.draw do
   match'/admin', :to => "admin/sessions#new"
 
   resources :chapters do
+    member do
+      get 'show1'
+    end
     resources :events
     collection do
       post 'join_a_chapter'

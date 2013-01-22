@@ -1,0 +1,56 @@
+.span4
+  .chapterNameWithThumbnail.clearfix
+    %img.chapterThumbnail{:src => "/assets/pune_chapter.jpg"}/
+    %h3 #{@chapter.name}
+  .eventPeopleList
+    .listHeader
+      %span Admin
+      %span.numberOfPeople 07
+    %ul.adminPanel.clearfix
+      %li
+        = avatar_display_pic(@primary_coordinator.user,'thumb', '40x40','profile.png',"profile-img img-a flt-left")
+        .personDetails
+          .personName #{@primary_coordinator.user.fullname}
+          .personRole Senior Solutions Architect
+  .eventPeopleList
+    .listHeader
+      %span co-ordinators
+      %span.numberOfPeople #{@secondary_coordinators.size}
+    %ul.clearfix
+      -@secondary_coordinators.each do |i|
+        %li
+          = avatar_display_pic(i.user,'thumb', '40x40','profile.png',"profile-img img-a flt-left")
+          .personDetails
+            .personName  #{i.user.fullname}
+            .personRole Staff engineer, springSource
+    -#  %li
+    -#    %img{:src => "/assets/human_face_5.jpg"}/
+    -#    .personDetails
+    -#      .personName Jeremy Grelle
+    -#      .personRole Sr Software Engineer, Spring...
+    -#  %li
+    -#    %img{:src => "/assets/human_face_6.jpg"}/
+    -#    .personDetails
+    -#      .personName Patrick Chanezon
+    -#      .personRole Sr Director of Developer...
+    -#%a{:href => "#"} View more
+  .eventPeopleList
+    .listHeader
+      %span Members
+      %span.numberOfPeople #{@members.size }
+    %ul.listOfAttendees.clearfix
+      -@members.each do |i|
+        %li
+          = avatar_display_pic(i.user,'thumb', '40x40','profile.png',"profile-img img-a flt-left")
+          .personDetails
+            .personName #{i.user.fullname}
+
+    -#  %li
+    -#    %img{:src => "/assets/human_face_5.jpg"}/
+    -#    .personDetails
+    -#      .personName Jennifer Hickey
+    -#  %li
+    -#    %img{:src => "/assets/human_face_6.jpg"}/
+    -#    .personDetails
+    -#      .personName Oliver Gierke
+    -#%a{:href => "#"} View more

@@ -98,8 +98,8 @@ class EventsController < ApplicationController
     if !@event.is_cancelled? and !@event.am_i_member?(@current_user.id)
       @event_memeber = EventMember.new(:event_id => @event.id, :user_id => current_user.id)
       @event_memeber.save!
+      am_i_chapter_member = false
 
-      EventNotification.rsvped_event(@event,@current_user).deliver
       #EventNotification.rsvped_event(@event,@current_user).deliver
       #SES.send_raw_email(EventNotification.rsvped_event(@event,@current_user))
       #EventNotification.delay.rsvped_event(@event,@current_user)
@@ -109,7 +109,10 @@ class EventsController < ApplicationController
     @chapter = Chapter.find(@event.chapter_id)
     if !@chapter.am_i_chapter_memeber?(@current_user.id)
       ChapterMember.create({:memeber_type=>ChapterMember::MEMBER, :user_id => @current_user.id, :chapter_id => @chapter.id})
+      am_i_chapter_member = true
     end
+    EventNotification.rsvped_event(@event,@current_user).deliver if am_i_chapter_member == false
+    EventNotification.rsvped_event_and_joined_chapter(@event,@current_user).deliver if am_i_chapter_member == true
     @profile_page = false
     respond_to do |format|
       format.js {render :partial => 'events_list' }# new.html.erb

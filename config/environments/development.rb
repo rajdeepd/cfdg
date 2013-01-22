@@ -64,6 +64,4 @@ CloudfoundryUsergroups::Application.configure do
   #    :secret_access_key => 'F6BrXwz36hgTmRMpL+fOLf8OFV8D5QsCqTeNc0B5'
   #)
 
-
-
-end
+ end

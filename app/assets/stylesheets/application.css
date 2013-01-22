@@ -27,6 +27,9 @@ html, body, div, span, applet, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pr
 	color: #333;
 	font-family: Helvetica, sans-serif;
 }
+.map .map_container #map.gmaps4rails_map {
+    min-height: 350px;
+}
 textarea{
 	font-family: inherit;
 }
