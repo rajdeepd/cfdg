@@ -119,6 +119,8 @@ class UsersController < ApplicationController
 
         flash[:notice] = [I18n.t("welcome.user_confirmed")]
 
+        UserMailer.welcome_mail(@user).deliver
+
         sign_in_and_redirect @user, :event => :authentication
       else
         # send another

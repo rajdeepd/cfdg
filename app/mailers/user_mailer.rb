@@ -3,7 +3,9 @@ class UserMailer < ActionMailer::Base
 
   def welcome_mail(user)
     @user = user
-    mail(:to => @user.email, :subject => "Welcome mail")
+    mail(:to => @user.email, :subject => I18n.t("mail.user_mailer.welcome.subject")) do |format|
+      format.html { render :layout => 'mail_default' }
+    end
   end
 
   def confirmation_mail(user)

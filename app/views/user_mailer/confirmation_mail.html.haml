@@ -1,4 +1,8 @@
 %h2 邮件确认 
 %p 你好, 
-%p 欢迎加入Cloud Foundry同学会。确认注册后，你将成为 Cloud Foundry 同学会 的正式同学。确认请点击： 
-= link_to "确认注册", confirm_users_url(:token => @user.confirmation_token), :style => "color:#0097d7;"
+%p 
+  欢迎加入Cloud Foundry同学会。确认注册后，你将成为 Cloud Foundry 同学会 的正式同学。确认请点击： 
+  = link_to "确认注册", confirm_users_url(:token => @user.confirmation_token), :style => "color:#0097d7;"
+
+
+%p Cloud Foundry同学会
