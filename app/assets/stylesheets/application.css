@@ -267,8 +267,10 @@ body {
 	overflow:hidden;
 }
 .div-b{
+	float: left;
 	display: inline-block;
-	margin: -115px 0px 0px 0px;
+	margin-top: -30px;
+	/*margin: -115px 0px 0px 0px;*/
 	text-align: center;
 }
 .div-b .btn-a{
@@ -282,6 +284,7 @@ body {
 	box-shadow: 0px 2px 2px 0px #ccc;
 }
 .div-a{
+	float: left;
 	width:270px;
 	display: inline-block;
 	margin:10px 0px 0px 20px;

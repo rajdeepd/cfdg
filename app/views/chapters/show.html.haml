@@ -7,7 +7,7 @@
           %h6.label-2 Focus on Your App,Not Plumbing
       .div-b
         %img.bg-logo-b{:src => "/assets/logo-b.png"}
-        %br/
+        / %br/
         -if !@is_part_of_chapter
           = form_tag join_a_chapter_chapters_path, :method => :post do
             = hidden_field_tag "chapter_id", "#{@chapter.id}"                            
