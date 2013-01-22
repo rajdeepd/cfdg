@@ -16,6 +16,9 @@ a{
 a:hover{
     text-decoration: none;
 }
+.clr{
+    clear: both;
+}
 body{
     margin: 0;
     padding: 0;
@@ -599,6 +602,7 @@ ul.supportPrivacyLinks li{
     float: left;
     color: #ffffff;
     font-size: 36px;
+    margin-bottom: 10px;
 }
 .blueHeader .tag{
     float: right;
@@ -1096,7 +1100,7 @@ ul.supportPrivacyLinks li{
     border: 1px solid #cccccc;
     border-radius: 5px;
     width: 340px;
-    height: 35px;
+    height: 33px;
     float: left;
     margin: 0 20px;
 }
@@ -1108,10 +1112,11 @@ ul.supportPrivacyLinks li{
     box-shadow: none;
 }
 .eventCitySearch .citySearchIcon{
-    margin-top: 8px;
+    margin-top: 7px;
 }
 .eventSearchBox button.search{
     width: 110px;
+    height: 35px;
 }
 #myTab{
     margin-bottom: 0;
@@ -1121,6 +1126,7 @@ ul.supportPrivacyLinks li{
     border: 1px solid #CCC;
     border-radius: 4px;
     margin-bottom: 20px;
+    position: relative;
 }
 .eventListInner{
     padding: 0 8px;
@@ -1143,13 +1149,19 @@ ul.supportPrivacyLinks li{
     background: url("person_icon.png") no-repeat 0 2px;
     padding-left: 20px;
     font-size: 14px;
+    margin-bottom: 10px;
 }
 .eventListWrapper .eventContent a{
     margin-bottom: 15px;
     display: block;
 }
-.eventListWrapper .eventContent p.lightGrayText{
+.eventListWrapper .dateAndPlace .date{
+    color: #888888;
+}
+.eventListWrapper .eventContent p{
     min-height: 38px;
+    color: #888888;
+    font-size: 12px;
 }
 .eventListFooter{
     background: #f1f1f1;
@@ -1208,7 +1220,7 @@ ul.supportPrivacyLinks li{
 .eventListing .layoutWrapper{
     padding-bottom: 0;
 }
-.content.eventListing{
+.content.eventListing, .content.chapterListing{
     background-position: center 130%;
 }
 .signUpWrapper .loginVisual{
@@ -1473,7 +1485,7 @@ li.ui-timepicker-selected .ui-timepicker-duration,
 .chapterLayout .ca-container{
     margin: 0;
     width: 578px;
-    height: 400px;
+    height: 405px;
 }
 .chapterLayout .ca-item{
     width: 280px;
@@ -1488,11 +1500,11 @@ li.ui-timepicker-selected .ui-timepicker-duration,
     color: inherit;
     overflow: visible;
 }
-.chapterLayout .clearfix .tag{
+.chapterLayout .clearfix .tag, .chapterListing .eventListInner .tag{
     float: right;
     position: absolute;
     right: 12px;
-    top: -1px;
+    top: -3px;
     z-index: 1000;
     margin: 0;
 }
@@ -1516,8 +1528,9 @@ ul.adminPanel{
     background: url("prev_next_hover_bg.png") repeat-x;
 }
 .chapterLayout .ca-container .ca-nav .ca-nav-prev{
-    left: 448px;
+    right: 76px;
     box-shadow: -1px 1px 3px -1px #cccccc;
+    left: auto;
 }
 .chapterLayout .ca-container .ca-nav .ca-nav-prev:hover{
     box-shadow: none;
@@ -1536,7 +1549,7 @@ ul.adminPanel{
     color: #888888;
 }
 .chapterLayout .ca-container .ca-nav .ca-nav-next{
-    right: 10px;
+    right: 16px;
     box-shadow: 2px 1px 3px -1px #cccccc;
 }
 .chapterLayout .ca-container .ca-nav .ca-nav-next:hover{
@@ -1562,6 +1575,7 @@ ul.adminPanel{
     padding: 10px 15px;
     border: 1px solid #cfcfcf;
     border-radius: 5px;
+    background: #f1faff;
 }
 .chapterLayout .ca-container.PastEventsContainer, .chapterLayout .ca-container.PastEventsContainer .ca-item{
     height: 85px;
@@ -1671,4 +1685,331 @@ ul.adminPanel{
     float: left;
     width: 20px;
     height: 20px;
+}
+.sliderHeadingFull{
+    background: url("slider_header_full.png") no-repeat;
+    width: 879px;
+    height: 40px;
+    display: block;
+    padding: 20px 10px 0 15px;
+}
+.sliderHeadingMid{
+    background: url("slider-heading-mid.png") no-repeat;
+    width: 778px;
+    height: 40px;
+    display: block;
+    padding: 20px 10px 0 15px;
+}
+.userDashboard .chapterLayout .ca-container{
+    width: 879px;
+}
+.subscribedChapters .eventListInner{
+    padding: 8px;
+}
+.subscribedChapters .eventImg{
+    width: 62px;
+    height: 62px;
+    border-radius: 4px;
+    border: 1px solid #dbdbdb;
+    float: left;
+    display: block;
+    margin: 0 10px 10px 0;
+}
+.subscribedChapters .eventImg img{
+    height: 62px;
+    border-radius: 4px;
+}
+.subscribedChapters .eventContent h5{
+    margin: 20px 0 0;
+}
+.subscribedChapters .location{
+    background: url("location_icon_black.png") no-repeat 0 1px;
+    padding-left: 20px;
+    display: block;
+    font-size: 15px;
+    margin: 0 0 20px 10px;
+    color: #444444;
+}
+.subscribedChapters .comingEvent h5{
+    color: #666666;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+.subscribedChapters .pastEvent{
+    width: 223px;
+    padding: 10px 30px 10px 15px;
+    margin-left: -8px;
+    background: #fffce7;
+    border:none;
+    border-radius: 0;
+    cursor: auto;
+    margin-bottom: 10px;
+}
+.subscribedChapters .pastEvent:hover{
+    box-shadow: none;
+    background: #fffce7;
+}
+.subscribedChapters a{
+    color: #0078ac;
+    font-size: 12px;
+    margin-left: 10px;
+}
+.subscribedChapters .ca-container{
+    height: 305px;
+}
+.userDashboard ul.posts li{
+    border: none;
+    margin-left: 15px;
+    padding-top: 0;
+}
+.userDashboard ul.posts li p{
+    width: 723px;
+    color: #666666;
+    font-size: 13px;
+}
+.userDashboard ul.posts li img{
+    margin-right: 20px;
+    border: 1px solid #b8c0c8;
+    width: 60px;
+    height: 60px;
+}
+.userDashboard ul.posts li .commentDate{
+    color: #999999;
+    font-size: 11px;
+    text-shadow: 1px 1px #ffffff;
+    display: block;
+    margin-bottom: 10px;
+}
+.userDashboard ul.posts li p.darkText{
+    color: #000000;
+    font-size: 16px;
+    font-weight: bold;
+}
+.learnMore{
+    text-transform: uppercase;
+    font-weight: bolder;
+    font-size: 12px;
+    padding: 1px 10px;
+}
+.blueHeader .userImg{
+    border: 3px solid #00628d;
+    float: left;
+    border-radius: 4px;
+    margin-right: 20px;
+}
+.userDashboard .blueHeader{
+    padding: 10px 0 0 30px;
+}
+.userDashboard .blueHeader .chapterName {
+    float: left;
+    width: 500px;
+}
+.userDashboard .blueHeader h3{
+    color: #ffffff;
+    font-size: 20px;
+    margin-bottom: 6px;
+}
+.userDashboard .blueHeader h3 span{
+    color: #ffffff;
+    font-size: 14px;
+}
+.userDashboard .blueHeader .chapterLocation{
+    background: url("place_icon.png") no-repeat;
+    padding-left: 15px;
+    display: block;
+    float: left;
+    color: #ffffff;
+    font-size: 14px;
+    margin-right: 20px;
+    line-height: 16px;
+}
+.userDashboard .blueHeader .phoneNumber{
+    background: url("contact_number_white.png") no-repeat;
+    padding-left: 20px;
+    display: block;
+    float: left;
+    color: #ffffff;
+    font-size: 14px;
+    margin-bottom: 9px
+}
+.userDashboard .blueHeader .userSocialLink{
+    float: left;
+    width: 810px;
+}
+.userDashboard .blueHeader .settingDropdown{
+    float: right;
+}
+.userDashboard .blueHeader .userSocialLink span {
+    padding-left: 22px;
+    display: block;
+    float: left;
+    color: #ffffff;
+    font-size: 14px;
+    margin-right: 15px;
+    line-height: 16px;
+    text-decoration: underline;
+}
+.userDashboard .blueHeader .userSocialLink .linkedInURL{
+    background: url("linkedin_white.png") no-repeat;
+
+}
+.userDashboard .blueHeader .userSocialLink .twitterURL{
+    background: url("twitter_white.png") no-repeat;
+}
+.userDashboard .blueHeader .userSocialLink .siteURL{
+    background: url("url_icon.png") no-repeat;
+}
+.userDashboard .blueHeader .btn-group.settingDropdown .btn{
+    background: url("dark_blue_btn_bg.jpg") repeat-x;
+    width: 40px;
+    height: 30px;
+    border: 1px solid #01618a;
+    padding: 0;
+    margin-right: 22px;
+}
+.settingIcon{
+    background: url("setting_white_icon.png") no-repeat center;
+    display: block;
+    width: 40px;
+    height: 30px;
+
+}
+.incompleteProfile{
+    display: block;
+    float: left;
+    color: #ffffff;
+    font-size: 14px;
+    margin-right: 15px;
+    line-height: 16px;
+}
+.incompleteProfile a{
+    color: #ffffff;
+    text-decoration: underline;
+}
+.chapterListing .chapterSearchBox{
+    margin-bottom: 30px;
+}
+.chapterListing .subscribedChapters .pastEvent{
+    width: 231px;
+}
+.chapterListing .eventCitySearch{
+    border: solid 1px #7faac5;
+    width: 266px;
+}
+.chapterListing .eventCitySearch input{
+    width: 230px;
+    height: 25px;
+}
+.chapterListing .chapterSearchBox .sbOptions{
+    width: 218px;
+}
+.chapterListing .sbToggle {
+    background: url("select_big_icon.jpg") 0 0 no-repeat;
+    display: block;
+    height: 35px;
+    outline: none;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 41px;
+}
+.chapterListing .sbHolder{
+    float: left;
+    margin-right: 20px;
+    height: 33px;
+    background: #ffffff;
+    width: 220px;
+}
+.chapterListing .sbSelector {
+    height: 34px;
+    line-height: 35px;
+}
+.chapterListing .chapterSearchBox .signUp{
+    line-height: 30px;
+    padding: 1px 0;
+    float: left;
+}
+.chapterListing .chapterSearchBox{
+    padding: 8px 10px;
+}
+.chapterListing .chapterSearchBox form{
+    margin: 0;
+    float: left;
+    width: 680px;
+    padding: 10px 0;
+    border-right: 1px solid #dbdbdb;
+    margin-right: 15px;
+}
+.chapterListing .chapterSearchBox a.signUp{
+    margin-top: 9px;
+    padding: 0 12px;
+}
+.darkBlueBtn{
+    background: url("dark_blue_btn_bg.jpg") repeat-x;
+    height: 30px;
+    border: 1px solid #01618a;
+    padding: 0;
+    margin-right: 22px;
+    color: #ffffff;
+}
+.darkBlueBtn:hover{
+    background: #2394c8;
+    background-image: none;
+    color: #ffffff;
+}
+.chapterListing .darkBlueBtn{
+    padding: 0 20px;
+    line-height: 30px;
+    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.2);
+    margin-left: 10px;
+    border-radius: 2px;
+}
+
+.chapterListing .chapterName h1{
+    float: left;
+}
+.chapterListing .chapterName span{
+    float: right;
+    color: #ffffff;
+    font-size: 14px;
+    line-height: 18px;
+}
+.articleLayout{
+    padding: 0 50px;
+}
+.articleImg{
+    margin-bottom: 30px;
+}
+.articleDescription{
+    width: 740px;
+    margin: 0 auto;
+    margin-bottom: 50px;
+}
+.articleDescription h5{
+    font-size: 14px;
+    color: #318dc0;
+    line-height: 10px;
+    margin-bottom: 5px;
+}
+.articleDescription ul.posts li{
+    border: none;
+    padding-bottom: 0;
+}
+.articleDescription ul.posts li img{
+    width: 40px;
+    height: 40px;
+}
+.articleDescription ul.posts li .commentDate{
+    margin-bottom: 10px;
+    display: block;
+}
+.articleDescription ul.posts li .commentText p{
+    font-size: 13px;
+    color: #666666;
+}
+.articleDescription textarea{
+    display: block;
+    width: 480px;
+    height: 100px;
+    resize: none;
 }

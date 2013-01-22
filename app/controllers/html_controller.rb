@@ -34,4 +34,16 @@ class HtmlController < ApplicationController
   def create_event_step2
 
   end
+  def user_dashboard
+
+  end
+  def article_view
+
+  end
+  def post_view
+
+  end
+  def announcement_view
+
+  end
 end
