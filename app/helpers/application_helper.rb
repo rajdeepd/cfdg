@@ -1,9 +1,5 @@
 module ApplicationHelper
 
-  def image_url(file)
-    request.protocol + request.host_with_port + path_to_image(file)
-  end
-
   def lang
     if params[:locale] == 'CN'
       return 'zh-CN'

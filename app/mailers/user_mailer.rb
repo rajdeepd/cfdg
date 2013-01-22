@@ -9,7 +9,7 @@ class UserMailer < ActionMailer::Base
   def confirmation_mail(user)
     @user = user
 
-    mail(:to => @user.email, :subject => I18n.t("mail.subjects.confirmation")) do |format|
+    mail(:to => @user.email, :subject => I18n.t("mail.user_mailer.confirmation.subject")) do |format|
       format.html { render :layout => 'mail_default' }
     end
   end
