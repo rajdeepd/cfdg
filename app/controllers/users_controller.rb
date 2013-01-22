@@ -135,4 +135,19 @@ class UsersController < ApplicationController
       redirect_to root_path()
     end
   end
+
+  def resend_confirmation
+    @user = current_user
+    
+    binding.pry
+
+    if @user && !@user.is_confirmed?
+      @user.generate_confirmation_token!
+      UserMailer.confirmation_mail(@user).deliver
+
+      respond_to do |format|
+        format.js { render :js => '', :status => :ok }
+      end
+    end
+  end
 end

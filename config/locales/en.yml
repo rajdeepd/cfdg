@@ -81,6 +81,8 @@ en:
     location: "Location:"
     my_account: "My Account"
     account_not_confirmed: "Please complete your information and confirm your account." 
+    resend_confirmation: "Resend Confirmation"
+    confirmation_sent: "Confirmation Sent"
 
   chapter:
     types:

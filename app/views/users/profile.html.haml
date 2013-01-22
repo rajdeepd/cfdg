@@ -6,11 +6,15 @@
         = "#{t('profile.welcome')} #{@user.name}"
       %h5.label-20 
         = "#{t('profile.location')} #{@user.city.try(:detail)}"
-      - if current_user and (current_user.email.nil? or !current_user.is_confirmed?)
-        %div.notice
-          = t('profile.account_not_confirmed')
-      %a.label-35{:href => "#{settings_path}"} 
-        = t('profile.my_account')
+      -#- if current_user and (current_user.email.nil? or !current_user.is_confirmed?)
+        -#%div.notice
+          -#= t('profile.account_not_confirmed')
+      = link_to t('profile.my_account'), settings_path(), :class => 'label-35'
+
+      - if !@user.is_confirmed?
+        = link_to t('profile.resend_confirmation'), resend_confirmation_path(), :class => 'label-35', :'data-remote' => 'true', :id => 'resend_confirmation'
+        %label(id="confirmation_sent" class="hide label-35") 
+          = t('profile.confirmation_sent')
 
     .cc-left   
       %ul.ul-i.profile_content
