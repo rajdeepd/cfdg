@@ -39,7 +39,8 @@
       %span.viewMap ( View Map )
       .mapDiv
         %span.close x
-        %img{:src => "/assets/map.png"}
+        -#%img{:src => "/assets/map.png"}
+        = render :partial => "chapter_map"
   .joinChapter
     -#%button.orangeBtn Join Chapter
     -if !@is_part_of_chapter
@@ -157,35 +158,39 @@
                       .eventListFooter
                         %span.numberPeopleAttending 16
                         %span People Attending
-          .slider.clearfix
-            .sliderHeading
-              %h3 Past Events
-            .ca-container.PastEventsContainer.clearfix
-              .ca-wrapper
-                .ca-item.ca-item-1
-                  .ca-item-main
-                    .pastEvent
-                      .clearfix
-                        .pastEventDate
-                          %span.date 04
-                          %span.month Dec
-                        .pastEventDetails Lorem ipsum dolor sit amet, cons ectetur adipiscing elit. Aenean ornare interdum...
-                .ca-item.ca-item-2
-                  .ca-item-main
-                    .pastEvent
-                      .clearfix
-                        .pastEventDate
-                          %span.date 04
-                          %span.month Dec
-                        .pastEventDetails Lorem ipsum dolor sit amet, cons ectetur adipiscing elit. Aenean ornare interdum...
-                .ca-item.ca-item-3button_tag
-                  .ca-item-main
-                    .pastEvent
-                      .clearfix
-                        .pastEventDate
-                          %span.date 04
-                          %span.month Dec
-                        .pastEventDetails Lorem ipsum dolor sit amet, cons ectetur adipiscing elit. Aenean ornare interdum...
+
+          .past_events
+            =render :partial => "past_events"
+            -#.slider.clearfix
+            -#  .sliderHeading
+            -#    %h3 Past Events
+            -#  .ca-container.PastEventsContainer.clearfix
+            -#    .ca-wrapper
+            -#      .ca-item.ca-item-1
+            -#        .ca-item-main
+            -#          .pastEvent
+            -#            .clearfix
+            -#              .pastEventDate
+            -#                %span.date 04
+            -#                %span.month Dec
+            -#              .pastEventDetails Lorem ipsum dolor sit amet, cons ectetur adipiscing elit. Aenean ornare interdum...
+            -#      .ca-item.ca-item-2
+            -#        .ca-item-main
+            -#          .pastEvent
+            -#            .clearfix
+            -#              .pastEventDate
+            -#                %span.date 04
+            -#                %span.month Dec
+            -#              .pastEventDetails Lorem ipsum dolor sit amet, cons ectetur adipiscing elit. Aenean ornare interdum...
+            -#      .ca-item.ca-item-3button_tag
+            -#        .ca-item-main
+            -#          .pastEvent
+            -#            .clearfix
+            -#              .pastEventDate
+            -#                %span.date 04
+            -#                %span.month Dec
+            -#              .pastEventDetails Lorem ipsum dolor sit amet, cons ectetur adipiscing elit. Aenean ornare interdum...
+
           .slider.clearfix
             .sliderHeading
               %h3 Events Gallery
@@ -217,9 +222,11 @@
                   .ca-item-main
                     .galleryThumbnails
                       = image_tag("event_gallery_thumbnail.jpg")
+
         .comments.clearfix
           %h4 Posts
           %ul.posts
+
             - @chapter.posts.each do |i|
               %li
                 .clearfix
@@ -233,6 +240,8 @@
                 %p #{i.description.truncate(197)}
                 %a{:href => "#"} View more
       .span4
+        =render :partial => "event_admin_and_members_list"
+      -#.span4
         .chapterNameWithThumbnail.clearfix
           %img.chapterThumbnail{:src => "/assets/pune_chapter.jpg"}/
           %h3 Pune Chapter

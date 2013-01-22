@@ -1,0 +1,51 @@
+= javascript_include_tag "jquery.timepicker.min"
+= javascript_include_tag "jquery.ui.datepicker"
+= javascript_include_tag "jquery-ui"
+= javascript_include_tag "jquery.selectbox-0.2.min"
+= stylesheet_link_tag    "jquery.selectbox", :media => "all"
+:javascript
+  $(function() {
+
+
+  });
+.content
+  .loginContent.signUpWrapper
+    .row
+      .span10.offset1
+        .loginLayout.clearfix
+          .plainBlueHeader
+            %h3 Congratulation!
+          .agendaHeader
+            %p
+              Your Event is created,
+              %br Now add agenda & speakers to event.
+          .borderWithShadow
+          .formBox
+            %h5 Enter Event Agenda
+            %form.form-horizontal
+              .agendaBox.clearfix
+                %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam est dui, laoreet et malesuada sit amet, ultricies eu nisi. Sed condimentum malesuada ante.
+                .editDeleteBtn
+                  %a.editIcon{:href => '#'}
+                  %a.deleteThikIcon{:href => '#'}
+              .control-group
+                .controls
+                  %button.bigButton.blueBtn
+                    %i.plusIcon
+                    %span Add Session to Agenda
+              .control-group
+                %label.control-label
+                  Event Session Detail
+                .controls
+                  %textarea
+              .control-group
+                .controls
+                  %button.blueBtn Done
+          .formBox
+            .form-horizontal
+              .control-group
+                .controls
+                  %button.btn Cancel
+                  %button.orangeBtn Create Event
+
+

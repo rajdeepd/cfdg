@@ -80,8 +80,8 @@ class ChaptersController < ApplicationController
         @is_part_of_chapter = @chapter.chapter_members.where({:user_id => current_user.id}).try(:first).present?
       end
 
-      @primary_coord = @chapter.chapter_members.where({:memeber_type => ChapterMember::PRIMARY_COORDINATOR}).try(:first)
-      @secondary_coords = @chapter.chapter_members.where({:memeber_type => ChapterMember::SECONDARY_COORDINATOR}) || []
+      @primary_coordinator = @chapter.chapter_members.where({:memeber_type => ChapterMember::PRIMARY_COORDINATOR}).try(:first)
+      @secondary_coordinators = @chapter.chapter_members.where({:memeber_type => ChapterMember::SECONDARY_COORDINATOR}) || []
       @members = @chapter.chapter_members.where({:memeber_type => ChapterMember::MEMBER}) || []
 
       @totalcount = @chapter.chapter_members.size
