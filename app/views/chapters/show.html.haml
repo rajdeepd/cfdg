@@ -73,6 +73,7 @@
         -if @current_user.present? and (ChapterMember.am_i_coordinator?(@current_user.id, @chapter.id))
           %li{:style => "float:right"}
             %a.cp{:href => "#{profile_path}" , :id=>"create_event_from_chapter", :chapter_id=> @chapter.id} + Create Event
+            -#=link_to "Create Event"  , new_chapter_event_path(@chapter) ,:id => "new_event", :class => "create_new_event"
       #chapter_show_events
         = render '/events/events_list'
         = render 'chapter_map'

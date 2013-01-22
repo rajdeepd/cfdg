@@ -41,8 +41,9 @@ class EventsController < ApplicationController
     @event = Event.new
     @event.chapter_id = params[:chapter_id]
     respond_to do |format|
-      format.js {render :partial => 'form'} # new.html.erb
-      format.json { render json: @event }
+      #format.js {render :partial => 'form'} # new.html.erb
+      #format.json { render json: @event }
+      format.html
     end
   end
 
@@ -168,8 +169,11 @@ class EventsController < ApplicationController
   # POST /events
   # POST /events.json
   def create
-    @event = Event.new(params[:event])
-    respond_to do |format|
+    @event_chapter = Chapter.find(params[:chapter_id])
+    @event = @event_chapter.events.new(params[:event])
+    #@event = Event.new(params[:event])
+    #respond_to do |format|
+      logger.info "@@@@@@@@@@@ inside if of create action ########"
       if @event.save
         start_date = (params[:event][:event_start_date].blank? or params[:event][:event_start_time].blank?) ? "" : Time.parse(params[:event][:event_start_date]+" " +params[:event][:event_start_time]).strftime('%Y-%m-%d %H:%M:%S')
         end_date = (params[:event][:event_end_date].blank? or  params[:event][:event_end_time].blank?) ? "" : Time.parse(params[:event][:event_end_date]+" " +params[:event][:event_end_time]).strftime('%Y-%m-%d %H:%M:%S')
@@ -191,12 +195,14 @@ class EventsController < ApplicationController
         #EventNotification.delay.event_creation(@event,emails,@chapter)
         EventNotification.event_creation(@event,to_email,bcc_emails,@chapter).deliver
         #SES.send_raw_email(EventNotification.event_creation(@event,to_email,bcc_emails,@chapter))
-        format.js
+
+        redirect_to show1_chapter_path(params[:chapter_id]), :notice => "Event created successfully"
       else
-        format.js
+        logger.info "########## inside else of create action ########"
+        render :action => :new
       end
 
-    end
+    #end
   end
 
   # PUT /events/1
