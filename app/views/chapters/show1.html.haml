@@ -220,22 +220,18 @@
         .comments.clearfix
           %h4 Posts
           %ul.posts
-            %li
-              .clearfix
-                %img{:src => "/assets/default_human_face.jpg"}
-                .commentText
-                  %p We are excited to announce a new version of Micro Cloud Foundry™ with a new set.
-                  %span.commentDate November 08,2012
-              %p Since Cloud Foundry introduced npm support, we added several improvements that make deploying Node.js applications with dependencies easier, faster and more transparent to developers. Easy development When we introduced npm support...
-              %a{:href => "#"} View more
-            %li
-              .clearfix
-                %img{:src => "/assets/default_human_face.jpg"}
-                .commentText
-                  %p We are excited to announce a new version of Micro Cloud Foundry™ with a new set.
-                  %span.commentDate November 08,2012
-              %p Since Cloud Foundry introduced npm support, we added several improvements that make deploying Node.js applications with dependencies easier, faster and more transparent to developers. Easy development When we introduced npm support...
-              %a{:href => "#"} View more
+            - @chapter.posts.each do |i|
+              %li
+                .clearfix
+                  -if i.user.avatar_file_name.present?
+                    = avatar_display_pic(i.user,'thumb', '50x50','profile.png',"img-c flt-left")
+                  -else
+                    %img{:src => "/assets/default_human_face.jpg"}
+                  .commentText
+                    %p #{i.title}
+                    %span.commentDate #{Time.parse(i.try(:created_at).to_s).strftime('%b %d, %Y')}
+                %p #{i.description.truncate(197)}
+                %a{:href => "#"} View more
       .span4
         .chapterNameWithThumbnail.clearfix
           %img.chapterThumbnail{:src => "/assets/pune_chapter.jpg"}/
