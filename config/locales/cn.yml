@@ -85,12 +85,18 @@ cn:
     location: 所在城市
     my_account: 我的账户
     account_not_confirmed: "Please complete your information and confirm your account."
+
   confirmation: 
     user: 
       notice: 确认邮件已发送到你的邮箱。请通过邮件中的链接确认。请在30分钟内确认，完成你的注册。
+
   mail: 
-    confirmation: 
-      subject: 你的邮箱地址需要确认。
+    user_mailer:
+      confirmation: 
+        subject: 请确认注册 Cloud Foudnry 同学会
+      welcome:
+        subject: 欢迎加入 Cloud Foundry 同学会
+
   admin: 
     chapter_status: "Chapter Status"
     announcement: Announcement

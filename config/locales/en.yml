@@ -109,8 +109,11 @@ en:
 
 
   mail:
-    confirmation:
-      subject: "We need to confirm your email address." 
+    user_mailer:
+      confirmation:
+        subject: "We need to confirm your email address." 
+      welcome: 
+        subject: "Welcome to Cloud Foundry Developer Group."
 
   admin:
     chapter_status: "Chapter Status"
