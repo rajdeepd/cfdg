@@ -25,9 +25,10 @@ class ChapterMailer < ActionMailer::Base
   end
 
   def newly_created_mail(chapter, user)
+    binding.pry
     @chapter = chapter
     @primary_coord = @chapter.get_primary_coordinator
     
-    mail(:to => user.email, :subject => I18n.t("mail.chapter_mailer.newly_created.subject", :chapter_name => @chapter.name))
+    mail(:to => user.email, :subject => I18n.t("mail.chapter_mailer.newly_created.subject"), :chapter_name => @chapter.name)
   end
 end

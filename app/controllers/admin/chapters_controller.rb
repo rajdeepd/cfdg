@@ -37,6 +37,12 @@ class Admin::ChaptersController < ApplicationController
     when "incubate"
       chapter.incubate
       chapter.update_attributes(:approved_on => chapter.updated_at)
+      ChapterMailer.approval_mail(chapter).deliver
+
+      User.non_admin_all.each do |user|
+        ChapterMailer.newly_created(chapter,user).deliver
+      end
+
       msg = "Approved on #{chapter.approved_on.strftime("%b %d, %Y")}"
     when "active"
       chapter.active

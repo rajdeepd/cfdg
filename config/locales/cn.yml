@@ -99,6 +99,12 @@ cn:
     chapter_mailer:
       new_chapter:
         subject:  新分会申请
+      approval: 
+        subject: "%{chapter_name} 分会申请通过批准" 
+      denial:
+        subject: 感谢申请新分会
+      newly_created:
+        subject: "%{chapter_name} 分会成立了" 
 
   admin: 
     chapter_status: "Chapter Status"

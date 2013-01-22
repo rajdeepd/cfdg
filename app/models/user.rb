@@ -57,6 +57,10 @@ class User < ActiveRecord::Base
     User.find_by_admin(true)
   end
 
+  def self.non_admin_all
+    User.where(:admin => false)
+  end
+
   def self.find_for_auth(auth_data)
     user = User.find_by_provider_and_uid(auth_data[:provider], auth_data[:uid])
     

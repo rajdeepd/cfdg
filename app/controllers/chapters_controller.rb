@@ -106,7 +106,7 @@ class ChaptersController < ApplicationController
         member.chapter_id = @chapter.id
         member.save
 
-        ChapterMailer.new_chapter_mail(@chapter)
+        ChapterMailer.new_chapter_mail(@chapter).deliver
 
         format.html { redirect_to @chapter, notice: ['Chapter was successfully created.'] }
         format.json { render json: @chapter, status: :created, location: @chapter }

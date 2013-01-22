@@ -13,4 +13,20 @@ class MailPreview < MailView
     @chapter = Chapter.all.first
     ChapterMailer.new_chapter_mail(@chapter)
   end
+
+  def approval_mail
+    @chapter = Chapter.all.first
+    ChapterMailer.approval_mail(@chapter)
+  end
+
+  def denial_mail
+    @chapter = Chapter.all.first
+    ChapterMailer.denial_mail(@chapter)
+  end
+
+  def newly_created_mail
+    @chapter = Chapter.all.first
+    @user = User.all.first
+    ChapterMailer.newly_created_mail(@chapter, @user)
+  end
 end
