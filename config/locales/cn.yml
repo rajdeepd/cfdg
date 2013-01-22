@@ -113,3 +113,19 @@ cn:
     chapter_status: "Chapter Status"
     announcement: Announcement
     events: Events
+
+  events:
+    upcoming_events: Upcoming Events
+
+  event_form:
+    form_title: "Create Event For %{chapter_name}"
+    event_title: Event Title
+    event_starts_on: Event Starts On
+    event_ends_on: Event Ends On
+    event_location: Location
+
+  button:
+    create: CREATE
+    cancel: CANCEL
+    edit: EDIT
+    delete: DELETE
