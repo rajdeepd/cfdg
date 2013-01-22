@@ -23,6 +23,7 @@
     $('#query').on('keypress', function(e){
       $("label.error").hide();
     });
+
   });
   $(function(){
       /* Here is the slider using default settings */
@@ -80,11 +81,13 @@
 
         .map
           = gmaps4rails(@markers)
+          -#= gmaps("markers" => {"data" => @markers }, "map_options" => {"auto_zoom" => false, "zoom" => 15 } )
         .createChapter.clearfix
           -if current_user.blank?
 
             %p Couldn't find a chapter in your city?
-            %a.orangeBtn.signin.createChapterBtn CREATE A CHAPTER
+            -#%a.orangeBtn.signin.createChapterBtn CREATE A CHAPTER
+            = link_to "CREATE A CHAPTER",signin_path,:class => "orangeBtn createChapterBtn"
 
           -else
             -if !ChapterMember.is_primary_coordinator?(current_user.id)

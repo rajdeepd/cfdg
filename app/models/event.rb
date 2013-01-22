@@ -158,4 +158,11 @@ class Event < ActiveRecord::Base
     end
   end
 
+  def get_country_for_city(event)
+    city = event.city_name
+    city_details = City.find_by_name(city)
+    country = Country.find(city_details.country_id)
+    return country.name
+  end
+
 end

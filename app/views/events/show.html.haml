@@ -57,7 +57,32 @@
          $(".rsvp_me").hide();
          $("#rsvp_tick").show();
       },"script");
-    })
+    });
+
+    $(".less_info").show();
+    $(".more_info").hide();
+    $(".viewMore").click(function(){
+      $(".less_info").hide();
+      $(".more_info").show();
+    });
+    $(".viewLess").click(function(){
+      $(".less_info").show();
+      $(".more_info").hide();
+    });
+
+
+    $(".less_comments").show();
+    $(".more_comments").hide();
+    $(".viewMoreComments").click(function(){
+      $(".less_comments").hide();
+      $(".more_comments").show();
+    });
+    $(".viewLessComments").click(function(){
+      $(".less_comments").show();
+      $(".more_comments").hide();
+    });
+
+
   });
 
   $(function() {
@@ -144,8 +169,15 @@
             .eventDetail.clearfix
               %h4 Description
               -#%p What if you could deploy and scale your applications within seconds? And never had to wait again for infrastructure to be provisioned? With Cloud Foundry, which is a modern, open-source Platform as a Service, you can deploy your application instantly. Use Cloud Foundry for development, testing and production.
-              %p #{@event.description}
-              -#%a{:href => "#"} View more
+              .less_info
+                %p #{@event.description.truncate(300)}
+                -if @event.description.length < 300
+                  %span.viewMore{:style => "display:none;"} View More
+                -else
+                  %span.viewMore View More
+              .more_info
+                %p #{@event.description}
+                %span.viewLess Less Info
               -if !@event.is_past_event?
                 -if !current_user.blank? and  (current_user.id != @event.created_by)
                   -if @event.is_cancelled?
@@ -182,7 +214,35 @@
               %h4 Comments
             %ul
               .all_events_comments
-                -(@event.comments || []).each do |comment|
+
+                .less_comments
+                  -(@event.comments.last(6) || []).each do |comment|
+                    %li
+                      = avatar_display_pic(comment.user,'thumb', '50x50','profile.png',"img-c flt-left")
+                      %h5.label-27
+                        #{comment.user.fullname}
+                      .commentText
+                        %p #{comment.content}
+                        %span.commentDate #{Time.parse(comment.created_at.to_s).strftime("%b %d, %Y")}
+                  -if @event.comments.size <= 6
+                    %span.viewMoreComments{:style => "display:none;"} View All
+                  -else
+                    %span.viewMoreComments View All
+                .more_comments
+                  -(@event.comments || []).each do |comment|
+                    %li
+                      = avatar_display_pic(comment.user,'thumb', '50x50','profile.png',"img-c flt-left")
+                      %h5.label-27
+                        #{comment.user.fullname}
+                      .commentText
+                        %p #{comment.content}
+                        %span.commentDate #{Time.parse(comment.created_at.to_s).strftime("%b %d, %Y")}
+                  %span.viewLessComments View Less
+
+
+
+
+                -#-(@event.comments.last(6) || []).each do |comment|
                   %li
                     = avatar_display_pic(comment.user,'thumb', '50x50','profile.png',"img-c flt-left")
                     %h5.label-27
@@ -200,7 +260,9 @@
                   = hidden_field_tag "comment[commentable_type]","Event"
                   = hidden_field_tag "comment[commentable_id]",@event.id
                   = button_tag "Add Comment",:class => "addBtn btn add_comment_button"
-
+              -else
+                - if !@event.comments.present?
+                  = "No comments yet."
 
 
 
@@ -215,7 +277,7 @@
             .listHeader
               %span administrator
               %span.numberOfPeople 1
-            %ul.clearfix
+            %ul.clearfix.adminPanel
               %li
                 -#%img{:src => "/assets/human_face_4.jpg"}
                 = avatar_display_pic(@event.user,'thumb', '40x40','profile.png',"profile-img img-a flt-left")
@@ -243,7 +305,7 @@
               -else
                 %span.numberOfPeople #{@event.event_members.size}
               -#%span.numberOfPeople 06
-            %ul.clearfix
+            %ul.clearfix.listOfAttendees
               -@members.each do |i|
                 %li
                   -#%img{:src => "/assets/human_face_4.jpg"}
@@ -252,3 +314,4 @@
                     .personName #{i.fullname}
 
                 -#%a{:href => "#"} View more
+

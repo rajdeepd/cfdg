@@ -54,6 +54,7 @@ end
 group :development do
   gem 'hirb'
   gem "pry-remote"
+  gem 'meta_request', '0.2.1'
 end
 
 

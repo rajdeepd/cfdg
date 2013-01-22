@@ -132,6 +132,7 @@ header ul li:first-child{
     text-transform: uppercase;
     text-shadow: 0 1px 1px #ffffff;
 }
+
 .navbar ul.nav li:hover a{
     border-bottom: 2px solid #00bde7;
     color: #333333;
@@ -785,6 +786,16 @@ ul.supportPrivacyLinks li{
     color: #333;
     margin-bottom: 20px;
 }
+.viewMore , .viewLess{
+    color: #0094D4;
+    cursor: pointer;
+}
+
+.viewMoreComments , .viewLessComments{
+    color: #0094D4;
+    cursor: pointer;
+    margin-left: 502px;
+}
 .eventDetail a{
     color: #0094d4;
 }
@@ -1246,6 +1257,12 @@ ul.supportPrivacyLinks li{
 .content .comingEvents .span4{
     margin-left: 0;
 }
+.alert.alert-error p{
+    color: #B94A48 !important;
+}
+.alert.alert-info p{
+    color: #3A87AD;
+}
 .alert{
     width: 880px;
     margin: 0 auto;
@@ -1566,6 +1583,9 @@ ul.adminPanel{
 .chapterLayout .ca-container.PastEventsContainer, .chapterLayout .ca-container.PastEventsContainer .ca-item{
     height: 85px;
 }
+.PastEventsContainer a{
+    display: block;
+}
 .pastEvent .pastEventDate{
     background: url("past_event_date_bg.png") no-repeat center;
     width: 52px;
@@ -1634,6 +1654,7 @@ ul.adminPanel{
     padding: 30px 7px;
     border-bottom: 1px solid #d8dee2;
 }
+
 .formBox .form-horizontal .control-group .orangeBtn, .formBox .form-horizontal .control-group .btn{
     width: 136px;
     border-radius: 5px;
