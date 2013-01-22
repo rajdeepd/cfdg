@@ -52,8 +52,9 @@ class User < ActiveRecord::Base
     self.update_attributes!(:confirmation_token => Devise.friendly_token[0..8], :confirmation_sent_at => Time.now)
   end
 
-  def admin_user
-    User.find_by_email("admin@cloudfoundry.com")
+  def self.admin_user
+    #User.find_by_email("admin@cloudfoundry.com")
+    User.find_by_admin(true)
   end
 
   def self.find_for_auth(auth_data)

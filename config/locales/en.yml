@@ -116,6 +116,9 @@ en:
         subject: "We need to confirm your email address." 
       welcome: 
         subject: "Welcome to Cloud Foundry Developer Group."
+    chapter_mailer:
+      new_chapter:
+        subject:  新分会申请
 
   admin:
     chapter_status: "Chapter Status"

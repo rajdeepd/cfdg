@@ -11,4 +11,3 @@ $ ->
     if $resendLink.length > 0
       $resendLink.on 'ajax:success', () ->
         $resendLink.fadeOut "fast", () -> $sentLink.fadeIn "fast"
-

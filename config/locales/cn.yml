@@ -96,6 +96,9 @@ cn:
         subject: 请确认注册 Cloud Foudnry 同学会
       welcome:
         subject: 欢迎加入 Cloud Foundry 同学会
+    chapter_mailer:
+      new_chapter:
+        subject:  新分会申请
 
   admin: 
     chapter_status: "Chapter Status"

@@ -8,4 +8,9 @@ class MailPreview < MailView
     @user = User.all.first
     UserMailer.welcome_mail(@user)
   end
+
+  def new_chapter_mail
+    @chapter = Chapter.all.first
+    ChapterMailer.new_chapter_mail(@chapter)
+  end
 end
