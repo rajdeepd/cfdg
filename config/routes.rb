@@ -136,6 +136,7 @@ CloudfoundryUsergroups::Application.routes.draw do
       get :chapter_list
       get :chapter_detail
       get :create_event
+      get :create_event_step2
     end
   end
 

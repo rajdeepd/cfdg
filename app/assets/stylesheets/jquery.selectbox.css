@@ -1,6 +1,6 @@
 @CHARSET "UTF-8";
 .sbHolder{
-    background: url("select_bg.png");
+    background: url("select_bg.png") rgba(255, 255, 255, 0.3);
 	border: solid 1px #7faac5;
 	font-family: Arial, sans-serif;
 	font-size: 12px;
