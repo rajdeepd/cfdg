@@ -57,4 +57,10 @@ namespace :deploy do
   task :stop, :except => { :no_release => true } do
     run "cd #{shared_path}/pids && kill -s QUIT `cat unicorn.pid`"
   end
+
+  desc "initialize"
+  task :init, :except => { :no_release => true } do
+    run "cd #{release_path} && bundle exec rake RAILS_ENV=#{rails_env} db:seed"
+    run "cd #{release_path} && bundle exec rake RAILS_ENV=#{rails_env} init:all"
+  end
 end
