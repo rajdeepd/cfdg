@@ -191,17 +191,29 @@
               %h3 Events Gallery
             .ca-container.galleryThumbnailsContainer.clearfix
               .ca-wrapper
-                .ca-item.ca-item-1
+                - @chapter.get_past_events.each do |i|
+                  .ca-item.ca-item-1
+                    .ca-item-main
+                      .galleryThumbnails
+                        -if i.image.event_landscape.present?
+                          = image_tag(i.image.event_landscape.url,:size => "260x150")
+                        -elsif i.image.present?
+                          = image_tag(i.image.url,:size => "260x150")
+                        -else
+                          =image_tag("event_landscape_logo-b.png",:size => "260x150")
+                        -#-else
+                          = image_tag("event_gallery_thumbnail.jpg",:size => "260x150")
+                        -#%p Cloud Foundry introduced npm support, we added serval
+                        %p #{i.title.truncate(15)}
+                        - if i.event_galleries.present?
+                          %a.lightGrayText{:href => "#{show_all_event_images_event_path(i)}"} (#{i.event_galleries.count} Photos)
+                        - else
+                          %a.lightGrayText{:href => "#{show_all_event_images_event_path(i)}"} (0 Photos)
+                -#.ca-item.ca-item-2
                   .ca-item-main
                     .galleryThumbnails
                       = image_tag("event_gallery_thumbnail.jpg")
-                      %p Cloud Foundry introduced npm support, we added serval
-                      %a.lightGrayText{:href => "#"} (54 Photos)
-                .ca-item.ca-item-2
-                  .ca-item-main
-                    .galleryThumbnails
-                      = image_tag("event_gallery_thumbnail.jpg")
-                .ca-item.ca-item-3
+                -#.ca-item.ca-item-3
                   .ca-item-main
                     .galleryThumbnails
                       = image_tag("event_gallery_thumbnail.jpg")
@@ -278,6 +290,7 @@
               .personDetails
                 .personName Oliver Gierke
           %a{:href => "#"} View more
+
 :javascript
   Chapters.init();
   Events.init();
