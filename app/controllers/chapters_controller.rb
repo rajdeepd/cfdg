@@ -230,7 +230,7 @@ class ChaptersController < ApplicationController
     @two_upcoming_events = @upcoming_events.sort!.reverse!.take(2)
     #@upcoming_events = @upcoming_events.paginate(:page => params[:page], :per_page => 5)
     @past_events.sort!
-    #@past_events = @past_events.paginate(:page => params[:page], :per_page => 10)
+    @past_events = @past_events.paginate(:page => params[:page], :per_page => 10)
   end
 
   def search
