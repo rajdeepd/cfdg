@@ -39,7 +39,8 @@
       %span.viewMap ( View Map )
       .mapDiv
         %span.close x
-        %img{:src => "/assets/map.png"}
+        -#%img{:src => "/assets/map.png"}
+        = render :partial => "chapter_map"
   .joinChapter
     -#%button.orangeBtn Join Chapter
     -if !@is_part_of_chapter
