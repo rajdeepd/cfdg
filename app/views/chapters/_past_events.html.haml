@@ -4,18 +4,21 @@
     %h3 Past Events
   .ca-container.PastEventsContainer.clearfix
     .ca-wrapper
-      -@past_events.each do |i|
-        .ca-item.ca-item-1
-          .ca-item-main
-            %a{:href => "#{event_path(i)}"}
-              .pastEvent
-                .clearfix
-                  .pastEventDate
-                    %span.date #{i.event_start_date_in_date.day}
+      - if @past_events.blank?
+        = "No past events for this chapter."
+      -else
+        -@past_events.each do |i|
+          .ca-item.ca-item-1
+            .ca-item-main
+              %a{:href => "#{event_path(i)}"}
+                .pastEvent
+                  .clearfix
+                    .pastEventDate
+                      %span.date #{i.event_start_date_in_date.day}
 
-                    %span.month #{i.event_start_date_in_date.strftime("%b")}
+                      %span.month #{i.event_start_date_in_date.strftime("%b")}
 
-                  .pastEventDetails #{i.description.truncate(80)}
+                    .pastEventDetails #{i.description.truncate(80)}
         -#.ca-item.ca-item-2
         -#  .ca-item-main
         -#    .pastEvent

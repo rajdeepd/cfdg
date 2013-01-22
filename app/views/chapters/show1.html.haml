@@ -93,208 +93,55 @@
                             %span.numberPeopleAttending #{event.event_members.length}
                             %span People Attending
 
-
-                -#.ca-item.ca-item-1
-                  .ca-item-main
-                    .eventListWrapper
-                      .eventListInner
-                        .clearfix
-                          .dateAndPlace
-                            .date Jan 9,2013
-                            .place Pune, India
-                          .tag
-                            %img{:src => "/assets/student_event.png"}
-                        .eventImg
-                          %img{:src => "/assets/event_snap_4.jpg"}
-                        .eventContent
-                          %h5 Cloud foundry open tour
-                          .personName Rajdeep Dua
-                          %p.lightGrayText At this Developer Day you will meet the experts and learn...
-                          %a{:href => "#"} Read More
-                      .eventListFooter
-                        %span.numberPeopleAttending 16
-                        %span People Attending
-
-
-
-
-                -#.ca-item.ca-item-2
-                  .ca-item-main
-                    .eventListWrapper
-                      .eventListInner
-                        .clearfix
-                          .dateAndPlace
-                            .date Jan 9,2013
-                            .place Pune, India
-                          .tag
-                            %img{:src => "/assets/student_event.png"}
-                        .eventImg
-                          %img{:src => "/assets/event_snap_4.jpg"}
-                        .eventContent
-                          %h5 Cloud foundry open tour
-                          .personName Rajdeep Dua
-                          %p.lightGrayText At this Developer Day you will meet the experts and learn...
-                          %a{:href => "#"} Read More
-                      .eventListFooter
-                        %span.numberPeopleAttending 16
-                        %span People Attending
-                -#.ca-item.ca-item-3
-                  .ca-item-main
-                    .eventListWrapper
-                      .eventListInner
-                        .clearfix
-                          .dateAndPlace
-                            .date Jan 9,2013
-                            .place Pune, India
-                          .tag
-                            %img{:src => "/assets/student_event.png"}
-                        .eventImg
-                          %img{:src => "/assets/event_snap_4.jpg"}
-                        .eventContent
-                          %h5 Cloud foundry open tour
-                          .personName Rajdeep Dua
-                          %p.lightGrayText At this Developer Day you will meet the experts and learn...
-                          %a{:href => "#"} Read More
-                      .eventListFooter
-                        %span.numberPeopleAttending 16
-                        %span People Attending
-
           .past_events
             =render :partial => "past_events"
-            -#.slider.clearfix
-            -#  .sliderHeading
-            -#    %h3 Past Events
-            -#  .ca-container.PastEventsContainer.clearfix
-            -#    .ca-wrapper
-            -#      .ca-item.ca-item-1
-            -#        .ca-item-main
-            -#          .pastEvent
-            -#            .clearfix
-            -#              .pastEventDate
-            -#                %span.date 04
-            -#                %span.month Dec
-            -#              .pastEventDetails Lorem ipsum dolor sit amet, cons ectetur adipiscing elit. Aenean ornare interdum...
-            -#      .ca-item.ca-item-2
-            -#        .ca-item-main
-            -#          .pastEvent
-            -#            .clearfix
-            -#              .pastEventDate
-            -#                %span.date 04
-            -#                %span.month Dec
-            -#              .pastEventDetails Lorem ipsum dolor sit amet, cons ectetur adipiscing elit. Aenean ornare interdum...
-            -#      .ca-item.ca-item-3button_tag
-            -#        .ca-item-main
-            -#          .pastEvent
-            -#            .clearfix
-            -#              .pastEventDate
-            -#                %span.date 04
-            -#                %span.month Dec
-            -#              .pastEventDetails Lorem ipsum dolor sit amet, cons ectetur adipiscing elit. Aenean ornare interdum...
-
           .slider.clearfix
             .sliderHeading
               %h3 Events Gallery
             .ca-container.galleryThumbnailsContainer.clearfix
               .ca-wrapper
-                - @chapter.get_past_events.each do |i|
-                  .ca-item.ca-item-1
-                    .ca-item-main
-                      .galleryThumbnails
-                        -if i.image.event_landscape.present?
-                          = image_tag(i.image.event_landscape.url,:size => "260x150")
-                        -elsif i.image.present?
-                          = image_tag(i.image.url,:size => "260x150")
-                        -else
-                          =image_tag("event_landscape_logo-b.png",:size => "260x150")
-                        -#-else
-                          = image_tag("event_gallery_thumbnail.jpg",:size => "260x150")
-                        -#%p Cloud Foundry introduced npm support, we added serval
-                        %p #{i.title.truncate(15)}
-                        - if i.event_galleries.present?
-                          %a.lightGrayText{:href => "#{show_all_event_images_event_path(i)}"} (#{i.event_galleries.count} Photos)
-                        - else
-                          %a.lightGrayText{:href => "#{show_all_event_images_event_path(i)}"} (0 Photos)
-                -#.ca-item.ca-item-2
-                  .ca-item-main
-                    .galleryThumbnails
-                      = image_tag("event_gallery_thumbnail.jpg")
-                -#.ca-item.ca-item-3
-                  .ca-item-main
-                    .galleryThumbnails
-                      = image_tag("event_gallery_thumbnail.jpg")
+                - if @chapter.get_past_events.blank?
+                  = "No event gallery for this chapter."
+                -else
+                  - @chapter.get_past_events.each do |i|
+                    .ca-item.ca-item-1
+                      .ca-item-main
+                        .galleryThumbnails
+                          -if i.image.event_landscape.present?
+                            = image_tag(i.image.event_landscape.url,:size => "260x150")
+                          -elsif i.image.present?
+                            = image_tag(i.image.url,:size => "260x150")
+                          -else
+                            =image_tag("event_landscape_logo-b.png",:size => "260x150")
+                          -#-else
+                            = image_tag("event_gallery_thumbnail.jpg",:size => "260x150")
+                          -#%p Cloud Foundry introduced npm support, we added serval
+                          %p #{i.title.truncate(15)}
+                          - if i.event_galleries.present?
+                            %a.lightGrayText{:href => "#{show_all_event_images_event_path(i)}"} (#{i.event_galleries.count} Photos)
+                          - else
+                            %a.lightGrayText{:href => "#{show_all_event_images_event_path(i)}"} (0 Photos)
 
         .comments.clearfix
           %h4 Posts
           %ul.posts
-
-            - @chapter.posts.each do |i|
-              %li
-                .clearfix
-                  -if i.user.avatar_file_name.present?
-                    = avatar_display_pic(i.user,'thumb', '50x50','profile.png',"img-c flt-left")
-                  -else
-                    %img{:src => "/assets/default_human_face.jpg"}
-                  .commentText
-                    %p #{i.title}
-                    %span.commentDate #{Time.parse(i.try(:created_at).to_s).strftime('%b %d, %Y')}
-                %p #{i.description.truncate(197)}
-                %a{:href => "#"} View more
+            -if @chapter.posts.blank?
+              = "No post for this chapter."
+            -else
+              - @chapter.posts.each do |i|
+                %li
+                  .clearfix
+                    -if i.user.avatar_file_name.present?
+                      = avatar_display_pic(i.user,'thumb', '50x50','profile.png',"img-c flt-left")
+                    -else
+                      %img{:src => "/assets/default_human_face.jpg"}
+                    .commentText
+                      %p #{i.title}
+                      %span.commentDate #{Time.parse(i.try(:created_at).to_s).strftime('%b %d, %Y')}
+                  %p #{i.description.truncate(197)}
+                  %a{:href => "#"} View more
       .span4
         =render :partial => "event_admin_and_members_list"
-      -#.span4
-        .chapterNameWithThumbnail.clearfix
-          %img.chapterThumbnail{:src => "/assets/pune_chapter.jpg"}/
-          %h3 Pune Chapter
-        .eventPeopleList
-          .listHeader
-            %span Admin
-            %span.numberOfPeople 07
-          %ul.adminPanel.clearfix
-            %li
-              %img{:src => "/assets/human_face_1.jpg"}/
-              .personDetails
-                .personName Victor Jieh
-                .personRole Senior Solutions Architect
-        .eventPeopleList
-          .listHeader
-            %span co-ordinators
-            %span.numberOfPeople 06
-          %ul.clearfix
-            %li
-              %img{:src => "/assets/human_face_4.jpg"}/
-              .personDetails
-                .personName Gary Russell
-                .personRole Staff engineer, springSource
-            %li
-              %img{:src => "/assets/human_face_5.jpg"}/
-              .personDetails
-                .personName Jeremy Grelle
-                .personRole Sr Software Engineer, Spring...
-            %li
-              %img{:src => "/assets/human_face_6.jpg"}/
-              .personDetails
-                .personName Patrick Chanezon
-                .personRole Sr Director of Developer...
-          %a{:href => "#"} View more
-        .eventPeopleList
-          .listHeader
-            %span Members
-            %span.numberOfPeople 06
-          %ul.listOfAttendees.clearfix
-            %li
-              %img{:src => "/assets/human_face_4.jpg"}/
-              .personDetails
-                .personName Chris Richardson
-
-            %li
-              %img{:src => "/assets/human_face_5.jpg"}/
-              .personDetails
-                .personName Jennifer Hickey
-            %li
-              %img{:src => "/assets/human_face_6.jpg"}/
-              .personDetails
-                .personName Oliver Gierke
-          %a{:href => "#"} View more
 
 :javascript
   Chapters.init();
