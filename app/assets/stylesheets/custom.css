@@ -1576,6 +1576,9 @@ ul.adminPanel{
 .chapterLayout .ca-container.PastEventsContainer, .chapterLayout .ca-container.PastEventsContainer .ca-item{
     height: 85px;
 }
+.PastEventsContainer a{
+    display: block;
+}
 .pastEvent .pastEventDate{
     background: url("past_event_date_bg.png") no-repeat center;
     width: 52px;

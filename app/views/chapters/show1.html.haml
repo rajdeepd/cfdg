@@ -147,6 +147,7 @@
                         %span.numberPeopleAttending 16
                         %span People Attending
           .past_events
+            =render :partial => "past_events"
             -#.slider.clearfix
             -#  .sliderHeading
             -#    %h3 Past Events
@@ -176,26 +177,26 @@
             -#                %span.date 04
             -#                %span.month Dec
             -#              .pastEventDetails Lorem ipsum dolor sit amet, cons ectetur adipiscing elit. Aenean ornare interdum...
-            -#.slider.clearfix
-            -#  .sliderHeading
-            -#    %h3 Past Events Gallery
-            -#  .ca-container.galleryThumbnailsContainer.clearfix
-            -#    .ca-wrapper
-            -#      .ca-item.ca-item-1
-            -#        .ca-item-main
-            -#          .galleryThumbnails
-            -#            = image_tag("event_gallery_thumbnail.jpg")
-            -#            %p Cloud Foundry introduced npm support, we added serval
-            -#            %a.lightGrayText{:href => "#"} (54 Photos)
-            -#      .ca-item.ca-item-2
-            -#        .ca-item-main
-            -#          .galleryThumbnails
-            -#            = image_tag("event_gallery_thumbnail.jpg")
-            -#      .ca-item.ca-item-3
-            -#        .ca-item-main
-            -#          .galleryThumbnails
-            -#            = image_tag("event_gallery_thumbnail.jpg")
-            =render :partial => "past_events"
+            .slider.clearfix
+              .sliderHeading
+                %h3 Past Events Gallery
+              .ca-container.galleryThumbnailsContainer.clearfix
+                .ca-wrapper
+                  .ca-item.ca-item-1
+                    .ca-item-main
+                      .galleryThumbnails
+                        = image_tag("event_gallery_thumbnail.jpg")
+                        %p Cloud Foundry introduced npm support, we added serval
+                        %a.lightGrayText{:href => "#"} (54 Photos)
+                  .ca-item.ca-item-2
+                    .ca-item-main
+                      .galleryThumbnails
+                        = image_tag("event_gallery_thumbnail.jpg")
+                  .ca-item.ca-item-3
+                    .ca-item-main
+                      .galleryThumbnails
+                        = image_tag("event_gallery_thumbnail.jpg")
+
         .comments.clearfix
           %h4 Posts
           %ul.posts

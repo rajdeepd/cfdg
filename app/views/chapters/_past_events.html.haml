@@ -1,49 +1,53 @@
--@past_events.each do |i|
-  .slider.clearfix
-    .sliderHeading
-      %h3 Past Events
-    .ca-container.PastEventsContainer.clearfix
-      .ca-wrapper
-        .ca-item.ca-item-1
-          .ca-item-main
-            .pastEvent
-              .clearfix
-                .pastEventDate
-                  %span.date 04
-                  %span.month Dec
-                .pastEventDetails Lorem ipsum dolor sit amet, cons ectetur adipiscing elit. Aenean ornare interdum...
-        .ca-item.ca-item-2
-          .ca-item-main
-            .pastEvent
-              .clearfix
-                .pastEventDate
-                  %span.date 04
-                  %span.month Dec
-                .pastEventDetails Lorem ipsum dolor sit amet, cons ectetur adipiscing elit. Aenean ornare interdum...
-        .ca-item.ca-item-3button_tag
-          .ca-item-main
-            .pastEvent
-              .clearfix
-                .pastEventDate
-                  %span.date 04
-                  %span.month Dec
-                .pastEventDetails Lorem ipsum dolor sit amet, cons ectetur adipiscing elit. Aenean ornare interdum...
+
 .slider.clearfix
   .sliderHeading
-    %h3 Past Events Gallery
-  .ca-container.galleryThumbnailsContainer.clearfix
+    %h3 Past Events
+  .ca-container.PastEventsContainer.clearfix
     .ca-wrapper
-      .ca-item.ca-item-1
-        .ca-item-main
-          .galleryThumbnails
-            = image_tag("event_gallery_thumbnail.jpg")
-            %p Cloud Foundry introduced npm support, we added serval
-            %a.lightGrayText{:href => "#"} (54 Photos)
-      .ca-item.ca-item-2
-        .ca-item-main
-          .galleryThumbnails
-            = image_tag("event_gallery_thumbnail.jpg")
-      .ca-item.ca-item-3
-        .ca-item-main
-          .galleryThumbnails
-            = image_tag("event_gallery_thumbnail.jpg")
+      -@past_events.each do |i|
+        .ca-item.ca-item-1
+          .ca-item-main
+            %a{:href => "#{event_path(i)}"}
+              .pastEvent
+                .clearfix
+                  .pastEventDate
+                    %span.date #{i.event_start_date_in_date.day}
+
+                    %span.month #{i.event_start_date_in_date.strftime("%b")}
+
+                  .pastEventDetails #{i.description.truncate(80)}
+        -#.ca-item.ca-item-2
+        -#  .ca-item-main
+        -#    .pastEvent
+        -#      .clearfix
+        -#        .pastEventDate
+        -#          %span.date 04
+        -#          %span.month Dec
+        -#        .pastEventDetails Lorem ipsum dolor sit amet, cons ectetur adipiscing elit. Aenean ornare interdum...
+        -#.ca-item.ca-item-3button_tag
+        -#  .ca-item-main
+        -#    .pastEvent
+        -#      .clearfix
+        -#        .pastEventDate
+        -#          %span.date 04
+        -#          %span.month Dec
+        -#        .pastEventDetails Lorem ipsum dolor sit amet, cons ectetur adipiscing elit. Aenean ornare interdum...
+-#.slider.clearfix
+-#  .sliderHeading
+-#    %h3 Past Events Gallery
+-#  .ca-container.galleryThumbnailsContainer.clearfix
+-#    .ca-wrapper
+-#      .ca-item.ca-item-1
+-#        .ca-item-main
+-#          .galleryThumbnails
+-#            = image_tag("event_gallery_thumbnail.jpg")
+-#            %p Cloud Foundry introduced npm support, we added serval
+-#            %a.lightGrayText{:href => "#"} (54 Photos)
+-#      .ca-item.ca-item-2
+-#        .ca-item-main
+-#          .galleryThumbnails
+-#            = image_tag("event_gallery_thumbnail.jpg")
+-#      .ca-item.ca-item-3
+-#        .ca-item-main
+-#          .galleryThumbnails
+-#            = image_tag("event_gallery_thumbnail.jpg")
