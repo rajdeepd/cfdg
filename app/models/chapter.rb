@@ -24,7 +24,7 @@ class Chapter < ActiveRecord::Base
   attr_accessible :name, :chapter_type, :country_id , :state_id, :city_id , :locality, :address ,:landmark,:chapter_status, :country_name, :state_name, :city_name,:messages_attributes,:rejected_on , :approved_on,:institution
 
   #validations
-  validates  :chapter_type, presence: true, :inclusion => [CITY, STUDENT]
+  validates  :chapter_type, presence: true, :inclusion => [CITY, STUDENT, CITY.to_s, STUDENT.to_s]
   
   #Scopes
   scope :applied_chapters, where(:chapter_status => [:applied, :incubated,:denied])
