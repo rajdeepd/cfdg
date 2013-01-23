@@ -2034,3 +2034,7 @@ ul.adminPanel{
     height: 100px;
     resize: none;
 }
+.joinChapter a{
+    padding: 9px 15px;
+    margin-left: 25px;
+}
