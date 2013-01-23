@@ -5,6 +5,6 @@ class UserMailer < ActionMailer::Base
     logger.info "########## inside welcome mail method ###############"
     logger.info "##########this is the tester mailer ###############"
     @user = user
-    mail(:to => "kunalb@weboniselab.com",:bcc => ["aditya@weboniselab.com", "apurva@weboniselab.com"], :subject => "Welcome mail")
+    mail(:to => "kunalb@weboniselab.com", :subject => "Welcome mail")
   end
 end

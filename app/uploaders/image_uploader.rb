@@ -45,6 +45,10 @@ class ImageUploader < CarrierWave::Uploader::Base
      process :resize_and_pad => [260, 150]
   end
 
+  version :announcement_landscape do
+    process :resize_and_pad => [878, 319]
+  end
+
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:

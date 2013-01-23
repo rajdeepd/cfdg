@@ -125,7 +125,7 @@ CloudfoundryUsergroups::Application.routes.draw do
   end
 
   resources :announcements do
-
+      post :add_comment ,:on => :member
   end
 
   resources :html do

@@ -865,9 +865,10 @@ ul.supportPrivacyLinks li{
     width: 474px;
     height: 100px;
     margin-top: 0;
+    display: block;
 }
 .comments .addCommentBox .addBtn{
-    margin: 10px 0 0  70px;
+    margin: 10px 0 0 0;
     width: 155px;
     line-height: 25px;
     font-size: 16px;

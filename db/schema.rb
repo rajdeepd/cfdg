@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130116061517) do
+ActiveRecord::Schema.define(:version => 20130123134219) do
 
   create_table "announcements", :force => true do |t|
     t.string   "title"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(:version => 20130116061517) do
     t.datetime "updated_at",         :null => false
     t.integer  "user_id"
     t.datetime "deleted_at"
+    t.string   "image"
   end
 
   create_table "chapter_members", :force => true do |t|
@@ -61,10 +62,15 @@ ActiveRecord::Schema.define(:version => 20130116061517) do
   end
 
   create_table "cities", :force => true do |t|
-    t.string  "name"
-    t.integer "country_id"
-    t.integer "state_id"
-    t.string  "details"
+    t.string   "name"
+    t.integer  "state_id"
+    t.integer  "created_by"
+    t.integer  "updated_by"
+    t.datetime "deleted_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "country_id"
+    t.string   "details"
   end
 
   create_table "ckeditor_assets", :force => true do |t|
@@ -95,7 +101,12 @@ ActiveRecord::Schema.define(:version => 20130116061517) do
   end
 
   create_table "countries", :force => true do |t|
-    t.string "name"
+    t.string   "name"
+    t.integer  "created_by"
+    t.integer  "updated_by"
+    t.datetime "deleted_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "delayed_jobs", :force => true do |t|
@@ -138,6 +149,7 @@ ActiveRecord::Schema.define(:version => 20130116061517) do
     t.datetime "deleted_at"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "speaker_id"
   end
 
   create_table "eventbrite_oauth_tokens", :force => true do |t|
@@ -233,8 +245,13 @@ ActiveRecord::Schema.define(:version => 20130116061517) do
   end
 
   create_table "states", :force => true do |t|
-    t.integer "country_id"
-    t.string  "name"
+    t.string   "name"
+    t.integer  "country_id"
+    t.integer  "created_by"
+    t.integer  "updated_by"
+    t.datetime "deleted_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "users", :force => true do |t|
