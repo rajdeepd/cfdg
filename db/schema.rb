@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130121090613) do
+ActiveRecord::Schema.define(:version => 20130123012735) do
 
   create_table "announcements", :force => true do |t|
     t.string   "title"
@@ -192,6 +192,7 @@ ActiveRecord::Schema.define(:version => 20130121090613) do
     t.text     "agenda_and_speakers"
     t.integer  "attendees_count"
     t.boolean  "is_cancelled"
+    t.text     "resources_request"
   end
 
   create_table "geolocations", :force => true do |t|

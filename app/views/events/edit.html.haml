@@ -63,6 +63,8 @@
     .event-form{:style => "padding-top:10px; padding-bottom: 20px;"}
       .el-cont
         = f.text_area :description , :class => "input-b size-f" , :placeholder => "Event description", :style => "height: 40px;margin:5px 0px;", :label => false
+      .el-cont
+        = f.text_area :resources_request, :class => "input-b size-f" , :placeholder => "resources_request", :style => "height: 40px;margin:5px 0px;", :label => false
       #spinner.spinner{:style => 'display:none;margin-right:10px;float:right;'}
         %img{:src => "/assets/spinner.gif", :alt => "Loading" , :id => 'img-spinner'}/
       #options{:style => "width:628px; overflow: hidden;"}
