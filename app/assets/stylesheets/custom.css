@@ -1694,3 +1694,7 @@ ul.adminPanel{
     width: 20px;
     height: 20px;
 }
+.event_error{
+    text-align: center;
+    color: red;
+}
