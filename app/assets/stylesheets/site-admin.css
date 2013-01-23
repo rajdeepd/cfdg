@@ -18,6 +18,9 @@
 	font-size: 16px;
 	color:#0097d7 !important;
 	padding-right:10px;
+  font-weight: bold;
+  margin-top: 12px;
+  display: block;
 }
 .cp:hover{
 	color:#D9541E ;

@@ -1,0 +1,18 @@
+%p 同学你好，
+%p 
+  我们高兴的通知你，
+  %strong= @chapter.name
+  分会正式成立了。
+
+%p 
+  作为分会主席，
+  %strong= @primary_coord.name
+  将带领分会开展一系列活动。
+
+%p 
+  欢迎关注
+  = link_to @chapter.name, chapter_path(@chapter)
+  分会。
+
+
+%p Cloud Foundry同学会

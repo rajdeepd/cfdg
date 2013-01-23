@@ -5,10 +5,16 @@
       #tabs
         %ul.ul-f
           %li.ulf-selected
-            %a{:href => "#tabs-1"} Chapter Satus
+            %a{:href => "#tabs-1"} 
+              = t("admin.chapter_status")
             %i.bg-arrow-down-b
           %li
-            %a{:href => "#{admin_announcements_path}"} Announcement
+            %a{:href => "#{admin_announcements_path}"}
+              = t("admin.announcement")
+            %i.bg-arrow-down-b
+          %li
+            %a{:href => "#{admin_events_path}"}
+              = t("admin.events")
             %i.bg-arrow-down-b
         #tabs-1
           #inner-tabs

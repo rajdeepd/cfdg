@@ -1,0 +1,22 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+  %body{:style => "font-family:'lucida grande','lucida sans unicode',lucida,'Helvetica Neue', helvetica,'Hiragino Sans GB', 'Microsoft YaHei', 'WenQuanYi Micro Hei',sans-serif; background-color:#fff; margin:0; padding:20px;font-size:13px;"}
+    .container{:style => "width:80%;margin:20px auto;background:#fff;border:1px solid #d9d9d9;"}
+      .header{:style => "background:#fff;padding:10px;border-bottom:1px solid #d9d9d9;"}
+        = image_tag "logo.png", :style => "max-width:100%;"
+        %div{:style => "display:inline-block;color:#0097d7;font-weight:bold;font-size:16px;vertical-align:top;margin-top:8px;border-left:1px solid #d9d9d9;padding-left:15px;margin-left:0;"} 
+          Cloud   Foundry 
+          %br 
+          同学会
+      .main{:style => "padding:20px;background-color:#fff;"}
+        .content{:style => ""}
+          = yield
+      .footer{:style => "background-color:#666;font-size:11px;padding:10px;"}
+        %div{:style => "color:#fff;"} 
+          Copyright © 2012 
+          %a{:href => "http://tongxue.cloudfoundry.com", :style => "color:#fff;margin-left:10px"} Cloud Foundry 同学会
+          / %a{:href => "#", :style => "color:#fff;margin-left:15px"} 电子邮件
+          / %a{:href => "#", :style => "color:#fff;margin-left:15px"} 博客
+          / %a{:href => "#", :style => "color:#fff;margin-left:15px"} 微博

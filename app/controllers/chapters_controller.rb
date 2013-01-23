@@ -76,7 +76,7 @@ class ChaptersController < ApplicationController
     end
 
     @chapter.messages.build
-    @admin = User.find_by_email("admin@cloudfoundry.com")
+    @admin = User.admin_user
 
     respond_to do |format|
       format.html {render :layout => "create_chapter"}
@@ -105,6 +105,9 @@ class ChaptersController < ApplicationController
       if @chapter.save
         member.chapter_id = @chapter.id
         member.save
+
+        ChapterMailer.new_chapter_mail(@chapter).deliver
+
         format.html { redirect_to @chapter, notice: ['Chapter was successfully created.'] }
         format.json { render json: @chapter, status: :created, location: @chapter }
       else

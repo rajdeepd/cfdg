@@ -24,7 +24,7 @@ class Chapter < ActiveRecord::Base
   attr_accessible :name, :chapter_type, :country_id , :state_id, :city_id , :locality, :address ,:landmark,:chapter_status, :country_name, :state_name, :city_name,:messages_attributes,:rejected_on , :approved_on,:institution
 
   #validations
-  validates  :chapter_type, presence: true, :inclusion => [CITY, STUDENT]
+  validates  :chapter_type, presence: true, :inclusion => [CITY, STUDENT, CITY.to_s, STUDENT.to_s]
   
   #Scopes
   scope :applied_chapters, where(:chapter_status => [:applied, :incubated,:denied])
@@ -95,8 +95,8 @@ class Chapter < ActiveRecord::Base
 
   def self.total_records
     { 
-      :professional => Chapter.where(:chapter_type => :professional, :chapter_status => [:active,:incubated]),
-      :student => Chapter.where(:chapter_type => :student, :chapter_status => [:active,:incubated])
+      Chapter::CITY => Chapter.where(:chapter_type => Chapter::CITY, :chapter_status => [:active,:incubated]),
+      Chapter::STUDENT => Chapter.where(:chapter_type => Chapter::STUDENT, :chapter_status => [:active,:incubated])
     }
   end
 

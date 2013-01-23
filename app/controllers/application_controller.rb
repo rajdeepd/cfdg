@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
   def user_confirm_required!
     return if current_user.nil?
     unless current_user.is_confirmed?
-      redirect_to profile_path, :notice => 'please confirm you email'
+      redirect_to profile_path, :notice => ["Please confirm you email"]
     end
   end
 

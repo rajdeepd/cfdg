@@ -38,6 +38,7 @@ CloudfoundryUsergroups::Application.configure do
   config.serve_static_assets = true
 
   config.action_mailer.default_url_options = { :host => '127.0.0.1:3000' }
+  config.action_mailer.asset_host = 'http://127.0.0.1:3000'
 
   #FEDERATED_KEY = 'AIzaSyB8IrA9iaoSnQZbagf2rGxbIOk41IRKUA8'
   FEDERATED_KEY = 'AIzaSyBU01mSxFQ5efyknhwxX46tBFhbi5wj-PY' # new test api key

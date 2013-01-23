@@ -18,7 +18,7 @@
       %h1.label-44{:style=> "font-size:18px;"} No Events
   -if !@upcoming_events.blank?
     .marg-top
-      %h1.label-44{:style=> "font-size:18px;"} Upcoming Events
+      %h1.label-44{:style=> "font-size:18px;"} #{t('events.upcoming_events')}
     %ul.ul-g{:style => "margin-top:-20px;" ,:id=>"two_events"}
       - @two_upcoming_events.each do |event|    
         %li
@@ -81,7 +81,7 @@
             %label.label-25
               -if(!event.event_start_date.blank?)
                 #{Time.parse(event.event_start_time_in_time.to_s).strftime('%I:%M %p')} #{Date.parse(event.event_start_date_in_date.to_s).strftime(",%A %b %d, %Y")} I #{event.entry_fee}  per person
-              Location: #{event.venue}
+              Location: #{event.address_line1}
             %p.label-26{:id => "short_content"}
               #{raw truncate(event.description, :length => 30, :omission => '...')}
             
@@ -147,7 +147,7 @@
             %label.label-25
               -if(!event.event_start_date.blank?)
                 #{Time.parse(event.event_start_time_in_time.to_s).strftime('%I:%M %p')} #{Date.parse(event.event_start_date_in_date.to_s).strftime(",%A %b %d, %Y")} I #{event.entry_fee}  per person
-              Location: #{event.venue}
+              Location: #{event.address_line1}
             %p.label-26{:id => "full_content"}
               #{event.description}
     -if @upcoming_events.size > 2

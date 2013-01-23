@@ -11,7 +11,9 @@ class Event < ActiveRecord::Base
   attr_accessible :title, :event_start_date, :event_end_date, :status, :description, :venue, :entry_fee, :chapter_id , :location,
                   :address_line1,   :address_line2 ,:event_start_time ,:event_end_time, :city_name, :postal_code, :state_name,
                   :country_name ,:agenda_and_speakers,:image,:attendees_count
+
   mount_uploader :image, ImageUploader
+
   validate :start_time_validation
   validates :title,:event_start_time ,:event_start_date, :event_end_date, :event_end_time ,:presence => true
   validates :event_start_date ,:format => {
@@ -23,6 +25,29 @@ class Event < ActiveRecord::Base
       :with => /^([0-3])?[0-9]\/[0-1][0-9]\/[1-9][0-9][0-9][0-9]$/,
       :message => "Date should be in dd/mm/yyyy format"
   } , :unless => Proc.new{|event| event.event_end_date.blank?}
+
+
+  scope :applied_events, where(:status => [:applied])
+  scope :active_events, where(:status => [:applied])
+  scope :freezed_events, where(:status => [:applied])
+
+  state_machine :status, :initial => :applied do
+    event :deny do
+      transition :applied => :denied
+    end
+
+    event :active do
+      transition :applied => :active
+    end
+
+    event :freeze do
+      transition :active => :freezed
+    end
+
+    event :unfreeze do
+      transition :freezed => :active
+    end
+  end
 
 
   def <=> (other)
@@ -44,11 +69,14 @@ class Event < ActiveRecord::Base
   end
 
   def is_rsvp_allowed?
-    if  self.attendees_count.present?
-      self.event_members.length < self.attendees_count
-    else
-      true
-    end
+
+    # Commented by Larry. We don't need a people limit.
+
+    #if  self.attendees_count.present?
+      #self.event_members.length < self.attendees_count
+    #else
+      #true
+    #end
   end
 
   def can_be_deleted?

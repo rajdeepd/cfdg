@@ -1,4 +1,5 @@
-source 'https://rubygems.org'
+#source 'https://rubygems.org'
+source 'http://ruby.taobao.org'
 
 gem 'rails', '3.2.11'
 
@@ -24,6 +25,7 @@ gem 'jquery-rails'
 gem 'nokogiri'
 gem 'faraday'
 gem 'noty-rails'
+gem "ya2yaml", "~> 0.31"
 
 
 # Authentication with Federated Google identity tool kit

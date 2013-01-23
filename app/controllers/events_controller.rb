@@ -182,11 +182,14 @@ class EventsController < ApplicationController
 
         @chapter = Chapter.find(@event.chapter_id)
         @chapter_events = @chapter.events.sort
-        to_email = @chapter.get_primary_coordinator.email
-        bcc_emails=@chapter.chapter_members.includes(:user).collect{|i| i.user.email} - [to_email]
+        #to_email = @chapter.get_primary_coordinator.email
+        #bcc_emails=@chapter.chapter_members.includes(:user).collect{|i| i.user.email} - [to_email]
         @two_chapter_events = @chapter_events.take(2)
         #EventNotification.delay.event_creation(@event,emails,@chapter)
-        EventNotification.event_creation(@event,to_email,bcc_emails,@chapter).deliver
+        #EventNotification.event_creation(@event,to_email,bcc_emails,@chapter).deliver
+        
+        EventMailer.new_event_mail(@event).deliver
+
         #SES.send_raw_email(EventNotification.event_creation(@event,to_email,bcc_emails,@chapter))
         format.js
       else

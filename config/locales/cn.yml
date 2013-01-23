@@ -1,111 +1,131 @@
-## YAML Template.
-cn:
-  menu:
-    about: "关于"
-    home: "首页"
-    directory: "分会"
-    wiki: "Wiki"
-    admin: "管理员"
-    signup: "注册"
-    signup_with: "注册使用"
-    login: "登录"
-    logout: "退出"
-    myprofile: "我的资料"
-    english: "英文"
-    chinese: "中文"
-
-  footer:
-    faq: "FAQ"
-    forums: "论坛"
-    blog: "博客"
-    jobs: "Jobs"
-    terms: "Terms"
-    privacy: "Privacy"
+--- 
+cn: 
+  menu: 
+    about: 关于
+    home: 首页
+    directory: 分会
+    wiki: Wiki
+    admin: 管理员
+    signup: 注册
+    signup_with: 注册使用
+    login: 登录
+    logout: 退出
+    myprofile: 我的资料
+    english: 英文
+    chinese: 中文
+  footer: 
+    faq: FAQ
+    forums: 论坛
+    blog: 博客
+    jobs: Jobs
+    terms: Terms
+    privacy: Privacy
     legal: "Except as noted, this content is licensed under"
     creative: "Creative Commons Attribution 2.5."
     details: "For details and restrictions on using Cloud Foundry Logo and Trademarks refer to this"
     license: "Content License"
     copyright: "Copyright © 2012 VMware, Inc. All rights reserved"
-
-  welcome:
-    about:  "Cloud Foundry同学会是一个共同学习Cloud Foundry开源PaaS平台、分享心得经验和结交朋友的平台。"
+  welcome: 
+    about: "Cloud Foundry同学会是一个共同学习Cloud Foundry开源PaaS平台、分享心得经验和结交朋友的平台。"
     title: "Cloud Foundry平台"
     desc: "Cloud Foundry同学会服务和帮助开发者使用和关注"
-    user_confirmed: "You're account is confirmed and activated."
-    confirmation_resend: "Your confirmation has expired. We have sent a new confirmation to your email address, please confirm it in 30 minutes." 
-
-  chapter:
-    create_title: "创建分会!"
-    create_desc: "开启一个城市/学校分会为开发者建设一个社区。"
-    create_create: "创建"
-
-  announcements:
-    heading: "公告"
-    earlier: "更早的公告"
-
-  user_info:
-    name: "姓名"
-    email: "邮箱"
-    mobile: "手机"
-    upload_avatar: "Edit Profile Picture"
-    updated: "Your settings have been updated."
-    roles:
-      professional: "职业开发者"
-      student: "学生"
-      fan: "技术爱好者"
-
-  company_info:
-    company_name: "公司"
-    industry: "行业"
-    department: "部门"
-    title: "职位"
-    tel: "电话"
-
-  school_info:
-    school_name: "学校"
-    institution: "学院"
-    major: "专业"
-    graduated_at: "毕业时间"
-  
-  settings:
-    personal_info: "请填写个人信息："
-    role_info: "选择您的身份："
-    college_not_found: "未找到此学校"
-    institution_not_found: "未找到此学院"
-    back_to_select: "返回"
-
-  profile:
-    welcome: "欢迎"
-    location: "所在城市"
-    my_account: "我的账户"
-    account_not_confirmed: 请完善你的信息，并验证账号
-
-  chapter:
-    types:
-      student: "Student"
-      professional: "City"
-    proposal: "Chapter Proposal"
-    type: "Chapter Type"
-    location: "Chapter Location"
+    user_confirmed: 你的账户已经确认激活。
+    confirmation_resend: 你的确认邮件已经过期。新的确认邮件已经发送到你的邮箱，请在30分钟内确认。
+  chapter: 
+    types: 
+      student: 学生
+      professional: 城市
+    proposal: 分会申请
+    type: 分会类型
+    location: 分会位置
+    recommendations: 
+      city_chapter_found: 推荐城市分会：
+      college_chapter_found: 推荐学校分户：
+      no_city_chapter: 你的所在城市没有分会
+      no_college_chapter: 你的所在学校没有分会
+      create_one: 创建一个分会
     details: "Chapter Details"
-    recommendations:
-      city_chapter_found: "Recommend city chapter: "
-      college_chapter_found: "Recommend college chapter: "
-      no_city_chapter: "No chapter in your city found"
-      no_college_chapter: "No chapter in your college found"
-      create_one: "Create One"
-    creation:
-      title: "Chapter Creation" 
+    creation: 
+      title: "Chapter Creation"
       founder_information: "Founder Information"
-      founder_name: "Name"
-      founder_email: "Email"
-    
-  
-  confirmation:
-    user:
-      notice: "We've just send you an email to confirm your email address. Please click the link provided in the mail within 30 minutes to complete your registration."
+      founder_name: Name
+      founder_email: Email
+  announcements: 
+    heading: 公告
+    earlier: 更早的公告
+  user_info: 
+    name: 姓名
+    email: 邮箱
+    mobile: 手机
+    upload_avatar: 编辑头像
+    updated: 你的设置已更新。
+    roles: 
+      professional: 职业开发者
+      student: 学生
+      fan: 技术爱好者
+  company_info: 
+    company_name: 公司
+    industry: 行业
+    department: 部门
+    title: 职位
+    tel: 电话
+  school_info: 
+    school_name: 学校
+    institution: 学院
+    major: 专业
+    graduated_at: 毕业时间
+  settings: 
+    personal_info: 请填写个人信息：
+    role_info: 选择您的身份：
+    college_not_found: 未找到此学校
+    institution_not_found: 未找到此学院
+    back_to_select: 返回
+  profile: 
+    welcome: 欢迎
+    location: 所在城市
+    my_account: 我的账户
+    account_not_confirmed: "Please complete your information and confirm your account."
 
+  confirmation: 
+    user: 
+      notice: 确认邮件已发送到你的邮箱。请通过邮件中的链接确认。请在30分钟内确认，完成你的注册。
 
-  mail:
-    confirmation:
-      subject: "We need to confirm your email address." 
+  mail: 
+    user_mailer:
+      confirmation: 
+        subject: 请确认注册 Cloud Foudnry 同学会
+      welcome:
+        subject: 欢迎加入 Cloud Foundry 同学会
+    chapter_mailer:
+      new_chapter:
+        subject:  新分会申请
+      approval: 
+        subject: "%{chapter_name} 分会申请通过批准" 
+      denial:
+        subject: 感谢申请新分会
+      newly_created:
+        subject: "%{chapter_name} 分会成立了" 
+    event_mailer:
+      new_event:
+        subject: 新活动申请
+
+  admin: 
+    chapter_status: "Chapter Status"
+    announcement: Announcement
+    events: Events
+
+  events:
+    upcoming_events: Upcoming Events
+
+  event_form:
+    form_title: "Create Event For %{chapter_name}"
+    event_title: Event Title
+    event_starts_on: Event Starts On
+    event_ends_on: Event Ends On
+    event_location: Location
+
+  button:
+    create: CREATE
+    cancel: CANCEL
+    edit: EDIT
+    delete: DELETE

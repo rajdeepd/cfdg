@@ -7,4 +7,5 @@ set :keep_releases, 3
 set :branch, "cn-dev"
 
 after "bundle:install", "deploy:migrate"
+after "deploy:migrate", "deploy:init"
 after "deploy:restart", "deploy:cleanup"

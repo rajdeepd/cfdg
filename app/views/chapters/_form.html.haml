@@ -30,10 +30,10 @@
               = t("chapter.types.#{@chapter.location}")
           
           %h3.label-11{:style => "padding-top: 20px;"}
-            = t('chapter.chapter_proposal')
+            = t('chapter.proposal')
 
           .proposal
-            %h4.ch_label To: admin@cloudfoundry.com
+            %h4.ch_label To: #{@admin.email}
             %div{:style=> "height:15px;"} &nbsp;
             = f.semantic_fields_for :messages do |msg|
               = msg.input :body, :label => false, :input_html => {  :class => "send_text" ,:style => "margin-bottom: 5px;padding-left: 5px;padding-top: 5px;width: 59%;height: 142px;" }

@@ -12,6 +12,8 @@ CloudfoundryUsergroups::Application.routes.draw do
 
   get '/settings' => 'users#edit', :as => 'settings'
   get '/profile' => 'users#profile' , :as => :profile
+  get '/resend_confirmation' => 'users#resend_confirmation', :as => :resend_confirmation
+
   match'/admin', :to => "admin/sessions#new"
 
   devise_for :users, :skip => [:sessions, :registrations, :passwords], :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
@@ -129,6 +131,13 @@ CloudfoundryUsergroups::Application.routes.draw do
         post 'chapter_reply'
         get 'add_secondary_coordinator'
         post 'create_secondary_coordinator'
+      end
+    end
+    resources :events do
+      collection do
+        get 'applied'
+        get 'active'
+        get 'freezed'
       end
     end
   end
