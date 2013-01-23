@@ -14,7 +14,8 @@ CloudfoundryUsergroups::Application.routes.draw do
 
   resources :chapters do
     member do
-      get 'show1'
+      #get 'show1'
+      get 'detail'
     end
     resources :events
     collection do
