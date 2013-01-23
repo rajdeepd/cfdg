@@ -653,6 +653,20 @@ ul.supportPrivacyLinks li{
     text-align: center;
     margin-top: 30px;
 }
+.verticalCenter{
+    margin-top: 160px;
+}
+
+.verticalMargin{
+    margin-top: 90px;
+}
+.noPastDesc{
+    margin-top: 20px;
+}
+.centerText{
+    text-align: center;
+    font-size: 14px;
+}
 .layoutWrapper .span8, .chapterLayout .span8{
     width: 578px;
 }
