@@ -900,7 +900,7 @@ a.label-46{cursor: pointer;}
 .icon-bar-a .label-20{margin-bottom: 2px;}
 .div-i .label-20{margin-top:3px;}
 .blue-bar-a .label-23{font-size: 30px;}
-.div-c .label-23{margin-top:6px;}
+.div-c .label-23{margin-top:24px;}
 .div-a .label-20{margin-bottom: 10px;}
 .div-a a.label-20:hover{color: #d9541e;}
 .popup-a .label-39{margin-left:30px;}
@@ -1026,7 +1026,7 @@ a.label-28:hover{color: #d9541e;}
 	font-size:36px;
 	color: #fcfcfc;
 	font-weight: bold;
-	line-height: 34px;
+	line-height: 0px;
 }
 .label-22{
 	font-size:16px;
