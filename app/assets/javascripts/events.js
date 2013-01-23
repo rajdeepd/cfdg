@@ -37,6 +37,28 @@ Events = {
             });
 
         });
+
+        $("#resend_event_confirmation").die("click").on('click', function(e){
+            var data = { event_id: $(this).attr("event_id") };
+            var url = $(this).data("href");
+
+            $(this).attr('disabled', 'disabled')
+            $(this).attr("style", "opacity:0.35")
+            
+            $.post(url, data)
+              .complete(function(data, status, xhr) { 
+                $("#resend_event_confirmation").removeAttr("disable");
+                $("#resend_event_confirmation").removeAttr("style");
+              })
+              .success(function(data, status, xhr){
+                noty({ text: data.message, type: "information" });
+                console.log(data)
+              })
+              .error(function(data, status, xhr){
+                console.log(data)
+              });
+        });
+
         $('#delete_an_event').die('click').live('click', function(e){
 
             var data = {event_id: $(this).attr('event_id')};

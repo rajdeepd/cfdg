@@ -92,6 +92,18 @@ en:
     type: "Chapter Type"
     location: "Chapter Location"
     details: "Chapter Details"
+    founded_by: Founded by
+    primary_group_coordinator: Primary Group Coordinator
+    group_coordinator: Group Coordinator
+    members: Members
+    events: Events
+    post: Post
+    member_role: Role
+    status: Status
+    create_events: Create Events
+    member_roles:
+      member: Member
+      "primary coordinator": Primary Coordinator
     recommendations:
       city_chapter_found: "Recommend city chapter: "
       college_chapter_found: "Recommend college chapter: "
@@ -136,7 +148,7 @@ en:
 
   events:
     upcoming_events: Upcoming Events
-    rsvped_need_confirmation: "We've just send you an email to confirm your reservation. Please click the link provided in the mail within 30 minutes to complete your reservation."
+    rsvped_need_confirmation: "We've just send you an email to confirm your reservation. Please click the link provided in the mail within 24 hours to complete your reservation."
 
   event_form:
     form_title: "Create Event For %{chapter_name}"

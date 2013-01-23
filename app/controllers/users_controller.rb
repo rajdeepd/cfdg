@@ -139,8 +139,6 @@ class UsersController < ApplicationController
   def resend_confirmation
     @user = current_user
     
-    binding.pry
-
     if @user && !@user.is_confirmed?
       @user.generate_confirmation_token!
       UserMailer.confirmation_mail(@user).deliver

@@ -19,35 +19,30 @@
         %h2.label-17 #{@chapter.try(:name)}
         %h5.label-18 Location: #{@chapter.location} | Founded on #{Time.parse(@chapter.try(:created_at).to_s).strftime('%b %d, %Y')}
         %h5.label-20
-          Founded by
+          = t("chapter.founded_by")
           %a.label-20{:href => "#"}#{@chapter.user.try(:fullname)}
           on #{Time.parse(@chapter.try(:created_at).to_s).strftime('%b %d, %Y')}
         %h5.label-19
-          Primary Group Coordinator:
+          = t("chapter.primary_group_coordinator")
           %label.label-20 #{@primary_coord.try(:user).email}
           - member = ChapterMember.get_member(@current_user.id, @chapter.id).try(:first) if @current_user.present?
           -if !@current_user.blank? and member.present?
             %br
-            %span{:style=> "color:green;font-size:14px;"} Role: #{member.memeber_type.try(:titleize)}
+            %span{:style=> "color:green;font-size:14px;"}
+              = "#{t("chapter.member_role")}: #{t("chapter.member_roles.#{member.memeber_type}")}"
         -if @secondary_coords.present?
           %h5.label-19
-            Group Coordinator:
+            = t("chapter.group_coordinator")
             %label.label-20
               -@secondary_coords.each do |coord|
                 #{coord.user.email}
       %ul.ul-e
-        -if @chapter.id == 3
-
-          %li
-            %h2.label-21 #{@totalcount + 28}
-            %h5.label-39 Members
-        -else
-          %li
-            %h2.label-21 #{@totalcount}
-            %h5.label-39 Members
+        %li
+          %h2.label-21 #{@totalcount}
+          %h5.label-39= t("chapter.members")
         %li
           %h2.label-21 #{@chapter.events.try(:size)}
-          %h5.label-39 Events
+          %h5.label-39= t("chapter.events")
         %li{:style => "width:192px;height:192px;"}
           / %img{:scr => "http://tp1.sinaimg.cn/1881941252/180/40012423249/1"}
           %i.bg-img-e{:style => "width:182px;height:182px; "}
@@ -55,7 +50,7 @@
             林立，简书联合创始人，设计师，文艺青年，希望可以做点有用的东西。
           .info-bar
             %h5.label-40
-              %span{:style => "font-size:17px;"} Status:
+              %span{:style => "font-size:17px;"}= "#{t("chapter.status")}:"
               %b{:style => "color: orange;font-size: 16px;text-transform: uppercase;font-weight: bold;"}= @chapter.try(:chapter_status)
             - last_event = @past_events.try(:first)
             - if last_event.present?
@@ -63,17 +58,17 @@
     .cc-left
       %ul.ul-f
         %li{:style=>"padding: 7px 20px;"}
-          %a{:href => "#",:style => "font-size:20px;", :id=>"chapter_page_posts", :chapter_id => @chapter.id} Post
+          %a{:href => "#",:style => "font-size:20px;", :id=>"chapter_page_posts", :chapter_id => @chapter.id}= t("chapter.Post")
           %i.bg-arrow-down-b
         %li.ulf-selected{:style=>"padding: 7px 20px;"}
-          %a{:href => "#" , :style => "font-size:20px;" ,:id=>"chapter_page_events", :chapter_id => @chapter.id} Events
+          %a{:href => "#" , :style => "font-size:20px;" ,:id=>"chapter_page_events", :chapter_id => @chapter.id}= t("chapter.events")
           %i.bg-arrow-down-b
         / %li
         /   %a{:href => "#"} Photos
         /   %i.bg-arrow-down-b
         -if @current_user.present? and (ChapterMember.am_i_coordinator?(@current_user.id, @chapter.id))
           %li{:style => "float:right"}
-            %a.cp{:href => "#{profile_path}" , :id=>"create_event_from_chapter", :chapter_id=> @chapter.id} + Create Event
+            %a.cp{:href => "#{profile_path}" , :id=>"create_event_from_chapter", :chapter_id=> @chapter.id}= "+ #{t("chapter.create_events")}"
       #chapter_show_events
         = render '/events/events_list' 
     /=render '/events/comment_partial'

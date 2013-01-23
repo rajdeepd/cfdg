@@ -32,7 +32,11 @@ module EventsHelper
   def cancel_event_button(event)
     content_tag(:button, "CANCEL", :id => "cancel_an_event", :event_id => event.id, 
                 :class => "btn-a-small flt-right")
+  end
 
+  def resend_confirm_event_button(event)
+    content_tag(:button, "Resend Confirmation", :id => "resend_event_confirmation", :event_id => event.id, 
+                :'data-href' => resend_event_confirmation_path(), :class => "btn-a-small flt-right")
   end
 
   def event_action_buttons(event)
@@ -44,13 +48,16 @@ module EventsHelper
         buttons += rsvp_event_button(event)  
       else
         if event.am_i_member?(current_user.id)
-          buttons += attending_event_button 
+          if event.reservation_confirmed?(current_user)
+            buttons += attending_event_button 
+          else
+            buttons += resend_confirm_event_button(event)
+          end
         else
           buttons += rsvp_event_button(event)
         end
 
         if ChapterMember.am_i_coordinator?(current_user.id, event.chapter.id) 
-          binding.pry
           buttons += link_to("EDIT",edit_chapter_event_path(event.chapter_id,event.id),:class => "btn-a-small flt-right") 
           buttons += cancel_event_button(event)
           buttons += delete_event_button(event) if event.can_be_deleted?

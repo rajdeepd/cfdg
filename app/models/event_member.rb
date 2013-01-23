@@ -4,7 +4,7 @@ acts_as_soft_deletable
   belongs_to :user
   belongs_to :event
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :event_id, :user_id
+  attr_accessible :event_id, :user_id, :confirmation_sent_at, :confirmation_token
 
   def self.get_count(event_id)
     event_member = EventMember.find_all_by_event_id(event_id).count
@@ -12,8 +12,8 @@ acts_as_soft_deletable
   end
 
   def generate_confirmation!
-    self.confirmation_token = Devise.friendly_token[0..10]
-    self.confirmation_sent_at = Time.now 
+    self.update_attributes(:confirmation_token => Devise.friendly_token[0..10],
+                           :confirmation_sent_at => Time.now)
   end
 
   def confirm!

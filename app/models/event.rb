@@ -86,10 +86,12 @@ class Event < ActiveRecord::Base
       #true
     #end
   end
+  
+  def reservation_confirmed?(user)
+    !EventMember.find_by_user_id_and_event_id(user.id, self.id).confirmed_at.nil?
+  end
 
   def can_be_deleted?
-    binding.pry
-
     members = self.event_members.includes(:user)
     members.size == 1 and members.first.user.id == self.created_by
   end

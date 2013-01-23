@@ -10,9 +10,27 @@ class EventsController < ApplicationController
   before_filter :find_chapter, :only => [:new, :edit]
 
 
-  def confirm_rsvp
-    binding.pry
+  def resend_confirmation
+    event_id = params[:event_id]
+    @event_member = EventMember.find_by_user_id_and_event_id(current_user.id, event_id)
     
+    binding.pry
+
+    if @event_member
+      @event_member.generate_confirmation!
+      EventMailer.rsvp_confirm_mail(@event_member).deliver
+
+      respond_to do |format|
+        format.json { render :json => { :message => t("events.rsvped_need_confirmation") } , :status => :ok }
+      end
+    else
+      respond_to do |format|
+        format.json { render :json => "[]", :status => :unprocessable_entity }
+      end
+    end
+  end
+
+  def confirm_rsvp
     @event_member = EventMember.find_by_confirmation_token(params[:token])
 
     if @event_member
