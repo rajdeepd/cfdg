@@ -60,7 +60,7 @@
             .ca-container.ca-container.clearfix
               .ca-wrapper
                 - if @upcoming_events.blank?
-                  = "No upcoming events for this chapter."
+                  .centerText.verticalCenter No upcoming events for this chapter.
                 -else
                   - @upcoming_events.each do |event|
                     .ca-item.ca-item-1
@@ -101,7 +101,7 @@
             .ca-container.galleryThumbnailsContainer.clearfix
               .ca-wrapper
                 - if @chapter.get_past_events.blank?
-                  = "No event gallery for this chapter."
+                  .centerText.verticalMargin No event gallery for this chapter.
                 -else
                   - @chapter.get_past_events.each do |i|
                     .ca-item.ca-item-1
@@ -123,10 +123,11 @@
                             %a.lightGrayText{:href => "#{show_all_event_images_event_path(i)}"} (0 Photos)
 
         .comments.clearfix
-          %h4 Posts
+          .sliderHeading
+            %h4 Posts
           %ul.posts
             -if @chapter.posts.blank?
-              = "No post for this chapter."
+              .centerText No post for this chapter.
             -else
               - @chapter.posts.each do |i|
                 %li

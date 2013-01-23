@@ -5,7 +5,7 @@
   .ca-container.PastEventsContainer.clearfix
     .ca-wrapper
       - if @past_events.blank?
-        = "No past events for this chapter."
+        .centerText No past events for this chapter.
       -else
         -@past_events.each do |i|
           .ca-item.ca-item-1
@@ -17,8 +17,10 @@
                       %span.date #{i.event_start_date_in_date.day}
 
                       %span.month #{i.event_start_date_in_date.strftime("%b")}
-
-                    .pastEventDetails #{i.description.truncate(80)}
+                    -if i.description.present?
+                      .pastEventDetails #{i.description.truncate(80)}
+                    - else
+                      .pastEventDetails.noPastDesc No description for the event.
         -#.ca-item.ca-item-2
         -#  .ca-item-main
         -#    .pastEvent
