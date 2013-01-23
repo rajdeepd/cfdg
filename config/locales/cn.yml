@@ -128,7 +128,7 @@ cn:
     events: Events
   events: 
     upcoming_events: "Upcoming Events"
-    rsvped_need_confirmation: "We've just send you an email to confirm your reservation. Please click the link provided in the mail within 30 minutes to complete your reservation."
+    rsvped_need_confirmation: "We've just send you an email to confirm your reservation. Please click the link provided in the mail within 24 hours to complete your reservation."
     rsvp_confirmed: "We've successfully confirmed your reservation to the event."
     rsvp_resend: "You're reservation confirmation has expired, we've sent a new confirmation email to you, please click the confirmation link in the mail within 24 hours"
   event_form: 

@@ -39,6 +39,10 @@ module EventsHelper
                 :'data-href' => resend_event_confirmation_path(), :class => "btn-a-small flt-right")
   end
 
+  def blocked_event_button(event)
+    content_tag(:button, "BLOCKED", :disabled => "disabled", :class => "btn-a-small flt-right", :style => "opacity:0.35")    
+  end
+
   def event_action_buttons(event)
     buttons = ""
     if event.is_cancelled?
@@ -58,9 +62,13 @@ module EventsHelper
         end
 
         if ChapterMember.am_i_coordinator?(current_user.id, event.chapter.id) 
-          buttons += link_to("EDIT",edit_chapter_event_path(event.chapter_id,event.id),:class => "btn-a-small flt-right") 
-          buttons += cancel_event_button(event)
-          buttons += delete_event_button(event) if event.can_be_deleted?
+          if event.blocked?
+            buttons += blocked_event_button(event)
+          else
+            buttons += link_to("EDIT",edit_chapter_event_path(event.chapter_id,event.id),:class => "btn-a-small flt-right") 
+            buttons += cancel_event_button(event)
+            buttons += delete_event_button(event) if event.can_be_deleted?
+          end
         end
       end
     end
