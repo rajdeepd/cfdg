@@ -35,10 +35,12 @@
     .chapterName.clearfix
       %h1 #{@chapter.try(:name)}
     .chapterDateAndPlace.clearfix
-      %span.chapterPlace #{@chapter.try(:city_name)}
-      %span.viewMap ( View Map )
+      %span.chapterPlace #{@chapter.try(:city_name)} (
+      %span.viewMap  View Map
+      )
       .mapDiv
-        %span.close x
+        %span.close
+          %i.closeIcon
         -#%img{:src => "/assets/map.png"}
         = render :partial => "chapter_map"
   .joinChapter
