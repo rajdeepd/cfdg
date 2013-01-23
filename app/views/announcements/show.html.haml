@@ -1,12 +1,58 @@
-.content.wrapper
-  %ul
-    %li
-      %h2
-        Title
-      =@announcement.title
-    %li
-      %h2
-        Body
-      =@announcement.title
-    %li
-      = image_tag @announcement.photo ,:size => "200x200"
+-#.content.wrapper
+-#  %ul
+-#    %li
+-#      %h2
+-#        Title
+-#      =@announcement.title
+-#    %li
+-#      %h2
+-#        Body
+-#      =@announcement.title
+-#    %li
+-#      = image_tag @announcement.photo ,:size => "200x200"
+
+.content.ChapterDetails
+  .breadCrumb
+    %span Wiki
+    %span.breadCrumbDivider /
+    %span.activePage #{@announcement.title}
+  .blueHeader
+    .chapterName.clearfix
+      %h1 #{@announcement.title}
+    .chapterDateAndPlace.clearfix
+      %span.chapterDate #{@announcement.created_at.strftime("%B %d,%Y")}
+  .chapterLayout
+    %img.articleImg{:src => "/assets/article_img.jpg"}
+    .articleLayout
+      .clearfix
+        .sliderHeadingMid
+          %h3 Description
+        .articleDescription
+          %p #{@announcement.body}
+          -#%a{:href => "#"} More...
+      .comments.clearfix
+        .sliderHeadingMid
+          %h3 Comments
+        .articleDescription
+          %ul.posts
+            %li
+              .clearfix
+                %img{:src => "/assets/human_face_1.jpg"}
+                .commentText
+                  %h5 Ravindra Sharma
+                  %span.commentDate November 08,2012
+                  %p
+                    Since Cloud Foundry introduced npm support, we added several improvements that make deploying Node.js applications with dependencies easier, faster and more transparent to developers. Easy development When we introduced npm support...
+                    %a{:href => "#"} View more
+            %li
+              .clearfix
+                %img{:src => "/assets/human_face_1.jpg"}
+                .commentText
+                  %h5 Ravindra Sharma
+                  %span.commentDate November 08,2012
+                  %p
+                    Since Cloud Foundry introduced npm support, we added several improvements that make deploying Node.js applications with dependencies easier, faster and more transparent to developers. Easy development When we introduced npm support...
+                    %a{:href => "#"} View more
+          %form
+            %textarea
+            %a.addBtn.btn Add Comment
