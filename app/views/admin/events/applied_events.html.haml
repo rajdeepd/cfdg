@@ -16,7 +16,7 @@
               Action
     %tbody
       - @events.each do |event|
-        %tr
+        %tr{:id => "event-#{event.id}" }
           %td{:style => "text-align: left;"}
             %h5.label-48= event.title
           %td
@@ -27,8 +27,8 @@
             %h5.label-48= event.try(:chapter).location
           %td
             %h5.label-48
-              %button.btn-a-small.change_status{"data-url" => "#"} Approve
-              =link_to "Deny", "#", :class => "btn-a-small change_status" ,:method => "get"
+              =link_to "Approve", approve_admin_event_path(event), :class => "btn-a-small change_status",:remote => true, :method => "post"
+              =link_to "Deny", deny_admin_event_path(event), :class => "btn-a-small change_status",:remote => true, :method => "post"
 
       %tr
 - else

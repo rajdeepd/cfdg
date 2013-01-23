@@ -14,8 +14,8 @@ CloudfoundryUsergroups::Application.routes.draw do
   get '/profile' => 'users#profile' , :as => :profile
   get '/resend_confirmation' => 'users#resend_confirmation', :as => :resend_confirmation
 
-  match'/admin', :to => "admin/sessions#new"
   match'/confirm_rsvp', :to => "events#confirm_rsvp", :as => :confirm_rsvp
+  get '/admin', :to => "admin/sessions#new"
 
   devise_for :users, :skip => [:sessions, :registrations, :passwords], :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
 
@@ -136,9 +136,15 @@ CloudfoundryUsergroups::Application.routes.draw do
     end
     resources :events do
       collection do
-        get 'applied'
-        get 'active'
-        get 'freezed'
+        get 'applied_events'
+        get 'active_events'
+        get 'block_events'
+      end
+      member do 
+        post 'approve'
+        post 'block'
+        post 'unblock'
+        post 'deny'
       end
     end
   end

@@ -1,3 +1,4 @@
+#= require jquery_ujs
 $ ->
   if $("body").data('controller') == 'admin'
     # Type here! 

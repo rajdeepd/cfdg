@@ -23,12 +23,9 @@
       - @two_upcoming_events.each do |event|    
         %li
           .div-c
-            -if event.image.present?
-              = image_tag(event.image, :style => "width:72px;height:80px")
-            -else
-              -if(!event.event_start_date.blank?)
-                %h1.label-23 #{Time.parse(event.event_start_date.to_s).strftime('%d')}
-                %h4.label-24 #{Time.parse(event.event_start_date.to_s).strftime('%b')}
+            -if(!event.event_start_date.blank?)
+              %h1.label-23 #{Time.parse(event.event_start_date.to_s).strftime('%d')}
+              %h4.label-24 #{Time.parse(event.event_start_date.to_s).strftime('%b')}
           .div-h
             %a.label-9.event_expand{:href => "#{event_path(event.id)}", :event_id=> event.id, :target=>"_blank"} #{event.title.truncate(15)}
             -#-if !current_user.blank? and @profile_page != true
@@ -90,12 +87,9 @@
       - @upcoming_events.each do |event|
         %li
           .div-c
-            -if event.image.present?
-              = image_tag(event.image, :style => "width:72px;height:80px")
-            -else
-              -if(!event.event_start_date.blank?)
-                %h1.label-23 #{Time.parse(event.event_start_date.to_s).strftime('%d')}
-                %h4.label-24 #{Time.parse(event.event_start_date.to_s).strftime('%b')}
+            -if(!event.event_start_date.blank?)
+              %h1.label-23 #{Time.parse(event.event_start_date.to_s).strftime('%d')}
+              %h4.label-24 #{Time.parse(event.event_start_date.to_s).strftime('%b')}
           .div-h
             %a.label-9.event_expand{:href => "#{event_path(event.id)}", :event_id => event.id, :target=>"_blank"} #{event.title.truncate(15)}
             -if current_user.blank?
