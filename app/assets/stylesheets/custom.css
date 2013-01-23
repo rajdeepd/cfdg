@@ -1424,7 +1424,7 @@ li.ui-timepicker-selected .ui-timepicker-duration,
     border: 1px solid #7faac5;
     width: 290px;
     resize: none;
-    height: 60px;
+    height: 70px;
 }
 .formBox .form-horizontal .controls{
     margin-left: 220px;
@@ -2068,4 +2068,90 @@ ul.adminPanel{
     font-size: 14px;
     line-height: 19px;
     font-family: helvetica;
+}
+.studentProfNva{
+    background: url("student_profession_nav_bg.png") repeat-x ;
+    box-shadow: 0 1px 2px 1px #BFD3E8;
+    border-radius: 4px;
+    padding: 0;
+    min-height: 42px;
+    background-color: inherit;
+    width: 430px;
+    margin: 0 0 30px 154px;
+}
+.formBox .studentProfNva ul li{
+    height: 42px;
+    line-height: 42px;
+}
+.formBox .studentProfNva ul li:first-child{
+    width: 215px;
+    background: url("navigation_divider.png") no-repeat;
+}
+.student{
+    background: url("student_gray_icon.png") no-repeat 47px 15px;
+    height: 42px;
+}
+.navbar ul li a.student.activeTab{
+    background: url("student_blue_icon.png") no-repeat 47px 15px;
+    height: 41px;
+    display: block;
+    border-bottom: 2px solid #00bde7;
+}
+.professional{
+    background: url("professional_gray_icon .png") no-repeat 27px 12px;
+    height: 42px;
+    display: block;
+}
+.navbar ul li a.professional.activeTab{
+    background: url("professional_blue_icon.png") no-repeat 27px 12px;
+    height: 41px;
+    display: block;
+    border-bottom: 2px solid #00bde7;
+}
+.formBox .navbar ul li a{
+    line-height: 42px;
+}
+
+.formBox .navbar ul li:hover a{
+    border-bottom: 2px solid #00bde7;
+    color: #333333;
+    height: 41px;
+}
+.eventDetails .eventImageHolder img{
+    width: 120px;
+    height: 80px;
+    border: 5px solid #ffffff;
+    border-radius: 5px;
+    box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.2);
+}
+.back{
+    background: url("back_icon.png") no-repeat 0 11px;
+    padding-left: 20px;
+    font-size: 14px;
+    font-weight: bold;
+    padding-top: 5px;
+    margin-right: 10px;
+    color: #000000;
+}
+.eventDetails .back{
+    float: right;
+}
+.eventDetails .breadCrumb{
+    float: left;
+}
+.eventDetails .eventImageHolder{
+    width: 130px;
+    height: 90px;
+    margin: 0 16px 20px 0;
+}
+.imageIcon{
+    background: url("photo_icon.png") no-repeat 0 3px;
+    padding-left: 28px;
+    margin-right: 15px;
+    font-size: 16px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 500;
+}
+.imageIcon span{
+    color: #ffffff;
 }
