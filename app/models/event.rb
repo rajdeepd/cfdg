@@ -12,7 +12,7 @@ class Event < ActiveRecord::Base
                   :address_line1,   :address_line2 ,:event_start_time ,:event_end_time, :city_name, :postal_code, :state_name,
                   :country_name ,:agenda_and_speakers,:image,:attendees_count, :resources_request
 
-  mount_uploader :image, ImageUploader
+  #mount_uploader :image, ImageUploader
 
   validate :start_time_validation
   validates :title,:event_start_time ,:event_start_date, :event_end_date, :event_end_time ,:presence => true
@@ -28,24 +28,24 @@ class Event < ActiveRecord::Base
 
 
   scope :applied_events, where(:status => [:applied])
-  scope :active_events, where(:status => [:applied])
-  scope :freezed_events, where(:status => [:applied])
+  scope :active_events, where(:status => [:active])
+  scope :block_events, where(:status => [:blocked])
 
   state_machine :status, :initial => :applied do
     event :deny do
       transition :applied => :denied
     end
 
-    event :active do
+    event :approve do
       transition :applied => :active
     end
 
-    event :freeze do
-      transition :active => :freezed
+    event :block do
+      transition :active => :blocked
     end
 
-    event :unfreeze do
-      transition :freezed => :active
+    event :unblock do
+      transition :blocked => :active
     end
   end
 

@@ -1,0 +1,34 @@
+- if @events.present?
+  %table.table-e
+    %thead
+      %tr
+        %td{:style => "width:100px;text-align: left;"}
+          %h5.label-46 Event Title
+        %td{:style => "width:115px;"}
+          %h5.label-46 Start
+        %td{:style => "width:100px;"}
+          %h5.label-46 End
+        %td{:style => "width:110px;"}
+          %h5.label-46 Location
+        %td{:style => "width:160px;"}
+          .dd-b
+            %h5.label-46
+              Action
+    %tbody
+      - @events.each do |event|
+        %tr{:id => "event-#{event.id}" }
+          %td{:style => "text-align: left;"}
+            %h5.label-48= event.title
+          %td
+            %h5.label-48= event.event_start_date
+          %td
+            %h5.label-48= event.event_end_date
+          %td
+            %h5.label-48= event.try(:chapter).location
+          %td
+            %h5.label-48
+              =link_to "unblock", unblock_admin_event_path(event), :class => "btn-a-small change_status",:remote => true,:method => "post"
+
+      %tr
+- else
+  No Applying Events
