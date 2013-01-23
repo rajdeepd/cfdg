@@ -667,6 +667,9 @@ ul.supportPrivacyLinks li{
     text-align: center;
     font-size: 14px;
 }
+.fullPadding{
+    padding: 10px 30px 28px 15px !important;
+}
 .layoutWrapper .span8, .chapterLayout .span8{
     width: 578px;
 }

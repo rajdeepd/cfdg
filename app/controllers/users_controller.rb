@@ -52,4 +52,14 @@ class UsersController < ApplicationController
     session[:is_allowed_to_login] = nil
     redirect_to root_path unless can_login == true
   end
+
+  def dashboard
+    #@subscribed_chapter = []
+    @upcoming_events = Event.get_upcoming_events
+    #chapter_member = ChapterMember.find_all_by_user_id(@current_user)
+    #chapter_member.each do |i|
+    #  @subscribed_chapter.push(Chapter.find(i.chapter_id))
+    #end
+    @subscribed_chapter = ChapterMember.find_all_by_user_id(@current_user).collect{|i| i.chapter}
+  end
 end

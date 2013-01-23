@@ -130,11 +130,12 @@
 
 - if(@is_i_admin==false)
   .content.eventDetails
-    .breadCrumb
-      %span Events
-      %span.breadCrumbDivider /
-      %span.activePage
-        =@event.title
+    .clearfix
+      .breadCrumb
+        %span Events
+        %span.breadCrumbDivider /
+        %span.activePage
+          =@event.title
     .blueHeader
       .tag
         %img{:src => "/assets/student_event_header_tag.png"}

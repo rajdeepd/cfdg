@@ -5,7 +5,8 @@
       -#  %a{:href => ""} FAQ'S
       -if @current_user.present?
         %li
-          %a{:href => "#{profile_path}"} MY PROFILE
+          -#%a{:href => "#{profile_path}"} MY PROFILE
+          %a{:href => "#{dashboard_user_path(@current_user)}"} Dashboard
         %li
           %a.logout{:href => "#"} LOGOUT
       -else
