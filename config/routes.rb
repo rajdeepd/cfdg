@@ -14,7 +14,8 @@ CloudfoundryUsergroups::Application.routes.draw do
 
   resources :chapters do
     member do
-      get 'show1'
+      #get 'show1'
+      get 'detail'
     end
     resources :events
     collection do
@@ -140,6 +141,10 @@ CloudfoundryUsergroups::Application.routes.draw do
       get :chapter_detail
       get :create_event
       get :create_event_step2
+      get :user_dashboard
+      get :article_view
+      get :post_view
+      get :announcement_view
     end
   end
 

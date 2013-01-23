@@ -73,7 +73,7 @@ class ChaptersController < ApplicationController
     end
   end
 
-  def show1
+  def detail
       @chapter = Chapter.find(params[:id])
       @is_part_of_chapter = false
       if current_user

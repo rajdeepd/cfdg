@@ -26,7 +26,7 @@
 
 
 -#=render :partial => "/shared/new_header"
-.content.ChapterDetails
+.content.chapterDetails
   .breadCrumb
     %span Chapters
     %span.breadCrumbDivider /
@@ -40,10 +40,11 @@
       %span.chapterPlace Varad Hall, Pune
       %span.viewMap ( View Map )
       .mapDiv
-        %span.close x
+        %span.close
+          %i.closeIcon
         %img{:src => "/assets/map.png"}
   .joinChapter
-    %button.orangeBtn Join Chapter
+    %a.orangeBtn{:href => "#"} Join Chapter
   .chapterLayout
     .row
       .span8
@@ -68,7 +69,7 @@
                         .eventContent
                           %h5 Cloud foundry open tour
                           .personName Rajdeep Dua
-                          %p.lightGrayText At this Developer Day you will meet the experts and learn...
+                          %p At this Developer Day you will meet the experts and learn...
                           %a{:href => "#"} Read More
                       .eventListFooter
                         %span.numberPeopleAttending 16
@@ -88,7 +89,7 @@
                         .eventContent
                           %h5 Cloud foundry open tour
                           .personName Rajdeep Dua
-                          %p.lightGrayText At this Developer Day you will meet the experts and learn...
+                          %p At this Developer Day you will meet the experts and learn...
                           %a{:href => "#"} Read More
                       .eventListFooter
                         %span.numberPeopleAttending 16
@@ -108,7 +109,7 @@
                         .eventContent
                           %h5 Cloud foundry open tour
                           .personName Rajdeep Dua
-                          %p.lightGrayText At this Developer Day you will meet the experts and learn...
+                          %p At this Developer Day you will meet the experts and learn...
                           %a{:href => "#"} Read More
                       .eventListFooter
                         %span.numberPeopleAttending 16

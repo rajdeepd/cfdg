@@ -1,0 +1,157 @@
+= javascript_include_tag "jquery.coda-slider-3.0"
+= javascript_include_tag "jquery.vticker-min"
+= javascript_include_tag "jquery.mousewheel"
+= javascript_include_tag "jquery.contentcarousel"
+= javascript_include_tag "jquery.easing.1.3"
+
+
+%title Coda Slider 3.0
+:javascript
+  $(function(){
+      /* Here is the slider using default settings */
+    $('#slider-id').codaSlider({
+      autoSlide:true,
+      autoHeight:false
+    });
+    $('h2.title').hide();
+    $('#news-container').vTicker({
+      speed: 500,
+      pause: 3000,
+      animation: 'fade',
+      mousePause: false,
+      showItems: 3
+    });
+  });
+
+
+
+-#=render :partial => "/shared/new_header"
+.content.chapterDetails
+  .breadCrumb
+    %span Chapters
+    %span.breadCrumbDivider /
+    %span.activePage #{@chapter.try(:name)}
+  .blueHeader
+    .chapterName.clearfix
+      %h1 #{@chapter.try(:name)}
+    .chapterDateAndPlace.clearfix
+      %span.chapterPlace #{@chapter.try(:city_name)} (
+      %span.viewMap  View Map
+      )
+      .mapDiv
+        %span.close
+          %i.closeIcon
+        -#%img{:src => "/assets/map.png"}
+        = render :partial => "chapter_map"
+  .joinChapter
+    -#%button.orangeBtn Join Chapter
+    -if !@is_part_of_chapter
+      = form_tag join_a_chapter_chapters_path, :method => :post do
+        = hidden_field_tag "chapter_id", "#{@chapter.id}"
+        - if @current_user.blank?
+          = link_to 'Join Chapter' ,signin_path, :class => "join_us orangeBtn"
+        - else
+          = submit_tag 'Join Chapter' , :class => "join_us orangeBtn"
+  .chapterLayout
+    .row
+      .span8
+        .eventTour
+          .slider.clearfix
+            .sliderHeading
+              %h3 Upcoming Events
+            .ca-container.ca-container.clearfix
+              .ca-wrapper
+                - if @upcoming_events.blank?
+                  .centerText.verticalCenter No upcoming events for this chapter.
+                -else
+                  - @upcoming_events.each do |event|
+                    .ca-item.ca-item-1
+                      .ca-item-main
+                        .eventListWrapper
+                          .eventListInner
+                            .clearfix
+                              .dateAndPlace
+                                -chapter = event.chapter
+                                .date #{Time.parse(event.event_start_date.to_s).strftime('%b')} #{Time.parse(event.event_start_date.to_s).strftime('%d')}, #{Time.parse(event.event_start_date.to_s).strftime('%Y')}
+                                .place #{event.chapter.city_name}, #{chapter.country_name}
+                              .tag
+                                -if chapter.chapter_type == "student"
+                                  %img{:src => "/assets/student_event.png"}
+                                -else
+                                  %img{:src => "/assets/professional_event.png"}
+                            .eventImg
+                              -if event.image.event_landscape.present?
+                                = image_tag(event.image.event_landscape.url,:size => "260x150")
+                              -elsif event.image.present?
+                                = image_tag(event.image.url,:size => "260x150")
+                              -else
+                                =image_tag("event_landscape_logo-b.png",:size => "260x150")
+                            .eventContent
+                              %h5 #{event.title}
+                              .personName #{event.user.fullname}
+                              %p.lightGrayText #{event.description.truncate(70)}
+                              %a{:href => "#{event_path(event)}"} Read more
+                          .eventListFooter
+                            %span.numberPeopleAttending #{event.event_members.length}
+                            %span People Attending
+
+          .past_events
+            =render :partial => "past_events"
+          .slider.clearfix
+            .sliderHeading
+              %h3 Events Gallery
+            .ca-container.galleryThumbnailsContainer.clearfix
+              .ca-wrapper
+                - if @chapter.get_past_events.blank?
+                  .centerText.verticalMargin No event gallery for this chapter.
+                -else
+                  - @chapter.get_past_events.each do |i|
+                    .ca-item.ca-item-1
+                      .ca-item-main
+                        .galleryThumbnails
+                          -if i.image.event_landscape.present?
+                            = image_tag(i.image.event_landscape.url,:size => "260x150")
+                          -elsif i.image.present?
+                            = image_tag(i.image.url,:size => "260x150")
+                          -else
+                            =image_tag("event_landscape_logo-b.png",:size => "260x150")
+                          -#-else
+                            = image_tag("event_gallery_thumbnail.jpg",:size => "260x150")
+                          -#%p Cloud Foundry introduced npm support, we added serval
+                          %p #{i.title.truncate(15)}
+                          - if i.event_galleries.present?
+                            %a.lightGrayText{:href => "#{show_all_event_images_event_path(i)}"} (#{i.event_galleries.count} Photos)
+                          - else
+                            %a.lightGrayText{:href => "#{show_all_event_images_event_path(i)}"} (0 Photos)
+
+        .comments.clearfix
+          .sliderHeading
+            %h4 Posts
+          %ul.posts
+            -if @chapter.posts.blank?
+              .centerText No post for this chapter.
+            -else
+              - @chapter.posts.each do |i|
+                %li
+                  .clearfix
+                    -if i.user.avatar_file_name.present?
+                      = avatar_display_pic(i.user,'thumb', '50x50','profile.png',"img-c flt-left")
+                    -else
+                      %img{:src => "/assets/default_human_face.jpg"}
+                    .commentText
+                      %p #{i.title}
+                      %span.commentDate #{Time.parse(i.try(:created_at).to_s).strftime('%b %d, %Y')}
+                  %p #{i.description.truncate(197)}
+                  %a{:href => "#"} View more
+      .span4
+        =render :partial => "event_admin_and_members_list"
+
+:javascript
+  Chapters.init();
+  Events.init();
+  $(document).ready(function(){
+    $('.ca-container').contentcarousel({
+      minNum          : 2
+    });
+
+  });

@@ -1,7 +1,8 @@
 %span.viewMap  View Map
 )
 .mapDiv
-  %span.close x
+  %span.close
+    %i.closeIcon
   -#%img{:src => "/assets/map.png"}
 
   - if @current_user.present? and   @event.can_i_delete?(@current_user.id, @event.chapter_id)
