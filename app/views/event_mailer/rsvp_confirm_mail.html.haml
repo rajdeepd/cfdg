@@ -1,0 +1,18 @@
+%p 同学你好，
+%p 
+  你已报名
+  %strong= @event.chapter.name
+  分会活动。请在24小时内确认你的报名。确认成功后，你将可以参加此次活动。确认请点击：
+  = link_to "确认报名", confirm_rsvp_url(:token => @event_member.confirmation_token)
+
+%h4 活动信息
+%p 活动名称：#{@event.title}
+%p 活动时间：#{@event.schedule}
+%p 活动地点：#{@event.location}
+%p 活动内容：
+%p #{@event.description}
+
+%p 谢谢。
+
+
+%p Cloud Foundry同学会

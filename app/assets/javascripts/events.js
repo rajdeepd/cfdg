@@ -28,6 +28,7 @@ Events = {
                 url: '/events/follow_an_event',
                 data : data,
                 success: function(data){
+                    noty( { text: "We've just send you an email to confirm your reservation. Please click the link provided in the mail within 30 minutes to complete your reservation.", type: "information" })
                     $('#events').html(data);
                     $('.join_us').hide();
                 },

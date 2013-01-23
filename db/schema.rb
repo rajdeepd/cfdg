@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130123012735) do
+ActiveRecord::Schema.define(:version => 20130123050642) do
 
   create_table "announcements", :force => true do |t|
     t.string   "title"
@@ -147,13 +147,16 @@ ActiveRecord::Schema.define(:version => 20130123012735) do
   end
 
   create_table "event_members", :force => true do |t|
-    t.integer  "event_id",   :null => false
-    t.integer  "user_id",    :null => false
+    t.integer  "event_id",             :null => false
+    t.integer  "user_id",              :null => false
     t.integer  "created_by"
     t.integer  "updated_by"
     t.datetime "deleted_at"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
   end
 
   create_table "eventbrite_oauth_tokens", :force => true do |t|
@@ -180,14 +183,11 @@ ActiveRecord::Schema.define(:version => 20130123012735) do
     t.datetime "deleted_at"
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false
-    t.string   "location"
     t.string   "address_line1"
     t.string   "address_line2"
     t.string   "event_start_time"
     t.string   "event_end_time"
     t.string   "postal_code"
-    t.string   "state_name"
-    t.string   "country_name"
     t.string   "eventbrite_id"
     t.text     "agenda_and_speakers"
     t.integer  "attendees_count"

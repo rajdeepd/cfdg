@@ -34,4 +34,9 @@ class MailPreview < MailView
     @event = Event.all.first
     EventMailer.new_event_mail(@event)
   end
+
+  def rsvp_confirm_mail
+    @event_member = EventMember.all.first
+    EventMailer.rsvped_confirm_mail(@event_member)
+  end
 end

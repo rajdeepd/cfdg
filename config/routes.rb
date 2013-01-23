@@ -15,6 +15,7 @@ CloudfoundryUsergroups::Application.routes.draw do
   get '/resend_confirmation' => 'users#resend_confirmation', :as => :resend_confirmation
 
   match'/admin', :to => "admin/sessions#new"
+  match'/confirm_rsvp', :to => "events#confirm_rsvp", :as => :confirm_rsvp
 
   devise_for :users, :skip => [:sessions, :registrations, :passwords], :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
 

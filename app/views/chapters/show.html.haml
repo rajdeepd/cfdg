@@ -78,7 +78,7 @@
         = render '/events/events_list' 
     /=render '/events/comment_partial'
 
-
-:javascript 
-  Chapters.init(); 
-  Events.init();
+- content_for :javascript do
+  :javascript
+    Chapters.init(); 
+    Events.init();

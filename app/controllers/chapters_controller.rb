@@ -169,7 +169,7 @@ class ChaptersController < ApplicationController
   end 
 
   def get_upcoming_and_past_events
-    @all_events = Event.find_all_by_chapter_id(@chapter.id) || []
+    @all_events = @chapter.events.active_events || []  # changed to only fetch the active events
     @past_events = []
     @upcoming_events = []
     @all_events.each do |event|       

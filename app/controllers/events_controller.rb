@@ -9,6 +9,31 @@ class EventsController < ApplicationController
   before_filter :check_authorization ,:only => [:download_list]
   before_filter :find_chapter, :only => [:new, :edit]
 
+
+  def confirm_rsvp
+    binding.pry
+    
+    @event_member = EventMember.find_by_confirmation_token(params[:token])
+
+    if @event_member
+      if Time.now.to_i - @event_member.confirmation_sent_at.to_i < 86400  # has to be within 24 hours
+        @event_member.confirm!
+
+        flash[:notice] = [t("events.rsvp_confirmed")]
+        redirect_to profile_path() 
+      else
+        # send another mail to confirm
+        @event_member.generate_confirmation!
+        EventMailer.rsvp_confirm_mail(@event_member).deliver
+
+        flash[:notice] = [t("events.rsvp_resend")]
+        redirect_to profile_path()
+      end
+    else
+      # goto 404 for now
+    end
+  end
+
   def index
     @events = Event.all
     respond_to do |format|
@@ -21,7 +46,6 @@ class EventsController < ApplicationController
   # GET /events/1.json
   def show
     @event = Event.find(params[:id])
-    #@event = Event.find(9)
     @emails = ''
     @members = @event.event_members.includes(:user).collect{|i| i.user}
     @event.event_members.each do |member| @emails << (member.user.try(:email).to_s+"\;")  end
@@ -95,24 +119,27 @@ class EventsController < ApplicationController
 
   def follow_an_event
     @event = Event.find(params[:event_id])
+
     if !@event.is_cancelled? and !@event.am_i_member?(@current_user.id)
       @event_memeber = EventMember.new(:event_id => @event.id, :user_id => current_user.id)
+      @event_memeber.generate_confirmation!
       @event_memeber.save!
 
-      #EventNotification.rsvped_event(@event,@current_user).deliver
-      EventNotification.rsvped_event(@event,@current_user).deliver
-      #SES.send_raw_email(EventNotification.rsvped_event(@event,@current_user))
-      #EventNotification.delay.rsvped_event(@event,@current_user)
+      EventMailer.rsvp_confirm_mail(@event_memeber).deliver
     end
+
     chapter_events = Event.find_all_by_chapter_id(@event.chapter_id) || []
     get_upcoming_and_past_events(chapter_events, true)
+
     @chapter = Chapter.find(@event.chapter_id)
+
     if !@chapter.am_i_chapter_memeber?(@current_user.id)
       ChapterMember.create({:memeber_type=>ChapterMember::MEMBER, :user_id => @current_user.id, :chapter_id => @chapter.id})
     end
+
     @profile_page = false
     respond_to do |format|
-      format.js {render :partial => 'events_list' }# new.html.erb
+      format.js { render :partial => 'events_list' }# new.html.erb
     end
   end
 

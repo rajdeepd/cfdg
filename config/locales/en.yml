@@ -126,6 +126,8 @@ en:
     event_mailer:
       new_event:
         subject: 新活动申请
+      rsvped_confirm:
+        subject: "请确认报名 %{chapter_name} 分会活动"
 
   admin:
     chapter_status: "Chapter Status"
@@ -134,6 +136,7 @@ en:
 
   events:
     upcoming_events: Upcoming Events
+    rsvped_need_confirmation: "We've just send you an email to confirm your reservation. Please click the link provided in the mail within 30 minutes to complete your reservation."
 
   event_form:
     form_title: "Create Event For %{chapter_name}"

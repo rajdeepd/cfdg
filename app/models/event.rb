@@ -28,8 +28,8 @@ class Event < ActiveRecord::Base
 
 
   scope :applied_events, where(:status => [:applied])
-  scope :active_events, where(:status => [:applied])
-  scope :freezed_events, where(:status => [:applied])
+  scope :active_events, where(:status => [:active])
+  scope :freezed_events, where(:status => [:freezed])
 
   state_machine :status, :initial => :applied do
     event :deny do
@@ -68,6 +68,14 @@ class Event < ActiveRecord::Base
     ChapterMember.am_i_coordinator?(user_id, chapter_id)
   end
 
+  def schedule
+    "#{self.event_start_date}#{self.event_start_time} - #{self.event_end_date}#{self.event_end_time}"
+  end
+
+  def location
+    "#{self.chapter.location}#{self.address_line1}#{self.address_line2}"
+  end
+
   def is_rsvp_allowed?
 
     # Commented by Larry. We don't need a people limit.
@@ -80,6 +88,8 @@ class Event < ActiveRecord::Base
   end
 
   def can_be_deleted?
+    binding.pry
+
     members = self.event_members.includes(:user)
     members.size == 1 and members.first.user.id == self.created_by
   end
