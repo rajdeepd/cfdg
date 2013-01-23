@@ -144,5 +144,15 @@ class Chapter < ActiveRecord::Base
     self.chapter_members.find_all_by_memeber_type("secondary coordinator")
   end
 
+  def get_past_events
+    past_events = []
+        self.events.each do |event|
+          if((Time.parse(event.event_start_date+" "+event.event_start_time) < Time.now))
+            past_events.push(event)
+          end
+        end
+        past_events
+  end
+
 end
 
