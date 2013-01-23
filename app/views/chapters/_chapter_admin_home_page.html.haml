@@ -15,7 +15,8 @@
         %tr
           /%td.h-in Chapter Calendar
           %td.link
-            %a.cp{:href => "#" , :id=> "create_event"} + Create Event
+            -#%a.cp{:href => "#" , :id=> "create_event"} + Create Event
+            =link_to "Create Event"  , new_chapter_event_path(@chapter) ,:id => "new_event", :class => "create_new_event"
   /.calendar-div{:style => "margin: 0 auto;margin-top:10px;width:90%;height:250px;background-color: #e0e0e0;margin-bottom: 20px;"}
 %table.table-d{:style => "display:none", :id=>"all_events"}
   - @chapter_events.each do |event|   
