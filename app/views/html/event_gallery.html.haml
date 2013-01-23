@@ -18,60 +18,80 @@
         %span.numberOfImages 89
         %span Photos
   .layoutWrapper.clearfix
-    .eventImageHolder
-      %a{:href => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/81/Chrysanthemum.jpg"}
-        %img{:alt => "Chrysanthemum", :src => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/81/Chrysanthemum.jpg"}/
-    .eventImageHolder
-      %a{:href => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/82/Hydrangeas.jpg"}
-        %img{:alt => "Chrysanthemum", :src => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/82/Hydrangeas.jpg"}/
-    .eventImageHolder
-      %a{:href => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/83/Jellyfish.jpg"}
-        %img{:alt => "Chrysanthemum", :src => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/83/Jellyfish.jpg"}/
-    .eventImageHolder
-      %a{:href => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/84/Koala.jpg"}
-        %img{:alt => "Chrysanthemum", :src => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/84/Koala.jpg"}/
-    .eventImageHolder
-      %a{:href => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/85/Penguins.jpg"}
-        %img{:alt => "Chrysanthemum", :src => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/85/Penguins.jpg"}/
-    .eventImageHolder
-      %a{:href => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/81/Chrysanthemum.jpg"}
-        %img{:alt => "Chrysanthemum", :src => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/81/Chrysanthemum.jpg"}/
-    .eventImageHolder
-      %a{:href => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/86/Tulips.jpg"}
-        %img{:alt => "Chrysanthemum", :src => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/86/Tulips.jpg"}/
-    .eventImageHolder
-      %a{:href => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/82/Hydrangeas.jpg"}
-        %img{:alt => "Chrysanthemum", :src => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/82/Hydrangeas.jpg"}/
-    .eventImageHolder
-      %a{:href => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/85/Penguins.jpg"}
-        %img{:alt => "Chrysanthemum", :src => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/85/Penguins.jpg"}/
-    .eventImageHolder
-      %a{:href => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/81/Chrysanthemum.jpg"}
-        %img{:alt => "Chrysanthemum", :src => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/81/Chrysanthemum.jpg"}/
-    .eventImageHolder
-      %a{:href => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/82/Hydrangeas.jpg"}
-        %img{:alt => "Chrysanthemum", :src => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/82/Hydrangeas.jpg"}/
-    .eventImageHolder
-      %a{:href => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/83/Jellyfish.jpg"}
-        %img{:alt => "Chrysanthemum", :src => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/83/Jellyfish.jpg"}/
-    .eventImageHolder
-      %a{:href => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/84/Koala.jpg"}
-        %img{:alt => "Chrysanthemum", :src => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/84/Koala.jpg"}/
-    .eventImageHolder
-      %a{:href => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/85/Penguins.jpg"}
-        %img{:alt => "Chrysanthemum", :src => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/85/Penguins.jpg"}/
-    .eventImageHolder
-      %a{:href => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/81/Chrysanthemum.jpg"}
-        %img{:alt => "Chrysanthemum", :src => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/81/Chrysanthemum.jpg"}/
-    .eventImageHolder
-      %a{:href => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/86/Tulips.jpg"}
-        %img{:alt => "Chrysanthemum", :src => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/86/Tulips.jpg"}/
-    .eventImageHolder
-      %a{:href => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/82/Hydrangeas.jpg"}
-        %img{:alt => "Chrysanthemum", :src => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/82/Hydrangeas.jpg"}/
-    .eventImageHolder
-      %a{:href => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/85/Penguins.jpg"}
-        %img{:alt => "Chrysanthemum", :src => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/85/Penguins.jpg"}/
+    .row
+      %ul.eventGallery
+        %li
+          .eventImageHolder
+            %a{:href => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/81/Chrysanthemum.jpg"}
+              %img{:alt => "Chrysanthemum", :src => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/81/Chrysanthemum.jpg"}/
+        %li
+          .eventImageHolder
+            %a{:href => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/82/Hydrangeas.jpg"}
+              %img{:alt => "Chrysanthemum", :src => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/82/Hydrangeas.jpg"}/
+        %li
+          .eventImageHolder
+            %a{:href => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/83/Jellyfish.jpg"}
+              %img{:alt => "Chrysanthemum", :src => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/83/Jellyfish.jpg"}/
+        %li
+          .eventImageHolder
+            %a{:href => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/84/Koala.jpg"}
+              %img{:alt => "Chrysanthemum", :src => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/84/Koala.jpg"}/
+        %li
+          .eventImageHolder
+            %a{:href => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/85/Penguins.jpg"}
+              %img{:alt => "Chrysanthemum", :src => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/85/Penguins.jpg"}/
+        %li
+          .eventImageHolder
+            %a{:href => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/81/Chrysanthemum.jpg"}
+              %img{:alt => "Chrysanthemum", :src => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/81/Chrysanthemum.jpg"}/
+        %li
+          .eventImageHolder
+            %a{:href => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/86/Tulips.jpg"}
+              %img{:alt => "Chrysanthemum", :src => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/86/Tulips.jpg"}/
+        %li
+          .eventImageHolder
+            %a{:href => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/82/Hydrangeas.jpg"}
+              %img{:alt => "Chrysanthemum", :src => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/82/Hydrangeas.jpg"}/
+        %li
+          .eventImageHolder
+            %a{:href => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/85/Penguins.jpg"}
+              %img{:alt => "Chrysanthemum", :src => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/85/Penguins.jpg"}/
+        %li
+          .eventImageHolder
+            %a{:href => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/81/Chrysanthemum.jpg"}
+              %img{:alt => "Chrysanthemum", :src => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/81/Chrysanthemum.jpg"}/
+        %li
+          .eventImageHolder
+            %a{:href => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/82/Hydrangeas.jpg"}
+              %img{:alt => "Chrysanthemum", :src => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/82/Hydrangeas.jpg"}/
+        %li
+          .eventImageHolder
+            %a{:href => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/83/Jellyfish.jpg"}
+              %img{:alt => "Chrysanthemum", :src => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/83/Jellyfish.jpg"}/
+        %li
+          .eventImageHolder
+            %a{:href => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/84/Koala.jpg"}
+              %img{:alt => "Chrysanthemum", :src => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/84/Koala.jpg"}/
+        %li
+          .eventImageHolder
+            %a{:href => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/85/Penguins.jpg"}
+              %img{:alt => "Chrysanthemum", :src => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/85/Penguins.jpg"}/
+        %li
+          .eventImageHolder
+            %a{:href => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/81/Chrysanthemum.jpg"}
+              %img{:alt => "Chrysanthemum", :src => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/81/Chrysanthemum.jpg"}/
+        %li
+          .eventImageHolder
+            %a{:href => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/86/Tulips.jpg"}
+              %img{:alt => "Chrysanthemum", :src => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/86/Tulips.jpg"}/
+        %li
+          .eventImageHolder
+            %a{:href => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/82/Hydrangeas.jpg"}
+              %img{:alt => "Chrysanthemum", :src => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/82/Hydrangeas.jpg"}/
+        %li
+          .eventImageHolder
+            %a{:href => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/85/Penguins.jpg"}
+              %img{:alt => "Chrysanthemum", :src => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/85/Penguins.jpg"}/
 
 
 :javascript

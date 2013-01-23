@@ -52,4 +52,7 @@ class HtmlController < ApplicationController
   def event_gallery
 
   end
+  def chapter_gallery
+
+  end
 end

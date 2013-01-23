@@ -1660,10 +1660,14 @@ ul.adminPanel{
 .chapterLayout .ca-container.galleryThumbnailsContainer, .chapterLayout .ca-container.galleryThumbnailsContainer .ca-item{
     height: 240px;
 }
+ul.eventGallery li{
+    float: left;
+    overflow: hidden;
+}
 .galleryThumbnails{
-    background: url("galary_thumbnail_bg.png") no-repeat;
+    background: url("galary_thumbnail_bg.png") no-repeat top;
     width: 280px;
-    height: 178px;
+    height: 240px;
 }
 .galleryThumbnails img{
     margin: 13px 6px;
@@ -2142,7 +2146,7 @@ ul.adminPanel{
 .eventDetails .eventImageHolder{
     width: 130px;
     height: 90px;
-    margin: 0 16px 20px 0;
+    margin: 0 0 20px 19px;
 }
 .imageIcon{
     background: url("photo_icon.png") no-repeat 0 3px;

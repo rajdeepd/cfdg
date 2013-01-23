@@ -147,6 +147,7 @@ CloudfoundryUsergroups::Application.routes.draw do
       get :announcement_view
       get :create_chapter
       get :event_gallery
+      get :chapter_gallery
     end
   end
 
