@@ -26,7 +26,7 @@
 
 
 -#=render :partial => "/shared/new_header"
-.content.ChapterDetails
+.content.chapterDetails
   .breadCrumb
     %span Chapters
     %span.breadCrumbDivider /
@@ -40,10 +40,11 @@
       %span.chapterPlace Varad Hall, Pune
       %span.viewMap ( View Map )
       .mapDiv
-        %span.close x
+        %span.close
+          %i.closeIcon
         %img{:src => "/assets/map.png"}
   .joinChapter
-    %button.orangeBtn Join Chapter
+    %a.orangeBtn{:href => "#"} Join Chapter
   .chapterLayout
     .row
       .span8

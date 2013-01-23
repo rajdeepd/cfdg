@@ -875,25 +875,36 @@ ul.supportPrivacyLinks li{
     z-index: 1000;
     border: 1px solid #CCC;
     position: absolute;
-    top: 183px;
+    top: 180px;
     left: 32px;
     background: white;
     opacity: 0;
     z-index: -1;
 }
+.chapterDetails .mapDiv{
+    height: 460px;
+    top: 264px;
+}
 .mapDiv .close{
     float: right;
     font-size: 12px;
-    color: #ffffff;
+    color: #888888;
     margin-right: 5px;
     position: absolute;
-    right: 4px;
-    top: -17px;
+    right: -6px;
+    top: -24px;
     z-index: -1;
-    padding: 0 4px;
     opacity: 1;
-    background: #0094B6;
+    background: url("prev_next_bg.png") repeat-x;
     line-height: 16px;
+    border: 1px solid #b6cee0;
+    box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.2);
+}
+.closeIcon{
+    background: url("close_icon.png") no-repeat center;
+    width: 25px;
+    height: 22px;
+    display: block;
 }
 .mapDiv .map_container{
     width: 579px;
@@ -914,7 +925,7 @@ ul.supportPrivacyLinks li{
     border-radius: 5px 5px 0 0;
     text-align: center;
     color: white;
-    text-shadow: 0 -1px rgba(0, 0, 0, 0.5);
+    text-shadow: 0px -2px rgba(0, 0, 0, 0.1);
     text-transform: uppercase;
 }
 .plainBlueHeader h3{
@@ -1522,7 +1533,7 @@ li.ui-timepicker-selected .ui-timepicker-duration,
     position: absolute;
     right: 12px;
     top: -3px;
-    z-index: 1000;
+    z-index: 0;
     margin: 0;
 }
 ul.listOfAttendees{
@@ -2037,4 +2048,10 @@ ul.adminPanel{
 .joinChapter a{
     padding: 9px 15px;
     margin-left: 25px;
+}
+.chapterLayout .comments ul.posts li p{
+    color: #333333;
+    font-size: 14px;
+    line-height: 19px;
+    font-family: helvetica;
 }
