@@ -40,7 +40,7 @@ class Admin::ChaptersController < ApplicationController
       ChapterMailer.approval_mail(chapter).deliver
 
       User.non_admin_all.each do |user|
-        ChapterMailer.newly_created(chapter,user).deliver
+        ChapterMailer.newly_created_mail(chapter,user).deliver
       end
 
       msg = "Approved on #{chapter.approved_on.strftime("%b %d, %Y")}"
