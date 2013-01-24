@@ -46,4 +46,13 @@ class HtmlController < ApplicationController
   def announcement_view
 
   end
+  def create_chapter
+
+  end
+  def event_gallery
+
+  end
+  def chapter_gallery
+
+  end
 end
