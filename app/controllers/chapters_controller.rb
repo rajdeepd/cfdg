@@ -109,7 +109,9 @@ class ChaptersController < ApplicationController
       end
     end
 
-
+    def chapter_gallery
+      @chapter = Chapter.find(params[:id])
+    end
 
 
 

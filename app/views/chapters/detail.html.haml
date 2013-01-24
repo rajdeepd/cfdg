@@ -120,9 +120,9 @@
                           -#%p Cloud Foundry introduced npm support, we added serval
                           %p #{i.title.truncate(15)}
                           - if i.event_galleries.present?
-                            %a.lightGrayText{:href => "#{show_all_event_images_event_path(i)}"} (#{i.event_galleries.count} Photos)
+                            %a.lightGrayText{:href => "#{chapter_gallery_chapter_path(:event_id => i)}"} (#{i.event_galleries.count} Photos)
                           - else
-                            %a.lightGrayText{:href => "#{show_all_event_images_event_path(i)}"} (0 Photos)
+                            %a.lightGrayText{:href => "#{chapter_gallery_chapter_path(:event_id => i)}"} (0 Photos)
 
         .comments.clearfix
           .sliderHeading

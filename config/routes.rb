@@ -16,6 +16,7 @@ CloudfoundryUsergroups::Application.routes.draw do
     member do
       #get 'show1'
       get 'detail'
+      get 'chapter_gallery'
     end
     resources :events
     collection do
