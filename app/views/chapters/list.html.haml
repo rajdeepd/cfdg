@@ -25,6 +25,17 @@
       mousePause: false,
       showItems: 3
     });
+
+    $( "#city_autocomplete" ).autocomplete({
+              source: "/home/autocomplete_city_details",
+              minLength: 2,
+              select: function( event, ui ) {
+                //log( ui.item ?
+                //  "Selected: " + ui.item.value + " aka " + ui.item.id :
+                //  "Nothing selected, input was " + this.value );
+                //alert(this.value)
+              }
+            });
   });
 
 
@@ -39,18 +50,18 @@
         %a.btn.darkBlueBtn{:href => "#"} Create a Chapter
   .layoutWrapper
     .chapterSearchBox.clearfix
-      %form
+      =form_tag search_chapters_path  , :method => :get,:id => "search_chapter"  do
         .eventCitySearch.clearfix
           %span.citySearchIcon
-          -#%input{:placeholder => "City Location", :type => "text"}/
-          =form_tag search_chapters_path  , :method => :get,:id => "search_chapter"  do
-            = autocomplete_field_tag 'query', '', autocomplete_city_details_home_index_path, :size => 75 ,:placeholder => "City Name"
-            =button_tag "" ,:class =>"citySearchBtn"
-        %select.selectID{:name => "country_id", :tabindex => "1"}
-          %option Pune
-          %option Nagpur
-          %option India
-        %button.signUp.orangeBtn Search
+          = text_field_tag 'query', '', :size => 75 ,:placeholder => "City Name"  ,:id => "city_autocomplete"
+          = select_tag "chapter_type", options_for_select(["Professional" , "Student"])
+          = submit_tag "Search", :class =>"orangeBtn"
+
+        -#%select.selectID{:name => "country_id", :tabindex => "1"}
+        -#  %option Pune
+        -#  %option Nagpur
+        -#  %option India
+        -#%button.signUp.orangeBtn Search
       %a.signUp.btn{:href => "#"} View all Chapters
     =render :partial => "chapter_list"
 
