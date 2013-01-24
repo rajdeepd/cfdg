@@ -1,7 +1,7 @@
 Events ={
 
     init:function(){
-        $('#create_event').die('click').live('click',function(e){
+        $('#creat_event').die('click').live('click',function(e){
             e.preventDefault();
             var chapter_id= $('#group_admin_ref').attr('chapter_id');
 

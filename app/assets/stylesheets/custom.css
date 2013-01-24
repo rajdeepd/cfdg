@@ -1412,31 +1412,31 @@ li.ui-timepicker-selected .ui-timepicker-duration,
     font-weight: 500;
     margin: 0 0 20px 220px;
 }
-.formBox .form-horizontal .control-label{
+.formBox .control-label{
     width: 200px;
     color: #777777;
     font-size: 16px;
     line-height: 18px;
 }
-.formBox .form-horizontal input{
+.formBox input{
     border: 1px solid #7faac5;
     width: 290px;
     height: 20px;
 }
-.formBox .form-horizontal textarea{
+.formBox textarea{
     border: 1px solid #7faac5;
     width: 290px;
     resize: none;
     height: 60px;
 }
-.formBox .form-horizontal .controls{
+.formBox .controls{
     margin-left: 220px;
 }
 .asterisk{
     color: red;
     font-size: 16px;
 }
-.formBox .form-horizontal .dateBox , .formBox .form-horizontal .timeBox{
+.formBox .dateBox , .formBox .timeBox{
     width: 140px;
     font-size: 12px;
     color: #777777;
@@ -1444,30 +1444,31 @@ li.ui-timepicker-selected .ui-timepicker-duration,
     float: left;
     margin: 0 20px 15px 0;
 }
-.formBox .form-horizontal .dateInput{
+.formBox .dateInput{
     border:1px solid #7faac5;
     border-radius: 4px;
+    height: 28px;
 }
-.formBox .form-horizontal .timeInput{
+.formBox .timeInput{
 
 }
-.formBox .form-horizontal .timeBox{
+.formBox .timeBox{
     margin-right: 0;
 }
-.formBox .form-horizontal .dateBox input{
+.formBox .dateBox input{
     width: 100px;
     float: left;
     border: none;
 }
-.formBox .form-horizontal .timeBox input{
+.formBox .timeBox input{
     width: 130px;
     float: left;
     background: url("dropdown_arrow.png") #ffffff no-repeat right center;
 }
-.formBox .form-horizontal .timeBox img{
+.formBox .timeBox img{
     margin: 1px 0 0 -30px;
 }
-.formBox .form-horizontal .bigButton{
+.formBox .bigButton{
     width: 300px;
     padding: 12px 10px;
     text-align: left;
@@ -1501,7 +1502,7 @@ li.ui-timepicker-selected .ui-timepicker-duration,
     line-height: 18px;
     float: left;
 }
-.formBox .form-horizontal .postalCode input{
+.formBox .postalCode input{
     width: 130px;
 }
 
@@ -1697,7 +1698,7 @@ ul.adminPanel{
     border-bottom: 1px solid #d8dee2;
 }
 
-.formBox .form-horizontal .control-group .orangeBtn, .formBox .form-horizontal .control-group .btn{
+.formBox .control-group .orangeBtn, .formBox .control-group .btn{
     width: 136px;
     border-radius: 5px;
     height: 36px;
@@ -1735,6 +1736,12 @@ ul.adminPanel{
     width: 20px;
     height: 20px;
 }
+
+.event_error{
+    text-align: center;
+    color: red;
+}
+
 .sliderHeadingFull{
     background: url("slider_header_full.png") no-repeat;
     width: 879px;

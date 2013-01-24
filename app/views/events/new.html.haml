@@ -1,7 +1,282 @@
-%h1 New Event
--if !@eb_client.nil?
-  = render 'form'
--else
-  = link_to 'Connect to Eventbrite', "#{@accept_url}"
+-#%h1 New Event
+-#-if !@eb_client.nil?
+-#  = render 'form'
+-#-else
+-#  = link_to 'Connect to Eventbrite', "#{@accept_url}"
+-#
+-#= link_to 'Back', events_path
 
-= link_to 'Back', events_path
+= javascript_include_tag "jquery.timepicker.min"
+-#= javascript_include_tag "jquery.ui.datepicker"
+-#= javascript_include_tag "jquery-ui"
+-#= javascript_include_tag "jquery.selectbox-0.2.min"
+= javascript_include_tag "jquery.validate"
+-#= stylesheet_link_tag    "jquery.selectbox", :media => "all"
+-#:javascript
+  $(function() {
+    $( ".datepicker" ).datepicker({
+      showOtherMonths: true,
+      selectOtherMonths: true,
+      showOn: "button",
+      dateFormat: "dd/mm/yy",
+      buttonImage: "/assets/calander.png",
+      buttonImageOnly: true,
+    });
+    $(".selectID").selectbox();
+  });
+-#:javascript
+  $(document).ready(function(){
+    $('.ui-timepicker-input').timepicker();
+    $('.ui-timepicker-input').on('changeTime', function() {
+      $('#onselectTarget').text($(this).val());
+    });
+  });
+
+.content
+  .loginContent.signUpWrapper
+    .row
+      .span10.offset1
+        .loginLayout.clearfix
+          .plainBlueHeader
+            %h3 create an event
+          .eventHeader
+          .borderWithShadow
+          =form_for @event, :url => chapter_events_path(params[:chapter_id]),:method => "POST" ,:html =>{ :class => "form-horizontal"} do |f|
+            - if @event.errors.any?
+              %ul
+                - @event.errors.full_messages.each do |msg|
+                  %li.event_error * #{msg}
+            .formBox
+              %h5 Enter Event details
+              -#%form.form-horizontal
+
+              .control-group
+                %label.control-label
+                  Event Title
+                  %span.asterisk *
+                .controls
+                  -#%input{:type => "text"}
+                  = f.text_field :title , :placeholder => "Event Title"
+              .control-group
+                %label.control-label
+                  Event Description
+                  %span.asterisk *
+                .controls
+                  -#%textarea
+                  = f.text_area :description, :placeholder => "Event description"
+              .control-group
+                %label.control-label
+                  Attendees Count
+                .controls
+                  -#%input{:type => "text"}
+                  = f.text_field :attendees_count, :placeholder => "Attendees Count"
+              .control-group
+                %label.control-label
+                  Event Day & Date Details
+                  %span.asterisk *
+                .controls
+                  %div.dateBox
+                    Start Date
+                    %div.dateInput
+                      -#%input.datepicker{:type => "text"}/
+                      = f.text_field :event_start_date , :class => "datepicker"
+                  %span.timeBox
+                    Start Time
+                    -#%input.time.ui-timepicker-input{:autocomplete => "on", :type => "text"}/
+                    = f.text_field :event_start_time , :class => "time ui-timepicker-input timepicker", :autocomplete => "on"
+                  %div.dateBox
+                    End Date
+                    %div.dateInput
+                      -#%input.datepicker{:type => "text"}/
+                      = f.text_field :event_end_date , :class => "datepicker"
+                  %span.timeBox
+                    End Time
+                    -#%input.time.ui-timepicker-input{:autocomplete => "ons", :type => "text"}/
+                    = f.text_field :event_end_time, :class => "time ui-timepicker-input timepicker", :autocomplete => "on"
+            .formBox
+              %h5 Enter Event address
+              -#%form.form-horizontal
+              .control-group
+                %label.control-label
+                  Venue Name
+                .controls
+                  -#%input{:type => "text"}
+                  = f.text_field :venue, :placeholder => "Venue Name"
+              .control-group
+                %label.control-label
+                  Street Address1
+                .controls
+                  -#%textarea
+                  = f.text_area :address_line1, :placeholder => "Address Line 1"
+              .control-group
+                %label.control-label
+                  Street Address2
+                .controls
+                  -#%textarea
+                  = f.text_area :address_line2, :placeholder => "Address Line 2"
+              .control-group
+                %label.control-label
+                  Postal Code
+                .controls
+                  -#%span.dateBox
+                    Country
+                    %select.selectID{:name => "country_id", :tabindex => "1"}
+                      %option India
+                  -#%span.timeBox
+                    State
+                    %select.selectID{:name => "country_id", :tabindex => "1"}
+                      %option India
+                  -#%span.dateBox
+                    City
+                    -#%select.selectID{:name => "country_id", :tabindex => "1"}
+                    = f.text_field :city_name, :class => "selectID", :placeholder => "Type to select a city"
+                    -#= f.hidden_field :chapter_id
+                      %option India
+                  %span.postalCode
+                    -#Postal Code
+                    -#%input{:type => "text"}
+                    = f.text_field :postal_code, :placeholder => "Postal code"
+            .formBox
+              -#.form-horizontal
+              .control-group
+                .controls
+                  %button.btn Cancel
+                  %button.orangeBtn Create Event
+
+:javascript
+  $(document).ready(function(){
+    $('#new_event').validate({
+      rules: {
+        "event[event_start_date]": {
+          required: true
+        },
+        "event[event_start_time]": {
+          required: true
+        },
+        "event[event_end_date]": {
+          required: true
+        },
+        "event[event_end_time]":{
+          required: true
+        },
+        "event[title]":{
+          required: true
+        },
+        "event[attendees_count]":{
+          digits: true
+        }
+        ,
+        "event[postal_code]":{
+          required: true,
+          eventPostalCode:true
+        }
+      }
+    });
+    //$("#image_upload_link").on("click",function(event){
+    //  event.preventDefault();
+    //  $("#event_image").trigger("click");
+      //$("#image_upload_link").text("Image Uploaded...100%");
+    //});
+
+
+    //$('#new_event').submit(function(event){
+    //  if($(this).valid()){
+    //    $("#event_form_submit").css("opacity",0.35);
+    //    $("#event_form_submit").attr("disabled","disabled");
+    //    $("#event_form_submit").text("CREATING...");
+    //  };
+    //});
+    //$("#event_event_start_time").on("click",function(){
+    //  $("#event_form_submit").css("opacity",1);
+    //  $("#event_form_submit").attr("disabled",false);
+    //  $("#event_form_submit").text("CREATE");
+    //});
+    //$("#event_event_end_time").on("click",function(){
+    //  $("#event_form_submit").css("opacity",1);
+    //  $("#event_form_submit").attr("disabled",false);
+    //  $("#event_form_submit").text("CREATE");
+    //});
+    //
+    //$("#event_event_start_date").on("click",function(){
+    //  $("#event_form_submit").css("opacity",1);
+    //  $("#event_form_submit").attr("disabled",false);
+    //  $("#event_form_submit").text("CREATE");
+    //});
+    //$("#event_event_end_date").on("click",function(){
+    //  $("#event_form_submit").css("opacity",1);
+    //  $("#event_form_submit").attr("disabled",false);
+    //  $("#event_form_submit").text("CREATE");
+    //});
+
+
+  });
+  $(function(){
+  var today = new Date();
+    $( "#event_event_start_date" ).datepicker({
+      minDate: 0,
+      dateFormat: "dd/mm/yy",
+      buttonImage: "/assets/calander.png",
+      onSelect: function(selectedDate){
+        //$("input#event_event_start_date").siblings("label").hide();
+      },
+      onClose: function( selectedDate ) {
+          $( "#event_event_end_date" ).datepicker( "option", "minDate", selectedDate );
+         if(selectedDate ==  $.datepicker.formatDate( "dd/mm/yy", today))
+         {
+           // here will skip some time values for the current date
+           $("#event_event_start_time").timepicker( "option", "minTime", today.toTimeString());
+
+         }
+         else
+        {
+          $("#event_event_start_time").timepicker( "option", "minTime", new Date(0, 0, 0, 8, 0, 0) );
+          //$("#event_event_start_time").siblings("label").hide();
+        }
+      }
+    });
+
+    $( "#event_event_end_date" ).datepicker({
+      dateFormat: "dd/mm/yy",
+      buttonImage: "/assets/calander.png",
+      onSelect: function(selectedDate){
+        //$("input#event_event_end_date").siblings("label").hide();
+      },
+      onClose: function( selectedDate ) {
+          $( "#event_event_start_date" ).datepicker( "option", "maxDate", selectedDate );
+          if(selectedDate ==  $.datepicker.formatDate( "dd/mm/yy", today))
+           {
+             // here will skip some time values for the current date
+             $("#event_event_end_time").timepicker( "option", "minTime", today.toTimeString() );
+           }
+           else
+           {
+             $("#event_event_end_time").timepicker( "option", "minTime", new Date(0, 0, 0, 8, 0, 0) );
+           }
+      }
+    });
+
+
+    $('input.timepicker').timepicker({
+      //timeFormat: 'hh:mm p',
+      //minTime: new Date(0, 0, 0, 8, 0, 0),
+      //interval: 15
+    });
+
+    jQuery.validator.addMethod("eventPostalCode", function(value, element) {
+      var re = new RegExp(/^[0-9A-Za-z ]+$/);
+      return (value.match(re))
+    }, "Must be a valid postal code.");
+
+
+
+    $('#event_event_start_date').dblclick(function(e){
+      e.preventDefault();
+    })
+
+
+    //$('#event_event_start_time').timepicker()
+    //    .option('change', function(time) {
+    //        // update startTime option in timepicker-2
+    //        $('#event_event_end_time').timepicker('option', 'startTime', time);
+    //});
+  });

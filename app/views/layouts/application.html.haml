@@ -90,7 +90,7 @@
       -event = Event.find(params[:id])
       -@is_i_admin = event.can_i_delete?(@current_user,event.chapter)
 
-    -if (@controller == "chapters" && @action == "search") or (@controller == "home" && (@action == "index" or @action == "login"))   or @controller == "html" or (@controller == "events" && @action == "show" && @is_i_admin == false) or (@controller == "sessions") or (@controller == "passwords") or  (@controller == "registrations") or (@controller == "events" && @action == "event_listing") or (@controller == "events" && @action == "show_all_event_images")
+    -if (@controller == "chapters" && @action == "search") or (@controller == "home" && (@action == "index" or @action == "login"))   or @controller == "html" or (@controller == "events" && @action == "show" && @is_i_admin == false) or (@controller == "sessions") or (@controller == "passwords") or  (@controller == "registrations") or (@controller == "events" && @action == "event_listing") or (@controller == "events" && @action == "show_all_event_images" || "new")
 
       .bodyWrapper
         = render "shared/federated_header"
