@@ -1,6 +1,4 @@
 #= require jquery_ujs
-#= require admin/upload_photo
-#= require jquery.fileupload.min
 
 $ ->
   if $("body").data('controller') == 'admin'
