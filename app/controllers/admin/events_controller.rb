@@ -25,6 +25,8 @@ class Admin::EventsController < ApplicationController
 # status change controller 
   def approve
     @event.approve
+    EventMailer.approval_mail(@event).deliver
+    EventMailer.new_event_notice_mail(@event, User.all_receivers).deliver
 
     respond_to do |format|
       format.js {render "remove_event"}
@@ -33,6 +35,7 @@ class Admin::EventsController < ApplicationController
 
   def deny
     @event.deny
+    EventMailer.denial_mail(@event).deliver
 
     respond_to do |format|
       format.js {render "remove_event"}

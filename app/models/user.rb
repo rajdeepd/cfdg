@@ -91,4 +91,8 @@ class User < ActiveRecord::Base
   def college
     self.try(:school_info).college
   end
+
+  def self.all_receivers
+    User.non_admin_all.map(&:email)
+  end
 end

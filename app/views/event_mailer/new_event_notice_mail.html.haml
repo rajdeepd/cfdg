@@ -1,0 +1,9 @@
+%p 同学你好，
+%p 
+  我们高兴的通知你，
+  %strong= @event.chapter.name 
+  分会有新活动了。马上到登录Cloud Foundry同学会网站关注吧。
+
+%p #{link_to @event.chapter.name, chapter_path(@event.chapter)} 
+
+%p Cloud Foundry同学

@@ -140,6 +140,15 @@ en:
         subject: 新活动申请
       rsvped_confirm:
         subject: "请确认报名 %{chapter_name} 分会活动"
+      rsvp_confirmed:
+        subject: "欢迎参加 %{chapter_name} 分会活动"
+      approval:
+        subject: "%{chapter_name} 活动申请成功"
+      denial:
+        subject: "感谢申请新活动"
+      new_event_notice:
+        subject: "%{chapter_name} 分会有新活动了" 
+      
 
   admin:
     chapter_status: "Chapter Status"
@@ -151,6 +160,7 @@ en:
     rsvped_need_confirmation: "We've just send you an email to confirm your reservation. Please click the link provided in the mail within 24 hours to complete your reservation."
     rsvp_confirmed: "We've successfully confirmed your reservation to the event."
     rsvp_resend: "You're reservation confirmation has expired, we've sent a new confirmation email to you, please click the confirmation link in the mail within 24 hours"
+    event_blocked: "The event has been blocked by the Admin, no changes are allowed. Contact the site admin if you have any troubles."
 
   event_form:
     form_title: "Create Event For %{chapter_name}"

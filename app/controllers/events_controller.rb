@@ -14,8 +14,6 @@ class EventsController < ApplicationController
     event_id = params[:event_id]
     @event_member = EventMember.find_by_user_id_and_event_id(current_user.id, event_id)
     
-    binding.pry
-
     if @event_member
       @event_member.generate_confirmation!
       EventMailer.rsvp_confirm_mail(@event_member).deliver
@@ -37,6 +35,8 @@ class EventsController < ApplicationController
       if Time.now.to_i - @event_member.confirmation_sent_at.to_i < 86400  # has to be within 24 hours
         @event_member.confirm!
 
+        EventMailer.rsvp_confirmed_mail(@event_member).deliver
+
         flash[:notice] = [t("events.rsvp_confirmed")]
         redirect_to profile_path() 
       else
@@ -48,7 +48,7 @@ class EventsController < ApplicationController
         redirect_to profile_path()
       end
     else
-      # goto 404 for now
+      # TODO:  goto 404 for now
     end
   end
 
@@ -105,8 +105,6 @@ class EventsController < ApplicationController
     end
   end
 
-
-
   def userevents
     chapter_id = params[:chapter_id]
     #@chapter = Chapter.find(chapter_id)
@@ -131,6 +129,11 @@ class EventsController < ApplicationController
   # GET /events/1/edit
   def edit
     @event = Event.find(params[:id])
+
+    if @event.blocked?
+      flash[:error] = [t("events.event_blocked")]
+      redirect_to :back  
+    end
   end
 
 
