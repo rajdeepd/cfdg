@@ -1786,6 +1786,16 @@ ul.adminPanel{
     margin: 0 0 20px 10px;
     color: #444444;
 }
+
+.subscribedChapters .institution{
+    background: url("location_icon_black.png") no-repeat 0 1px;
+    padding-left: 20px;
+    display: block;
+    font-size: 10px;
+    margin: 0 0 20px 10px;
+    color: #444444;
+}
+
 .subscribedChapters .comingEvent h5{
     color: #666666;
     font-size: 14px;
@@ -1879,6 +1889,17 @@ ul.adminPanel{
     margin-right: 20px;
     line-height: 16px;
 }
+.userDashboard .blueHeader .userEmail{
+    /*background: url("email.png") no-repeat;*/
+    padding-left: 15px;
+    display: block;
+    float: left;
+    color: #ffffff;
+    font-size: 14px;
+    margin-right: 20px;
+    line-height: 16px;
+}
+
 .userDashboard .blueHeader .phoneNumber{
     background: url("contact_number_white.png") no-repeat;
     padding-left: 20px;

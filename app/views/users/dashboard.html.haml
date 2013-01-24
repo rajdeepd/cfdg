@@ -55,6 +55,7 @@
         #{@current_user.fullname}
         -#%span CEO Accenture, Pune
       %span.chapterLocation  #{@current_user.location}
+      %span.userEmail  #{@current_user.email}
       %span.phoneNumber  #{@current_user.mobile}
       -if @current_user.user_profile_completion_status
         .userSocialLink.clearfix
@@ -130,11 +131,16 @@
                           .eventImg
                             %img{:src => "/assets/event_snap_4.jpg"}
                           .eventContent
-                            %h5 #{chapter.name}
-                        -if chapter.chapter_type == "student"
-                          .location #{chapter.landmark.truncate(8)}, #{chapter.locality.truncate(8)}, #{chapter.city_name.truncate(8)}
-                        -else
-                          .location #{chapter.city_name}
+                            -if chapter.chapter_type == "student"
+                              %h5 #{chapter.name}
+                              .institution #{chapter.institution}
+                            -else
+                              %h5 #{chapter.name}
+                        -#-if chapter.chapter_type == "student"
+                          -#.location #{chapter.landmark.truncate(8)}, #{chapter.locality.truncate(8)}, #{chapter.city_name.truncate(8)}
+                          .location #{chapter.city_name}, #{chapter.country_name}
+                        -#-else
+                        .location #{chapter.city_name}, #{chapter.country_name}
                         .comingEvent
                           %h5 Upcoming Event
                           -if chapter.get_chapter_upcoming_events.blank?
