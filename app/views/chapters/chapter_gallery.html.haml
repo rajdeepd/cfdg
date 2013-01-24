@@ -4,24 +4,24 @@
 .content.eventDetails
   .clearfix
     .breadCrumb
-      %span Events
+      %span #{@chapter.name}
       %span.breadCrumbDivider /
-      %span Cloud Foundry Open Tour
+      %span #{@event.title}
       %span.breadCrumbDivider /
-      %span.activePage Gluecon
+      %span.activePage Gallery
     %a.back{:href => "#"} Back
   .blueHeader
     .chapterName.clearfix
-      %h1 Cloud Foundry Open Tour
+      %h1 #{@event.title}
     .chapterDateAndPlace.clearfix
       %span.imageIcon
-        %span.numberOfImages 89
+        %span.numberOfImages #{@event_images.length}
         %span Photos
   .layoutWrapper
 
     .row
-      .span4
-        %ul.chapterGallery
+      .span4{:style => "margin-left:-3px"}
+        %ul.chapterGallery{:style => "width:300px"}
           - if @chapter.get_past_events.blank?
             .centerText.verticalMargin No event gallery for this chapter.
           -else
@@ -30,11 +30,11 @@
                 %a{:href => "#"}
                   .galleryThumbnails
                     -if i.image.event_landscape.present?
-                      = image_tag(i.image.event_landscape.url,:size => "260x150")
+                      = link_to(image_tag(i.image.event_landscape.url,:size => "260x150"),chapter_gallery_chapter_path(:event_id => i))
                     -elsif i.image.present?
-                      = image_tag(i.image.url,:size => "260x150")
+                      = link_to(image_tag(i.image.url,:size => "260x150"),chapter_gallery_chapter_path(:event_id => i))
                     -else
-                      =image_tag("event_landscape_logo-b.png",:size => "260x150")
+                      =link_to(image_tag("event_landscape_logo-b.png",:size => "260x150"),chapter_gallery_chapter_path(:event_id => i))
                     -#= image_tag("event_gallery_thumbnail.jpg")
                     %p #{i.title.truncate(45)}
                     - if i.event_galleries.present?
@@ -42,88 +42,27 @@
                     - else
                       %a.lightGrayText{:href => "#{chapter_gallery_chapter_path(:event_id => i)}"} (0 Photos)
                     -#%a.lightGrayText{:href => "#"} (54 Photos)
-          -#%li
-            %a{:href => "#"}
-              .galleryThumbnails
-                = image_tag("event_gallery_thumbnail.jpg")
-                %p Cloud Foundry introduced npm support, we added serval
-                %a.light
 
-      .span8
+      .span8#chapterEventImages
         .row
           %ul.eventGallery
-            %li
-              .eventImageHolder
-                %a{:href => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/81/Chrysanthemum.jpg"}
-                  %img{:alt => "Chrysanthemum", :src => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/81/Chrysanthemum.jpg"}/
-            %li
-              .eventImageHolder
-                %a{:href => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/82/Hydrangeas.jpg"}
-                  %img{:alt => "Chrysanthemum", :src => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/82/Hydrangeas.jpg"}/
-            %li
-              .eventImageHolder
-                %a{:href => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/83/Jellyfish.jpg"}
-                  %img{:alt => "Chrysanthemum", :src => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/83/Jellyfish.jpg"}/
-            %li
-              .eventImageHolder
-                %a{:href => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/84/Koala.jpg"}
-                  %img{:alt => "Chrysanthemum", :src => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/84/Koala.jpg"}/
-            %li
-              .eventImageHolder
-                %a{:href => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/85/Penguins.jpg"}
-                  %img{:alt => "Chrysanthemum", :src => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/85/Penguins.jpg"}/
-            %li
-              .eventImageHolder
-                %a{:href => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/81/Chrysanthemum.jpg"}
-                  %img{:alt => "Chrysanthemum", :src => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/81/Chrysanthemum.jpg"}/
-            %li
-              .eventImageHolder
-                %a{:href => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/86/Tulips.jpg"}
-                  %img{:alt => "Chrysanthemum", :src => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/86/Tulips.jpg"}/
-            %li
-              .eventImageHolder
-                %a{:href => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/82/Hydrangeas.jpg"}
-                  %img{:alt => "Chrysanthemum", :src => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/82/Hydrangeas.jpg"}/
-            %li
-              .eventImageHolder
-                %a{:href => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/85/Penguins.jpg"}
-                  %img{:alt => "Chrysanthemum", :src => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/85/Penguins.jpg"}/
-            %li
-              .eventImageHolder
-                %a{:href => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/81/Chrysanthemum.jpg"}
-                  %img{:alt => "Chrysanthemum", :src => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/81/Chrysanthemum.jpg"}/
-            %li
-              .eventImageHolder
-                %a{:href => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/82/Hydrangeas.jpg"}
-                  %img{:alt => "Chrysanthemum", :src => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/82/Hydrangeas.jpg"}/
-            %li
-              .eventImageHolder
-                %a{:href => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/83/Jellyfish.jpg"}
-                  %img{:alt => "Chrysanthemum", :src => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/83/Jellyfish.jpg"}/
-            %li
-              .eventImageHolder
-                %a{:href => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/84/Koala.jpg"}
-                  %img{:alt => "Chrysanthemum", :src => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/84/Koala.jpg"}/
-            %li
-              .eventImageHolder
-                %a{:href => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/85/Penguins.jpg"}
-                  %img{:alt => "Chrysanthemum", :src => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/85/Penguins.jpg"}/
-            %li
-              .eventImageHolder
-                %a{:href => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/81/Chrysanthemum.jpg"}
-                  %img{:alt => "Chrysanthemum", :src => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/81/Chrysanthemum.jpg"}/
-            %li
-              .eventImageHolder
-                %a{:href => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/86/Tulips.jpg"}
-                  %img{:alt => "Chrysanthemum", :src => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/86/Tulips.jpg"}/
-            %li
-              .eventImageHolder
-                %a{:href => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/82/Hydrangeas.jpg"}
-                  %img{:alt => "Chrysanthemum", :src => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/82/Hydrangeas.jpg"}/
-            %li
-              .eventImageHolder
-                %a{:href => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/85/Penguins.jpg"}
-                  %img{:alt => "Chrysanthemum", :src => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/85/Penguins.jpg"}/
+            -if @event_images.present?
+              - @event_images.each do |i|
+                %li
+                  .eventImageHolder
+                    = link_to(image_tag(i.image),"#{i.image}")
+                    -#%a{:href => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/81/Chrysanthemum.jpg"}
+                      %img{:alt => "Chrysanthemum", :src => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/81/Chrysanthemum.jpg"}/
+            - else
+              %h4{:style => "text-align: center;"}
+                ="No image for event yet"
+            -#%li
+            -#  .eventImageHolder
+            -#    %a{:href => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/82/Hydrangeas.jpg"}
+            -#      %img{:alt => "Chrysanthemum", :src => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/82/Hydrangeas.jpg"}/
+
+
+
 
 :javascript
   $(document).ready(function(){

@@ -111,17 +111,10 @@ class ChaptersController < ApplicationController
 
     def chapter_gallery
       @chapter = Chapter.find(params[:id])
+      @event = Event.find(params[:event_id])
+      @event_images = Event.find(params[:event_id]).event_galleries
+      logger.info "################## event #############{@event_images.inspect}"
     end
-
-
-
-
-
-
-
-
-
-
 
   # GET /chapters/new
   # GET /chapters/new.json

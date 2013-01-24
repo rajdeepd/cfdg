@@ -728,6 +728,14 @@ ul.supportPrivacyLinks li{
     max-height: 190px;
     overflow-y: auto;
 }
+
+.span4 ul.chapterGallery{
+    max-height: 800px;
+    overflow-y: auto;
+}
+#chapterEventImages{
+    margin-left:33px;
+}
 .eventPeopleList ul li{
     margin: 20px 0 10px 20px;
     overflow: hidden;

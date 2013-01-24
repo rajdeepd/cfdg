@@ -77,15 +77,26 @@ class User < ActiveRecord::Base
   end
 
   def get_user_past_events
-        past_events = []
-        user_all_events = EventMember.find_all_by_user_id(self).collect{|i| i.event}
-            user_all_events.each do |event|
-              if((Time.parse(event.event_start_date+" "+event.event_start_time) < Time.now))
-                past_events.push(event)
-              end
-            end
-        past_events
+    past_events = []
+    user_all_events = EventMember.find_all_by_user_id(self).collect{|i| i.event}
+    user_all_events.each do |event|
+      if((Time.parse(event.event_start_date+" "+event.event_start_time) < Time.now))
+        past_events.push(event)
       end
+    end
+    past_events
+  end
+
+  def get_user_upcoming_events
+    upcoming_events = []
+      user_all_events = EventMember.find_all_by_user_id(self).collect{|i| i.event}
+      user_all_events.each do |event|
+        if((Time.parse(event.event_start_date+" "+event.event_start_time) >= Time.now))
+          upcoming_events.push(event)
+        end
+      end
+    upcoming_events
+    end
 
 
 
