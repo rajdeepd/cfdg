@@ -22,8 +22,12 @@
     .chapterDateAndPlace.clearfix
       %span.chapterDate #{@announcement.created_at.strftime("%B %d,%Y")}
   .chapterLayout
-    %img.articleImg{:src => "/assets/article_img.jpg"}
-    = image_tag @announcement.image.announcement_landscape ,:size => "878x319"
+    -#%img.articleImg{:src => "/assets/article_img.jpg"}
+    -if @announcement.image.announcement_landscape.present?
+      = image_tag @announcement.image.announcement_landscape ,:size => "878x319"
+    -else
+      =image_tag @announcement.photo ,:size => "878x319"
+
     .articleLayout
       .clearfix
         .sliderHeadingMid
