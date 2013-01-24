@@ -1,0 +1,16 @@
+#all_announcement_comments
+  .comments.clearfix
+    .sliderHeadingMid
+      %h3 Comments
+    .articleDescription
+      %ul.posts
+        -@comments.each do |comment|
+          %li
+            .clearfix
+              = avatar_display_pic(comment.user,'thumb', '50x50','profile.png',"img-c flt-left")
+              .commentText
+                %h5 #{comment.user.fullname}
+                %span.commentDate #{comment.created_at.strftime("%B %d,%Y")}
+                %p
+                  #{comment.content}
+                  -#%a{:href => "#"} View more

@@ -45,6 +45,15 @@ class ImageUploader < CarrierWave::Uploader::Base
      process :resize_and_pad => [260, 150]
   end
 
+  version :announcement_landscape do
+   #resize_and_pad(878,319)
+    process :resize_and_pad => [878, 319,"#E8F3FA"]
+  end
+
+  #def resize_and_pad(width, height, background=:transparent, gravity="Center")
+  #  process :resize_and_pad => [width, height, background, gravity]
+  #end
+
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
