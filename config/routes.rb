@@ -91,6 +91,9 @@ CloudfoundryUsergroups::Application.routes.draw do
 #  get '/mine' , :to => "home#mine"
 
   resources :users do
+    member do
+      get "dashboard"
+    end
     collection do
       post 'uploader'
     end

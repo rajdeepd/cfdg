@@ -1,0 +1,220 @@
+= javascript_include_tag "jquery.coda-slider-3.0"
+= javascript_include_tag "jquery.vticker-min"
+= javascript_include_tag "jquery.mousewheel"
+= javascript_include_tag "jquery.contentcarousel"
+= javascript_include_tag "jquery.easing.1.3"
+= javascript_include_tag "bootstrap-dropdown"
+
+
+%title Coda Slider 3.0
+:javascript
+  $(function(){
+      /* Here is the slider using default settings */
+    $('#slider-id').codaSlider({
+      autoSlide:true,
+      autoHeight:false
+    });
+    $('h2.title').hide();
+    $('#news-container').vTicker({
+      speed: 500,
+      pause: 3000,
+      animation: 'fade',
+      mousePause: false,
+      showItems: 3
+    });
+  });
+
+
+
+-#=render :partial => "/shared/new_header"
+.content.ChapterDetails.userDashboard
+  .blueHeader
+    .userImg
+      -if @current_user.avatar_file_name.present?
+        = image_tag(@current_user.avatar.url,:size => "74x74")
+      -else
+        %img{:src => "/assets/default_human_face.jpg"}
+      -#%img{:src => "/assets/user_profile_img.jpg"}
+
+    .btn-group.settingDropdown
+      %button.btn.dropdown-toggle{"data-toggle" => "dropdown"}
+        %i.settingIcon
+      %ul.dropdown-menu
+        %li
+          %a{:href => "#{settings_path}"} Edit Profile
+        %li
+          %a{:href => "#"} Change Password
+        %li
+          %a{:href => "#"} Something else here
+        %li.divider
+        %li
+          %a{:href => "#"} Separated link
+    .chapterName.clearfix
+      %h3
+        -##{@current_user.fullname} l
+        #{@current_user.fullname}
+        -#%span CEO Accenture, Pune
+      %span.chapterLocation  #{@current_user.location}
+      %span.phoneNumber  #{@current_user.mobile}
+      -if @current_user.user_profile_completion_status
+        .userSocialLink.clearfix
+          %span.linkedInURL #{@current_user.linkedin_url}
+          %span.twitterURL #{@current_user.twitter_url}
+          %span.siteURL #{@current_user.website_url}
+      -else
+        .incompleteProfile.userSocialLink
+          Your Profile is Incomplete ,
+          %a{:href => "#{settings_path}"} Complete Your Profile
+  .chapterLayout
+    .eventTour
+      .slider.clearfix
+        .sliderHeadingFull
+          %h3 Upcoming Events
+        .ca-container.ca-container.clearfix
+          .ca-wrapper
+            - if @upcoming_events.blank?
+              .centerText.verticalCenter No upcoming events.
+              = link_to "Click here to see event list",event_listing_events_path,:style => "margin-left:360px;"
+            -else
+              - @upcoming_events.each do |event|
+                .ca-item.ca-item-1
+                  .ca-item-main
+                    .eventListWrapper
+                      .eventListInner
+                        .clearfix
+                          .dateAndPlace
+                            -chapter = event.chapter
+                            .date #{Time.parse(event.event_start_date.to_s).strftime('%b')} #{Time.parse(event.event_start_date.to_s).strftime('%d')}, #{Time.parse(event.event_start_date.to_s).strftime('%Y')}
+                            .place #{event.chapter.city_name}, #{chapter.country_name}
+                          .tag
+                            -if chapter.chapter_type == "student"
+                              %img{:src => "/assets/student_event.png"}
+                            -else
+                              %img{:src => "/assets/professional_event.png"}
+                        .eventImg
+                          -if event.image.event_landscape.present?
+                            = image_tag(event.image.event_landscape.url,:size => "260x150")
+                          -elsif event.image.present?
+                            = image_tag(event.image.url,:size => "260x150")
+                          -else
+                            =image_tag("event_landscape_logo-b.png",:size => "260x150")
+                        .eventContent
+                          %h5 #{event.title}
+                          .personName #{event.user.fullname}
+                          %p.lightGrayText #{event.description.truncate(70)}
+                          %a{:href => "#{event_path(event)}"} Read more
+                      .eventListFooter
+                        %span.numberPeopleAttending #{event.event_members.length}
+                        %span People Attending
+
+      .slider.subscribedChapters.clearfix
+        .sliderHeadingFull
+          %h3 Subscribed Chapters
+        .ca-container.ca-container.clearfix
+          .ca-wrapper
+            - if @subscribed_chapter.blank?
+              .centerText.verticalCenter No subscribed chapter.
+              = link_to "Click here to see chapter list",chapter_list_html_index_path,:style => "margin-left:360px;"
+            -else
+              - @subscribed_chapter.each do |chapter|
+                .ca-item.ca-item-1
+                  .ca-item-main
+                    .eventListWrapper
+                      .eventListInner
+                        .tag
+                          -if chapter.chapter_type == "student"
+                            %img{:src => "/assets/student_event.png"}
+                          -else
+                            %img{:src => "/assets/professional_event.png"}
+                        .clearfix
+                          .eventImg
+                            %img{:src => "/assets/event_snap_4.jpg"}
+                          .eventContent
+                            %h5 #{chapter.name}
+                        -if chapter.chapter_type == "student"
+                          .location #{chapter.landmark.truncate(8)}, #{chapter.locality.truncate(8)}, #{chapter.city_name.truncate(8)}
+                        -else
+                          .location #{chapter.city_name}
+                        .comingEvent
+                          %h5 Upcoming Event
+                          -if chapter.get_chapter_upcoming_events.blank?
+                            .pastEvent
+                              .clearfix
+                                -#.pastEventDate
+                                  -#%span.date 04
+                                  -#%span.month Dec
+                                .pastEventDetails.centerText.fullPadding No upcoming events.
+                          -else
+                            .pastEvent
+                              .clearfix
+                                .pastEventDate
+                                  %span.date #{Time.parse(chapter.get_chapter_upcoming_events.first.event_start_date.to_s).strftime('%d')}
+                                  %span.month #{Time.parse(chapter.get_chapter_upcoming_events.first.event_start_date.to_s).strftime('%b')}
+                                .pastEventDetails #{chapter.get_chapter_upcoming_events.first.description.truncate(72)}
+                        %a{:href => "#{detail_chapter_path(chapter)}"} View Chapter
+                      .eventListFooter
+                        -#%span.numberPeopleAttending #{chapter.chapter_members.length}
+                        %span.numberPeopleAttending #{pluralize(chapter.chapter_members.length,"Member")}
+
+      .slider.clearfix
+        .sliderHeadingFull
+          %h3 Past Events
+        .ca-container.PastEventsContainer.clearfix
+          .ca-wrapper
+            - if @user_past_event.blank?
+              .centerText No past event.
+            -else
+              - @user_past_event.each do |event|
+                .ca-item.ca-item-1
+                  .ca-item-main
+                    %a{:href => "#{event_path(event)}"}
+                      .pastEvent
+                        .clearfix
+                          .pastEventDate
+                            %span.date #{Time.parse(event.event_start_date.to_s).strftime('%d')}
+                            %span.month #{Time.parse(event.event_start_date.to_s).strftime('%b')}
+                          - if event.description.present?
+                            .pastEventDetails #{event.description.truncate(72)}
+                          - else
+                            .pastEventDetails.fullPadding No description available.
+
+    .comments.clearfix
+      .sliderHeadingFull
+        %h3 Posts
+      %ul.posts
+        - if @user_posts.blank?
+          .centerText You have not created any post.
+        - else
+          - @user_posts.each do |post|
+            %li
+              .clearfix
+                -if post.user.avatar_file_name.present?
+                  = avatar_display_pic(post.user,'thumb', '62x62','profile.png',"img-c flt-left")
+                -else
+                  %img{:src => "/assets/default_human_face.jpg"}
+                -#%img{:src => "/assets/human_face_6.jpg"}
+                .commentText
+                  %span.commentDate #{Time.parse(post.try(:created_at).to_s).strftime('%b %d, %Y')}
+                  %p.darkText #{post.title}
+                  %p #{post.description.truncate(197)}
+                  %a.btn.learnMore{:href => "#{post_path(post)}"} Learn more
+        -#%li
+          .clearfix
+            %img{:src => "/assets/human_face_6.jpg"}
+            .commentText
+              %span.commentDate November 08,2012
+              %p.darkText The journey to the cloud goes beyond frameworks, services and cloud deployments
+              %p Cloud Foundry is an Open Source project: whether you want to add features, comment on design docs, report or fix a bug, contribute documentation or technical articles, we welcome your contribution. You'll find some very smart and very friendly folks here which means it's a great place to learn and a great.
+              %a.btn.learnMore{:href => "#"} Learn more
+        -#%li
+          .clearfix
+            %img{:src => "/assets/human_face_6.jpg"}
+            .commentText
+              %span.commentDate November 08,2012
+              %p.darkText The journey to the cloud goes beyond frameworks, services and cloud deployments
+              %p Cloud Foundry is an Open Source project: whether you want to add features, comment on design docs, report or fix a bug, contribute documentation or technical articles, we welcome your contribution. You'll find some very smart and very friendly folks here which means it's a great place to learn and a great.
+              %a.btn.learnMore{:href => "#"} Learn more
+:javascript
+  $('.ca-container').contentcarousel({
+         minNum          : 3
+     });

@@ -154,5 +154,15 @@ class Chapter < ActiveRecord::Base
         past_events
   end
 
+  def get_chapter_upcoming_events
+      upcoming_events = []
+          self.events.each do |event|
+            if((Time.parse(event.event_start_date+" "+event.event_start_time) >= Time.now))
+              upcoming_events.push(event)
+            end
+          end
+      upcoming_events
+    end
+
 end
 

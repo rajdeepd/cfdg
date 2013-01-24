@@ -49,43 +49,44 @@ class User < ActiveRecord::Base
   end
 
   def user_profile_completion_status
-    user_profile_status = 10
-    if self.location.empty?
+    user_profile_status = 6
+    if self.location.blank?
       user_profile_status = user_profile_status - 1
     end
     if self.avatar.nil?
       user_profile_status = user_profile_status - 1
     end
-    if self.twitter_url.empty?
+    if self.twitter_url.blank?
       user_profile_status = user_profile_status - 1
     end
-    if self.linkedin_url.empty?
+    if self.linkedin_url.blank?
       user_profile_status = user_profile_status - 1
     end
-    if self.website_url.empty?
+    if self.website_url.blank?
       user_profile_status = user_profile_status - 1
     end
-    if self.mobile.empty?
-      user_profile_status = user_profile_status - 1
-    end
-    if self.first_name.nil?
-      user_profile_status = user_profile_status - 1
-    end
-    if self.last_name.nil?
-      user_profile_status = user_profile_status - 1
-    end
-    if self.fullname.nil?
-      user_profile_status = user_profile_status - 1
-    end
-    if self.email.nil?
+    if self.email.blank?
       user_profile_status = user_profile_status - 1
     end
     #user_profile_status.to_i
-    if user_profile_status.to_i == 10
-      puts "Profile complete"
+    if user_profile_status.to_i == 6
+      return true
     else
-      puts "plz complete ur profile"
+      return false
     end
   end
+
+  def get_user_past_events
+        past_events = []
+        user_all_events = EventMember.find_all_by_user_id(self).collect{|i| i.event}
+            user_all_events.each do |event|
+              if((Time.parse(event.event_start_date+" "+event.event_start_time) < Time.now))
+                past_events.push(event)
+              end
+            end
+        past_events
+      end
+
+
 
 end
