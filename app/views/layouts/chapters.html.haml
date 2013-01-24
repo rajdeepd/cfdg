@@ -64,7 +64,7 @@
 
     - @controller = params["controller"]
     - @action = params["action"]
-    -if !(@controller == "chapters" && (@action == "search" or @action == "detail") or (@controller == "users" && @action == "dashboard"))
+    -if !(@controller == "chapters" && (@action == "search" or @action == "detail") or (@controller == "users" && @action == "dashboard") or (@controller == "chapters" && @action == "list"))
       = render "shared/federated_header"
       = render "shared/header"
       = yield

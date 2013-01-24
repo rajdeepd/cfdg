@@ -1,0 +1,56 @@
+= javascript_include_tag "jquery.coda-slider-3.0"
+= javascript_include_tag "jquery.vticker-min"
+= javascript_include_tag "jquery.mousewheel"
+= javascript_include_tag "jquery.contentcarousel"
+= javascript_include_tag "jquery.easing.1.3"
+= javascript_include_tag "jquery.selectbox-0.2.min"
+= stylesheet_link_tag    "jquery.selectbox", :media => "all"
+
+:javascript
+  $(function() {
+    $(".selectID").selectbox();
+  });
+:javascript
+  $(function(){
+      /* Here is the slider using default settings */
+    $('#slider-id').codaSlider({
+      autoSlide:true,
+      autoHeight:false
+    });
+    $('h2.title').hide();
+    $('#news-container').vTicker({
+      speed: 500,
+      pause: 3000,
+      animation: 'fade',
+      mousePause: false,
+      showItems: 3
+    });
+  });
+
+
+
+-#=render :partial => "/shared/new_header"
+.content.chapterListing
+  .blueHeaderWithoutTag
+    .chapterName.clearfix
+      %h1 Chapters
+      %span
+        Could not find a chapter in your city?
+        %a.btn.darkBlueBtn{:href => "#"} Create a Chapter
+  .layoutWrapper
+    .chapterSearchBox.clearfix
+      %form
+        .eventCitySearch.clearfix
+          %span.citySearchIcon
+          -#%input{:placeholder => "City Location", :type => "text"}/
+          =form_tag search_chapters_path  , :method => :get,:id => "search_chapter"  do
+            = autocomplete_field_tag 'query', '', autocomplete_city_details_home_index_path, :size => 75 ,:placeholder => "City Name"
+            =button_tag "" ,:class =>"citySearchBtn"
+        %select.selectID{:name => "country_id", :tabindex => "1"}
+          %option Pune
+          %option Nagpur
+          %option India
+        %button.signUp.orangeBtn Search
+      %a.signUp.btn{:href => "#"} View all Chapters
+    =render :partial => "chapter_list"
+

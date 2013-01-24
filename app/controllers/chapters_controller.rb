@@ -240,4 +240,8 @@ class ChaptersController < ApplicationController
     end
   end
 
+  def list
+    @chapters = Chapter.all
+  end
+
 end
