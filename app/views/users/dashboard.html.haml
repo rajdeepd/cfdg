@@ -74,6 +74,7 @@
           .ca-wrapper
             - if @upcoming_events.blank?
               .centerText.verticalCenter No upcoming events.
+              = link_to "Click here to see event list",event_listing_events_path,:style => "margin-left:360px;"
             -else
               - @upcoming_events.each do |event|
                 .ca-item.ca-item-1
@@ -113,6 +114,7 @@
           .ca-wrapper
             - if @subscribed_chapter.blank?
               .centerText.verticalCenter No subscribed chapter.
+              = link_to "Click here to see chapter list",chapter_list_html_index_path,:style => "margin-left:360px;"
             -else
               - @subscribed_chapter.each do |chapter|
                 .ca-item.ca-item-1
@@ -154,123 +156,49 @@
                         -#%span.numberPeopleAttending #{chapter.chapter_members.length}
                         %span.numberPeopleAttending #{pluralize(chapter.chapter_members.length,"Member")}
 
-
-
-
-            -#.ca-item.ca-item-2
-              .ca-item-main
-                .eventListWrapper
-                  .eventListInner
-                    .tag
-                      %img{:src => "/assets/student_event.png"}
-                    .clearfix
-                      .eventImg
-                        %img{:src => "/assets/event_snap_4.jpg"}
-                      .eventContent
-                        %h5 Development Group
-                    .location Trikaya, Bavdhan, Pune
-                    .comingEvent
-                      %h5 Upcoming Event
-                      .pastEvent
-                        .clearfix
-                          .pastEventDate
-                            %span.date 04
-                            %span.month Dec
-                          .pastEventDetails Lorem ipsum dolor sit amet, cons ectetur adipiscing elit. Aenean ornare interdum...
-                    %a{:href => "#"} View Chapter
-                  .eventListFooter
-                    %span.numberPeopleAttending 16
-                    %span People Attending
-            -#.ca-item.ca-item-3
-              .ca-item-main
-                .eventListWrapper
-                  .eventListInner
-                    .tag
-                      %img{:src => "/assets/student_event.png"}
-                    .clearfix
-                      .eventImg
-                        %img{:src => "/assets/event_snap_4.jpg"}
-                      .eventContent
-                        %h5 Development Group
-                    .location Trikaya, Bavdhan, Pune
-                    .comingEvent
-                      %h5 Upcoming Event
-                      .pastEvent
-                        .clearfix
-                          .pastEventDate
-                            %span.date 04
-                            %span.month Dec
-                          .pastEventDetails Lorem ipsum dolor sit amet, cons ectetur adipiscing elit. Aenean ornare interdum...
-                    %a{:href => "#"} View Chapter
-                  .eventListFooter
-                    %span.numberPeopleAttending 16
-                    %span People Attending
-            -#.ca-item.ca-item-4
-              .ca-item-main
-                .eventListWrapper
-                  .eventListInner
-                    .tag
-                      %img{:src => "/assets/student_event.png"}
-                    .clearfix
-                      .eventImg
-                        %img{:src => "/assets/event_snap_4.jpg"}
-                      .eventContent
-                        %h5 Cloud foundry open tour
-                    .location Trikaya, Bavdhan, Pune
-                    .comingEvent
-                      %h5 Upcoming Event
-                      .pastEvent
-                        .clearfix
-                          .pastEventDate
-                            %span.date 04
-                            %span.month Dec
-                          .pastEventDetails Lorem ipsum dolor sit amet, cons ectetur adipiscing elit. Aenean ornare interdum...
-                    %a{:href => "#"} View Chapter
-                  .eventListFooter
-                    %span.numberPeopleAttending 16
-                    %span People Attending
       .slider.clearfix
         .sliderHeadingFull
           %h3 Past Events
         .ca-container.PastEventsContainer.clearfix
           .ca-wrapper
-            .ca-item.ca-item-1
-              .ca-item-main
-                .pastEvent
-                  .clearfix
-                    .pastEventDate
-                      %span.date 04
-                      %span.month Dec
-                    .pastEventDetails Lorem ipsum dolor sit amet, cons ectetur adipiscing elit. Aenean ornare interdum...
-            .ca-item.ca-item-2
-              .ca-item-main
-                .pastEvent
-                  .clearfix
-                    .pastEventDate
-                      %span.date 04
-                      %span.month Dec
-                    .pastEventDetails Lorem ipsum dolor sit amet, cons ectetur adipiscing elit. Aenean ornare interdum...
-            .ca-item.ca-item-3
-              .ca-item-main
-                .pastEvent
-                  .clearfix
-                    .pastEventDate
-                      %span.date 04
-                      %span.month Dec
-                    .pastEventDetails Lorem ipsum dolor sit amet, cons ectetur adipiscing elit. Aenean ornare interdum...
-            .ca-item.ca-item-4
-              .ca-item-main
-                .pastEvent
-                  .clearfix
-                    .pastEventDate
-                      %span.date 04
-                      %span.month Dec
-                    .pastEventDetails Lorem ipsum dolor sit amet, cons ectetur adipiscing elit. Aenean ornare interdum...
+            - if @user_past_event.blank?
+              .centerText No past event.
+            -else
+              - @user_past_event.each do |event|
+                .ca-item.ca-item-1
+                  .ca-item-main
+                    %a{:href => "#{event_path(event)}"}
+                      .pastEvent
+                        .clearfix
+                          .pastEventDate
+                            %span.date #{Time.parse(event.event_start_date.to_s).strftime('%d')}
+                            %span.month #{Time.parse(event.event_start_date.to_s).strftime('%b')}
+                          - if event.description.present?
+                            .pastEventDetails #{event.description.truncate(72)}
+                          - else
+                            .pastEventDetails.fullPadding No description available.
+
     .comments.clearfix
       .sliderHeadingFull
         %h3 Posts
       %ul.posts
-        %li
+        - if @user_posts.blank?
+          .centerText You have not created any post.
+        - else
+          - @user_posts.each do |post|
+            %li
+              .clearfix
+                -if post.user.avatar_file_name.present?
+                  = avatar_display_pic(post.user,'thumb', '62x62','profile.png',"img-c flt-left")
+                -else
+                  %img{:src => "/assets/default_human_face.jpg"}
+                -#%img{:src => "/assets/human_face_6.jpg"}
+                .commentText
+                  %span.commentDate #{Time.parse(post.try(:created_at).to_s).strftime('%b %d, %Y')}
+                  %p.darkText #{post.title}
+                  %p #{post.description.truncate(197)}
+                  %a.btn.learnMore{:href => "#{post_path(post)}"} Learn more
+        -#%li
           .clearfix
             %img{:src => "/assets/human_face_6.jpg"}
             .commentText
@@ -278,15 +206,7 @@
               %p.darkText The journey to the cloud goes beyond frameworks, services and cloud deployments
               %p Cloud Foundry is an Open Source project: whether you want to add features, comment on design docs, report or fix a bug, contribute documentation or technical articles, we welcome your contribution. You'll find some very smart and very friendly folks here which means it's a great place to learn and a great.
               %a.btn.learnMore{:href => "#"} Learn more
-        %li
-          .clearfix
-            %img{:src => "/assets/human_face_6.jpg"}
-            .commentText
-              %span.commentDate November 08,2012
-              %p.darkText The journey to the cloud goes beyond frameworks, services and cloud deployments
-              %p Cloud Foundry is an Open Source project: whether you want to add features, comment on design docs, report or fix a bug, contribute documentation or technical articles, we welcome your contribution. You'll find some very smart and very friendly folks here which means it's a great place to learn and a great.
-              %a.btn.learnMore{:href => "#"} Learn more
-        %li
+        -#%li
           .clearfix
             %img{:src => "/assets/human_face_6.jpg"}
             .commentText

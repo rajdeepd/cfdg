@@ -61,5 +61,7 @@ class UsersController < ApplicationController
     #  @subscribed_chapter.push(Chapter.find(i.chapter_id))
     #end
     @subscribed_chapter = ChapterMember.find_all_by_user_id(@current_user).collect{|i| i.chapter}
+    @user_past_event = @current_user.get_user_past_events
+    @user_posts = Post.find_all_by_created_by(@current_user)
   end
 end
