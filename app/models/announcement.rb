@@ -12,7 +12,7 @@ class Announcement < ActiveRecord::Base
 
   has_attached_file :photo,
     :styles => { :medium => "650x438>", :thumb => "128x90>" , :mini => "60x60>" },
-    :path => "/:attachment/:id/:style/:filename"
+    :path => ":attachment/:id/:style/:filename"
 
    validates :title, :body, :presence => true
 end
