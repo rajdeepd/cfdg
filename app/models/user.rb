@@ -50,22 +50,22 @@ class User < ActiveRecord::Base
 
   def user_profile_completion_status
     user_profile_status = 6
-    if self.location.nil?
+    if self.location.blank?
       user_profile_status = user_profile_status - 1
     end
     if self.avatar.nil?
       user_profile_status = user_profile_status - 1
     end
-    if self.twitter_url.nil?
+    if self.twitter_url.blank?
       user_profile_status = user_profile_status - 1
     end
-    if self.linkedin_url.nil?
+    if self.linkedin_url.blank?
       user_profile_status = user_profile_status - 1
     end
-    if self.website_url.nil?
+    if self.website_url.blank?
       user_profile_status = user_profile_status - 1
     end
-    if self.email.nil?
+    if self.email.blank?
       user_profile_status = user_profile_status - 1
     end
     #user_profile_status.to_i

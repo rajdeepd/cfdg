@@ -132,7 +132,7 @@
                           .eventContent
                             %h5 #{chapter.name}
                         -if chapter.chapter_type == "student"
-                          .location #{chapter.landmark}, #{chapter.locality}, #{chapter.city_name}
+                          .location #{chapter.landmark.truncate(8)}, #{chapter.locality.truncate(8)}, #{chapter.city_name.truncate(8)}
                         -else
                           .location #{chapter.city_name}
                         .comingEvent
