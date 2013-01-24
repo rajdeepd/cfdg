@@ -148,6 +148,9 @@ CloudfoundryUsergroups::Application.routes.draw do
       get :article_view
       get :post_view
       get :announcement_view
+      get :create_chapter
+      get :event_gallery
+      get :chapter_gallery
     end
   end
 

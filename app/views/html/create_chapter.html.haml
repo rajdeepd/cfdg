@@ -1,0 +1,111 @@
+= javascript_include_tag "jquery.timepicker.min"
+= javascript_include_tag "jquery.ui.datepicker"
+= javascript_include_tag "jquery-ui"
+= javascript_include_tag "jquery.selectbox-0.2.min"
+= stylesheet_link_tag    "jquery.selectbox", :media => "all"
+:javascript
+  $(function() {
+    $( ".datepicker" ).datepicker({
+      showOtherMonths: true,
+      selectOtherMonths: true,
+      showOn: "button",
+      buttonImage: "../assets/calander.png",
+      buttonImageOnly: true,
+    });
+    $(".selectID").selectbox();
+  });
+:javascript
+  $(document).ready(function(){
+     $('.ui-timepicker-input').timepicker();
+     $('.ui-timepicker-input').on('changeTime', function() {
+     	$('#onselectTarget').text($(this).val());
+     });
+  });
+.content
+  .loginContent.signUpWrapper
+    .row
+      .span10.offset1
+        .loginLayout.clearfix
+          .plainBlueHeader
+            %h3 Enter Chapter Details
+          .eventHeader
+          .borderWithShadow
+          .form-horizontal
+            .formBox
+              %h5 Select Chapter Type
+              .navbar
+                .navbar-inner.studentProfNva
+                  %ul.clearfix.nav
+                    %li
+                      %a.student.activeTab{:href => "#"} student
+                    %li
+                      %a.professional{:href => "#"} professional
+            .formBox
+              %form.form-horizontal
+                .control-group
+                  %label.control-label
+                    Institution Name
+                    %span.asterisk *
+                  .controls
+                    %input{:type => "text"}
+                .control-group
+                  %label.control-label
+                    From
+                  .controls
+                    %span.dateBox
+                      Country
+                      %select.selectID{:name => "country_id", :tabindex => "1"}
+                        %option India
+                    %span.timeBox
+                      State
+                      %select.selectID{:name => "country_id", :tabindex => "1"}
+                        %option India
+                    %span.dateBox
+                      City
+                      %select.selectID{:name => "country_id", :tabindex => "1"}
+                        %option India
+                    %span.postalCode
+                      Postal Code
+                      %input{:type => "text"}
+                .control-group
+                  %label.control-label
+                    Chapter Proposal
+                  .controls
+                    %textarea
+
+            -#          Professional form
+
+            -#.formBox
+            -#  %form.form-horizontal
+            -#    .control-group
+            -#      %label.control-label
+            -#        From
+            -#      .controls
+            -#        %span.dateBox
+            -#          Country
+            -#          %select.selectID{:name => "country_id", :tabindex => "1"}
+            -#            %option India
+            -#        %span.timeBox
+            -#          State
+            -#          %select.selectID{:name => "country_id", :tabindex => "1"}
+            -#            %option India
+            -#        %span.dateBox
+            -#          City
+            -#          %select.selectID{:name => "country_id", :tabindex => "1"}
+            -#            %option India
+            -#        %span.postalCode
+            -#          Postal Code
+            -#          %input{:type => "text"}
+            -#    .control-group
+            -#      %label.control-label
+            -#        Chapter Proposal
+            -#      .controls
+            -#        %textarea
+
+
+            .formBox
+              .form-horizontal
+                .control-group
+                  .controls
+                    %button.btn Cancel
+                    %button.orangeBtn Create Chapter
