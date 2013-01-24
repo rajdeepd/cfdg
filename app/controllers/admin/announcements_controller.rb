@@ -1,6 +1,7 @@
 class Admin::AnnouncementsController < ApplicationController
   before_filter :admin_required
-  layout 'admin'
+  #layout 'admin'
+
   def index
    render :layout => false
   end
@@ -14,7 +15,7 @@ class Admin::AnnouncementsController < ApplicationController
     @announcement = Announcement.new(params[:announcement])
     respond_to do |format|
       if @announcement.save
-        format.html { redirect_to @announcement, notice: 'Announcement was successfully created.' }
+        format.html { redirect_to admin_announcements_path, notice: 'Announcement was successfully created.' }
         format.js {}
       else
        format.html { render action: "new" }

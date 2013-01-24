@@ -33,7 +33,9 @@ class User < ActiveRecord::Base
   attr_accessor :state
 
 
-  has_attached_file :avatar, :styles => { :medium => "157x161>", :thumb => "100x100>" , :mini => "60x60>" }, :path => ":attachment/:id/:style/:filename"
+  has_attached_file :avatar, 
+    :styles => { :medium => "157x161>", :thumb => "100x100>" , :mini => "60x60>" }, 
+    :path => ":attachment/:id/:style/:filename"
 
 
   # Validations
