@@ -185,6 +185,7 @@ header ul li:first-child{
     font-family: Helvetica, sans-serif;
     line-height: 22px;
     text-decoration: underline;
+    display: block;
 }
 .event{
     background: url("event_normal.png") no-repeat 59px 18px;
@@ -1876,7 +1877,7 @@ ul.posts li .commentText .commentDate{
     margin-bottom: 10px;
 }
 .userDashboard ul.posts li p.darkText{
-    color: #000000;
+    color: #318DC0 !important;
     font-size: 16px;
     font-weight: bold;
 }
@@ -1917,6 +1918,7 @@ ul.posts li .commentText .commentDate{
     font-size: 14px;
     margin-right: 20px;
     line-height: 16px;
+    margin-bottom: 10px;
 }
 .userDashboard .blueHeader .userEmail{
     /*background: url("email.png") no-repeat;*/

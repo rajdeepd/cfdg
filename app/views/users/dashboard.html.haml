@@ -188,7 +188,7 @@
                   %img{:src => "/assets/default_human_face.jpg"}
                 -#%img{:src => "/assets/human_face_6.jpg"}
                 .commentText
-                  %span.commentDate #{Time.parse(post.try(:created_at).to_s).strftime('%b %d, %Y')}
+                  %span.commentDate #{post.user.fullname.try(:titleize)}, #{Time.parse(post.try(:created_at).to_s).strftime('%b %d, %Y')}
                   %p.darkText #{post.title}
                   %p #{post.description.truncate(197)}
                   %a.btn.learnMore{:href => "#{post_path(post)}"} Learn more
