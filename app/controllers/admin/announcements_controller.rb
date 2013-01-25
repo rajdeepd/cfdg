@@ -15,10 +15,10 @@ class Admin::AnnouncementsController < ApplicationController
     @announcement = Announcement.new(params[:announcement])
     respond_to do |format|
       if @announcement.save
-        #format.html { redirect_to admin_announcements_path, notice: 'Announcement was successfully created.' }
+        format.html { redirect_to admin_announcements_path, notice: 'Announcement was successfully created.' }
         format.js 
       else
-       #format.html { render action: "new" }
+       format.html { render action: "new" }
        format.js 
       end
     end

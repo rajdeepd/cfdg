@@ -340,7 +340,7 @@ DEPENDENCIES
   pry-rails
   pry-remote
   rails (= 3.2.11)
-  remotipart (~> 1.0)
+  remotipart (~> 1.0.2)
   rest-client (~> 1.6.7)
   rvm-capistrano
   sass-rails (~> 3.2.3)
