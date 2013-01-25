@@ -33,6 +33,12 @@
     else if($(".navbar").attr("controller") == "events"){
       $(".event").addClass("activeTab");
     }
+    else if($(".navbar").attr("controller") == "chapters" && $(".navbar-inner").attr("action") == "detail"){
+      $(".chapter").addClass("activeTab");
+    }
+    else if($(".navbar").attr("controller") == "chapters" && $(".navbar-inner").attr("action") == "chapter_gallery"){
+      $(".chapter").addClass("activeTab");
+    }
 
     //$("ul.clearfix li a").hover(function(){
     //  $(this).addClass("activeTab");
