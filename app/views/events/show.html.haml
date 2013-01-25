@@ -113,20 +113,21 @@
 -#=render :partial => "/shared/new_header"
 - if(@is_i_admin == true)
   .content.wrapper
-    .content-c
-      = render '/events/full_event'
-      -if !@current_user.present?
-        = render '/events/members_list'
-      -if @current_user.present?  and !@event.can_i_delete?(@current_user.id, @event.chapter_id)
-        = render '/events/members_list'
-      - if !@current_user.present?
-        -if @event.agenda_and_speakers.present?
-          = render '/events/agenda_and_speakers'
-      - else
-        - if @event.can_i_delete?(@current_user.id, @event.chapter_id)
-          = render '/events/agenda_and_speakers'
-        -elsif @event.agenda_and_speakers.present?
-          = render '/events/agenda_and_speakers'
+    .chapterLayout
+      .content-c
+        = render '/events/full_event'
+        -if !@current_user.present?
+          = render '/events/members_list'
+        -if @current_user.present?  and !@event.can_i_delete?(@current_user.id, @event.chapter_id)
+          = render '/events/members_list'
+        - if !@current_user.present?
+          -if @event.agenda_and_speakers.present?
+            = render '/events/agenda_and_speakers'
+        - else
+          - if @event.can_i_delete?(@current_user.id, @event.chapter_id)
+            = render '/events/agenda_and_speakers'
+          -elsif @event.agenda_and_speakers.present?
+            = render '/events/agenda_and_speakers'
 
 - if(@is_i_admin==false)
   .content.eventDetails

@@ -180,8 +180,11 @@ header ul li:first-child{
 }
 .noEventText{
     text-align: center;
-    font-size: 18px;
+    font-size: 14px;
     margin-bottom: 10px;
+    font-family: Helvetica, sans-serif;
+    line-height: 22px;
+    text-decoration: underline;
 }
 .event{
     background: url("event_normal.png") no-repeat 59px 18px;
@@ -1598,6 +1601,7 @@ ul.adminPanel{
     width: 25px;
     height: 17px;
     color: #222222;
+    font-weight: bold;
 }
 .chapterLayout .ca-container .ca-nav .prevArrow:hover{
     background: url("prev_hover_arrow.png") no-repeat 8px 10px;
@@ -1617,6 +1621,7 @@ ul.adminPanel{
     width: 25px;
     height: 17px;
     color: #222222;
+    font-weight: bold;
 }
 .chapterLayout .ca-container .ca-nav .nextArrow:hover{
     background: url("next_hover_arrow.png") no-repeat 45px 10px;
@@ -1845,6 +1850,17 @@ ul.eventGallery li{
     width: 723px;
     color: #666666;
     font-size: 13px;
+}
+.chapterLayout ul.posts li .commentText h4{
+    color: #318dc0;
+    font-size: 16px;
+    line-height: 18px;
+    margin-bottom: 5px;
+    width: 500px;
+}
+ul.posts li .commentText .commentDate{
+    display: block;
+    margin-bottom: 10px;
 }
 .userDashboard ul.posts li img{
     margin-right: 20px;
@@ -2199,5 +2215,15 @@ ul.eventGallery li{
 }
 .imageIcon span{
     color: #ffffff;
+}
+.chapterLayout .content-c{
+    background: none;
+}
+.settingDropdown ul.dropdown-menu{
+    padding: 0;
+}
+.settingDropdown ul.dropdown-menu li:first-child a{
+    border-radius: 4px 4px 0 0;
+    padding: 6px 15px;
 }
 

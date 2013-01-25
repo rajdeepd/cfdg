@@ -1499,3 +1499,6 @@ label.error{
 .chapterSearchError{
     margin-left: 24px !important;
 }
+.content #new_event{
+    color: #333333 !important;
+}
