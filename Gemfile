@@ -87,7 +87,7 @@ gem 'awesome_nested_set'
 gem 'carmen-rails'
 gem 'will_paginate', '~> 3.0'
 
-gem 'remotipart', '~> 1.0'
+gem 'remotipart', '~> 1.0.2'
 gem "ckeditor", "~> 3.7.3"
 
 gem 'aws-sdk'
