@@ -16,7 +16,7 @@ a{
 a:hover{
     text-decoration: none;
 }
-.clr{
+.clear{
     clear: both;
 }
 body{
@@ -2263,8 +2263,8 @@ ul.posts li .commentText .commentDate{
 }
 .alignment{
     margin-top: 7px;
-    width: 290px !important;
+    width: 266px !important;
     background: #ffffff;
-    left:351px !important;
+    /*left:351px !important;*/
 }
 
