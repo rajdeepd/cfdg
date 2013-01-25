@@ -34,7 +34,6 @@
         = image_tag(@current_user.avatar.url,:size => "74x74")
       -else
         %img{:src => "/assets/default_human_face.jpg"}
-      -#%img{:src => "/assets/user_profile_img.jpg"}
 
     .btn-group.settingDropdown
       %button.btn.dropdown-toggle{"data-toggle" => "dropdown"}
@@ -44,17 +43,13 @@
           %a{:href => "#{settings_path}"} Edit Profile
         %li
           %a{:href => "#"} Change Password
-        %li
-          %a{:href => "#"} Something else here
-        %li.divider
-        %li
-          %a{:href => "#"} Separated link
     .chapterName.clearfix
       %h3
         -##{@current_user.fullname} l
         #{@current_user.fullname}
         -#%span CEO Accenture, Pune
       %span.chapterLocation  #{@current_user.location}
+      %span.userEmail  #{@current_user.email}
       %span.phoneNumber  #{@current_user.mobile}
       -if @current_user.user_profile_completion_status
         .userSocialLink.clearfix
@@ -74,7 +69,7 @@
           .ca-wrapper
             - if @upcoming_events.blank?
               .centerText.verticalCenter No upcoming events.
-              = link_to "Click here to see event list",event_listing_events_path,:style => "margin-left:360px;"
+              = link_to "Click here to see event list",event_listing_events_path,:class => "noEventText"
             -else
               - @upcoming_events.each do |event|
                 .ca-item.ca-item-1
@@ -104,8 +99,7 @@
                           %p.lightGrayText #{event.description.truncate(70)}
                           %a{:href => "#{event_path(event)}"} Read more
                       .eventListFooter
-                        %span.numberPeopleAttending #{event.event_members.length}
-                        %span People Attending
+                        %span.numberPeopleAttending #{event.event_members.length} People Attending
 
       .slider.subscribedChapters.clearfix
         .sliderHeadingFull
@@ -114,7 +108,7 @@
           .ca-wrapper
             - if @subscribed_chapter.blank?
               .centerText.verticalCenter No subscribed chapter.
-              = link_to "Click here to see chapter list",chapter_list_html_index_path,:style => "margin-left:360px;"
+              = link_to "Click here to see chapter list",chapter_list_html_index_path,:class => "noEventText"
             -else
               - @subscribed_chapter.each do |chapter|
                 .ca-item.ca-item-1
@@ -130,11 +124,12 @@
                           .eventImg
                             %img{:src => "/assets/event_snap_4.jpg"}
                           .eventContent
-                            %h5 #{chapter.name}
-                        -if chapter.chapter_type == "student"
-                          .location #{chapter.landmark.truncate(8)}, #{chapter.locality.truncate(8)}, #{chapter.city_name.truncate(8)}
-                        -else
-                          .location #{chapter.city_name}
+                            -if chapter.chapter_type == "student"
+                              %h5 #{chapter.name}
+                              .institution #{chapter.institution}
+                            -else
+                              %h5 #{chapter.name}
+                        .location #{chapter.city_name}, #{chapter.country_name}
                         .comingEvent
                           %h5 Upcoming Event
                           -if chapter.get_chapter_upcoming_events.blank?
@@ -153,7 +148,6 @@
                                 .pastEventDetails #{chapter.get_chapter_upcoming_events.first.description.truncate(72)}
                         %a{:href => "#{detail_chapter_path(chapter)}"} View Chapter
                       .eventListFooter
-                        -#%span.numberPeopleAttending #{chapter.chapter_members.length}
                         %span.numberPeopleAttending #{pluralize(chapter.chapter_members.length,"Member")}
 
       .slider.clearfix
@@ -194,26 +188,11 @@
                   %img{:src => "/assets/default_human_face.jpg"}
                 -#%img{:src => "/assets/human_face_6.jpg"}
                 .commentText
-                  %span.commentDate #{Time.parse(post.try(:created_at).to_s).strftime('%b %d, %Y')}
+                  %span.commentDate #{post.user.fullname.try(:titleize)}, #{Time.parse(post.try(:created_at).to_s).strftime('%b %d, %Y')}
                   %p.darkText #{post.title}
                   %p #{post.description.truncate(197)}
                   %a.btn.learnMore{:href => "#{post_path(post)}"} Learn more
-        -#%li
-          .clearfix
-            %img{:src => "/assets/human_face_6.jpg"}
-            .commentText
-              %span.commentDate November 08,2012
-              %p.darkText The journey to the cloud goes beyond frameworks, services and cloud deployments
-              %p Cloud Foundry is an Open Source project: whether you want to add features, comment on design docs, report or fix a bug, contribute documentation or technical articles, we welcome your contribution. You'll find some very smart and very friendly folks here which means it's a great place to learn and a great.
-              %a.btn.learnMore{:href => "#"} Learn more
-        -#%li
-          .clearfix
-            %img{:src => "/assets/human_face_6.jpg"}
-            .commentText
-              %span.commentDate November 08,2012
-              %p.darkText The journey to the cloud goes beyond frameworks, services and cloud deployments
-              %p Cloud Foundry is an Open Source project: whether you want to add features, comment on design docs, report or fix a bug, contribute documentation or technical articles, we welcome your contribution. You'll find some very smart and very friendly folks here which means it's a great place to learn and a great.
-              %a.btn.learnMore{:href => "#"} Learn more
+
 :javascript
   $('.ca-container').contentcarousel({
          minNum          : 3

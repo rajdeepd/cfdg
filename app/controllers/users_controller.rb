@@ -55,7 +55,8 @@ class UsersController < ApplicationController
 
   def dashboard
     #@subscribed_chapter = []
-    @upcoming_events = Event.get_upcoming_events
+    #@upcoming_events = Event.get_upcoming_events
+    @upcoming_events = @current_user.get_user_upcoming_events
     #chapter_member = ChapterMember.find_all_by_user_id(@current_user)
     #chapter_member.each do |i|
     #  @subscribed_chapter.push(Chapter.find(i.chapter_id))

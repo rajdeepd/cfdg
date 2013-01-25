@@ -16,6 +16,7 @@ CloudfoundryUsergroups::Application.routes.draw do
     member do
       #get 'show1'
       get 'detail'
+      get 'chapter_gallery'
     end
     resources :events
     collection do
@@ -82,6 +83,7 @@ CloudfoundryUsergroups::Application.routes.draw do
   match '/login' => 'federated#login', :as => :login
   match '/logout' => 'federated#logout'
   match '/profile' => 'users#profile' , :as => :profile
+  match '/dashboard' => 'users#dashboard' , :as => :dashboard
 
   match 'settings' => 'users#settings' , :as => :settings
   match 'settings_update/:id' => 'users#settings_update' , :as => :settings_update , :via => :put
@@ -150,6 +152,9 @@ CloudfoundryUsergroups::Application.routes.draw do
       get :article_view
       get :post_view
       get :announcement_view
+      get :create_chapter
+      get :event_gallery
+      get :chapter_gallery
     end
   end
 

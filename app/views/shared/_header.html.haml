@@ -18,6 +18,7 @@
           %li
             -#%a.label-2.logout{:href => "#{profile_path}"}= t('menu.myprofile') |
             =link_to "Dashboard",dashboard_user_path(current_user),:class => "label-2 logout"
+            = " (#{current_user.email})"
           %li
             %label.label-2.bold{:style => "position: relative;top: -2px;font-size: 18px;color:#afafaf;"}
               |

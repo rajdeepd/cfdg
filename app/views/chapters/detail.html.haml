@@ -32,6 +32,11 @@
     %span.breadCrumbDivider /
     %span.activePage #{@chapter.try(:name)}
   .blueHeader
+    .tag
+      -if @chapter.chapter_type == "student"
+        %img{:src => "/assets/student_event_header_tag.png"}
+      -else
+        %img{:src => "/assets/professional_event_header_tag.png"}
     .chapterName.clearfix
       %h1 #{@chapter.try(:name)}
     .chapterDateAndPlace.clearfix
@@ -51,7 +56,8 @@
         - if @current_user.blank?
           = link_to 'Join Chapter' ,signin_path, :class => "join_us orangeBtn"
         - else
-          = submit_tag 'Join Chapter' , :class => "join_us orangeBtn"
+          -#= submit_tag 'Join Chapter' , :class => "join_us orangeBtn"
+          = button_tag 'Join Chapter' , :class => "join_us orangeBtn"
   .chapterLayout
     .row
       .span8
@@ -92,8 +98,8 @@
                               %p.lightGrayText #{event.description.truncate(70)}
                               %a{:href => "#{event_path(event)}"} Read more
                           .eventListFooter
-                            %span.numberPeopleAttending #{event.event_members.length}
-                            %span People Attending
+                            %span.numberPeopleAttending #{event.event_members.length} People Attending
+                            -#%span People Attending
 
           .past_events
             =render :partial => "past_events"
@@ -108,21 +114,22 @@
                   - @chapter.get_past_events.each do |i|
                     .ca-item.ca-item-1
                       .ca-item-main
-                        .galleryThumbnails
-                          -if i.image.event_landscape.present?
-                            = image_tag(i.image.event_landscape.url,:size => "260x150")
-                          -elsif i.image.present?
-                            = image_tag(i.image.url,:size => "260x150")
-                          -else
-                            =image_tag("event_landscape_logo-b.png",:size => "260x150")
-                          -#-else
-                            = image_tag("event_gallery_thumbnail.jpg",:size => "260x150")
-                          -#%p Cloud Foundry introduced npm support, we added serval
-                          %p #{i.title.truncate(15)}
-                          - if i.event_galleries.present?
-                            %a.lightGrayText{:href => "#{show_all_event_images_event_path(i)}"} (#{i.event_galleries.count} Photos)
-                          - else
-                            %a.lightGrayText{:href => "#{show_all_event_images_event_path(i)}"} (0 Photos)
+                        %a{:href => "#{chapter_gallery_chapter_path(:event_id => i)}"}
+                          .galleryThumbnails
+                            -if i.image.event_landscape.present?
+                              = image_tag(i.image.event_landscape.url,:size => "260x150")
+                            -elsif i.image.present?
+                              = image_tag(i.image.url,:size => "260x150")
+                            -else
+                              =image_tag("event_landscape_logo-b.png",:size => "260x150")
+                            -#-else
+                              = image_tag("event_gallery_thumbnail.jpg",:size => "260x150")
+                            -#%p Cloud Foundry introduced npm support, we added serval
+                            %p #{i.title.truncate(15)}
+                            - if i.event_galleries.present?
+                              %a.lightGrayText{:href => "#{chapter_gallery_chapter_path(:event_id => i)}"} (#{i.event_galleries.count} Photos)
+                            - else
+                              %a.lightGrayText{:href => "#{chapter_gallery_chapter_path(:event_id => i)}"} (0 Photos)
 
         .comments.clearfix
           .sliderHeading
@@ -139,7 +146,7 @@
                     -else
                       %img{:src => "/assets/default_human_face.jpg"}
                     .commentText
-                      %p #{i.title}
+                      %h4 #{i.title}
                       %span.commentDate #{Time.parse(i.try(:created_at).to_s).strftime('%b %d, %Y')}
                   %p #{i.description.truncate(197)}
                   %a{:href => "#"} View more

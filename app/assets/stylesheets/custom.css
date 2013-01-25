@@ -180,8 +180,12 @@ header ul li:first-child{
 }
 .noEventText{
     text-align: center;
-    font-size: 18px;
+    font-size: 14px;
     margin-bottom: 10px;
+    font-family: Helvetica, sans-serif;
+    line-height: 22px;
+    text-decoration: underline;
+    display: block;
 }
 .event{
     background: url("event_normal.png") no-repeat 59px 18px;
@@ -727,6 +731,14 @@ ul.supportPrivacyLinks li{
 .eventPeopleList ul{
     max-height: 190px;
     overflow-y: auto;
+}
+
+.span4 ul.chapterGallery{
+    max-height: 800px;
+    overflow-y: auto;
+}
+#chapterEventImages{
+    margin-left:33px;
 }
 .eventPeopleList ul li{
     margin: 20px 0 10px 20px;
@@ -1428,7 +1440,7 @@ li.ui-timepicker-selected .ui-timepicker-duration,
     border: 1px solid #7faac5;
     width: 290px;
     resize: none;
-    height: 60px;
+    height: 70px;
 }
 .formBox .controls{
     margin-left: 220px;
@@ -1590,6 +1602,7 @@ ul.adminPanel{
     width: 25px;
     height: 17px;
     color: #222222;
+    font-weight: bold;
 }
 .chapterLayout .ca-container .ca-nav .prevArrow:hover{
     background: url("prev_hover_arrow.png") no-repeat 8px 10px;
@@ -1609,6 +1622,7 @@ ul.adminPanel{
     width: 25px;
     height: 17px;
     color: #222222;
+    font-weight: bold;
 }
 .chapterLayout .ca-container .ca-nav .nextArrow:hover{
     background: url("next_hover_arrow.png") no-repeat 45px 10px;
@@ -1665,10 +1679,14 @@ ul.adminPanel{
 .chapterLayout .ca-container.galleryThumbnailsContainer, .chapterLayout .ca-container.galleryThumbnailsContainer .ca-item{
     height: 240px;
 }
+ul.eventGallery li{
+    float: left;
+    overflow: hidden;
+}
 .galleryThumbnails{
-    background: url("galary_thumbnail_bg.png") no-repeat;
+    background: url("galary_thumbnail_bg.png") no-repeat top;
     width: 280px;
-    height: 178px;
+    height: 240px;
 }
 .galleryThumbnails img{
     margin: 13px 6px;
@@ -1695,7 +1713,7 @@ ul.adminPanel{
 }
 .joinChapter{
     background: #ffffff;
-    padding: 30px 7px;
+    padding: 10px 7px;
     border-bottom: 1px solid #d8dee2;
 }
 
@@ -1707,6 +1725,16 @@ ul.adminPanel{
     font-weight: 500;
     margin-right: 18px;
 }
+.formBox .control-group a.btn{
+    width: 114px;
+    border-radius: 5px;
+    height: 26px;
+    font-size: 16px;
+    font-weight: 500;
+    margin-right: 18px;
+    line-height: 26px;
+}
+
 .agendaBox{
     background: #eff7fe;
     padding: 15px 0 4px 20px;
@@ -1787,6 +1815,16 @@ ul.adminPanel{
     margin: 0 0 20px 10px;
     color: #444444;
 }
+
+.subscribedChapters .institution{
+    background: url("location_icon_black.png") no-repeat 0 1px;
+    padding-left: 20px;
+    display: block;
+    font-size: 10px;
+    margin: 0 0 20px 10px;
+    color: #444444;
+}
+
 .subscribedChapters .comingEvent h5{
     color: #666666;
     font-size: 14px;
@@ -1824,6 +1862,17 @@ ul.adminPanel{
     color: #666666;
     font-size: 13px;
 }
+.chapterLayout ul.posts li .commentText h4{
+    color: #318dc0;
+    font-size: 16px;
+    line-height: 18px;
+    margin-bottom: 5px;
+    width: 500px;
+}
+ul.posts li .commentText .commentDate{
+    display: block;
+    margin-bottom: 10px;
+}
 .userDashboard ul.posts li img{
     margin-right: 20px;
     border: 1px solid #b8c0c8;
@@ -1838,7 +1887,7 @@ ul.adminPanel{
     margin-bottom: 10px;
 }
 .userDashboard ul.posts li p.darkText{
-    color: #000000;
+    color: #318DC0 !important;
     font-size: 16px;
     font-weight: bold;
 }
@@ -1879,7 +1928,19 @@ ul.adminPanel{
     font-size: 14px;
     margin-right: 20px;
     line-height: 16px;
+    margin-bottom: 10px;
 }
+.userDashboard .blueHeader .userEmail{
+    /*background: url("email.png") no-repeat;*/
+    padding-left: 15px;
+    display: block;
+    float: left;
+    color: #ffffff;
+    font-size: 14px;
+    margin-right: 20px;
+    line-height: 16px;
+}
+
 .userDashboard .blueHeader .phoneNumber{
     background: url("contact_number_white.png") no-repeat;
     padding-left: 20px;
@@ -2074,9 +2135,10 @@ ul.adminPanel{
     height: 100px;
     resize: none;
 }
-.joinChapter a{
-    padding: 9px 15px;
+.joinChapter button{
+    padding: 6px 15px;
     margin-left: 25px;
+    margin-top: 12px;
 }
 .chapterLayout .comments ul.posts li p{
     color: #333333;
@@ -2084,3 +2146,101 @@ ul.adminPanel{
     line-height: 19px;
     font-family: helvetica;
 }
+
+.studentProfNva{
+    background: url("student_profession_nav_bg.png") repeat-x ;
+    box-shadow: 0 1px 2px 1px #BFD3E8;
+    border-radius: 4px;
+    padding: 0;
+    min-height: 42px;
+    background-color: inherit;
+    width: 430px;
+    margin: 0 0 30px 154px;
+}
+.formBox .studentProfNva ul li{
+    height: 42px;
+    line-height: 42px;
+}
+.formBox .studentProfNva ul li:first-child{
+    width: 215px;
+    background: url("navigation_divider.png") no-repeat;
+}
+.student{
+    background: url("student_gray_icon.png") no-repeat 47px 15px;
+    height: 42px;
+}
+.navbar ul li a.student.activeTab{
+    background: url("student_blue_icon.png") no-repeat 47px 15px;
+    height: 41px;
+    display: block;
+    border-bottom: 2px solid #00bde7;
+}
+.professional{
+    background: url("professional_gray_icon .png") no-repeat 27px 12px;
+    height: 42px;
+    display: block;
+}
+.navbar ul li a.professional.activeTab{
+    background: url("professional_blue_icon.png") no-repeat 27px 12px;
+    height: 41px;
+    display: block;
+    border-bottom: 2px solid #00bde7;
+}
+.formBox .navbar ul li a{
+    line-height: 42px;
+}
+
+.formBox .navbar ul li:hover a{
+    border-bottom: 2px solid #00bde7;
+    color: #333333;
+    height: 41px;
+}
+.eventDetails .eventImageHolder img{
+    width: 120px;
+    height: 80px;
+    border: 5px solid #ffffff;
+    border-radius: 5px;
+    box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.2);
+}
+.back{
+    background: url("back_icon.png") no-repeat 0 11px;
+    padding-left: 20px;
+    font-size: 14px;
+    font-weight: bold;
+    padding-top: 5px;
+    margin-right: 10px;
+    color: #000000;
+}
+.eventDetails .back{
+    float: right;
+}
+.eventDetails .breadCrumb{
+    float: left;
+}
+.eventDetails .eventImageHolder{
+    width: 130px;
+    height: 90px;
+    margin: 0 0 20px 19px;
+}
+.imageIcon{
+    background: url("photo_icon.png") no-repeat 0 3px;
+    padding-left: 28px;
+    margin-right: 15px;
+    font-size: 16px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 500;
+}
+.imageIcon span{
+    color: #ffffff;
+}
+.chapterLayout .content-c{
+    background: none;
+}
+.settingDropdown ul.dropdown-menu{
+    padding: 0;
+}
+.settingDropdown ul.dropdown-menu li:first-child a{
+    border-radius: 4px 4px 0 0;
+    padding: 6px 15px;
+}
+

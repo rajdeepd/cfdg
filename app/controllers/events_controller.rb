@@ -40,6 +40,7 @@ class EventsController < ApplicationController
   def new
     @event = Event.new
     @event.chapter_id = params[:chapter_id]
+    @chapter = params[:chapter_id]
     respond_to do |format|
       #format.js {render :partial => 'form'} # new.html.erb
       #format.json { render json: @event }
@@ -196,7 +197,7 @@ class EventsController < ApplicationController
         EventNotification.event_creation(@event,to_email,bcc_emails,@chapter).deliver
         #SES.send_raw_email(EventNotification.event_creation(@event,to_email,bcc_emails,@chapter))
 
-        redirect_to show1_chapter_path(params[:chapter_id]), :notice => "Event created successfully"
+        redirect_to detail_chapter_path(params[:chapter_id]), :notice => "Event created successfully"
       else
         logger.info "########## inside else of create action ########"
         render :action => :new
