@@ -4,7 +4,7 @@
       No chapters
   -else
 
-    - @chapters.each do |chapter|
+    - @chapters.each_with_index do |chapter,count|
       .span4.subscribedChapters
         .eventListWrapper
           .eventListInner
@@ -43,7 +43,8 @@
           .eventListFooter
             -#%span.numberPeopleAttending #{chapter.chapter_members.length}
             %span.numberPeopleAttending #{pluralize(chapter.chapter_members.length,"Member")}
-    -#.span4.subscribedChapters
+      -if (count+1)%3 == 0
+        .clear
     -#  .eventListWrapper
     -#    .eventListInner
     -#      .tag

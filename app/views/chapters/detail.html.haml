@@ -54,7 +54,7 @@
       = form_tag join_a_chapter_chapters_path, :method => :post do
         = hidden_field_tag "chapter_id", "#{@chapter.id}"
         - if @current_user.blank?
-          = link_to 'Join Chapter' ,signin_path, :class => "join_us orangeBtn"
+          = link_to 'Join Chapter' ,signin_path, :class => "join_us btn orangeBtn"
         - else
           -#= submit_tag 'Join Chapter' , :class => "join_us orangeBtn"
           = button_tag 'Join Chapter' , :class => "join_us orangeBtn"
@@ -65,11 +65,12 @@
           .slider.clearfix
             .sliderHeading
               %h3 Upcoming Events
-            .ca-container.ca-container.clearfix
-              .ca-wrapper
-                - if @upcoming_events.blank?
-                  .centerText.verticalCenter No upcoming events for this chapter.
-                -else
+
+            - if @upcoming_events.blank?
+              .centerText.verticalCenter No upcoming events for this chapter.
+            -else
+              .ca-container.ca-container.clearfix
+                .ca-wrapper
                   - @upcoming_events.each do |event|
                     .ca-item.ca-item-1
                       .ca-item-main

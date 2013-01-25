@@ -43,9 +43,10 @@ class ApplicationController < ActionController::Base
 
   def get_country(request)
     country= request.location.country
-    #country = "India" if country == "Reserved" #doing this coz in local(dev environment)  IP is 127.0.0.1 for this country is reserved
-    logger.info "@@@@@@@@@@@@@@@@@@@@@@@ request.location file @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@#{request.location.inspect}"
-    logger.info "####################### country in application.rb file ################################{country.inspect}"
+    country = "India" if country == "Reserved" #doing this coz in local(dev environment)  IP is 127.0.0.1 for this country is reserved
+    #logger.info "@@@@@@@@@@@@@@@@@@@@@@@ request.location file @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@#{request.location.inspect}"
+    #logger.info "####################### country in application.rb file ################################{country.inspect}"
+    return country
   end
 
 
