@@ -193,7 +193,8 @@ class ChaptersController < ApplicationController
     respond_to do |format|
       if member.save
         ChapterNotifications.chapter_joined(@chapter,@current_user).deliver
-        format.html { redirect_to @chapter }
+        #format.html { redirect_to @chapter }
+        format.html { redirect_to detail_chapter_path(@chapter) }
         format.json { render json: @chapter, status: :success, location: @chapter }
       else
         format.html { redirect_to @chapter }
