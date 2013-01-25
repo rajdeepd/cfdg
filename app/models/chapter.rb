@@ -113,6 +113,9 @@ class Chapter < ActiveRecord::Base
      self.chapter_members.select{|i| i.memeber_type == ChapterMember::MEMBER}
   end
   
+  def member_emails
+    self.members.map(&:email)
+  end
 
   def get_primary_coordinator
      User.find(self.created_by)

@@ -1,0 +1,19 @@
+%p 管理员你好，
+%p 
+  %strong= @event.chapter.name 
+  分会活动已被分会主席分会主席
+  %strong= @event.chapter.get_primary_coordinator.name
+  取消。
+
+%h4 活动信息：
+%p 活动名称： #{@event.title}
+%p 活动时间： #{@event.schedule}
+%p 活动地点： #{@event.location}
+%p 活动内容： #{@event.description}
+%p 预计人数： #{@event.attendees_count}
+%p 所需资源： #{@event.resources_request}
+
+%p 请及时关注。
+
+
+%p CloudFoundry 同学会
