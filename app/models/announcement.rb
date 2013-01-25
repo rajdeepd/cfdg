@@ -14,5 +14,5 @@ class Announcement < ActiveRecord::Base
     :styles => { :medium => "650x438>", :thumb => "128x90>" , :mini => "60x60>" },
     :path => ":class/:attachment/:id/:style/:filename"
 
-   validates :title, :body, :presence => true
+  validates :title, :body, :presence => true
 end

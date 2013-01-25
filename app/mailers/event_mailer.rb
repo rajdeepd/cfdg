@@ -27,19 +27,45 @@ class EventMailer < ActionMailer::Base
     @event = event
     @creator = User.find(@event.created_by) # Now there's only one event member which is the creator because the event is just approved.
 
-    mail(:to => @creator.email, :subject => I18n.t("mail.chapter_mailer.approval.subject", :chapter_name => @event.chapter.name)) if @creator
+    mail(:to => @creator.email, :subject => I18n.t("mail.event_mailer.approval.subject", :chapter_name => @event.chapter.name)) if @creator
   end
 
   def denial_mail(event)
     @event = event
     @creator = User.find(@event.created_by) # Now there's only one event member which is the creator because the event is just approved.
 
-    mail(:to => @creator.email, :subject => I18n.t("mail.chapter_mailer.denial.subject", :chapter_name => @event.chapter.name)) if @creator
+    mail(:to => @creator.email, :subject => I18n.t("mail.event_mailer.denial.subject", :chapter_name => @event.chapter.name)) if @creator
   end
 
   def new_event_notice_mail(event, receivers)
     @event = event
 
-    mail(:bcc => receivers, :subject => I18n.t("mail.chapter_mailer.new_event_notice.subject", :chapter_name => @event.chapter.name))
+    mail(:bcc => receivers, :subject => I18n.t("mail.event_mailer.new_event_notice.subject", :chapter_name => @event.chapter.name))
+  end
+
+  def admin_event_cancelled_mail(event)
+    @event = event
+    @admin= User.admin_user
+
+    mail(:to => @admin.email, :subject => I18n.t("mail.event_mailer.admin_event_cancelled.subject"))
+  end
+
+  def admin_event_changed_mail(event)
+    @event = event
+    @admin = User.admin_user
+
+    mail(:to => @admin.email, :subject => I18n.t("mail.event_mailer.admin_event_changed.subject"))
+  end
+
+  def event_cancelled_notice_mail(event, receivers)
+    @event = event
+    
+    mail(:bcc => receivers, :subject => I18n.t("mail.event_mailer.event_cancelled_notice.subject", :event_title => @event.title))
+  end
+
+  def event_changed_notice_mail(event, receivers)
+    @event = event
+    
+    mail(:bcc => receivers, :subject => I18n.t("mail.event_mailer.event_changed_notice.subject", :event_title => @event.title))
   end
 end

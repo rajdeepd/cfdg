@@ -174,6 +174,8 @@ class EventsController < ApplicationController
     get_upcoming_and_past_events(chapter_events, true)
     @profile_page = false
 
+    EventMailer.admin_event_cancelled_mail(@event).deliver
+
     respond_to do |format|
       format.js {render :partial => 'events_list' }# new.html.erb
     end
@@ -202,6 +204,9 @@ class EventsController < ApplicationController
     chapter_events = Event.find_all_by_chapter_id(@event.chapter_id) || []
     get_upcoming_and_past_events(chapter_events, true)
     @profile_page = false
+
+    EventMailer.admin_event_cancelled_mail(@event).deliver
+    EventMailer.event_cancelled_notice_mail(@event, @chapter.member_emails).deliver
 
     respond_to do |format|
       format.js {render :partial => 'events_list' }# new.html.erb
@@ -255,14 +260,18 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       if @event.update_attributes(params[:event])
-        format.html { redirect_to @event, notice: 'Event was successfully updated.' }
-        @chapter = Chapter.find(@event.chapter_id)
+        format.html { redirect_to @event, :flash => { :notice => [t("event.successfully_updated")] } }
+        @chapter = @event.chapter
 
         to_email = @chapter.get_primary_coordinator.email
         bcc_emails = @event.event_members.includes(:user).collect{|i| i.user.email} -[to_email]
         #EventNotification.delay.event_edit(@event,emails,@chapter)
-        EventNotification.event_edit(@event,to_email,bcc_emails,@chapter).deliver
+        #EventNotification.event_edit(@event,to_email,bcc_emails,@chapter).deliver
         #SES.send_raw_email(EventNotification.event_edit(@event,to_email,bcc_emails,@chapter))
+
+        EventMailer.admin_event_changed_mail(@event).deliver
+        EventMailer.event_changed_notice_mail(@event, @chapter.member_emails).deliver
+
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

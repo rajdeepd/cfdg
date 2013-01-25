@@ -44,24 +44,24 @@ cn:
       no_city_chapter: 你的所在城市没有分会
       no_college_chapter: 你的所在学校没有分会
       create_one: 创建一个分会
-    details: "Chapter Details"
+    details: "分会信息"
     creation: 
-      title: "Chapter Creation"
-      founder_information: "Founder Information"
-      founder_name: Name
-      founder_email: Email
-    founded_by: "Founded by"
-    primary_group_coordinator: "Primary Group Coordinator"
-    group_coordinator: "Group Coordinator"
-    members: Members
-    events: Events
-    post: Post
-    member_role: Role
-    status: Status
-    create_events: "Create Events"
+      title: "创建分会"
+      founder_information: "分会主席信息"
+      founder_name: 姓名
+      founder_email: 邮箱
+    founded_by: "创建者"
+    primary_group_coordinator: "分会特别助理"
+    group_coordinator: "分会助理"
+    members: 同学
+    events: 活动
+    post: 消息
+    member_role: 角色
+    status: 状态
+    create_events: "组织活动"
     member_roles: 
-      member: Member
-      "primary coordinator": Primary Coordinator
+      member: 同学
+      "primary coordinator": 特别助理
   announcements: 
     heading: 公告
     earlier: 更早的公告
@@ -96,9 +96,9 @@ cn:
     welcome: 欢迎
     location: 所在城市
     my_account: 我的账户
-    account_not_confirmed: "Please complete your information and confirm your account."
-    resend_confirmation: "Resend Confirmation"
-    confirmation_sent: "Confirmation Sent"
+    account_not_confirmed: "请完成注册信息并确认账户。"
+    resend_confirmation: "重发确认"
+    confirmation_sent: "确认已发出"
   confirmation: 
     user: 
       notice: 确认邮件已发送到你的邮箱。请通过邮件中的链接确认。请在30分钟内确认，完成你的注册。
@@ -128,25 +128,37 @@ cn:
         subject: "%{chapter_name} 活动申请成功"
       denial:
         subject: "感谢申请新活动"
+      admin_event_cancelled:
+        subject: "活动取消"
+      admin_event_changed:
+        subject: "活动变更"
+      event_cancelled_notice:
+        subject: "%{event_title} 已取消"
+      event_changed_notice:
+        subject: "%{event_title} 重要通知"
+      new_event_notice:
+        subject: "%{chapter_name} 分会有新活动了"
 
   admin: 
-    chapter_status: "Chapter Status"
-    announcement: Announcement
-    events: Events
+    chapter_status: "分会状态"
+    announcement: 公告
+    events: 活动
   events: 
-    upcoming_events: "Upcoming Events"
-    rsvped_need_confirmation: "We've just send you an email to confirm your reservation. Please click the link provided in the mail within 24 hours to complete your reservation."
-    rsvp_confirmed: "We've successfully confirmed your reservation to the event."
-    rsvp_resend: "You're reservation confirmation has expired, we've sent a new confirmation email to you, please click the confirmation link in the mail within 24 hours"
-    event_blocked: "The event has been blocked by the Admin, no changes are allowed. Contact the site admin if you have any troubles."
+    upcoming_events: "新活动"
+    rsvped_need_confirmation: "你将收到一封确认邮件。请在24小时内通过邮件中的链接确认报名。"
+    rsvp_confirmed: "恭喜！你已确认报名此次活动。"
+    rsvp_resend: "你的确认邮件已过期。新的确认邮件已发到你的邮箱。请在24小时内通过邮件中的链接确认。"
+    event_blocked: "此次活动已被网站管理员锁定。你无法修改此次活动。有问题，请与网站管理员联系。"
+    successfully_updated: "Event was successfully updated."
+
   event_form: 
-    form_title: "Create Event For %{chapter_name}"
-    event_title: "Event Title"
-    event_starts_on: "Event Starts On"
-    event_ends_on: "Event Ends On"
-    event_location: Location
+    form_title: "为%{chapter_name}分会组织一个活动"
+    event_title: "活动名称"
+    event_starts_on: "活动开始时间"
+    event_ends_on: "活动结束时间"
+    event_location: 地点
   button: 
-    create: CREATE
-    cancel: CANCEL
-    edit: EDIT
-    delete: DELETE
+    create: 创建
+    cancel: 取消
+    edit: 编辑
+    delete: 删除

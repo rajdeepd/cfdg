@@ -60,4 +60,27 @@ class MailPreview < MailView
     @receivers = ["thehiddendepth@gmail.com", "larry.zhao@outlook.com"]
     EventMailer.new_event_notice_mail(@event, @receivers)
   end
+
+  def admin_event_cancelled_mail
+    @event = Event.all.first
+    EventMailer.admin_event_cancelled_mail(@event)
+  end
+
+  def admin_event_changed_mail
+    @event = Event.all.first
+
+    EventMailer.admin_event_changed_mail(@event)
+  end
+
+  def event_cancelled_notice_mail
+    @event = Event.all.first
+    @receivers = ["thehiddendepth@gmail.com", "larry.zhao@outlook.com"]
+    EventMailer.event_cancelled_notice_mail(@event, @receivers)
+  end
+
+  def event_changed_notice_mail
+    @event = Event.all.first
+    @receivers = ["thehiddendepth@gmail.com", "larry.zhao@outlook.com"]
+    EventMailer.event_changed_notice_mail(@event, @receivers)
+  end
 end

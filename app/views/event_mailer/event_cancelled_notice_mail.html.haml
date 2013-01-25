@@ -1,0 +1,15 @@
+%p 同学你好，
+%p 
+  我们很遗憾的通知，
+  %strong= @event.chapter.name
+  分会的
+  %strong= @event.title
+  活动取消。
+
+%p 
+  请关注
+  = link_to content_tag(:strong, @event.chapter.name), chapter_url(@event.chapter) 
+  分会，分会将为你呈现更多精彩活动。
+
+
+%p Cloud Foundry 同学会
