@@ -21,7 +21,7 @@ class Chapter < ActiveRecord::Base
 
   has_one :geolocation
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :name, :chapter_type, :country_id , :state_id, :city_id , :locality, :address ,:landmark,:chapter_status, :country_name, :state_name, :city_name,:messages_attributes,:rejected_on , :approved_on,:institution
+  attr_accessible :name, :chapter_type, :country_id , :state_id, :city_id , :locality, :address ,:landmark,:chapter_status, :country_name, :state_name, :city_name,:messages_attributes,:rejected_on , :approved_on,:institution, :chairman_photo, :chairman_description
 
   #validations
   validates  :chapter_type, presence: true, :inclusion => [CITY, STUDENT, CITY.to_s, STUDENT.to_s]
@@ -61,6 +61,10 @@ class Chapter < ActiveRecord::Base
     end
 
   end
+
+  has_attached_file :chairman_photo,
+    :styles => { :medium => "650x438>", :thumb => "128x90>" , :mini => "60x60>" },
+    :path => ":class/:attachment/:id/:style/:filename"
 
 
   def is_type_student?

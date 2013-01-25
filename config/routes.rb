@@ -127,12 +127,14 @@ CloudfoundryUsergroups::Application.routes.draw do
         get 'active'
         get 'delist'
         get 'all'
+        get 'chairmans'
       end
       member do
         get 'change_status'
         post 'chapter_reply'
         get 'add_secondary_coordinator'
         post 'create_secondary_coordinator'
+        put 'chapter_photo'
       end
     end
     resources :events do
