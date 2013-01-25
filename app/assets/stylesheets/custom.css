@@ -657,7 +657,7 @@ ul.supportPrivacyLinks li{
     margin-top: 30px;
 }
 .verticalCenter{
-    margin-top: 160px;
+    /*margin-top: 160px;*/
 }
 
 .verticalMargin{
@@ -1544,11 +1544,13 @@ li.ui-timepicker-selected .ui-timepicker-duration,
 .chapterLayout .ca-container{
     margin: 0;
     width: 578px;
-    height: 405px;
+    max-height: 405px;
+    height: auto;
 }
 .chapterLayout .ca-item{
     width: 280px;
-    height: 398px;
+    max-height: 398px;
+    height: auto;
 }
 .chapterLayout .ca-item-main{
     padding: 0;
@@ -1840,7 +1842,8 @@ ul.eventGallery li{
     margin-left: 10px;
 }
 .subscribedChapters .ca-container{
-    height: 305px;
+    /*height: 305px;*/
+    height: auto;
 }
 .userDashboard ul.posts li{
     border: none;
