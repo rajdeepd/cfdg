@@ -74,7 +74,7 @@
           .ca-wrapper
             - if @upcoming_events.blank?
               .centerText.verticalCenter No upcoming events.
-              = link_to "Click here to see event list",event_listing_events_path,:style => "margin-left:360px;"
+              = link_to "Click here to see event list",event_listing_events_path,:style => "margin-left:360px;text-decoration: underline;"
             -else
               - @upcoming_events.each do |event|
                 .ca-item.ca-item-1
@@ -113,7 +113,7 @@
           .ca-wrapper
             - if @subscribed_chapter.blank?
               .centerText.verticalCenter No subscribed chapter.
-              = link_to "Click here to see chapter list",chapter_list_html_index_path,:style => "margin-left:360px;"
+              = link_to "Click here to see chapter list",chapter_list_html_index_path,:style => "margin-left:360px;text-decoration: underline;"
             -else
               - @subscribed_chapter.each do |chapter|
                 .ca-item.ca-item-1
