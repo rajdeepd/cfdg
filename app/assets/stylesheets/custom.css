@@ -1981,10 +1981,11 @@ ul.adminPanel{
     height: 34px;
     line-height: 35px;
 }
-.chapterListing .chapterSearchBox .signUp{
+.chapterListing .chapterSearchBox form .search{
     line-height: 30px;
     padding: 1px 0;
     float: left;
+    width: 120px;
 }
 .chapterListing .chapterSearchBox{
     padding: 8px 10px;
@@ -2000,6 +2001,9 @@ ul.adminPanel{
 .chapterListing .chapterSearchBox a.signUp{
     margin-top: 9px;
     padding: 0 12px;
+    line-height: 30px;
+    padding: 1px 0;
+    float: left;
 }
 .darkBlueBtn{
     background: url("dark_blue_btn_bg.jpg") repeat-x;

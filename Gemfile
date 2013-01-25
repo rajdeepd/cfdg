@@ -88,6 +88,7 @@ gem 'fog'
 # To use Jbuilder templates for JSON
 gem 'jbuilder'
 #gem "rmagick"
+gem "geocoder"
 
 # Use unicorn as the app server
 # gem 'unicorn'
