@@ -1468,9 +1468,10 @@ li.ui-timepicker-selected .ui-timepicker-duration,
     margin-right: 0;
 }
 .formBox .dateBox input{
-    width: 100px;
+    width: 129px;
     float: left;
     border: none;
+    background: url("calander.png") no-repeat right 0 #ffffff;
 }
 .formBox .timeBox input{
     width: 130px;
