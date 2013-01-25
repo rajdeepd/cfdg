@@ -596,7 +596,7 @@ ul.supportPrivacyLinks li{
 .blueHeader{
     background: url("blue_header_with_tag_bg.jpg") no-repeat 0 -2px;
     width: 910px;
-    height: 90px;
+    height: 107px;
     padding: 27px 0 0 30px;
     text-shadow: 0 1px rgba(0, 0, 0, 0.3);
     margin-top: 2px;
@@ -658,7 +658,7 @@ ul.supportPrivacyLinks li{
     margin-top: 30px;
 }
 .verticalCenter{
-    margin-top: 160px;
+    /*margin-top: 160px;*/
 }
 
 .verticalMargin{
@@ -1469,9 +1469,10 @@ li.ui-timepicker-selected .ui-timepicker-duration,
     margin-right: 0;
 }
 .formBox .dateBox input{
-    width: 100px;
+    width: 129px;
     float: left;
     border: none;
+    background: url("calander.png") no-repeat right 0 #ffffff;
 }
 .formBox .timeBox input{
     width: 130px;
@@ -1544,11 +1545,13 @@ li.ui-timepicker-selected .ui-timepicker-duration,
 .chapterLayout .ca-container{
     margin: 0;
     width: 578px;
-    height: 405px;
+    max-height: 405px;
+    height: auto;
 }
 .chapterLayout .ca-item{
     width: 280px;
-    height: 398px;
+    max-height: 398px;
+    height: auto;
 }
 .chapterLayout .ca-item-main{
     padding: 0;
@@ -1850,7 +1853,8 @@ ul.eventGallery li{
     margin-left: 10px;
 }
 .subscribedChapters .ca-container{
-    height: 305px;
+    /*height: 305px;*/
+    height: auto;
 }
 .userDashboard ul.posts li{
     border: none;
@@ -1904,7 +1908,12 @@ ul.posts li .commentText .commentDate{
     margin-right: 20px;
 }
 .userDashboard .blueHeader{
-    padding: 10px 0 0 30px;
+    padding: 20px 0 0 30px;
+    height: 97px;
+}
+.userDashboard .blueHeader .userImg img{
+    width: 74px;
+    height: 74px;
 }
 .userDashboard .blueHeader .chapterName {
     float: left;
@@ -1969,7 +1978,9 @@ ul.posts li .commentText .commentDate{
 }
 .userDashboard .blueHeader .userSocialLink .linkedInURL{
     background: url("linkedin_white.png") no-repeat;
-
+}
+.userSocialLink .linkedInURL a, .userSocialLink .twitterURL a , .userSocialLink .siteURL a{
+    color: #ffffff;
 }
 .userDashboard .blueHeader .userSocialLink .twitterURL{
     background: url("twitter_white.png") no-repeat;

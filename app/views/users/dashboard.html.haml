@@ -43,6 +43,11 @@
           %a{:href => "#{settings_path}"} Edit Profile
         %li
           %a{:href => "#"} Change Password
+        %li
+          %a{:href => "#"} Something else here
+        %li.divider
+        %li
+          %a{:href => "#"} Separated link
     .chapterName.clearfix
       %h3
         -##{@current_user.fullname} l
@@ -53,9 +58,12 @@
       %span.phoneNumber  #{@current_user.mobile}
       -if @current_user.user_profile_completion_status
         .userSocialLink.clearfix
-          %span.linkedInURL #{@current_user.linkedin_url}
-          %span.twitterURL #{@current_user.twitter_url}
-          %span.siteURL #{@current_user.website_url}
+          %span.linkedInURL
+            = link_to "#{@current_user.linkedin_url}",@current_user.linkedin_url
+          %span.twitterURL
+            = link_to "#{@current_user.twitter_url}",@current_user.twitter_url
+          %span.siteURL
+            = link_to "#{@current_user.website_url}",@current_user.website_url
       -else
         .incompleteProfile.userSocialLink
           Your Profile is Incomplete ,
