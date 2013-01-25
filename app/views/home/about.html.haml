@@ -3,21 +3,17 @@
     .cf-left.flt-left
       %h1.label-52{:style => "margin-bottom: 10px;"} What is CFDG ?
       %p.label-53
-        Cloud Foundry is an open platform as a service, providing a choice of clouds, developer frameworks and application services. Cloud Foundry makes it faster and easier to build, test, deploy and scale applications.
+        Cloud Foundry是一个开源PaaS平台，它提供给开发者自由度去选择云平台、开发框架和应用服务。Cloud Foundry使得开发者能够更快更容易的开发、测试、部署和拓展应用。
       %p.label-53
-        CFDG or the Cloud Foundry Developer Group is a user group for developers using or enthusiastic about the Cloud Foundry Platform. Users can use CFDG to connect with other members, get together in groups of any size, organize and attend events and share content online.
+        Cloud Foundry同学会（CFDG）是为Cloud Foundry用户以及关注Cloud Foundry的学生和技术爱好者建立的交流平台。会员不仅可以通过Cloud Foundry同学会相互结识和联络，还可以组织和参与各种活动，一同学习和切磋。
       %img.flt-right{:src => "/assets/group-of-people.png", :style => "margin:10px;"}
-        %h5.label-36{:style => "margin-bottom: 10px;"} CFDG is where you interact with other enthusiasts....
+        %h5.label-36{:style => "margin-bottom: 10px;"} 加入Cloud Foundry同学会，找到知识、朋友和乐趣。
         %p.label-16{:style => "line-height: 20px;margin-bottom: 40px;"}
-          What we want is to strengthen community networking among our users. It is a lot more fun to learn when you are part of a group. The knowledge pool is bigger and there is a healthy competitive spirit that is evoked. CFDG hopes to be an enjoyable way to faster productivity among its developers and help extend their networks.
+          Cloud Foundry同学会的宗旨是为用户创建社区网络。加入社区后，你会发现学习和工作更加有趣，因为你已置身于一个巨大的知识库，各种线上交流和线下活动可以帮助你提高工作和学习效率，更能够让你结交到志同道合的朋友。
         %img.flt-left{:src => "/assets/profile-image.png", :style => "margin:0px 10px 10px 0px;"}
-          %h5.label-36{:style => "margin-bottom: 10px;"} You can create a CFDG in your city....
+          %h5.label-36{:style => "margin-bottom: 10px;"} 创建自己的Cloud Foundry同学会分会，成为分会主席。
           %p.label-16{:style => "line-height: 20px;margin-bottom: 40px;"}
-            If there isn't a Cloud Foundry Developer Group in your city, you could
-            -#%a.blue{:href => "#"} start one
-            start one
-            yourself ! All you have to do is
-            
+
             - class_val = ''
             - href = "#"
             -if @current_user.blank?
@@ -25,10 +21,12 @@
             -elsif !ChapterMember.is_primary_coordinator?(current_user.id)
               -href = "#{new_chapter_path}"
 
-            %a.blue{:href => "#", :class => class_val} Sign Up
-            create a proposal, fill in a
-            %a.blue{:href => "#{href}" ,:class => class_val} Create Chapter
-            form and the site admin will get back to you.
+            如果你所在的城市或学校还没有Cloud Foundry同学会分会，不用担心。你可以自己创建一个分会，成为分会主席。
+            如果你已经
+            %a.blue{:href => "#", :class => class_val} 加入
+            Cloud Foundry同学会，并且发现你所在的城市或学校没有分会，那么现在就开始
+            %a.blue{:href => "#{href}" ,:class => class_val} 创建分会
+            吧！
 
     .cf-right.flt-right
       %img{:src => "/assets/banner.png", :style => "margin:40px 0px 0px 0px;"}
@@ -52,27 +50,33 @@
               google.maps.event.addListener(Gmaps.map.markers[i].serviceObject, 'click',   redirect_to(Gmaps.map.markers[i].link));
               }
                 };
-        %h1.label-36{:style => "margin-bottom: 10px;"} You can plan events and meetups with other members in your own city....
+
+        %br
+        %br
+        %br
+        %br
+        %br
+        %h1.label-36{:style => "margin-bottom: 10px;"} 报名参加分会活动，和你的同城或同校Cloud Foundry同学会分会同学见面。
         %p.label-16{:style => "line-height: 20px;margin-bottom: 10px;"}
-          Organized meet-ups are a way for you to meet the members in your group/
-          %a.blue{:href => "#"} Chapter
-          face-to-face.  Members can make presentations, invite a speaker or have group discussions. Meet ups are all about connecting people and promoting healthy discussion.
+          如果你已经加入加入Cloud Foundry同学会分会，参加
+          %a.blue{:href => "#"} 分会
+          活动是与分会同学交流互动的最好方法。
+          Cloud Foundry同学会的分会活动多种多样，你可以参加讨论，分享心得经验，更有机会和牛人面对面沟通。
         %p.label-16{:style => "line-height: 20px;margin-bottom: 40px;"}
-          Visit the
-          %a.blue{:href => "#{directory_path}"} directory
-          to see if there's a local meetup in your area. Feel free to contact the organizers to find out more. If there's no chapter near you, consider starting one!
+          现在就到你的
+          %a.blue{:href => "#{directory_path}"} 分会主页
+          去报名吧！
     .cf-bottom
       .cfb-div
         %h2.label-54{:style => "margin-bottom:10px; border-bottom: 2px dotted #fff;display: inline-block;"}
-          Our Community Guidelines
+          Cloud Foundry同学会会训
         %p.label-55{:style => "margin-bottom:5px;"}
-          Collaborate:
-          %span.label-56 Collaborate with other enthusiasts
+          团结: 
+          %span.label-56 和志同道合的朋友团结成一个社区
         %p.label-55{:style => "margin-bottom: 5px;"}
-          Be Active:
+          积极: 
           %span.label-56
-            You have a user group in your city. Stay active on it, participate and contribute regularly. The more you meet-up, the more you learn and have fun.
-
+            积极参加并享受每次分会活动
         %p.label-55{:style => "margin-bottom: 5px;"}
-          Respect one another:
-          %span.label-56 Nobody likes to be ridiculed or disrespected. Ensure that your discussions do not hurt anybody's sentiments. It is the responsibility of every member to avoid and stop and kind of negativity from flying out of control.
+          互助: 
+          %span.label-56 随时寻求帮助并尽力帮助每一位同学
