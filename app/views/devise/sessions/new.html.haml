@@ -17,7 +17,7 @@
 -#        = f.label :remember_me
 -#    %p= f.submit "Sign in"
 -#  -#= render :partial => "devise/shared/links"
-
+= javascript_include_tag "jquery.validate"
 
 .content
   .row
@@ -90,6 +90,18 @@
     $("#user_password").bind("cut copy paste",function(e) {
       e.preventDefault();
     });
+    $('#new_user').validate({
+      rules: {
+        "user[email]": {
+          required: true
+        },
+        "user[password]": {
+          required: true
+        }
+      }
+
+    });
+
   });
   $(function() {
     $(".signin").on("click",function(){

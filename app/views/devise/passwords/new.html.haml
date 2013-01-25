@@ -9,7 +9,7 @@
 -#    %p= f.submit "Send me reset password instructions"
 -#  -#= render :partial => "devise/shared/links"
 -#
-
+= javascript_include_tag "jquery.validate"
 .loginContent.forgotPasswordWrapper
   .row
     .span10.offset1
@@ -35,9 +35,19 @@
           .loginText
             Enter Your Email
           =form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f|
-            = devise_error_messages!
+            -#= devise_error_messages!
             = f.email_field :email , :placeholder => "Email*"
             = f.submit "Continue" ,:class => "orangeBtn"
 
 
+:javascript
+  $(document).ready(function(){
 
+    $('#new_user').validate({
+      rules: {
+        "user[email]": {
+          required: true
+        }
+      }
+    });
+  });
