@@ -11,7 +11,9 @@
       showOn: "button",
       buttonImage: "../assets/calander.png",
       buttonImageOnly: true,
+
     });
+
     $(".selectID").selectbox();
   });
 :javascript
@@ -20,7 +22,9 @@
      $('.ui-timepicker-input').on('changeTime', function() {
      	$('#onselectTarget').text($(this).val());
      });
-
+     $('.hasDatepicker').append('img').attr("src", calander+'.png');
+      $(".hasDatepicker").append("<img src='../assets/calander.png'/>");
+      $(".hasDatepicker").addClass("asha");
 
   });
 .content
