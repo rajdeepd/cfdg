@@ -55,9 +55,16 @@
   .blueHeaderWithoutTag
     .chapterName.clearfix
       %h1 Chapters
-      %span
-        Could not find a chapter in your city?
-        %a.btn.darkBlueBtn{:href => "#"} Create a Chapter
+      -if current_user.blank?
+        %span
+          Could not find a chapter in your city?
+          %a.btn.darkBlueBtn{:href => "#{signin_path}"} Create a Chapter
+      -else
+        -if !ChapterMember.is_primary_coordinator?(current_user.id)
+          %span
+            Could not find a chapter in your city?
+            %a.btn.darkBlueBtn{:href => "#{new_chapter_path}"} Create a Chapter
+
   .layoutWrapper
     .chapterSearchBox.clearfix
       =form_tag search_chapter_list_chapters_path  , :method => :get,:id => "search_chapter"  do
@@ -75,4 +82,9 @@
         -#%button.signUp.orangeBtn Search
       %a.signUp.btn{:href => "#{list_chapters_path(:all_chapters =>true)}"} View all Chapters
     =render :partial => "chapter_list"
+
+:javascript
+  $(document).ready(function(){
+     $(".ui-autocomplete").addClass('alignment')
+  })
 

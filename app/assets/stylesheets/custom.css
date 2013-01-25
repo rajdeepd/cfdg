@@ -653,7 +653,7 @@ ul.supportPrivacyLinks li{
     box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.2);
     border-radius: 0 0 5px 5px;
 }
-.loginLayout .label-17 {
+.loginLayout .label-17 ,.content .label-17{
     text-align: center;
     margin-top: 30px;
 }
@@ -2017,6 +2017,7 @@ ul.posts li .commentText .commentDate{
 .chapterListing .eventCitySearch input{
     width: 230px;
     height: 25px;
+    margin-bottom: 0;
 }
 .chapterListing .chapterSearchBox .sbOptions{
     width: 218px;
@@ -2242,5 +2243,11 @@ ul.posts li .commentText .commentDate{
 .settingDropdown ul.dropdown-menu li:first-child a{
     border-radius: 4px 4px 0 0;
     padding: 6px 15px;
+}
+.alignment{
+    margin-top: 7px;
+    width: 290px !important;
+    background: #ffffff;
+    left:351px !important;
 }
 
