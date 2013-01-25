@@ -1725,6 +1725,16 @@ ul.eventGallery li{
     font-weight: 500;
     margin-right: 18px;
 }
+.formBox .control-group a.btn{
+    width: 114px;
+    border-radius: 5px;
+    height: 26px;
+    font-size: 16px;
+    font-weight: 500;
+    margin-right: 18px;
+    line-height: 26px;
+}
+
 .agendaBox{
     background: #eff7fe;
     padding: 15px 0 4px 20px;
