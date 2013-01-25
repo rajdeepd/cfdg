@@ -93,7 +93,8 @@
     $('#new_user').validate({
       rules: {
         "user[email]": {
-          required: true
+          required: true,
+          email: true
         },
         "user[password]": {
           required: true
