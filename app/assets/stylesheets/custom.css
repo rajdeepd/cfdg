@@ -2112,6 +2112,10 @@ ul.posts li .commentText .commentDate{
 }
 .articleImg{
     margin-bottom: 30px;
+    display: block;
+    margin: 0 auto 30px;
+    max-height: 319px;
+    max-width: 877px;
 }
 .articleDescription{
     width: 740px;
