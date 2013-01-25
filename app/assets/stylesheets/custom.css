@@ -1712,7 +1712,7 @@ ul.eventGallery li{
 }
 .joinChapter{
     background: #ffffff;
-    padding: 30px 7px;
+    padding: 10px 7px;
     border-bottom: 1px solid #d8dee2;
 }
 
@@ -2119,9 +2119,10 @@ ul.posts li .commentText .commentDate{
     height: 100px;
     resize: none;
 }
-.joinChapter a{
-    padding: 9px 15px;
+.joinChapter button{
+    padding: 6px 15px;
     margin-left: 25px;
+    margin-top: 12px;
 }
 .chapterLayout .comments ul.posts li p{
     color: #333333;

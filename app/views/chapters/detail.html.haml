@@ -32,6 +32,11 @@
     %span.breadCrumbDivider /
     %span.activePage #{@chapter.try(:name)}
   .blueHeader
+    .tag
+      -if @chapter.chapter_type == "student"
+        %img{:src => "/assets/student_event_header_tag.png"}
+      -else
+        %img{:src => "/assets/professional_event_header_tag.png"}
     .chapterName.clearfix
       %h1 #{@chapter.try(:name)}
     .chapterDateAndPlace.clearfix
@@ -51,7 +56,8 @@
         - if @current_user.blank?
           = link_to 'Join Chapter' ,signin_path, :class => "join_us orangeBtn"
         - else
-          = submit_tag 'Join Chapter' , :class => "join_us orangeBtn"
+          -#= submit_tag 'Join Chapter' , :class => "join_us orangeBtn"
+          = button_tag 'Join Chapter' , :class => "join_us orangeBtn"
   .chapterLayout
     .row
       .span8
@@ -140,7 +146,7 @@
                     -else
                       %img{:src => "/assets/default_human_face.jpg"}
                     .commentText
-                      %p #{i.title}
+                      %h4 #{i.title}
                       %span.commentDate #{Time.parse(i.try(:created_at).to_s).strftime('%b %d, %Y')}
                   %p #{i.description.truncate(197)}
                   %a{:href => "#"} View more
