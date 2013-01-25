@@ -1408,8 +1408,8 @@ li.ui-timepicker-selected .ui-timepicker-duration,
     margin-bottom: 20px;
 }
 .loginLayout .formBox{
-    width: 620px;
-    margin: 0 auto;
+    /*width: 620px;*/
+    /*margin: 0 auto;*/
     border-bottom: 1px solid #cce6f6;
     padding-top: 30px;
 }
@@ -1422,7 +1422,18 @@ li.ui-timepicker-selected .ui-timepicker-duration,
     color: #777777;
     font-size: 20px;
     font-weight: 500;
-    margin: 0 0 20px 220px;
+    margin: 0 0 20px 0;
+    display: block;
+    text-align: center;
+}
+.formBox h4{
+    text-transform: capitalize;
+    color: #222222;
+    font-size: 20px;
+    font-weight: 500;
+    margin: 0 0 20px 0;
+    display: block;
+    text-align: center;
 }
 .formBox .control-label{
     width: 200px;
@@ -1497,12 +1508,13 @@ li.ui-timepicker-selected .ui-timepicker-duration,
 .blueBtn{
     background: url("blue_btn_bg.png") repeat-x;
     border: 1px solid #7faac5;
-    font-size: 14px;
+    font-size: 13px;
     color: #222222;
-    border-radius: 4px;
+    border-radius: 3px;
     font-weight: 500;
     padding: 6px 10px;
     line-height: 16px;
+    font-weight: bold;
 }
 .blueBtn:hover{
     background-image: none;
@@ -1732,7 +1744,12 @@ ul.eventGallery li{
     padding: 15px 0 4px 20px;
     border-radius: 5px;
     box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.2);
-    margin-bottom: 20px;
+    margin: 0 auto 20px;
+    width: 660px;
+}
+.formBox .control-group{
+    margin-left: 85px;
+    width: 600px;
 }
 .agendaBox p{
     color: #666666;
@@ -2240,5 +2257,79 @@ ul.posts li .commentText .commentDate{
 .settingDropdown ul.dropdown-menu li:first-child a{
     border-radius: 4px 4px 0 0;
     padding: 6px 15px;
+}
+.addBox{
+    width: 300px;
+    border: 1px solid #7faac5;
+    border-radius: 4px;
+}
+.addBox input{
+    width: 237px;
+    float: left;
+    border: none;
+
+}
+.addBox .blueBtn{
+    border-radius: 0 4px 4px 0;
+    border: none;
+    padding: 6px 15px 6px 14px;
+    border-left: 1px solid #7faac5;
+}
+.formBox .speakersList{
+    background: rgba(235, 246, 254, 1);
+    border: 1px solid #c1cdd6;
+    border-radius: 4px;
+    box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.1);
+    padding: 10px 10px 0;
+    overflow: hidden;
+    margin-bottom: 25px;
+    width: 650px;
+    margin: 0 auto;
+}
+.formBox .speakersList ul li{
+    background: #ffffff;
+    float: left;
+    width: 198px;
+    height: 48px;
+    border: 1px solid #e1e1e1;
+    overflow: hidden;
+    padding: 5px;
+    margin: 0 0 10px 10px;
+}
+.formBox .speakersList ul li:first-child{
+    margin-left: 0;
+}
+.formBox .speakersList ul li img{
+    float: left;
+    display: block;
+    width: 38px;
+    height: 38px;
+    border: 1px solid #aaaaaa;
+    margin-right: 10px;
+}
+.speakerDetails{
+    float: left;
+    margin-top: 2px;
+}
+.speakerDetails .speakerName{
+    color: #0094d4;
+    font-weight: bold;
+    font-size: 13px;
+    line-height: 18px;
+}
+.speakerDetails .speakerFrom{
+    color: #666666;
+    font-size: 13px;
+    line-height: 20px;
+}
+.closeTileIcon{
+    background: url("cross_thin.jpg") no-repeat;
+    width: 12px;
+    height: 12px;
+    display: block;
+}
+.formBox .closeTileIcon{
+    float: right;
+    border: none;
 }
 

@@ -42,6 +42,66 @@
                 .controls
                   %button.blueBtn Done
           .formBox
+            %h5 Add Speaker Details
+            %h4 Is Speaker already a CFDG member?
+            %form.form-horizontal
+              .control-group
+                %label.control-label
+                  Speaker Name
+                .controls
+                  .addBox
+                    %input{:type => "text"}
+                    %button.blueBtn Add
+              .speakersList
+                %ul
+                  %li
+                    %img{:src => "/assets/human_face_1.jpg"}
+                    .speakerDetails
+                      .speakerName Gary Russell
+                      .speakerFrom Banglore, India
+                    %button.closeTileIcon
+                  %li
+                    %img{:src => "/assets/human_face_1.jpg"}
+                    .speakerDetails
+                      .speakerName Gary Russell
+                      .speakerFrom Banglore, India
+                    %button.closeTileIcon
+                  %li
+                    %img{:src => "/assets/human_face_1.jpg"}
+                    .speakerDetails
+                      .speakerName Gary Russell
+                      .speakerFrom Banglore, India
+                    %button.closeTileIcon
+          .formBox
+            %form.form-horizontal
+              .control-group
+                .controls
+                  %button.bigButton.blueBtn.centerText
+                    %span If Speaker is not a CFDG member
+              .control-group
+                %label.control-label
+                  Speaker Name
+                .controls
+                  %input{:type => "text"}
+              .control-group
+                %label.control-label
+                  Description about Speaker
+                .controls
+                  %textarea
+              .control-group
+                %label.control-label
+                  Add Twitter Handle
+                .controls
+                  %input{:type => "text"}
+              .control-group
+                %label.control-label
+                  Add Linked profile link
+                .controls
+                  %input{:type => "text"}
+              .control-group
+                .controls
+                  %button.blueBtn Add Speaker
+          .formBox
             .form-horizontal
               .control-group
                 .controls
