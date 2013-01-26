@@ -19,9 +19,9 @@ class MailPreview < MailView
     ChapterMailer.approval_mail(@chapter)
   end
 
-  def denial_mail
+  def denied_mail
     @chapter = Chapter.all.first
-    ChapterMailer.denial_mail(@chapter)
+    ChapterMailer.denied_mail(@chapter)
   end
 
   def newly_created_chapter_mail

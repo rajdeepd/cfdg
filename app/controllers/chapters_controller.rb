@@ -94,7 +94,7 @@ class ChaptersController < ApplicationController
   # POST /chapters.json
 
   def create
-    @admin = User.find_by_email("admin@cloudfoundry.com")
+    @admin = User.admin_user
 
     @chapter = Chapter.new(params[:chapter])
     @chapter.setup_with_user(current_user)
@@ -108,10 +108,10 @@ class ChaptersController < ApplicationController
 
         ChapterMailer.new_chapter_mail(@chapter).deliver
 
-        format.html { redirect_to @chapter, notice: ['Chapter was successfully created.'] }
+        format.html { redirect_to @chapter, :flash => { :notice => [t("chapter.successfully_created")] } }
         format.json { render json: @chapter, status: :created, location: @chapter }
       else
-        flash[:error] = @chapter.errors.to_a
+        #flash[:error] = @chapter.errors.to_a
         format.html { render action: "new" , :layout => "create_chapter"}
         format.json { render json: @chapter.errors, status: :unprocessable_entity }
       end

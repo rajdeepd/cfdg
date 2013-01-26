@@ -37,7 +37,9 @@ class Admin::ChaptersController < ApplicationController
     case params[:status]
     when "incubate"
       chapter.incubate
+
       chapter.update_attributes(:approved_on => chapter.updated_at)
+
       ChapterMailer.approval_mail(chapter).deliver
       ChapterMailer.newly_created_mail(chapter,User.all_receivers).deliver
 
@@ -57,6 +59,8 @@ class Admin::ChaptersController < ApplicationController
     else
       chapter.deny
       chapter.update_attributes(:rejected_on => chapter.updated_at)
+      
+      ChapterMailer.denied_mail(chapter).deliver
       msg = "Rejected on #{chapter.rejected_on.strftime("%b %d, %Y")}"
     end
 

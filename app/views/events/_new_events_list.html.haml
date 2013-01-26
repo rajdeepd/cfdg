@@ -28,7 +28,6 @@
       - @two_upcoming_events.each do |event|    
         =  render 'events/event_entry', :event => event, :description => :short
 
-
     %ul.ul-g{:style => "margin-top:-20px;display:none" ,:id=>"all_events"}
       - @upcoming_events.each do |event|
         = render 'events/event_entry', :event => event, :description => :full

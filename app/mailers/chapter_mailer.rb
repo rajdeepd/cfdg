@@ -17,11 +17,11 @@ class ChapterMailer < ActionMailer::Base
     mail(:to => @primary_coord.email, :subject => I18n.t("mail.chapter_mailer.approval.subject", :chapter_name => @chapter.name))
   end
 
-  def denial_mail(chapter)
+  def denied_mail(chapter)
     @chapter = chapter
     @primary_coord = @chapter.get_primary_coordinator
 
-    mail(:to => @primary_coord.email, :subject => I18n.t("mail.chapter_mailer.denial.subject"))
+    mail(:to => @primary_coord.email, :subject => I18n.t("mail.chapter_mailer.denied.subject"))
   end
 
   def newly_created_mail(chapter, receivers)
