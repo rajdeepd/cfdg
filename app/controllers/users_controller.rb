@@ -61,6 +61,7 @@ class UsersController < ApplicationController
         redirect_to profile_path()
       end
     else
+      binding.pry
       flash[:error] = @user.errors.to_a
 
       @countries = Country.all
@@ -87,9 +88,11 @@ class UsersController < ApplicationController
     @user = current_user
 
     respond_to do |format|
-      if @user.update_attributes(params[:user].slice(:avatar))
+      @user.avatar = params[:user][:avatar]
+      if @user.save(:validate => false)
         format.json { render json: [@user.avatar.url(:medium)], status: :created, location: @user }
       else
+        binding.pry
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
@@ -104,6 +107,14 @@ class UsersController < ApplicationController
     @chapter = chapter_member.chapter if chapter_member
     @is_primary_coord = ChapterMember.is_primary_coordinator?(@user.id)
     @is_secondary_coord = ChapterMember.is_secondary_coordinator?(@user_id)
+
+    if @user.email.blank?
+      flash[:error] = [I18n.t("profile.account_not_confirmed")]
+    end
+
+    if !@user.email.blank? && !@user.is_confirmed?
+      flash[:error] = [I18n.t("profile.please_confirm")]
+    end
   end
 
   def confirm

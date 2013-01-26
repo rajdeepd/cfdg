@@ -40,7 +40,7 @@ class User < ActiveRecord::Base
 
   # Validations
   validates :name, :presence => true
-  validates :email, :presence => true, :format => { :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i, :message => "Invalid Email Address." }
+  validates :email, :presence => true, :format => { :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i, :message => I18n.t("errors.messages.invalid_email") }
   validates :mobile, :presence => true
 
   validates_associated :company_info, :if => "role == 'professional' || role == 'role'"

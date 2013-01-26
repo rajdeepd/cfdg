@@ -3,7 +3,6 @@
     .ca-left
       =form_for(@user, :as => :user, :url => user_path(@user), :html => { :method => :put ,  :multipart => true}) do |f|
         #welcome
-          %h3 Welcome #{@user.name}!
           %div
             - if @user.avatar_file_name && (@user.errors[:avatar_content_type].blank? && @user.errors[:avatar_file_size].blank?)
               %img.profile-image{:src => @user.try(:avatar).url(:medium)}/
@@ -11,7 +10,7 @@
               %img.profile-image{:src => "/assets/default-Profile-Image.png"}/
           %span.upload-button
             %span
-              = t("user_info.upload_avatar")
+              = t("settings.upload_avatar")
             = f.file_field :avatar, :id => 'avatar-upload'
           = image_tag "loader-tiny.gif", :id => "upload-loader", :class => "hide"
         .forms_list
@@ -58,7 +57,7 @@
                       %a(href="javascript:void(0)" id="college-not-found")
                         = t('settings.college_not_found')
                     %div(id="input-college"){ :class => ("hide" if current_user.school_info.try(:other_college_name).blank?) }
-                      = builder.text_field :other_college_name, :placeholder => t('school_info.school_name'), :class => "textboxes input-a"
+                      = builder.text_field :other_college_name, :placeholder => SchoolInfo.human_attribute_name(:other_college_name), :class => "textboxes input-a"
                       %br
                       %a(href="javascript:void(0)" id="back-to-college-select")
                         = t('settings.back_to_select')
@@ -68,7 +67,7 @@
                       %a(href="javascript:void(0)" id="institution-not-found")
                         = t('settings.institution_not_found')
                     %div(id="input-institution"){ :class => ("hide" if current_user.school_info.try(:other_institution_name).blank?) }
-                      = builder.text_field :other_institution_name, :placeholder => t('school_info.institution'), :class => "textboxes input-a"
+                      = builder.text_field :other_institution_name, :placeholder => SchoolInfo.human_attribute_name(:other_institution_name), :class => "textboxes input-a"
                       %br
                       %a(href="javascript:void(0)" id="back-to-institution-select"){ :class => ("hide" if current_user.school_info.try(:college_id).nil?) }
                         = t('settings.back_to_select')

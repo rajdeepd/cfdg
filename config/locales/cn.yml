@@ -67,7 +67,9 @@ cn:
   announcements: 
     heading: 公告
     earlier: 更早的公告
+
   user_info: 
+    updated: 你的设置已更新。
     roles: 
       professional: 职业开发者
       student: 学生
@@ -79,6 +81,7 @@ cn:
     college_not_found: 未找到此学校
     institution_not_found: 未找到此学院
     back_to_select: 返回
+    upload_avatar: 编辑头像
 
   profile: 
     welcome: 欢迎
@@ -87,6 +90,7 @@ cn:
     account_not_confirmed: "请完成注册信息并确认账户。"
     resend_confirmation: "重发确认"
     confirmation_sent: "确认已发出"
+    please_confirm: "Please confirm your email address. If you didn't get the confirmation email, click the link below to resend or change your emails in the user account."
 
   confirmation: 
     user: 
@@ -195,6 +199,7 @@ cn:
       too_long: 过长（最长为 %{count} 个字符）
       too_short: 过短（最短为 %{count} 个字符）
       wrong_length: 长度非法（必须为 %{count} 个字符）
+      invalid_email: 地址无效
     template:
       body: 如下字段出现错误：
       header:
@@ -226,6 +231,8 @@ cn:
         title: 职位
         tel: 电话
       school_info:
+        other_college_name: 学校
+        other_institution_name: 学院
         school_name: 学校
         institution: 学院
         major: 专业

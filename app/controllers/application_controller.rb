@@ -31,8 +31,8 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(user)
-
     if @user.email.nil?
+      flash[:notice] = [t("profile.account_not_confirmed")]
       settings_path()
     else
       if flash[:notice].blank?
