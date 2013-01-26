@@ -68,26 +68,10 @@ cn:
     heading: 公告
     earlier: 更早的公告
   user_info: 
-    name: 姓名
-    email: 邮箱
-    mobile: 手机
-    upload_avatar: 编辑头像
-    updated: 你的设置已更新。
     roles: 
       professional: 职业开发者
       student: 学生
       fan: 技术爱好者
-  company_info: 
-    company_name: 公司
-    industry: 行业
-    department: 部门
-    title: 职位
-    tel: 电话
-  school_info: 
-    school_name: 学校
-    institution: 学院
-    major: 专业
-    graduated_at: 毕业时间
 
   settings: 
     personal_info: 请填写个人信息：
@@ -186,3 +170,66 @@ cn:
       default: "%Y-%m-%d %H:%M"
       only_time: "%H:%M"
       only_date: "%Y-%m-%d"
+
+  errors: &errors
+    format: ! '%{attribute} %{message}'
+    messages:
+      accepted: 必须是可被接受的
+      blank: 不能为空字符
+      confirmation: 与确认值不匹配
+      empty: 不能留空
+      equal_to: 必须等于 %{count}
+      even: 必须为双数
+      exclusion: 是保留关键字
+      greater_than: 必须大于 %{count}
+      greater_than_or_equal_to: 必须大于或等于 %{count}
+      inclusion: 不包含于列表中
+      invalid: 是无效的
+      less_than: 必须小于 %{count}
+      less_than_or_equal_to: 必须小于或等于 %{count}
+      not_a_number: 不是数字
+      not_an_integer: 必须是整数
+      odd: 必须为单数
+      record_invalid: ! '验证失败: %{errors}'
+      taken: 已经被使用
+      too_long: 过长（最长为 %{count} 个字符）
+      too_short: 过短（最短为 %{count} 个字符）
+      wrong_length: 长度非法（必须为 %{count} 个字符）
+    template:
+      body: 如下字段出现错误：
+      header:
+        one: 有 1 个错误发生导致「%{model}」无法被保存。
+        other: 有 %{count} 个错误发生导致「%{model}」无法被保存。
+
+  activemodel:
+    errors:
+      <<: *errors
+  activerecord:
+    models:
+      post: 消息
+      event: 活动
+      chapter: 分会
+      user: 用户
+      company_info: 职业信息
+      school_info: 学生信息
+    attributes:
+      user:
+        name: 姓名
+        email: 邮箱
+        mobile: 手机
+        state: 省份
+        role: 角色
+      company_info:
+        company_name: 公司
+        industry: 行业
+        department: 部门
+        title: 职位
+        tel: 电话
+      school_info:
+        school_name: 学校
+        institution: 学院
+        major: 专业
+        graduated_at: 毕业时间
+
+    errors:
+      <<: *errors

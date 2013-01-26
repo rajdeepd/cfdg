@@ -19,11 +19,11 @@
             %h4.form1
               = t('settings.personal_info')
             %div
-              = f.text_field :name ,  :placeholder => t('user_info.name'), :class => "textboxes input-a"
+              = f.text_field :name,  :placeholder => User.human_attribute_name(:name), :class => "textboxes input-a"
             %div
-              = f.text_field :email ,      :placeholder => t('user_info.email'),    :class => "textboxes input-a"
+              = f.text_field :email, :placeholder => User.human_attribute_name(:email),    :class => "textboxes input-a"
             %div
-              = f.text_field :mobile ,     :placeholder => t('user_info.mobile'),    :class => "textboxes input-a"
+              = f.text_field :mobile,:placeholder => User.human_attribute_name(:mobile),    :class => "textboxes input-a"
             %div
               = f.select :state, options_for_select(@states.collect { |s| [s.name, s.id]}, @state.id) 
               = f.select :city_id, options_for_select(@cities.collect { |c| [c.name, c.id]}, @city.id)
@@ -41,16 +41,15 @@
               %div.tab{ :id => "company-info", :class => ("hide" if @user.role == 'student') }
                 = f.fields_for :company_info do |builder|
                   %div
-                    = builder.text_field :company_name, :placeholder => t('company_info.company_name'), :class => "textboxes input-a"
+                    = builder.text_field :company_name, :placeholder => CompanyInfo.human_attribute_name(:company_name), :class => "textboxes input-a"
                   %div
-                    = builder.text_field :industry, :placeholder => t('company_info.industry'), :class => "textboxes input-a"
+                    = builder.text_field :industry, :placeholder => CompanyInfo.human_attribute_name(:industry), :class => "textboxes input-a"
                   %div
-                    = builder.text_field :department, :placeholder => t('company_info.department'), :class => "textboxes input-a"
+                    = builder.text_field :department, :placeholder => CompanyInfo.human_attribute_name(:department), :class => "textboxes input-a"
                   %div
-                    = builder.text_field :title, :placeholder => t('company_info.title'), :class => "textboxes input-a"
+                    = builder.text_field :title, :placeholder => CompanyInfo.human_attribute_name(:title), :class => "textboxes input-a"
                   %div
-                    = builder.text_field :tel, :placeholder => t('company_info.tel'),  :class => "textboxes input-a"
-
+                    = builder.text_field :tel, :placeholder => CompanyInfo.human_attribute_name(:tel),  :class => "textboxes input-a"
               %div.tab{ :id => "school-info", :class => ("hide" unless @user.role == 'student') }
                 = f.fields_for :school_info do |builder|
                   %div.select-college
@@ -74,9 +73,9 @@
                       %a(href="javascript:void(0)" id="back-to-institution-select"){ :class => ("hide" if current_user.school_info.try(:college_id).nil?) }
                         = t('settings.back_to_select')
                   %div
-                    = builder.text_field :major, :placeholder => t('school_info.major'), :class => "textboxes input-a"
+                    = builder.text_field :major, :placeholder => SchoolInfo.human_attribute_name(:major), :class => "textboxes input-a"
                   %div
-                    = builder.text_field :graduated_at, :placeholder => t('school_info.graduated_at'),  :class => "textboxes input-a"
+                    = builder.text_field :graduated_at, :placeholder => SchoolInfo.human_attribute_name(:graduated_at),  :class => "textboxes input-a"
 
             .styled
               = f.submit "CONTINUE" , :class => "continue btn-a-small flt-right"

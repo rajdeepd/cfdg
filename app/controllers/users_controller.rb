@@ -32,7 +32,7 @@ class UsersController < ApplicationController
 
     @user = User.find(params[:id])
 
-    attrs = params[:user]
+    attrs = params[:user].except(:state, :country)
 
     case attrs[:role]
     when "professional", "fan"
