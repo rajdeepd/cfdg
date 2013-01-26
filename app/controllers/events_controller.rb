@@ -219,18 +219,22 @@ class EventsController < ApplicationController
   # POST /events.json
   def create
     @event = Event.new(params[:event])
+    @event.start_time = Time.parse(params[:event][:start_time])
+    @event.end_time = Time.parse(params[:event][:end_time])
+
     respond_to do |format|
       if @event.save
-        start_date = (params[:event][:event_start_date].blank? or params[:event][:event_start_time].blank?) ? "" : Time.parse(params[:event][:event_start_date]+" " +params[:event][:event_start_time]).strftime('%Y-%m-%d %H:%M:%S')
-        end_date = (params[:event][:event_end_date].blank? or  params[:event][:event_end_time].blank?) ? "" : Time.parse(params[:event][:event_end_date]+" " +params[:event][:event_end_time]).strftime('%Y-%m-%d %H:%M:%S')
+        #start_date = (params[:event][:event_start_date].blank? or params[:event][:event_start_time].blank?) ? "" : Time.parse(params[:event][:event_start_date]+" " +params[:event][:event_start_time]).strftime('%Y-%m-%d %H:%M:%S')
+        #end_date = (params[:event][:event_end_date].blank? or  params[:event][:event_end_time].blank?) ? "" : Time.parse(params[:event][:event_end_date]+" " +params[:event][:event_end_time]).strftime('%Y-%m-%d %H:%M:%S')
 
         #venue_id = get_venue_id
         #eventbrite_event = @eb_client.event_new(:venue_id => venue_id , :organizer_id =>  EVENTBRITE_ORGANIZATION_ID , :name => params[:name], :start_date => start_date, :end_date => end_date,  :title => params[:event][:title], :description => params[:event][:description])
         #eventbrite_id = eventbrite_event.parsed_response["process"]["id"].to_s
         #@event.update_attribute(:eventbrite_id, eventbrite_id)
 
-        @event_memeber = EventMember.new(:event_id => @event.id, :user_id => current_user.id)
-        @event_memeber.save!
+        @event_member = EventMember.new(:event_id => @event.id, :user_id => current_user.id)
+        @event_member.confirmed_at = Time.now # the event creator should be automaitcally confirmed.
+        @event_member.save!
 
 
         @chapter = Chapter.find(@event.chapter_id)
@@ -248,7 +252,6 @@ class EventsController < ApplicationController
       else
         format.js
       end
-
     end
   end
 
@@ -379,7 +382,8 @@ class EventsController < ApplicationController
     @upcoming_events = []
     chapter_events.each do |event|
       @all_events.push(event)
-      if(Time.parse(event.event_start_date+" "+ event.event_start_time) >= Time.now)
+
+      if(event.start_time >= Time.now)
         @upcoming_events.push(event)
       else
         @past_events.push(event)
@@ -401,7 +405,7 @@ class EventsController < ApplicationController
       end
       @all_events.push(event)
 
-      if(!event.event_start_date.blank? && Time.parse(event.event_start_date+" "+ event.event_start_time) >= Time.now)
+      if(event.start_time >= Time.now)
         @upcoming_events.push(event)
       else
         @past_events.push(event)

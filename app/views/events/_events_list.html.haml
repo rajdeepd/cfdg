@@ -1,66 +1,44 @@
 -if  @profile_page == true
   %ul.ul-f
     %li
-      %a{:href => "#", :chapter_id => @chapter.id } Post
+      %a{:href => "#", :chapter_id => @chapter.id }
+        = t("chapter.post")
       %i.bg-arrow-down-b
     %li.ulf-selected
-      %a{:href => "#", :class=>"uli-selected", :chapter_id => @chapter.id} Events
+      %a{:href => "#", :class=>"uli-selected", :chapter_id => @chapter.id}
+        = t("chapter.events")
       %i.bg-arrow-down-b
     %li
       -if @current_user.present? and ChapterMember.am_i_coordinator?(@current_user.id , @chapter.id)
-        %a{:href => "#", :chapter_id => @chapter.id ,:id =>"group_admin_ref"} Chapter Admin
+        %a{:href => "#", :chapter_id => @chapter.id ,:id =>"group_admin_ref"}
+          = t("chapter.chapter_admin")
         %i.bg-arrow-down-b
 
    
 #events
   - if @upcoming_events.blank? && @past_events.blank?
     .marg-top
-      %h1.label-44{:style=> "font-size:18px;"} No Events
+      %h1.label-44{:style=> "font-size:18px;"}
+        = t("events.no_events")
+
   -if !@upcoming_events.blank?
     .marg-top
-      %h1.label-44{:style=> "font-size:18px;"} Upcoming Events
+      %h1.label-44{:style=> "font-size:18px;"}
+        = t("events.upcoming_events")
     %ul.ul-g{:style => "margin-top:-20px;" ,:id=>"two_events"}
       - @two_upcoming_events.each do |event|    
-        %li
-          .div-c
-            -if(!event.event_start_date.blank?)
-              %h1.label-23 #{Time.parse(event.event_start_date.to_s).strftime('%d')}
-              %h4.label-24 #{Time.parse(event.event_start_date.to_s).strftime('%b')}
-          .div-h
-            %a.label-9.event_expand{:href => "#{event_path(event.id)}", :event_id=> event.id, :target=>"_blank"} #{event.title.truncate(15)}
-            = event_action_buttons(event)
-
-            %div.clr
-            %label.label-25
-              -if(!event.event_start_date.blank?)
-                #{Time.parse(event.event_start_time_in_time.to_s).strftime('%I:%M %p')} #{Date.parse(event.event_start_date_in_date.to_s).strftime(",%A %b %d, %Y")} I #{event.entry_fee}  per person
-              Location: #{event.address_line1}
-            %p.label-26{:id => "short_content"}
-              #{raw truncate(event.description, :length => 30, :omission => '...')}
+        = render 'events/event_entry', :event => event, :description => :short
             
 
     %ul.ul-g{:style => "margin-top:-20px;display:none" ,:id=>"all_events"}
       - @upcoming_events.each do |event|
-        %li
-          .div-c
-            -if(!event.event_start_date.blank?)
-              %h1.label-23 #{Time.parse(event.event_start_date.to_s).strftime('%d')}
-              %h4.label-24 #{Time.parse(event.event_start_date.to_s).strftime('%b')}
-          .div-h
-            %a.label-9.event_expand{:href => "#{event_path(event.id)}", :event_id => event.id, :target=>"_blank"} #{event.title.truncate(15)}
-            = event_action_buttons(event)
-            
-            %div.clr
-            %label.label-25
-              -if(!event.event_start_date.blank?)
-                #{Time.parse(event.event_start_time_in_time.to_s).strftime('%I:%M %p')} #{Date.parse(event.event_start_date_in_date.to_s).strftime(",%A %b %d, %Y")} I #{event.entry_fee}  per person
-              Location: #{event.address_line1}
-            %p.label-26{:id => "full_content"}
-              #{event.description}
+        = render 'events/event_entry', :event => event, :description => :full
+
     -if @upcoming_events.size > 2
       %ul
         %li.flt-right{:style => "margin-top:10px;"}
-          %a.label-27{:href => "#" ,:id=>"upcoming_events"} See all upcoming events...   
+          %a.label-27{:href => "#" ,:id=>"upcoming_events"}
+            = t("events.see_all_upcoming_events")   
 
   #past_events
     = render "events/past_events"

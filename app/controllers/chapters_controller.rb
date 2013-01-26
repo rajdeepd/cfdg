@@ -173,7 +173,7 @@ class ChaptersController < ApplicationController
     @past_events = []
     @upcoming_events = []
     @all_events.each do |event|       
-      if(!event.event_start_date.blank? && Time.parse(event.event_start_date+" "+ event.event_start_time) >= Time.now)
+      if(event.start_time >= Time.now)
         @upcoming_events.push(event)
       else
         @past_events.push(event)

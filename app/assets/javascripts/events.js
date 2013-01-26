@@ -1,5 +1,4 @@
 Events = {
-
     init:function(){
         $('#create_event').die('click').live('click',function(e){
             e.preventDefault();
@@ -142,7 +141,6 @@ Events = {
         $('#edit_agenda').die('click').live('click', function(e){
             $('#agenda_text_area').show();
         });
-
     }
 
 }

@@ -16,18 +16,7 @@
               Action
     %tbody
       - @events.each do |event|
-        %tr{:id => "event-#{event.id}" }
-          %td{:style => "text-align: left;"}
-            %h5.label-48= event.title
-          %td
-            %h5.label-48= event.event_start_date
-          %td
-            %h5.label-48= event.event_end_date
-          %td
-            %h5.label-48= event.try(:chapter).location
-          %td
-            %h5.label-48
-              =link_to "unblock", unblock_admin_event_path(event), :class => "btn-a-small change_status",:remote => true,:method => "post"
+        = render 'admin/events/event_entry', :event => event, :action_for => :block
 
       %tr
 - else

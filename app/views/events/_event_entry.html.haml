@@ -1,0 +1,22 @@
+%li
+  .div-c
+    %h1.label-23 
+      = event.start_time.strftime('%d')
+    %h4.label-24 
+      = event.start_time.strftime('%b')
+  .div-h
+    %a.label-9.event_expand{:href => "#{event_path(event.id)}", :event_id=> event.id, :target=>"_blank"} #{event.title.truncate(15)}
+    = event_action_buttons(event)
+
+    %div.clr
+    %label.label-25
+      = event.schedule
+    %br
+    %label.label-25
+      = event.location
+    - if description == :short
+      %p.label-26{:id => "short_content"}
+        #{raw truncate(event.description, :length => 30, :omission => '...')}
+    - if description == :full
+      %p.label-26{:id => "full_content"}
+        #{event.description}

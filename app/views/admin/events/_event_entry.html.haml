@@ -1,0 +1,18 @@
+%tr{:id => "event-#{event.id}" }
+  %td{:style => "text-align: left;"}
+    %h5.label-48= event.title
+  %td
+    %h5.label-48= I18n.l(event.start_time) 
+  %td
+    %h5.label-48= I18n.l(event.end_time) 
+  %td
+    %h5.label-48= event.location
+  %td
+    %h5.label-48
+      - if action_for == :active
+        = link_to "block", block_admin_event_path(event), :class => "btn-a-small change_status",:remote => true,:method => "post"
+      - if action_for == :applied
+        = link_to "Approve", approve_admin_event_path(event), :class => "btn-a-small change_status",:remote => true, :method => "post"
+        = link_to "Deny", deny_admin_event_path(event), :class => "btn-a-small change_status",:remote => true, :method => "post"
+      - if action_for == :block
+        = link_to "unblock", unblock_admin_event_path(event), :class => "btn-a-small change_status",:remote => true,:method => "post"

@@ -10,37 +10,37 @@ module EventsHelper
   end
 
   def attending_event_button
-    content_tag(:button, "Attending", :id => "event_rsvped", :style => "opacity:0.35", 
+    content_tag(:button, t("button.attending"), :id => "event_rsvped", :style => "opacity:0.35", 
                 :class => "btn-a-small flt-right")
   end
 
   def rsvp_event_button(event)
-    content_tag(:button, "R.S.V.P", :id => "follow_an_event", :event_id => event.id, 
+    content_tag(:button, t("button.rsvp"), :id => "follow_an_event", :event_id => event.id, 
                 :class => "btn-a-small flt-right")
   end
 
   def cancelled_event_button(event)
-    content_tag(:button, "CANCELLED", :id => "cancelled_event", :event_id => event.id, 
+    content_tag(:button, t("button.cancelled"), :id => "cancelled_event", :event_id => event.id, 
                 :style => "opacity:0.35", :disable => true, :class => "btn-a-small flt-right")
   end
 
   def delete_event_button(event)
-    content_tag(:button, "DELETE", :id => "delete_an_event", :event_id => event.id, 
+    content_tag(:button, t("button.delete"), :id => "delete_an_event", :event_id => event.id, 
                 :class => "btn-a-small flt-right")
   end
 
   def cancel_event_button(event)
-    content_tag(:button, "CANCEL", :id => "cancel_an_event", :event_id => event.id, 
+    content_tag(:button, t("button.cancel"), :id => "cancel_an_event", :event_id => event.id, 
                 :class => "btn-a-small flt-right")
   end
 
   def resend_confirm_event_button(event)
-    content_tag(:button, "Resend Confirmation", :id => "resend_event_confirmation", :event_id => event.id, 
+    content_tag(:button, t("button.resend_confirmation"), :id => "resend_event_confirmation", :event_id => event.id, 
                 :'data-href' => resend_event_confirmation_path(), :class => "btn-a-small flt-right")
   end
 
   def blocked_event_button(event)
-    content_tag(:button, "BLOCKED", :disabled => "disabled", :class => "btn-a-small flt-right", :style => "opacity:0.35")    
+    content_tag(:button, t("button.blocked"), :disabled => "disabled", :class => "btn-a-small flt-right", :style => "opacity:0.35")    
   end
 
   def event_action_buttons(event)
@@ -65,7 +65,7 @@ module EventsHelper
           if event.blocked?
             buttons += blocked_event_button(event)
           else
-            buttons += link_to("EDIT",edit_chapter_event_path(event.chapter_id,event.id),:class => "btn-a-small flt-right") 
+            buttons += link_to(t("button.edit"),edit_chapter_event_path(event.chapter_id,event.id),:class => "btn-a-small flt-right") 
             buttons += cancel_event_button(event)
             buttons += delete_event_button(event) if event.can_be_deleted?
           end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130123050642) do
+ActiveRecord::Schema.define(:version => 20130125090013) do
 
   create_table "announcements", :force => true do |t|
     t.string   "title"
@@ -172,8 +172,6 @@ ActiveRecord::Schema.define(:version => 20130123050642) do
 
   create_table "events", :force => true do |t|
     t.string   "title"
-    t.string   "event_start_date"
-    t.string   "event_end_date"
     t.string   "status"
     t.string   "description"
     t.string   "entry_fee"
@@ -185,14 +183,14 @@ ActiveRecord::Schema.define(:version => 20130123050642) do
     t.datetime "updated_at",          :null => false
     t.string   "address_line1"
     t.string   "address_line2"
-    t.string   "event_start_time"
-    t.string   "event_end_time"
     t.string   "postal_code"
     t.string   "eventbrite_id"
     t.text     "agenda_and_speakers"
     t.integer  "attendees_count"
     t.boolean  "is_cancelled"
     t.text     "resources_request"
+    t.datetime "start_time"
+    t.datetime "end_time"
   end
 
   create_table "geolocations", :force => true do |t|

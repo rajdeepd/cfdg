@@ -61,7 +61,9 @@ cn:
     create_events: "组织活动"
     member_roles: 
       member: 同学
-      "primary coordinator": 特别助理
+      "primary coordinator": 主席
+    chapter_admin: "Chapter Admin"
+
   announcements: 
     heading: 公告
     earlier: 更早的公告
@@ -86,12 +88,14 @@ cn:
     institution: 学院
     major: 专业
     graduated_at: 毕业时间
+
   settings: 
     personal_info: 请填写个人信息：
     role_info: 选择您的身份：
     college_not_found: 未找到此学校
     institution_not_found: 未找到此学院
     back_to_select: 返回
+
   profile: 
     welcome: 欢迎
     location: 所在城市
@@ -99,6 +103,7 @@ cn:
     account_not_confirmed: "请完成注册信息并确认账户。"
     resend_confirmation: "重发确认"
     confirmation_sent: "确认已发出"
+
   confirmation: 
     user: 
       notice: 确认邮件已发送到你的邮箱。请通过邮件中的链接确认。请在30分钟内确认，完成你的注册。
@@ -112,20 +117,20 @@ cn:
       new_chapter: 
         subject: 新分会申请
       approval: 
-        subject: "%{chapter_name} 分会申请通过批准"
+        subject: "%{chapter_name}分会申请通过批准"
       denial: 
         subject: 感谢申请新分会
       newly_created: 
-        subject: "%{chapter_name} 分会成立了"
+        subject: "%{chapter_name}分会成立了"
     event_mailer: 
       new_event: 
         subject: 新活动申请
       rsvp_confirm: 
-        subject: "请确认报名 %{chapter_name} 分会活动"
+        subject: "请确认报名 %{chapter_name}分会活动"
       rsvp_confirmed:
-        subject: "欢迎参加 %{chapter_name} 分会活动"
+        subject: "欢迎参加 %{chapter_name}分会活动"
       approval:
-        subject: "%{chapter_name} 活动申请成功"
+        subject: "%{chapter_name}活动申请成功"
       denial:
         subject: "感谢申请新活动"
       admin_event_cancelled:
@@ -133,16 +138,17 @@ cn:
       admin_event_changed:
         subject: "活动变更"
       event_cancelled_notice:
-        subject: "%{event_title} 已取消"
+        subject: "%{event_title}已取消"
       event_changed_notice:
-        subject: "%{event_title} 重要通知"
+        subject: "%{event_title}活动重要通知"
       new_event_notice:
-        subject: "%{chapter_name} 分会有新活动了"
+        subject: "%{chapter_name}分会有新活动了"
 
   admin: 
     chapter_status: "分会状态"
     announcement: 公告
     events: 活动
+
   events: 
     upcoming_events: "新活动"
     rsvped_need_confirmation: "你将收到一封确认邮件。请在24小时内通过邮件中的链接确认报名。"
@@ -150,15 +156,33 @@ cn:
     rsvp_resend: "你的确认邮件已过期。新的确认邮件已发到你的邮箱。请在24小时内通过邮件中的链接确认。"
     event_blocked: "此次活动已被网站管理员锁定。你无法修改此次活动。有问题，请与网站管理员联系。"
     successfully_updated: "Event was successfully updated."
+    see_all_upcoming_events: "See all upcoming events..."
+    no_events: "No Events"
 
   event_form: 
     form_title: "为%{chapter_name}分会组织一个活动"
     event_title: "活动名称"
-    event_starts_on: "活动开始时间"
-    event_ends_on: "活动结束时间"
+    event_starts_on: "开始时间"
+    event_ends_on: "结束时间"
     event_location: 地点
+
   button: 
     create: 创建
     cancel: 取消
     edit: 编辑
     delete: 删除
+    rsvp: R.S.V.P
+    attending: Attending
+    cancelled: CANCELLED
+    resend_confirmation: 重发确认
+    blocked: BLOCKED
+
+  date:
+    formats:
+      default: "%Y-%m-%d"
+
+  time:
+    formats:
+      default: "%Y-%m-%d %H:%M"
+      only_time: "%H:%M"
+      only_date: "%Y-%m-%d"
