@@ -10,6 +10,7 @@ class Admin::ChaptersController < ApplicationController
     end
   end  
 
+
   def incubate
    @chapters = Chapter.incubated_chapters
    render :layout => false
@@ -86,5 +87,32 @@ class Admin::ChaptersController < ApplicationController
     @chapter = Chapter.find(params[:id])
     @chapter.save_secondary_coordinator(member)
     redirect_to add_secondary_coordinator_admin_chapter_path(@chapter)
+  end
+
+  def edit
+    @chapter = Chapter.find(params[:id])
+
+    respond_to do |format|
+      format.html{ render :layout => false}
+      format.js
+    end
+  end
+
+  def update
+    @chapters = Chapter.all
+    @chapter = Chapter.find(params[:id])
+
+    respond_to do |format|
+      if @chapter.update_attributes(params[:chapter])
+        format.js
+      else
+        render :action => 'edit'
+      end
+    end
+  end
+
+  def chairmans
+    @chapters = Chapter.all
+    render :layout => false
   end
 end

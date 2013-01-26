@@ -48,11 +48,16 @@ ActiveRecord::Schema.define(:version => 20130125090013) do
     t.integer  "created_by"
     t.integer  "updated_by"
     t.datetime "deleted_at"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
     t.datetime "approved_on"
     t.datetime "rejected_on"
     t.integer  "college_id"
+    t.string   "chairman_photo_file_name"
+    t.string   "chairman_photo_content_type"
+    t.integer  "chairman_photo_file_size"
+    t.datetime "chairman_photo_updated_at"
+    t.text     "chairman_description"
   end
 
   create_table "cities", :force => true do |t|

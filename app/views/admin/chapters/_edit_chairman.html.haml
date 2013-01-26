@@ -1,0 +1,6 @@
+= semantic_form_for [:admin, @chapter],:html => { :multipart => true, :id => 'chairman_form' }, :remote => true   do |f|
+  = f.input :chairman_description
+  = f.input :chairman_photo, :as => :file
+  = f.submit 'submit' , :class => 'send'
+
+
