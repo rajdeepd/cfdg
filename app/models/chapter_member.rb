@@ -9,7 +9,7 @@ class ChapterMember < ActiveRecord::Base
   SECONDARY_COORDINATOR = "secondary coordinator"
   MEMBER = 'member'
  
-  scope :get_chapters, lambda{|user_id| where(:user_id => user_id)}
+  #scope :get_chapters, lambda{|user_id| where(:user_id => user_id)}
   scope :get_member, lambda{|user_id, chapter_id| where(" user_id = ? and chapter_id = ? ", user_id, chapter_id)}
   scope :get_details_if_coordinator, lambda{|user_id| where(" user_id = ? and memeber_type in (?)", user_id, [PRIMARY_COORDINATOR, SECONDARY_COORDINATOR])}
   #scope :am_i_coordinator?, lambda{|user_id, chapter_id)| where(" user_id = ? and chapter_id = ? and memeber_type in (?)", user_id, chapter_id, [PRIMARY_COORDINATOR, SECONDARY_COORDINATOR]]).present?}

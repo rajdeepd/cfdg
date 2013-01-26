@@ -1,0 +1,14 @@
+%ul.ul-f
+  %li{ :class => ("ulf-selected" if selected == :post ) }
+    %a{:href => "#", :chapter_id => chapter.id, :"data-target" => "Post" }
+      = t("chapter.post")
+    %i.bg-arrow-down-b
+  %li{ :class => ("ulf-selected" if selected == :event ) }
+    %a{:href => "#", :class=>"uli-selected", :chapter_id => chapter.id, :"data-target" => "Events" }
+      = t("chapter.events")
+    %i.bg-arrow-down-b
+  %li
+    -if current_user.present? and ChapterMember.am_i_coordinator?(current_user.id , chapter.id)
+      %a{:href => "#", :chapter_id => chapter.id ,:id =>"group_admin_ref", :"data-target" => "Chapter Admin"}
+        = t("chapter.chapter_admin")
+      %i.bg-arrow-down-b

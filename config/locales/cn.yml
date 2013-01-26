@@ -151,10 +151,8 @@ cn:
 
   event_form: 
     form_title: "为%{chapter_name}分会组织一个活动"
-    event_title: "活动名称"
-    event_starts_on: "开始时间"
-    event_ends_on: "结束时间"
     event_location: 地点
+    event_basics: 基础信息
 
   button: 
     create: 创建
@@ -239,6 +237,16 @@ cn:
         institution: 学院
         major: 专业
         graduated_at: 毕业时间
+      event:
+        title: 活动名称
+        start_time: 开始时间
+        end_time: 结束时间
+        address_line1: "Address Line 1" 
+        address_line2: "Address Line 2" 
+        attendees_count: Attendees Count
+        resources_request: Resources Request
+        postal_code: Postal Code
+        description: Description
 
     errors:
       <<: *errors

@@ -32,6 +32,7 @@ class Chapter < ActiveRecord::Base
   scope :active_chapters, where(:chapter_status => :active)
   scope :delist_chapters, where(:chapter_status => :delist)
   scope :incubated_or_active , where(:chapter_status => [:active,:incubated])
+  scope :undenied , where(:chapter_status => [:applied, :active, :incubated, :delist])
 
   state_machine :chapter_status, :initial => :applied do
 

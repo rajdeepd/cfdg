@@ -6,22 +6,21 @@
   .event-form
     .event-left{:style => "width:100%;"}
       .el-cont{:style => "margin-bottom: 16px;"}
-        %h2.label-45.flt-left #{t("event_form.form_title", :chapter_name => @event.chapter.try(:name))}
-        .event-left{:style => "width:95%;"}
+        %h2.label-45.flt-left 
+          = t("event_form.form_title", :chapter_name => @event.chapter.try(:name))
+      .el-cont
+        %h5.label-26.flt-left #{t("event_form.event_basics")} 
       .el-cont.createEventField
-        %label.label-26.eventTitle  #{t("event_form.event_title")}
-        = f.input :title , :input_html => {:class => "input-b size-f flt-left"} , :placeholder => "Event Title", :label => false
+        = f.input :title , :input_html => {:class => "input-b size-text-event-create"}, :placeholder => Event.human_attribute_name(:title), :label => false
       -#.error{:class => "el-cont"}
         %li{:style => "float:left;", :class => "inline-errors event_title"} &nbsp;
       .el-cont.createEventField
-        %label.flt-left.label-26 #{t("event_form.event_starts_on")}
-        = f.text_field :start_time, :class => "input-b size-f flt-left", :placeholder => "yyyy-mm-dd hh:mm", :label => false
+        = f.text_field :start_time, :class => "input-b size-text-event-create", :placeholder => Event.human_attribute_name(:start_time), :label => false
         .error{:class => "el-cont", :style => "clear:both"}
           %li{:style => "padding-left:74px;float:left;width:35%;", :class => "inline-errors event_event_start_date"}
           %li{:style => "float:left;padding-left:74px;", :class => "inline-errors event_event_start_time"}
       .el-cont.createEventField
-        %label.flt-left.label-26 #{t("event_form.event_ends_on")}
-        = f.text_field :end_time, :class => "input-b size-f flt-left", :placeholder => "yyyy-mm-dd", :label => false
+        = f.text_field :end_time, :class => "input-b size-text-event-create", :placeholder => Event.human_attribute_name(:end_time), :label => false
         .error{:class => "el-cont", :style => "clear:both"}
           %li{:style => "padding-left:74px;width:35%;", :class => "inline-errors event_event_end_date"}
           %li{:style => "padding-left:74px;", :class => "inline-errors event_event_end_time"}
@@ -33,24 +32,23 @@
       .el-cont{:style => "margin-bottom:2px;"}
         = @chapter.location
       .el-cont
-        = f.input :address_line1 , :input_html => {:class => "input-b size-text-event-create"} , :placeholder => "Address Line 1", :label => false
+        = f.input :address_line1 , :input_html => {:class => "input-b size-text-event-create"} , :placeholder => Event.human_attribute_name(:address_line1), :label => false
 
       .el-cont
-        = f.input :address_line2 , :input_html => {:class => "input-b size-text-event-create"} , :placeholder => "Address Line 2", :label => false
-
+        = f.input :address_line2 , :input_html => {:class => "input-b size-text-event-create"} , :placeholder => Event.human_attribute_name(:address_line2), :label => false
       .el-cont
         = f.hidden_field :chapter_id
       .el-cont
-        = f.input :postal_code , :input_html => {:class => "input-b size-text-event-create"} , :placeholder => "Postal code", :label => false
+        = f.input :postal_code , :input_html => {:class => "input-b size-text-event-create"} , :placeholder => Event.human_attribute_name(:postal_code), :label => false
       .el-cont
-        = f.text_field :attendees_count , :class => "input-b size-text-event-create", :placeholder => "Attendees Count", :label => false
+        = f.text_field :attendees_count , :class => "input-b size-text-event-create", :placeholder => Event.human_attribute_name(:attendees_count), :label => false
+
   .event-form{:style => "padding-top:10px; padding-bottom: 20px;"}
+    .el-cont
+      = f.text_area :description , :class => "input-b size-f" , :placeholder => Event.human_attribute_name(:description), :style => "height: 40px;margin:5px 0px;", :label => false
 
     .el-cont
-      = f.text_area :description , :class => "input-b size-f" , :placeholder => "Event description", :style => "height: 40px;margin:5px 0px;", :label => false
-
-    .el-cont
-      = f.text_area :resources_request, :class => "input-b size-f" , :placeholder => "resources_request", :style => "height: 40px;margin:5px 0px;", :label => false
+      = f.text_area :resources_request, :class => "input-b size-f" , :placeholder => Event.human_attribute_name(:resources_request), :style => "height: 40px;margin:5px 0px;", :label => false
     #spinner.spinner{:style => 'display:none;margin-right:10px;float:right;'}
       %img{:src => "/assets/spinner.gif", :alt => "Loading" , :id => 'img-spinner'}/
     #options{:style => "width:628px; overflow: hidden;"}

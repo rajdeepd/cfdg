@@ -1,29 +1,17 @@
 -if  @profile_page == true
-  %ul.ul-f
-    %li
-      %a{:href => "#", :chapter_id => @chapter.id }
-        = t("chapter.post")
-      %i.bg-arrow-down-b
-    %li.ulf-selected
-      %a{:href => "#", :class=>"uli-selected", :chapter_id => @chapter.id}
-        = t("chapter.events")
-      %i.bg-arrow-down-b
-    %li
-      -if @current_user.present? and ChapterMember.am_i_coordinator?(@current_user.id , @chapter.id)
-        %a{:href => "#", :chapter_id => @chapter.id ,:id =>"group_admin_ref"}
-          = t("chapter.chapter_admin")
-        %i.bg-arrow-down-b
+  = render "shared/profile_tab_header", :chapter => @chapter, :selected => :event
 
-   
 #events
   - if @upcoming_events.blank? && @past_events.blank?
     .marg-top
       %h1.label-44{:style=> "font-size:18px;"}
         = t("events.no_events")
+
   -if !@upcoming_events.blank?
     .marg-top
       %h1.label-44{:style=> "font-size:18px;"}
         = t('events.upcoming_events')
+
     %ul.ul-g{:style => "margin-top:-20px;" ,:id=>"two_events"}
       - @two_upcoming_events.each do |event|    
         =  render 'events/event_entry', :event => event, :description => :short

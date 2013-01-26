@@ -15,8 +15,9 @@
 
     .cc-left   
       %ul.ul-i.profile_content
-        - @user_chapters.each do |chaptermember|
+        - @chapters.each do |chapter|
           %li
-            %a{:href => "#{userevents_events_path(:chapter_id => chaptermember.chapter.id)}", :id=>"#{chaptermember.chapter.id}", :class=>"chapter_link", :style=>"font-size:16px"} #{chaptermember.chapter.name}
+            %a{:href => "#{userevents_events_path(:chapter_id => chapter.id)}", :id => chapter.id, :class => "chapter_link", :style=> "font-size:16px" }
+              = chapter.name
                      
       #event_content{ :style => "min-height: 10px;" }

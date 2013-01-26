@@ -95,27 +95,23 @@ Chapters ={
                 selectedClass="uli-selected";
                 //check to render events or posts or messages or multimedia
                 Chapters.renderContent($(e.target), $('.ul-f .ulf-selected a').text());
-
-
             }
             /*else if ($(this).hasClass('ul-f')){
              Chapters.renderContent($(e.target), $('.ul-f .ulf-selected a').text(), $('.ul-f .ulf-selected a').attr('chapter_id'));
              }     */
-            if($(e.target).text() == "Chapter Admin"){
+            if($(e.target).data("target") == "Chapter Admin"){
                 //$($('.profile_content')[0]).hide(); //hide the chapters ul for admin
                 Chapters.renderChapterAdmin($(e.target))
-            }else if($(e.target).text() == "Messages"){
+            }else if($(e.target).data("target") == "Messages"){
                 $($('.profile_content')[0]).hide();
                 Chapters.renderMessages($(e.target))
             }else if($(e.target).attr('id') == "create_event_from_chapter") {
                 Chapters.renderEventForm(e.target);
                 return;
-
-            }else if($(e.target).text() == "Events" || $(e.target).text() == "Photos" || $(e.target).text() == "Post"){
+            }else if($(e.target).data("target") == "Events" || $(e.target).data("target") == "Photos" || $(e.target).data("target") == "Post"){
                 $($('.profile_content')[0]).show();
                 $('#event_content').html("");
-                Chapters.renderContent($(e.target), $(e.target).text(), $(e.target).attr('chapter_id'));
-
+                Chapters.renderContent($(e.target), $(e.target).data("target"), $(e.target).attr('chapter_id'));
             }
 
 
