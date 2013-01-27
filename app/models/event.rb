@@ -94,16 +94,7 @@ class Event < ActiveRecord::Base
   end
 
   def is_past_event?
-    if self.event_start_date_in_date < Date.today
-      return true
-
-    elsif self.event_start_date_in_date == Date.today
-      if self.event_start_time_in_time < Time.now
-        return true
-      end
-    else
-      return false
-    end
+    self.start_time < Time.now
   end
 
 end

@@ -10,13 +10,13 @@
 
     %div.clr
     %label.label-25
-      = event.schedule
+      = I18n.l(event.start_time)
     %br
     %label.label-25
       = event.location
     - if description == :short
       %p.label-26{:id => "short_content"}
-        #{raw truncate(event.description, :length => 30, :omission => '...')}
+        = raw(truncate(event.description, :length => 30, :omission => '...'))
     - if description == :full
       %p.label-26{:id => "full_content"}
         #{event.description}

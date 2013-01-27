@@ -20,7 +20,6 @@
               -class_val = ' signin'
             -elsif !ChapterMember.is_primary_coordinator?(current_user.id)
               -href = "#{new_chapter_path}"
-
             如果你所在的城市或学校还没有Cloud Foundry同学会分会，不用担心。你可以自己创建一个分会，成为分会主席。
             如果你已经
             %a.blue{:href => "#", :class => class_val} 加入
@@ -64,7 +63,7 @@
           Cloud Foundry同学会的分会活动多种多样，你可以参加讨论，分享心得经验，更有机会和牛人面对面沟通。
         %p.label-16{:style => "line-height: 20px;margin-bottom: 40px;"}
           现在就到你的
-          %a.blue{:href => "#{directory_path}"} 分会主页
+          %a.blue{:href => directory_path} 分会主页
           去报名吧！
     .cf-bottom
       .cfb-div

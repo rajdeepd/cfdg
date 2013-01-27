@@ -2,27 +2,14 @@
 -#%h1
 %div.attendees
   .attendeesHeading
-    %strong LIST OF ATTENDEES &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+    %strong #{t("events.list_of_attendees")} &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
     %div.mCount
-      -if @event.id ==2
-        37
-      -else
-        #{@event.event_members.size}
+      = members.size
   %ul.attendeesList
-    -if @event.id ==2
-      -@members.each do |i|
-        %li
-          .imageHolder
-            = avatar_display_pic(i,'thumb', '30x30','profile.png',"profile-img img-a flt-left")
-          .nameHolder
-            = i.fullname
-          .clr
-      = link_to "See more","",:class => "all_attendees",:style => "color:#0097D7;float:right;margin-top:10px;"
-    -else
-      -@members.each do |i|
-        %li
-          .imageHolder
-            = avatar_display_pic(i,'thumb', '30x30','profile.png',"profile-img img-a flt-left")
-          .nameHolder
-            = i.fullname
-          .clr
+    - members.each do |m|
+      %li
+        .imageHolder
+          = avatar_display_pic(m,'thumb', '30x30','profile.png',"profile-img img-a flt-left")
+        .nameHolder
+          = m.name
+        .clr

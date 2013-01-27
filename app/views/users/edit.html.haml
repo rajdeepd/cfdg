@@ -74,7 +74,7 @@
                   %div
                     = builder.text_field :major, :placeholder => SchoolInfo.human_attribute_name(:major), :class => "textboxes input-a"
                   %div
-                    = builder.text_field :graduated_at, :placeholder => SchoolInfo.human_attribute_name(:graduated_at), :class => "textboxes input-a", :value => I18n.l(@user.school_info.try(:graduated_at), :format => :only_date)
+                    = builder.text_field :graduated_at, :placeholder => SchoolInfo.human_attribute_name(:graduated_at), :class => "textboxes input-a", :value => @user.school_info.try(:graduated_at).nil? ? "" : I18n.l(@user.school_info.try(:graduated_at), :format => :only_date)
 
             .styled
               = f.submit "CONTINUE" , :class => "continue btn-a-small flt-right"

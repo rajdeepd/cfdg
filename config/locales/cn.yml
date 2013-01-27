@@ -148,6 +148,7 @@ cn:
     successfully_updated: "Event was successfully updated."
     see_all_upcoming_events: "See all upcoming events..."
     no_events: "No Events"
+    list_of_attendees: "LIST OF ATTENDEES"
 
   event_form: 
     form_title: "为%{chapter_name}分会组织一个活动"

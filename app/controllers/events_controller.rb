@@ -65,7 +65,7 @@ class EventsController < ApplicationController
   def show
     @event = Event.find(params[:id])
     @emails = ''
-    @members = @event.event_members.includes(:user).collect{|i| i.user}
+    @members = @event.event_members.confirmed.includes(:user).collect{|i| i.user}
     @event.event_members.each do |member| @emails << (member.user.try(:email).to_s+"\;")  end
 
     if @event.event_galleries.present?
