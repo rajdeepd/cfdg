@@ -595,6 +595,7 @@ textarea.size-b{height: 84px;width: 163px;margin-bottom:0px;}
 	padding: 5px 0px 10px 10px;
 	overflow: hidden;
 	margin-bottom: 50px;
+	text-align: center;
 }
 .div-h{
 	width:558px;
@@ -613,9 +614,10 @@ textarea.size-b{height: 84px;width: 163px;margin-bottom:0px;}
 	overflow: hidden;
 }
 .column-a{
-	width:224px;
+	width:270px;
 	margin: 0px 10px 0px 0px;
 	float: left;
+	margin-left: 100px;
 }
 
 .bg-signup{
