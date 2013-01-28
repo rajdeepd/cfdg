@@ -39,7 +39,7 @@
       - @chapters.each do |type,chapters|
         .column-a
           %h3.label-37
-            = type
+            = t("chapter.types.#{type}")
           %ul.ui-j
             - chapters.each do |chp|
               %li{:style => "line-height:30px;"}
