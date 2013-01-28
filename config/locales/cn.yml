@@ -65,6 +65,7 @@ cn:
       member: 同学
       "primary coordinator": 主席
     chapter_admin: "Chapter Admin"
+    last_event_date: "Last Event Date:"
 
   announcements: 
     heading: 公告

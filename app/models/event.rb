@@ -35,6 +35,7 @@ class Event < ActiveRecord::Base
   scope :applied_events, where(:status => [:applied])
   scope :active_events, where(:status => [:active])
   scope :block_events, where(:status => [:blocked])
+  scope :available_events, where(:status => [:active, :blocked])
 
   state_machine :status, :initial => :applied do
     event :deny do

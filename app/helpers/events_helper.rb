@@ -63,7 +63,7 @@ module EventsHelper
 
         if ChapterMember.am_i_coordinator?(current_user.id, event.chapter.id) 
           if event.blocked?
-            buttons += blocked_event_button(event)
+            #buttons += blocked_event_button(event)
           else
             buttons += link_to(t("button.edit"),edit_chapter_event_path(event.chapter_id,event.id),:class => "btn-a-small flt-right") 
             buttons += cancel_event_button(event)

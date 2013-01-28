@@ -5,13 +5,10 @@
     - @past_events.each do |event|
       %li{:class => "my"}
         .div-c
-          -if event.image.present?
-            = image_tag(event.image, :style => "width:72px;height:80px")
-          -else
-            %h1.label-23 
-              = event.start_time.strftime('%d')
-            %h4.label-24
-              = event.start_time.strftime('%b')
+          %h1.label-23 
+            = event.start_time.strftime('%d')
+          %h4.label-24
+            = event.start_time.strftime('%b')
 
         .div-h
           %a.label-9.event_expand{:href => "#{event_path(event.id)}", :event_id => event.id,     :target=>"_blank"} #{event.title}

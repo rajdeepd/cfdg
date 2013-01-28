@@ -54,7 +54,8 @@
               %b{:style => "color: orange;font-size: 16px;text-transform: uppercase;font-weight: bold;"}= @chapter.try(:chapter_status)
             - last_event = @past_events.try(:first)
             - if last_event.present?
-              %h5.label-40 Last Event Date: #{Time.parse(last_event.event_start_date.to_s).strftime('%b %d, %Y')}
+              %h5.label-40
+                = "#{t("chapter.last_event_date")}#{l(last_event.start_time)}"
     .cc-left
       %ul.ul-f
         %li{:style=>"padding: 7px 20px;"}
