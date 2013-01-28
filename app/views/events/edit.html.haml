@@ -56,33 +56,6 @@
 
 :javascript
   $(document).ready(function(){
-    $('.edit_event').validate({
-      rules: {
-        "event[event_start_date]": {
-          required: true
-        },
-        "event[event_start_time]": {
-          required: true
-        },
-        "event[event_end_date]": {
-          required: true
-        },
-        "event[event_end_time]":{
-          required: true
-        },
-        "event[title]":{
-          required: true
-        },
-        "event[attendees_count]":{
-          digits: true
-        }
-        ,
-        "event[postal_code]":{
-          required: true,
-          eventPostalCode:true
-        }
-      }
-    });
     $('.edit_event').submit(function(event){
       if($(this).valid()){
         $("#event_form_submit").css("opacity",0.35);

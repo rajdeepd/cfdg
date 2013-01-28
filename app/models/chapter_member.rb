@@ -33,5 +33,4 @@ class ChapterMember < ActiveRecord::Base
   def self.is_just_member?(user_id)
   	ChapterMember.find(:all , :conditions => [" user_id = ? and memeber_type = ?", user_id, MEMBER]).present?
   end
-
 end

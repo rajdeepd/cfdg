@@ -216,8 +216,8 @@ class EventsController < ApplicationController
   # POST /events.json
   def create
     @event = Event.new(params[:event])
-    @event.start_time = Time.parse(params[:event][:start_time])
-    @event.end_time = Time.parse(params[:event][:end_time])
+    #@event.start_time = Time.parse(params[:event][:start_time])
+    #@event.end_time = Time.parse(params[:event][:end_time])
 
     respond_to do |format|
       if @event.save
@@ -247,6 +247,7 @@ class EventsController < ApplicationController
         #SES.send_raw_email(EventNotification.event_creation(@event,to_email,bcc_emails,@chapter))
         format.js
       else
+        binding.pry
         format.js
       end
     end
