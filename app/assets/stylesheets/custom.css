@@ -919,8 +919,9 @@ ul.supportPrivacyLinks li{
     z-index: -1;
 }
 .chapterDetails .mapDiv{
-    height: 460px;
-    top: 282px;
+    height: 369px;
+    top: 150px;
+    width: 568px;
 }
 .mapDiv .close{
     float: right;
@@ -1748,7 +1749,7 @@ ul.eventGallery li{
 .formBox .control-group .orangeBtn, .formBox .control-group .btn{
     width: 136px;
     border-radius: 5px;
-    height: 36px;
+    height: 35px;
     font-size: 16px;
     font-weight: 500;
     margin-right: 18px;
@@ -1804,7 +1805,11 @@ ul.eventGallery li{
     width: 20px;
     height: 20px;
 }
-
+.subscribedChapters a.noEventText{
+    font-size: 14px;
+    color: #0094D4;
+    margin-left: 0;
+}
 .event_error{
     text-align: center;
     color: red;
@@ -1977,12 +1982,12 @@ ul.posts li .commentText .commentDate{
 }
 .userDashboard .blueHeader .userEmail{
     /*background: url("email.png") no-repeat;*/
-    padding-left: 15px;
+    /*padding-left: 15px;*/
     display: block;
     float: left;
     color: #ffffff;
     font-size: 14px;
-    margin-right: 20px;
+    margin: 0 20px 9px 0;
     line-height: 16px;
 }
 
@@ -2190,7 +2195,6 @@ ul.posts li .commentText .commentDate{
 .joinChapter button{
     padding: 6px 15px;
     margin-left: 25px;
-    margin-top: 12px;
 }
 .joinChapter form{
     margin: 0;

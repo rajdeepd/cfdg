@@ -53,8 +53,8 @@
         -##{@current_user.fullname} l
         #{@current_user.fullname}
         -#%span CEO Accenture, Pune
+      %span.userEmail Email: #{@current_user.email}
       %span.chapterLocation  #{@current_user.location}
-      %span.userEmail  #{@current_user.email}
       %span.phoneNumber  #{@current_user.mobile}
       -if @current_user.user_profile_completion_status
         .userSocialLink.clearfix

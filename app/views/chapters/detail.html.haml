@@ -48,9 +48,8 @@
           %i.closeIcon
         -#%img{:src => "/assets/map.png"}
         = render :partial => "chapter_map"
-  .joinChapter
-    -#%button.orangeBtn Join Chapter
-    -if !@is_part_of_chapter
+  -if !@is_part_of_chapter
+    .joinChapter
       = form_tag join_a_chapter_chapters_path, :method => :post do
         = hidden_field_tag "chapter_id", "#{@chapter.id}"
         - if @current_user.blank?
