@@ -278,7 +278,7 @@
           .eventPeopleList
             .listHeader
               %span administrator
-              %span.numberOfPeople 1
+              %span.numberOfPeople
             %ul.clearfix.adminPanel
               %li
                 -#%img{:src => "/assets/human_face_4.jpg"}
@@ -289,7 +289,7 @@
           -if @coordinaters.present?
             .eventPeopleList
               .listHeader
-                %span Organisers
+                %span coordinators
                 %span.numberOfPeople #{@coordinaters.size}
               %ul.clearfix
                 -@coordinaters.each do |i|
