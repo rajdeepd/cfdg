@@ -46,5 +46,3 @@
                 %img{:src => "/assets/"+"#{chp.chapter_status.try(:capitalize)}"+".png", :style=> "width:15px;height:16px;margin-bottom: -3px;"}/
                 = link_to chp.name, chapter_path(chp), :class => "label-28"
                 %span{:title => "Chapter type"}= "(#{chp.chapter_type.first})"
-
-        

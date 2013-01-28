@@ -59,34 +59,6 @@
 
 :javascript
   $(document).ready(function(){
-
-    $('#new_event').validate({
-      rules: {
-        "event[event_start_date]": {
-          required: true
-        },
-        "event[event_start_time]": {
-          required: true
-        },
-        "event[event_end_date]": {
-          required: true
-        },
-        "event[event_end_time]":{
-          required: true
-        },
-        "event[title]":{
-          required: true
-        },
-        "event[attendees_count]":{
-          digits: true
-        }
-        ,
-        "event[postal_code]":{
-          required: true,
-          eventPostalCode:true
-        }
-      }
-    });
     //$("#image_upload_link").on("click",function(event){
     //  event.preventDefault();
     //  $("#event_image").trigger("click");
