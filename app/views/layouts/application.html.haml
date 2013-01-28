@@ -14,17 +14,14 @@
     = stylesheet_link_tag    "jquery.timepicker-1.2.2", :media => "all"
     = stylesheet_link_tag    "application", :media => "all"
 
-
-    %script{:src => "http://commons.qiniudn.com/jquery-1.8.3.min.js"}
-    %script{:src => "http://commons.qiniudn.com/jquery-ui-1.9.2.custom.min.js"}
-    = javascript_include_tag "ckeditor/init"
-    = javascript_include_tag "application"
-
     = csrf_meta_tags
   %body
+    = render "shared/flash_messages"
     = render "shared/header"
     = yield
     = render "shared/footer"
     = render "shared/login_dialog"
+    %script{:src => "http://commons.qiniudn.com/jquery-1.8.3.min.js"}
+    %script{:src => "http://commons.qiniudn.com/jquery-ui-1.9.2.custom.min.js"}
+    = javascript_include_tag "application"
     = yield :scripts
-    = content_for(:javascript)

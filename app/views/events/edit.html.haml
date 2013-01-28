@@ -1,80 +1,58 @@
 -#%h1 Edit chapter
 
--#= render 'form'
 = javascript_include_tag "jquery.validate"
-= stylesheet_link_tag    "event", :media => "all"
-= javascript_include_tag "jquery.timepicker-1.2.2"
 %div.content.wrapper
   = form_for @event ,:url => chapter_event_path(params[:chapter_id],params[:id]),:method => :put do |f|
-
     .event-form
       .event-left{:style => "width:100%;"}
         .el-cont{:style => "margin-bottom: 16px;"}
-          %h2.label-45.flt-left Edit Event For #{@event.chapter.try(:name)}
+          %h2.label-45.flt-left 
+            = "#{t("events.edit_event_for")}#{@event.chapter.try(:name)}"
       .event-left{:style => "width:610px;"}
         .el-cont.createEventField
-          %label.label-26.eventTitle  Event Title
+          %label.label-26.eventTitle
+            = Event.human_attribute_name(:title)
           .eventTitleEditLbl
             = f.text_field :title , :class => "input-b size-f",:placeholder => "Event Title"
         -#.error{:class => "el-cont"}
           %li{:style => "float:left;", :class => "inline-errors event_title"} &nbsp;
         .el-cont.createEventField
-          %label.flt-left.label-26 Starts On
+          %label.flt-left.label-26
+            = Event.human_attribute_name(:start_time)
           %li{:id => :event_event_start_date_input }
-            = f.text_field :event_start_date , :class => "input-b size-b size-of-inputs event_date"
-          %li{:id => :event_event_start_time_input }
-            = f.text_field :event_start_time , :class => "input-b size-b size-of-inputs  timepicker event_time_edit"
-        .error{:class => "el-cont"}
-          .start_time_validation{:style =>"color :red"}
-            -if @event.errors.any?
-              = @event.errors.messages[:event_start_time].first
-          %li{:style => "padding-left:72px;float:left;width:35%;", :class => "inline-errors event_event_start_date"} &nbsp;
-          %li{:style => "float:left;padding-left:14px;", :class => "inline-errors event_event_start_time"} &nbsp;
+            = f.text_field :start_time , :class => "input-b size-b size-of-inputs event_date"
         .el-cont.createEventField
-          %label.flt-left.label-26 Ends On
+          %label.flt-left.label-26
+            = Event.human_attribute_name(:end_time)
           %li{:id => :event_event_end_date_input }
-            = f.text_field :event_end_date, :class => "input-b size-b size-of-inputs event_date"
-          %li{:id => :event_event_end_time_input }
-            = f.text_field :event_end_time, :class => "input-b size-b size-of-inputs timepicker event_time_edit"
-        .error{:class => "el-cont"}
-          %li{:style => "padding-left:72px;float:left;width:35%;", :class => "inline-errors event_event_end_date"} &nbsp;
-          %li{:style => "float:left;padding-left:14px;", :class => "inline-errors event_event_end_time"} &nbsp;
+            = f.text_field :end_time, :class => "input-b size-b size-of-inputs event_date"
       .event-bottom
     .event-form
       .event-right
         .el-cont
-          %h5.label-26.flt-left Location
+          %h5.label-26.flt-left
+            = t("event_form.event_location")
         .el-cont
         .el-cont{:style => "margin-bottom:2px;"}
-          = @chapter.location
-
+          = @event.chapter.location
         .el-cont
-          = f.text_field :address_line1, :class => "input-b size-text-event-create",:placeholder => "Address Line 1",:event_member => EventMember.get_count(@event.id)
-
+          = f.text_field :address_line1, :class => "input-b size-text-event-create",:placeholder => Event.human_attribute_name(:address_line1)
         .el-cont
-          = f.text_field :address_line2 , :class => "input-b size-text-event-create",:placeholder => "Address Line 2"
-
+          = f.text_field :address_line2 , :class => "input-b size-text-event-create",:placeholder => Event.human_attribute_name(:address_line2)
         .el-cont
-          = f.hidden_field :chapter_id
+          = f.text_field :postal_code , :class => "input-b size-text-event-create",:placeholder => Event.human_attribute_name(:postal_code)
         .el-cont
-          = f.text_field :postal_code , :class => "input-b size-text-event-create",:placeholder => "Postal code"
-        .el-cont
-          = f.text_field :attendees_count , :class => "input-b size-text-event-create", :placeholder => "Attendees Count", :label => false
+          = f.text_field :attendees_count , :class => "input-b size-text-event-create", :placeholder => Event.human_attribute_name(:attendees_count)
     .event-form{:style => "padding-top:10px; padding-bottom: 20px;"}
       .el-cont
-        = f.text_area :description , :class => "input-b size-f" , :placeholder => "Event description", :style => "height: 40px;margin:5px 0px;", :label => false
+        = f.text_area :description , :class => "input-b size-f" , :placeholder => Event.human_attribute_name(:description), :style => "height: 40px;margin:5px 0px;"
       .el-cont
-        = f.text_area :resources_request, :class => "input-b size-f" , :placeholder => "resources_request", :style => "height: 40px;margin:5px 0px;", :label => false
+        = f.text_area :resources_request, :class => "input-b size-f" , :placeholder => Event.human_attribute_name(:resources_request), :style => "height: 40px;margin:5px 0px;"
       #spinner.spinner{:style => 'display:none;margin-right:10px;float:right;'}
         %img{:src => "/assets/spinner.gif", :alt => "Loading" , :id => 'img-spinner'}/
       #options{:style => "width:628px; overflow: hidden;"}
-        %button.btn-a-small.flt-right{:style => "margin-right:10px;", :id=>"event_form_submit"} UPDATE
-        /%button.btn-c-small.flt-right{:style => "margin-right:10px;"} DISCARD
-
-  -#= link_to 'Show', @event
-  -#\|
-  -#= link_to 'Back', events_path
-
+        %button.btn-a-small.flt-right{:style => "margin-right:10px;", :id=>"event_form_submit"}
+          = t("button.update")
 
 :javascript
   $(document).ready(function(){
@@ -104,7 +82,6 @@
           eventPostalCode:true
         }
       }
-
     });
     $('.edit_event').submit(function(event){
       if($(this).valid()){

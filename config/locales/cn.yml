@@ -149,6 +149,7 @@ cn:
     see_all_upcoming_events: "See all upcoming events..."
     no_events: "No Events"
     list_of_attendees: "LIST OF ATTENDEES"
+    edit_event_for: Edit Event For
 
   event_form: 
     form_title: "为%{chapter_name}分会组织一个活动"
@@ -165,6 +166,7 @@ cn:
     cancelled: CANCELLED
     resend_confirmation: 重发确认
     blocked: BLOCKED
+    update: UPDATE
 
   date:
     formats:
@@ -201,6 +203,8 @@ cn:
       too_short: 过短（最短为 %{count} 个字符）
       wrong_length: 长度非法（必须为 %{count} 个字符）
       invalid_email: 地址无效
+      time_format_invalid: format is invalid. Using the timepicker please.
+      end_time_in_the_past: cannot be before the Start Time.
     template:
       body: 如下字段出现错误：
       header:

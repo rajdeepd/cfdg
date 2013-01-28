@@ -9,7 +9,8 @@
         %h2.label-45.flt-left 
           = t("event_form.form_title", :chapter_name => @event.chapter.try(:name))
       .el-cont
-        %h5.label-26.flt-left #{t("event_form.event_basics")} 
+        %h5.label-26.flt-left
+          = t("event_form.event_basics")
       .el-cont.createEventField
         = f.input :title , :input_html => {:class => "input-b size-text-event-create"}, :placeholder => Event.human_attribute_name(:title), :label => false
       -#.error{:class => "el-cont"}
@@ -28,12 +29,12 @@
   .event-form
     .event-right
       .el-cont
-        %h5.label-26.flt-left #{t("event_form.event_location")} 
+        %h5.label-26.flt-left
+          = t("event_form.event_location")
       .el-cont{:style => "margin-bottom:2px;"}
         = @chapter.location
       .el-cont
         = f.input :address_line1 , :input_html => {:class => "input-b size-text-event-create"} , :placeholder => Event.human_attribute_name(:address_line1), :label => false
-
       .el-cont
         = f.input :address_line2 , :input_html => {:class => "input-b size-text-event-create"} , :placeholder => Event.human_attribute_name(:address_line2), :label => false
       .el-cont

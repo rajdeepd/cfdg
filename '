@@ -35,6 +35,7 @@ class Chapter < ActiveRecord::Base
   scope :undenied , where(:chapter_status => [:applied, :active, :incubated, :delist])
 
   state_machine :chapter_status, :initial => :applied do
+
     # The first transition that matches the status and passes its conditions
     event :deny do
       transition :applied => :denied
@@ -113,7 +114,7 @@ class Chapter < ActiveRecord::Base
   end
   
   def member_emails
-    self.users.map(&:email)
+    self.members.map(&:email)
   end
 
   def get_primary_coordinator

@@ -61,7 +61,6 @@ class UsersController < ApplicationController
         redirect_to profile_path()
       end
     else
-      binding.pry
       flash[:error] = @user.errors.to_a
 
       @countries = Country.all

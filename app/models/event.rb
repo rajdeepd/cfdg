@@ -8,6 +8,7 @@ class Event < ActiveRecord::Base
   has_many :event_galleries, :dependent => :destroy
   belongs_to :chapter
   belongs_to :user , :foreign_key => :created_by
+
   attr_accessible :title, :description, :venue, :entry_fee, :chapter_id , :location,
                   :address_line1,   :address_line2 ,:start_time ,:end_time, :city_name, :postal_code, :state_name,
                   :country_name ,:agenda_and_speakers,:image,:attendees_count, :resources_request
@@ -15,6 +16,12 @@ class Event < ActiveRecord::Base
   #mount_uploader :image, ImageUploader
 
   validates :title, :presence => true
+  validates :start_time, :presence => true
+  validates :end_time, :presence => true
+  validates :address_line1, :presence => true
+  validates :description, :presence => true
+  validate :time_valid, :unless => "start_time.nil? || end_time.nil?"
+
   #validates :event_start_date ,:format => {
       #:with => /^([0-3])?[0-9]\/[0-1][0-9]\/[1-9][0-9][0-9][0-9]$/,
       #:message => "Date should be in dd/mm/yyyy format"
@@ -97,4 +104,9 @@ class Event < ActiveRecord::Base
     self.start_time < Time.now
   end
 
+  def time_valid
+    if !self.end_time.nil? && !self.start_time.nil? && self.end_time <= self.start_time
+      errors.add(:end_time, I18n.t("errors.messages.end_time_in_the_past"))
+    end
+  end
 end

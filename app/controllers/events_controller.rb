@@ -9,7 +9,6 @@ class EventsController < ApplicationController
   before_filter :check_authorization ,:only => [:download_list]
   before_filter :find_chapter, :only => [:new, :edit]
 
-
   def resend_confirmation
     event_id = params[:event_id]
     @event_member = EventMember.find_by_user_id_and_event_id(current_user.id, event_id)
@@ -258,25 +257,19 @@ class EventsController < ApplicationController
   # PUT /events/1
   # PUT /events/1.json
   def update
-
     @event = Event.find(params[:id])
 
     respond_to do |format|
       if @event.update_attributes(params[:event])
-        format.html { redirect_to @event, :flash => { :notice => [t("event.successfully_updated")] } }
+        format.html { redirect_to @event, :flash => { :notice => [t("events.successfully_updated")] } }
         @chapter = @event.chapter
-
-        to_email = @chapter.get_primary_coordinator.email
-        bcc_emails = @event.event_members.includes(:user).collect{|i| i.user.email} -[to_email]
-        #EventNotification.delay.event_edit(@event,emails,@chapter)
-        #EventNotification.event_edit(@event,to_email,bcc_emails,@chapter).deliver
-        #SES.send_raw_email(EventNotification.event_edit(@event,to_email,bcc_emails,@chapter))
 
         EventMailer.admin_event_changed_mail(@event).deliver
         EventMailer.event_changed_notice_mail(@event, @chapter.member_emails).deliver
 
         format.json { head :no_content }
       else
+        flash[:error] = @event.errors.to_a
         format.html { render action: "edit" }
         format.json { render json: @event.errors, status: :unprocessable_entity }
       end
