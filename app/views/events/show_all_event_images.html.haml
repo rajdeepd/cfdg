@@ -1,18 +1,53 @@
 = javascript_include_tag "jquery.colorbox-min"
 = stylesheet_link_tag    "colorbox", :media => "all"
 
-%div.content.loginLayout
-  %h1.label-17{:style => "padding-bottom:10px;"}
-    = "Event Gallery - " "#{@event.title}"
-  -if @all_event_images.present?
-    - @all_event_images.each do |i|
-      .eventImageHolder
-        = link_to(image_tag(i.image),"#{i.image}")
-  - else
-    %h4{:style => "text-align: center;"}
-      ="No image for event yet"
+.content.eventDetails
+  .clearfix
+    .breadCrumb
+      %span Events
+      %span.breadCrumbDivider /
+      %span #{@event.title}
+      %span.breadCrumbDivider /
+      %span.activePage Gallery
+    -#%a.back{:href => "#"} Back
+  .blueHeader
+    .chapterName.clearfix
+      %h1 #{@event.title}
+    .chapterDateAndPlace.clearfix
+      %span.imageIcon
+        %span.numberOfImages #{@all_event_images.length}
+        %span Photos
+  .layoutWrapper.clearfix
+    .row
+      %ul.eventGallery
+        -if @all_event_images.present?
+          - @all_event_images.each do |i|
+            %li
+              .eventImageHolder
+                = link_to(image_tag(i.image),"#{i.image}")
+                -#%a{:href => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/81/Chrysanthemum.jpg"}
+                  %img{:alt => "Chrysanthemum", :src => "https://cfdg-test.s3.amazonaws.com/uploads/event_gallery/image/81/Chrysanthemum.jpg"}/
+        - else
+          %h4{:style => "text-align: center;"}
+            ="No image for event yet"
 
 :javascript
   $(document).ready(function(){
     $(".eventImageHolder a").colorbox({rel:'group1'});
   });
+
+-#%div.content.loginLayout
+-#  %h1.label-17{:style => "padding-bottom:10px;"}
+-#    = "Event Gallery - " "#{@event.title}"
+-#  -if @all_event_images.present?
+-#    - @all_event_images.each do |i|
+-#      .eventImageHolder
+-#        = link_to(image_tag(i.image),"#{i.image}")
+-#  - else
+-#    %h4{:style => "text-align: center;"}
+-#      ="No image for event yet"
+-#
+-#:javascript
+-#  $(document).ready(function(){
+-#    $(".eventImageHolder a").colorbox({rel:'group1'});
+-#  });
