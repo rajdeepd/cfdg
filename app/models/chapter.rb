@@ -120,6 +120,10 @@ class Chapter < ActiveRecord::Base
      User.find(self.created_by)
   end
 
+  def is_primary_coordinator?(user)
+    self.chapter_members.where(:user_id => user.id, :memeber_type => ChapterMember::PRIMARY_COORDINATOR).size > 0
+  end
+
   def persist_geocode
     if self.is_type_student?
       college = self.college
