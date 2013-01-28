@@ -40,6 +40,7 @@ class EventsController < ApplicationController
   def new
     @event = Event.new
     @event.chapter_id = params[:chapter_id]
+    @chapter = params[:chapter_id]
     respond_to do |format|
       #format.js {render :partial => 'form'} # new.html.erb
       #format.json { render json: @event }

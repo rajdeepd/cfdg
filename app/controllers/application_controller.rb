@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   include Userstamp
   before_filter :set_locale, :current_location
   before_filter :set_cache_buster
+  before_filter :check_user_profile, :only => [:dashboard,:directory,:about]
 
   helper_method :current_user , :admin_user
 
@@ -41,6 +42,14 @@ class ApplicationController < ActionController::Base
     response.headers["Expires"] = "Fri, 01 Jan 1990 00:00:00 GMT"
   end
 
+  def get_country(request)
+    country= request.location.country
+    country = "India" if country == "Reserved" #doing this coz in local(dev environment)  IP is 127.0.0.1 for this country is reserved
+    #logger.info "@@@@@@@@@@@@@@@@@@@@@@@ request.location file @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@#{request.location.inspect}"
+    #logger.info "####################### country in application.rb file ################################{country.inspect}"
+    return country
+  end
+
 
   private
 
@@ -49,6 +58,19 @@ class ApplicationController < ActionController::Base
     session[:url] = request.url
   end
 
+  def check_user_profile
+    if logged_in?
+      if current_user.fullname.present?
+      else
+        redirect_to edit_user_path(current_user,:email => current_user.email)
+        flash[:error] = "Please fill up your name."
+      end
+    else
+    end
+  end
 
+  def logged_in?
+    !!current_user
+  end
 
 end

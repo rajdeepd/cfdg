@@ -14,7 +14,7 @@
           -#.personRole Senior Solutions Architect
   .eventPeopleList
     .listHeader
-      %span co-ordinators
+      %span coordinators
       %span.numberOfPeople #{@secondary_coordinators.size}
     %ul.clearfix
       -@secondary_coordinators.each do |i|
@@ -22,7 +22,7 @@
           = avatar_display_pic(i.user,'thumb', '40x40','profile.png',"profile-img img-a flt-left")
           .personDetails
             .personName  #{i.user.fullname}
-            .personRole Staff engineer, springSource
+            -#.personRole Staff engineer, springSource
     -#  %li
     -#    %img{:src => "/assets/human_face_5.jpg"}/
     -#    .personDetails

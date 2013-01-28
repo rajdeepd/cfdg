@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   layout 'chapters'
-  before_filter "is_allowed_to_login" , :only => [:edit]
+  #before_filter "is_allowed_to_login" , :only => [:edit]
 
   def edit
     @user = User.find_by_email(params[:email])
@@ -54,13 +54,7 @@ class UsersController < ApplicationController
   end
 
   def dashboard
-    #@subscribed_chapter = []
-    #@upcoming_events = Event.get_upcoming_events
     @upcoming_events = @current_user.get_user_upcoming_events
-    #chapter_member = ChapterMember.find_all_by_user_id(@current_user)
-    #chapter_member.each do |i|
-    #  @subscribed_chapter.push(Chapter.find(i.chapter_id))
-    #end
     @subscribed_chapter = ChapterMember.find_all_by_user_id(@current_user).collect{|i| i.chapter}
     @user_past_event = @current_user.get_user_past_events
     @user_posts = Post.find_all_by_created_by(@current_user)

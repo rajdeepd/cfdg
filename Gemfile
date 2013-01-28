@@ -77,7 +77,7 @@ gem 'delayed_job_active_record'
 gem 'mini_magick'
 gem 'flash_cookie_session'
 gem 'fog'
-gem 'rails3-jquery-autocomplete'
+#gem 'rails3-jquery-autocomplete'
 #gem 'aws-ses'
 
 
@@ -88,6 +88,7 @@ gem 'rails3-jquery-autocomplete'
 # To use Jbuilder templates for JSON
 gem 'jbuilder'
 #gem "rmagick"
+gem "geocoder"
 
 # Use unicorn as the app server
 # gem 'unicorn'

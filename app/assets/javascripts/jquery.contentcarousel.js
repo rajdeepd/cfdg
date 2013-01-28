@@ -3,7 +3,7 @@
 			// navigates left / right
 			navigate	: function( dir, $el, $wrapper, opts, cache ) {
 
-				var scroll		= opts,
+				var scroll		= opts.scroll,
 					factor		= 1,
 					idxClicked	= 0;
 
@@ -227,15 +227,15 @@
 						});
 
 						// adds events to the mouse
-						$el.bind('mousewheel.contentcarousel', function(e, delta) {
+						$el.bind('contentcarousel', function(e, delta) {
 							if(delta > 0) {
 								if( cache.isAnimating ) return false;
-								cache.isAnimating	= false;
+								cache.isAnimating	= true;
 								aux.navigate( -1, $el, $wrapper, settings, cache );
 							}
 							else {
 								if( cache.isAnimating ) return false;
-								cache.isAnimating	= false;
+								cache.isAnimating	= true;
 								aux.navigate( 1, $el, $wrapper, settings, cache );
 							}
 							return false;

@@ -13,8 +13,8 @@
 
 .content.wrapper
   .content-c
-    %h2.label-17{:style => "margin:0px 0px 0px 0px;"} Cloud Foundry Groups
-    .map
+    %h2.label-17{:style => "margin:0px 0px 0px 8px;"} Cloud Foundry Groups
+    .map{:style => "margin-left:206px;"}
       = gmaps4rails(@markers)
       - content_for :javascript do        
         :javascript

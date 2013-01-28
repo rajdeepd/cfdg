@@ -8,12 +8,12 @@
     /= stylesheet_link_tag    "chapter-admin-page-style", :media => "all"
     /TODO will have to create a separate layout for the Chapter Admin - Edit Chapter  Info page.html
     /= stylesheet_link_tag    "chapter", :media => "all"
-    = stylesheet_link_tag    "user-profile-event", :media => "all"
-    = stylesheet_link_tag    "chapterAdmin", :media => "all"
-    = stylesheet_link_tag    "site-admin", :media => "all"
-    = stylesheet_link_tag    "login-form", :media => "all"
-    = stylesheet_link_tag    "event", :media => "all"
-    = stylesheet_link_tag    "jquery.timepicker-1.2.2", :media => "all"
+    -#= stylesheet_link_tag    "user-profile-event", :media => "all"
+    -#= stylesheet_link_tag    "chapterAdmin", :media => "all"
+    -#= stylesheet_link_tag    "site-admin", :media => "all"
+    -#= stylesheet_link_tag    "login-form", :media => "all"
+    -#= stylesheet_link_tag    "event", :media => "all"
+    -#= stylesheet_link_tag    "jquery.timepicker-1.2.2", :media => "all"
     = javascript_include_tag "application"
     %script{:src => "http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"}
     %script{:src => "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"}
@@ -64,7 +64,9 @@
 
     - @controller = params["controller"]
     - @action = params["action"]
-    -if !(@controller == "chapters" && (@action == "search" or @action == "detail" or @action == "chapter_gallery") or (@controller == "users" && @action == "dashboard"))
+
+    -if !(@controller == "chapters" && (@action == "search" or @action == "detail" or @action == "chapter_gallery") or (@controller == "users" && @action == "dashboard") or (@controller == "chapters" && @action == "list"))
+
       = render "shared/federated_header"
       = render "shared/header"
       = yield
@@ -74,7 +76,7 @@
 
     -else
       .bodyWrapper
-        = javascript_include_tag "application"
+        -#= javascript_include_tag "application"
         = javascript_include_tag "bootstrap"
         = javascript_include_tag "bootstrap-dropdown"
         = javascript_include_tag "jquery.coda-slider-3.0"

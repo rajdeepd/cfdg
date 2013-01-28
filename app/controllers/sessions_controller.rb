@@ -22,7 +22,8 @@ class SessionsController <  Devise::SessionsController
           session[:user_id] = user.id
           session[:email] = user.email
           session[:user] = {:email => user.email,:verified => true, :name => user.fullname}
-          sign_in_and_redirect(user)
+          sign_in(user)
+          redirect_to(dashboard_user_path(user))
         else
           flash.now.alert = "You need to confirm your account"
           #redirect_to(root_path)

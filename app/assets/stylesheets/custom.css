@@ -23,7 +23,7 @@ a{
 a:hover{
     text-decoration: none;
 }
-.clr{
+.clear{
     clear: both;
 }
 body{
@@ -192,6 +192,7 @@ header ul li:first-child{
     font-family: Helvetica, sans-serif;
     line-height: 22px;
     text-decoration: underline;
+    display: block;
 }
 .event{
     background: url("event_normal.png") no-repeat 59px 18px;
@@ -662,7 +663,7 @@ ul.supportPrivacyLinks li{
     box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.2);
     border-radius: 0 0 5px 5px;
 }
-.loginLayout .label-17 {
+.loginLayout .label-17 ,.content .label-17{
     text-align: center;
     margin-top: 30px;
 }
@@ -1570,13 +1571,12 @@ li.ui-timepicker-selected .ui-timepicker-duration,
 .chapterLayout .ca-container{
     margin: 0;
     width: 578px;
-    max-height: 405px;
-    height: auto;
+    height: 405px;
 }
 .chapterLayout .ca-item{
     width: 280px;
-    max-height: 398px;
-    height: auto;
+    height: 398px;
+    /*height: auto;*/
 }
 .chapterLayout .ca-item-main{
     padding: 0;
@@ -1741,7 +1741,7 @@ ul.eventGallery li{
 }
 .joinChapter{
     background: #ffffff;
-    padding: 30px 7px;
+    padding: 10px 7px;
     border-bottom: 1px solid #d8dee2;
 }
 
@@ -1753,6 +1753,16 @@ ul.eventGallery li{
     font-weight: 500;
     margin-right: 18px;
 }
+.formBox .control-group a.btn{
+    width: 114px;
+    border-radius: 5px;
+    height: 26px;
+    font-size: 16px;
+    font-weight: 500;
+    margin-right: 18px;
+    line-height: 26px;
+}
+
 .agendaBox{
     background: #eff7fe;
     padding: 15px 0 4px 20px;
@@ -1876,8 +1886,8 @@ ul.eventGallery li{
     margin-left: 10px;
 }
 .subscribedChapters .ca-container{
-    /*height: 305px;*/
-    height: auto;
+    height: 305px;
+    /*height: auto;*/
 }
 .userDashboard ul.posts li{
     border: none;
@@ -1914,7 +1924,7 @@ ul.posts li .commentText .commentDate{
     margin-bottom: 10px;
 }
 .userDashboard ul.posts li p.darkText{
-    color: #000000;
+    color: #318DC0 !important;
     font-size: 16px;
     font-weight: bold;
 }
@@ -1960,6 +1970,7 @@ ul.posts li .commentText .commentDate{
     font-size: 14px;
     margin-right: 20px;
     line-height: 16px;
+    margin-bottom: 10px;
 }
 .userDashboard .blueHeader .userEmail{
     /*background: url("email.png") no-repeat;*/
@@ -2050,6 +2061,7 @@ ul.posts li .commentText .commentDate{
 .chapterListing .eventCitySearch input{
     width: 230px;
     height: 25px;
+    margin-bottom: 0;
 }
 .chapterListing .chapterSearchBox .sbOptions{
     width: 218px;
@@ -2075,10 +2087,11 @@ ul.posts li .commentText .commentDate{
     height: 34px;
     line-height: 35px;
 }
-.chapterListing .chapterSearchBox .signUp{
+.chapterListing .chapterSearchBox form .search{
     line-height: 30px;
     padding: 1px 0;
     float: left;
+    width: 120px;
 }
 .chapterListing .chapterSearchBox{
     padding: 8px 10px;
@@ -2094,6 +2107,9 @@ ul.posts li .commentText .commentDate{
 .chapterListing .chapterSearchBox a.signUp{
     margin-top: 9px;
     padding: 0 12px;
+    line-height: 30px;
+    padding: 1px 0;
+    float: left;
 }
 .darkBlueBtn{
     background: url("dark_blue_btn_bg.jpg") repeat-x;
@@ -2168,9 +2184,13 @@ ul.posts li .commentText .commentDate{
     height: 100px;
     resize: none;
 }
-.joinChapter a{
-    padding: 9px 15px;
+.joinChapter button{
+    padding: 6px 15px;
     margin-left: 25px;
+    margin-top: 12px;
+}
+.joinChapter form{
+    margin: 0;
 }
 .chapterLayout .comments ul.posts li p{
     color: #333333;
@@ -2275,6 +2295,7 @@ ul.posts li .commentText .commentDate{
     border-radius: 4px 4px 0 0;
     padding: 6px 15px;
 }
+
 .addBox{
     width: 300px;
     border: 1px solid #7faac5;
@@ -2404,5 +2425,11 @@ ul.posts li .commentText .commentDate{
     color: #777777;
     font-size: 12px;
     line-height: 24px;
+}
+.alignment{
+    margin-top: 7px;
+    width: 266px !important;
+    background: #ffffff;
+    /*left:351px !important;*/
 }
 

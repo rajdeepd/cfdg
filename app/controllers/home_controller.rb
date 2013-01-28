@@ -1,12 +1,19 @@
 class HomeController < ApplicationController
   before_filter :announcements , :only => [:index, :wiki]
   before_filter :chapters , :only => [:index, :directory, :about]
-  autocomplete :city, :details
+  #autocomplete :city, :details
 
   layout "application"
 
   def index
     @upcoming_events = Event.get_upcoming_events
+    if @current_user.present?
+      if @current_user.fullname.present?
+      else
+        redirect_to edit_user_path(current_user,:email => current_user.email)
+        flash[:error] = "Please fill up your name."
+      end
+    end
   end
 
   def directory
@@ -23,6 +30,14 @@ class HomeController < ApplicationController
 
   def login
 
+  end
+
+  def autocomplete_city_details
+    city = City.where("details like ?","#{params[:term]}%")
+    data = city.collect{|i| {:id => i.details, :value => i.details}}
+    respond_to do |format|
+      format.json{ render :json => data}
+    end
   end
 
   protected
@@ -67,4 +82,6 @@ class HomeController < ApplicationController
     @chapters = Chapter.incubated_or_active || []
     @markers = get_geocodes.to_json
   end
+
+
 end

@@ -9,7 +9,7 @@
       %span #{@event.title}
       %span.breadCrumbDivider /
       %span.activePage Gallery
-    %a.back{:href => "#"} Back
+    -#%a.back{:href => "#"} Back
   .blueHeader
     .chapterName.clearfix
       %h1 #{@event.title}
@@ -27,14 +27,14 @@
           -else
             - @chapter.get_past_events.each do |i|
               %li
-                %a{:href => "#"}
+                %a{:href => "#{chapter_gallery_chapter_path(:event_id => i)}"}
                   .galleryThumbnails
                     -if i.image.event_landscape.present?
-                      = link_to(image_tag(i.image.event_landscape.url,:size => "260x150"),chapter_gallery_chapter_path(:event_id => i))
+                      = image_tag(i.image.event_landscape.url,:size => "260x150")
                     -elsif i.image.present?
-                      = link_to(image_tag(i.image.url,:size => "260x150"),chapter_gallery_chapter_path(:event_id => i))
+                      = image_tag(i.image.url,:size => "260x150")
                     -else
-                      =link_to(image_tag("event_landscape_logo-b.png",:size => "260x150"),chapter_gallery_chapter_path(:event_id => i))
+                      = image_tag("event_landscape_logo-b.png",:size => "260x150")
                     -#= image_tag("event_gallery_thumbnail.jpg")
                     %p #{i.title.truncate(45)}
                     - if i.event_galleries.present?

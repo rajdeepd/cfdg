@@ -38,9 +38,8 @@
                       =event.description.truncate(70)
                     %a{:href => "#{event_path(event)}"} Read more
                 .eventListFooter
-                  %span.numberPeopleAttending
-                    =event.event_members.length
-                  %span People Attending
+                  %span.numberPeopleAttending #{event.event_members.length} People Attending
+                  -#%span People Attending
 
 
   -else
