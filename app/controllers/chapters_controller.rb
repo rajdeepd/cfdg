@@ -97,6 +97,11 @@ class ChaptersController < ApplicationController
   # GET /chapters/1/edit
   def edit    
     @chapter = Chapter.find(params[:id])
+
+    respond_to do |format| 
+      format.html
+      format.js { render 'chairman_edit'}
+    end
   end
 
   # POST /chapters
