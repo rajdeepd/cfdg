@@ -162,7 +162,7 @@ header ul li:first-child{
     border-bottom: 2px solid #00bde7;
 }
 .about{
-    background: url("about_normal.png") no-repeat 61px 18px;
+    background: url("about_normal.png") no-repeat 61px 17px;
     height: 52px;
     display: block;
 }
@@ -506,6 +506,9 @@ ul.footerLinks li{
 ul.footerLinks li a{
     margin-right: 8px;
 }
+ul.footerLinks li a:hover , ul.supportPrivacyLinks li a:hover , footer .footerBottom p a:hover{
+    color: #ffffff;
+}
 ul.footerLinks li span{
     margin-right: 8px;
     color: #585858;
@@ -602,7 +605,7 @@ ul.supportPrivacyLinks li{
 .blueHeader{
     background: url("blue_header_with_tag_bg.jpg") no-repeat 0 -2px;
     width: 910px;
-    height: 107px;
+    height: 87px;
     padding: 27px 0 0 30px;
     text-shadow: 0 1px rgba(0, 0, 0, 0.3);
     margin-top: 2px;
@@ -1480,9 +1483,6 @@ li.ui-timepicker-selected .ui-timepicker-duration,
     border:1px solid #7faac5;
     border-radius: 4px;
     height: 28px;
-}
-.formBox .timeInput{
-
 }
 .formBox .timeBox{
     margin-right: 0;
