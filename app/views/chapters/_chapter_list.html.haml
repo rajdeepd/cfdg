@@ -3,7 +3,6 @@
     .label-17
       No chapters
   -else
-
     - @chapters.each_with_index do |chapter,count|
       .span4.subscribedChapters
         .eventListWrapper
@@ -33,12 +32,13 @@
                       -#%span.month Dec
                     .pastEventDetails.centerText.fullPadding No upcoming events.
               -else
-                .pastEvent
-                  .clearfix
-                    .pastEventDate
-                      %span.date #{Time.parse(chapter.get_chapter_upcoming_events.first.event_start_date.to_s).strftime('%d')}
-                      %span.month #{Time.parse(chapter.get_chapter_upcoming_events.first.event_start_date.to_s).strftime('%b')}
-                    .pastEventDetails #{chapter.get_chapter_upcoming_events.first.description.truncate(72)}
+                %a{:href => "#{event_path(chapter.get_chapter_upcoming_events.first)}"}
+                  .pastEvent
+                    .clearfix
+                      .pastEventDate
+                        %span.date #{Time.parse(chapter.get_chapter_upcoming_events.first.event_start_date.to_s).strftime('%d')}
+                        %span.month #{Time.parse(chapter.get_chapter_upcoming_events.first.event_start_date.to_s).strftime('%b')}
+                      .pastEventDetails #{chapter.get_chapter_upcoming_events.first.description.truncate(72)}
           -if @current_user.present?
             -if ChapterMember.am_i_coordinator?(@current_user,chapter.id)
               %a{:href => "#{chapter_path(chapter)}"} View Chapter

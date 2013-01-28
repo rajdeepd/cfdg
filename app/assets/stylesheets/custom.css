@@ -1753,6 +1753,9 @@ ul.eventGallery li{
     font-weight: 500;
     margin-right: 18px;
 }
+.formBox .control-group input.orangeBtn{
+    display: inline-block;
+}
 .formBox .control-group a.btn{
     width: 114px;
     border-radius: 5px;

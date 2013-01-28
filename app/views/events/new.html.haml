@@ -142,7 +142,8 @@
                 .controls
                   -#%button.btn Cancel
                   =link_to "Cancel",chapter_path(@chapter),:class => "btn"
-                  %button.orangeBtn Create Event
+                  -#%button.orangeBtn Create Event
+                  = f.submit "Create event",:class => "orangeBtn"
 
 :javascript
   $(document).ready(function(){

@@ -106,7 +106,7 @@
             =render :partial => "past_events"
           .slider.clearfix
             .sliderHeading
-              %h3 Events Gallery
+              %h3 Chapter Gallery
             .ca-container.galleryThumbnailsContainer.clearfix
               .ca-wrapper
                 - if @chapter.get_past_events.blank?
@@ -149,9 +149,9 @@
                       %img{:src => "/assets/default_human_face.jpg"}
                     .commentText
                       %h4 #{i.title}
-                      %span.commentDate #{Time.parse(i.try(:created_at).to_s).strftime('%b %d, %Y')}
-                  %p #{i.description.truncate(197)}
-                  %a{:href => "#"} View more
+                      %span.commentDate #{i.user.fullname.try(:titleize)}, #{Time.parse(i.try(:created_at).to_s).strftime('%b %d, %Y')}
+                      %p #{i.description.truncate(197)}
+                      %a.btn.learnMore{:href => "#{post_path(i)}"} View more
       .span4
         =render :partial => "event_admin_and_members_list"
 
