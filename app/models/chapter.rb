@@ -25,6 +25,7 @@ class Chapter < ActiveRecord::Base
 
   #validations
   validates  :chapter_type, presence: true, :inclusion => [CITY, STUDENT, CITY.to_s, STUDENT.to_s]
+  validates_length_of :chairman_description, :maximum => 50, :message => "Not more than 50 words"
   
   #Scopes
   scope :applied_chapters, where(:chapter_status => [:applied, :incubated,:denied])
