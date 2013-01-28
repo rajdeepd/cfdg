@@ -58,6 +58,15 @@ class ChaptersController < ApplicationController
     end
   end
 
+  def chairman_show
+    @chapter = Chapter.find(params[:id])
+
+    respond_to do |format|
+      format.js
+      format.html
+    end
+  end
+
 
   # GET /chapters/new
   # GET /chapters/new.json
@@ -126,6 +135,7 @@ class ChaptersController < ApplicationController
       if @chapter.update_attributes(params[:chapter])
         format.html { redirect_to @chapter, notice: 'Chapter was successfully updated.' }
         format.json { head :no_content }
+        format.js
       else
         format.html { render action: "edit" }
         format.json { render json: @chapter.errors, status: :unprocessable_entity }
