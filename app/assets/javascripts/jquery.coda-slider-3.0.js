@@ -378,7 +378,7 @@ if ( typeof Object.create !== 'function' ) {
 		autoHeightEaseFunction: "easeInOutExpo",
 		autoSlide: false,
 		autoSliderDirection: 'right',
-		autoSlideInterval: 7000,
+		autoSlideInterval: 10000,
 		autoSlideControls: false,
 		autoSlideStartText: 'Start',
 		autoSlideStopText: 'Stop',

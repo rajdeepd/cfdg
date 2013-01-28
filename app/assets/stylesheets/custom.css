@@ -21,6 +21,9 @@ a{
     color: #0094D4;
 }
 a:hover{
+    color: #ffffff;
+}
+a:hover{
     text-decoration: none;
 }
 .clear{
@@ -32,7 +35,7 @@ body{
     background-color: #dfeff9;
 }
 .bodyWrapper{
-    background: url("body_bg.png") no-repeat fixed center #B3D6ED;
+    background: url("body_bg.png") no-repeat scroll center 40px #B3D6ED;
     margin: 0 auto;
     width: 100%;
 }
@@ -105,7 +108,7 @@ header ul li:first-child{
 }
 .container .navbar .navbar-inner{
     background: url("navigation_bg.jpg") repeat-x ;
-    box-shadow: 0 1px 2px 1px #BFD3E8;
+    box-shadow: 0 0px 9px 0px rgba(0, 0, 0, 0.1);
     border-radius: 4px;
     padding: 0;
     min-height: 52px;
@@ -138,7 +141,7 @@ header ul li:first-child{
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
     font-size: 14px;
     padding: 0;
-    line-height: 60px;
+    line-height: 52px;
     text-transform: uppercase;
     text-shadow: 0 1px 1px #ffffff;
 }
@@ -149,7 +152,7 @@ header ul li:first-child{
     height: 50px;
 }
 .home{
-    background: url("home_normal.png") no-repeat 26px 16px;
+    background: url("home_normal.png") no-repeat 26px 13px;
     width: 80px;
     height: 52px;
     display: block;
@@ -162,7 +165,7 @@ header ul li:first-child{
     border-bottom: 2px solid #00bde7;
 }
 .about{
-    background: url("about_normal.png") no-repeat 61px 17px;
+    background: url("about_normal.png") no-repeat 61px 13px;
     height: 52px;
     display: block;
 }
@@ -174,7 +177,7 @@ header ul li:first-child{
     padding-left: 23px;
 }
 .chapter{
-    background: url("chapter_normal.png") no-repeat 48px 19px;
+    background: url("chapter_normal.png") no-repeat 48px 15px;
     height: 52px;
     display: block;
 }
@@ -195,7 +198,7 @@ header ul li:first-child{
     display: block;
 }
 .event{
-    background: url("event_normal.png") no-repeat 59px 18px;
+    background: url("event_normal.png") no-repeat 59px 14px;
     height: 52px;
     display: block;
 }
@@ -207,7 +210,7 @@ header ul li:first-child{
     padding-left: 17px;
 }
 .wiki{
-    background: url("wiki_normal.png") no-repeat 75px 18px;
+    background: url("wiki_normal.png") no-repeat 75px 14px;
     height: 52px;
     display: block;
 }
@@ -308,27 +311,37 @@ header ul li:first-child{
     border: 1px solid #cccccc;
     margin-bottom: 20px;
 }
-#news-container ul li{
-    margin:10px 20px 15px 20px !important;
-    padding: 10px 0 !important;
+
+.latestAnnouncement ul li{
+    margin: 0 20px 5px 20px !important;
+    padding: 26px 0 12px !important;
     height: 130px !important;
     display: block;
-    border-bottom: 1px solid #cccccc;
+    border-top: 1px solid #cccccc;
     overflow: hidden;
 }
-#news-container{
-    height: 490px !important;
+.latestAnnouncement ul li:first-child{
+    border: none;
 }
-#news-container ul li .imgBox{
+.latestAnnouncement ul li .imgBox{
     float: left;
     max-width: 79px;
-    max-height: 79px;
-    margin-right: 15px;
+    max-height: 81px;
+    margin-right: 13px;
+    border: 1px solid #c3c7ca;
 }
-#news-container ul li .textBox{
+.latestAnnouncement ul li .textBox{
     float: left;
     width: 165px;
     display: block;
+}
+.latestAnnouncement ul li a.btn{
+    font-weight: bold;
+    text-shadow: 1px 1px #ffffff;
+    font-size: 11px;
+    font-family: helvetica;
+    line-height: 10px;
+    text-transform: uppercase;
 }
 .textBox button{
     height: 20px;
@@ -342,9 +355,10 @@ header ul li:first-child{
     font-family: helvetica;
     display: block;
     margin-bottom: 5px;
+    text-shadow: 1px 1px #ffffff;
 }
 .textBox p{
-    color: #888888;
+    color: #666666;
 }
 .textBox h4{
     font-size: 16px;
@@ -376,6 +390,7 @@ header ul li:first-child{
     border-radius: 5px;
     background-color: #edf6fb;
     margin-bottom: 20px;
+    min-height: 540px;
 }
 .longHeading h3{
     line-height: 40px;
@@ -1870,8 +1885,10 @@ ul.eventGallery li{
     width: 223px;
     padding: 10px 30px 10px 15px;
     margin-left: -8px;
-    background: #fffce7;
+    background: #fffdeb;
     border:none;
+    border-top: 1px solid #f2efd5;
+    border-bottom: 1px solid #f2efd5;
     border-radius: 0;
     cursor: auto;
     margin-bottom: 10px;
@@ -1941,8 +1958,9 @@ ul.posts li .commentText .commentDate{
     margin-right: 20px;
 }
 .userDashboard .blueHeader{
-    padding: 20px 0 0 30px;
-    height: 97px;
+    padding: 20px;
+    height: 78px;
+    width: 900px;
 }
 .userDashboard .blueHeader .userImg img{
     width: 74px;
@@ -2007,13 +2025,16 @@ ul.posts li .commentText .commentDate{
     font-size: 14px;
     margin-right: 15px;
     line-height: 16px;
-    text-decoration: underline;
 }
 .userDashboard .blueHeader .userSocialLink .linkedInURL{
     background: url("linkedin_white.png") no-repeat;
 }
 .userSocialLink .linkedInURL a, .userSocialLink .twitterURL a , .userSocialLink .siteURL a{
     color: #ffffff;
+    text-decoration: underline;
+}
+.userSocialLink .linkedInURL a:hover, .userSocialLink .twitterURL a:hover,.userSocialLink .siteURL a:hover{
+    text-decoration: none;
 }
 .userDashboard .blueHeader .userSocialLink .twitterURL{
     background: url("twitter_white.png") no-repeat;
@@ -2027,8 +2048,8 @@ ul.posts li .commentText .commentDate{
     height: 30px;
     border: 1px solid #01618a;
     padding: 0;
-    margin-right: 22px;
 }
+
 .settingIcon{
     background: url("setting_white_icon.png") no-repeat center;
     display: block;
@@ -2128,10 +2149,17 @@ ul.posts li .commentText .commentDate{
     padding: 0 20px;
     line-height: 30px;
     box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.2);
-    margin-left: 10px;
+    margin: 0 32px 0 10px;
     border-radius: 2px;
 }
-
+.chapterListing .chapterName .btn{
+    padding: 0 20px;
+    line-height: 30px;
+    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.2);
+    margin-left: 10px;
+    border-radius: 2px;
+    margin-right: 25px;
+}
 .chapterListing .chapterName h1{
     float: left;
 }
@@ -2290,12 +2318,13 @@ ul.posts li .commentText .commentDate{
 }
 .settingDropdown ul.dropdown-menu{
     padding: 0;
+    right: 20px;
+    left: auto;
 }
 .settingDropdown ul.dropdown-menu li:first-child a{
     border-radius: 4px 4px 0 0;
     padding: 6px 15px;
 }
-
 .addBox{
     width: 300px;
     border: 1px solid #7faac5;

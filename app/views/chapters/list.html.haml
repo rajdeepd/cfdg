@@ -58,7 +58,7 @@
       -if current_user.blank?
         %span
           Could not find a chapter in your city?
-          %a.btn.darkBlueBtn{:href => "#{signin_path}"} Create a Chapter
+          %a.btn{:href => "#{signin_path}"} Create a Chapter
       -else
         -if !ChapterMember.is_primary_coordinator?(current_user.id)
           %span

@@ -1,6 +1,4 @@
 = javascript_include_tag "jquery.coda-slider-3.0"
-= javascript_include_tag "jquery.vticker-min"
-= javascript_include_tag "jquery.mousewheel"
 = javascript_include_tag "jquery.contentcarousel"
 = javascript_include_tag "jquery.easing.1.3"
 = javascript_include_tag "jquery.validate"
@@ -32,12 +30,6 @@
       autoHeight:false
     });
     $('h2.title').hide();
-    $('#news-container').vTicker({
-      speed: 1000,
-      animation: 'fade',
-      mousePause: true,
-      showItems: 3
-    });
   });
 
 
@@ -50,23 +42,22 @@
       .latestAnnouncement
         .smallHeading
           %h3 Latest Announcements
-        #news-container{:style => "overflow: hidden; position: relative; height: 114px;"}
-          %ul{:style => "position: absolute; margin: 0pt; padding: 0pt; top: 0px;"}
-            -@announcements.each do |i|
-              %li
-                %div
-                  .imgBox
-                    -#%img{:alt => "", :src => "assets/images/user_img_1.jpg"}
-                    -#= image_tag("user_img_1.jpg")
-                    = photo_display_pic(i,"mini","79x81","img-b.png",'img-c')
-                  .textBox
-                    %span.date.lightGrayText
-                      =i.created_at.strftime("%B %d,%Y")
-                    %h4
-                      =i.title
-                    %p
-                      =i.body.truncate(25)
-                    %a.btn{:href => "#{announcement_path(i)}"} Learn More
+        %ul
+          -@announcements.each do |i|
+            %li
+              .clearfix
+                .imgBox
+                  -#%img{:alt => "", :src => "assets/images/user_img_1.jpg"}
+                  -#= image_tag("user_img_1.jpg")
+                  = photo_display_pic(i,"mini","79x81","img-b.png",'img-c')
+                .textBox
+                  %span.date.lightGrayText
+                    =i.created_at.strftime("%B %d, %Y")
+                  %h4
+                    =i.title
+                  %p
+                    =i.body.truncate(25)
+                  %a.btn{:href => "#{announcement_path(i)}"} Learn More
               
     .span8
       .cfdgChapter

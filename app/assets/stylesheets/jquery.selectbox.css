@@ -11,7 +11,7 @@
     border-radius: 5px;
 }
 .sbHolder:focus .sbSelector{
-	
+	box-shadow: none;
 }
 .sbSelector{
 	display: block;
@@ -26,7 +26,7 @@
 	width: 140px;
 }
 .sbSelector:link, .sbSelector:visited, .sbSelector:hover{
-	color: #7faac5;
+	color: #aaaaaa;
 	outline: none;
 	text-decoration: none;
 }
@@ -69,19 +69,23 @@
 .sbOptions li{
 	padding: 0 7px;
 }
+.sbOptions li:first-child a{
+    border: none;
+}
 .sbOptions a{
-	border-bottom: dotted 1px #515151;
+	border-top: solid 1px #dbdbdb;
 	display: block;
 	outline: none;
 	padding: 7px 0 7px 3px;
 }
 .sbOptions a:link, .sbOptions a:visited{
-	color: #7faac5;
+	color: #aaaaaa;
 	text-decoration: none;
 }
 .sbOptions a:hover,
 .sbOptions a:focus,
 .sbOptions a.sbFocus{
+    box-shadow: none;
 }
 .sbOptions li.last a{
 	border-bottom: none;
