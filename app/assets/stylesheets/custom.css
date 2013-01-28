@@ -21,7 +21,7 @@ a{
     color: #0094D4;
 }
 a:hover{
-    color: #ffffff;
+    /*color: #ffffff;*/
 }
 a:hover{
     text-decoration: none;
@@ -2328,7 +2328,7 @@ ul.posts li .commentText .commentDate{
 }
 .settingDropdown ul.dropdown-menu{
     padding: 0;
-    right: 20px;
+    right: 0px;
     left: auto;
 }
 .settingDropdown ul.dropdown-menu li:first-child a{

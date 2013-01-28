@@ -43,10 +43,10 @@
           %a{:href => "#{settings_path}"} Edit Profile
         %li
           %a{:href => "#"} Change Password
-        %li
+        -#%li
           %a{:href => "#"} Something else here
-        %li.divider
-        %li
+        -#%li.divider
+        -#%li
           %a{:href => "#"} Separated link
     .chapterName.clearfix
       %h3
@@ -105,7 +105,7 @@
                           %h5 #{event.title}
                           .personName #{event.user.fullname}
                           %p.lightGrayText #{event.description.truncate(70)}
-                          %a{:href => "#{event_path(event)}"} Read more
+                          %a{:href => "#{event_path(event)}"} View Event
                       .eventListFooter
                         %span.numberPeopleAttending #{event.event_members.length} People Attending
 
