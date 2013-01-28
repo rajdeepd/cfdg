@@ -18,7 +18,7 @@
 
                       %span.month #{i.event_start_date_in_date.strftime("%b")}
                     -if i.description.present?
-                      .pastEventDetails #{i.description.truncate(80)}
+                      .pastEventDetails #{i.description.truncate(72)}
                     - else
                       .pastEventDetails.noPastDesc No description for the event.
         -#.ca-item.ca-item-2

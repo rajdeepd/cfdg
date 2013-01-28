@@ -113,24 +113,25 @@
                   .centerText.verticalMargin No event gallery for this chapter.
                 -else
                   - @chapter.get_past_events.each do |i|
-                    .ca-item.ca-item-1
-                      .ca-item-main
-                        %a{:href => "#{chapter_gallery_chapter_path(:event_id => i)}"}
-                          .galleryThumbnails
-                            -if i.image.event_landscape.present?
-                              = image_tag(i.image.event_landscape.url,:size => "260x150")
-                            -elsif i.image.present?
-                              = image_tag(i.image.url,:size => "260x150")
-                            -else
-                              =image_tag("event_landscape_logo-b.png",:size => "260x150")
-                            -#-else
-                              = image_tag("event_gallery_thumbnail.jpg",:size => "260x150")
-                            -#%p Cloud Foundry introduced npm support, we added serval
-                            %p #{i.title.truncate(15)}
-                            - if i.event_galleries.present?
-                              %a.lightGrayText{:href => "#{chapter_gallery_chapter_path(:event_id => i)}"} (#{i.event_galleries.count} Photos)
-                            - else
-                              %a.lightGrayText{:href => "#{chapter_gallery_chapter_path(:event_id => i)}"} (0 Photos)
+                    -if i.event_galleries.count > 0
+                      .ca-item.ca-item-1
+                        .ca-item-main
+                          %a{:href => "#{chapter_gallery_chapter_path(:event_id => i)}"}
+                            .galleryThumbnails
+                              -if i.image.event_landscape.present?
+                                = image_tag(i.image.event_landscape.url,:size => "260x150")
+                              -elsif i.image.present?
+                                = image_tag(i.image.url,:size => "260x150")
+                              -else
+                                =image_tag("event_landscape_logo-b.png",:size => "260x150")
+                              -#-else
+                                = image_tag("event_gallery_thumbnail.jpg",:size => "260x150")
+                              -#%p Cloud Foundry introduced npm support, we added serval
+                              %p #{i.title.truncate(15)}
+                              - if i.event_galleries.present?
+                                %a.lightGrayText{:href => "#{chapter_gallery_chapter_path(:event_id => i)}"} (#{i.event_galleries.count} Photos)
+                              - else
+                                %a.lightGrayText{:href => "#{chapter_gallery_chapter_path(:event_id => i)}"} (0 Photos)
 
         .comments.clearfix
           .sliderHeading
