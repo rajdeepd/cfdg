@@ -1,8 +1,0 @@
-#chairman-contain
-  - @chapters.each do |chapter|
-    %ul
-      %span= chapter.name
-      %span= link_to "编辑", edit_admin_chapter_path(chapter), :remote => true
-      %div
-        %p= chapter.chairman_description
-        %p= chapter.chairman_photo.url

@@ -130,7 +130,6 @@ CloudfoundryUsergroups::Application.routes.draw do
         get 'active'
         get 'delist'
         get 'all'
-        get 'chairmans'
       end
       member do
         get 'change_status'
