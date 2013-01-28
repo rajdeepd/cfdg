@@ -7,6 +7,13 @@ class HomeController < ApplicationController
 
   def index
     @upcoming_events = Event.get_upcoming_events
+    if @current_user.present?
+      if @current_user.fullname.present?
+      else
+        redirect_to edit_user_path(current_user,:email => current_user.email)
+        flash[:error] = "Please fill up your name."
+      end
+    end
   end
 
   def directory

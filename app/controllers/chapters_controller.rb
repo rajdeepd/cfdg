@@ -248,27 +248,18 @@ class ChaptersController < ApplicationController
 
   def list
     if params[:query].present?
-      logger.info "##################### from search chapter list ###############{}"
       @chapters =Chapter.where(:id => params[:search_results])
-      logger.info "##################### chapter object ###############{@chapters.inspect}"
     else
-      logger.info "###### inside else ######"
     all_chapters = Chapter.incubated_or_active || []
-      logger.info "###### finding all chapter ######{all_chapters.inspect}"
     if params[:all_chapters] == "true"
       @chapters = all_chapters
-      logger.info "###### getting all chapters true ######{}"
     else
-      logger.info "###### getting all chapters false ######{get_country(request).inspect}"
       country = get_country(request)
-      logger.info "country                         #{country.inspect}"
       chapter_inside_country = all_chapters.select{|i| i.country_name == country}
       if chapter_inside_country.empty?
         @chapters = all_chapters
-        logger.info "###### getting chapter_inside_country nil ######{}"
       else
         @chapters = chapter_inside_country
-        logger.info "###### getting chapter_inside_country else part ######{}"
       end
 
       #binding.remote_pry
