@@ -34,8 +34,10 @@
           .eventHeader
           .borderWithShadow
           .formBox
-            %h5 Enter Event details
             %form.form-horizontal
+              .control-group
+                .controls
+                  %h5 Enter Event details
               .control-group
                 %label.control-label
                   Event Title
@@ -73,8 +75,10 @@
                     End Time
                     %input.time.ui-timepicker-input{:autocomplete => "ons", :type => "text"}/
           .formBox
-            %h5 Enter Event address
             %form.form-horizontal
+              .control-group
+                .controls
+                  %h5 Enter Event address
               .control-group
                 %label.control-label
                   Venue Name

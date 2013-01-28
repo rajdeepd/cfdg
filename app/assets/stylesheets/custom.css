@@ -10,6 +10,13 @@ ul, ol{
  font-weight: normal;
  font-style: normal;
 }
+@font-face {
+    font-family: 'helvetica_medium';
+    src: url('../fonts/helvetica-medium/ufontscomhelveticamedium.eot');
+    src: url('../fonts/helvetica-medium/ufontscomhelveticamedium.eot?#iefix') format('embedded-opentype'),  url('../fonts/helvetica-medium/ufontscomhelveticamedium.woff') format('woff'),  url('../fonts/helvetica-medium/ufontscomhelveticamedium.ttf') format('truetype'),  url('../fonts/helvetica-medium/ufontscomhelveticamedium.svg#roboto_ltregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
 a{
     color: #0094D4;
 }
@@ -1398,8 +1405,10 @@ li.ui-timepicker-selected .ui-timepicker-duration,
     font-weight: bold;
     font-size: 24px;
     margin-top: 30px;
-    height: 135px;
+    height: 100px;
     text-align: center;
+    line-height: 32px;
+    margin-bottom: 0;
 }
 .borderWithShadow{
     background: url("border_with_shadow.png") repeat-x;
@@ -1411,27 +1420,27 @@ li.ui-timepicker-selected .ui-timepicker-duration,
     /*width: 620px;*/
     /*margin: 0 auto;*/
     border-bottom: 1px solid #cce6f6;
-    padding-top: 30px;
+    width: 660px;
+    margin: 0 auto 30px;
 }
 .loginLayout .formBox.borderNone{
     border: none;
-    padding-top: 0;
+    margin-bottom: 0;
 }
 .formBox h5{
     text-transform: capitalize;
     color: #777777;
     font-size: 20px;
     font-weight: 500;
-    margin: 0 0 20px 0;
+    margin: 0 0 7px 0;
     display: block;
-    text-align: center;
 }
 .formBox h4{
     text-transform: capitalize;
     color: #222222;
     font-size: 20px;
     font-weight: 500;
-    margin: 0 0 20px 0;
+    margin: 0 0 25px 0;
     display: block;
     text-align: center;
 }
@@ -1441,7 +1450,7 @@ li.ui-timepicker-selected .ui-timepicker-duration,
     font-size: 16px;
     line-height: 18px;
 }
-.formBox input{
+.formBox input[type="text"], .formBox input[type="submit"], .formBox input[type="email"], .formBox input[type="password"],.formBox input[type="number"]{
     border: 1px solid #7faac5;
     width: 290px;
     height: 20px;
@@ -1463,7 +1472,7 @@ li.ui-timepicker-selected .ui-timepicker-duration,
     width: 140px;
     font-size: 12px;
     color: #777777;
-    line-height: 18px;
+    line-height: 24px;
     float: left;
     margin: 0 20px 15px 0;
 }
@@ -1504,6 +1513,11 @@ li.ui-timepicker-selected .ui-timepicker-duration,
     display: block;
     float: left;
     margin: 0 10px;
+}
+.bigButton.blueBtn span{
+    font-weight: bold;
+    line-height: 13px;
+    font-family: helvetica;
 }
 .blueBtn{
     background: url("blue_btn_bg.png") repeat-x;
@@ -1745,10 +1759,11 @@ ul.eventGallery li{
     border-radius: 5px;
     box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.2);
     margin: 0 auto 20px;
-    width: 660px;
+    width: 640px;
+    font-weight: bold;
 }
 .formBox .control-group{
-    margin-left: 85px;
+    margin-left: 23px;
     width: 600px;
 }
 .agendaBox p{
@@ -1756,8 +1771,10 @@ ul.eventGallery li{
     font-size: 12px;
     line-height: 18px;
     float: left;
-    width: 519px;
-    margin-right: 30px;
+    width: 570px;
+}
+.editDeleteBtn{
+    float: right;
 }
 .editIcon{
     background: url("edit_icon.png") no-repeat;
@@ -2263,8 +2280,8 @@ ul.posts li .commentText .commentDate{
     border: 1px solid #7faac5;
     border-radius: 4px;
 }
-.addBox input{
-    width: 237px;
+.addBox input[type="text"]{
+    width: 230px;
     float: left;
     border: none;
 
@@ -2272,7 +2289,7 @@ ul.posts li .commentText .commentDate{
 .addBox .blueBtn{
     border-radius: 0 4px 4px 0;
     border: none;
-    padding: 6px 15px 6px 14px;
+    padding: 6px 18px 6px 18px;
     border-left: 1px solid #7faac5;
 }
 .formBox .speakersList{
@@ -2290,7 +2307,7 @@ ul.posts li .commentText .commentDate{
     background: #ffffff;
     float: left;
     width: 198px;
-    height: 48px;
+    height: 41px;
     border: 1px solid #e1e1e1;
     overflow: hidden;
     padding: 5px;
@@ -2331,5 +2348,61 @@ ul.posts li .commentText .commentDate{
 .formBox .closeTileIcon{
     float: right;
     border: none;
+}
+.fileUpload{
+    border:1px solid #7faac5;
+    border-radius: 4px;
+    width: 298px;
+}
+.inputHidden {
+    font-size:45px; /* this is important */
+    width:100px;
+    position:absolute;
+    right:0px;
+    top:0px;
+    opacity:0;
+    filter: alpha(opacity=0);
+    -ms-filter: "alpha(opacity=0)";
+    -khtml-opacity: 0;
+    -moz-opacity: 0;
+}
+.inputBrowse {
+    width: 75px;
+    height:30px;
+    position:absolute;
+    top:0px;
+    background: url("blue_btn_bg.png") repeat-x;
+    font-size: 13px;
+    color:#222222;
+    border: none;
+    border-left:1px solid #7faac5;
+    border-radius: 0 4px 4px 0;
+    font-weight: bold;
+    cursor: pointer;
+}
+.formBox .controls .fileUpload .textbox {
+    width:215px;
+    font-size:25px;
+    margin-right: 0;
+    border-radius: 4px 0 0 4px;
+    border: none;
+    height: 22px;
+}
+.wrapper {
+    position: relative;
+    width:75px;
+    height:30px;
+    overflow:hidden;
+}
+.textbox, .wrapper, .btn_Go {
+    float:left;
+}
+.bigButton.blueBtn.notAMember{
+    text-align: center;
+}
+.formBox .control-group .controls .imgType{
+    color: #777777;
+    font-size: 12px;
+    line-height: 24px;
 }
 

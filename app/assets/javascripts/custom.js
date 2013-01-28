@@ -17,4 +17,26 @@ $(document).ready(function(){
         $(".mapDiv").css("opacity" , 0);
         $(".mapDiv").css("z-index" , -1);
     });
+    $(".formBox button , .formBox button").click(function(event){
+        event.preventDefault();
+    });
+    $(".agendaDiv").hide();
+    $(".agendaAddDiv .blueBtn").click(function(){
+        $(".agendaDiv").show();
+        $(".agendaAddDiv").hide();
+        return false;
+    });
+    $(".agendaDiv .bigButton").click(function(){
+        $(".agendaAddDiv").show();
+        return false;
+    });
+    $(".speakersList").hide();
+    $(".addBox .blueBtn").click(function(){
+        $(".speakersList").show();
+    });
+    $(".nonMember").hide();
+    $(".notAMember").click(function(){
+       $(".nonMember").show();
+    });
+
 });
