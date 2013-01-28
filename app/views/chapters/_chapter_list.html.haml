@@ -32,7 +32,7 @@
                       -#%span.month Dec
                     .pastEventDetails.centerText.fullPadding No upcoming events.
               -else
-                %a{:href => "#{event_path(chapter.get_chapter_upcoming_events.first)}"}
+                %a.comingEventAnchor{:href => "#{event_path(chapter.get_chapter_upcoming_events.first)}"}
                   .pastEvent
                     .clearfix
                       .pastEventDate

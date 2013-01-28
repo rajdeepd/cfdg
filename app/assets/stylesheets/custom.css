@@ -1228,7 +1228,7 @@ ul.supportPrivacyLinks li{
     line-height: 35px;
     color: #666666;
     padding-left: 15px;
-    border-radius: 0 0 5px 5px;
+    border-radius: 0 0 4px 4px;
 }
 .eventListFooter span{
     color: #666666;
@@ -1303,12 +1303,12 @@ ul.supportPrivacyLinks li{
     margin-top: 60px;
 }
 .content .comingEvents .ca-container{
-    height: 415px;
+    height: 428px;
     width: 891px;
 }
 .content .comingEvents .ca-item{
     width: 288px;
-    height: 397px;
+    height: 407px;
 }
 .content .comingEvents .ca-item-main{
     padding: 0;
@@ -1747,7 +1747,7 @@ ul.eventGallery li{
 }
 
 .formBox .control-group .orangeBtn, .formBox .control-group .btn{
-    width: 136px;
+    width: 137px;
     border-radius: 5px;
     height: 35px;
     font-size: 16px;
@@ -1891,10 +1891,11 @@ ul.eventGallery li{
 .subscribedChapters a{
     color: #0078ac;
     font-size: 12px;
-    margin-left: 10px;
+    margin: 0 0 10px 10px;
+    display: block;
 }
 .subscribedChapters .ca-container{
-    height: 305px;
+    height: 323px;
     /*height: auto;*/
 }
 .userDashboard ul.posts li{
@@ -1990,7 +1991,9 @@ ul.posts li .commentText .commentDate{
     margin: 0 20px 9px 0;
     line-height: 16px;
 }
-
+.subscribedChapters a.comingEventAnchor{
+    margin: 0;
+}
 .userDashboard .blueHeader .phoneNumber{
     background: url("contact_number_white.png") no-repeat;
     padding-left: 20px;
@@ -2416,13 +2419,13 @@ ul.posts li .commentText .commentDate{
     border: none;
     height: 22px;
 }
-.wrapper {
+.form-horizontal .control-group .wrapper {
     position: relative;
     width:75px;
     height:30px;
     overflow:hidden;
 }
-.textbox, .wrapper, .btn_Go {
+.form-horizontal .control-group .textbox,.form-horizontal .control-group  .wrapper,.form-horizontal .control-group  .btn_Go {
     float:left;
 }
 .bigButton.blueBtn.notAMember{
