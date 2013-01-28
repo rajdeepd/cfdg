@@ -9,7 +9,7 @@
             - else
               %img.profile-image{:src => "/assets/default-Profile-Image.png"}/
           %span.upload-button
-            %div
+            %span
               = t("settings.upload_avatar")
             = f.file_field :avatar, :id => 'avatar-upload'
           = image_tag "loader-tiny.gif", :id => "upload-loader", :class => "hide"

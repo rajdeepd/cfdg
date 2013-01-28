@@ -14,7 +14,7 @@
     %h2.label-17{:style => "margin:0px 0px 0px 0px;"} Cloud Foundry Groups
     .map
       = gmaps4rails(@markers)
-      - content_for :javascript do        
+      - content_for :javascript do
         :javascript
             function redirect_to(url) {
               return function(){window.location = url;}
@@ -28,11 +28,11 @@
                 setTimeout(function() { Gmaps.map.serviceObject.setZoom(4);}, 50);
               }
   
-              for (var i = 0; i <  Gmaps.map.markers.length; i++) {              
+              for (var i = 0; i <  Gmaps.map.markers.length; i++) {
                  google.maps.event.addListener(Gmaps.map.markers[i].serviceObject, 'click',   redirect_to(Gmaps.map.markers[i].link));
-              }                
+              }
             };
-     
+
     / %input.input-a{:placeholder => "Find a group...", :style => "margin-left: 0px;"}
     /   %a.label-36{:href => "#"} + Create Group
     .div-g

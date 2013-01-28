@@ -1545,11 +1545,13 @@ p.label-53{margin-bottom: 15px;}
 }
 
 /* file upload style in user#edit */
+#welcome {
+	text-align: center;
+}
 .upload-button {
   position: relative;
   overflow: hidden;
   font-size: 12px;
-  text-align: center;
 }
 
 .upload-button span {
