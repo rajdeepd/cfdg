@@ -74,40 +74,40 @@ class ChaptersController < ApplicationController
   end
 
   def detail
-      @chapter = Chapter.find(params[:id])
-      @is_part_of_chapter = false
-      if current_user
-        @is_part_of_chapter = @chapter.chapter_members.where({:user_id => current_user.id}).try(:first).present?
-      end
-
-      @primary_coordinator = @chapter.chapter_members.where({:memeber_type => ChapterMember::PRIMARY_COORDINATOR}).try(:first)
-      @secondary_coordinators = @chapter.chapter_members.where({:memeber_type => ChapterMember::SECONDARY_COORDINATOR}) || []
-      @members = @chapter.chapter_members.where({:memeber_type => ChapterMember::MEMBER}) || []
-
-      @totalcount = @chapter.chapter_members.size
-
-      get_upcoming_and_past_events
-      marker =[]
-      if @chapter.geolocation.present?
-        geo_tag =@chapter.geolocation
-        marker <<{:lat => geo_tag.latitude, :lng => geo_tag.longitude, :title => geo_tag.title}
-      end
-      @marker =marker.to_json
-      @announcements = Announcement.all
-      respond_to do |format|
-        if request.xhr?
-          if(params[:chapter_home] == "true" and params[:page].blank?)
-            format.html{render :partial => '/events/events_list'}
-          else      #this is used for pagination
-            format.js {}
-          end
-        else
-          format.html # show.html.erb
-          format.json { render json: @chapter }
-        end
-
-      end
+    @chapter = Chapter.find(params[:id])
+    @is_part_of_chapter = false
+    if current_user
+      @is_part_of_chapter = @chapter.chapter_members.where({:user_id => current_user.id}).try(:first).present?
     end
+
+    @primary_coordinator = @chapter.chapter_members.where({:memeber_type => ChapterMember::PRIMARY_COORDINATOR}).try(:first)
+    @secondary_coordinators = @chapter.chapter_members.where({:memeber_type => ChapterMember::SECONDARY_COORDINATOR}) || []
+    @members = @chapter.chapter_members.where({:memeber_type => ChapterMember::MEMBER}) || []
+
+    @totalcount = @chapter.chapter_members.size
+
+    get_upcoming_and_past_events
+    marker =[]
+    if @chapter.geolocation.present?
+      geo_tag =@chapter.geolocation
+      marker <<{:lat => geo_tag.latitude, :lng => geo_tag.longitude, :title => geo_tag.title}
+    end
+    @marker =marker.to_json
+    @announcements = Announcement.all
+    respond_to do |format|
+      if request.xhr?
+        if(params[:chapter_home] == "true" and params[:page].blank?)
+          format.html{render :partial => '/events/events_list'}
+        else      #this is used for pagination
+          format.js {}
+        end
+      else
+        format.html # show.html.erb
+        format.json { render json: @chapter }
+      end
+
+    end
+  end
 
     def chapter_gallery
       @chapter = Chapter.find(params[:id])
@@ -193,7 +193,8 @@ class ChaptersController < ApplicationController
     respond_to do |format|
       if member.save
         ChapterNotifications.chapter_joined(@chapter,@current_user).deliver
-        format.html { redirect_to @chapter }
+        #format.html { redirect_to @chapter }
+        format.html { redirect_to detail_chapter_path(@chapter) }
         format.json { render json: @chapter, status: :success, location: @chapter }
       else
         format.html { redirect_to @chapter }
@@ -229,10 +230,44 @@ class ChaptersController < ApplicationController
   end
 
   def search
+    logger.info params.inspect
     @chapters = Chapter.search_chapters(params[:query])
     if @chapters.length ==1
       redirect_to chapter_path(@chapters.first)
     end
   end
 
+  def search_chapter_list
+    logger.info params.inspect
+    @chapters = Chapter.search_chapters(params[:query])
+    if params[:chapter_type] != "All"
+      @chapters = @chapters.select{|i| i.chapter_type.downcase == params[:chapter_type].downcase}
+    end
+    redirect_to list_chapters_path(:search_results => @chapters.collect{|i| i.id}, :query => params[:query])
+  end
+
+  def list
+    if params[:query].present?
+      @chapters =Chapter.where(:id => params[:search_results])
+    else
+    all_chapters = Chapter.incubated_or_active || []
+    if params[:all_chapters] == "true"
+      @chapters = all_chapters
+    else
+      country = get_country(request)
+      chapter_inside_country = all_chapters.select{|i| i.country_name == country}
+      if chapter_inside_country.empty?
+        @chapters = all_chapters
+      else
+        @chapters = chapter_inside_country
+      end
+
+      #binding.remote_pry
+    end
+    end
+
+    @chapters.sort_by!{|i| -i.chapter_members.count}
+
+
+  end
 end

@@ -140,7 +140,8 @@
               -#.form-horizontal
               .control-group
                 .controls
-                  %button.btn Cancel
+                  -#%button.btn Cancel
+                  =link_to "Cancel",chapter_path(@chapter),:class => "btn"
                   %button.orangeBtn Create Event
 
 :javascript
@@ -169,6 +170,9 @@
         "event[postal_code]":{
           required: true,
           eventPostalCode:true
+        },
+        "event[description]":{
+          required: true
         }
       }
     });

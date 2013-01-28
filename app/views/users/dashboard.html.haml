@@ -73,12 +73,12 @@
       .slider.clearfix
         .sliderHeadingFull
           %h3 Upcoming Events
-        .ca-container.ca-container.clearfix
-          .ca-wrapper
-            - if @upcoming_events.blank?
-              .centerText.verticalCenter No upcoming events.
-              = link_to "Click here to see event list",event_listing_events_path,:style => "margin-left:360px;text-decoration: underline;"
-            -else
+        - if @upcoming_events.blank?
+          .centerText.verticalCenter No upcoming events.
+          = link_to "Click here to see event list",event_listing_events_path,:class => "noEventText"
+        -else
+          .ca-container.ca-container.clearfix
+            .ca-wrapper
               - @upcoming_events.each do |event|
                 .ca-item.ca-item-1
                   .ca-item-main
@@ -112,14 +112,14 @@
       .slider.subscribedChapters.clearfix
         .sliderHeadingFull
           %h3 Subscribed Chapters
-        .ca-container.ca-container.clearfix
-          .ca-wrapper
-            - if @subscribed_chapter.blank?
-              .centerText.verticalCenter No subscribed chapter.
-              = link_to "Click here to see chapter list",chapter_list_html_index_path,:style => "margin-left:360px;text-decoration: underline;"
-            -else
-              - @subscribed_chapter.each do |chapter|
-                .ca-item.ca-item-1
+        - if @subscribed_chapter.blank?
+          .centerText.verticalCenter No subscribed chapter.
+          = link_to "Click here to see chapter list",chapter_list_html_index_path,:class => "noEventText"
+        -else
+          .ca-container.ca-container.clearfix
+            .ca-wrapper
+              - @subscribed_chapter.each_with_index do |chapter,count|
+                .ca-item{:class => "ca-item-#{count+1}"}
                   .ca-item-main
                     .eventListWrapper
                       .eventListInner
@@ -157,17 +157,17 @@
                         %a{:href => "#{detail_chapter_path(chapter)}"} View Chapter
                       .eventListFooter
                         %span.numberPeopleAttending #{pluralize(chapter.chapter_members.length,"Member")}
-
+                
       .slider.clearfix
         .sliderHeadingFull
           %h3 Past Events
-        .ca-container.PastEventsContainer.clearfix
-          .ca-wrapper
-            - if @user_past_event.blank?
-              .centerText No past event.
-            -else
-              - @user_past_event.each do |event|
-                .ca-item.ca-item-1
+        - if @user_past_event.blank?
+          .centerText No past event.
+        -else
+          .ca-container.PastEventsContainer.clearfix
+            .ca-wrapper
+              - @user_past_event.each_with_index do |event,count|
+                .ca-item{:class => "ca-item-#{count+1}"}
                   .ca-item-main
                     %a{:href => "#{event_path(event)}"}
                       .pastEvent
@@ -196,7 +196,7 @@
                   %img{:src => "/assets/default_human_face.jpg"}
                 -#%img{:src => "/assets/human_face_6.jpg"}
                 .commentText
-                  %span.commentDate #{Time.parse(post.try(:created_at).to_s).strftime('%b %d, %Y')}
+                  %span.commentDate #{post.user.fullname.try(:titleize)}, #{Time.parse(post.try(:created_at).to_s).strftime('%b %d, %Y')}
                   %p.darkText #{post.title}
                   %p #{post.description.truncate(197)}
                   %a.btn.learnMore{:href => "#{post_path(post)}"} Learn more

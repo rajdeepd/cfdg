@@ -23,6 +23,8 @@ CloudfoundryUsergroups::Application.routes.draw do
       post 'join_a_chapter'
       get  'chapter_admin_home_page'
       get 'search'
+      get 'search_chapter_list'
+      get 'list'
     end
   end
 
@@ -81,6 +83,7 @@ CloudfoundryUsergroups::Application.routes.draw do
   match '/login' => 'federated#login', :as => :login
   match '/logout' => 'federated#logout'
   match '/profile' => 'users#profile' , :as => :profile
+  match '/dashboard' => 'users#dashboard' , :as => :dashboard
 
   match 'settings' => 'users#settings' , :as => :settings
   match 'settings_update/:id' => 'users#settings_update' , :as => :settings_update , :via => :put

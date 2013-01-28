@@ -17,7 +17,7 @@
 -#      = hidden_field_tag "user[is_proprietary_user]" , true
 -#    %p= f.submit "Sign up"
   -#= render :partial => "devise/shared/links"
-
+= javascript_include_tag "jquery.validate"
 .loginContent.signUpWrapper
   .row
     .span10.offset1
@@ -58,7 +58,7 @@
           -#  %span OR
           .loginText Sign Up with email
           = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
-            = devise_error_messages!
+            -#= devise_error_messages!
 
             = f.email_field :email,:value => session[:email] , :placeholder => "Email*"
             = f.password_field :password    ,:placeholder => "Password*"
@@ -84,6 +84,21 @@
     });
     $("#user_password_confirmation").bind("cut copy paste",function(e) {
       e.preventDefault();
+    });
+    $('#new_user').validate({
+      rules: {
+        "user[email]": {
+          required: true,
+          email: true
+        },
+        "user[password]": {
+          required: true
+        },
+        "user[password_confirmation]": {
+          required: true
+        }
+      }
+
     });
   });
 

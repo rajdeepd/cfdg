@@ -10,7 +10,7 @@
         %li
           %a.about{:href => "#{about_path}"} About
         %li
-          %a.chapter{:href => "#{directory_path}"} Chapters
+          %a.chapter{:href => "#{list_chapters_path}"} Chapters
         %li
           %a.event{:href => "#{event_listing_events_path}"} Events
         %li
@@ -33,7 +33,15 @@
     else if($(".navbar").attr("controller") == "events"){
       $(".event").addClass("activeTab");
     }
-
+    else if($(".navbar").attr("controller") == "chapters" && $(".navbar-inner").attr("action") == "detail"){
+      $(".chapter").addClass("activeTab");
+    }
+    else if($(".navbar").attr("controller") == "chapters" && $(".navbar-inner").attr("action") == "chapter_gallery"){
+      $(".chapter").addClass("activeTab");
+    }
+    else if($(".navbar").attr("controller") == "chapters" && $(".navbar-inner").attr("action") == "list"){
+      $(".chapter").addClass("activeTab");
+    }
     //$("ul.clearfix li a").hover(function(){
     //  $(this).addClass("activeTab");
     //});

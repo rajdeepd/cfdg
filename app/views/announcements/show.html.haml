@@ -24,9 +24,9 @@
   .chapterLayout
     -#%img.articleImg{:src => "/assets/article_img.jpg"}
     -if @announcement.image.announcement_landscape.present?
-      = image_tag @announcement.image.announcement_landscape ,:size => "878x319"
+      = image_tag @announcement.image.announcement_landscape ,:class => "articleImg"
     -else
-      =image_tag @announcement.photo ,:size => "878x319"
+      =image_tag @announcement.photo ,:class => "articleImg"
 
     .articleLayout
       .clearfix

@@ -75,7 +75,7 @@
         .citySearch
           %span.citySearchIcon
           =form_tag search_chapters_path  , :method => :get,:id => "search_chapter"  do
-            = autocomplete_field_tag 'query', '', autocomplete_city_details_home_index_path, :size => 75 ,:placeholder => "City Name"
+            = text_field_tag 'query', '', :size => 75 ,:placeholder => "City Name" ,:id => "city_autocomplete"
             =button_tag "" ,:class =>"citySearchBtn"
 
 
@@ -162,4 +162,14 @@
       $(".widget-header h1").text("#{t('menu.signup')}");
       $(".widget-nascar-list h2").text("#{t('menu.signup_with')}");
     });
+
+    $( "#city_autocomplete" ).autocomplete({
+          source: "/home/autocomplete_city_details",
+          minLength: 2,
+          select: function( event, ui ) {
+            //log( ui.item ?
+            //  "Selected: " + ui.item.value + " aka " + ui.item.id :
+            //  "Nothing selected, input was " + this.value );
+          }
+        });
   });

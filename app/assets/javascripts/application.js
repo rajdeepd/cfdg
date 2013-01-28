@@ -14,7 +14,6 @@
 //= require jquery_ujs
 //= require jquery-ui
 //= require jquery.remotipart
-//= require autocomplete-rails
 //= require custom.js
 //= require_tree .
 
