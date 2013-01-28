@@ -112,52 +112,52 @@
       .slider.subscribedChapters.clearfix
         .sliderHeadingFull
           %h3 Subscribed Chapters
-          - if @subscribed_chapter.blank?
-            .centerText.verticalCenter No subscribed chapter.
-            = link_to "Click here to see chapter list",chapter_list_html_index_path,:class => "noEventText"
-          -else
-            .ca-container.ca-container.clearfix
-              .ca-wrapper
-                - @subscribed_chapter.each do |chapter|
-                  .ca-item.ca-item-1
-                    .ca-item-main
-                      .eventListWrapper
-                        .eventListInner
-                          .tag
+        - if @subscribed_chapter.blank?
+          .centerText.verticalCenter No subscribed chapter.
+          = link_to "Click here to see chapter list",chapter_list_html_index_path,:class => "noEventText"
+        -else
+          .ca-container.ca-container.clearfix
+            .ca-wrapper
+              - @subscribed_chapter.each_with_index do |chapter,count|
+                .ca-item{:class => "ca-item-#{count+1}"}
+                  .ca-item-main
+                    .eventListWrapper
+                      .eventListInner
+                        .tag
+                          -if chapter.chapter_type == "student"
+                            %img{:src => "/assets/student_event.png"}
+                          -else
+                            %img{:src => "/assets/professional_event.png"}
+                        .clearfix
+                          .eventImg
+                            %img{:src => "/assets/event_snap_4.jpg"}
+                          .eventContent
                             -if chapter.chapter_type == "student"
-                              %img{:src => "/assets/student_event.png"}
+                              %h5 #{chapter.name}
+                              .institution #{chapter.institution}
                             -else
-                              %img{:src => "/assets/professional_event.png"}
-                          .clearfix
-                            .eventImg
-                              %img{:src => "/assets/event_snap_4.jpg"}
-                            .eventContent
-                              -if chapter.chapter_type == "student"
-                                %h5 #{chapter.name}
-                                .institution #{chapter.institution}
-                              -else
-                                %h5 #{chapter.name}
-                          .location #{chapter.city_name}, #{chapter.country_name}
-                          .comingEvent
-                            %h5 Upcoming Event
-                            -if chapter.get_chapter_upcoming_events.blank?
-                              .pastEvent
-                                .clearfix
-                                  -#.pastEventDate
-                                    -#%span.date 04
-                                    -#%span.month Dec
-                                  .pastEventDetails.centerText.fullPadding No upcoming events.
-                            -else
-                              .pastEvent
-                                .clearfix
-                                  .pastEventDate
-                                    %span.date #{Time.parse(chapter.get_chapter_upcoming_events.first.event_start_date.to_s).strftime('%d')}
-                                    %span.month #{Time.parse(chapter.get_chapter_upcoming_events.first.event_start_date.to_s).strftime('%b')}
-                                  .pastEventDetails #{chapter.get_chapter_upcoming_events.first.description.truncate(72)}
-                          %a{:href => "#{detail_chapter_path(chapter)}"} View Chapter
-                        .eventListFooter
-                          %span.numberPeopleAttending #{pluralize(chapter.chapter_members.length,"Member")}
-
+                              %h5 #{chapter.name}
+                        .location #{chapter.city_name}, #{chapter.country_name}
+                        .comingEvent
+                          %h5 Upcoming Event
+                          -if chapter.get_chapter_upcoming_events.blank?
+                            .pastEvent
+                              .clearfix
+                                -#.pastEventDate
+                                  -#%span.date 04
+                                  -#%span.month Dec
+                                .pastEventDetails.centerText.fullPadding No upcoming events.
+                          -else
+                            .pastEvent
+                              .clearfix
+                                .pastEventDate
+                                  %span.date #{Time.parse(chapter.get_chapter_upcoming_events.first.event_start_date.to_s).strftime('%d')}
+                                  %span.month #{Time.parse(chapter.get_chapter_upcoming_events.first.event_start_date.to_s).strftime('%b')}
+                                .pastEventDetails #{chapter.get_chapter_upcoming_events.first.description.truncate(72)}
+                        %a{:href => "#{detail_chapter_path(chapter)}"} View Chapter
+                      .eventListFooter
+                        %span.numberPeopleAttending #{pluralize(chapter.chapter_members.length,"Member")}
+                
       .slider.clearfix
         .sliderHeadingFull
           %h3 Past Events
@@ -166,8 +166,8 @@
         -else
           .ca-container.PastEventsContainer.clearfix
             .ca-wrapper
-              - @user_past_event.each do |event|
-                .ca-item.ca-item-1
+              - @user_past_event.each_with_index do |event,count|
+                .ca-item{:class => "ca-item-#{count+1}"}
                   .ca-item-main
                     %a{:href => "#{event_path(event)}"}
                       .pastEvent

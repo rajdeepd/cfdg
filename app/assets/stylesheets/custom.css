@@ -1549,8 +1549,8 @@ li.ui-timepicker-selected .ui-timepicker-duration,
 }
 .chapterLayout .ca-item{
     width: 280px;
-    max-height: 398px;
-    height: auto;
+    height: 398px;
+    /*height: auto;*/
 }
 .chapterLayout .ca-item-main{
     padding: 0;
@@ -1852,8 +1852,8 @@ ul.eventGallery li{
     margin-left: 10px;
 }
 .subscribedChapters .ca-container{
-    /*height: 305px;*/
-    height: auto;
+    height: 305px;
+    /*height: auto;*/
 }
 .userDashboard ul.posts li{
     border: none;
