@@ -2,19 +2,11 @@
 source 'http://ruby.taobao.org'
 
 gem 'rails', '3.2.11'
-
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
-
-#gem 'mysql' , '2.8.1'
-
 gem 'mysql2' , '0.3.11'
 gem 'haml-rails' , '0.3.5'
 gem 'formtastic' , '2.2.1'
 gem "paperclip"
 gem 'paperclip-qiniu'
-#gem 'mime-types', :require => 'mime/types'
-#gem 'RMagick', '0.3.7'
 gem 'mail_view', :git => 'https://github.com/37signals/mail_view.git'
 gem 'cancan', '1.6.5'
 gem 'eventbrite-client'
@@ -85,21 +77,15 @@ gem 'oauth2'
 
 gem "state_machine"
 gem 'awesome_nested_set'
-gem 'carmen-rails'
 gem 'will_paginate', '~> 3.0'
 
 gem 'remotipart', '~> 1.0.2'
 gem "ckeditor", "~> 3.7.3"
 
 gem 'aws-sdk'
-gem 'carrierwave'
-gem "tlsmail"
 gem "delayed_job"
 gem 'delayed_job_active_record'
 gem 'mini_magick'
-gem 'flash_cookie_session'
-#gem 'fog'
-#gem 'aws-ses'
 
 #gem 'pry-remote'
 # To use ActiveModel has_secure_password

@@ -57,7 +57,6 @@ module CloudfoundryUsergroups
     # Enable the asset pipeline
     config.assets.enabled = true
     config.time_zone = 'Beijing'
-    config.autoload_paths += %W(#{config.root}/app/models/ckeditor)
 
     config.action_mailer.default_url_options = {:host => "cfdg.cloudfoundry.com"}
 
@@ -66,62 +65,5 @@ module CloudfoundryUsergroups
     end
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
-
-    #config.action_mailer.delivery_method = :smtp
-    #config.action_mailer.smtp_settings = {
-    #    :address              => "smtp.gmail.com",
-    #    :port                 => 587,
-    #    :domain               => 'mail.weboniselab.com',
-    #    :user_name            => 'pansingh@weboniselab.com',
-    #    :password             => 'pansingh6186',
-    #    :authentication       => 'plain',
-    #    :enable_starttls_auto => true  }
-
-
-
-    #require "tlsmail"
-    #config.action_mailer.delivery_method = :smtp
-    #config.action_mailer.smtp_settings = {
-    #    :address              => "smtp.sendgrid.net",
-    #    :port                 => 587,
-    #    :user_name            => 'locamotiv',
-    #    :password             => 'locamotiv',
-    #    :authentication       => 'plain',
-    #    :enable_starttls_auto => true
-    #}
-
-    #config.action_mailer.delivery_method = :ses
-    #require "tlsmail"
-    #config.action_mailer.delivery_method = :smtp
-    #config.action_mailer.smtp_settings = {
-    #    :address => "email-smtp.us-east-1.amazonaws.com",
-    #    :user_name => "AKIAICXGOV6CXPQQLXHA", # Your SMTP user here.
-    #    :password => "AmN2vagCwhgkpNm0N92G/5JSgLjksZ6cdSNgt83nfoKL", # Your SMTP password here.
-    #    :authentication => :login,
-    #    :enable_starttls_auto => true,
-    #    :port => 25
-    #}
-
-
-
-    #require 'aws/ses'
-    #
-    #SES = AWS::SES::Base.new(
-    #    :access_key_id     => 'AKIAI7K4DV63EWHI5DSA',
-    #    :secret_access_key => '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'
-    #)
-
-    #require "tlsmail"
-    # # Net::SMTP.enable_tls( OpenSSL::SSL::VERIFY_NONE )
-    #  ActionMailer::Base.smtp_settings = {
-    #        :enable_starttls_auto => true,
-    #        :address => "smtp.sendgrid.net",
-    #        :port => 25,
-    #        :domain => "localhost",
-    #        :authentication => :plain,
-    #        :user_name => "locamotiv",
-    #       :password => "locamotiv"
-    # }
-    config.autoload_paths += %W(#{config.root}/app/middleware/)
   end
 end
