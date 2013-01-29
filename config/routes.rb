@@ -39,6 +39,9 @@ CloudfoundryUsergroups::Application.routes.draw do
       get  'chapter_admin_home_page'
       get 'recommend'
     end
+    member do
+      get 'chairman_show'
+    end
   end
 
   # Above this line is revised.
@@ -127,7 +130,6 @@ CloudfoundryUsergroups::Application.routes.draw do
         get 'active'
         get 'delist'
         get 'all'
-        get 'chairmans'
       end
       member do
         get 'change_status'

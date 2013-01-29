@@ -1,0 +1,5 @@
+#chairman-contain
+  %div
+    %p= @chapter.chairman_description
+    = image_tag @chapter.chairman_photo.url
+  %span= link_to "编辑", edit_chapter_path(@chapter), :remote => true

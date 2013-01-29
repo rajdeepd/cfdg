@@ -1,0 +1,8 @@
+- if @chapter.errors.blank?
+  $("#chairman-contain").html("#{j(render 'chairman_show')}");
+- else
+  - msg= ''
+  - @chapter.errors.messages.each do |attribute, errors|
+    -errors.each do |e|
+      -msg= msg+ e  
+  noty({ text: "#{msg}", type: "error"});

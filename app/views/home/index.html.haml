@@ -39,13 +39,13 @@
           .ca-down
             %h2.label-6= t('chapter.create_title')
             %h5.label-7= t('chapter.create_desc')
-            = link_to  t('chapter.create_create') , new_chapter_path, :class => "btn-b"
+            = link_to  t('chapter.create_chapter') , new_chapter_path, :class => "btn-b"
     - else current_user.blank?
       .ca-bottom
         .ca-down
           %h2.label-6= t('chapter.create_title')
           %h5.label-7= t('chapter.create_desc')
-          = link_to t('chapter.create_create') , "javascript:void(0)", :class => "btn-b login"
+          = link_to t('chapter.create_chapter') , "javascript:void(0)", :class => "btn-b login"
   .content-b
     - unless @announcements.blank?
       .cb-left.flt-left{:style=>"overflow:visible;"}

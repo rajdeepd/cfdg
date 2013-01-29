@@ -12,3 +12,6 @@
       %a{:href => "#", :chapter_id => chapter.id ,:id =>"group_admin_ref", :"data-target" => "Chapter Admin"}
         = t("chapter.chapter_admin")
       %i.bg-arrow-down-b
+  %li
+    -if current_user.present? and chapter.is_primary_coordinator?(current_user)
+      =link_to t("chapter.chairman"), chairman_show_chapter_path(chapter), :remote => true

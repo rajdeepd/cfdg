@@ -114,9 +114,4 @@ class Admin::ChaptersController < ApplicationController
       end
     end
   end
-
-  def chairmans
-    @chapters = Chapter.all
-    render :layout => false
-  end
 end

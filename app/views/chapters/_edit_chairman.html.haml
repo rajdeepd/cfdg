@@ -1,0 +1,7 @@
+= form_for @chapter, :html => { :multipart => true, :id => 'chairman_form' }, :remote => true   do |f|
+  = f.text_field :chairman_description, :style => "height: 80px;margin:5px 0px;"
+  %p limit 50 words
+  = f.file_field :chairman_photo, :as => :file
+  = f.submit 'submit' , :class => 'send'
+
+
