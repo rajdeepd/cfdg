@@ -43,18 +43,18 @@
           %a{:href => "#{settings_path}"} Edit Profile
         %li
           %a{:href => "#"} Change Password
-        %li
+        -#%li
           %a{:href => "#"} Something else here
-        %li.divider
-        %li
+        -#%li.divider
+        -#%li
           %a{:href => "#"} Separated link
     .chapterName.clearfix
       %h3
         -##{@current_user.fullname} l
         #{@current_user.fullname}
         -#%span CEO Accenture, Pune
+      %span.userEmail Email: #{@current_user.email}
       %span.chapterLocation  #{@current_user.location}
-      %span.userEmail  #{@current_user.email}
       %span.phoneNumber  #{@current_user.mobile}
       -if @current_user.user_profile_completion_status
         .userSocialLink.clearfix
@@ -105,7 +105,7 @@
                           %h5 #{event.title}
                           .personName #{event.user.fullname}
                           %p.lightGrayText #{event.description.truncate(70)}
-                          %a{:href => "#{event_path(event)}"} Read more
+                          %a{:href => "#{event_path(event)}"} View Event
                       .eventListFooter
                         %span.numberPeopleAttending #{event.event_members.length} People Attending
 
@@ -148,12 +148,13 @@
                                   -#%span.month Dec
                                 .pastEventDetails.centerText.fullPadding No upcoming events.
                           -else
-                            .pastEvent
-                              .clearfix
-                                .pastEventDate
-                                  %span.date #{Time.parse(chapter.get_chapter_upcoming_events.first.event_start_date.to_s).strftime('%d')}
-                                  %span.month #{Time.parse(chapter.get_chapter_upcoming_events.first.event_start_date.to_s).strftime('%b')}
-                                .pastEventDetails #{chapter.get_chapter_upcoming_events.first.description.truncate(72)}
+                            %a.comingEventAnchor{:href => "#{event_path(chapter.get_chapter_upcoming_events.first)}"}
+                              .pastEvent
+                                .clearfix
+                                  .pastEventDate
+                                    %span.date #{Time.parse(chapter.get_chapter_upcoming_events.first.event_start_date.to_s).strftime('%d')}
+                                    %span.month #{Time.parse(chapter.get_chapter_upcoming_events.first.event_start_date.to_s).strftime('%b')}
+                                  .pastEventDetails #{chapter.get_chapter_upcoming_events.first.description.truncate(72)}
                         %a{:href => "#{detail_chapter_path(chapter)}"} View Chapter
                       .eventListFooter
                         %span.numberPeopleAttending #{pluralize(chapter.chapter_members.length,"Member")}
@@ -196,10 +197,10 @@
                   %img{:src => "/assets/default_human_face.jpg"}
                 -#%img{:src => "/assets/human_face_6.jpg"}
                 .commentText
-                  %span.commentDate #{post.user.fullname.try(:titleize)}, #{Time.parse(post.try(:created_at).to_s).strftime('%b %d, %Y')}
                   %p.darkText #{post.title}
+                  %span.commentDate #{post.user.fullname.try(:titleize)}, #{Time.parse(post.try(:created_at).to_s).strftime('%b %d, %Y')}
                   %p #{post.description.truncate(197)}
-                  %a.btn.learnMore{:href => "#{post_path(post)}"} Learn more
+                  %a.btn.learnMore{:href => "#{post_path(post)}"} View more
 
 :javascript
   $('.ca-container').contentcarousel({

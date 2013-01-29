@@ -21,7 +21,7 @@ a{
     color: #0094D4;
 }
 a:hover{
-    color: #ffffff;
+    /*color: #ffffff;*/
 }
 a:hover{
     text-decoration: none;
@@ -937,8 +937,9 @@ ul.supportPrivacyLinks li{
     z-index: -1;
 }
 .chapterDetails .mapDiv{
-    height: 460px;
-    top: 282px;
+    height: 369px;
+    top: 150px;
+    width: 568px;
 }
 .mapDiv .close{
     float: right;
@@ -1246,7 +1247,7 @@ ul.supportPrivacyLinks li{
     line-height: 35px;
     color: #666666;
     padding-left: 15px;
-    border-radius: 0 0 5px 5px;
+    border-radius: 0 0 4px 4px;
 }
 .eventListFooter span{
     color: #666666;
@@ -1324,12 +1325,12 @@ ul.supportPrivacyLinks li{
     margin-top: 60px;
 }
 .content .comingEvents .ca-container{
-    height: 415px;
+    height: 428px;
     width: 891px;
 }
 .content .comingEvents .ca-item{
     width: 288px;
-    height: 397px;
+    height: 407px;
 }
 .content .comingEvents .ca-item-main{
     padding: 0;
@@ -1765,12 +1766,15 @@ ul.eventGallery li{
 }
 
 .formBox .control-group .orangeBtn, .formBox .control-group .btn{
-    width: 136px;
+    width: 137px;
     border-radius: 5px;
-    height: 36px;
+    height: 35px;
     font-size: 16px;
     font-weight: 500;
     margin-right: 18px;
+}
+.formBox .control-group input.orangeBtn{
+    display: inline-block;
 }
 .formBox .control-group a.btn{
     width: 114px;
@@ -1820,7 +1824,11 @@ ul.eventGallery li{
     width: 20px;
     height: 20px;
 }
-
+.subscribedChapters a.noEventText{
+    font-size: 14px;
+    color: #0094D4;
+    margin-left: 0;
+}
 .event_error{
     text-align: center;
     color: red;
@@ -1904,13 +1912,14 @@ ul.eventGallery li{
 .subscribedChapters a{
     color: #0078ac;
     font-size: 12px;
-    margin-left: 10px;
+    margin: 0 0 10px 10px;
+    display: block;
 }
 .subscribedChapters a:hover{
     color: #222222
 }
 .subscribedChapters .ca-container{
-    height: 305px;
+    height: 323px;
     /*height: auto;*/
 }
 .userDashboard ul.posts li{
@@ -1999,15 +2008,17 @@ ul.posts li .commentText .commentDate{
 }
 .userDashboard .blueHeader .userEmail{
     /*background: url("email.png") no-repeat;*/
-    padding-left: 15px;
+    /*padding-left: 15px;*/
     display: block;
     float: left;
     color: #ffffff;
     font-size: 14px;
-    margin-right: 20px;
+    margin: 0 20px 9px 0;
     line-height: 16px;
 }
-
+.subscribedChapters a.comingEventAnchor{
+    margin: 0;
+}
 .userDashboard .blueHeader .phoneNumber{
     background: url("contact_number_white.png") no-repeat;
     padding-left: 20px;
@@ -2221,7 +2232,6 @@ ul.posts li .commentText .commentDate{
 .joinChapter button{
     padding: 6px 15px;
     margin-left: 25px;
-    margin-top: 12px;
 }
 .joinChapter form{
     margin: 0;
@@ -2324,7 +2334,7 @@ ul.posts li .commentText .commentDate{
 }
 .settingDropdown ul.dropdown-menu{
     padding: 0;
-    right: 20px;
+    right: 0px;
     left: auto;
 }
 .settingDropdown ul.dropdown-menu li:first-child a{
@@ -2445,13 +2455,13 @@ ul.posts li .commentText .commentDate{
     border: none;
     height: 22px;
 }
-.wrapper {
+.form-horizontal .control-group .wrapper {
     position: relative;
     width:75px;
     height:30px;
     overflow:hidden;
 }
-.textbox, .wrapper, .btn_Go {
+.form-horizontal .control-group .textbox,.form-horizontal .control-group  .wrapper,.form-horizontal .control-group  .btn_Go {
     float:left;
 }
 .bigButton.blueBtn.notAMember{
@@ -2468,6 +2478,7 @@ ul.posts li .commentText .commentDate{
     background: #ffffff;
     /*left:351px !important;*/
 }
+
 .formBox.profileWrapper{
     margin-top: 30px;
 }
@@ -2479,4 +2490,3 @@ ul.posts li .commentText .commentDate{
 .loginRightPanel input[type = "submit"]{
     padding: 6px 17px;
 }
-

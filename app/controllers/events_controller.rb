@@ -332,6 +332,8 @@ class EventsController < ApplicationController
 
   def event_listing
   @upcoming_events = Event.get_upcoming_events
+  @past_events = Event.get_past_events
+
   end
 
   def join_event

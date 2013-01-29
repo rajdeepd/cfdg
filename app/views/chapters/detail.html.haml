@@ -48,9 +48,8 @@
           %i.closeIcon
         -#%img{:src => "/assets/map.png"}
         = render :partial => "chapter_map"
-  .joinChapter
-    -#%button.orangeBtn Join Chapter
-    -if !@is_part_of_chapter
+  -if !@is_part_of_chapter
+    .joinChapter
       = form_tag join_a_chapter_chapters_path, :method => :post do
         = hidden_field_tag "chapter_id", "#{@chapter.id}"
         - if @current_user.blank?
@@ -97,7 +96,7 @@
                               %h5 #{event.title}
                               .personName #{event.user.fullname}
                               %p.lightGrayText #{event.description.truncate(70)}
-                              %a{:href => "#{event_path(event)}"} Read more
+                              %a{:href => "#{event_path(event)}"} View Event
                           .eventListFooter
                             %span.numberPeopleAttending #{event.event_members.length} People Attending
                             -#%span People Attending
@@ -106,31 +105,32 @@
             =render :partial => "past_events"
           .slider.clearfix
             .sliderHeading
-              %h3 Events Gallery
+              %h3 Chapter Gallery
             .ca-container.galleryThumbnailsContainer.clearfix
               .ca-wrapper
                 - if @chapter.get_past_events.blank?
                   .centerText.verticalMargin No event gallery for this chapter.
                 -else
                   - @chapter.get_past_events.each do |i|
-                    .ca-item.ca-item-1
-                      .ca-item-main
-                        %a{:href => "#{chapter_gallery_chapter_path(:event_id => i)}"}
-                          .galleryThumbnails
-                            -if i.image.event_landscape.present?
-                              = image_tag(i.image.event_landscape.url,:size => "260x150")
-                            -elsif i.image.present?
-                              = image_tag(i.image.url,:size => "260x150")
-                            -else
-                              =image_tag("event_landscape_logo-b.png",:size => "260x150")
-                            -#-else
-                              = image_tag("event_gallery_thumbnail.jpg",:size => "260x150")
-                            -#%p Cloud Foundry introduced npm support, we added serval
-                            %p #{i.title.truncate(15)}
-                            - if i.event_galleries.present?
-                              %a.lightGrayText{:href => "#{chapter_gallery_chapter_path(:event_id => i)}"} (#{i.event_galleries.count} Photos)
-                            - else
-                              %a.lightGrayText{:href => "#{chapter_gallery_chapter_path(:event_id => i)}"} (0 Photos)
+                    -if i.event_galleries.count > 0
+                      .ca-item.ca-item-1
+                        .ca-item-main
+                          %a{:href => "#{chapter_gallery_chapter_path(:event_id => i)}"}
+                            .galleryThumbnails
+                              -if i.image.event_landscape.present?
+                                = image_tag(i.image.event_landscape.url,:size => "260x150")
+                              -elsif i.image.present?
+                                = image_tag(i.image.url,:size => "260x150")
+                              -else
+                                =image_tag("event_landscape_logo-b.png",:size => "260x150")
+                              -#-else
+                                = image_tag("event_gallery_thumbnail.jpg",:size => "260x150")
+                              -#%p Cloud Foundry introduced npm support, we added serval
+                              %p #{i.title.truncate(15)}
+                              - if i.event_galleries.present?
+                                %a.lightGrayText{:href => "#{chapter_gallery_chapter_path(:event_id => i)}"} (#{i.event_galleries.count} Photos)
+                              - else
+                                %a.lightGrayText{:href => "#{chapter_gallery_chapter_path(:event_id => i)}"} (0 Photos)
 
         .comments.clearfix
           .sliderHeading
@@ -148,9 +148,9 @@
                       %img{:src => "/assets/default_human_face.jpg"}
                     .commentText
                       %h4 #{i.title}
-                      %span.commentDate #{Time.parse(i.try(:created_at).to_s).strftime('%b %d, %Y')}
-                  %p #{i.description.truncate(197)}
-                  %a{:href => "#"} View more
+                      %span.commentDate #{i.user.fullname.try(:titleize)}, #{Time.parse(i.try(:created_at).to_s).strftime('%b %d, %Y')}
+                      %p #{i.description.truncate(197)}
+                      %a.btn.learnMore{:href => "#{post_path(i)}"} View more
       .span4
         =render :partial => "event_admin_and_members_list"
 

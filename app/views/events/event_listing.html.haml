@@ -29,7 +29,7 @@
 -#      -else
 -#        %h1.label-17
 -#        = "No Upcoming Event"
-.content
+-#.content
   .comingEvents.clearfix
     .fullHeading
       %h3 Upcoming Events
@@ -68,7 +68,7 @@
                         =event.user.fullname
                       %p.lightGrayText
                         =event.description.truncate(70)
-                      %a{:href => "#{event_path(event)}"} Read more
+                      %a{:href => "#{event_path(event)}"} View Event
                   .eventListFooter
                     %span.numberPeopleAttending #{event.event_members.length} People Attending
                     -#%span People Attending
@@ -76,3 +76,127 @@
 
     -else
       .noEventText No Events
+
+.content.eventListing
+  .blueHeaderWithoutTag
+    .chapterName.clearfix
+      %h1 Events
+  .layoutWrapper
+    %form
+      .eventSearchBox
+        %input{:placeholder => "Type Keyword", :type => "text"}/
+        .eventCitySearch.clearfix
+          %span.citySearchIcon
+          %input{:placeholder => "Location", :type => "text"}/
+        %button.search.orangeBtn Search
+    %ul#myTab.nav.nav-tabs
+      %li.active
+        %a{"data-toggle" => "tab", :href => "#latestEvents",:id => "upcoming_events_tab"} Latest Events
+      %li
+        %a{"data-toggle" => "tab", :href => "#pastEvents",:id => "past_events_tab"} Past Events
+    .fullWidthContainer
+      #myTabContent.tab-content
+        .row
+          #latestEvents.tab-pane.fade.active.in
+            -if @upcoming_events.present?
+              -@upcoming_events.each do |event|
+                .span4
+                  .eventListWrapper
+                    .eventListInner
+                      .clearfix
+                        .dateAndPlace
+                          .date
+                            -chapter = event.chapter
+                            = event.event_start_date_in_date.strftime("%b %d,%Y")
+                          .place
+                            ="#{event.chapter.city_name},#{chapter.country_name}"
+                        .tag
+                          -if chapter.chapter_type == "student"
+                            %img{:src => "/assets/student_event.png"}
+                          -else
+                            %img{:src => "/assets/professional_event.png"}
+                      .eventImg
+                        -if event.image.event_landscape.present?
+                          = image_tag(event.image.event_landscape.url,:size => "260x150")
+                        -elsif event.image.present?
+                          = image_tag(event.image.url,:size => "260x150")
+                        -else
+                          =image_tag("event_landscape_logo-b.png",:size => "260x150")
+                      .eventContent
+                        %h5
+                          =event.title
+                        .personName
+                          =event.user.fullname
+                        %p.lightGrayText
+                          =event.description.truncate(70)
+                        %a{:href => "#{event_path(event)}"} View Event
+                    .eventListFooter
+                      %span.numberPeopleAttending #{event.event_members.length} People Attending
+            -else
+              .noEventText No Events
+
+          #pastEvents.tab-pane.fade
+            -#%p Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.
+            -if @past_events.present?
+              -@past_events.each do |event|
+                .span4
+                  .eventListWrapper
+                    .eventListInner
+                      .clearfix
+                        .dateAndPlace
+                          .date
+                            -chapter = event.chapter
+                            = event.event_start_date_in_date.strftime("%b %d,%Y")
+                          .place
+                            ="#{event.chapter.city_name},#{chapter.country_name}"
+                        .tag
+                          -if chapter.chapter_type == "student"
+                            %img{:src => "/assets/student_event.png"}
+                          -else
+                            %img{:src => "/assets/professional_event.png"}
+                      .eventImg
+                        -if event.image.event_landscape.present?
+                          = image_tag(event.image.event_landscape.url,:size => "260x150")
+                        -elsif event.image.present?
+                          = image_tag(event.image.url,:size => "260x150")
+                        -else
+                          =image_tag("event_landscape_logo-b.png",:size => "260x150")
+                      .eventContent
+                        %h5
+                          =event.title
+                        .personName
+                          =event.user.fullname
+                        %p.lightGrayText
+                          =event.description.truncate(70)
+                        %a{:href => "#{event_path(event)}"} View Event
+                    .eventListFooter
+                      %span.numberPeopleAttending #{event.event_members.length} People Attending
+            -else
+              .noEventText No Events
+
+
+:javascript
+
+  $(document).ready(function(){
+    //$("#latestEvents").show();
+    $("#pastEvents").hide();
+    $("#past_events_tab").on("click",function(){
+      alert("past tab");
+      $("#pastEvents").show();
+      $("#latestEvents").hide();
+    });
+    $("#upcoming_events_tab").on("click",function(){
+      alert("upcoming tab");
+      $("#latestEvents").show();
+      $("#pastEvents").hide();
+    });
+  });
+
+  //$(function(){
+  //    /* Here is the slider using default settings */
+  //  $('#slider-id').codaSlider({
+  //    autoSlide:true,
+  //    autoHeight:false
+  //  });
+  //  $('h2.title').hide();
+  //});

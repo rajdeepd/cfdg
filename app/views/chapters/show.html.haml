@@ -75,7 +75,8 @@
             -#%a.cp{:href => "#{chapter_event_path(@chapter)}" , :id=>"create_event_from_chapter", :chapter_id=> @chapter.id} + Create Event
             =link_to "Create Event"  , new_chapter_event_path(@chapter) ,:id => "new_event", :class => "create_new_event"
     -if @current_user.present? and (ChapterMember.am_i_coordinator?(@current_user.id, @chapter.id))
-      =link_to "Create Event"  , new_chapter_event_path(@chapter) ,:id => "new_event", :class => "create_new_event" ,:style => "color :blue"
+      =link_to "Create Event"  , new_chapter_event_path(@chapter) ,:id => "new_event", :class => "create_new_event showEventChapter"
+      .clr
       #chapter_show_events
         = render '/events/events_list'
         -#= render 'chapter_map'
