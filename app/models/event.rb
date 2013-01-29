@@ -136,6 +136,18 @@ class Event < ActiveRecord::Base
     upcoming_events
   end
 
+  def self.get_past_events
+      #self.all.select{|i| i.event_start_date_in_date < Date.today}
+      past_events = []
+      Event.all.each do |event|
+        if(Time.parse(event.event_start_date+" "+ event.event_start_time) < Time.now)
+          past_events.push(event)
+        end
+
+      end
+      past_events
+    end
+
 
   def get_event_image
     if self.image.present?
