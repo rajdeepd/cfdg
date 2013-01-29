@@ -21,7 +21,7 @@ a{
     color: #0094D4;
 }
 a:hover{
-    /*color: #ffffff;*/
+    color: #222222;
 }
 a:hover{
     text-decoration: none;
@@ -1206,6 +1206,8 @@ ul.supportPrivacyLinks li{
     border-radius: 4px;
     margin-bottom: 20px;
     position: relative;
+    width: 278px;
+    height: 400px;
 }
 .eventListInner{
     padding: 0 8px;
@@ -1233,9 +1235,10 @@ ul.supportPrivacyLinks li{
 .eventListWrapper .eventContent a{
     margin-bottom: 15px;
     display: block;
+    font-size: 12px;
 }
 .eventListWrapper .dateAndPlace .date{
-    color: #888888;
+    color: #333333;
 }
 .eventListWrapper .eventContent p{
     min-height: 38px;
@@ -1244,7 +1247,7 @@ ul.supportPrivacyLinks li{
 }
 .eventListFooter{
     background: #f1f1f1;
-    line-height: 35px;
+    line-height: 40px;
     color: #666666;
     padding-left: 15px;
     border-radius: 0 0 4px 4px;
@@ -1591,12 +1594,13 @@ li.ui-timepicker-selected .ui-timepicker-duration,
 .chapterLayout .ca-container{
     margin: 0;
     width: 578px;
-    height: 405px;
+    height: 412px;
 }
 .chapterLayout .ca-item{
     width: 280px;
     height: 398px;
     /*height: auto;*/
+    box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.2);
 }
 .chapterLayout .ca-item-main{
     padding: 0;
@@ -1894,7 +1898,7 @@ ul.eventGallery li{
     margin-bottom: 10px;
 }
 .subscribedChapters .pastEvent{
-    width: 223px;
+    width: 233px;
     padding: 10px 30px 10px 15px;
     margin-left: -8px;
     background: #fffdeb;
@@ -1904,6 +1908,15 @@ ul.eventGallery li{
     border-radius: 0;
     cursor: auto;
     margin-bottom: 10px;
+}
+.subscribedChapters .eventListWrapper{
+    height: 313px;
+}
+.PastEventsContainer .ca-item{
+    box-shadow: none;
+}
+.subscribedChapters .ca-item{
+    height: 314px;
 }
 .subscribedChapters .pastEvent:hover{
     box-shadow: none;
