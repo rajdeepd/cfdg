@@ -144,6 +144,7 @@ class ChaptersController < ApplicationController
       else
         format.html { render action: "edit" }
         format.json { render json: @chapter.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
