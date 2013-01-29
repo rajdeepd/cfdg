@@ -1315,6 +1315,7 @@ ul.supportPrivacyLinks li{
     display: block;
     width: 260px;
     height: 20px;
+    border: 1px solid #7faac5;
 }
 .signUpWrapper .loginRightPanel{
     margin-top: 45px;
@@ -1905,6 +1906,9 @@ ul.eventGallery li{
     font-size: 12px;
     margin-left: 10px;
 }
+.subscribedChapters a:hover{
+    color: #222222
+}
 .subscribedChapters .ca-container{
     height: 305px;
     /*height: auto;*/
@@ -2470,6 +2474,7 @@ ul.posts li .commentText .commentDate{
 .loginRightPanel input[type = "text"] , .loginRightPanel input[type = "email"], .loginRightPanel input[type = "password"]{
     width: 260px;
     height: 20px;
+    border: 1px solid #7faac5;
 }
 .loginRightPanel input[type = "submit"]{
     padding: 6px 17px;
