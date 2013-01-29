@@ -97,7 +97,7 @@
     .fullWidthContainer
       #myTabContent.tab-content
         .row
-          #latestEvents.tab-pane.fade.active.in
+          #latestEvents.tab-pane.fade.active.in{:style => "display:none;"}
             -if @upcoming_events.present?
               -@upcoming_events.each do |event|
                 .span4
@@ -124,7 +124,7 @@
                           =image_tag("event_landscape_logo-b.png",:size => "260x150")
                       .eventContent
                         %h5
-                          =event.title
+                          =event.title.truncate(30)
                         .personName
                           =event.user.fullname
                         %p.lightGrayText
@@ -135,7 +135,7 @@
             -else
               .noEventText No Events
 
-          #pastEvents.tab-pane.fade
+          #pastEvents.tab-pane.fade{:style => "display:none;"}
             -#%p Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.
             -if @past_events.present?
               -@past_events.each do |event|
@@ -163,7 +163,7 @@
                           =image_tag("event_landscape_logo-b.png",:size => "260x150")
                       .eventContent
                         %h5
-                          =event.title
+                          =event.title.truncate(30)
                         .personName
                           =event.user.fullname
                         %p.lightGrayText
@@ -177,18 +177,20 @@
 
 :javascript
 
-  $(document).ready(function(){
-    //$("#latestEvents").show();
-    $("#pastEvents").hide();
+  $(function(){
+    $("#latestEvents").show();
+    //$("#pastEvents").hide();
     $("#past_events_tab").on("click",function(){
-      alert("past tab");
-      $("#pastEvents").show();
+      //alert("past tab");
+      $("#pastEvents").removeClass("fade");
       $("#latestEvents").hide();
+      $("#pastEvents").show();
     });
     $("#upcoming_events_tab").on("click",function(){
-      alert("upcoming tab");
-      $("#latestEvents").show();
+      //alert("upcoming tab");
       $("#pastEvents").hide();
+      $("#latestEvents").removeClass("fade");
+      $("#latestEvents").show();
     });
   });
 

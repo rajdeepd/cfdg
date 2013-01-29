@@ -331,9 +331,8 @@ class EventsController < ApplicationController
   end
 
   def event_listing
-  @upcoming_events = Event.get_upcoming_events
-  @past_events = Event.get_past_events
-
+  @upcoming_events = Event.get_upcoming_events.sort_by!{|i| (Time.parse(i.event_start_date))}.reverse!
+  @past_events = Event.get_past_events.sort_by!{|i| (Time.parse(i.event_start_date))}.reverse!
   end
 
   def join_event
