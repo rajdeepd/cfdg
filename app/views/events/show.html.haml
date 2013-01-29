@@ -128,7 +128,7 @@
         -elsif @event.agenda_and_speakers.present?
           = render '/events/agenda_and_speakers'
 
-- if(@is_i_admin==false)
+- if(@is_i_admin == false)
   .content.eventDetails
     .clearfix
       .breadCrumb
@@ -166,7 +166,8 @@
                 %div
                   %img{:src => "/assets/event_photo.jpg"}
             .viewEventGallery{:rel => @event.id}
-              %a{:href => "#{show_all_event_images_event_path(@event)}"} View Event Gallery
+              -#%a{:href => "#{show_all_event_images_event_path(@event)}"} View Event Gallery
+              %a{:href => "#{gallery_path(@event)}"} View Event Gallery
             .eventDetail.clearfix
               %h4 Description
               -#%p What if you could deploy and scale your applications within seconds? And never had to wait again for infrastructure to be provisioned? With Cloud Foundry, which is a modern, open-source Platform as a Service, you can deploy your application instantly. Use Cloud Foundry for development, testing and production.
@@ -277,7 +278,7 @@
           .eventPeopleList
             .listHeader
               %span administrator
-              %span.numberOfPeople 1
+              %span.numberOfPeople
             %ul.clearfix.adminPanel
               %li
                 -#%img{:src => "/assets/human_face_4.jpg"}
@@ -288,7 +289,7 @@
           -if @coordinaters.present?
             .eventPeopleList
               .listHeader
-                %span Organisers
+                %span coordinators
                 %span.numberOfPeople #{@coordinaters.size}
               %ul.clearfix
                 -@coordinaters.each do |i|

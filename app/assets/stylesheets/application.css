@@ -1499,6 +1499,16 @@ label.error{
 .chapterSearchError{
     margin-left: 24px !important;
 }
-.content #new_event{
-    color: #333333 !important;
+.content .showEventChapter{
+    color: #0097d7 !important;
+    line-height: 40px;
+    border-bottom: 2px solid #efefef;
+    padding-bottom: 10px;
+    text-decoration: none;
+}
+.content .showEventChapter:hover{
+    text-decoration: underline;
+}
+#chapter_show_events{
+    padding: 15px 0 0 0;
 }

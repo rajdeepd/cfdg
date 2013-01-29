@@ -40,6 +40,7 @@ CloudfoundryUsergroups::Application.routes.draw do
     end
   end
   resources :comments
+
   resources :events do
     collection do
       get 'oauth_reader'
@@ -63,6 +64,8 @@ CloudfoundryUsergroups::Application.routes.draw do
       get 'join_event'
     end
   end
+  match '/events/:id/gallery' => 'events#show_all_event_images' , :as => :gallery
+  #match '/gallery' => 'events#show_all_event_images' , :as => :gallery
 
 #resources :events, :has_many => :comments
 
