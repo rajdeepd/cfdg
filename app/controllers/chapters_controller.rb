@@ -4,7 +4,7 @@ class ChaptersController < ApplicationController
 
   before_filter do
     locale = params[:locale]
-    Carmen.i18n_backend.locale = locale if locale
+    #Carmen.i18n_backend.locale = locale if locale
   end
 
   def recommend_chapters
