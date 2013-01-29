@@ -1,0 +1,1 @@
+$("#event_grid").html("#{escape_javascript(render "event_listing",:upcoming_events => @upcoming_events,:past_events => @past_events)}");

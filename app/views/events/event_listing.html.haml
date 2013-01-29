@@ -82,19 +82,26 @@
     .chapterName.clearfix
       %h1 Events
   .layoutWrapper
-    %form
+    -#%form
       .eventSearchBox
         %input{:placeholder => "Type Keyword", :type => "text"}/
         .eventCitySearch.clearfix
           %span.citySearchIcon
           %input{:placeholder => "Location", :type => "text"}/
         %button.search.orangeBtn Search
-    %ul#myTab.nav.nav-tabs
+    =form_tag search_event_list_events_path  , :method => :get,:id => "search_chapter",:remote => true  do
+      .eventSearchBox
+        = text_field_tag "keyword", params[:keyword], :class =>"selectID",:placeholder => "Type Keyword"
+        .eventCitySearch.clearfix
+          %span.citySearchIcon
+          = text_field_tag 'query', params[:query], :size => 75 ,:placeholder => "City Name"  ,:id => "city_autocomplete"
+        = button_tag "Search" , :class => "orangeBtn search"
+    -#%ul#myTab.nav.nav-tabs
       %li.active
         %a{"data-toggle" => "tab", :href => "#latestEvents",:id => "upcoming_events_tab"} Latest Events
       %li
         %a{"data-toggle" => "tab", :href => "#pastEvents",:id => "past_events_tab"} Past Events
-    .fullWidthContainer
+    -#.fullWidthContainer
       #myTabContent.tab-content
         .row
           #latestEvents.tab-pane.fade.active.in{:style => "display:none;"}
@@ -174,25 +181,41 @@
             -else
               .noEventText No Events
 
+    #event_grid
+      = render "event_listing",:upcoming_events => @upcoming_events,:past_events => @past_events
 
-:javascript
 
-  $(function(){
-    $("#latestEvents").show();
-    //$("#pastEvents").hide();
-    $("#past_events_tab").on("click",function(){
-      //alert("past tab");
-      $("#pastEvents").removeClass("fade");
-      $("#latestEvents").hide();
-      $("#pastEvents").show();
-    });
-    $("#upcoming_events_tab").on("click",function(){
-      //alert("upcoming tab");
-      $("#pastEvents").hide();
-      $("#latestEvents").removeClass("fade");
-      $("#latestEvents").show();
-    });
-  });
+-#:javascript
+-#
+-#  $(function(){
+-#    $("#latestEvents").show();
+-#    //$("#pastEvents").hide();
+-#    $("#past_events_tab").on("click",function(){
+-#      //alert("past tab");
+-#      $("#pastEvents").removeClass("fade");
+-#      $("#latestEvents").hide();
+-#      $("#pastEvents").show();
+-#    });
+-#    $("#upcoming_events_tab").on("click",function(){
+-#      //alert("upcoming tab");
+-#      $("#pastEvents").hide();
+-#      $("#latestEvents").removeClass("fade");
+-#      $("#latestEvents").show();
+-#    });
+-#    $( "#city_autocomplete" ).autocomplete({
+-#      source: "/home/autocomplete_city_details",
+-#      minLength: 2,
+-#      select: function( event, ui ) {
+-#        //log( ui.item ?
+-#        //  "Selected: " + ui.item.value + " aka " + ui.item.id :
+-#        //  "Nothing selected, input was " + this.value );
+-#        //alert(this.value)
+-#      }
+-#    });
+-#    $(document).ready(function(){
+-#       $(".ui-autocomplete").addClass('alignment')
+-#    })
+-#  });
 
   //$(function(){
   //    /* Here is the slider using default settings */
