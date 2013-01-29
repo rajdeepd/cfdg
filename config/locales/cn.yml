@@ -52,7 +52,7 @@ cn:
       founder_name: 姓名
       founder_email: 邮箱
     founded_by: "创建者"
-    primary_group_coordinator: "分会特别助理"
+    primary_group_coordinator: "主席"
     group_coordinator: "分会助理"
     members: 同学
     events: 活动
@@ -67,6 +67,8 @@ cn:
     chapter_admin: "Chapter Admin"
     last_event_date: "Last Event Date:"
     create_chapter: 'create chapter'
+    join_us: "JOIN US!"
+    founded_on: "Founded on"
 
   announcements: 
     heading: 公告
