@@ -1016,6 +1016,7 @@ ul.supportPrivacyLinks li{
 .upperCaseBold{
     text-transform: uppercase;
     font-weight: bold;
+    color: #666666;
 }
 .facebookLink{
     background: url("facebook_icon.png") no-repeat;
@@ -1126,7 +1127,7 @@ ul.supportPrivacyLinks li{
 .forgotPassword{
     margin-left: 25px;
     color: black;
-    margin-bottom: 30px;
+    margin-bottom: 15px;
     display: inline-block;
 }
 .loginRightPanel p{
@@ -1310,8 +1311,10 @@ ul.supportPrivacyLinks li{
 .signUpWrapper a.orangeBtn , .forgotPasswordWrapper a.orangeBtn{
     margin-bottom: 30px;
 }
-.signUpWrapper input , .forgotPasswordWrapper input{
+.signUpWrapper input[type = "text"], .signUpWrapper input[type = "email"], .signUpWrapper input[type = "password"] , .forgotPasswordWrapper input[type = "text"], .forgotPasswordWrapper input[type = "email"], .forgotPasswordWrapper input[type = "password"]{
     display: block;
+    width: 260px;
+    height: 20px;
 }
 .signUpWrapper .loginRightPanel{
     margin-top: 45px;
@@ -1756,7 +1759,7 @@ ul.eventGallery li{
 }
 .joinChapter{
     background: #ffffff;
-    padding: 10px 7px;
+    padding: 10px 32px;
     border-bottom: 1px solid #d8dee2;
 }
 
@@ -2071,16 +2074,18 @@ ul.posts li .commentText .commentDate{
 }
 .chapterListing .chapterSearchBox{
     margin-bottom: 30px;
+    padding: 8px 10px;
 }
 .chapterListing .subscribedChapters .pastEvent{
     width: 231px;
 }
 .chapterListing .eventCitySearch{
     border: solid 1px #7faac5;
-    width: 266px;
+    width: 300px;
+    margin: 0 20px 0 10px;
 }
 .chapterListing .eventCitySearch input{
-    width: 230px;
+    width: 270px;
     height: 25px;
     margin-bottom: 0;
 }
@@ -2114,13 +2119,10 @@ ul.posts li .commentText .commentDate{
     float: left;
     width: 120px;
 }
-.chapterListing .chapterSearchBox{
-    padding: 8px 10px;
-}
 .chapterListing .chapterSearchBox form{
     margin: 0;
     float: left;
-    width: 680px;
+    width: 713px;
     padding: 10px 0;
     border-right: 1px solid #dbdbdb;
     margin-right: 15px;
@@ -2429,10 +2431,11 @@ ul.posts li .commentText .commentDate{
     border-radius: 0 4px 4px 0;
     font-weight: bold;
     cursor: pointer;
+    padding: 0 14px;
 }
 .formBox .controls .fileUpload .textbox {
     width:215px;
-    font-size:25px;
+    font-size:16px;
     margin-right: 0;
     border-radius: 4px 0 0 4px;
     border: none;
@@ -2460,5 +2463,15 @@ ul.posts li .commentText .commentDate{
     width: 266px !important;
     background: #ffffff;
     /*left:351px !important;*/
+}
+.formBox.profileWrapper{
+    margin-top: 30px;
+}
+.loginRightPanel input[type = "text"] , .loginRightPanel input[type = "email"], .loginRightPanel input[type = "password"]{
+    width: 260px;
+    height: 20px;
+}
+.loginRightPanel input[type = "submit"]{
+    padding: 6px 17px;
 }
 

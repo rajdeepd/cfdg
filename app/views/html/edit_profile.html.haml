@@ -1,0 +1,97 @@
+= javascript_include_tag "jquery.timepicker.min"
+= javascript_include_tag "jquery.ui.datepicker"
+= javascript_include_tag "jquery-ui"
+= javascript_include_tag "jquery.selectbox-0.2.min"
+= stylesheet_link_tag    "jquery.selectbox", :media => "all"
+:javascript
+  $(function() {
+    $( ".datepicker" ).datepicker({
+      showOtherMonths: true,
+      selectOtherMonths: true,
+
+    });
+
+    $(".selectID").selectbox();
+  });
+:javascript
+  $(document).ready(function(){
+     $('.ui-timepicker-input').timepicker();
+     $('.ui-timepicker-input').on('changeTime', function() {
+     	$('#onselectTarget').text($(this).val());
+     });
+     $('.hasDatepicker').append('img').attr("src", calander+'.png');
+      $(".hasDatepicker").append("<img src='../assets/calander.png'/>");
+      $(".hasDatepicker").addClass("asha");
+
+  });
+.content
+  .loginContent.signUpWrapper
+    .row
+      .span10.offset1
+        .loginLayout.clearfix
+          .plainBlueHeader
+            %h3 Complete Your Profile
+          -#.agendaHeader
+          -#  %p
+          -#    Your Event is created,
+          -#    %br Now add agenda & speakers to event.
+          -#.borderWithShadow
+          .formBox.profileWrapper
+            %form.form-horizontal
+              .control-group
+                %label.control-label
+                  Upload Your Profile Image
+                .controls
+                  .fileUpload.clearfix
+                    %input.textbox{:readonly => "readonly", :type => "text"}/
+                    .wrapper
+                      %input.inputBrowse{:type => "button", :value => "Browse"}/
+                      %input.inputHidden{:type => "file"} Browse
+                  %span.imgType Your image must be JPG,GIF or PNG fromat
+              .control-group
+                %label.control-label
+                  Location
+                .controls
+                  %input{:type => "text"}
+              .control-group
+                %label.control-label
+                  Contact No.
+                .controls
+                  %input{:type => "text"}
+              .control-group
+                %label.control-label
+                  Website Link
+                .controls
+                  %input{:type => "text"}
+              .control-group
+                %label.control-label
+                  Linked In URL
+                .controls
+                  %input{:type => "text"}
+              .control-group
+                %label.control-label
+                  Twitter Handle
+                .controls
+                  %input{:type => "text"}
+              .control-group
+                %label.control-label
+                  Write About YourSelf
+                .controls
+                  %input{:type => "text"}
+              .control-group
+                %label.control-label
+                  Company Name
+                .controls
+                  %input{:type => "text"}
+              .control-group
+                %label.control-label
+                  Position
+                .controls
+                  %input{:type => "text"}
+          .formBox.borderNone
+            .form-horizontal
+              .control-group
+                .controls
+                  %button.btn Cancel
+                  %button.orangeBtn Done
+

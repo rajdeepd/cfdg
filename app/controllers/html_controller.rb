@@ -55,4 +55,7 @@ class HtmlController < ApplicationController
   def chapter_gallery
 
   end
+  def edit_profile
+
+  end
 end
