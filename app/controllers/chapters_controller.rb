@@ -238,7 +238,6 @@ class ChaptersController < ApplicationController
   end
 
   def search_chapter_list
-    logger.info params.inspect
     @chapters = Chapter.search_chapters(params[:query])
     if params[:chapter_type] != "All"
       @chapters = @chapters.select{|i| i.chapter_type.downcase == params[:chapter_type].downcase}
