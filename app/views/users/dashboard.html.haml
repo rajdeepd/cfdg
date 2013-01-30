@@ -114,7 +114,7 @@
           %h3 Subscribed Chapters
         - if @subscribed_chapter.blank?
           .centerText.verticalCenter No subscribed chapter.
-          = link_to "Click here to see chapter list",chapter_list_html_index_path,:class => "noEventText"
+          = link_to "Click here to see chapter list",list_chapters_path,:class => "noEventText"
         -else
           .ca-container.ca-container.clearfix
             .ca-wrapper

@@ -63,6 +63,7 @@ CloudfoundryUsergroups::Application.routes.draw do
       get 'show_all_event_images'
       get 'update_markers'
       get 'join_event'
+      get 'new_agenda_and_speaker'
     end
   end
   match '/events/:id/gallery' => 'events#show_all_event_images' , :as => :gallery

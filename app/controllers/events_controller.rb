@@ -375,6 +375,10 @@ class EventsController < ApplicationController
     end
   end
 
+  def new_agenda_and_speaker
+    @event = Event.find(params[:id])
+  end
+
 
   protected
 

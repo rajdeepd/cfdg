@@ -1,13 +1,13 @@
 .content.ChapterDetails
   .breadCrumb
-    %span Wiki
+    %span Posts
     %span.breadCrumbDivider /
-    %span.activePage Cloud Foundry Open Tour
+    %span.activePage #{@post.title}
   .blueHeader
     .chapterName.clearfix
-      %h1 Cloud Foundry Open Tour
+      %h1 #{@post.title}
     .chapterDateAndPlace.clearfix
-      %span.chapterDate December 13,2012
+      %span.chapterDate #{@post.created_at.strftime("%B %d,%Y")}
   .chapterLayout
     %img.articleImg{:src => "/assets/article_img.jpg"}
     .articleLayout
