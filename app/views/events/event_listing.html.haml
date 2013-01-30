@@ -82,22 +82,29 @@
     .chapterName.clearfix
       %h1 Events
   .layoutWrapper
-    %form
+    -#%form
       .eventSearchBox
         %input{:placeholder => "Type Keyword", :type => "text"}/
         .eventCitySearch.clearfix
           %span.citySearchIcon
           %input{:placeholder => "Location", :type => "text"}/
         %button.search.orangeBtn Search
-    %ul#myTab.nav.nav-tabs
+    =form_tag search_event_list_events_path  , :method => :get,:id => "search_chapter",:remote => true  do
+      .eventSearchBox
+        = text_field_tag "keyword", params[:keyword], :class =>"selectID",:placeholder => "Type Keyword"
+        .eventCitySearch.clearfix
+          %span.citySearchIcon
+          = text_field_tag 'query', params[:query], :size => 75 ,:placeholder => "City Name"  ,:id => "city_autocomplete"
+        = button_tag "Search" , :class => "orangeBtn search"
+    -#%ul#myTab.nav.nav-tabs
       %li.active
         %a{"data-toggle" => "tab", :href => "#latestEvents",:id => "upcoming_events_tab"} Latest Events
       %li
         %a{"data-toggle" => "tab", :href => "#pastEvents",:id => "past_events_tab"} Past Events
-    .fullWidthContainer
+    -#.fullWidthContainer
       #myTabContent.tab-content
         .row
-          #latestEvents.tab-pane.fade.active.in
+          #latestEvents.tab-pane.fade.active.in{:style => "display:none;"}
             -if @upcoming_events.present?
               -@upcoming_events.each do |event|
                 .span4
@@ -124,7 +131,7 @@
                           =image_tag("event_landscape_logo-b.png",:size => "260x150")
                       .eventContent
                         %h5
-                          =event.title
+                          =event.title.truncate(30)
                         .personName
                           =event.user.fullname
                         %p.lightGrayText
@@ -135,7 +142,7 @@
             -else
               .noEventText No Events
 
-          #pastEvents.tab-pane.fade
+          #pastEvents.tab-pane.fade{:style => "display:none;"}
             -#%p Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.
             -if @past_events.present?
               -@past_events.each do |event|
@@ -163,7 +170,7 @@
                           =image_tag("event_landscape_logo-b.png",:size => "260x150")
                       .eventContent
                         %h5
-                          =event.title
+                          =event.title.truncate(30)
                         .personName
                           =event.user.fullname
                         %p.lightGrayText
@@ -174,23 +181,41 @@
             -else
               .noEventText No Events
 
+    #event_grid
+      = render "event_listing",:upcoming_events => @upcoming_events,:past_events => @past_events
 
-:javascript
 
-  $(document).ready(function(){
-    //$("#latestEvents").show();
-    $("#pastEvents").hide();
-    $("#past_events_tab").on("click",function(){
-      alert("past tab");
-      $("#pastEvents").show();
-      $("#latestEvents").hide();
-    });
-    $("#upcoming_events_tab").on("click",function(){
-      alert("upcoming tab");
-      $("#latestEvents").show();
-      $("#pastEvents").hide();
-    });
-  });
+-#:javascript
+-#
+-#  $(function(){
+-#    $("#latestEvents").show();
+-#    //$("#pastEvents").hide();
+-#    $("#past_events_tab").on("click",function(){
+-#      //alert("past tab");
+-#      $("#pastEvents").removeClass("fade");
+-#      $("#latestEvents").hide();
+-#      $("#pastEvents").show();
+-#    });
+-#    $("#upcoming_events_tab").on("click",function(){
+-#      //alert("upcoming tab");
+-#      $("#pastEvents").hide();
+-#      $("#latestEvents").removeClass("fade");
+-#      $("#latestEvents").show();
+-#    });
+-#    $( "#city_autocomplete" ).autocomplete({
+-#      source: "/home/autocomplete_city_details",
+-#      minLength: 2,
+-#      select: function( event, ui ) {
+-#        //log( ui.item ?
+-#        //  "Selected: " + ui.item.value + " aka " + ui.item.id :
+-#        //  "Nothing selected, input was " + this.value );
+-#        //alert(this.value)
+-#      }
+-#    });
+-#    $(document).ready(function(){
+-#       $(".ui-autocomplete").addClass('alignment')
+-#    })
+-#  });
 
   //$(function(){
   //    /* Here is the slider using default settings */

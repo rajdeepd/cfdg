@@ -136,6 +136,8 @@ class Event < ActiveRecord::Base
     upcoming_events
   end
 
+
+
   def self.get_past_events
       #self.all.select{|i| i.event_start_date_in_date < Date.today}
       past_events = []
@@ -146,6 +148,24 @@ class Event < ActiveRecord::Base
 
       end
       past_events
+  end
+
+  def self.search_event_chapter(query)
+      chapters = []
+      events = []
+      query_arr = query.split(",") if query.present?
+      if query_arr.present?
+        city = query_arr[0]
+        state= query_arr[1]
+        country = query_arr[2]
+        #chapters=where("city_name like ? and state_name like ? and country_name like ?", city.strip,state.strip,country.strip) if city.present? and state.present? and country.present?
+        chapters = Chapter.where("city_name like ? and state_name like ? and country_name like ?", city.strip,state.strip,country.strip) if city.present? and state.present? and country.present?
+      end
+      chapters.to_a.each do |i|
+        puts i.class
+        events.push(i.events)
+      end
+    events.flatten!
     end
 
 

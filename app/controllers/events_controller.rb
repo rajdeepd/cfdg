@@ -174,34 +174,34 @@ class EventsController < ApplicationController
     @event = @event_chapter.events.new(params[:event])
     #@event = Event.new(params[:event])
     #respond_to do |format|
-      logger.info "@@@@@@@@@@@ inside if of create action ########"
-      if @event.save
-        start_date = (params[:event][:event_start_date].blank? or params[:event][:event_start_time].blank?) ? "" : Time.parse(params[:event][:event_start_date]+" " +params[:event][:event_start_time]).strftime('%Y-%m-%d %H:%M:%S')
-        end_date = (params[:event][:event_end_date].blank? or  params[:event][:event_end_time].blank?) ? "" : Time.parse(params[:event][:event_end_date]+" " +params[:event][:event_end_time]).strftime('%Y-%m-%d %H:%M:%S')
+    logger.info "@@@@@@@@@@@ inside if of create action ########"
+    if @event.save
+      start_date = (params[:event][:event_start_date].blank? or params[:event][:event_start_time].blank?) ? "" : Time.parse(params[:event][:event_start_date]+" " +params[:event][:event_start_time]).strftime('%Y-%m-%d %H:%M:%S')
+      end_date = (params[:event][:event_end_date].blank? or  params[:event][:event_end_time].blank?) ? "" : Time.parse(params[:event][:event_end_date]+" " +params[:event][:event_end_time]).strftime('%Y-%m-%d %H:%M:%S')
 
-        #venue_id = get_venue_id
-        #eventbrite_event = @eb_client.event_new(:venue_id => venue_id , :organizer_id =>  EVENTBRITE_ORGANIZATION_ID , :name => params[:name], :start_date => start_date, :end_date => end_date,  :title => params[:event][:title], :description => params[:event][:description])
-        #eventbrite_id = eventbrite_event.parsed_response["process"]["id"].to_s
-        #@event.update_attribute(:eventbrite_id, eventbrite_id)
+      #venue_id = get_venue_id
+      #eventbrite_event = @eb_client.event_new(:venue_id => venue_id , :organizer_id =>  EVENTBRITE_ORGANIZATION_ID , :name => params[:name], :start_date => start_date, :end_date => end_date,  :title => params[:event][:title], :description => params[:event][:description])
+      #eventbrite_id = eventbrite_event.parsed_response["process"]["id"].to_s
+      #@event.update_attribute(:eventbrite_id, eventbrite_id)
 
-        @event_memeber = EventMember.new(:event_id => @event.id, :user_id => current_user.id)
-        @event_memeber.save!
+      @event_memeber = EventMember.new(:event_id => @event.id, :user_id => current_user.id)
+      @event_memeber.save!
 
 
-        @chapter = Chapter.find(@event.chapter_id)
-        @chapter_events = @chapter.events.sort
-        to_email = @chapter.get_primary_coordinator.email
-        bcc_emails=@chapter.chapter_members.includes(:user).collect{|i| i.user.email} - [to_email]
-        @two_chapter_events = @chapter_events.take(2)
-        #EventNotification.delay.event_creation(@event,emails,@chapter)
-        EventNotification.event_creation(@event,to_email,bcc_emails,@chapter).deliver
-        #SES.send_raw_email(EventNotification.event_creation(@event,to_email,bcc_emails,@chapter))
+      @chapter = Chapter.find(@event.chapter_id)
+      @chapter_events = @chapter.events.sort
+      to_email = @chapter.get_primary_coordinator.email
+      bcc_emails=@chapter.chapter_members.includes(:user).collect{|i| i.user.email} - [to_email]
+      @two_chapter_events = @chapter_events.take(2)
+      #EventNotification.delay.event_creation(@event,emails,@chapter)
+      EventNotification.event_creation(@event,to_email,bcc_emails,@chapter).deliver
+      #SES.send_raw_email(EventNotification.event_creation(@event,to_email,bcc_emails,@chapter))
 
-        redirect_to detail_chapter_path(params[:chapter_id]), :notice => "Event created successfully"
-      else
-        logger.info "########## inside else of create action ########"
-        render :action => :new
-      end
+      redirect_to detail_chapter_path(params[:chapter_id]), :notice => "Event created successfully"
+    else
+      logger.info "########## inside else of create action ########"
+      render :action => :new
+    end
 
     #end
   end
@@ -331,9 +331,27 @@ class EventsController < ApplicationController
   end
 
   def event_listing
-  @upcoming_events = Event.get_upcoming_events
-  @past_events = Event.get_past_events
+    @upcoming_events = Event.get_upcoming_events.sort_by!{|i| (Time.parse(i.event_start_date))}.reverse!
+    #@upcoming_events = params[:upcoming_events]
+    @past_events = Event.get_past_events.sort_by!{|i| (Time.parse(i.event_start_date))}.reverse!
+    #@past_events = params[:past_events]
+  end
 
+  def search_event_list
+    @events = Event.search_event_chapter(params[:query])
+    logger.info "############ events ################{@events.inspect}"
+    if @events.present?
+    @upcoming_events = @events.collect{|event| event if Time.parse(event.event_start_date+" "+ event.event_start_time) >= Time.now}.compact
+    @past_events = @events.collect{|event| event if Time.parse(event.event_start_date+" "+ event.event_start_time) < Time.now}.compact
+    end
+    #if params[:chapter_type] != "All"
+    #  @chapters = @chapters.select{|i| i.chapter_type.downcase == params[:chapter_type].downcase}
+    #end
+    #redirect_to event_listing_events_path(:upcomig_events => @upcomig_events,:past_events => @past_events)
+     respond_to do |format|
+       format.js
+       format.html
+     end
   end
 
   def join_event
@@ -355,6 +373,10 @@ class EventsController < ApplicationController
     respond_to do |format|
       format.js
     end
+  end
+
+  def new_agenda_and_speaker
+    @event = Event.find(params[:id])
   end
 
 

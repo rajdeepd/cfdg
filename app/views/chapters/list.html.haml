@@ -71,7 +71,7 @@
         .eventCitySearch.clearfix
           %span.citySearchIcon
           = text_field_tag 'query', params[:query], :size => 75 ,:placeholder => "City Name"  ,:id => "city_autocomplete"
-        = select_tag "chapter_type", options_for_select(["All","Professional" , "Student"]), :class =>"selectID"
+        = select_tag "chapter_type", options_for_select(["All","Professional","Student"]), :class =>"selectID"
         -#= submit_tag "Search", :class =>"orangeBtn"
         = button_tag "Search" , :class => "orangeBtn search"
 
