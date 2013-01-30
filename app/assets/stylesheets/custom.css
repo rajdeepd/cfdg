@@ -380,6 +380,7 @@ header ul li:first-child{
     margin-bottom: 20px;
 }
 .smallHeading h3{
+    background: url("announcement_header_logo.png") no-repeat right;
     line-height: 40px;
     margin-left: 25px;
     font-weight: 600;
@@ -393,6 +394,7 @@ header ul li:first-child{
     min-height: 540px;
 }
 .longHeading h3{
+    background: url("chapter_header_logo.png") no-repeat right;
     line-height: 40px;
     margin-left: 25px;
     font-weight: 600;
@@ -471,8 +473,9 @@ header ul li:first-child{
     margin-bottom: 20px;
 }
 .comingEvents h3{
+    background: url("upcoming.jpg") no-repeat right;
     line-height: 40px;
-    margin-left: 25px;
+    margin: 0 5px 0 25px;
 }
 .fullHeading{
     background: url("heading_bg.png") repeat-x #f9f9f9;
@@ -552,25 +555,34 @@ footer .footerBottom p{
 
 }
 .twitterIcon{
-    background: url("social_icon_sprite.png") no-repeat 0 0;
+    background: url("social_icon_sprite.png") no-repeat 0 -40px;
     width: 50px;
-    height: 50px;
+    height: 44px;
     display: block;
     float: left;
+}
+.twitterIcon:hover{
+    background-position: 0 0;
 }
 .faceBookIcon{
-    background: url("social_icon_sprite.png") no-repeat -59px 0;
+    background: url("social_icon_sprite.png") no-repeat -59px -40px;
     width: 50px;
-    height: 50px;
+    height: 44px;
     display: block;
     float: left;
 }
+.faceBookIcon:hover{
+    background-position: -59px 0;
+}
 .youTubeIcon{
-    background: url("social_icon_sprite.png") no-repeat -116px 0;
+    background: url("social_icon_sprite.png") no-repeat -116px -40px;
     width: 50px;
-    height: 50px;
+    height: 44px;
     display: block;
     float: left;
+}
+.youTubeIcon:hover{
+    background-position: -116px 0;
 }
 .linksCenter{
     width: 150px;
@@ -2503,3 +2515,35 @@ ul.posts li .commentText .commentDate{
 .loginRightPanel input[type = "submit"]{
     padding: 6px 17px;
 }
+.totalStats{
+    background: url("total_tile_bg.png") repeat-x;
+    height: 60px;
+    width: 940px;
+    box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+.totalStats ul li{
+    background: url("navigation_divider.png") no-repeat left 13px;
+    float: left;
+    width: 235px;
+    text-align: center;
+    height: 47px;
+    padding-top: 13px;
+}
+.totalStats ul li:first-child{
+    background: none;
+}
+.totalStats ul li .darkText{
+    font-size: 22px;
+    color: #444444;
+    font-weight: bold;
+}
+.totalStats ul li span{
+    display: block;
+    font-size: 13px;
+    color: #666666;
+    text-transform: uppercase;
+    line-height: 22px;
+}
+
