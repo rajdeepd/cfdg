@@ -1,0 +1,55 @@
+.content.aboutUsWrapper
+  .blueHeaderWithoutTag
+    .chapterName.clearfix
+      %h1
+        CFDGs
+        %span are user group for developers who are interested in
+        CLOUD FOUNDRY TECHNOLOGY
+  .layoutWrapper.clearfix
+    .aboutCFDG
+      .row
+        .span5
+          .mapWrapper.clearfix
+            %p
+              Visit the
+              %a{:href => "#"} directory
+              to see if there's a local meetup in your area. Feel free to contact the organizers to find out more. If there's no chapter near you, consider starting one!
+            .map
+              %img{:src => "/assets/map.png"}
+        .span6
+          %h4 What is CFDG?
+          %p Cloud Foundry is an open platform as a service, providing a choice of clouds, developer frameworks and application services. Cloud Foundry makes it faster and easier to build, test, deploy and scale applications.
+          %p CFDG or the Cloud Foundry Developer Group is a user group for developers using or enthusiastic about the Cloud Foundry Platform. Users can use CFDG to connect with other members, get together in groups of any size, organize and attend events and share content online.
+          %h5 CFDG is where you interact with other enthusiasts....
+          %p What we want is to strengthen community networking among our users. It is a lot more fun to learn when you are part of a group. The knowledge pool is bigger and there is a healthy competitive spirit that is evoked. CFDG hopes to be an enjoyable way to faster productivity among its developers and help extend their networks.
+    .aboutChapter
+      .row
+        .span5
+          %h6 Check whether your city has a CFDG chapter?
+          .citySearch
+            %span.citySearchIcon
+            =form_tag search_chapters_path  , :method => :get,:id => "search_chapter"  do
+              = text_field_tag 'query', '', :size => 75 ,:placeholder => "City Name" ,:id => "city_autocomplete"
+              =button_tag "" ,:class =>"citySearchBtn"
+        .span6
+          %h4 You can create a CFDG in your city...
+          %p
+            You can create a CFDG in your city...
+            If there isn't a Cloud Foundry Developer Group in your city, you could start one yourself! All you have to do is
+            %a{:href => "#"}Sign Up
+            create a proposal, fill in a
+            %a{:href => "#"}Create Chapter
+            form and the site admin will get back to you.
+    .communityGuideline.clearfix
+      .sliderHeadingFull
+        %h2 Our Community Guidelines
+      %ul
+        %li
+          %h5 Collabrate
+          %p Collaborate with other enthusiasts
+        %li
+          %h5 Be active
+          %p You have a user group in your city. Stay active on it, participate and contribute regularly. The more you meet-up, the more you learn and have fun.
+        %li
+          %h5 Respect one another
+          %p Nobody likes to be ridiculed or disrespected. Ensure that your discussions do not hurt anybody's sentiments. It is the responsibility of every member to avoid and stop and kind of negativity from flying out of control.

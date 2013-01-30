@@ -58,4 +58,7 @@ class HtmlController < ApplicationController
   def edit_profile
 
   end
+  def about_us
+
+  end
 end
