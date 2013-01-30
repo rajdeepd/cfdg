@@ -340,8 +340,10 @@ class EventsController < ApplicationController
   def search_event_list
     @events = Event.search_event_chapter(params[:query])
     logger.info "############ events ################{@events.inspect}"
+    if @events.present?
     @upcoming_events = @events.collect{|event| event if Time.parse(event.event_start_date+" "+ event.event_start_time) >= Time.now}.compact
     @past_events = @events.collect{|event| event if Time.parse(event.event_start_date+" "+ event.event_start_time) < Time.now}.compact
+    end
     #if params[:chapter_type] != "All"
     #  @chapters = @chapters.select{|i| i.chapter_type.downcase == params[:chapter_type].downcase}
     #end
