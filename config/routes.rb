@@ -54,6 +54,7 @@ CloudfoundryUsergroups::Application.routes.draw do
       get 'cancel_event'
       get 'event_listing'
       get 'search_event_list'
+      post 'update_agenda'
     end
     member do
       get :download_list
@@ -64,6 +65,7 @@ CloudfoundryUsergroups::Application.routes.draw do
       get 'update_markers'
       get 'join_event'
       get 'new_agenda_and_speaker'
+      post "create_agenda"
     end
   end
   match '/events/:id/gallery' => 'events#show_all_event_images' , :as => :gallery

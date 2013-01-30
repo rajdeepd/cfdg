@@ -376,8 +376,32 @@ class EventsController < ApplicationController
   end
 
   def new_agenda_and_speaker
-    @event = Event.find(params[:id])
+
+    @agenda = Event.find(params[:id]).agendas.new
+    @existing_agenda = Event.find(params[:id]).agendas
   end
+
+  def create_agenda
+
+    @agenda = Event.find(params[:id]).agendas.new(params[:agenda])
+    if @agenda.save!
+      respond_to do |format|
+        format.js
+      end
+    else
+      render :new_agenda_and_speaker
+    end
+
+  end
+  def update_agenda
+    @agenda = Agenda.find(params[:agenda][:agenda_id]).update_attributes(:description => params[:agenda][:description])
+    respond_to do |format|
+      format.js {render :nothing => true}
+    end
+
+  end
+
+
 
 
   protected
@@ -459,6 +483,10 @@ class EventsController < ApplicationController
 
   def event_marker
     @marker = get_geocodes.to_json
+  end
+
+  def delete_agenda
+
   end
 
 end

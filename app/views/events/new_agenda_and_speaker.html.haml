@@ -22,30 +22,36 @@
               %br Now add agenda & speakers to event.
           .borderWithShadow
           .formBox
-            %form.form-horizontal
-              .control-group
-                .controls
-                  %h5 Enter Event Agenda
-              .agendaDiv
-                .agendaBox.clearfix
-                  %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam est dui, laoreet et malesuada sit amet, ultricies eu nisi. Sed condimentum malesuada ante.
-                  .editDeleteBtn
-                    %a.editIcon{:href => '#'}
-                    %a.deleteThikIcon{:href => '#'}
-                .control-group
-                  .controls
-                    %button.bigButton.blueBtn
-                      %i.plusIcon
-                      %span Add Session to Agenda
+            -#%form.form-horizontal
+            .control-group
+              .controls
+                %h5 Enter Event Agenda
+            .agendaDiv
+              -#.agendaBox.clearfix
+              -#  %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam est dui, laoreet et malesuada sit amet, ultricies eu nisi. Sed condimentum malesuada ante.
+              -#  .editDeleteBtn
+              -#    %a.editIcon{:href => '#'}
+              -#    %a.deleteThikIcon{:href => '#'}
+              - if @existing_agenda.present?
+                -@existing_agenda.each do |agenda|
+                  = render "append_agenda",:description => agenda.description,:agenda_id => agenda.id
+            .control-group
+              .controls
+                %button.bigButton.blueBtn
+                  %i.plusIcon
+                  %span Add Session to Agenda
+            = form_for(@agenda ,:url => create_agenda_event_path(@agenda.event),:method => "POST",:remote => true) do |f|
               .agendaAddDiv
                 .control-group
                   %label.control-label
                     Event Session Detail
                   .controls
-                    %textarea
+                    -#%textarea
+                    = f.text_area :description
                 .control-group
                   .controls
-                    %button.blueBtn Done
+                    -#%button.blueBtn Done
+              = f.submit "Done"
           .formBox
             %form.form-horizontal
               .control-group

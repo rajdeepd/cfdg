@@ -20,11 +20,11 @@ $(document).ready(function(){
     $(".formBox button , .formBox button").click(function(event){
         event.preventDefault();
     });
-    $(".agendaDiv").hide();
+//    $(".agendaDiv").hide();
     $(".agendaAddDiv .blueBtn").click(function(){
         $(".agendaDiv").show();
         $(".agendaAddDiv").hide();
-        return false;
+//        return false;
     });
     $(".agendaDiv .bigButton").click(function(){
         $(".agendaAddDiv").show();

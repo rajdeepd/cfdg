@@ -1,0 +1,40 @@
+.agendaBox.clearfix
+  .agendaPara
+    %p{:id => "desc_#{agenda_id}"}=description
+    .editDeleteBtn
+      %a.editIcon{:href => '#',:id => "editAgenda",:rel => "#{agenda_id}"}
+      %a.deleteThikIcon{:href => '#',:id => "deleteAgenda"}
+
+:javascript
+  $(document).ready(function(){
+    $(".editIcon").on("click",function(){
+      $(".agendaPara").hide();
+      var id = $(this).attr('rel')
+      var desc = $("#desc_"+id).text();
+      $(".agendaBox").append("<textarea id='editDesc'></textarea>")
+      $("#editDesc").text(desc);
+      var btn = document.createElement('button');
+      $(btn).addClass('updateDesc')
+            .html('Update')
+            .attr('rel',id)
+            .appendTo($(".agendaBox"))
+            .on('click',function(){
+               var data = {description:$("#editDesc").val(),agenda_id:$(this).attr("rel")};
+               var url = '/events/update_agenda';
+               $.ajax({
+                 type: "post",
+                 url: '/events/update_agenda',
+                 data : {agenda:data},
+                 dataType: 'script',
+                 success: function(data){
+                   $(".agendaPara").children("p").text($("#editDesc").val());
+                   $("#editDesc").remove();
+                   $(".updateDesc").remove();
+                   $(".agendaPara").show();
+                 },
+                 async:false
+               });
+            });
+    });
+
+  });

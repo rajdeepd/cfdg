@@ -6,6 +6,7 @@ class Event < ActiveRecord::Base
   has_many :users , :through => :event_members
   has_many :comments, :as => :commentable
   has_many :posts
+  has_many :agendas
   has_many :event_galleries, :dependent => :destroy
   has_one  :event_geolocation
   belongs_to :chapter
