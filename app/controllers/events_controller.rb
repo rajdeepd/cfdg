@@ -196,12 +196,12 @@ class EventsController < ApplicationController
       #EventNotification.delay.event_creation(@event,emails,@chapter)
       EventNotification.event_creation(@event,to_email,bcc_emails,@chapter).deliver
       #SES.send_raw_email(EventNotification.event_creation(@event,to_email,bcc_emails,@chapter))
-      if ChapterMember.am_i_coordinator?(@current_user,@chapter.id)
-        redirect_to chapter_path(@chapter), :notice => "Event created successfully"
-      else
-      redirect_to detail_chapter_path(params[:chapter_id]), :notice => "Event created successfully"
-      end
-      #redirect_to new_agenda_and_speaker_event_path(@event), :notice => "Event created successfully"
+      # if ChapterMember.am_i_coordinator?(@current_user,@chapter.id)
+      #   redirect_to chapter_path(@chapter), :notice => "Event created successfully"
+      # else
+      # redirect_to detail_chapter_path(params[:chapter_id]), :notice => "Event created successfully"
+      # end
+      redirect_to new_agenda_and_speaker_event_path(@event), :notice => "Event created successfully"
     else
       logger.info "########## inside else of create action ########"
       render :action => :new
@@ -380,7 +380,7 @@ class EventsController < ApplicationController
   end
 
   def new_agenda_and_speaker
-
+    @event = Event.find(params[:id])
     @agenda = Event.find(params[:id]).agendas.new
     @existing_agenda = Event.find(params[:id]).agendas
   end
@@ -397,6 +397,15 @@ class EventsController < ApplicationController
     end
 
   end
+
+  def agenda_delete
+    if Agenda.delete(params[:agenda_id])
+      respond_to do |format|
+        format.js {render :nothing => true}
+      end
+    end
+  end
+
   def update_agenda
     @agenda = Agenda.find(params[:agenda][:agenda_id]).update_attributes(:description => params[:agenda][:description])
     respond_to do |format|

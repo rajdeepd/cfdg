@@ -55,6 +55,7 @@ CloudfoundryUsergroups::Application.routes.draw do
       get 'event_listing'
       get 'search_event_list'
       post 'update_agenda'
+      post 'agenda_delete'
     end
     member do
       get :download_list
