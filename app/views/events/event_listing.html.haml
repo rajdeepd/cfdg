@@ -91,7 +91,7 @@
         %button.search.orangeBtn Search
     =form_tag search_event_list_events_path  , :method => :get,:id => "search_chapter",:remote => true  do
       .eventSearchBox
-        = text_field_tag "keyword", params[:keyword], :class =>"selectID",:placeholder => "Type Keyword"
+        -#= text_field_tag "keyword", params[:keyword], :class =>"selectID",:placeholder => "Type Keyword"
         .eventCitySearch.clearfix
           %span.citySearchIcon
           = text_field_tag 'query', params[:query], :size => 75 ,:placeholder => "City Name"  ,:id => "city_autocomplete"
