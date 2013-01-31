@@ -17,11 +17,12 @@
       %span.imageIcon
         %span.numberOfImages 89
         %span Photos
-  .layoutWrapper
-
+  .layoutWrapper.chapterGallery
     .row
       .span4
-        %ul.chapterGallery
+        .sliderHeading
+          %h3 Event Gallery
+        %ul
           %li
             %a{:href => "#"}
               .galleryThumbnails
@@ -34,9 +35,10 @@
                 = image_tag("event_gallery_thumbnail.jpg")
                 %p Cloud Foundry introduced npm support, we added serval
                 %a.light
-
       .span8
         .row
+          .sliderHeading
+            %h3 Event Gallery
           %ul.eventGallery
             %li
               .eventImageHolder

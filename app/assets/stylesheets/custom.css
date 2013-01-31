@@ -770,9 +770,21 @@ ul.supportPrivacyLinks li{
     overflow-y: auto;
 }
 
-.span4 ul.chapterGallery{
+.chapterGallery .span4 ul{
     max-height: 800px;
     overflow-y: auto;
+}
+.chapterGallery .span4{
+    width: 280px;
+}
+.chapterGallery .span4 .sliderHeading{
+    width: 260px;
+    padding: 10px;
+    border-radius: 5px;
+}
+.chapterGallery .span8 .sliderHeading{
+    margin-left: 20px;
+    padding: 10px;
 }
 #chapterEventImages{
     margin-left:33px;
