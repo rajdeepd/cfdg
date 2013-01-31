@@ -6,7 +6,11 @@ class HomeController < ApplicationController
   layout "application"
 
   def index
-    @country_count = Country.all.length
+    @country = []
+    Chapter.all.each do |i|
+      @country.push(i.country_name)
+    end
+    @country_count = @country.uniq.count
     @chapter_count = Chapter.all.length
     @event_count = Event.all.length
     @user_count = User.all.length

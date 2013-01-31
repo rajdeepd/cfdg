@@ -5,7 +5,8 @@
     .ca-left.flt-left
       =form_for(@user, :as => :user, :url => user_path(@user), :html => { :method => :put ,  :multipart => true}) do |f|
         #welcome
-          %h1.label-17 Welcome #{@user.fullname}!
+          -#%h1.label-17 Welcome #{@user.fullname}!
+          %h1.label-17
           %div
             - if @user.avatar_file_name && (@user.errors[:avatar_content_type].blank? && @user.errors[:avatar_file_size].blank?)
               %img.profile-image{:src => @user.try(:avatar).url(:medium)}/

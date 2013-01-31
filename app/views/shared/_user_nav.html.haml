@@ -14,7 +14,8 @@
         %li
           %a.event{:href => "#{event_listing_events_path}"} Events
         %li
-          %a.wiki{:href =>"#{wiki_path}"} Wiki
+          -#%a.wiki{:href =>"#{wiki_path}"} Wiki
+          %a.wiki.disableWiki{:href =>"#"} Wiki
 
 :javascript
   $(document).ready(function(){

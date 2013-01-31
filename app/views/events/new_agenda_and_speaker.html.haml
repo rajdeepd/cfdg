@@ -140,7 +140,8 @@
     $('#new_agenda').validate({
       rules: {
         "agenda[description]": {
-          required: true
+          required: true,
+          maxlength: 250
         }
       }
     });

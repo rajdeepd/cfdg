@@ -471,6 +471,7 @@ header ul li:first-child{
     background:  #edf6fb;
     background:rgba(255 ,255 ,255, 0.35);
     margin-bottom: 20px;
+    padding: 0 0 15px 0;
 }
 .comingEvents h3{
     background: url("upcoming.jpg") no-repeat right;
@@ -493,7 +494,8 @@ header ul li:first-child{
     color: #0078ac;
     font-size: 16px;
     font-family: helvetica;
-    margin-bottom: 15px;
+    margin-bottom: 9px;
+    min-height: 36px;
 }
 .lightGrayText{
     color:#666666;
@@ -1242,7 +1244,7 @@ ul.supportPrivacyLinks li{
     margin-bottom: 20px;
     position: relative;
     width: 278px;
-    height: 401px;
+    height: 235px;
     overflow: hidden;
 }
 .eventListInner{
@@ -1280,6 +1282,7 @@ ul.supportPrivacyLinks li{
     min-height: 38px;
     color: #888888;
     font-size: 12px;
+    margin-bottom: 0;
 }
 .eventListFooter{
     background: #f1f1f1;
@@ -1298,7 +1301,7 @@ ul.supportPrivacyLinks li{
     margin-right: 5px;
 }
 .eventContent{
-    margin-left: 6px;
+    /*margin-left: 6px;*/
 }
 .fullWidthContainer{
     background: #edf7fd;
@@ -1314,7 +1317,9 @@ ul.supportPrivacyLinks li{
     height: 45px;
     margin-right: 10px;
     box-shadow: 0px -2px 6px -2px rgba(0, 0, 0, 0.3);
-
+}
+.aboutUsWrapper .map img{
+    height: 316px;
 }
 .layoutWrapper ul.nav-tabs li.active{
     background: #EDF7FD;
@@ -1364,12 +1369,12 @@ ul.supportPrivacyLinks li{
     margin-top: 60px;
 }
 .content .comingEvents .ca-container{
-    height: 428px;
-    width: 891px;
+    height: 262px;
+    width: 871px;
 }
 .content .comingEvents .ca-item{
     width: 280px;
-    height: 404px;
+    height: 238px;
 }
 .content .comingEvents .ca-item-main{
     padding: 0;
@@ -1395,7 +1400,7 @@ ul.supportPrivacyLinks li{
     padding: 4px 35px 4px 14px;
 }
 .content .ca-nav .ca-nav-prev{
-    left: -15px;
+    left: -22px;
 }
 .content .ca-nav .ca-nav-next{
     right: -20px;
@@ -1630,13 +1635,16 @@ li.ui-timepicker-selected .ui-timepicker-duration,
 .chapterLayout .ca-container{
     margin: 0;
     width: 578px;
-    height: 412px;
+    height: 250px;
 }
 .chapterLayout .ca-item{
     width: 280px;
-    height: 398px;
+    height: 236px;
     /*height: auto;*/
     box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.2);
+}
+.galleryThumbnailsContainer .ca-item{
+    box-shadow: none;
 }
 .chapterLayout .ca-item-main{
     padding: 0;
@@ -2549,6 +2557,7 @@ ul.posts li .commentText .commentDate{
     width: 260px;
     height: 20px;
     border: 1px solid #7faac5;
+    color: #222222;
 }
 .loginRightPanel input[type = "submit"]{
     padding: 6px 17px;
@@ -2695,5 +2704,55 @@ ul.posts li .commentText .commentDate{
 .eventTitleDetails .tag{
     margin-top: -11px;
 }
-
-
+.navbar ul.nav li a.disableWiki{
+    color: #cccccc;
+}
+.navbar ul.nav li:hover .disableWiki{
+    border: none;
+    cursor: not-allowed;
+}
+.agendaWrapper{
+    float: left;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    background-color: #edf6fb;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+}
+.agendaWrapper .longHeading {
+    width: 578px;
+}
+.agendaWrapper .longHeading h3{
+    float: left;
+    width: 500px;
+    background: none;
+}
+.addIconWhite {
+    background: url("add_white.jpg") no-repeat;
+    float: right;
+    width: 20px;
+    height: 20px;
+    margin: 10px;
+}
+.agendaWrapper ul li{
+    padding: 10px 20px;
+    overflow: hidden;
+}
+.agendaWrapper ul li p{
+    color: #666666;
+    font-size: 12px;
+    float: left;
+    width: 488px;
+}
+.countAgenda{
+    background: url("agenda_count_bg.png") no-repeat;
+    width: 35px;
+    height: 35px;
+    color: #0094d4;
+    text-align: center;
+    line-height: 35px;
+    font-size: 18px;
+    font-weight: bold;
+    float: left;
+    margin-right: 15px;
+}

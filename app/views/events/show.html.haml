@@ -302,10 +302,10 @@
           .eventPeopleList#memberList
             .listHeader
               %span list of attendees
-              -if @event.id ==2
+              -#-if @event.id ==2
                 %span.numberOfPeople 37
-              -else
-                %span.numberOfPeople #{@event.event_members.size}
+              -#-else
+              %span.numberOfPeople #{@event.event_members.size}
               -#%span.numberOfPeople 06
             %ul.clearfix.listOfAttendees
               -@members.each do |i|
