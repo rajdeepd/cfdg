@@ -194,10 +194,10 @@ class ChaptersController < ApplicationController
       if member.save
         ChapterNotifications.chapter_joined(@chapter,@current_user).deliver
         #format.html { redirect_to @chapter }
-        format.html { redirect_to detail_chapter_path(@chapter) }
+        format.html { redirect_to detail_chapter_path(@chapter),notice: 'Successfully joined the chapter.' }
         format.json { render json: @chapter, status: :success, location: @chapter }
       else
-        format.html { redirect_to @chapter }
+        format.html { redirect_to @chapter,notice: 'Unable to join the chapter.' }
         format.json { render json: @chapter.errors, status: :unprocessable_entity }
       end
     end

@@ -196,8 +196,11 @@ class EventsController < ApplicationController
       #EventNotification.delay.event_creation(@event,emails,@chapter)
       EventNotification.event_creation(@event,to_email,bcc_emails,@chapter).deliver
       #SES.send_raw_email(EventNotification.event_creation(@event,to_email,bcc_emails,@chapter))
-
+      if ChapterMember.am_i_coordinator?(@current_user,@chapter.id)
+        redirect_to chapter_path(@chapter), :notice => "Event created successfully"
+      else
       redirect_to detail_chapter_path(params[:chapter_id]), :notice => "Event created successfully"
+      end
     else
       logger.info "########## inside else of create action ########"
       render :action => :new
