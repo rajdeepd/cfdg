@@ -163,6 +163,7 @@ CloudfoundryUsergroups::Application.routes.draw do
       get :event_gallery
       get :chapter_gallery
       get :edit_profile
+      get :about_us
     end
   end
 

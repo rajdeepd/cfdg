@@ -21,7 +21,7 @@ a{
     color: #0094D4;
 }
 a:hover{
-    /*color: #ffffff;*/
+    color: #222222;
 }
 a:hover{
     text-decoration: none;
@@ -380,6 +380,7 @@ header ul li:first-child{
     margin-bottom: 20px;
 }
 .smallHeading h3{
+    background: url("announcement_header_logo.png") no-repeat right;
     line-height: 40px;
     margin-left: 25px;
     font-weight: 600;
@@ -393,6 +394,7 @@ header ul li:first-child{
     min-height: 540px;
 }
 .longHeading h3{
+    background: url("chapter_header_logo.png") no-repeat right;
     line-height: 40px;
     margin-left: 25px;
     font-weight: 600;
@@ -471,8 +473,9 @@ header ul li:first-child{
     margin-bottom: 20px;
 }
 .comingEvents h3{
+    background: url("upcoming.jpg") no-repeat right;
     line-height: 40px;
-    margin-left: 25px;
+    margin: 0 5px 0 25px;
 }
 .fullHeading{
     background: url("heading_bg.png") repeat-x #f9f9f9;
@@ -552,25 +555,34 @@ footer .footerBottom p{
 
 }
 .twitterIcon{
-    background: url("social_icon_sprite.png") no-repeat 0 0;
+    background: url("social_icon_sprite.png") no-repeat 0 -40px;
     width: 50px;
-    height: 50px;
+    height: 44px;
     display: block;
     float: left;
+}
+.twitterIcon:hover{
+    background-position: 0 0;
 }
 .faceBookIcon{
-    background: url("social_icon_sprite.png") no-repeat -59px 0;
+    background: url("social_icon_sprite.png") no-repeat -59px -40px;
     width: 50px;
-    height: 50px;
+    height: 44px;
     display: block;
     float: left;
 }
+.faceBookIcon:hover{
+    background-position: -59px 0;
+}
 .youTubeIcon{
-    background: url("social_icon_sprite.png") no-repeat -116px 0;
+    background: url("social_icon_sprite.png") no-repeat -116px -40px;
     width: 50px;
-    height: 50px;
+    height: 44px;
     display: block;
     float: left;
+}
+.youTubeIcon:hover{
+    background-position: -116px 0;
 }
 .linksCenter{
     width: 150px;
@@ -758,9 +770,21 @@ ul.supportPrivacyLinks li{
     overflow-y: auto;
 }
 
-.span4 ul.chapterGallery{
+.chapterGallery .span4 ul{
     max-height: 800px;
     overflow-y: auto;
+}
+.chapterGallery .span4{
+    width: 280px;
+}
+.chapterGallery .span4 .sliderHeading{
+    width: 260px;
+    padding: 10px;
+    border-radius: 5px;
+}
+.chapterGallery .span8 .sliderHeading{
+    margin-left: 20px;
+    padding: 10px;
 }
 #chapterEventImages{
     margin-left:33px;
@@ -1206,6 +1230,8 @@ ul.supportPrivacyLinks li{
     border-radius: 4px;
     margin-bottom: 20px;
     position: relative;
+    width: 278px;
+    height: 401px;
 }
 .eventListInner{
     padding: 0 8px;
@@ -1233,9 +1259,10 @@ ul.supportPrivacyLinks li{
 .eventListWrapper .eventContent a{
     margin-bottom: 15px;
     display: block;
+    font-size: 12px;
 }
 .eventListWrapper .dateAndPlace .date{
-    color: #888888;
+    color: #333333;
 }
 .eventListWrapper .eventContent p{
     min-height: 38px;
@@ -1244,7 +1271,7 @@ ul.supportPrivacyLinks li{
 }
 .eventListFooter{
     background: #f1f1f1;
-    line-height: 35px;
+    line-height: 40px;
     color: #666666;
     padding-left: 15px;
     border-radius: 0 0 4px 4px;
@@ -1316,6 +1343,7 @@ ul.supportPrivacyLinks li{
     display: block;
     width: 260px;
     height: 20px;
+    border: 1px solid #7faac5;
 }
 .signUpWrapper .loginRightPanel{
     margin-top: 45px;
@@ -1328,8 +1356,8 @@ ul.supportPrivacyLinks li{
     width: 891px;
 }
 .content .comingEvents .ca-item{
-    width: 288px;
-    height: 407px;
+    width: 280px;
+    height: 404px;
 }
 .content .comingEvents .ca-item-main{
     padding: 0;
@@ -1590,12 +1618,13 @@ li.ui-timepicker-selected .ui-timepicker-duration,
 .chapterLayout .ca-container{
     margin: 0;
     width: 578px;
-    height: 405px;
+    height: 412px;
 }
 .chapterLayout .ca-item{
     width: 280px;
     height: 398px;
     /*height: auto;*/
+    box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.2);
 }
 .chapterLayout .ca-item-main{
     padding: 0;
@@ -1893,7 +1922,7 @@ ul.eventGallery li{
     margin-bottom: 10px;
 }
 .subscribedChapters .pastEvent{
-    width: 223px;
+    width: 233px;
     padding: 10px 30px 10px 15px;
     margin-left: -8px;
     background: #fffdeb;
@@ -1904,6 +1933,15 @@ ul.eventGallery li{
     cursor: auto;
     margin-bottom: 10px;
 }
+.subscribedChapters .eventListWrapper{
+    height: 313px;
+}
+.PastEventsContainer .ca-item{
+    box-shadow: none;
+}
+.subscribedChapters .ca-item{
+    height: 314px;
+}
 .subscribedChapters .pastEvent:hover{
     box-shadow: none;
     background: #fffce7;
@@ -1913,6 +1951,9 @@ ul.eventGallery li{
     font-size: 12px;
     margin: 0 0 10px 10px;
     display: block;
+}
+.subscribedChapters a:hover{
+    color: #222222
 }
 .subscribedChapters .ca-container{
     height: 323px;
@@ -2481,7 +2522,141 @@ ul.posts li .commentText .commentDate{
 .loginRightPanel input[type = "text"] , .loginRightPanel input[type = "email"], .loginRightPanel input[type = "password"]{
     width: 260px;
     height: 20px;
+    border: 1px solid #7faac5;
 }
 .loginRightPanel input[type = "submit"]{
     padding: 6px 17px;
 }
+.totalStats{
+    background: url("total_tile_bg.png") repeat-x;
+    height: 60px;
+    width: 940px;
+    box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+.totalStats ul li{
+    background: url("navigation_divider.png") no-repeat left 13px;
+    float: left;
+    width: 235px;
+    text-align: center;
+    height: 47px;
+    padding-top: 13px;
+}
+.totalStats ul li:first-child{
+    background: none;
+}
+.totalStats ul li .darkText{
+    font-size: 22px;
+    color: #444444;
+    font-weight: bold;
+}
+.totalStats ul li span{
+    display: block;
+    font-size: 13px;
+    color: #666666;
+    text-transform: uppercase;
+    line-height: 22px;
+}
+.aboutUsWrapper .blueHeaderWithoutTag h1{
+    font-size: 22px;
+    line-height: 36px;
+}
+.aboutUsWrapper .blueHeaderWithoutTag h1 span{
+    font-size: 18px;
+    color: #ffffff;
+}
+.aboutUsWrapper .span5{
+    width: 400px;
+}
+.aboutUsWrapper .span6{
+    width: 458px;
+}
+.aboutUsWrapper .mapWrapper{
+    background: rgba(255, 255, 255, 0.7);
+    padding: 25px 20px 20px;
+    border: 1px solid #cececf;
+    border-radius: 4px;
+}
+.mapWrapper p{
+    color: #777777;
+    font-size: 12px;
+    line-height: 18px;
+    margin-bottom: 15px;
+}
+.aboutUsWrapper p a{
+    color: #0094d4;
+}
+.aboutUsWrapper .mapWrapper .map{
+    width: 360px;
+    height: 315px;
+}
+.aboutCFDG{
+    padding-top: 25px;
+}
+.aboutCFDG h4 , .aboutChapter h4{
+    font-size: 18px;
+    color: #222222;
+    margin-bottom: 20px;
+}
+.aboutCFDG p, .aboutChapter p, .communityGuideline p{
+    font-size: 14px;
+    color: #444444;
+    font-family: helvetica;
+    line-height: 22px;
+    margin-bottom: 15px;
+}
+.aboutCFDG{
+    padding-bottom: 30px;
+    border-bottom: 1px solid #c1d8e5;
+    margin-bottom: 20px;
+}
+.aboutCFDG h5, .communityGuideline h5{
+    font-size: 16px;
+    color: #0094d4;
+    margin-bottom: 15px;
+}
+.aboutChapter{
+    color: #666666;
+    font-size: 14px;
+    line-height: 18px;
+    margin-bottom: 20px;
+}
+.aboutChapter .citySearch{
+    width: 387px;
+    margin: 0 auto;
+    border: 1px solid #7faac5;
+    border-radius: 5px;
+    padding: 5px 0 5px 10px;
+    margin-bottom: 10px;
+    background: #eff7fc;
+}
+.aboutChapter .citySearch input {
+    background: #eff7fc;
+    border: none;
+    box-shadow: none;
+    margin-bottom: 0;
+    width: 332px;
+}
+.aboutChapter h6{
+    font-size: 14px;
+    color: #666666;
+    margin-bottom: 10px;
+}
+.aboutChapter h4{
+    margin-bottom: 10px;
+}
+.communityGuideline .sliderHeadingFull{
+    padding: 10px 10px 0 15px;
+}
+.communityGuideline ul{
+    margin: 15px 0 0 20px;
+}
+.communityGuideline h5{
+    margin: 0;
+}
+.communityGuideline h2{
+    font-size: 20px;
+}
+
+
