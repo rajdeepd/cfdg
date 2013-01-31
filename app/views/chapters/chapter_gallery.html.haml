@@ -17,35 +17,39 @@
       %span.imageIcon
         %span.numberOfImages #{@event_images.length}
         %span Photos
-  .layoutWrapper
-
+  .layoutWrapper.chapterGallery
     .row
-      .span4{:style => "margin-left:-3px"}
-        %ul.chapterGallery{:style => "width:300px"}
-          - if @chapter.get_past_events.blank?
-            .centerText.verticalMargin No event gallery for this chapter.
-          -else
-            - @chapter.get_past_events.each do |i|
-              -if i.event_galleries.count > 0
-                %li
-                  %a{:href => "#{chapter_gallery_chapter_path(:event_id => i)}"}
-                    .galleryThumbnails
-                      -if i.image.event_landscape.present?
-                        = image_tag(i.image.event_landscape.url,:size => "260x150")
-                      -elsif i.image.present?
-                        = image_tag(i.image.url,:size => "260x150")
-                      -else
-                        = image_tag("event_landscape_logo-b.png",:size => "260x150")
-                      -#= image_tag("event_gallery_thumbnail.jpg")
-                      %p #{i.title.truncate(45)}
-                      - if i.event_galleries.present?
-                        %a.lightGrayText{:href => "#{chapter_gallery_chapter_path(:event_id => i)}"} (#{i.event_galleries.count} Photos)
-                      - else
-                        %a.lightGrayText{:href => "#{chapter_gallery_chapter_path(:event_id => i)}"} (0 Photos)
-                      -#%a.lightGrayText{:href => "#"} (54 Photos)
+      .span4
+        .row
+          .sliderHeading
+            %h3 Event Gallery
+          %ul
+            - if @chapter.get_past_events.blank?
+              .centerText.verticalMargin No event gallery for this chapter.
+            -else
+              - @chapter.get_past_events.each do |i|
+                -if i.event_galleries.count > 0
+                  %li
+                    %a{:href => "#{chapter_gallery_chapter_path(:event_id => i)}"}
+                      .galleryThumbnails
+                        -if i.image.event_landscape.present?
+                          = image_tag(i.image.event_landscape.url,:size => "260x150")
+                        -elsif i.image.present?
+                          = image_tag(i.image.url,:size => "260x150")
+                        -else
+                          = image_tag("event_landscape_logo-b.png",:size => "260x150")
+                        -#= image_tag("event_gallery_thumbnail.jpg")
+                        %p #{i.title.truncate(45)}
+                        - if i.event_galleries.present?
+                          %a.lightGrayText{:href => "#{chapter_gallery_chapter_path(:event_id => i)}"} (#{i.event_galleries.count} Photos)
+                        - else
+                          %a.lightGrayText{:href => "#{chapter_gallery_chapter_path(:event_id => i)}"} (0 Photos)
+                        -#%a.lightGrayText{:href => "#"} (54 Photos)
 
       .span8#chapterEventImages
         .row
+          .sliderHeading
+            %h3 #{@event.title} Gallery
           %ul.eventGallery
             -if @event_images.present?
               - @event_images.each do |i|

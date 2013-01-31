@@ -31,7 +31,7 @@
                       =image_tag("event_landscape_logo-b.png",:size => "260x150")
                   .eventContent
                     %h5
-                      =event.title
+                      =event.title.truncate(35)
                     .personName
                       =event.user.fullname
                     %p.lightGrayText

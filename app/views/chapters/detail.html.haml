@@ -97,7 +97,7 @@
                               -else
                                 =image_tag("event_landscape_logo-b.png",:size => "260x150")
                             .eventContent
-                              %h5 #{event.title}
+                              %h5 #{event.title.truncate(35)}
                               .personName #{event.user.fullname}
                               %p.lightGrayText #{event.description.truncate(70)}
                               %a{:href => "#{event_path(event)}"} View Event

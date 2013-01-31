@@ -12,7 +12,8 @@ class UsersController < ApplicationController
     @user.update_attributes(params[:user])
     session[:user_id] = @user.id
     session[:user] = {:email => @user.email, :verified => true, :name => @user.fullname}
-    redirect_to profile_url
+    #redirect_to profile_url
+    redirect_to dashboard_user_path(@user)
   end
 
 

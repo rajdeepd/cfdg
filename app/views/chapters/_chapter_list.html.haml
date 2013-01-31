@@ -13,12 +13,12 @@
               -else
                 %img{:src => "/assets/professional_event.png"}
             .clearfix
-              .eventImg
-                %img{:src => "/assets/event_snap_4.jpg"}
+              -#.eventImg
+              -#  %img{:src => "/assets/event_snap_4.jpg"}
               .eventContent
                 -if chapter.chapter_type == "student"
                   %h5 #{chapter.name}
-                  .institution #{chapter.institution}
+                  .institution #{chapter.institution.truncate(66)}
                 -else
                   %h5 #{chapter.name}
             .location #{chapter.city_name}, #{chapter.country_name}

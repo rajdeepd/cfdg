@@ -102,7 +102,7 @@
                           -else
                             =image_tag("event_landscape_logo-b.png",:size => "260x150")
                         .eventContent
-                          %h5 #{event.title}
+                          %h5 #{event.title.truncate(35)}
                           .personName #{event.user.fullname}
                           %p.lightGrayText #{event.description.truncate(70)}
                           %a{:href => "#{event_path(event)}"} View Event
@@ -129,12 +129,12 @@
                           -else
                             %img{:src => "/assets/professional_event.png"}
                         .clearfix
-                          .eventImg
+                          -#.eventImg
                             %img{:src => "/assets/event_snap_4.jpg"}
                           .eventContent
                             -if chapter.chapter_type == "student"
                               %h5 #{chapter.name}
-                              .institution #{chapter.institution}
+                              .institution #{chapter.institution.truncate(66)}
                             -else
                               %h5 #{chapter.name}
                         .location #{chapter.city_name}, #{chapter.country_name}

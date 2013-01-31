@@ -6,6 +6,10 @@ class HomeController < ApplicationController
   layout "application"
 
   def index
+    @country_count = Country.all.length
+    @chapter_count = Chapter.all.length
+    @event_count = Event.all.length
+    @user_count = User.all.length
     @upcoming_events = Event.get_upcoming_events
     if @current_user.present?
       if @current_user.fullname.present?
@@ -75,7 +79,7 @@ class HomeController < ApplicationController
   end
 
   def announcements
-    @announcements = Announcement.order("created_at DESC")
+    @announcements = Announcement.order("created_at DESC").first(3)
   end
 
   def chapters

@@ -151,7 +151,7 @@ class ChaptersController < ApplicationController
       if @chapter.save
         member.chapter_id = @chapter.id
         member.save
-        format.html { redirect_to @chapter, notice: 'Chapter was successfully created.' }
+        format.html { redirect_to detail_chapter_path(@chapter), notice: 'Chapter was successfully created.' }
         format.json { render json: @chapter, status: :created, location: @chapter }
       else
         format.html { render action: "new" , :layout => "create_chapter"}

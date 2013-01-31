@@ -314,7 +314,7 @@ header ul li:first-child{
 
 .latestAnnouncement ul li{
     margin: 0 20px 5px 20px !important;
-    padding: 26px 0 12px !important;
+    padding: 20px 0 12px !important;
     height: 130px !important;
     display: block;
     border-top: 1px solid #cccccc;
@@ -786,8 +786,8 @@ ul.supportPrivacyLinks li{
     margin-left: 20px;
     padding: 10px;
 }
-#chapterEventImages{
-    margin-left:33px;
+.chapterGallery .span4 .row{
+    margin-left: -15px;
 }
 .eventPeopleList ul li{
     margin: 20px 0 10px 20px;
@@ -954,7 +954,7 @@ ul.supportPrivacyLinks li{
     z-index: 1000;
     border: 1px solid #CCC;
     position: absolute;
-    top: 180px;
+    top: 179px;
     left: 32px;
     background: white;
     opacity: 0;
@@ -1232,6 +1232,7 @@ ul.supportPrivacyLinks li{
     position: relative;
     width: 278px;
     height: 401px;
+    overflow: hidden;
 }
 .eventListInner{
     padding: 0 8px;
@@ -1881,6 +1882,7 @@ ul.eventGallery li{
 }
 .subscribedChapters .eventListInner{
     padding: 8px;
+    min-height: 229px;
 }
 .subscribedChapters .eventImg{
     width: 62px;
@@ -1891,35 +1893,40 @@ ul.eventGallery li{
     display: block;
     margin: 0 10px 10px 0;
 }
+.subscribedChapters .eventListInner .eventContent{
+    min-height: 64px;
+    word-wrap: break-word;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
 .subscribedChapters .eventImg img{
     height: 62px;
     border-radius: 4px;
 }
 .subscribedChapters .eventContent h5{
-    margin: 20px 0 0;
+    margin: 12px 0 0;
 }
 .subscribedChapters .location{
     background: url("location_icon_black.png") no-repeat 0 1px;
     padding-left: 20px;
     display: block;
     font-size: 15px;
-    margin: 0 0 20px 10px;
+    margin: 0 0 10px 5px;
     color: #444444;
 }
-
+.chapterListing .comingEvent{
+    min-height: 115px;
+}
 .subscribedChapters .institution{
-    background: url("location_icon_black.png") no-repeat 0 1px;
-    padding-left: 20px;
     display: block;
-    font-size: 10px;
-    margin: 0 0 20px 10px;
-    color: #444444;
+    font-size: 13px;
+    color: #444444;;
 }
 
 .subscribedChapters .comingEvent h5{
     color: #666666;
     font-size: 14px;
-    margin-bottom: 10px;
+    margin: 0 0 10px 6px;
 }
 .subscribedChapters .pastEvent{
     width: 233px;
@@ -1934,13 +1941,19 @@ ul.eventGallery li{
     margin-bottom: 10px;
 }
 .subscribedChapters .eventListWrapper{
-    height: 313px;
+    height: 312px;
+}
+.subscribedChapters .ca-item .eventListWrapper{
+    height: 302px;
 }
 .PastEventsContainer .ca-item{
     box-shadow: none;
 }
 .subscribedChapters .ca-item{
-    height: 314px;
+    height: 303px;
+}
+.subscribedChapters .ca-item .comingEvent{
+    min-height: 116px;
 }
 .subscribedChapters .pastEvent:hover{
     box-shadow: none;
@@ -1951,6 +1964,9 @@ ul.eventGallery li{
     font-size: 12px;
     margin: 0 0 10px 10px;
     display: block;
+}
+.subscribedChapters .ca-item .eventListInner a{
+    margin-bottom: 0;
 }
 .subscribedChapters a:hover{
     color: #222222
@@ -2268,7 +2284,6 @@ ul.posts li .commentText .commentDate{
 }
 .joinChapter button{
     padding: 6px 15px;
-    margin-left: 25px;
 }
 .joinChapter form{
     margin: 0;
@@ -2657,6 +2672,17 @@ ul.posts li .commentText .commentDate{
 }
 .communityGuideline h2{
     font-size: 20px;
+}
+.eventTitleDetails h1{
+    width: 820px;
+    font-size: 30px;
+}
+.eventTitleDetails {
+    padding: 7px 0 0 30px;
+    height: 110px;
+}
+.eventTitleDetails .tag{
+    margin-top: -11px;
 }
 
 

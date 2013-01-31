@@ -40,23 +40,23 @@
   .totalStats
     %ul.clearfix
       %li
-        %span.darkText 124
+        %span.darkText #{@country_count}
         %span Countries
       %li
-        %span.darkText 1432
+        %span.darkText #{@chapter_count}
         %span Chapters
       %li
-        %span.darkText 3464
+        %span.darkText #{@event_count}
         %span Events
       %li
-        %span.darkText 4999
+        %span.darkText #{@user_count}
         %span Members
   .row.clearfix
     .span4
-      .latestAnnouncement
+      .latestAnnouncement.clearfix
         .smallHeading
           %h3 Latest Announcements
-        %ul
+        %ul.clearfix
           -@announcements.each do |i|
             %li
               .clearfix
@@ -68,7 +68,7 @@
                   %span.date.lightGrayText
                     =i.created_at.strftime("%B %d, %Y")
                   %h4
-                    =i.title
+                    =i.title.truncate(25)
                   %p
                     =i.body.truncate(25)
                   %a.btn{:href => "#{announcement_path(i)}"} Learn More

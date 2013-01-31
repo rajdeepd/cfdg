@@ -14,7 +14,7 @@
   $(function(){
       /* Here is the slider using default settings */
     $('#slider-id').codaSlider({
-      autoSlide:true,
+      autoSlide:false,
       autoHeight:false
     });
     $('h2.title').hide();
@@ -136,7 +136,7 @@
         %span.breadCrumbDivider /
         %span.activePage
           =@event.title
-    .blueHeader
+    .blueHeader.eventTitleDetails
       .tag
         %img{:src => "/assets/student_event_header_tag.png"}
       .chapterName.clearfix
@@ -299,7 +299,7 @@
                     .personDetails
                       .personName #{i.fullname}
                       -#.personRole Senior Solutions Architect
-          .eventPeopleList
+          .eventPeopleList#memberList
             .listHeader
               %span list of attendees
               -if @event.id ==2
