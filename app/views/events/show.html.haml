@@ -181,7 +181,7 @@
                 %p #{@event.description}
                 %span.viewLess View Less
               -if !@event.is_past_event?
-                -if !current_user.blank? and  (current_user.id != @event.created_by)
+                -if !current_user.blank? and (current_user.id != @event.created_by)
                   -if @event.is_cancelled?
                     %button.btn-a-small.flt-right{:id=>"cancelled_event", :event_id => "#{@event.id}" ,:disable => true,:style => "opacity:0.35"} CANCELLED
                   -else
