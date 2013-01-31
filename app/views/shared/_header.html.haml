@@ -38,7 +38,7 @@
         %li{:class => "#{active_class("index","home")}"}
           %a{:href => "#{root_path}"}= t('menu.home')
         %li{:class => "#{active_class("directory","home")}"}
-          %a{:href => "#{directory_path}"}= t('menu.directory')
+          %a{:href => "#{list_chapters_path}"}= t('menu.directory')
         -#%li{:class => "#{active_class("wiki","home")}"}
           %a{:href => "#{wiki_path}"}= t('menu.wiki')
         -if session[:admin_user_id].present?

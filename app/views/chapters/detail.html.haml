@@ -57,6 +57,10 @@
         - else
           -#= submit_tag 'Join Chapter' , :class => "join_us orangeBtn"
           = button_tag 'Join Chapter' , :class => "join_us orangeBtn"
+  -if(@current_user and (ChapterMember.am_i_coordinator?(@current_user.id, @chapter.id)))
+    .joinChapter
+      =link_to "Create Event"  , new_chapter_event_path(@chapter) ,:id => "new_event", :class => "create_new_event btn orangeBtn"
+
   .chapterLayout
     .row
       .span8

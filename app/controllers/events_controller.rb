@@ -201,6 +201,7 @@ class EventsController < ApplicationController
       else
       redirect_to detail_chapter_path(params[:chapter_id]), :notice => "Event created successfully"
       end
+      #redirect_to new_agenda_and_speaker_event_path(@event), :notice => "Event created successfully"
     else
       logger.info "########## inside else of create action ########"
       render :action => :new

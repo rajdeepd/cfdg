@@ -2,24 +2,30 @@
   .agendaPara
     %p{:id => "desc_#{agenda_id}"}=description
     .editDeleteBtn
-      %a.editIcon{:href => '#',:id => "editAgenda",:rel => "#{agenda_id}"}
+      %a.editIcon{:href => '#',:id => "agenda_id_#{agenda_id}",:rel => "#{agenda_id}"}
       %a.deleteThikIcon{:href => '#',:id => "deleteAgenda"}
 
 :javascript
   $(document).ready(function(){
-    $(".editIcon").on("click",function(){
-      $(".agendaPara").hide();
-      var id = $(this).attr('rel')
+    var editButton = $(".editIcon").attr("rel");
+    console.log(editButton);
+    //$(".editIcon").on("click",function(){
+    $("#agenda_id_"+editButton).on("click",function(){
+      var that = $(this);
+      var thatParent = that.closest(".agendaBox");
+      that.closest(".agendaPara").hide();
+      var id = that.attr('rel')
       var desc = $("#desc_"+id).text();
-      $(".agendaBox").append("<textarea id='editDesc'></textarea>")
-      $("#editDesc").text(desc);
+      thatParent.append("<textarea class='editDesc'></textarea>")
+      //thatParent.append('<textarea id='+id+'></textarea>')
+      thatParent.children(".editDesc").text(desc);
       var btn = document.createElement('button');
       $(btn).addClass('updateDesc')
             .html('Update')
             .attr('rel',id)
-            .appendTo($(".agendaBox"))
+            .appendTo(that.closest(".agendaBox"))
             .on('click',function(){
-               var data = {description:$("#editDesc").val(),agenda_id:$(this).attr("rel")};
+               var data = {description:thatParent.children(".editDesc").val(),agenda_id:$(this).attr("rel")};
                var url = '/events/update_agenda';
                $.ajax({
                  type: "post",
@@ -27,10 +33,10 @@
                  data : {agenda:data},
                  dataType: 'script',
                  success: function(data){
-                   $(".agendaPara").children("p").text($("#editDesc").val());
-                   $("#editDesc").remove();
-                   $(".updateDesc").remove();
-                   $(".agendaPara").show();
+                   that.closest(".agendaPara").children("p").text(thatParent.children(".editDesc").val());
+                   thatParent.children(".editDesc").remove();
+                   thatParent.children(".updateDesc").remove();
+                   thatParent.children(".agendaPara").show();
                  },
                  async:false
                });

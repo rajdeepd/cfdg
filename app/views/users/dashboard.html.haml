@@ -155,14 +155,14 @@
                                     %span.date #{Time.parse(chapter.get_chapter_upcoming_events.first.event_start_date.to_s).strftime('%d')}
                                     %span.month #{Time.parse(chapter.get_chapter_upcoming_events.first.event_start_date.to_s).strftime('%b')}
                                   .pastEventDetails #{chapter.get_chapter_upcoming_events.first.description.truncate(72)}
-                        -if @current_user.present?
-                          -if ChapterMember.am_i_coordinator?(@current_user,chapter.id)
-                            %a{:href => "#{chapter_path(chapter)}"} View Chapter
-                          - else
-                            %a{:href => "#{detail_chapter_path(chapter)}"} View Chapter
-                        - else
-                          %a{:href => "#{detail_chapter_path(chapter)}"} View Chapter
-                        -#%a{:href => "#{detail_chapter_path(chapter)}"} View Chapter
+                        -#-if @current_user.present?
+                        -#  -if ChapterMember.am_i_coordinator?(@current_user,chapter.id)
+                        -#    %a{:href => "#{chapter_path(chapter)}"} View Chapter
+                        -#  - else
+                        -#    %a{:href => "#{detail_chapter_path(chapter)}"} View Chapter
+                        -#- else
+                        -#  %a{:href => "#{detail_chapter_path(chapter)}"} View Chapter
+                        %a{:href => "#{detail_chapter_path(chapter)}"} View Chapter
                       .eventListFooter
                         %span.numberPeopleAttending #{pluralize(chapter.chapter_members.length,"Member")}
                 

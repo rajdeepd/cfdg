@@ -33,7 +33,8 @@ class UsersController < ApplicationController
 
   def settings_update
     current_user.update_attributes(params[:user])
-    redirect_to  profile_url
+    #redirect_to  profile_url
+    redirect_to  dashboard_user_path(current_user )
   end
 
   def uploader
