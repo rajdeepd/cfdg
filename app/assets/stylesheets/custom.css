@@ -313,9 +313,9 @@ header ul li:first-child{
 }
 
 .latestAnnouncement ul li{
-    margin: 0 20px 5px 20px !important;
-    padding: 20px 0 12px !important;
-    height: 130px !important;
+    margin: 0 20px 5px 20px ;
+    padding: 20px 0 12px;
+    height: 130px ;
     display: block;
     border-top: 1px solid #cccccc;
     overflow: hidden;
@@ -1671,7 +1671,7 @@ ul.adminPanel{
     max-height: 70px;
     overflow-y: auto;
 }
-.chapterLayout .ca-container .ca-nav span{
+.chapterLayout .ca-container .ca-nav span , .wikiWrapper .ca-container .ca-nav span{
     top: -22px;
     text-indent:0;
     height: 20px;
@@ -1679,18 +1679,18 @@ ul.adminPanel{
     width: 60px;
     height: 29px;
 }
-.chapterLayout .ca-container .ca-nav span:hover{
+.chapterLayout .ca-container .ca-nav span:hover, .wikiWrapper .ca-container .ca-nav span:hover{
     background: url("prev_next_hover_bg.png") repeat-x;
 }
-.chapterLayout .ca-container .ca-nav .ca-nav-prev{
+.chapterLayout .ca-container .ca-nav .ca-nav-prev, .wikiWrapper .ca-container .ca-nav .ca-nav-prev{
     right: 76px;
     box-shadow: -1px 1px 3px -1px #cccccc;
     left: auto;
 }
-.chapterLayout .ca-container .ca-nav .ca-nav-prev:hover{
+.chapterLayout .ca-container .ca-nav .ca-nav-prev:hover, .wikiWrapper .ca-container .ca-nav .ca-nav-prev:hover{
     box-shadow: none;
 }
-.chapterLayout .ca-container .ca-nav .prevArrow{
+.chapterLayout .ca-container .ca-nav .prevArrow, .wikiWrapper .ca-container .ca-nav .prevArrow{
     padding: 5px 15px 5px 19px;
     background: url(prev_arrow.png) no-repeat 8px 10px;
     border: 1px solid #cccccc;
@@ -1700,18 +1700,18 @@ ul.adminPanel{
     color: #222222;
     font-weight: bold;
 }
-.chapterLayout .ca-container .ca-nav .prevArrow:hover{
+.chapterLayout .ca-container .ca-nav .prevArrow:hover, .wikiWrapper .ca-container .ca-nav .prevArrow:hover{
     background: url("prev_hover_arrow.png") no-repeat 8px 10px;
     color: #888888;
 }
-.chapterLayout .ca-container .ca-nav .ca-nav-next{
+.chapterLayout .ca-container .ca-nav .ca-nav-next, .wikiWrapper .ca-container .ca-nav .ca-nav-next{
     right: 16px;
     box-shadow: 2px 1px 3px -1px #cccccc;
 }
-.chapterLayout .ca-container .ca-nav .ca-nav-next:hover{
+.chapterLayout .ca-container .ca-nav .ca-nav-next:hover, .wikiWrapper .ca-container .ca-nav .ca-nav-next:hover{
     box-shadow: none;
 }
-.chapterLayout .ca-container .ca-nav .nextArrow{
+.chapterLayout .ca-container .ca-nav .nextArrow, .wikiWrapper .ca-container .ca-nav .nextArrow{
     padding: 5px 20px 5px 13px;
     background: url(next_arrow.png) no-repeat 45px 10px;
     border: 1px solid #cccccc;
@@ -1720,7 +1720,7 @@ ul.adminPanel{
     color: #222222;
     font-weight: bold;
 }
-.chapterLayout .ca-container .ca-nav .nextArrow:hover{
+.chapterLayout .ca-container .ca-nav .nextArrow:hover, .wikiWrapper .ca-container .ca-nav .nextArrow:hover{
     background: url("next_hover_arrow.png") no-repeat 45px 10px;
     color: #888888;
 }
@@ -2755,4 +2755,118 @@ ul.posts li .commentText .commentDate{
     font-weight: bold;
     float: left;
     margin-right: 15px;
+}
+.wikiWrapper{
+    background-color: rgba(224, 239, 248, 0.5);
+    padding: 30px 30px 40px;
+    margin: -2px 0 30px;
+    border: 1px solid #96B0C1;
+    box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.2);
+    border-radius: 0 0 5px 5px;
+}
+.wikiWrapper h4{
+    color: #333333;
+    font-size: 20px;
+    margin-bottom: 25px;
+}
+.accordionWrapper .accordionHeading{
+    background: url("accordion_heading_bg.png") repeat-x;
+    height: 38px;
+    border-radius: 3px 3px 0 0;
+    border: 1px solid #cfcfcf;
+    cursor: pointer;
+}
+.accordionWrapper .accordionBody{
+    background: #f3f8fd;
+}
+.accordionWrapper .accordionInner{
+    margin-bottom: 6px;
+}
+.accordionHeading span{
+    display: block;
+    padding: 0 15px;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 38px;
+}
+.accordionHeading span i{
+    background: url("accordion_plus.png") no-repeat center;
+    float: right;
+    width: 20px;
+    height: 38px;
+}
+.accordionHeading span.open i{
+    background: url("accordion_minus.png") no-repeat center;
+    float: right;
+    width: 20px;
+    height: 38px;
+}
+.subAccordionWrapper .subAccordionHeading{
+    border-bottom: 1px solid #dfe1e4;
+}
+.subAccordionWrapper .subAccordionHeading span{
+    padding: 0 15px;
+    line-height: 30px;
+    font-size: 13px;
+    color: #0078ac;
+    display: block;
+    cursor: pointer;
+}
+.subAccordionWrapper .subAccordionBody{
+    padding: 0 15px;
+    color: #666666;
+    font-size: 13px;
+    border-bottom: 1px solid #dfe1e4;
+}
+.wikiWrapper .latestAnnouncement{
+    height: 418px;
+}
+.wikiWrapper .latestAnnouncement li{
+    border: none;
+    padding: 10px 0 0 0;
+    margin-bottom: 0;
+}
+.wikiWrapper .latestAnnouncement li .textBox{
+    width: 320px;
+}
+.wikiWrapper .latestAnnouncement h4{
+    color: #333333;
+    font-size: 16px;
+    line-height: 20px;
+    margin-bottom: 6px;
+}
+.wikiWrapper .ca-item{
+    width: 430px;
+    height: 314px;
+}
+.wikiWrapper .ca-container{
+    height: 316px;
+}
+.wikiWrapper .ca-item-main{
+    background: none;
+    border: none;
+    box-shadow: none;
+}
+.wikiWrapper .ca-item .latestAnnouncement{
+    height: 320px;
+    margin-bottom: 0;
+    background: none;
+    border: none;
+}
+.wikiWrapper .ca-item li{
+    height: 152px;
+    margin: 0;
+}
+.wikiWrapper .ca-item li .textBox{
+    width: 326px;
+}
+.wikiWrapper .ca-item li h4{
+    margin-left: 0;
+    padding-left: 0;
+    border: none;
+    font-style: normal;
+    font-family: helvetica;
+}
+.articleCFDG{
+    margin-bottom: 40px;
 }

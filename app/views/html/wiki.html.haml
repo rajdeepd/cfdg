@@ -1,0 +1,301 @@
+= javascript_include_tag "jquery.contentcarousel"
+:javascript
+  $(function(){
+    $('div.accordionBody').hide();
+    $('.accordionWrapper').find('.accordionBody').first().show();
+    $('.accordionWrapper').find('.accordionHeading').first().find('span').addClass('open');
+
+    $('div.accordionHeading > .tab').click(function () {
+
+    if ($(this).hasClass('open')) {
+    $('div.accordionHeading > .tab').removeClass('open');
+    $(this).parents('div.accordionHeading').next().slideUp('slow');
+
+    } else {
+    //  console.log($(this).attr("checked", true));
+    $('div.accordionHeading > .tab').removeClass('open');
+    $(this).addClass('open');
+    $('div.accordionBody').slideUp('normal');
+    $(this).parents('div.accordionHeading').next().slideDown('slow');
+    }
+    });
+
+    $('.subAccordionBody').hide();
+    $('.subAccordionWrapper').find('.subAccordionBody').first().show();
+    $('.subAccordionWrapper').find('.subAccordionHeading').first().find('span').addClass('open');
+
+    $('.subAccordionHeading > .tab').click(function () {
+
+    if ($(this).hasClass('open')) {
+    $('.subAccordionHeading > .tab').removeClass('open');
+    $(this).parents('.subAccordionHeading').next().slideUp('slow');
+
+    } else {
+    //  console.log($(this).attr("checked", true));
+    $('.subAccordionHeading > .tab').removeClass('open');
+    $(this).addClass('open');
+    $('.subAccordionBody').slideUp('normal');
+    $(this).parents('.subAccordionHeading').next().slideDown('slow');
+    }
+    });
+  })
+.content.aboutUsWrapper
+  .blueHeaderWithoutTag
+    .chapterName.clearfix
+      %h1
+        Wiki
+  .wikiWrapper.clearfix
+    .row.articleCFDG
+      .span5
+        %h4 CGDG Information Repository
+        .accordionWrapper
+          .accordionInner
+            .accordionHeading.clearfix
+              %span.tab
+                Events
+                %i
+            .accordionBody
+              .subAccordionWrapper
+                .subAccordionInner
+                  .subAccordionHeading
+                    %span.tab How to create an Event?
+                  .subAccordionBody Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text.
+                .subAccordionInner
+                  .subAccordionHeading
+                    %span.tab How to find Speakers?
+                  .subAccordionBody Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text.
+                .subAccordionInner
+                  .subAccordionHeading
+                    %span.tab Event Prepration
+                  .subAccordionBody Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text.
+                .subAccordionInner
+                  .subAccordionHeading
+                    %span.tab Topics for Discussion
+                  .subAccordionBody Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text.
+          .accordionInner
+            .accordionHeading.clearfix
+              %span.tab
+                %i
+                Chapters
+            .accordionBody
+              .subAccordionWrapper
+                .subAccordionInner
+                  .subAccordionHeading
+                    %span.tab How to create an Event?
+                  .subAccordionBody Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text.
+                .subAccordionInner
+                  .subAccordionHeading
+                    %span.tab How to find Speakers?
+                  .subAccordionBody Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text.
+                .subAccordionInner
+                  .subAccordionHeading
+                    %span.tab Event Prepration
+                  .subAccordionBody Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text.
+                .subAccordionInner
+                  .subAccordionHeading
+                    %span.tab Topics for Discussion
+                  .subAccordionBody Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text.
+          .accordionInner
+            .accordionHeading.clearfix
+              %span.tab
+                %i
+                Membership
+            .accordionBody
+              .subAccordionWrapper
+                .subAccordionInner
+                  .subAccordionHeading
+                    %span.tab How to create an Event?
+                  .subAccordionBody Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text.
+                .subAccordionInner
+                  .subAccordionHeading
+                    %span.tab How to find Speakers?
+                  .subAccordionBody Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text.
+                .subAccordionInner
+                  .subAccordionHeading
+                    %span.tab Event Prepration
+                  .subAccordionBody Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text.
+                .subAccordionInner
+                  .subAccordionHeading
+                    %span.tab Topics for Discussion
+                  .subAccordionBody Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text.
+          .accordionInner
+            .accordionHeading.clearfix
+              %span.tab
+                %i
+                Marketing
+            .accordionBody
+              .subAccordionWrapper
+                .subAccordionInner
+                  .subAccordionHeading
+                    %span.tab How to create an Event?
+                  .subAccordionBody Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text.
+                .subAccordionInner
+                  .subAccordionHeading
+                    %span.tab How to find Speakers?
+                  .subAccordionBody Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text.
+                .subAccordionInner
+                  .subAccordionHeading
+                    %span.tab Event Prepration
+                  .subAccordionBody Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text.
+                .subAccordionInner
+                  .subAccordionHeading
+                    %span.tab Topics for Discussion
+                  .subAccordionBody Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text.
+          .accordionInner
+            .accordionHeading.clearfix
+              %span.tab
+                %i
+                Code of Conduct
+            .accordionBody
+              .subAccordionWrapper
+                .subAccordionInner
+                  .subAccordionHeading
+                    %span.tab How to create an Event?
+                  .subAccordionBody Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text.
+                .subAccordionInner
+                  .subAccordionHeading
+                    %span.tab How to find Speakers?
+                  .subAccordionBody Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text.
+                .subAccordionInner
+                  .subAccordionHeading
+                    %span.tab Event Prepration
+                  .subAccordionBody Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text.
+                .subAccordionInner
+                  .subAccordionHeading
+                    %span.tab Topics for Discussion
+                  .subAccordionBody Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text.
+
+      .span6
+        %h4 Articles
+        .latestAnnouncement.clearfix
+          %ul.clearfix
+            %li
+              .clearfix
+                .imgBox
+                  %img.img-c{:alt => "Pic", :height => "81", :src => "/assets/logo-b.png", :style => "", :width => "79"}
+                .textBox
+                  %span.date.lightGrayText
+                    Dec 13, 2012
+                  %h4
+                    The journey to the cloud goes beyond
+                  %p
+                    Cloud Foundry is an Open Source project: whether you want to add features...
+                  %a.btn{:href => "/announcements/1?locale=en"} Learn More
+            %li
+              .clearfix
+                .imgBox
+                  %img.img-c{:alt => "Pic", :height => "81", :src => "/assets/logo-b.png", :style => "", :width => "79"}
+                .textBox
+                  %span.date.lightGrayText
+                    Dec 13, 2012
+                  %h4
+                    The journey to the cloud goes beyond
+                  %p
+                    Cloud Foundry is an Open Source project: whether you want to add features...
+                  %a.btn{:href => "/announcements/1?locale=en"} Learn More
+            %li
+              .clearfix
+                .imgBox
+                  %img.img-c{:alt => "Pic", :height => "81", :src => "/assets/logo-b.png", :style => "", :width => "79"}
+                .textBox
+                  %span.date.lightGrayText
+                    Dec 13, 2012
+                  %h4
+                    The journey to the cloud goes beyond
+                  %p
+                    Cloud Foundry is an Open Source project: whether you want to add features...
+                  %a.btn{:href => "/announcements/1?locale=en"} Learn More
+
+    .slider.clearfix
+      .sliderHeadingFull
+        %h3 Announcements
+      .ca-container.ca-container.clearfix
+        .ca-wrapper
+          .ca-item.ca-item-1
+            .ca-item-main
+              .latestAnnouncement.clearfix
+                %ul.clearfix
+                  %li
+                    .clearfix
+                      .imgBox
+                        %img.img-c{:alt => "Pic", :height => "81", :src => "/assets/logo-b.png", :style => "", :width => "79"}
+                      .textBox
+                        %span.date.lightGrayText
+                          Dec 13, 2012
+                        %h4
+                          The journey to the cloud goes beyond
+                        %p
+                          Cloud Foundry is an Open Source project: whether you want to add features...
+                        %a.btn{:href => "/announcements/1?locale=en"} Learn More
+                  %li
+                    .clearfix
+                      .imgBox
+                        %img.img-c{:alt => "Pic", :height => "81", :src => "/assets/logo-b.png", :style => "", :width => "79"}
+                      .textBox
+                        %span.date.lightGrayText
+                          Dec 13, 2012
+                        %h4
+                          The journey to the cloud goes beyond
+                        %p
+                          Cloud Foundry is an Open Source project: whether you want to add features...
+                        %a.btn{:href => "/announcements/1?locale=en"} Learn More
+          .ca-item.ca-item-2
+            .ca-item-main
+              .latestAnnouncement.clearfix
+                %ul.clearfix
+                  %li
+                    .clearfix
+                      .imgBox
+                        %img.img-c{:alt => "Pic", :height => "81", :src => "/assets/logo-b.png", :style => "", :width => "79"}
+                      .textBox
+                        %span.date.lightGrayText
+                          Dec 13, 2012
+                        %h4
+                          The journey to the cloud goes beyond
+                        %p
+                          Cloud Foundry is an Open Source project: whether you want to add features...
+                        %a.btn{:href => "/announcements/1?locale=en"} Learn More
+                  %li
+                    .clearfix
+                      .imgBox
+                        %img.img-c{:alt => "Pic", :height => "81", :src => "/assets/logo-b.png", :style => "", :width => "79"}
+                      .textBox
+                        %span.date.lightGrayText
+                          Dec 13, 2012
+                        %h4
+                          The journey to the cloud goes beyond
+                        %p
+                          Cloud Foundry is an Open Source project: whether you want to add features...
+                        %a.btn{:href => "/announcements/1?locale=en"} Learn More
+          .ca-item.ca-item-3
+            .ca-item-main
+              .latestAnnouncement.clearfix
+                %ul.clearfix
+                  %li
+                    .clearfix
+                      .imgBox
+                        %img.img-c{:alt => "Pic", :height => "81", :src => "/assets/logo-b.png", :style => "", :width => "79"}
+                      .textBox
+                        %span.date.lightGrayText
+                          Dec 13, 2012
+                        %h4
+                          The journey to the cloud goes beyond
+                        %p
+                          Cloud Foundry is an Open Source project: whether you want to add features...
+                        %a.btn{:href => "/announcements/1?locale=en"} Learn More
+                  %li
+                    .clearfix
+                      .imgBox
+                        %img.img-c{:alt => "Pic", :height => "81", :src => "/assets/logo-b.png", :style => "", :width => "79"}
+                      .textBox
+                        %span.date.lightGrayText
+                          Dec 13, 2012
+                        %h4
+                          The journey to the cloud goes beyond
+                        %p
+                          Cloud Foundry is an Open Source project: whether you want to add features...
+                        %a.btn{:href => "/announcements/1?locale=en"} Learn More
+:javascript
+  $('.ca-container').contentcarousel({
+         minNum          : 2
+     });

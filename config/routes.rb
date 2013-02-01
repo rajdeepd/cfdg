@@ -165,6 +165,7 @@ CloudfoundryUsergroups::Application.routes.draw do
       get :chapter_gallery
       get :edit_profile
       get :about_us
+      get :wiki
     end
   end
 

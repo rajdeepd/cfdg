@@ -61,4 +61,7 @@ class HtmlController < ApplicationController
   def about_us
 
   end
+  def wiki
+
+  end
 end
