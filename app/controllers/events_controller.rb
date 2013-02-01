@@ -176,7 +176,7 @@ class EventsController < ApplicationController
         #eventbrite_id = eventbrite_event.parsed_response["process"]["id"].to_s
         #@event.update_attribute(:eventbrite_id, eventbrite_id)
 
-        @event_memeber = EventMember.new(:event_id => @event.id, :user_id => current_user.id)
+        @event_memeber = EventMember.new(:event_id => @event.id, :user_id => @current_user.id)
         @event_memeber.save!
 
 
@@ -206,12 +206,15 @@ class EventsController < ApplicationController
       if @event.update_attributes(params[:event])
         format.html { redirect_to @event, notice: 'Event was successfully updated.' }
         @chapter = Chapter.find(@event.chapter_id)
-
+        logger.info("##########################{params[:send_email].inspect}")
+        logger.info("##########################{params[:send_email].class}")
+        if params[:send_email].present?
         to_email = @chapter.get_primary_coordinator.email
         bcc_emails = @event.event_members.includes(:user).collect{|i| i.user.email} -[to_email]
         #EventNotification.delay.event_edit(@event,emails,@chapter)
         EventNotification.event_edit(@event,to_email,bcc_emails,@chapter).deliver
         #SES.send_raw_email(EventNotification.event_edit(@event,to_email,bcc_emails,@chapter))
+        end
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

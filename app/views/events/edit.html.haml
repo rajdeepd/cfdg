@@ -84,6 +84,9 @@
       #spinner.spinner{:style => 'display:none;margin-right:10px;float:right;'}
         %img{:src => "/assets/spinner.gif", :alt => "Loading" , :id => 'img-spinner'}/
       #options{:style => "width:628px; overflow: hidden;"}
+        %input{:checked => "", :name => "send_email", :type => "checkbox", :value => "send_mail"}/
+        %label.label-26 send email notifications to all attendees
+
         %button.btn-a-small.flt-right{:style => "margin-right:10px;", :id=>"event_form_submit"} UPDATE
         /%button.btn-c-small.flt-right{:style => "margin-right:10px;"} DISCARD
 
