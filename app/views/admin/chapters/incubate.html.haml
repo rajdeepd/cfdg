@@ -4,40 +4,43 @@
       All Chapters
       %img.arrow-down-d-img{:src => "/assets/arrow-down-d.png"}/
   //%input.input-b.flt-right.size-d.label-25{:placeholder => "search", :type => "text"}/
-%table.table-e
-  %thead
-    %tr
-      %td{:style => "width:275px;text-align: left;"}
-        %h5.label-46 Chapter Name
-      %td{:style => "width:115px;"}
-        %h5.label-46 No. Members
-      %td{:style => "width:100px;"}
-        %h5.label-46 No. Events
-      %td{:style => "width:110px;"}
-        %h5.label-46 No. Members
-        %h5.label-47 Last 1 Year
-      %td{:style => "width:100px;"}
-        %h5.label-46 No. Events
-        %h5.label-47 Last 1 Year
-      %td{:style => "width:160px;"}
-        .dd-b
-          %h5.label-46
-            Action
-  %tbody
-    - @chapters.each do |chapter|
+- if @chapters.present?
+  %table.table-e
+    %thead
       %tr
-        %td{:style => "text-align: left;"}
-          %h5.label-48= chapter.name
-        %td
-          %h5.label-48= chapter.try(:chapter_members).try(:count)
-        %td
-          %h5.label-48= chapter.try(:events).try(:count)
-        %td
-          %h5.label-48= chapter.try(:chapter_members).where("created_at >= ?", Date.today.years_ago(1)).try(:count)
-        %td
-          %h5.label-48= chapter.try(:events).where("created_at >= ?", Date.today.years_ago(1)).try(:count)
-        %td
-          %h5.label-48
-            %button.btn-a-small.change_status{"data-url" => "#{change_status_admin_chapter_path(chapter, :status => 'active')}"} Active
-            %button.btn-c-small.change_status{"data-url" => "#{change_status_admin_chapter_path(chapter, :status => 'delist')}"} Delist
-    %tr
+        %td{:style => "width:100px;text-align: left;"}
+          %h5.label-46 Chapter Name
+        %td{:style => "width:115px;"}
+          %h5.label-46 No. Members
+        %td{:style => "width:100px;"}
+          %h5.label-46 No. Events
+        %td{:style => "width:110px;"}
+          %h5.label-46 No. Members
+          %h5.label-47 Last 1 Year
+        %td{:style => "width:100px;"}
+          %h5.label-46 No. Events
+          %h5.label-47 Last 1 Year
+        %td{:style => "width:160px;"}
+          .dd-b
+            %h5.label-46
+              Action
+    %tbody
+      - @chapters.each do |chapter|
+        %tr
+          %td{:style => "text-align: left;"}
+            %h5.label-48= chapter.name
+          %td
+            %h5.label-48= chapter.try(:chapter_members).try(:count)
+          %td
+            %h5.label-48= chapter.try(:events).try(:count)
+          %td
+            %h5.label-48= chapter.try(:chapter_members).where("created_at >= ?", Date.today.years_ago(1)).try(:count)
+          %td
+            %h5.label-48= chapter.try(:events).where("created_at >= ?", Date.today.years_ago(1)).try(:count)
+          %td
+            %h5.label-48
+              %button.btn-a-small.change_status{"data-url" => "#{change_status_admin_chapter_path(chapter, :status => 'active')}"} Active
+              %button.btn-c-small.change_status{"data-url" => "#{change_status_admin_chapter_path(chapter, :status => 'delist')}"} Delist
+      %tr
+- else
+  No Incubated Chapters

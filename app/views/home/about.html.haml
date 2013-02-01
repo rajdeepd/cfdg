@@ -14,8 +14,9 @@
           %h5.label-36{:style => "margin-bottom: 10px;"} You can create a CFDG in your city....
           %p.label-16{:style => "line-height: 20px;margin-bottom: 40px;"}
             If there isn't a Cloud Foundry Developer Group in your city, you could
-            %a.blue{:href => "#"} start one
-            yourself ! All you have to do is            
+            -#%a.blue{:href => "#"} start one
+            start one
+            yourself ! All you have to do is
             
             - class_val = ''
             - href = "#"
@@ -35,8 +36,8 @@
           = gmaps4rails(@markers)
           - content_for :javascript do        
             :javascript
-                function redirect_to(url) {
-                  return function(){window.location = url;}
+              function redirect_to(url) {
+               return function(){window.location = url;}
                 };
 
                 Gmaps.map.callback = function() {
@@ -47,9 +48,9 @@
                     setTimeout(function() { Gmaps.map.serviceObject.setZoom(4);}, 50);
                   }
       
-                  for (var i = 0; i <  Gmaps.map.markers.length; i++) {              
-                     google.maps.event.addListener(Gmaps.map.markers[i].serviceObject, 'click',   redirect_to(Gmaps.map.markers[i].link));
-                  }                
+              for (var i = 0; i <  Gmaps.map.markers.length; i++) {
+              google.maps.event.addListener(Gmaps.map.markers[i].serviceObject, 'click',   redirect_to(Gmaps.map.markers[i].link));
+              }
                 };
         %h1.label-36{:style => "margin-bottom: 10px;"} You can plan events and meetups with other members in your own city....
         %p.label-16{:style => "line-height: 20px;margin-bottom: 10px;"}
@@ -70,8 +71,8 @@
         %p.label-55{:style => "margin-bottom: 5px;"}
           Be Active:
           %span.label-56
-            You have a user group in your city. Stay active on it, participate and contrib
-            ute regularly. The more you meet-up, the more you learn and have fun.
+            You have a user group in your city. Stay active on it, participate and contribute regularly. The more you meet-up, the more you learn and have fun.
+
         %p.label-55{:style => "margin-bottom: 5px;"}
           Respect one another:
-          %span.label-56 Nobody likes to be ridiculed or disrespected. Ensure that your discussions do not hurt anybodys sentiments. It is the responsibility of every member to avoid and stop and kind of negativity from flying out of control.
+          %span.label-56 Nobody likes to be ridiculed or disrespected. Ensure that your discussions do not hurt anybody's sentiments. It is the responsibility of every member to avoid and stop and kind of negativity from flying out of control.

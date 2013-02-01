@@ -1,10 +1,9 @@
-
 development:
   adapter: mysql2
   encoding: utf8
   database: cf_usergroups
-  username: root
-  password: webonise6186
+  username: <user_name>
+  password: <password>
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -13,13 +12,13 @@ test:
   adapter: mysql2
   encoding: utf8
   database: cf_usergroups_test
-  username: root
-  password: webonise6186
+  username: <user_name>
+  password: <password>
 
 
 production:
   adapter: mysql2
   encoding: utf8
   database: cf_usergroups_production
-  username: root
-  password: webonise6186
+  username: <user_name>
+  password: <password>
