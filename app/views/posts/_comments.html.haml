@@ -1,0 +1,16 @@
+.articleDescription#all_post_comments
+  %ul.posts
+    - if @comments.blank?
+      %p
+        No comments
+    - else
+      -@comments.each do |comment|
+        %li
+          .clearfix
+            = avatar_display_pic(comment.user,'thumb', '50x50','profile.png',"img-c flt-left")
+            .commentText
+              %h5 #{comment.user.fullname}
+              %span.commentDate #{comment.created_at.strftime("%B %d,%Y")} at #{comment.created_at.strftime("%I:%M %p")}
+              %p
+                #{comment.content}
+                -#%a{:href => "#"} View more

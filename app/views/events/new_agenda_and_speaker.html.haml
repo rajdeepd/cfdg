@@ -180,7 +180,7 @@
     });
 
     $(document).on("click", ".deleteEventAgenda", function(){
-      if (confirm("Are You Sure?")){
+      if (confirm("Are You Sure, You want to delete the session?")){
       var that = $(this);
       $.ajax({
         type: "POST",

@@ -38,6 +38,9 @@ CloudfoundryUsergroups::Application.routes.draw do
     collection do
       get 'chapterposts'
     end
+    member do
+      post :add_comment
+    end
   end
   resources :comments
 

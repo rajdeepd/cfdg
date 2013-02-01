@@ -1,6 +1,11 @@
 .content.ChapterDetails
   .breadCrumb
-    %span Posts
+    -#%span Posts
+    -#%span #{request.referrer}
+    - if(@action[-1].to_s() == "dashboard")
+      =link_to "Dashboard",request.headers["HTTP_REFERER"]
+    -else
+      =link_to "Chapter",request.headers["HTTP_REFERER"]
     %span.breadCrumbDivider /
     %span.activePage #{@post.title}
   .blueHeader
@@ -15,31 +20,34 @@
         .sliderHeadingMid
           %h3 Description
         .articleDescription
-          %p What if you could deploy and scale your applications within seconds? And never had to wait again for infrastructure to be provisioned? With Cloud Foundry, which is a modern, open-source Platform as a Service, you can deploy your application instantly. Use Cloud Foundry for development, testing and production. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-          %a{:href => "#"} More...
+          %p #{@post.description}
+          -#%a{:href => "#"} More...
+
       .comments.clearfix
         .sliderHeadingMid
           %h3 Comments
-        .articleDescription
+        .articleDescription#all_post_comments
           %ul.posts
-            %li
-              .clearfix
-                %img{:src => "/assets/human_face_1.jpg"}
-                .commentText
-                  %h5 Ravindra Sharma
-                  %span.commentDate November 08,2012
-                  %p
-                    Since Cloud Foundry introduced npm support, we added several improvements that make deploying Node.js applications with dependencies easier, faster and more transparent to developers. Easy development When we introduced npm support...
-                    %a{:href => "#"} View more
-            %li
-              .clearfix
-                %img{:src => "/assets/human_face_1.jpg"}
-                .commentText
-                  %h5 Ravindra Sharma
-                  %span.commentDate November 08,2012
-                  %p
-                    Since Cloud Foundry introduced npm support, we added several improvements that make deploying Node.js applications with dependencies easier, faster and more transparent to developers. Easy development When we introduced npm support...
-                    %a{:href => "#"} View more
-          %form
-            %textarea
-            %a.addBtn.btn Add Comment
+            - if @comments.blank?
+              %p
+                No comments
+            - else
+              -@comments.each do |comment|
+                %li
+                  .clearfix
+                    = avatar_display_pic(comment.user,'thumb', '50x50','profile.png',"img-c flt-left")
+                    .commentText
+                      %h5 #{comment.user.fullname}
+                      %span.commentDate #{comment.created_at.strftime("%B %d,%Y")} at #{comment.created_at.strftime("%I:%M %p")}
+                      %p
+                        #{comment.content}
+                        -#%a{:href => "#"} View more
+
+      .comments
+        .addCommentBox
+          -if @current_user.present?
+            = form_tag(add_comment_post_path,:method => "POST",:class => "add_comment",:remote => true) do
+              = text_area_tag "comment[content]","", :placeholder => "comment", :label => false, :class => " content_comment_class ta-a"
+              = hidden_field_tag "comment[commentable_type]","Post"
+              = hidden_field_tag "comment[commentable_id]",@post.id
+              = button_tag "Add Comment",:class => "addBtn btn add_comment_button"
