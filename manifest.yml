@@ -3,7 +3,7 @@ applications:
 - name: cfdg-hotfix
   framework: rails3
   runtime: ruby19
-  memory: 128M
+  memory: 512M
   instances: 1
   url: cfdg-hotfix.${target-base}
   path: .
