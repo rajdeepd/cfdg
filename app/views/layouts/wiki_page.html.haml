@@ -1,7 +1,8 @@
 !!!
 %html
   %head
-    %title CloudfoundryUsergroups
+    %link{:href => "/assets/favicon.ico",:rel => "shortcut icon"}
+    %title Cloud Foundry Developer Group
     = stylesheet_link_tag    "application", :media => "all"
     = stylesheet_link_tag    "wiki-page", :media => "all"
     
@@ -23,7 +24,8 @@
             userStatusUrl: "/user_status",
             loginUrl: "/login",
             signupUrl: "/sign_up",
-            homeUrl: "/profile",
+            //homeUrl: "/profile",
+            homeUrl: "#{session[:url]}",
             logoutUrl: "/logout",
             idps: ["Gmail", "Yahoo"],
             tryFederatedFirst: true,

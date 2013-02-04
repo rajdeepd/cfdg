@@ -1,4 +1,4 @@
--if  @profile_page== true
+-if  @profile_page == true
   %ul.ul-f
     %li
       %a{:href => "#", :chapter_id => @chapter.id } Post
@@ -7,9 +7,9 @@
       %a{:href => "#", :class=>"uli-selected", :chapter_id => @chapter.id} Events
       %i.bg-arrow-down-b
     %li
-      -if @current_user.present? and ChapterMember.am_i_coordiantor?(@current_user.id , @chapter.id)
+      -if @current_user.present? and ChapterMember.am_i_coordinator?(@current_user.id , @chapter.id)
         %a{:href => "#", :chapter_id => @chapter.id ,:id =>"group_admin_ref"} Chapter Admin
-        %i.bg-arrow-down-b     
+        %i.bg-arrow-down-b
 
    
 #events
@@ -23,25 +23,69 @@
       - @two_upcoming_events.each do |event|    
         %li
           .div-c
-            -if(!event.event_start_date.blank?)
-              %h1.label-23 #{Time.parse(event.event_start_date.to_s).strftime('%d')}
-              %h4.label-24 #{Time.parse(event.event_start_date.to_s).strftime('%b')}
+            -if event.image.present?
+              = image_tag(event.image, :style => "width:72px;height:80px")
+            -else
+              -if(!event.event_start_date.blank?)
+                %h1.label-23 #{Time.parse(event.event_start_date.to_s).strftime('%d')}
+                %h4.label-24 #{Time.parse(event.event_start_date.to_s).strftime('%b')}
           .div-h
-            %a.label-9.event_expand{:href => "#{event_path(event.id)}", :event_id=> event.id, :target=>"_blank"} #{event.title} 
-            -if !current_user.blank? and @profile_page != true 
-              -if event.chapter.am_i_chapter_memeber?(@current_user.id)  and !event.am_i_member?(@current_user.id)      
-                %button.btn-a-small.flt-right{:id=>"follow_an_event", :event_id => "#{event.id}"} CLICK TO ATTEND
-              -elsif event.am_i_member?(@current_user.id) 
-                %img.flt-right{:src => "/assets/Event.png"}
+            %a.label-9.event_expand{:href => "#{event_path(event.id)}", :event_id=> event.id, :target=>"_blank"} #{event.title.truncate(15)}
+            -#-if !current_user.blank? and @profile_page != true
+            -if current_user.blank?
+              -if event.is_cancelled?
+                %button.btn-a-small.flt-right{:id=>"cancelled_event", :event_id => "#{event.id}" ,:disable => true,:style => "opacity:0.35"} CANCELLED
+              -else
+                -if event.is_rsvp_allowed?
+                  %button.btn-a-small.flt-right.signin{:id=>"follow_an_event", :event_id => "#{event.id}"} R.S.V.P
+                -elsif !event.is_rsvp_allowed?
+                  %button.btn-a-small.flt-right{:id=>"join_wait_list"} Limit Reached!
+            - else
+              -if !event.am_i_member?(@current_user.id) and !ChapterMember.am_i_coordinator?(@current_user.id,event.chapter.id)
+                -if event.is_cancelled?
+                  %button.btn-a-small.flt-right{:id=>"cancelled_event", :event_id => "#{event.id}" ,:disable => true,:style => "opacity:0.35"} CANCELLED
+                -else
+                  -if event.is_rsvp_allowed?
+                    %button.btn-a-small.flt-right{:id=>"follow_an_event", :event_id => "#{event.id}"} R.S.V.P
+                  -elsif !event.is_rsvp_allowed?
+                    %button.btn-a-small.flt-right{:id=>"join_wait_list"} Limit Reached!
+              -if event.am_i_member?(@current_user.id) and !ChapterMember.am_i_coordinator?(@current_user.id,event.chapter.id)
+                -if event.is_cancelled?
+                  %button.btn-a-small.flt-right{:id=>"cancelled_event", :event_id => "#{event.id}" ,:disable => true,:style => "opacity:0.35"} CANCELLED
+                -else
+                  %button.btn-a-small.flt-right{:id=>"event_rsvped",:style => "opacity:0.35"} Attending
+              -if !event.am_i_member?(@current_user.id) and ChapterMember.am_i_coordinator?(@current_user.id,event.chapter.id)
+                -if event.can_be_deleted?
+                  %button.btn-a-small.flt-right{:id=>"delete_an_event", :event_id => "#{event.id}"} DELETE
+                -if !event.is_cancelled?
+                  = link_to "EDIT",edit_chapter_event_path(event.chapter_id,event.id),:class => "btn-a-small flt-right"
+                  %button.btn-a-small.flt-right{:id=>"cancel_an_event", :event_id => "#{event.id}"} CANCEL
+                  -if event.is_rsvp_allowed?
+                    %button.btn-a-small.flt-right{:id=>"follow_an_event", :event_id => "#{event.id}"} R.S.V.P
+                  -elsif !event.am_i_member?(@current_user.id) and !event.is_rsvp_allowed?
+                    %button.btn-a-small.flt-right{:id=>"join_wait_list"} Limit Reached!
+                -else
+                  %button.btn-a-small.flt-right{:id=>"cancelled_event", :event_id => "#{event.id}" ,:disable => true,:style => "opacity:0.35"} CANCELLED
+
+              -if event.am_i_member?(@current_user.id) and ChapterMember.am_i_coordinator?(@current_user.id,event.chapter.id)
+                -if event.can_be_deleted?
+                  %button.btn-a-small.flt-right{:id=>"delete_an_event", :event_id => "#{event.id}"} DELETE
+                -if !event.is_cancelled?
+                  = link_to "EDIT",edit_chapter_event_path(event.chapter_id,event.id),:class => "btn-a-small flt-right"
+                  %button.btn-a-small.flt-right{:id=>"cancel_an_event", :event_id => "#{event.id}"} CANCEL
+                  %button.btn-a-small.flt-right{:id=>"event_rsvped",:style => "opacity:0.35"} Attending
+                -else
+                  %button.btn-a-small.flt-right{:id=>"cancelled_event", :event_id => "#{event.id}" ,:disable => true,:style => "opacity:0.35"} CANCELLED
 
 
 
-            -if !current_user.blank?   and event.can_i_delete?(@current_user.id, event.chapter_id)      
-              %button.btn-a-small.flt-right{:id=>"delete_an_event", :event_id => "#{event.id}"} DELETE
-            %br
+
+
+
+            %div.clr
             %label.label-25
               -if(!event.event_start_date.blank?)
-                #{Time.parse(event.event_start_time.to_s).strftime('%A %I:%M %p')} #{Date.parse(event.event_start_date.to_s).strftime("%b %d, %Y")} I #{event.entry_fee}  per person
+                #{Time.parse(event.event_start_time_in_time.to_s).strftime('%I:%M %p')} #{Date.parse(event.event_start_date_in_date.to_s).strftime(",%A %b %d, %Y")} I #{event.entry_fee}  per person
               Location: #{event.venue}
             %p.label-26{:id => "short_content"}
               #{raw truncate(event.description, :length => 30, :omission => '...')}
@@ -51,19 +95,63 @@
       - @upcoming_events.each do |event|
         %li
           .div-c
-            -if(!event.event_start_date.blank?)
-              %h1.label-23 #{Time.parse(event.event_start_date.to_s).strftime('%d')}
-              %h4.label-24 #{Time.parse(event.event_start_date.to_s).strftime('%b')}
+            -if event.image.present?
+              = image_tag(event.image, :style => "width:72px;height:80px")
+            -else
+              -if(!event.event_start_date.blank?)
+                %h1.label-23 #{Time.parse(event.event_start_date.to_s).strftime('%d')}
+                %h4.label-24 #{Time.parse(event.event_start_date.to_s).strftime('%b')}
           .div-h
-            %a.label-9.event_expand{:href => "#{event_path(event.id)}", :event_id => event.id, :target=>"_blank"} #{event.title}  
-            -if !current_user.blank? and  @profile_page != true  and event.chapter.am_i_chapter_memeber?(@current_user.id) and !event.am_i_member?(@current_user.id)                    
-              %button.btn-a-small.flt-right{:id=>"follow_an_event", :event_id => "#{event.id}"} CLICK TO ATTEND
-            -if !current_user.blank?   and event.can_i_delete?(@current_user.id, event.chapter_id)      
-              %button.btn-a-small.flt-right{:id=>"delete_an_event", :event_id => "#{event.id}"} DELETE
-            %br
+            %a.label-9.event_expand{:href => "#{event_path(event.id)}", :event_id => event.id, :target=>"_blank"} #{event.title.truncate(15)}
+            -if current_user.blank?
+              -if event.is_cancelled?
+                %button.btn-a-small.flt-right{:id=>"cancelled_event", :event_id => "#{event.id}" ,:disable => true,:style => "opacity:0.35"} CANCELLED
+              -else
+                -if event.is_rsvp_allowed?
+                  %button.btn-a-small.flt-right.signin{:id=>"follow_an_event", :event_id => "#{event.id}"} R.S.V.P
+                -elsif !event.is_rsvp_allowed?
+                  %button.btn-a-small.flt-right{:id=>"join_wait_list"} Limit Reached!
+            - else
+              -if !event.am_i_member?(@current_user.id) and !ChapterMember.am_i_coordinator?(@current_user.id,event.chapter.id)
+                -if event.is_cancelled?
+                  %button.btn-a-small.flt-right{:id=>"cancelled_event", :event_id => "#{event.id}" ,:disable => true,:style => "opacity:0.35"} CANCELLED
+                -else
+                  -if event.is_rsvp_allowed?
+                    %button.btn-a-small.flt-right{:id=>"follow_an_event", :event_id => "#{event.id}"} R.S.V.P
+                  -elsif !event.is_rsvp_allowed?
+                    %button.btn-a-small.flt-right{:id=>"join_wait_list"} Limit Reached!
+              -if event.am_i_member?(@current_user.id) and !ChapterMember.am_i_coordinator?(@current_user.id,event.chapter.id)
+                -if event.is_cancelled?
+                  %button.btn-a-small.flt-right{:id=>"cancelled_event", :event_id => "#{event.id}" ,:disable => true,:style => "opacity:0.35"} CANCELLED
+                -else
+                  %button.btn-a-small.flt-right{:id=>"event_rsvped",:style => "opacity:0.35"} Attending
+              -if !event.am_i_member?(@current_user.id) and ChapterMember.am_i_coordinator?(@current_user.id,event.chapter.id)
+                -if event.can_be_deleted?
+                  %button.btn-a-small.flt-right{:id=>"delete_an_event", :event_id => "#{event.id}"} DELETE
+                -if !event.is_cancelled?
+                  = link_to "EDIT",edit_chapter_event_path(event.chapter_id,event.id),:class => "btn-a-small flt-right"
+                  %button.btn-a-small.flt-right{:id=>"cancel_an_event", :event_id => "#{event.id}"} CANCEL
+                  -if event.is_rsvp_allowed?
+                    %button.btn-a-small.flt-right{:id=>"follow_an_event", :event_id => "#{event.id}"} R.S.V.P
+                  -elsif !event.am_i_member?(@current_user.id) and !event.is_rsvp_allowed?
+                    %button.btn-a-small.flt-right{:id=>"join_wait_list"} Limit Reached!
+                -else
+                  %button.btn-a-small.flt-right{:id=>"cancelled_event", :event_id => "#{event.id}" ,:disable => true,:style => "opacity:0.35"} CANCELLED
+
+              -if event.am_i_member?(@current_user.id) and ChapterMember.am_i_coordinator?(@current_user.id,event.chapter.id)
+                -if event.can_be_deleted?
+                  %button.btn-a-small.flt-right{:id=>"delete_an_event", :event_id => "#{event.id}"} DELETE
+                -if !event.is_cancelled?
+                  = link_to "EDIT",edit_chapter_event_path(event.chapter_id,event.id),:class => "btn-a-small flt-right"
+                  %button.btn-a-small.flt-right{:id=>"cancel_an_event", :event_id => "#{event.id}"} CANCEL
+                  %button.btn-a-small.flt-right{:id=>"event_rsvped",:style => "opacity:0.35"} Attending
+                -else
+                  %button.btn-a-small.flt-right{:id=>"cancelled_event", :event_id => "#{event.id}" ,:disable => true,:style => "opacity:0.35"} CANCELLED
+
+            %div.clr
             %label.label-25
               -if(!event.event_start_date.blank?)
-                #{Time.parse(event.event_start_time.to_s).strftime('%A %I:%M %p')} #{Date.parse(event.event_start_date.to_s).strftime("%b %d, %Y")} I #{event.entry_fee}  per person
+                #{Time.parse(event.event_start_time_in_time.to_s).strftime('%I:%M %p')} #{Date.parse(event.event_start_date_in_date.to_s).strftime(",%A %b %d, %Y")} I #{event.entry_fee}  per person
               Location: #{event.venue}
             %p.label-26{:id => "full_content"}
               #{event.description}

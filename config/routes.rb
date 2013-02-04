@@ -8,8 +8,10 @@ CloudfoundryUsergroups::Application.routes.draw do
   get '/directory' => 'home#directory' , :as => "directory"
   get '/about' => 'home#about' , :as => "about"
   get '/wiki' => 'home#wiki' , :as => "wiki"
+  match'/admin', :to => "admin/sessions#new"
   
   resources :chapters do
+    resources :events
      collection do
       post 'join_a_chapter'
       get  'chapter_admin_home_page'
@@ -38,9 +40,18 @@ CloudfoundryUsergroups::Application.routes.draw do
       get 'full_event_content'
       get 'title_list'
       post 'create_event_comment'
-    end  
+      get 'cancel_event'
+    end
+    member do
+      get :download_list
+      get :unfollow_an_event
+      post 'image_gallery_upload'
+      get 'image_gallery_upload'
+      get 'show_all_event_images'
+    end
   end
-resources :events, :has_many => :comments
+
+#resources :events, :has_many => :comments
 
 #scope ':locale' do
   devise_for :users , :controllers => { :registrations => "registrations" } do
@@ -52,7 +63,7 @@ resources :events, :has_many => :comments
   get "admin/log_out" => "admin/sessions#destroy", :as => "log_out"
   get '/sign_up' , :to => 'users#edit'
   match '/verify_user' => 'federated#verify_user'
-  match '/user_status' => 'federated#user_status' 
+  match '/user_status' => 'federated#user_status'
   match '/login' => 'federated#login', :as => :login
   match '/logout' => 'federated#logout'
   match '/profile' => 'users#profile' , :as => :profile
@@ -94,6 +105,8 @@ resources :events, :has_many => :comments
       member do
         get 'change_status'
         post 'chapter_reply'
+        get 'add_secondary_coordinator'
+        post 'create_secondary_coordinator'
       end
     end
    end

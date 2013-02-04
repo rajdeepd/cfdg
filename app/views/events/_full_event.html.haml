@@ -1,27 +1,61 @@
+= javascript_include_tag "jquery.uploadify"
+= javascript_include_tag "jquery.validate"
+= stylesheet_link_tag "uploadify", :media => "all"
+-#= stylesheet_link_tag "event", :media => "all"
 %li.ulg-expanded{:style => "margin-top: -3px;"}
   .div-c
-    -if(!@event.event_start_date.blank?)
-      %h1.label-23 #{Time.parse(@event.event_start_date.to_s).strftime('%d')}
-      %h4.label-24 #{Time.parse(@event.event_start_date.to_s).strftime('%b')}
-  .div-h
-    %a.label-9.event_expand{:href => "#", :event_id=> @event.id} #{@event.title}  
-    -if !current_user.blank? and @profile_page != true  and !@event.am_i_member?(@current_user.id)                    
-      %button.btn-a-small.flt-right{:id=>"follow_an_event", :event_id => "#{@event.id}"} FOLLOW
-    %br
-    %p.label-26{:id => "short_content"}
-      Attendees: #{@event.event_members.size}
-      %br
+    -if @event.image.present?
+      = image_tag(@event.image, :style => "width:72px;height:80px")
+    -else
       -if(!@event.event_start_date.blank?)
-        #{Time.parse(@event.event_start_time.to_s).strftime('%A %I:%M %p')}, #{Date.parse(@event.event_start_date.to_s).strftime('%b %d, %Y')}  I #{@event.entry_fee}  per person
-      %br
-      Location: #{@event.venue}
-      %br
-      #{@event.description}
-      %br
+        %h1.label-23 #{Time.parse(@event.event_start_date.to_s).strftime('%d')}
+        %h4.label-24 #{Time.parse(@event.event_start_date.to_s).strftime('%b')}
+  .div-h
+    %a.label-9.event_expand{:href => "#", :event_id=> @event.id,:id => "event_title"} #{@event.title}
+    -#-if !current_user.blank? and @profile_page != true  and !@event.am_i_member?(@current_user.id)
+      %button.btn-a-small.flt-right{:id=>"follow_an_event", :event_id => "#{@event.id}"} FOLLOW
+    -if !@event.is_past_event?
+      -if !current_user.blank? and  (current_user.id != @event.created_by)
+        -if @event.is_cancelled?
+          %button.btn-a-small.flt-right{:id=>"cancelled_event", :event_id => "#{@event.id}" ,:disable => true,:style => "opacity:0.35"} CANCELLED
+        -else
+          -if !@event.am_i_member?(current_user.id) and @event.is_rsvp_allowed?
+            %button.btn-a-small.flt-right.rsvp_me{:id=>"follow_an_event", :event_id => "#{@event.id}"} R.S.V.P
+            -#%img.flt-right#rsvp_tick{:src => "/assets/Event.png",:style => "display:none"}
+            %button.btn-a-small.flt-right{:id=>"rsvp_tick",:style => "display:none;opacity:0.35"} Attending
+          -elsif !@event.am_i_member?(current_user.id) and !@event.is_rsvp_allowed?
+            %button.btn-a-small.flt-right{:id=>"join_wait_list"} Limit Reached!
+          -if @event.am_i_member?(current_user.id)
+            -#%img.flt-right{:src => "/assets/Event.png"}
+            %button.btn-a-small.flt-right{:id=>"event_rsvped",:style => "opacity:0.35"} Attending
+    %div.clr
+    %div.label-26{:id => "short_content"}
+      %div.dateAttendees
+        %div.date
+          -if(!@event.event_start_date.blank?)
+            #{Time.parse(@event.event_start_time_in_time.to_s).strftime('%I:%M %p')}, #{Date.parse(@event.event_start_date_in_date.to_s).strftime('%A %b %d, %Y')}
+            -#I #{@event.entry_fee}  per person
+
+        .clr
+      %div.location
+        %div.title
+          Location
+        = get_event_address(@event)
+      %div.description
+        #{@event.description}
+
+      -#=image_tag(@event.image,:size => "60x60")
+  %div.clr
+    #gallery_images
+      = render  "events/image_gallery_upload"
+  -if(current_user.present? )
+    -if current_user.id == @event.created_by and !@event.is_cancelled?
+      %input#Uploadify{:name => "Uploadify", :type => "file"}
+
   .div-d
     - (@event.comments || []).each do |comment|
       .divd-comment-pos
-        %br
+        -#%br
         %table.table-c
           %tr
             %td
@@ -29,17 +63,64 @@
               /%img.img-c.flt-left{:src => "/assets/img-d.png"}
             %td
               %h5.label-27
-                #{comment.user.fullname} - 
-                
+                #{comment.user.fullname} -
+
                 %label.label-25 #{Time.parse(comment.created_at.to_s).strftime('%d, %b')}
               %p.label-16
                 #{comment.content}
-    - @comment =  @event.comments.build    
+    - @comment =  @event.comments.build
     -if @current_user.present?
-      = semantic_form_for  @comment do |f|      
-        = f.text_area :content, :placeholder => "comment", :label => false, :class => " content_comment_class ta-a"
+      = semantic_form_for  @comment do |f|
+        .add_a_new_comment
+          = f.text_area :content, :placeholder => "comment", :label => false, :class => " content_comment_class ta-a"
         = f.hidden_field   :commentable_type
         = f.hidden_field   :commentable_id
   %br
-  
 
+
+- session_key = Rails.application.config.session_options[:key]
+
+= content_for :scripts do
+  :javascript
+    Events.init();
+    $(document).ready(function(e){
+
+    $('#new_comment').validate({
+      rules: {
+        "comment[content]": {
+          required: true
+        }
+      }
+    });
+
+      var uploadify_script_data = {};
+      var csrf_token = $('meta[name=csrf-token]').attr('content');
+      var csrf_param = $('meta[name=csrf-param]').attr('content');
+      //uploadify_script_data['_http_accept'] = 'application/javascript';
+      uploadify_script_data[csrf_param] = csrf_token;
+      uploadify_script_data['#{session_key}'] = '#{cookies[session_key]}'
+      //var url = $('input#photo_image').attr('rel');
+      var event_id = $("#event_title").attr("event_id");
+      var url = "/events/"+ event_id +"/image_gallery_upload"
+      console.log(url);
+      $('input#Uploadify').uploadify({
+        swf            : '/assets/uploadify.swf',
+        buttonText     :'Upload Images',
+        buttonClass    :'uploadify-button-custom',
+        uploader       : url,
+        formData       : 'photo[image]',
+        fileExt        : '*.png;*.jpg;*.gif',
+        multi          : true,
+        auto           : true,
+        onUploadComplete     : function(e) {
+          $.get(url,{},function(data){
+          },"script");
+          //$('#gallery_images').append(response);
+        }
+      });
+      $(".rsvp_me").on("click",function(){
+        $(".rsvp_me").hide();
+        $("#rsvp_tick").show();
+      });
+
+    });

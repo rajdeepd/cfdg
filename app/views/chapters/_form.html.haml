@@ -30,15 +30,17 @@
                 = render partial: 'subregion_select', locals: {parent_region: f.object.country_name}
                 = f.hidden_field :state_id,  :value => 1
               %div
-                = f.input :city_name , :placeholder => 'City',  :label => false ,  :input_html =>  {:class => "textboxes"}   
+                = f.input :city_name , :placeholder => 'City',  :label => false ,  :input_html =>  {:class => "textboxes"}
                 = f.hidden_field :city_id,  :value => 1              
             .two_side{:id => "ct_selection" , :style => "#{showclass}"}
               %div
-                = f.input :locality ,  :placeholder => 'Locality' , :label => false ,  :input_html => {:class => "textboxes"}            
+                = f.input :locality ,  :placeholder => 'Locality' , :label => false ,  :input_html => {:class => "textboxes"}
               %div
                 = f.input :address,   :placeholder => 'Address' , :label => false,  :input_html => {:class => "textboxes"}
               %div
                 = f.input :landmark,   :placeholder => 'Landmark' , :label => false,  :input_html => {:class => "textboxes"}
+              %div
+                = f.input :institution,   :placeholder => 'Institution' , :label => false,  :input_html => {:class => "textboxes"}
           %h3.label-11{:style => "padding-top: 20px;"} Chapter Proposal
           .proposal
             %h4.ch_label To: admin@cloudfoundry.com

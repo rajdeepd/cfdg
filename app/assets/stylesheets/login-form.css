@@ -19,8 +19,10 @@ margin-top:10px;
 float: left}
 
 #welcome{
-	display:inline-block;
+	/*display:inline-block;*/
 	vertical-align:top;
+    width: 320px;
+    float: left;
 }
 
 #formfirst {
@@ -49,7 +51,6 @@ float: left}
 }
 
 .textboxes {
-    margin-bottom: 15px;
+    margin: 15px 0 5px 0;
     width: 248px;
-    margin-left: 0px;
 }

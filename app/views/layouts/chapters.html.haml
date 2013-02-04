@@ -1,7 +1,8 @@
 !!!
 %html
   %head
-    %title CloudfoundryUsergroups
+    %link{:href => "/assets/favicon.ico",:rel => "shortcut icon"}
+    %title Cloud Foundry Developer Group
     = stylesheet_link_tag "application"
     = stylesheet_link_tag "file-uploadify"
     /= stylesheet_link_tag    "chapter-admin-page-style", :media => "all"
@@ -17,7 +18,7 @@
     %script{:src => "http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"}
     %script{:src => "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"}
     %script{:src => "//ajax.googleapis.com/ajax/libs/googleapis/0.0.4/googleapis.min.js", :type => "text/javascript"}
-    %script{:src => "//ajax.googleapis.com/jsapi", :type => "text/javascript"}    
+    %script{:src => "//ajax.googleapis.com/jsapi", :type => "text/javascript"}
     %script{:src => "http://code.jquery.com/jquery-1.8.2.js"}
     %script{:src => "http://code.jquery.com/ui/1.9.0/jquery-ui.js"}
     = javascript_include_tag "jquery.timepicker-1.2.2"
@@ -33,7 +34,8 @@
             userStatusUrl: "/user_status",
             loginUrl: "/login",
             signupUrl: "/sign_up",
-            homeUrl: "/profile",
+            //homeUrl: "/profile",
+            homeUrl: "#{session[:url]}",
             logoutUrl: "/logout",
             idps: ["Gmail", "Yahoo"],
             tryFederatedFirst: true,

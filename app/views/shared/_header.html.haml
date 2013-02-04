@@ -16,18 +16,18 @@
       %ul.ul-a.flt-right        
         - if !current_user.blank?
           %li
-            %a.label-2.logout{:href => "#{profile_path}"}= t('menu.myprofile')
+            %a.label-2.logout{:href => "#{profile_path}"}= t('menu.myprofile') |
           %li
             %label.label-2.bold{:style => "position: relative;top: -2px;font-size: 18px;color:#afafaf;"}
               |
           %li
             %a.label-2.logout{:href => "#"}= t('menu.logout')
         - else
-          %li
-            %a.label-2.signup{:href => "#"}= t('menu.signup')
+          -#%li
+          -#  %a.label-2.signup{:href => "#"}= t('menu.signup')
           %li
             %label.label-2.bold{:style => "position: relative;top: -2px;font-size: 18px;color:#afafaf;"}
-              |
+
           %li
             %a.label-2.signin{:href => "#"}= t('menu.login')
   .header-b
@@ -37,9 +37,9 @@
           %a{:href => "#{root_path}"}= t('menu.home')
         %li{:class => "#{active_class("directory","home")}"}
           %a{:href => "#{directory_path}"}= t('menu.directory')
-        %li{:class => "#{active_class("wiki","home")}"}
+        -#%li{:class => "#{active_class("wiki","home")}"}
           %a{:href => "#{wiki_path}"}= t('menu.wiki')        
-        %li{:class => "#{active_class("admin","admin")}"}
+        -#%li{:class => "#{active_class("admin","admin")}"}
           %a{:href => "#{new_admin_session_path}"}= t('menu.admin')
         %li{:class => "#{active_class("about","home")}"}
           %a{:href => "#{about_path}"}= t('menu.about')

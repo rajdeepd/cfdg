@@ -1,9 +1,10 @@
+= javascript_include_tag "jquery.validate"
 .content.wrapper
   .content-a
     .ca-left.flt-left
       =form_for(@user, :as => :user, :url => user_path(@user), :html => { :method => :put ,  :multipart => true}) do |f|
         #welcome
-          %h1.label-17 Welcome!
+          %h1.label-17 Welcome #{@user.fullname}!
           %div
             - if @user.avatar_file_name && (@user.errors[:avatar_content_type].blank? && @user.errors[:avatar_file_size].blank?)
               %img.profile-image{:src => @user.try(:avatar).url(:medium)}/
@@ -33,6 +34,18 @@
 - session = arr.join("x")
 = javascript_include_tag "jquery.uploadify-3.1"
 :javascript
+  $(document).ready(function(){
+    $('#edit_user').validate({
+      rules: {
+        //"user[fullname]": {
+        //  required: true
+        //},
+        // "user[mobile]": {
+        //   digits: true
+        // }
+      }
+    });
+  });
   $(function() {
     $('#user_avatar').uploadify({
       uploader   : "#{uploader_users_path(:format => :json)}",
@@ -48,4 +61,40 @@
       },
       formData   : {'session_encoded': '#{session}', 'id': "#{@user.id}", 'authenticity_token': "#{form_authenticity_token}"  }
     });
+
+    var contact_number =   new LiveValidation("user_mobile",{validMessage:" ",onlyOnSubmit:true});
+    contact_number.add( Validate.Format , { pattern: /^[0-9]{0,15}$/, failureMessage: "Must be a Number" });
+    $("#SWFUpload_0").addClass("uploadImage");
+    $("#SWFUpload_0").css("margin-top","153px");
   });
+:css
+  .uploadify-queue-item{
+    margin-top:220px;
+    width:145px;
+    padding-left: 0px;
+  }
+
+  .uploadify-queue {
+    margin-bottom: 10em;
+    margin-left: 0px;
+  }
+  .uploadify-progress {
+    background-color: #E5E5E5;
+    margin-top: 10px;
+    width: 90%;
+
+  }
+  .uploadify-progress-bar {
+    background-color: #0099FF;
+    height: 3px;
+    width: 1px;
+  }
+  .fileName{
+    width : 50px;
+    height:50px
+    padding-right:5px;
+  }
+  .profile-image{
+    width: 157px;
+    height: 157px;
+  }

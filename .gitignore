@@ -14,8 +14,9 @@
 /log/*.log
 /tmp
 
-#/config/database.yml
-/db/schema.rb
+/config/database.yml
+db/schema.rb
+
 /nbproject/
 *.swp
 .sass-cache
@@ -25,8 +26,6 @@
 .rvmrc
 
 ignored/*
-
-db/schema.rb
 
 lib/java/applets/*.class
 
@@ -49,7 +48,9 @@ tmp/**/*
 /tmp/
 # Ignore databse config
 /public/images/
-#/config/database.yml
+
+public/uploads
+
 /vendor/bundle/*
 /vendor/cache/*
 
@@ -62,4 +63,3 @@ tmp/**/*
 
 *#*
 *.#*
-
