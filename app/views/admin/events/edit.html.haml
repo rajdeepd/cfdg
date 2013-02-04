@@ -1,0 +1,234 @@
+-#%h1 Edit chapter
+
+-#= render 'form'
+= javascript_include_tag "jquery.validate"
+= stylesheet_link_tag    "event", :media => "all"
+= javascript_include_tag "jquery.timepicker-1.2.2"
+%div.content.wrapper
+  = form_for @event ,:url =>admin_chapter_event_path(params[:chapter_id],@event),:method => :put do |f|
+
+    .event-form
+      .event-left{:style => "width:100%;"}
+        .el-cont{:style => "margin-bottom: 16px;"}
+          %h2.label-45.flt-left Edit Event For #{@event.chapter.try(:name)}
+      .event-left{:style => "width:610px;"}
+        .el-cont.createEventField
+          %label.label-26.eventTitle  Event Title
+          .eventTitleEditLbl
+            = f.text_field :title , :class => "input-b size-f",:placeholder => "Event Title"
+        -#.error{:class => "el-cont"}
+          %li{:style => "float:left;", :class => "inline-errors event_title"} &nbsp;
+        .el-cont.createEventField
+          %label.flt-left.label-26 Starts On
+          %li{:id => :event_event_start_date_input }
+            = f.text_field :event_start_date , :class => "input-b size-b size-of-inputs event_date"
+          %li{:id => :event_event_start_time_input }
+            = f.text_field :event_start_time , :class => "input-b size-b size-of-inputs  timepicker event_time_edit"
+        .error{:class => "el-cont"}
+          .start_time_validation{:style =>"color :red"}
+            -if @event.errors.any?
+              = @event.errors.messages[:event_start_time].first
+          %li{:style => "padding-left:72px;float:left;width:35%;", :class => "inline-errors event_event_start_date"} &nbsp;
+          %li{:style => "float:left;padding-left:14px;", :class => "inline-errors event_event_start_time"} &nbsp;
+        .el-cont.createEventField
+          %label.flt-left.label-26 Ends On
+          %li{:id => :event_event_end_date_input }
+            = f.text_field :event_end_date, :class => "input-b size-b size-of-inputs event_date"
+          %li{:id => :event_event_end_time_input }
+            = f.text_field :event_end_time, :class => "input-b size-b size-of-inputs timepicker event_time_edit"
+        .error{:class => "el-cont"}
+          %li{:style => "padding-left:72px;float:left;width:35%;", :class => "inline-errors event_event_end_date"} &nbsp;
+          %li{:style => "float:left;padding-left:14px;", :class => "inline-errors event_event_end_time"} &nbsp;
+      .event-bottom
+    .event-form
+      .event-left
+        .el-cont{:style => "text-align: center;margin-top:10px;"}
+          %div{:style => " width: 250px;height:160px;background: #ccc;margin: 0 auto;"}
+            -if @event.image.present?
+              = image_tag(@event.image, :style => "width:250px;height:160px")
+            -else
+              %img{:alt => "", :src => "/assets/img-h.png", :style => "width:250px;height:160px"}
+
+          = f.file_field :image, :class => "label-14"
+          -#%a.label-14{:href=>"",:id => "image_upload_link",:style => " width: 250px;height:160px;margin: 0 auto;"}
+            Upload Image
+          -#%div{:style => "display:none"}
+            = f.file_field :image, :class => "label-14"
+
+
+
+        .el-cont
+      .event-right
+        .el-cont
+          %h5.label-26.flt-left Location
+        .el-cont
+        .el-cont{:style => "margin-bottom:2px;"}
+          = f.text_field :venue , :class => "input-b size-text-event-create", :placeholder => "Venue",:rel => @event.attendees_count
+
+        .el-cont
+          = f.text_field :address_line1, :class => "input-b size-text-event-create",:placeholder => "Address Line 1",:event_member => EventMember.get_count(@event.id)
+
+        .el-cont
+          = f.text_field :address_line2 , :class => "input-b size-text-event-create",:placeholder => "Address Line 2"
+
+        .el-cont
+          = f.text_field :city_name , :class => "input-b size-text-event-create",:placeholder => "City"
+          = f.hidden_field :chapter_id
+        .el-cont
+          = f.text_field :postal_code , :class => "input-b size-text-event-create",:placeholder => "Postal code"
+        .el-cont
+          = f.text_field :attendees_count , :class => "input-b size-text-event-create", :placeholder => "Attendees Count", :label => false
+    .event-form{:style => "padding-top:10px; padding-bottom: 20px;"}
+      .el-cont
+        = f.text_area :description , :class => "input-b size-f" , :placeholder => "Event description", :style => "height: 40px;margin:5px 0px;", :label => false
+      #spinner.spinner{:style => 'display:none;margin-right:10px;float:right;'}
+        %img{:src => "/assets/spinner.gif", :alt => "Loading" , :id => 'img-spinner'}/
+      #options{:style => "width:628px; overflow: hidden;"}
+        %input{:checked => "", :name => "send_email", :type => "checkbox", :value => "send_mail"}/
+        %label.label-26 send email notifications to all attendees
+
+        %button.btn-a-small.flt-right{:style => "margin-right:10px;", :id=>"event_form_submit"} UPDATE
+        /%button.btn-c-small.flt-right{:style => "margin-right:10px;"} DISCARD
+
+  -#= link_to 'Show', @event
+  -#\|
+  -#= link_to 'Back', events_path
+
+
+:javascript
+  $(document).ready(function(){
+    $('.edit_event').validate({
+      rules: {
+        "event[event_start_date]": {
+          required: true
+        },
+        "event[event_start_time]": {
+          required: true
+        },
+        "event[event_end_date]": {
+          required: true
+        },
+        "event[event_end_time]":{
+          required: true
+        },
+        "event[title]":{
+          required: true
+        },
+        "event[attendees_count]":{
+          digits: true
+        }
+        ,
+        "event[postal_code]":{
+          required: true,
+          eventPostalCode:true
+        }
+      }
+
+    });
+    $('.edit_event').submit(function(event){
+      if($(this).valid()){
+        $("#event_form_submit").css("opacity",0.35);
+        $("#event_form_submit").attr("disabled","disabled");
+        $("#event_form_submit").text("UPDATING...");
+      };
+    });
+    $("#event_event_start_time").on("click",function(){
+      $("#event_form_submit").css("opacity",1);
+      $("#event_form_submit").attr("disabled",false);
+      $("#event_form_submit").text("UPDATE");
+    });
+    $("#event_event_end_time").on("click",function(){
+      $("#event_form_submit").css("opacity",1);
+      $("#event_form_submit").attr("disabled",false);
+      $("#event_form_submit").text("UPDATE");
+    });
+    $("#event_event_start_date").on("click",function(){
+      $("#event_form_submit").css("opacity",1);
+      $("#event_form_submit").attr("disabled",false);
+      $("#event_form_submit").text("UPDATE");
+    });
+    $("#event_event_end_date").on("click",function(){
+      $("#event_form_submit").css("opacity",1);
+      $("#event_form_submit").attr("disabled",false);
+      $("#event_form_submit").text("UPDATE");
+    });
+
+    //$("#image_upload_link").on("click",function(event){
+    //  event.preventDefault();
+    //  $("#event_image").trigger("click");
+      //$("#image_upload_link").text("Image Uploaded...100%");
+    //});
+    $("#event_form_submit").on("click",function(event){
+    if ($("#event_attendees_count").val() != "")
+    {
+      if(parseInt($("#event_attendees_count").val()) < $("#event_address_line1").attr("event_member")){
+        alert($("#event_address_line1").attr("event_member")+" member(s) already attending, can not decrease than "+$("#event_address_line1").attr("event_member"));
+        event.preventDefault();
+      }
+    }
+    });
+  });
+  $(function(){
+    var today = new Date();
+      $( "#event_event_start_date" ).datepicker({
+          minDate: 0,
+          dateFormat: "dd/mm/yy",
+          onClose: function( selectedDate ) {
+              $( "#event_event_end_date" ).datepicker( "option", "minDate", selectedDate );
+             if(selectedDate ==  $.datepicker.formatDate( "dd/mm/yy", today))
+             {
+               // here will skip some time values for the current date
+               $( "#event_event_start_time" ).timepicker( "option", "minTime", today.toTimeString() );
+
+             }
+             else
+            {
+              $( "#event_event_start_time" ).timepicker( "option", "minTime", new Date(0, 0, 0, 8, 0, 0) );
+            }
+          }
+      });
+      $( "#event_event_end_date" ).datepicker({
+          minDate : new Date,
+          dateFormat: "dd/mm/yy",
+          onClose: function( selectedDate ) {
+              $( "#event_event_start_date" ).datepicker( "option", "maxDate", selectedDate );
+              if(selectedDate ==  $.datepicker.formatDate( "dd/mm/yy", today))
+               {
+                 // here will skip some time values for the current date
+                 $( "#event_event_end_time" ).timepicker( "option", "minTime", today.toTimeString() );
+
+               }
+               else
+               {
+                 $( "#event_event_end_time" ).timepicker( "option", "minTime", new Date(0, 0, 0, 8, 0, 0) );
+               }
+          }
+      });
+
+      $('input.timepicker').timepicker({
+          timeFormat: 'hh:mm p',
+          minTime: new Date(0, 0, 0, 8, 0, 0),
+          interval: 15,
+      });
+
+       //var postal_code= new LiveValidation("event_postal_code",{validMessage:" ",onlyOnSubmit:true});
+       //postal_code.add( Validate.Numericality ,{ onlyInteger: true },{maximum: 2000,failureMessage:"Should be Postal code"});
+      //var postal_code =   new LiveValidation("event_postal_code",{validMessage:" ",onlyOnSubmit:true});
+      //postal_code.add( Validate.Format , { pattern: /^[0-9]{5}$|^[0-9]{6}$/, failureMessage: "Must be a valid postal code" });
+
+      //$('#event_event_start_time').timepicker()
+      //    .option('change', function(time) {
+      //        // update startTime option in timepicker-2
+      //        $('#event_event_end_time').timepicker('option', 'startTime', time);
+      //});
+
+      jQuery.validator.addMethod("eventPostalCode", function(value, element) {
+         var re = new RegExp(/^[0-9A-Za-z ]+$/);
+         return (value.match(re))
+       }, "Must be a valid postal code.");
+
+    })
+
+
+
+

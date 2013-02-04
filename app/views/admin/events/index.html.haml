@@ -1,0 +1,54 @@
+.content.wrapper
+  .div-l
+    .dd-b.flt-left
+      %h5.label-44
+        All Events
+        %img.arrow-down-d-img{:src => "/assets/arrow-down-d.png"}/
+    //%input.input-b.flt-right.size-d.label-25{:placeholder => "search", :type => "text"}/
+  - if @events.present?
+    %table.table-e
+      %thead
+        %tr
+          %td{:style => "width:100px;text-align: left;"}
+            %h5.label-46 Title
+          %td{:style => "width:115px;"}
+            %h5.label-46 Start date
+          %td{:style => "width:100px;"}
+            %h5.label-46 End date
+          %td{:style => "width:110px;"}
+            %h5.label-46 Location
+            %h5.label-47 City
+          %td{:style => "width:100px;"}
+            %h5.label-46 Attendees count
+
+          %td{:style => "width:160px;"}
+            .dd-b
+              %h5.label-46
+                Action
+      %tbody
+        - @events.each do |event|
+          %tr
+            %td{:style => "text-align: left;"}
+              %h5.label-48= event.title
+            %td
+              %h5.label-48= event.event_start_date
+            %td
+              %h5.label-48= event.event_end_date
+            %td
+              %h5.label-48= event.location
+              %h5.label-48= event.city_name
+            %td
+              %h5.label-48= event.attendees_count
+            -if event.is_cancelled?
+              %td
+                =link_to "Show",admin_chapter_event_path(params[:chapter_id],event),:class => "btn-a-small change_status" ,:method => "get"
+                %p{:class => "btn-a-small change_status"} Cancelled
+            -else
+              %td
+                =link_to "Show",admin_chapter_event_path(params[:chapter_id],event),:class => "btn-a-small change_status" ,:method => "get"
+                =link_to "Edit",edit_admin_chapter_event_path(params[:chapter_id],event),:class => "btn-a-small change_status" ,:method => "get"
+                =link_to "Cancel",cancel_event_admin_chapter_event_path(params[:chapter_id],event),:class => "btn-a-small change_status" ,:method => "get"
+
+        %tr
+  - else
+    No Events
