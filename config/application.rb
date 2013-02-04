@@ -59,7 +59,7 @@ module CloudfoundryUsergroups
     config.time_zone = 'Kolkata'
     config.autoload_paths += %W(#{config.root}/app/models/ckeditor)
 
-    config.action_mailer.default_url_options = {:host => "cfdg-hotfix.cloudfoundry.com"}
+    config.action_mailer.default_url_options = {:host => "cfdg.cloudfoundry.com"}
     #config.action_mailer.default_url_options = {:host => "local.cfdg.com"}
 
     config.generators do |g|
