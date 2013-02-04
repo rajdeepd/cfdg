@@ -1,0 +1,14 @@
+---
+applications:
+- name: cfdg-hotfix
+  framework: rails3
+  runtime: ruby19
+  memory: 128M
+  instances: 1
+  url: cfdg-hotfix.${target-base}
+  path: .
+  services:
+    mysql-hotfix:
+      vendor: mysql
+      version: '5.1'
+      tier: free
