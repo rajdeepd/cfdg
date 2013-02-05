@@ -111,6 +111,8 @@ CloudfoundryUsergroups::Application.routes.draw do
       resources :events do
         member do
           get 'cancel_event'
+          get 'download_list'
+          post 'create_event_comment'
         end
       end
     end

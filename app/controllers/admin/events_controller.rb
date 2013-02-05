@@ -9,8 +9,8 @@ class Admin::EventsController < ApplicationController
   end
 
   def new
-      chapter = Chapter.find(params[:chapter_id])
-      @event = chapter.events.new
+    chapter = Chapter.find(params[:chapter_id])
+    @event = chapter.events.new
   end
 
   def create
@@ -88,6 +88,43 @@ class Admin::EventsController < ApplicationController
     #get_upcoming_and_past_events(chapter_events, true)
     #@profile_page = false
     redirect_to admin_chapter_events_path(params[:chapter_id])
+  end
+
+  def download_list
+    require 'csv'
+    @event = Event.find(params[:id])
+    @members = @event.event_members.includes(:user).collect{|i| i.user}
+    logger.info("inside csv")
+    #render :json => @members
+    csv_string = CSV.generate do |csv|
+      csv << ["Full Name" , "Email" , "Contact Number"]
+      @members.each do |p|
+        csv << [ p.fullname,p.email,p.mobile]
+      end
+    end
+    respond_to do |format|
+
+      format.html  { send_data csv_string,
+                               :type => "text/csv; charset=iso-8859-1; header=present",
+                               :disposition => "attachment; filename=event.csv" }
+      format.json {render :json => @members}
+    end
+  end
+
+  def create_event_comment
+    @event = Event.find(params[:comment][:commentable_id])
+    @comment = Comment.new(params[:comment])
+    @comment.created_by = 1
+    @comment.updated_by = 1
+    @all_event_images = @event.event_galleries
+    #respond_to do |format|
+      if(@comment.save)
+        #format.html { render :partial => "full_event" }
+        render :show
+
+      end
+    #end
+
   end
 
 end

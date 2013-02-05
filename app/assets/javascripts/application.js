@@ -105,7 +105,7 @@ $(function(){
 
   });
 
- $('.comment').die('submit').live('submit', function(e){    
+ $('.comment').die('submit').live('submit', function(e){
    if(e.preventDefault) {
       e.preventDefault();
     }

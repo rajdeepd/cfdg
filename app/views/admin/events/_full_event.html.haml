@@ -41,7 +41,7 @@
   -#-if(current_user.present? )
     -if !@event.is_cancelled?
   %input#Uploadify{:name => "Uploadify", :type => "file"}
-
+  = render 'agenda_and_speakers'
   .div-d
     - (@event.comments || []).each do |comment|
       .divd-comment-pos
@@ -50,7 +50,7 @@
           %tr
             %td
               = avatar_display_pic(comment.user,'thumb', '40x40','profile.png',"img-c flt-left")
-              /%img.img-c.flt-left{:src => "/assets/img-d.png"}
+              -#%img.img-c.flt-left{:src => "/assets/img-d.png"}
             %td
               %h5.label-27
                 #{comment.user.fullname} -
@@ -58,13 +58,16 @@
                 %label.label-25 #{Time.parse(comment.created_at.to_s).strftime('%d, %b')}
               %p.label-16
                 #{comment.content}
-    - @comment =  @event.comments.build
-    -if @current_user.present?
-      = semantic_form_for  @comment do |f|
-        .add_a_new_comment
-          = f.text_area :content, :placeholder => "comment", :label => false, :class => " content_comment_class ta-a"
-        = f.hidden_field   :commentable_type
-        = f.hidden_field   :commentable_id
+    - @add_comment =  @event.comments.new
+    -#-if current_user.present?
+    = semantic_form_for(@add_comment,:url => create_event_comment_admin_chapter_event_path(params[:chapter_id],@event),:method => "POST") do |f|
+      .add_a_new_comment
+        = f.text_area :content, :placeholder => "comment", :label => false, :class => " content_comment_class ta-a",:id => "add_comment"
+      = f.hidden_field   :commentable_type
+      = f.hidden_field   :commentable_id
+      -#= f.hidden_field   :created_by,:value => 1
+      -#= f.hidden_field   :updated_by,:value => 1
+      = f.submit "Add Comment" ,:class=>"btn-a-small flt-right", :style => "margin-right:63px;"
   %br
 
 
@@ -73,8 +76,9 @@
 = content_for :scripts do
   :javascript
     Events.init();
+    $("#new_comment").removeClass("comment");
     $(document).ready(function(e){
-
+    $("#new_comment").removeClass("comment");
     $('#new_comment').validate({
       rules: {
         "comment[content]": {

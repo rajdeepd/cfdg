@@ -5,7 +5,6 @@
       = render '/events/members_list'
     -#-if current_user.present?  #and !@event.can_i_delete?(current_user.id, @event.chapter_id)
     = render 'members_list'
-    = render 'agenda_and_speakers'
     -#- if !current_user.present?
       -if @event.agenda_and_speakers.present?
         = render '/events/agenda_and_speakers'
