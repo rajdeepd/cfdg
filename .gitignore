@@ -48,8 +48,9 @@ tmp/**/*
 /tmp/
 # Ignore databse config
 /public/images/
+
 public/uploads
-/config/database.yml
+
 /vendor/bundle/*
 /vendor/cache/*
 

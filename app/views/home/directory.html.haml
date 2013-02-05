@@ -1,3 +1,7 @@
+= stylesheet_link_tag "style.css", :media => "all"
+= javascript_include_tag "jquery.wookmark.js"
+
+
 :css
   .gmaps4rails_map {
       height: 336px;
@@ -9,6 +13,7 @@
   .map_container {
       width: 996px;
   }
+
 .content.wrapper
   .content-c
     %h2.label-17{:style => "margin:0px 0px 0px 0px;"} Cloud Foundry Groups
@@ -27,25 +32,62 @@
               else{
                 setTimeout(function() { Gmaps.map.serviceObject.setZoom(4);}, 50);
               }
-  
           for (var i = 0; i <  Gmaps.map.markers.length; i++) {
             google.maps.event.addListener(Gmaps.map.markers[i].serviceObject, 'click',   redirect_to(Gmaps.map.markers[i].link));
-              }                
+              }
+
             };
      
     / %input.input-a{:placeholder => "Find a group...", :style => "margin-left: 0px;"}
     /   %a.label-36{:href => "#"} + Create Group
     .div-g
-      - Chapter.total_records.each_with_index do |chapter,i|
-        .column-a
-          %h3.label-37
-            = Carmen::Country.coded(chapter.country_name).try(:name) || "No Name"
-          %ul.ui-j
-            - main_chapters(chapter.country_name).each do |chp|
-              %li{:style => "line-height:30px;"}
-                %img{:src => "/assets/"+"#{chp.chapter_status.try(:capitalize)}"+".png", :style=> "width:15px;height:16px;margin-bottom: -3px;"}/
-                %a.label-28{:href => "#{chapter_path(chp)}"}= "#{chp.name}"
-                /%span{:title => "Chapter Status"}= "(#{chp.chapter_status})"
-                %span{:title => "Chapter type"}= "(#{chp.chapter_type.first})"
+      #main{:role => "main"}
+        %ul#tiles
+          - Chapter.total_records.each_with_index do |chapter,i|
+            %li
+              .column-a.customColumnA
+                %h3.label-37
+                  = Carmen::Country.coded(chapter.country_name).try(:name) || "No Name"
+                .ui-j
+                  - main_chapters(chapter.country_name).each do |chp|
+                    .divWrapper
+                      %img{:src => "/assets/"+"#{chp.chapter_status.try(:capitalize)}"+".png", :style=> "width:15px;height:16px;margin-bottom: -3px;"}/
+                      %a.label-28{:href => "#{chapter_path(chp)}"}= "#{chp.name}"
+                      /%span{:title => "Chapter Status"}= "(#{chp.chapter_status})"
+                      %span{:title => "Chapter type"}= "(#{chp.chapter_type.first})"
+      -#- Chapter.total_records.each_with_index do |chapter,i|
+      -#  .column-a
+      -#    %h3.label-37
+      -#      = Carmen::Country.coded(chapter.country_name).try(:name) || "No Name"
+      -#    %ul.ui-j
+      -#      - main_chapters(chapter.country_name).each do |chp|
+      -#        %li{:style => "line-height:30px;"}
+      -#          %img{:src => "/assets/"+"#{chp.chapter_status.try(:capitalize)}"+".png", :style=> "width:15px;height:16px;margin-bottom: -3px;"}/
+      -#          %a.label-28{:href => "#{chapter_path(chp)}"}= "#{chp.name}"
+      -#          /%span{:title => "Chapter Status"}= "(#{chp.chapter_status})"
+      -#          %span{:title => "Chapter type"}= "(#{chp.chapter_type.first})"
+
+
+
+/ Once the page is loaded, initalize the plug-in.
+:javascript
+  $(document).ready(new function() {
+    // Prepare layout options.
+    var options = {
+      autoResize: true, // This will auto-update the layout when the browser window is resized.
+      container: $('#main'), // Optional, used for some extra CSS styling
+      offset: 20, // Optional, the distance between grid items
+      itemWidth: 300 // Optional, the width of a grid item
+    };
+
+    // Get a reference to your grid items.
+    var handler = $('#tiles li');
+
+    // Call the layout function.
+    handler.wookmark(options);
+
+
+  });
+
 
         

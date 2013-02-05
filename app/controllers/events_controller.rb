@@ -233,6 +233,8 @@ class EventsController < ApplicationController
   def create_event_comment
     @event = Event.find(params[:comment][:commentable_id])
     @comment = Comment.new(params[:comment])
+    @comment.created_by = @current_user.id
+    @comment.updated_by = @current_user.id
     @all_event_images = @event.event_galleries
     respond_to do |format|
       if(@comment.save)
