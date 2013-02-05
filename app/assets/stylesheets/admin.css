@@ -1319,7 +1319,7 @@ li{
 
 
 /* custom css by developers*/
-.table-e tbody td .label-48{
+.table-e tbody td .customLabel{
     width: 165px;
     word-wrap: break-word;
 }
