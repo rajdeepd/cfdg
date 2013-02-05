@@ -28,6 +28,8 @@
           -if @event.am_i_member?(current_user.id)
             -#%img.flt-right{:src => "/assets/Event.png"}
             %button.btn-a-small.flt-right{:id=>"event_rsvped",:style => "opacity:0.35"} Attending
+      -if !current_user.blank? and  (current_user.id == @event.created_by)
+        =link_to "On the spot registration",on_the_spot_registration_event_path(@event),:class => "btn-a-small change_status" ,:method => "get",:style => "margin-left:90px;"
     %div.clr
     %div.label-26{:id => "short_content"}
       %div.dateAttendees

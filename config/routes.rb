@@ -48,6 +48,8 @@ CloudfoundryUsergroups::Application.routes.draw do
       post 'image_gallery_upload'
       get 'image_gallery_upload'
       get 'show_all_event_images'
+      get 'on_the_spot_registration'
+      post 'create_on_spot_user'
     end
   end
 

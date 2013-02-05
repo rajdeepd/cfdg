@@ -1,0 +1,65 @@
+= javascript_include_tag "jquery.validate"
+.content.wrapper
+  = form_for(@user ,:url => create_on_spot_user_event_path(@event),:method => :post) do |f|
+    .event-form
+      .event-left{:style => "width:100%;"}
+        .el-cont{:style => "margin-bottom: 16px;"}
+          %h2.label-45.flt-left Registration Form
+      .event-left{:style => "width:95%;"}
+        .el-cont.createEventField
+          %label.label-26.eventTitle  Name
+          = f.text_field :fullname , :class => "input-b size-f flt-left" , :placeholder => "Name"
+        .el-cont.createEventField
+          %label.label-26.eventTitle  Email
+          = f.text_field :email ,  :class => "input-b size-f flt-left" , :placeholder => "Email"
+        .el-cont.createEventField
+          %label.label-26.eventTitle  Location
+          = f.text_field :location ,  :class => "input-b size-f flt-left" , :placeholder => "Location"
+        .el-cont.createEventField
+          %label.label-26.eventTitle  Mobile
+          = f.text_field :mobile ,  :class => "input-b size-f flt-left" , :placeholder => "Mobile No."
+        .el-cont.createEventField
+          %label.label-26.eventTitle  Twitter
+          = f.text_field :twitter_url ,  :class => "input-b size-f flt-left" , :placeholder => "Twitter"
+        .el-cont.createEventField
+          %label.label-26.eventTitle  LinkedIn
+          = f.text_field :linkedin_url ,  :class => "input-b size-f flt-left" , :placeholder => "LinkedIn"
+      = f.submit "Add User",:class => "btn-a-small"
+:javascript
+  $(document).ready(function(){
+
+    $('#new_event').validate({
+      rules: {
+        "event[event_start_date]": {
+          required: true
+        },
+        "event[event_start_time]": {
+          required: true
+        },
+        "event[event_end_date]": {
+          required: true
+        },
+        "event[event_end_time]":{
+          required: true
+        },
+        "event[title]":{
+          required: true
+        },
+        "event[attendees_count]":{
+          digits: true
+        }
+        ,
+        "event[postal_code]":{
+          required: true,
+          eventPostalCode:true
+        }
+      }
+    });
+
+    $('#new_event').submit(function(event){
+      if($(this).valid()){
+        $("#event_form_submit").css("opacity",0.35);
+        $("#event_form_submit").attr("disabled","disabled");
+        $("#event_form_submit").text("CREATING...");
+      };
+    });
