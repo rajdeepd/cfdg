@@ -99,6 +99,7 @@ $(function(){
 
   $('#comment_content').die('keypress').live('keypress', function(e){
       if(e.keyCode == 13){
+          e.preventDefault();
       $(this).parents('#new_comment').submit();
          
     }         

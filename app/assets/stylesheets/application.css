@@ -569,7 +569,26 @@ textarea.size-b{height: 84px;width: 163px;margin-bottom:0px;}
 	margin: 0px 10px 0px 0px;
 	float: left;
 }
-
+.customColumnA{
+    float: none;
+    width: auto;
+    margin: 0;
+}
+.ui-j .divWrapper{
+    margin: 10px 0;
+}
+.attendeesEmailList textarea{
+    background: #fdfdfd;
+    border: 1px solid #cccccc;
+    resize: none;
+    width: 500px !important;
+}
+.customAgenda{
+    float: none !important;
+}
+.customComments{
+    margin-top: 60px !important;
+}
 .bg-signup{
 	height: 60px;
 	

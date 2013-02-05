@@ -51,8 +51,15 @@
   -if(current_user.present? )
     -if current_user.id == @event.created_by and !@event.is_cancelled?
       %input#Uploadify{:name => "Uploadify", :type => "file"}
-
-  .div-d
+  - if !@current_user.present?
+    -if @event.agenda_and_speakers.present?
+      = render '/events/agenda_and_speakers'
+  - else
+    - if @event.can_i_delete?(@current_user.id, @event.chapter_id)
+      = render '/events/agenda_and_speakers'
+    -elsif @event.agenda_and_speakers.present?
+      = render '/events/agenda_and_speakers'
+  .div-d.customComments
     - (@event.comments || []).each do |comment|
       .divd-comment-pos
         -#%br
