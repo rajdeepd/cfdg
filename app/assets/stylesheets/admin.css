@@ -1319,7 +1319,27 @@ li{
 
 
 /* custom css by developers*/
+.table-e tbody td .label-48{
+    width: 165px;
+    word-wrap: break-word;
+}
+.table-e tbody td a.btn-a-small{
+    margin: 5px;
+}
+.content-c li.ulg-expanded #Uploadify{
+    margin: 30px 0;
+}
 #announcement_cancel_action {
     display: block;
     float: right;
+}
+#ui-tabs-3 .table-e .btn-a-small{
+    margin: 5px !important;
+}
+.attendeesEmailList textarea{
+    width: 820px;
+}
+li.ulg-expanded .div-d{
+    margin-left: 0;
+    margin-top: 60px;
 }
