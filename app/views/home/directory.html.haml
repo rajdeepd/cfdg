@@ -42,8 +42,8 @@
     .div-g
       #main{:role => "main"}
         %ul#tiles
-          %li
-            - Chapter.total_records.each_with_index do |chapter,i|
+          - Chapter.total_records.each_with_index do |chapter,i|
+            %li
               .column-a.customColumnA
                 %h3.label-37
                   = Carmen::Country.coded(chapter.country_name).try(:name) || "No Name"
@@ -66,16 +66,7 @@
       -#          /%span{:title => "Chapter Status"}= "(#{chp.chapter_status})"
       -#          %span{:title => "Chapter type"}= "(#{chp.chapter_type.first})"
 
-        -#%li
-        -#  %p 2
-        -#%li
-        -#  %p 3
-        -#%li
-        -#  %p 4
-        -#%li
-        -#  %p 5
 
-        / End of grid blocks
 
 / Once the page is loaded, initalize the plug-in.
 :javascript
