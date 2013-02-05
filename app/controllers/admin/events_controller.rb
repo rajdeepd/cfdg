@@ -35,7 +35,9 @@ class Admin::EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
+    @emails = ''
     @members = @event.event_members.includes(:user).collect{|i| i.user}
+    @event.event_members.each do |member| @emails << (member.user.try(:email).to_s+"\;")  end
 
   end
 
