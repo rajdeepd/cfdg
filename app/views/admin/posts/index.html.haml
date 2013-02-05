@@ -1,0 +1,35 @@
+.content.wrapper
+  .div-l
+    .dd-b.flt-left
+      %h5.label-44
+        All Posts
+        =link_to "new post",new_admin_chapter_post_path(params[:chapter_id]),:class => "btn-a-small change_status" ,:method => "get"
+        %img.arrow-down-d-img{:src => "/assets/arrow-down-d.png"}/
+    //%input.input-b.flt-right.size-d.label-25{:placeholder => "search", :type => "text"}/
+  - if @posts.present?
+    %table.table-e
+      %thead
+        %tr
+          %td{:style => "width:100px;text-align: left;"}
+            %h5.label-46 Title
+          %td{:style => "width:115px;"}
+            %h5.label-46 Description
+          %td{:style => "width:160px;"}
+            .dd-b
+              %h5.label-46
+                Action
+      %tbody
+        - @posts.each do |post|
+          %tr
+            %td{:style => "text-align: left;"}
+              %h5.label-48= post.title
+            %td
+              %h5.label-48= post.description.truncate(72)
+            %td
+              =link_to "Show",admin_chapter_post_path(params[:chapter_id],post),:class => "btn-a-small change_status" ,:method => "get"
+              =link_to "Edit",edit_admin_chapter_post_path(params[:chapter_id],post),:class => "btn-a-small change_status" ,:method => "get"
+
+
+        %tr
+  - else
+    No post present

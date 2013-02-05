@@ -115,6 +115,8 @@ CloudfoundryUsergroups::Application.routes.draw do
           post 'create_event_comment'
         end
       end
+
+      resources :posts
     end
 
 
