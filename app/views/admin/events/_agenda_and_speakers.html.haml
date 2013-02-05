@@ -1,0 +1,31 @@
+- content_present = @event.agenda_and_speakers.present?
+.agendaAndSpeakers
+  %p.label-9{:style=>"font-size:20px;"}
+    Agenda and Speakers
+    -if @event.agenda_and_speakers.present?
+      %a.label-9{:style=>"font-size:15px;margin-left: 322px;font-weight: normal;", :href => "#", :id=>"edit_agenda"}  EDIT
+
+
+  #agenda_content
+    = render :inline => "#{@event.agenda_and_speakers}"
+
+  - display_val = content_present ? "display:none" : "display:block"
+  - submit_val  =  content_present ? "UPDATE" : "CREATE"
+  .clr
+  #agenda_text_area{:style=>"#{display_val}"}
+    = semantic_form_for(@event,:url => admin_chapter_event_path(params[:chapter_id],params[:id]),:method => "PUT") do |f|
+      = f.input :agenda_and_speakers, :as => :ckeditor, :label => false, :input_html => { :toolbar => 'Easy' }
+      = f.submit "#{submit_val}" ,:class=>"btn-a-small flt-right", :style => "margin-right:10px;", :id=>"event_agnda_form_submit"
+  %br
+
+  %br
+
+.attendeesEmailList.clr
+  %p.label-9{:href => '#', :style=>"font-size:20px;", :id=>"attendees_list"}
+    Attendees List
+  = text_area_tag 'attendes_emails', @emails, :style => "width:940px;padding-top:4px;", :readonly => 'readonly'
+  = link_to "Download list",download_list_admin_chapter_event_path(params[:chapter_id],@event) ,:class=>"btn-a-small flt-right"
+
+
+:javascript
+  Events.init();

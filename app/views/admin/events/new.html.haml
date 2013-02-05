@@ -1,0 +1,11 @@
+= javascript_include_tag "jquery.validate"
+= stylesheet_link_tag    "event", :media => "all"
+= javascript_include_tag "jquery.timepicker-1.2.2"
+.content.wrapper
+  %h1
+  -#-if !@eb_client.nil?
+  = render 'form'
+  -#-else
+    = link_to 'Connect to Eventbrite', "#{@accept_url}"
+
+  -#= link_to 'Back', events_path

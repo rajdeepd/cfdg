@@ -108,7 +108,18 @@ CloudfoundryUsergroups::Application.routes.draw do
         get 'add_secondary_coordinator'
         post 'create_secondary_coordinator'
       end
+      resources :events do
+        member do
+          get 'cancel_event'
+          get 'download_list'
+          post 'create_event_comment'
+        end
+      end
+
+      resources :posts
     end
+
+
    end
    
   # The priority is based upon order of creation:
