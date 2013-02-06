@@ -54,7 +54,8 @@
                       %img{:src => "/assets/"+"#{chp.chapter_status.try(:capitalize)}"+".png", :style=> "width:15px;height:16px;margin-bottom: -3px;"}/
                       %a.label-28{:href => "#{chapter_path(chp)}"}= "#{chp.name}"
                       /%span{:title => "Chapter Status"}= "(#{chp.chapter_status})"
-                      %span{:title => "Chapter type"}= "(#{chp.chapter_type.first})"
+                      -#%span{:title => "Chapter type"}= "(#{chp.chapter_type.first})"
+                      %span{:title => "Chapter type"}= "(#{chp.institution.empty? ? 'Student' : chp.institution})" if chp.chapter_type == "student"
       -#- Chapter.total_records.each_with_index do |chapter,i|
       -#  .column-a
       -#    %h3.label-37
