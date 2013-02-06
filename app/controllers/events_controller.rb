@@ -324,8 +324,8 @@ class EventsController < ApplicationController
     logger.info "########## params ##########{params.inspect}"
     @event = Event.find(params[:id])
     @user = User.new(params[:user])
-    @user.password = "password"
-    @user.password_confirmation = "password"
+    @user.password = "cloudfoundry"
+    @user.password_confirmation = "cloudfoundry"
     if @user.save
       @event_memeber = EventMember.new(:event_id => @event.id, :user_id => @user.id)
       @event_memeber.save!
