@@ -123,9 +123,11 @@ class Admin::EventsController < ApplicationController
     @comment.updated_by = 1
     @all_event_images = @event.event_galleries
     #respond_to do |format|
-    if(@comment.save)
-      #format.html { render :partial => "full_event" }
-      render :show
+
+      if(@comment.save)
+        #format.html { render :partial => "full_event" }
+        redirect_to admin_chapter_event_path(params[:chapter_id],params[:id])
+
 
     end
     #end
