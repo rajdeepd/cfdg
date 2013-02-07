@@ -122,7 +122,7 @@ class Admin::EventsController < ApplicationController
     #respond_to do |format|
       if(@comment.save)
         #format.html { render :partial => "full_event" }
-        render :show
+        redirect_to admin_chapter_event_path(params[:chapter_id],params[:id])
 
       end
     #end
