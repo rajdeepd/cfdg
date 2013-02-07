@@ -1,9 +1,9 @@
 -#%h1 Edit chapter
 
 -#= render 'form'
-= javascript_include_tag "jquery.validate"
+= javascript_include_tag "jquery"
 = stylesheet_link_tag    "event", :media => "all"
-= javascript_include_tag "jquery.timepicker-1.2.2"
+= javascript_include_tag "jquery"
 %div.content.wrapper
   = form_for @event ,:url => chapter_event_path(params[:chapter_id],params[:id]),:method => :put do |f|
 

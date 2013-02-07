@@ -1,4 +1,4 @@
-= javascript_include_tag "jquery.validate"
+= javascript_include_tag "jquery"
 .content.wrapper
   .content-a
     .ca-left.flt-left
@@ -32,7 +32,7 @@
 - arr = []
 - request.env['HTTP_COOKIE'].each_char{|c| arr.push(c[0].to_s)}
 - session = arr.join("x")
-= javascript_include_tag "jquery.uploadify-3.1"
+= javascript_include_tag "jquery"
 :javascript
   $(document).ready(function(){
       $('.edit_user').validate({
