@@ -206,8 +206,6 @@ class EventsController < ApplicationController
       if @event.update_attributes(params[:event])
         format.html { redirect_to @event, notice: 'Event was successfully updated.' }
         @chapter = Chapter.find(@event.chapter_id)
-        logger.info("##########################{params[:send_email].inspect}")
-        logger.info("##########################{params[:send_email].class}")
         if params[:send_email].present?
         to_email = @chapter.get_primary_coordinator.email
         bcc_emails = @event.event_members.includes(:user).collect{|i| i.user.email} -[to_email]
