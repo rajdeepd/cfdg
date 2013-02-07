@@ -1,6 +1,6 @@
 .content.wrapper
-  %h2.label-44 Upload Post & Media
   %h2.label-44{:style => "border:none;"} Create Post
+  %br
   = semantic_form_for @post ,:url => admin_chapter_posts_path(params[:chapter_id]),:method => :post do |f|
     .error{:class => "el-cont"}
       %li{:style => "float:right;", :class => "inline-errors  post_title"} &nbsp;

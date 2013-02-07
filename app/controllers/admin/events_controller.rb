@@ -16,18 +16,18 @@ class Admin::EventsController < ApplicationController
   def create
     @event = Event.new(params[:event])
     #respond_to do |format|
-      if @event.save
-        #@event_memeber = EventMember.new(:event_id => @event.id, :user_id => @current_user.id)
-        #@event_memeber.save!
-        @chapter = Chapter.find(@event.chapter_id)
-        @chapter_events = @chapter.events.sort
-        to_email = @chapter.get_primary_coordinator.email
-        bcc_emails=@chapter.chapter_members.includes(:user).collect{|i| i.user.email} - [to_email]
-        EventNotification.event_creation(@event,to_email,bcc_emails,@chapter).deliver
-        redirect_to admin_chapter_event_path(params[:chapter_id],@event)
-      else
-        render :new
-      end
+    if @event.save
+      #@event_memeber = EventMember.new(:event_id => @event.id, :user_id => @current_user.id)
+      #@event_memeber.save!
+      @chapter = Chapter.find(@event.chapter_id)
+      @chapter_events = @chapter.events.sort
+      to_email = @chapter.get_primary_coordinator.email
+      bcc_emails=@chapter.chapter_members.includes(:user).collect{|i| i.user.email} - [to_email]
+      EventNotification.event_creation(@event,to_email,bcc_emails,@chapter).deliver
+      redirect_to admin_chapter_event_path(params[:chapter_id],@event)
+    else
+      render :new
+    end
 
     #end
 
@@ -37,6 +37,9 @@ class Admin::EventsController < ApplicationController
     @event = Event.find(params[:id])
     @emails = ''
     @members = @event.event_members.includes(:user).collect{|i| i.user}
+    if @event.event_galleries.present?
+      @all_event_images =  @event.event_galleries
+    end
     @event.event_members.each do |member| @emails << (member.user.try(:email).to_s+"\;")  end
 
   end
@@ -120,11 +123,11 @@ class Admin::EventsController < ApplicationController
     @comment.updated_by = 1
     @all_event_images = @event.event_galleries
     #respond_to do |format|
-      if(@comment.save)
-        #format.html { render :partial => "full_event" }
-        render :show
+    if(@comment.save)
+      #format.html { render :partial => "full_event" }
+      render :show
 
-      end
+    end
     #end
 
   end

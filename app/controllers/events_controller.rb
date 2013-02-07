@@ -326,6 +326,11 @@ class EventsController < ApplicationController
     if @user.save
       @event_memeber = EventMember.new(:event_id => @event.id, :user_id => @user.id)
       @event_memeber.save!
+      EventNotification.user_registration_for_event(@event,@user).deliver
+      @chapter = Chapter.find(@event.chapter_id)
+      if !@chapter.am_i_chapter_memeber?(@user.id)
+            ChapterMember.create({:memeber_type=>ChapterMember::MEMBER, :user_id => @user.id, :chapter_id => @chapter.id})
+          end
       redirect_to on_the_spot_registration_event_path(@event),:notice => "Registrated Successfully!"
     else
       render :on_the_spot_registration

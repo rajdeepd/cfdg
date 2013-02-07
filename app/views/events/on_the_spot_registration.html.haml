@@ -8,10 +8,10 @@
       .event-left{:style => "width:95%;"}
         .el-cont.createEventField
           %label.label-26.eventTitle  Name
-          = f.text_field :fullname , :class => "input-b size-f flt-left" , :placeholder => "Name"
+          = f.text_field :fullname , :class => "input-b size-f flt-left" , :placeholder => "Name *"
         .el-cont.createEventField
           %label.label-26.eventTitle  Email
-          = f.text_field :email ,  :class => "input-b size-f flt-left" , :placeholder => "Email"
+          = f.text_field :email ,  :class => "input-b size-f flt-left" , :placeholder => "Email *"
         .el-cont.createEventField
           %label.label-26.eventTitle  Location
           = f.text_field :location ,  :class => "input-b size-f flt-left" , :placeholder => "Location"
@@ -36,11 +36,7 @@
           required: true,
           email: true
         },
-        "user[location]": {
-          required: true
-        },
         "user[mobile]":{
-          required: true,
           digits: true
         }
       }

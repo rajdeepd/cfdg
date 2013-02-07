@@ -37,7 +37,7 @@
       -#=image_tag(@event.image,:size => "60x60")
   %div.clr
     #gallery_images
-      = render  "events/image_gallery_upload"
+      = render  "image_gallery_upload"
   -#-if(current_user.present? )
     -if !@event.is_cancelled?
   %input#Uploadify{:name => "Uploadify", :type => "file"}
