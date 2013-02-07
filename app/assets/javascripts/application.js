@@ -15,7 +15,6 @@
 //= require jquery.remotipart
 //= require_tree .
 
-
 $(function(){
 
   $('.signin').click(function(){
@@ -100,14 +99,13 @@ $(function(){
 
   $('#comment_content').die('keypress').live('keypress', function(e){
       if(e.keyCode == 13){
-          e.preventDefault();
       $(this).parents('#new_comment').submit();
          
     }         
 
   });
 
- $('.comment').die('submit').live('submit', function(e){
+ $('.comment').die('submit').live('submit', function(e){    
    if(e.preventDefault) {
       e.preventDefault();
     }
@@ -138,4 +136,3 @@ function hideFlashMessages() {
 function showFlashMessages() {
   $('.alert').slideDown(200);
 }
-

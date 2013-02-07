@@ -12,11 +12,12 @@
         - @user_chapters.each do |chaptermember|
           %li
             %a{:href => "#{userevents_events_url(chaptermember.chapter.id)}", :id=>"#{chaptermember.chapter.id}", :class=>"chapter_link", :style=>"font-size:16px"} #{chaptermember.chapter.name}
-                     
+
+
       #event_content{:style => "min-height: 10px;"}
     /=render "/events/comment_partial"
 
-:javascript 
+:javascript
   Chapters.init();
   Chapters.firstChapterClick();
   Events.init();

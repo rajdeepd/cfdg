@@ -48,6 +48,7 @@
               .column-a.customColumnA
                 %h3.label-37
                   = Carmen::Country.coded(chapter.country_name).try(:name) || "No Name"
+                  -#= chapter.country_name
                 .ui-j
                   - main_chapters(chapter.country_name).each do |chp|
                     .divWrapper
@@ -55,7 +56,7 @@
                       %a.label-28{:href => "#{chapter_path(chp)}"}= "#{chp.name}"
                       /%span{:title => "Chapter Status"}= "(#{chp.chapter_status})"
                       -#%span{:title => "Chapter type"}= "(#{chp.chapter_type.first})"
-                      %span{:title => "Chapter type"}= "(#{chp.institution.empty? ? 'Student' : chp.institution})" if chp.chapter_type == "student"
+                      %span.instituteName= "(#{chp.institution.empty? ? 'Student' : chp.institution})" if chp.chapter_type == "student"
       -#- Chapter.total_records.each_with_index do |chapter,i|
       -#  .column-a
       -#    %h3.label-37

@@ -1,4 +1,4 @@
-= javascript_include_tag "jquery"
+= javascript_include_tag "jquery.validate"
 .content.wrapper
   = form_for(@user ,:url => create_on_spot_user_event_path(@event),:method => :post) do |f|
     .event-form
@@ -24,42 +24,33 @@
         .el-cont.createEventField
           %label.label-26.eventTitle  LinkedIn
           = f.text_field :linkedin_url ,  :class => "input-b size-f flt-left" , :placeholder => "LinkedIn"
-      = f.submit "Add User",:class => "btn-a-small"
+      = f.submit "Add User",:class => "btn-a-small",:id => "event_user_add"
 :javascript
   $(document).ready(function(){
-
-    $('#new_event').validate({
+    $('#new_user').validate({
       rules: {
-        "event[event_start_date]": {
+        "user[fullname]": {
           required: true
         },
-        "event[event_start_time]": {
-          required: true
-        },
-        "event[event_end_date]": {
-          required: true
-        },
-        "event[event_end_time]":{
-          required: true
-        },
-        "event[title]":{
-          required: true
-        },
-        "event[attendees_count]":{
-          digits: true
-        }
-        ,
-        "event[postal_code]":{
+        "user[email]": {
           required: true,
-          eventPostalCode:true
+          email: true
+        },
+        "user[location]": {
+          required: true
+        },
+        "user[mobile]":{
+          required: true,
+          digits: true
         }
       }
     });
 
-    $('#new_event').submit(function(event){
+    $('#new_user').submit(function(event){
       if($(this).valid()){
-        $("#event_form_submit").css("opacity",0.35);
-        $("#event_form_submit").attr("disabled","disabled");
-        $("#event_form_submit").text("CREATING...");
+        $("#event_user_add").text("adding...");
+        //$("#event_user_add").css("opacity",0.35);
+        $("#event_user_add").attr("disabled","disabled");
       };
     });
+  });

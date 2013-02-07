@@ -321,7 +321,6 @@ class EventsController < ApplicationController
   end
 
   def create_on_spot_user
-    logger.info "########## params ##########{params.inspect}"
     @event = Event.find(params[:id])
     @user = User.new(params[:user])
     @user.password = "cloudfoundry"
@@ -329,7 +328,7 @@ class EventsController < ApplicationController
     if @user.save
       @event_memeber = EventMember.new(:event_id => @event.id, :user_id => @user.id)
       @event_memeber.save!
-      redirect_to event_path(@event),:notice => "Registrated Successfully!"
+      redirect_to on_the_spot_registration_event_path(@event),:notice => "Registrated Successfully!"
     else
       render :on_the_spot_registration
     end
