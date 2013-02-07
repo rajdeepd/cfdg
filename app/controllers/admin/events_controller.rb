@@ -14,7 +14,6 @@ class Admin::EventsController < ApplicationController
   end
 
   def create
-    logger.info "########### current user ############{@current_user.inspect}"
     @event = Event.new(params[:event])
     #respond_to do |format|
       if @event.save
