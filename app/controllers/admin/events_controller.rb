@@ -14,11 +14,12 @@ class Admin::EventsController < ApplicationController
   end
 
   def create
+    logger.info "########### current user ############{@current_user.inspect}"
     @event = Event.new(params[:event])
-    respond_to do |format|
+    #respond_to do |format|
       if @event.save
-        @event_memeber = EventMember.new(:event_id => @event.id, :user_id => @current_user.id)
-        @event_memeber.save!
+        #@event_memeber = EventMember.new(:event_id => @event.id, :user_id => @current_user.id)
+        #@event_memeber.save!
         @chapter = Chapter.find(@event.chapter_id)
         @chapter_events = @chapter.events.sort
         to_email = @chapter.get_primary_coordinator.email
@@ -29,7 +30,7 @@ class Admin::EventsController < ApplicationController
         render :new
       end
 
-    end
+    #end
 
   end
 

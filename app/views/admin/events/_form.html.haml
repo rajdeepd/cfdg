@@ -3,7 +3,7 @@
 -#-else
 = javascript_include_tag "jquery.validate"
 = javascript_include_tag "jquery.timepicker-1.2.2"
-= semantic_form_for @event ,:url => admin_chapter_events_path(params[:chapter_id]),:method => :post,:remote=> true do |f|
+= semantic_form_for @event ,:url => admin_chapter_events_path(params[:chapter_id]),:method => :post do |f|
   .event-form
     .event-left{:style => "width:100%;"}
       .el-cont{:style => "margin-bottom: 16px;"}
