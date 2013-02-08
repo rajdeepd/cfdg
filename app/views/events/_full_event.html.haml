@@ -12,8 +12,10 @@
       -if(!@event.event_start_date.blank?)
         %h1.label-23 #{Time.parse(@event.event_start_date.to_s).strftime('%d')}
         %h4.label-24 #{Time.parse(@event.event_start_date.to_s).strftime('%b')}
+
   .div-h
     %a.label-9.event_expand{:href => "#", :event_id=> @event.id,:id => "event_title"} #{@event.title}
+    .clr
     -#-if !current_user.blank? and @profile_page != true  and !@event.am_i_member?(@current_user.id)
       %button.btn-a-small.flt-right{:id=>"follow_an_event", :event_id => "#{@event.id}"} FOLLOW
     -if !@event.is_past_event?
