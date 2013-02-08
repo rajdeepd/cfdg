@@ -1,5 +1,4 @@
 .content.wrapper
-  %h2.label-44 Upload Post & Media
   %h2.label-44{:style => "border:none;"} Create Post
   = semantic_form_for @post ,:url => admin_chapter_post_path(params[:chapter_id],params[:id]),:method => :put do |f|
     .error{:class => "el-cont"}

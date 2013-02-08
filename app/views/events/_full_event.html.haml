@@ -2,7 +2,7 @@
 = javascript_include_tag "jquery.validate"
 = stylesheet_link_tag "uploadify", :media => "all"
 -#= stylesheet_link_tag "event", :media => "all"
--if !current_user.blank? and ((current_user.id == @event.created_by) or @event.can_i_delete?(@current_user.id, @event.chapter_id))
+-if(@current_user and ((@current_user.id == @event.created_by) or @event.can_i_delete?(@current_user.id, @event.chapter_id)))
   =link_to "On the spot registration",on_the_spot_registration_event_path(@event),:class => "btn-a-small change_status" ,:method => "get",:style => "margin-left:90px;"
 %li.ulg-expanded{:style => "margin-top: -3px;"}
   .div-c
@@ -12,11 +12,12 @@
       -if(!@event.event_start_date.blank?)
         %h1.label-23 #{Time.parse(@event.event_start_date.to_s).strftime('%d')}
         %h4.label-24 #{Time.parse(@event.event_start_date.to_s).strftime('%b')}
+
   .div-h
     %a.label-9.event_expand{:href => "#", :event_id=> @event.id,:id => "event_title"} #{@event.title}
+    .clr
     -#-if !current_user.blank? and @profile_page != true  and !@event.am_i_member?(@current_user.id)
       %button.btn-a-small.flt-right{:id=>"follow_an_event", :event_id => "#{@event.id}"} FOLLOW
-    .clr
     -if !@event.is_past_event?
       -if !current_user.blank? and  (current_user.id != @event.created_by)
         -if @event.is_cancelled?
@@ -64,10 +65,10 @@
   %div.clr
     #gallery_images
       = render  "events/image_gallery_upload"
-  -if(current_user.present? )
-    -if((current_user.id == @event.created_by or @event.can_i_delete?(@current_user.id, @event.chapter_id))and !@event.is_cancelled?)
+  -if(current_user.present?)
+    -if((current_user.id == @event.created_by or @event.can_i_delete?(@current_user.id, @event.chapter_id)) and !@event.is_cancelled?)
       %input#Uploadify{:name => "Uploadify", :type => "file"}
-  - if !@current_user.present?
+  -if !@current_user.present?
     -if @event.agenda_and_speakers.present?
       = render '/events/agenda_and_speakers'
   - else
@@ -77,27 +78,15 @@
       = render '/events/agenda_and_speakers'
   .div-d.customComments
     - (@event.comments || []).each do |comment|
-      .divd-comment-pos
-        -#%br
-        %table.table-c
-          %tr
-            %td
-              = avatar_display_pic(comment.user,'thumb', '40x40','profile.png',"img-c flt-left")
-              /%img.img-c.flt-left{:src => "/assets/img-d.png"}
-            %td
-              %h5.label-27
-                #{comment.user.fullname} -
-
-                %label.label-25 #{Time.parse(comment.created_at.to_s).strftime('%d, %b')}
-              %p.label-16
-                #{comment.content}
+      =render "comment",:comment => comment
     - @comment =  @event.comments.build
-    -if @current_user.present?
-      = semantic_form_for  @comment do |f|
-        .add_a_new_comment
-          = f.text_area :content, :placeholder => "comment", :label => false, :class => " content_comment_class ta-a"
-        = f.hidden_field   :commentable_type
-        = f.hidden_field   :commentable_id
+  -if @current_user.present?
+    = semantic_form_for  @comment,:url => create_event_comment_events_path,:method => :post, :remote => true do |f|
+      .add_a_new_comment
+        = f.text_area :content, :placeholder => "comment", :label => false, :class => " content_comment_class ta-a"
+      = f.hidden_field   :commentable_type
+      = f.hidden_field   :commentable_id
+      = f.submit "Add Comment" ,:class=>"btn-a-small flt-left", :style => "margin-right:63px;"
   %br
 
 
@@ -107,7 +96,7 @@
   :javascript
     Events.init();
     $(document).ready(function(e){
-
+    //$("#new_comment").removeClass("comment");
     $('#new_comment').validate({
       rules: {
         "comment[content]": {

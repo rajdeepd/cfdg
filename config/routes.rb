@@ -115,6 +115,8 @@ CloudfoundryUsergroups::Application.routes.draw do
           get 'cancel_event'
           get 'download_list'
           post 'create_event_comment'
+          post 'image_gallery_upload'
+          get 'image_gallery_upload'
         end
       end
 
