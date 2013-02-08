@@ -1,0 +1,14 @@
+.divd-comment-pos
+  -#%br
+  %table.table-c
+    %tr
+      %td
+        = avatar_display_pic(comment.user,'thumb', '40x40','profile.png',"img-c flt-left")
+        /%img.img-c.flt-left{:src => "/assets/img-d.png"}
+      %td
+        %h5.label-27
+          #{comment.user.fullname} -
+
+          %label.label-25 #{Time.parse(comment.created_at.to_s).strftime('%d, %b')}
+        %p.label-16
+          #{comment.content}

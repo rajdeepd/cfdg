@@ -236,8 +236,7 @@ class EventsController < ApplicationController
     @all_event_images = @event.event_galleries
     respond_to do |format|
       if(@comment.save)
-        format.js { render :partial => "/events/full_event" }
-
+        format.js {}
       end
     end
 
@@ -333,7 +332,7 @@ class EventsController < ApplicationController
           end
       redirect_to on_the_spot_registration_event_path(@event),:notice => "Registrated Successfully!"
     else
-      flash[:notice] = "User already exists with this email"
+      flash[:notice] = "User already exists"
       render :on_the_spot_registration
     end
   end
