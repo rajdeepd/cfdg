@@ -2434,10 +2434,10 @@ ul.posts li .commentText .commentDate{
     border: 1px solid #c1cdd6;
     border-radius: 4px;
     box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.1);
-    padding: 10px 10px 0;
+    padding: 10px 0px 0 10px;
     overflow: hidden;
     margin-bottom: 25px;
-    width: 650px;
+    width: 656px;
     margin: 0 auto;
 }
 .formBox .speakersList ul li{
@@ -2448,7 +2448,7 @@ ul.posts li .commentText .commentDate{
     border: 1px solid #e1e1e1;
     overflow: hidden;
     padding: 5px;
-    margin: 0 0 10px 10px;
+    margin: 0 6px 10px 0px;
 }
 .formBox .speakersList ul li:first-child{
     margin-left: 0;

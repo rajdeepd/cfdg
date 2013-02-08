@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
   has_many :chapters , :through => :chapter_members
   has_many :events , :through => :event_members
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name, :last_name, :fullname,:mobile, :website_url, :linkedin_url, :twitter_url, :avatar, :avatar_content_type,:location, :admin, :profile_picture,:reset_password_token,:is_proprietary_user
+  attr_accessible :email, :description, :password, :password_confirmation, :remember_me, :first_name, :last_name, :fullname,:mobile, :website_url, :linkedin_url, :twitter_url, :avatar, :avatar_content_type,:location, :admin, :profile_picture,:reset_password_token,:is_proprietary_user
   #  has_attached_file :avatar,
   #    :styles => { :medium => "157x161>", :thumb => "100x100>" },
   #    :path => ":rails_root/public/system/:attachment/:id/:style/:filename",
@@ -25,6 +25,8 @@ class User < ActiveRecord::Base
                     :path => "/:attachment/:id/:style/:filename",
                     :storage => :s3,
                     :s3_credentials => "#{Rails.root}/config/s3.yml"
+
+  scope :search, lambda {|user| where("fullname like ?", "%#{user}%").select("id, fullname as value")}
 
   def admin_user
     User.find_by_email("admin@cloudfoundry.com")
@@ -79,7 +81,7 @@ class User < ActiveRecord::Base
   def get_user_past_events
     past_events = []
     user_all_events = EventMember.find_all_by_user_id(self).collect{|i| i.event}
-    user_all_events.each do |event|
+    user_all_events.compact.each do |event|
       if((Time.parse(event.event_start_date+" "+event.event_start_time) < Time.now))
         past_events.push(event)
       end
@@ -90,13 +92,13 @@ class User < ActiveRecord::Base
   def get_user_upcoming_events
     upcoming_events = []
       user_all_events = EventMember.find_all_by_user_id(self).collect{|i| i.event}
-      user_all_events.each do |event|
+      user_all_events.compact.each do |event|
         if((Time.parse(event.event_start_date+" "+event.event_start_time) >= Time.now))
           upcoming_events.push(event)
         end
       end
     upcoming_events
-    end
+  end
 
 
 

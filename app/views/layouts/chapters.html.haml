@@ -65,7 +65,7 @@
     - @controller = params["controller"]
     - @action = params["action"]
 
-    -if !(@controller == "chapters" && (@action == "search" or @action == "detail" or @action == "chapter_gallery") or (@controller == "users" && @action == "dashboard") or (@controller == "chapters" && @action == "list"))
+    -if !(@controller == "chapters" && (@action == "search" or @action == "show" or @action == "chapter_gallery") or (@controller == "users" && @action == "dashboard") or (@controller == "chapters" && @action == "index"))
 
       = render "shared/federated_header"
       = render "shared/header"

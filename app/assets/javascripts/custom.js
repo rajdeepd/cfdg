@@ -32,13 +32,15 @@ $(document).ready(function(){
     //     $(".agendaAddDiv").show();
     //     return false;
     // });
-    // $(".speakersList").hide();
-    // $(".addBox .blueBtn").click(function(){
-    //     $(".speakersList").show();
-    // });
-    // $(".nonMember").hide();
-    // $(".notAMember").click(function(){
-    //    $(".nonMember").show();
-    // });
+    if ($(".speakersList ul > li").length == 0){
+        $(".speakersList").hide();
+    }
+    $(".addBox .blueBtn").click(function(){
+        $(".speakersList").show();
+    });
+    $(".nonMember").hide();
+    $(".notAMember").click(function(){
+       $(".nonMember").show();
+    });
 
 });

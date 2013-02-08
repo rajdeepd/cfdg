@@ -61,4 +61,12 @@ class UsersController < ApplicationController
     @user_past_event = @current_user.get_user_past_events
     @user_posts = Post.find_all_by_created_by(@current_user)
   end
+
+  def search
+    @users = User.search(params[:user])  
+    respond_to do |f|
+      f.js{render json: @users}
+    end
+  end
+
 end

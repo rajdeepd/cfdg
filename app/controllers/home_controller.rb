@@ -41,6 +41,7 @@ class HomeController < ApplicationController
   end
 
   def autocomplete_city_details
+    # TODO: Use scope and move model logic to corresponding City model
     city = City.where("details like ?","#{params[:term]}%")
     data = city.collect{|i| {:id => i.details, :value => i.details}}
     respond_to do |format|

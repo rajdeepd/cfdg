@@ -381,6 +381,7 @@ class EventsController < ApplicationController
 
   def new_agenda_and_speaker
     @event = Event.find(params[:id])
+    @speakers = @event.speakers
     @agenda = Event.find(params[:id]).agendas.new
     @existing_agenda = Event.find(params[:id]).agendas
   end
@@ -414,7 +415,19 @@ class EventsController < ApplicationController
 
   end
 
+  def add_speaker
+    @event = Event.find(params[:id])
+    @speaker = @event.add_or_create_speaker(params)
+  end
 
+  def speaker_delete
+    @event = Event.find(params[:id])
+    #todo : FIXIT
+    @speaker = @event.event_members.delete(@event.event_members.where(params[:speaker_id]).first)
+    respond_to do |f|
+      f.js { render nothing: true}
+    end
+  end
 
 
   protected

@@ -67,6 +67,8 @@ CloudfoundryUsergroups::Application.routes.draw do
       get 'join_event'
       get 'new_agenda_and_speaker'
       post "create_agenda"
+      post "add_speaker"
+      post "speaker_delete"
     end
   end
   match '/events/:id/gallery' => 'events#show_all_event_images' , :as => :gallery
@@ -108,6 +110,7 @@ CloudfoundryUsergroups::Application.routes.draw do
     end
     collection do
       post 'uploader'
+      get 'search'
     end
   end
 

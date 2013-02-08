@@ -21,6 +21,7 @@ gem 'userstamp', :git=>'https://github.com/sowmyadumpa/userstamp.git' #forked an
 #gem 'libv8'
 gem 'thin', '~> 1.2.11'
 gem 'gmaps4rails'
+gem 'remotipart', '~> 1.0'
 
 
 # Authentication with Federated Google identity tool kit
@@ -66,7 +67,6 @@ gem 'awesome_nested_set'
 gem 'carmen-rails'
 gem 'will_paginate', '~> 3.0'
 
-gem 'remotipart', '~> 1.0'
 gem "ckeditor", "~> 3.7.3"
 
 gem 'aws-sdk'

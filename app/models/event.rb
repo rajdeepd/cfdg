@@ -27,6 +27,7 @@ class Event < ActiveRecord::Base
       :message => "Date should be in dd/mm/yyyy format"
   } , :unless => Proc.new{|event| event.event_end_date.blank?}
 
+  delegate :attendees, :members, :speakers, :to=> :event_members
 
   def <=> (other)
     if (other.event_start_date.blank? or  other.event_start_time.blank?)
@@ -36,6 +37,21 @@ class Event < ActiveRecord::Base
     end
 
     Time.parse(other.event_start_date + " " + other.event_start_time) <=> Time.parse(self.event_start_date + " " + self.event_start_time)
+  end
+
+  def add_or_create_speaker(user)
+    if user[:user]
+      @user = User.find_by_fullname(user[:user])
+    else
+      @user = User.create!(user[:post].merge({:password=>"123456", :password_confirmation=>"123456"}))
+    end
+    speaker = false
+    if @user && (!event_members.collect(&:user).include? @user)
+      speaker = event_members.build(:user_id=> @user.id, :member_type=>"Speaker")
+      speaker.save
+      
+    end
+    speaker.user rescue nil
   end
 
   def am_i_member?(user_id)

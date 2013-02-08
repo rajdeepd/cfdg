@@ -1,5 +1,5 @@
 .row
-  -if !@chapters.present?
+  -if !@chapters
     .label-17
       No chapters
   -else
@@ -8,28 +8,20 @@
         .eventListWrapper
           .eventListInner
             .tag
-              -if chapter.chapter_type == "student"
-                %img{:src => "/assets/student_event.png"}
-              -else
-                %img{:src => "/assets/professional_event.png"}
+              %img{:src=>"/assets/#{chapter.chapter_type}_event.png"}
             .clearfix
               -#.eventImg
               -#  %img{:src => "/assets/event_snap_4.jpg"}
               .eventContent
-                -if chapter.chapter_type == "student"
-                  %h5 #{chapter.name}
+                %h5 #{chapter.name}
+                - if chapter.chapter_type == "student"
                   .institution #{chapter.institution.truncate(66)}
-                -else
-                  %h5 #{chapter.name}
             .location #{chapter.city_name}, #{chapter.country_name}
             .comingEvent
               %h5 Upcoming Event
               -if chapter.get_chapter_upcoming_events.blank?
                 .pastEvent
                   .clearfix
-                    -#.pastEventDate
-                      -#%span.date 04
-                      -#%span.month Dec
                     .pastEventDetails.centerText.fullPadding No upcoming events.
               -else
                 %a.comingEventAnchor{:href => "#{event_path(chapter.get_chapter_upcoming_events.first)}"}
@@ -39,199 +31,9 @@
                         %span.date #{Time.parse(chapter.get_chapter_upcoming_events.first.event_start_date.to_s).strftime('%d')}
                         %span.month #{Time.parse(chapter.get_chapter_upcoming_events.first.event_start_date.to_s).strftime('%b')}
                       .pastEventDetails #{chapter.get_chapter_upcoming_events.first.description.truncate(72)}
-          -#-if @current_user.present?
-          -#  -if ChapterMember.am_i_coordinator?(@current_user,chapter.id)
-          -#    %a{:href => "#{chapter_path(chapter)}"} View Chapter
-          -#  - else
-          -#    %a{:href => "#{detail_chapter_path(chapter)}"} View Chapter
-          -#- else
-          -#  %a{:href => "#{detail_chapter_path(chapter)}"} View Chapter
           %a{:href => "#{detail_chapter_path(chapter)}"} View Chapter
           .eventListFooter
             -#%span.numberPeopleAttending #{chapter.chapter_members.length}
             %span.numberPeopleAttending #{pluralize(chapter.chapter_members.length,"Member")}
       -if (count+1)%3 == 0
         .clear
-    -#  .eventListWrapper
-    -#    .eventListInner
-    -#      .tag
-    -#        %img{:src => "/assets/student_event.png"}
-    -#      .clearfix
-    -#        .eventImg
-    -#          %img{:src => "/assets/event_snap_4.jpg"}
-    -#        .eventContent
-    -#          %h5 Development Group
-    -#      .location Trikaya, Bavdhan, Pune
-    -#      .comingEvent
-    -#        %h5 Upcoming Event
-    -#        .pastEvent
-    -#          .clearfix
-    -#            .pastEventDate
-    -#              %span.date 04
-    -#              %span.month Dec
-    -#            .pastEventDetails Lorem ipsum dolor sit amet, cons ectetur adipiscing elit. Aenean ornare interdum...
-    -#      %a{:href => "#"} View Chapter
-    -#    .eventListFooter
-    -#      %span.numberPeopleAttending 16
-    -#      %span People Attending
-    -#.span4.subscribedChapters
-    -#  .eventListWrapper
-    -#    .eventListInner
-    -#      .tag
-    -#        %img{:src => "/assets/student_event.png"}
-    -#      .clearfix
-    -#        .eventImg
-    -#          %img{:src => "/assets/event_snap_4.jpg"}
-    -#        .eventContent
-    -#          %h5 Development Group
-    -#      .location Trikaya, Bavdhan, Pune
-    -#      .comingEvent
-    -#        %h5 Upcoming Event
-    -#        .pastEvent
-    -#          .clearfix
-    -#            .pastEventDate
-    -#              %span.date 04
-    -#              %span.month Dec
-    -#            .pastEventDetails Lorem ipsum dolor sit amet, cons ectetur adipiscing elit. Aenean ornare interdum...
-    -#      %a{:href => "#"} View Chapter
-    -#    .eventListFooter
-    -#      %span.numberPeopleAttending 16
-    -#      %span People Attending
-    -#.span4.subscribedChapters
-    -#  .eventListWrapper
-    -#    .eventListInner
-    -#      .tag
-    -#        %img{:src => "/assets/student_event.png"}
-    -#      .clearfix
-    -#        .eventImg
-    -#          %img{:src => "/assets/event_snap_4.jpg"}
-    -#        .eventContent
-    -#          %h5 Development Group
-    -#      .location Trikaya, Bavdhan, Pune
-    -#      .comingEvent
-    -#        %h5 Upcoming Event
-    -#        .pastEvent
-    -#          .clearfix
-    -#            .pastEventDate
-    -#              %span.date 04
-    -#              %span.month Dec
-    -#            .pastEventDetails Lorem ipsum dolor sit amet, cons ectetur adipiscing elit. Aenean ornare interdum...
-    -#      %a{:href => "#"} View Chapter
-    -#    .eventListFooter
-    -#      %span.numberPeopleAttending 16
-    -#      %span People Attending
-    -#.span4.subscribedChapters
-    -#  .eventListWrapper
-    -#    .eventListInner
-    -#      .tag
-    -#        %img{:src => "/assets/student_event.png"}
-    -#      .clearfix
-    -#        .eventImg
-    -#          %img{:src => "/assets/event_snap_4.jpg"}
-    -#        .eventContent
-    -#          %h5 Development Group
-    -#      .location Trikaya, Bavdhan, Pune
-    -#      .comingEvent
-    -#        %h5 Upcoming Event
-    -#        .pastEvent
-    -#          .clearfix
-    -#            .pastEventDate
-    -#              %span.date 04
-    -#              %span.month Dec
-    -#            .pastEventDetails Lorem ipsum dolor sit amet, cons ectetur adipiscing elit. Aenean ornare interdum...
-    -#      %a{:href => "#"} View Chapter
-    -#    .eventListFooter
-    -#      %span.numberPeopleAttending 16
-    -#      %span People Attending
-    -#.span4.subscribedChapters
-    -#  .eventListWrapper
-    -#    .eventListInner
-    -#      .tag
-    -#        %img{:src => "/assets/student_event.png"}
-    -#      .clearfix
-    -#        .eventImg
-    -#          %img{:src => "/assets/event_snap_4.jpg"}
-    -#        .eventContent
-    -#          %h5 Development Group
-    -#      .location Trikaya, Bavdhan, Pune
-    -#      .comingEvent
-    -#        %h5 Upcoming Event
-    -#        .pastEvent
-    -#          .clearfix
-    -#            .pastEventDate
-    -#              %span.date 04
-    -#              %span.month Dec
-    -#            .pastEventDetails Lorem ipsum dolor sit amet, cons ectetur adipiscing elit. Aenean ornare interdum...
-    -#      %a{:href => "#"} View Chapter
-    -#    .eventListFooter
-    -#      %span.numberPeopleAttending 16
-    -#      %span People Attending
-    -#.span4.subscribedChapters
-    -#  .eventListWrapper
-    -#    .eventListInner
-    -#      .tag
-    -#        %img{:src => "/assets/student_event.png"}
-    -#      .clearfix
-    -#        .eventImg
-    -#          %img{:src => "/assets/event_snap_4.jpg"}
-    -#        .eventContent
-    -#          %h5 Development Group
-    -#      .location Trikaya, Bavdhan, Pune
-    -#      .comingEvent
-    -#        %h5 Upcoming Event
-    -#        .pastEvent
-    -#          .clearfix
-    -#            .pastEventDate
-    -#              %span.date 04
-    -#              %span.month Dec
-    -#            .pastEventDetails Lorem ipsum dolor sit amet, cons ectetur adipiscing elit. Aenean ornare interdum...
-    -#      %a{:href => "#"} View Chapter
-    -#    .eventListFooter
-    -#      %span.numberPeopleAttending 16
-    -#      %span People Attending
-    -#.span4.subscribedChapters
-    -#  .eventListWrapper
-    -#    .eventListInner
-    -#      .tag
-    -#        %img{:src => "/assets/student_event.png"}
-    -#      .clearfix
-    -#        .eventImg
-    -#          %img{:src => "/assets/event_snap_4.jpg"}
-    -#        .eventContent
-    -#          %h5 Development Group
-    -#      .location Trikaya, Bavdhan, Pune
-    -#      .comingEvent
-    -#        %h5 Upcoming Event
-    -#        .pastEvent
-    -#          .clearfix
-    -#            .pastEventDate
-    -#              %span.date 04
-    -#              %span.month Dec
-    -#            .pastEventDetails Lorem ipsum dolor sit amet, cons ectetur adipiscing elit. Aenean ornare interdum...
-    -#      %a{:href => "#"} View Chapter
-    -#    .eventListFooter
-    -#      %span.numberPeopleAttending 16
-    -#      %span People Attending
-    -#.span4.subscribedChapters
-    -#  .eventListWrapper
-    -#    .eventListInner
-    -#      .tag
-    -#        %img{:src => "/assets/student_event.png"}
-    -#      .clearfix
-    -#        .eventImg
-    -#          %img{:src => "/assets/event_snap_4.jpg"}
-    -#        .eventContent
-    -#          %h5 Development Group
-    -#      .location Trikaya, Bavdhan, Pune
-    -#      .comingEvent
-    -#        %h5 Upcoming Event
-    -#        .pastEvent
-    -#          .clearfix
-    -#            .pastEventDate
-    -#              %span.date 04
-    -#              %span.month Dec
-    -#            .pastEventDetails Lorem ipsum dolor sit amet, cons ectetur adipiscing elit. Aenean ornare interdum...
-    -#      %a{:href => "#"} View Chapter
-    -#    .eventListFooter
-    -#      %span.numberPeopleAttending 16
-    -#      %span People Attending
