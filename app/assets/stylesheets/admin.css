@@ -1396,5 +1396,11 @@ li.ulg-expanded .div-d{
     width: 300px;
     margin-left: -132px;
     color: red;
-
+}
+.customPostHeading{
+    margin-top: 0;
+    font-size: 22px;
+}
+.customPostHeading .flt-right .btn-a-small{
+    padding: 7px 11px;
 }

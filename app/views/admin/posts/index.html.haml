@@ -1,6 +1,6 @@
 .content.wrapper
   .div-l
-    %h5.label-44
+    %h5.customPostHeading
       All Posts
       .flt-right
         =link_to "new post",new_admin_chapter_post_path(params[:chapter_id]),:class => "btn-a-small change_status" ,:method => "get"
@@ -31,4 +31,4 @@
 
         %tr
   - else
-    No post present
+    %span No post present
