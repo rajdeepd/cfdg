@@ -30,7 +30,7 @@
                 %h1.label-23 #{Time.parse(event.event_start_date.to_s).strftime('%d')}
                 %h4.label-24 #{Time.parse(event.event_start_date.to_s).strftime('%b')}
           .div-h
-            %a.label-9.event_expand{:href => "#{event_path(event.id)}", :event_id=> event.id, :target=>"_blank"} #{event.title.truncate(15)}
+            %a.label-9.event_expand{:href => "#{event_path(event.id)}", :event_id=> event.id} #{event.title.truncate(15)}
             -#-if !current_user.blank? and @profile_page != true
             -if current_user.blank?
               -if event.is_cancelled?
@@ -97,7 +97,7 @@
                 %h1.label-23 #{Time.parse(event.event_start_date.to_s).strftime('%d')}
                 %h4.label-24 #{Time.parse(event.event_start_date.to_s).strftime('%b')}
           .div-h
-            %a.label-9.event_expand{:href => "#{event_path(event.id)}", :event_id => event.id, :target=>"_blank"} #{event.title.truncate(15)}
+            %a.label-9.event_expand{:href => "#{event_path(event.id)}", :event_id => event.id} #{event.title.truncate(15)}
             -if current_user.blank?
               -if event.is_cancelled?
                 %button.btn-a-small.flt-right{:id=>"cancelled_event", :event_id => "#{event.id}" ,:disable => true,:style => "opacity:0.35"} CANCELLED

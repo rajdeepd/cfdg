@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   include Userstamp
   before_filter :set_locale, :current_location
-  before_filter :set_cache_buster
+  #before_filter :set_cache_buster
   helper_method :current_user , :admin_user
 
 
