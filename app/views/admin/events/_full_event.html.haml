@@ -21,10 +21,18 @@
     %div.clr
     %div.label-26{:id => "short_content"}
       %div.dateAttendees
-        %div.date
+        %div
           -if(!@event.event_start_date.blank?)
-            #{Time.parse(@event.event_start_time_in_time.to_s).strftime('%I:%M %p')}, #{Date.parse(@event.event_start_date_in_date.to_s).strftime('%A %b %d, %Y')}
-            -#I #{@event.entry_fee}  per person
+            -if(@event.event_start_date == @event.event_end_date)
+              %b From:
+              #{Time.parse(@event.event_start_time_in_time.to_s).strftime('%I:%M %p')}&nbsp&nbsp&nbsp
+              %b To:
+              #{Time.parse(@event.event_end_time_in_time.to_s).strftime('%I:%M %p')} , #{Date.parse(@event.event_start_date_in_date.to_s).strftime('%A %b %d, %Y')}
+            -else
+              %b From:
+              #{Time.parse(@event.event_start_time_in_time.to_s).strftime('%I:%M %p')} #{Date.parse(@event.event_start_date_in_date.to_s).strftime('%A %b %d, %Y')}&nbsp&nbsp&nbsp
+              %b To:
+              #{Time.parse(@event.event_end_time_in_time.to_s).strftime('%I:%M %p')} #{Date.parse(@event.event_end_date_in_date.to_s).strftime('%A %b %d, %Y')}
         .clr
       %div.location
         %b.title
