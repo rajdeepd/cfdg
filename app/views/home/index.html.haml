@@ -14,7 +14,7 @@
                 setTimeout(function() { Gmaps.map.serviceObject.setZoom(1);}, 50);
               }
               else{
-                setTimeout(function() { Gmaps.map.serviceObject.setZoom(4);}, 50);
+                setTimeout(function() { Gmaps.map.serviceObject.setZoom(1);}, 50);
               }
               for (var i = 0; i <  Gmaps.map.markers.length; i++) {
                 google.maps.event.addListener(Gmaps.map.markers[i].serviceObject, 'click',   redirect_to(Gmaps.map.markers[i].link));

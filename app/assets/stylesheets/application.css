@@ -153,6 +153,14 @@ body {
 	border-bottom: 0px;*/
 	padding-bottom: 30px;
 }
+.instituteName{
+    display: block;
+    margin-left: 18px;
+    font-size: 12px;
+    line-height: 18px;
+    word-wrap: break-word;
+    color: #6c6f70;
+}
 .ca-bottom{
 	background-color: #231f20;
 	overflow: hidden;

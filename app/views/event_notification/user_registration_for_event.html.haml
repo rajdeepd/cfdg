@@ -1,0 +1,11 @@
+= "Hi #{@user.fullname},"
+%br
+%p
+= "Welcome to Cloud Foundry Developers Group."
+= "You are now a registered user for #{@event.title} event of the #{@event.chapter.name} chapter of Cloud Foundry developer groups. For further details regarding the event please refer the below link"
+%br
+%a{:href => "#{event_url(@event)}"} Click Here
+%p
+Thank you
+%p
+CloudFoundry Team

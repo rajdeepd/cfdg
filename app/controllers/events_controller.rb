@@ -206,8 +206,6 @@ class EventsController < ApplicationController
       if @event.update_attributes(params[:event])
         format.html { redirect_to @event, notice: 'Event was successfully updated.' }
         @chapter = Chapter.find(@event.chapter_id)
-        logger.info("##########################{params[:send_email].inspect}")
-        logger.info("##########################{params[:send_email].class}")
         if params[:send_email].present?
         to_email = @chapter.get_primary_coordinator.email
         bcc_emails = @event.event_members.includes(:user).collect{|i| i.user.email} -[to_email]
@@ -321,7 +319,6 @@ class EventsController < ApplicationController
   end
 
   def create_on_spot_user
-    logger.info "########## params ##########{params.inspect}"
     @event = Event.find(params[:id])
     @user = User.new(params[:user])
     @user.password = "cloudfoundry"
@@ -329,7 +326,12 @@ class EventsController < ApplicationController
     if @user.save
       @event_memeber = EventMember.new(:event_id => @event.id, :user_id => @user.id)
       @event_memeber.save!
-      redirect_to event_path(@event),:notice => "Registrated Successfully!"
+      EventNotification.user_registration_for_event(@event,@user).deliver
+      @chapter = Chapter.find(@event.chapter_id)
+      if !@chapter.am_i_chapter_memeber?(@user.id)
+            ChapterMember.create({:memeber_type=>ChapterMember::MEMBER, :user_id => @user.id, :chapter_id => @chapter.id})
+          end
+      redirect_to on_the_spot_registration_event_path(@event),:notice => "Registrated Successfully!"
     else
       render :on_the_spot_registration
     end

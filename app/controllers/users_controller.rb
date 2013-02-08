@@ -26,7 +26,14 @@ class UsersController < ApplicationController
   end
 
   def settings
+    logger.info "####################{@user.inspect}"
     @user = current_user
+    logger.info "############ after finding user ########{@user.inspect}"
+    unless @user
+      logger.info "############ inside unless ########"
+      redirect_to root_path
+      #return true
+    end
   end
 
   def settings_update

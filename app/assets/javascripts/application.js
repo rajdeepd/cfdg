@@ -10,11 +10,10 @@
 // WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
 // GO AFTER THE REQUIRES BELOW.
 //
-//= require jquery
+//= require jquery.min
 //= require jquery_ujs
-//= require jquery
+//= require jquery.remotipart
 //= require_tree .
-
 
 $(function(){
 
@@ -100,14 +99,13 @@ $(function(){
 
   $('#comment_content').die('keypress').live('keypress', function(e){
       if(e.keyCode == 13){
-          e.preventDefault();
       $(this).parents('#new_comment').submit();
          
     }         
 
   });
 
- $('.comment').die('submit').live('submit', function(e){
+ $('.comment').die('submit').live('submit', function(e){    
    if(e.preventDefault) {
       e.preventDefault();
     }
@@ -138,4 +136,3 @@ function hideFlashMessages() {
 function showFlashMessages() {
   $('.alert').slideDown(200);
 }
-

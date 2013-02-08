@@ -36,15 +36,9 @@
               -@secondary_coords.each do |coord|
                 #{coord.user.email}
       %ul.ul-e
-        -if @chapter.id == 3
-
-          %li
-            %h2.label-21 #{@totalcount + 28}
-            %h5.label-39 Members
-        -else
-          %li
-            %h2.label-21 #{@totalcount}
-            %h5.label-39 Members
+        %li
+          %h2.label-21 #{@totalcount}
+          %h5.label-39 Members
         %li
           %h2.label-21 #{@chapter.events.try(:size)}
           %h5.label-39 Events
