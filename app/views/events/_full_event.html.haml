@@ -2,7 +2,7 @@
 = javascript_include_tag "jquery.validate"
 = stylesheet_link_tag "uploadify", :media => "all"
 -#= stylesheet_link_tag "event", :media => "all"
--if !current_user.blank? and  (current_user.id == @event.created_by)
+-if !current_user.blank? and ((current_user.id == @event.created_by) or @event.can_i_delete?(@current_user.id, @event.chapter_id))
   =link_to "On the spot registration",on_the_spot_registration_event_path(@event),:class => "btn-a-small change_status" ,:method => "get",:style => "margin-left:90px;"
 %li.ulg-expanded{:style => "margin-top: -3px;"}
   .div-c
@@ -16,6 +16,7 @@
     %a.label-9.event_expand{:href => "#", :event_id=> @event.id,:id => "event_title"} #{@event.title}
     -#-if !current_user.blank? and @profile_page != true  and !@event.am_i_member?(@current_user.id)
       %button.btn-a-small.flt-right{:id=>"follow_an_event", :event_id => "#{@event.id}"} FOLLOW
+    .clr
     -if !@event.is_past_event?
       -if !current_user.blank? and  (current_user.id != @event.created_by)
         -if @event.is_cancelled?
@@ -34,19 +35,25 @@
     %div.clr
     %div.label-26{:id => "short_content"}
       %div.dateAttendees
-        %div.date
+        %div
           -if(!@event.event_start_date.blank?)
             -if(@event.event_start_date == @event.event_end_date)
-              From #{Time.parse(@event.event_start_time_in_time.to_s).strftime('%I:%M %p')} to #{Time.parse(@event.event_end_time_in_time.to_s).strftime('%I:%M %p')} , #{Date.parse(@event.event_start_date_in_date.to_s).strftime('%A %b %d, %Y')}
+              %b From:
+              #{Time.parse(@event.event_start_time_in_time.to_s).strftime('%I:%M %p')}&nbsp&nbsp&nbsp
+              %b To:
+              #{Time.parse(@event.event_end_time_in_time.to_s).strftime('%I:%M %p')} , #{Date.parse(@event.event_start_date_in_date.to_s).strftime('%A %b %d, %Y')}
             -else
-              From #{Time.parse(@event.event_start_time_in_time.to_s).strftime('%I:%M %p')} #{Date.parse(@event.event_start_date_in_date.to_s).strftime('%A %b %d, %Y')}&nbsp&nbsp&nbspto&nbsp&nbsp&nbsp#{Time.parse(@event.event_end_time_in_time.to_s).strftime('%I:%M %p')} #{Date.parse(@event.event_end_date_in_date.to_s).strftime('%A %b %d, %Y')}
+              %b From:
+              #{Time.parse(@event.event_start_time_in_time.to_s).strftime('%I:%M %p')} #{Date.parse(@event.event_start_date_in_date.to_s).strftime('%A %b %d, %Y')}&nbsp&nbsp&nbsp
+              %b To:
+              #{Time.parse(@event.event_end_time_in_time.to_s).strftime('%I:%M %p')} #{Date.parse(@event.event_end_date_in_date.to_s).strftime('%A %b %d, %Y')}
 
 
             -##{Time.parse(@event.event_start_time_in_time.to_s).strftime('%I:%M %p')}, #{Date.parse(@event.event_start_date_in_date.to_s).strftime('%A %b %d, %Y')}
             -#I #{@event.entry_fee}  per person
 
         .clr
-      %div.location
+      %div.location.caDate
         %div.title
           Location
         = get_event_address(@event)
@@ -58,7 +65,7 @@
     #gallery_images
       = render  "events/image_gallery_upload"
   -if(current_user.present? )
-    -if current_user.id == @event.created_by and !@event.is_cancelled?
+    -if((current_user.id == @event.created_by or @event.can_i_delete?(@current_user.id, @event.chapter_id))and !@event.is_cancelled?)
       %input#Uploadify{:name => "Uploadify", :type => "file"}
   - if !@current_user.present?
     -if @event.agenda_and_speakers.present?

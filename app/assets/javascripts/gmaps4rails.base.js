@@ -52,10 +52,10 @@
         center_on_user: false,
         center_latitude: 0,
         center_longitude: 0,
-        zoom: 7,
+        zoom: 0,
         maxZoom: null,
         minZoom: null,
-        auto_adjust: true,
+        auto_adjust: false,
         auto_zoom: true,
         bounds: [],
         raw: {}

@@ -1,5 +1,7 @@
 = javascript_include_tag "jquery.validate"
 .content.wrapper
+  %span.LV_invalid
+    = flash[:notice]     if flash[:notice]
   = form_for(@user ,:url => create_on_spot_user_event_path(@event),:method => :post) do |f|
     .event-form
       .event-left{:style => "width:100%;"}

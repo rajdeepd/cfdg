@@ -333,6 +333,7 @@ class EventsController < ApplicationController
           end
       redirect_to on_the_spot_registration_event_path(@event),:notice => "Registrated Successfully!"
     else
+      flash[:notice] = "User already exists with this email"
       render :on_the_spot_registration
     end
   end

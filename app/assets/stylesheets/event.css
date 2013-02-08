@@ -269,3 +269,6 @@ ul.attendeesList li .nameHolder {
 .div-h .location, .div-h .description{
     margin-left: -80px
 }
+.div-h .caDate{
+    margin-left: 0;
+}

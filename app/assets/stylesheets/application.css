@@ -1513,3 +1513,10 @@ label.error{
 .content #welcome{
     width: 200px;
 }
+.customCheckBoxText{
+    line-height: 12px;
+}
+.customTextArea{
+    width: 608px;
+    resize: none;
+}
