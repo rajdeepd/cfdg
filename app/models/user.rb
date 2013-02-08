@@ -13,6 +13,7 @@ class User < ActiveRecord::Base
   has_many :chapter_members
   has_many :chapters , :through => :chapter_members
   has_many :events , :through => :event_members
+  validates :email, :presence => true, :uniqueness => true
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name, :last_name, :fullname,:mobile, :website_url, :linkedin_url, :twitter_url, :avatar, :avatar_content_type,:location, :admin, :profile_picture
 #  has_attached_file :avatar,
