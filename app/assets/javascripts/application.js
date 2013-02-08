@@ -109,17 +109,19 @@ $(function(){
    if(e.preventDefault) {
       e.preventDefault();
     }
-    $.ajax({
-      context: this,
-      type: "POST",
-      data : $(this).serialize(),
-      url: '/events/create_event_comment',
-      success: function(data){
-            $(this).parents("li").replaceWith(data);
-      },
-      async:false,
-      dataType: 'html'
-    });
+
+//    $.ajax({
+//      context: this,
+//      type: "POST",
+//      data : $(this).serialize(),
+//      url: '/events/create_event_comment',
+//      success: function(data){
+//            $(this).parents("li").replaceWith(data);
+//      },
+//      async:false,
+//      dataType: 'html'
+//    });
+
   });
          
 });
