@@ -2,8 +2,6 @@
  .dis-in{
  display:inline-block;
  }
- 
-
 .dd-chapter-ad {
     border: 1px solid #CCCCCC;
     cursor: pointer;
@@ -17,7 +15,6 @@
 	border: 1px solid #cfcfcf;
 	box-shadow: 1px 2px 2px 0px #ccc;
 }
-
 .arrow-down-chap-ad-img {
     margin: 10px 0 3px;
 }
@@ -27,20 +24,16 @@
     margin-left: 30px;
     width: 191px;
 }
-
 .discard-create-button{
 padding:10px;
 }
-
 .size-text-event-create {
     margin-top: 5px;
     width: 300px;
 }
-
 .select-date-chap-admin{
 	margin-left:30px;height:18px
 }
-
 .button-chapter-admin{
 margin-bottom: 60px;
 margin-top: 10px;
@@ -49,13 +42,11 @@ margin-top: 10px;
  margin-left: 380px;
  margin-top: 5px;
 }
-
 .area-chapter-admin {
     height: 140px;
     margin-top: 5px;
     width: 309px;
 }
-
 .marg-left-thirty{
 margin-left:30px;
 }
