@@ -295,7 +295,6 @@ class EventsController < ApplicationController
   end
 
   def image_gallery_upload
-    logger.info "inside action ######################################{params.inspect}"
     @event = Event.find(params[:id])
    if params[:Filedata].present?
     upload_image = @event.event_galleries.new(:image => params[:Filedata])
@@ -331,7 +330,7 @@ class EventsController < ApplicationController
       if !@chapter.am_i_chapter_memeber?(@user.id)
             ChapterMember.create({:memeber_type=>ChapterMember::MEMBER, :user_id => @user.id, :chapter_id => @chapter.id})
           end
-      redirect_to on_the_spot_registration_event_path(@event),:notice => "Registrated Successfully!"
+      redirect_to on_the_spot_registration_event_path(@event),:notice => "Registered Successfully!"
     else
       flash[:notice] = "User already exists with this email"
       render :on_the_spot_registration

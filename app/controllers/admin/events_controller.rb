@@ -1,4 +1,5 @@
 class Admin::EventsController < ApplicationController
+  protect_from_forgery :except => [:image_gallery_upload]
   before_filter :admin_required
   layout 'admin'
 
@@ -124,13 +125,26 @@ class Admin::EventsController < ApplicationController
     @all_event_images = @event.event_galleries
     #respond_to do |format|
 
-      if(@comment.save)
-        #format.html { render :partial => "full_event" }
-        redirect_to admin_chapter_event_path(params[:chapter_id],params[:id])
+    if(@comment.save)
+      #format.html { render :partial => "full_event" }
+      redirect_to admin_chapter_event_path(params[:chapter_id],params[:id])
 
 
     end
     #end
+
+  end
+
+  def image_gallery_upload
+    @event = Event.find(params[:id])
+    if params[:Filedata].present?
+      upload_image = @event.event_galleries.new(:image => params[:Filedata])
+      upload_image.save!
+    end
+    @all_event_images = @event.event_galleries
+    respond_to do |format|
+      format.js {render :layout => false}
+    end
 
   end
 
