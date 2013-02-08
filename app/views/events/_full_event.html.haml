@@ -3,7 +3,7 @@
 = stylesheet_link_tag "uploadify", :media => "all"
 -#= stylesheet_link_tag "event", :media => "all"
 
--if !current_user.blank? and ((current_user.id == @event.created_by) or @event.can_i_register?(@current_user.id, @event.chapter_id))
+-if !current_user.blank? and !@event.is_past_event? and ((current_user.id == @event.created_by) or @event.can_i_register?(@current_user.id, @event.chapter_id))
   =link_to "On the spot registration",on_the_spot_registration_event_path(@event),:class => "btn-a-small change_status" ,:method => "get",:style => "margin-left:90px;"
 %li.ulg-expanded{:style => "margin-top: -3px;"}
   .div-c
