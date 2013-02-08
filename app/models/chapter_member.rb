@@ -22,6 +22,10 @@ class ChapterMember < ActiveRecord::Base
     ChapterMember.find(:all , :conditions => [" user_id = ? and chapter_id = ? and memeber_type in (?)", user_id, chapter_id, [PRIMARY_COORDINATOR, SECONDARY_COORDINATOR]]).present?
   end
 
+  def self.am_i_only_primary_coordinator?(user_id, chapter_id)
+      ChapterMember.find(:all , :conditions => [" user_id = ? and chapter_id = ? and memeber_type = ?", user_id, chapter_id, PRIMARY_COORDINATOR]).present?
+    end
+
   def self.is_primary_coordinator?(user_id)
   	ChapterMember.find(:all , :conditions => [" user_id = ? and memeber_type = ?", user_id, PRIMARY_COORDINATOR]).present?
   end

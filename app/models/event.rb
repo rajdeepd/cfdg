@@ -43,6 +43,10 @@ class Event < ActiveRecord::Base
     ChapterMember.am_i_coordinator?(user_id, chapter_id)
   end
 
+  def can_i_register?(user_id, chapter_id)
+      ChapterMember.am_i_only_primary_coordinator?(user_id, chapter_id)
+    end
+
   def is_rsvp_allowed?
     if  self.attendees_count.present?
       self.event_members.length < self.attendees_count

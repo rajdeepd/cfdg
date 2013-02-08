@@ -105,7 +105,7 @@ $(function(){
 
   });
 
- $('.comment').die('submit').live('submit', function(e){    
+ $('.comment').die('submit').live('submit', function(e){
    if(e.preventDefault) {
       e.preventDefault();
     }
@@ -114,10 +114,10 @@ $(function(){
       type: "POST",
       data : $(this).serialize(),
       url: '/events/create_event_comment',
-      success: function(data){      
-            $(this).parents("li").replaceWith(data);            
+      success: function(data){
+            $(this).parents("li").replaceWith(data);
       },
-      async:false,        
+      async:false,
       dataType: 'html'
     });
   });

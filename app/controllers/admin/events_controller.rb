@@ -16,6 +16,8 @@ class Admin::EventsController < ApplicationController
 
   def create
     @event = Event.new(params[:event])
+    @event.created_by = 1
+    @event.updated_by = 1
     #respond_to do |format|
     if @event.save
       #@event_memeber = EventMember.new(:event_id => @event.id, :user_id => @current_user.id)
