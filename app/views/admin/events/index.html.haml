@@ -40,13 +40,13 @@
               %h5.customLabel= event.attendees_count
             -if event.is_cancelled?
               %td
-                =link_to "Show",admin_chapter_event_path(params[:chapter_id],event),:class => "btn-a-small change_status" ,:method => "get"
-                %p{:class => "btn-a-small change_status"} Cancelled
+                =link_to "Show",admin_chapter_event_path(params[:chapter_id],event),:class => "btn-a-small change_status customBtn" ,:method => "get"
+                %p{:class => "btn-a-small change_status customBtn"} Cancelled
             -else
               %td
-                =link_to "Show",admin_chapter_event_path(params[:chapter_id],event),:class => "btn-a-small change_status" ,:method => "get"
-                =link_to "Edit",edit_admin_chapter_event_path(params[:chapter_id],event),:class => "btn-a-small change_status" ,:method => "get"
-                =link_to "Cancel",cancel_event_admin_chapter_event_path(params[:chapter_id],event),:class => "btn-a-small change_status" ,:method => "get"
+                =link_to "Show",admin_chapter_event_path(params[:chapter_id],event),:class => "btn-a-small change_status customBtn" ,:method => "get"
+                =link_to "Edit",edit_admin_chapter_event_path(params[:chapter_id],event),:class => "btn-a-small change_status customBtn" ,:method => "get"
+                =link_to "Cancel",cancel_event_admin_chapter_event_path(params[:chapter_id],event),:class => "btn-a-small change_status customBtn" ,:method => "get"
 
         %tr
   - else
