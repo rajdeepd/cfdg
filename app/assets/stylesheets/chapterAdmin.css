@@ -62,4 +62,7 @@ margin-left:30px;
 .size-of-inputs {
     height: 18px;
 }
+#event_event_start_date_input .size-of-inputs{
+    height: 16px;
+}
 /*ends*/
