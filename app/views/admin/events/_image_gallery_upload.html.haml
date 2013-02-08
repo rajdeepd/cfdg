@@ -3,10 +3,11 @@
 .picHolder{:id => "image_gallery",:style =>"width:500px;" }
   -if @all_event_images.present?
     - @all_event_images.limit(5).each do |i|
-      .eventImageHolder
+      .eventImageHolder.customImg
         = link_to(image_tag(i.image),"#{i.image}")
+    %a.clearFix
     .seeAllImages
-      = link_to "See all images for this event.",show_all_event_images_event_path(@all_event_images.first.event_id)
+      = link_to "See all images for this event.",show_all_event_images_event_path(@all_event_images.first.event_id), :class => "customLink"
 
   -else
     = "No Image for the event."

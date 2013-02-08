@@ -14,7 +14,7 @@
 
 
 /*reset begins*/
-html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+html, body, div, span, applet, object, iframe, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, tt, var, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
 	margin: 0;
 	padding: 0;
 	border: 0;
@@ -420,7 +420,10 @@ body {
 	color: #d9541e;
 	width:inherit;
 }
-a.label-25{display: inline-block;clear:both;}
+a.label-25{
+    display: inline-block;
+    clear:both;
+}
 a.label-25:hover{
 	color: #d9541e;
 }
@@ -530,6 +533,7 @@ textarea.size-b{height: 84px;width: 163px;margin-bottom:0px;}
 	padding:0px 0px 0px 5px;
 	border-bottom: 1px solid #ccc;
 	margin:20px 0px 0px 0px;
+    overflow: hidden;
 }
 .div-l .dd-b{
 	left:-10px;
@@ -1351,4 +1355,46 @@ li.ulg-expanded .div-d{
     padding: 0;
     height: 30px;
     line-height: 30px;
+}
+.eventImageHolder{
+    overflow: hidden;
+}
+.customImg  img{
+    width: 150px;
+    height: 150px;
+
+}
+.customImg{
+    float: left;
+    margin: 5px 0 5px 10px;
+}
+.customLink{
+    color: #0097d7;
+}
+.clearFix{
+    display: block;
+    clear: both;
+}
+.dividerBorder{
+    width: 100%;
+    border: 1px solid #ebebeb;
+    margin: 10px 0;
+}
+.div-c .label-23.customLabelHeight {
+    line-height: 1px;
+    margin-top:20px;
+}
+.createEventField .eventTitleEditLbl input{
+    width: 510px;
+}
+.ulg-expanded label.error{
+    display: block;
+    color: red;
+    font-size: 12px;
+}
+#event_event_start_time_input p.inline-errors{
+    width: 300px;
+    margin-left: -132px;
+    color: red;
+
 }

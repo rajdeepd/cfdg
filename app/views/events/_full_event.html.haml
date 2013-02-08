@@ -2,6 +2,8 @@
 = javascript_include_tag "jquery.validate"
 = stylesheet_link_tag "uploadify", :media => "all"
 -#= stylesheet_link_tag "event", :media => "all"
+-if !current_user.blank? and  (current_user.id == @event.created_by)
+  =link_to "On the spot registration",on_the_spot_registration_event_path(@event),:class => "btn-a-small change_status" ,:method => "get",:style => "margin-left:90px;"
 %li.ulg-expanded{:style => "margin-top: -3px;"}
   .div-c
     -if @event.image.present?
@@ -20,16 +22,15 @@
           %button.btn-a-small.flt-right{:id=>"cancelled_event", :event_id => "#{@event.id}" ,:disable => true,:style => "opacity:0.35"} CANCELLED
         -else
           -if !@event.am_i_member?(current_user.id) and @event.is_rsvp_allowed?
-            %button.btn-a-small.flt-right.rsvp_me{:id=>"follow_an_event", :event_id => "#{@event.id}"} R.S.V.P
+            %button.btn-a-small.flt-left.rsvp_me{:id=>"follow_an_event", :event_id => "#{@event.id}"} R.S.V.P
             -#%img.flt-right#rsvp_tick{:src => "/assets/Event.png",:style => "display:none"}
-            %button.btn-a-small.flt-right{:id=>"rsvp_tick",:style => "display:none;opacity:0.35"} Attending
+            %button.btn-a-small.flt-left{:id=>"rsvp_tick",:style => "display:none;opacity:0.35"} Attending
           -elsif !@event.am_i_member?(current_user.id) and !@event.is_rsvp_allowed?
-            %button.btn-a-small.flt-right{:id=>"join_wait_list"} Limit Reached!
+            %button.btn-a-small.flt-left{:id=>"join_wait_list"} Limit Reached!
           -if @event.am_i_member?(current_user.id)
             -#%img.flt-right{:src => "/assets/Event.png"}
-            %button.btn-a-small.flt-right{:id=>"event_rsvped",:style => "opacity:0.35"} Attending
-      -if !current_user.blank? and  (current_user.id == @event.created_by)
-        =link_to "On the spot registration",on_the_spot_registration_event_path(@event),:class => "btn-a-small change_status" ,:method => "get",:style => "margin-left:90px;"
+            %button.btn-a-small.flt-left{:id=>"event_rsvped",:style => "opacity:0.35"} Attending
+
     %div.clr
     %div.label-26{:id => "short_content"}
       %div.dateAttendees
