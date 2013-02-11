@@ -1,27 +1,19 @@
+= javascript_include_tag "jquery.validate"
 .content.wrapper
   %h2.label-44{:style => "border:none;"} Create Post
   %br
   = semantic_form_for @post ,:url => admin_chapter_posts_path(params[:chapter_id]),:method => :post do |f|
     .error{:class => "el-cont"}
       %li{:style => "float:right;", :class => "inline-errors  post_title"} &nbsp;
-      = f.input :title , :placeholder => "Title of Post", :label => false, :input_html => {:style => "margin-bottom: 10px;", :class => "input-b size-e"}
-
-
-    -#= f.input :event_title , :placeholder => "Title of Event",:label => false,  :input_html => {:style => "margin-bottom: 10px;", :class => "input-b size-e",  data: {autocomplete_source: title_list_events_path}}
+      = f.input :title , :placeholder => "Title of Post *", :label => false, :input_html => {:style => "margin-bottom: 10px;", :class => "input-b size-e"}
     = f.hidden_field :event_id
     = f.hidden_field :chapter_id
 
     .error{:class => "el-cont"}
       %li{:style => "float:right;", :class => "inline-errors  post_description"} &nbsp;
-      = f.text_area :description , :placeholder => "Post Description", :label => false, :style => "margin-bottom: 10px;height:80px;display:block;", :class => "input-b size-e"
+      = f.text_area :description , :placeholder => "Post Description *", :label => false, :style => "margin-bottom: 10px;height:80px;display:block;", :class => "input-b size-e"
     #spinner.spinner{:style => 'display:none;margin-right:10px;float:right;'}
       %img{:src => "/assets/spinner.gif", :alt => "Loading" , :id => 'img-spinner'}/
-    / %a.label-12{:href => "#"} + Post Event photos
-    / %h5.label-1{:style => "margin: 5px 0px;"} 5 pics have been uploaded
-    / %img{:src => "/assets/img-e.png"}
-    / %img{:src => "/assets/img-e.png"}
-    / %img{:src => "/assets/img-e.png"}
-    / %a.label-12.block{:href => "#", :style => "margin-top:10px;"} + Add Event Urls
     #options{:style => "width:360px;"}
       / %input.input-b{:placeholder => "Add URL", :style => "margin-bottom: 10px;width:98%"}
       /   %button.btn-a-small{:style => "margin:15px 10px 5px 0px;"} DISCARD
@@ -31,8 +23,25 @@
 
 :javascript
   Posts.titlecomplete();
+  $(document).ready(function(){
+    $('#new_post').validate({
+      rules: {
+        "post[title]": {
+          required: true
+        },
+        "post[description]": {
+           required: true
+        }
+      }
+    });
+  });
 :css
   #ui-id-1 {
      width:558px !important;
+  }
+  .el-cont label.error{
+      display: block;
+      color: red;
+      font-size: 12px;
   }
 

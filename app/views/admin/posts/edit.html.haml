@@ -1,9 +1,10 @@
+= javascript_include_tag "jquery.validate"
 .content.wrapper
   %h2.label-44{:style => "border:none;"} Create Post
   = semantic_form_for @post ,:url => admin_chapter_post_path(params[:chapter_id],params[:id]),:method => :put do |f|
     .error{:class => "el-cont"}
       %li{:style => "float:right;", :class => "inline-errors  post_title"} &nbsp;
-      = f.input :title , :placeholder => "Title of Post", :label => false, :input_html => {:style => "margin-bottom: 10px;", :class => "input-b size-e"}
+      = f.input :title , :placeholder => "Title of Post *", :label => false, :input_html => {:style => "margin-bottom: 10px;", :class => "input-b size-e"}
 
 
     -#= f.input :event_title , :placeholder => "Title of Event",:label => false,  :input_html => {:style => "margin-bottom: 10px;", :class => "input-b size-e",  data: {autocomplete_source: title_list_events_path}}
@@ -12,7 +13,7 @@
 
     .error{:class => "el-cont"}
       %li{:style => "float:right;", :class => "inline-errors  post_description"} &nbsp;
-      = f.text_area :description , :placeholder => "Post Description", :label => false, :style => "margin-bottom: 10px;height:80px;display:block;", :class => "input-b size-e"
+      = f.text_area :description , :placeholder => "Post Description *", :label => false, :style => "margin-bottom: 10px;height:80px;display:block;", :class => "input-b size-e"
     #spinner.spinner{:style => 'display:none;margin-right:10px;float:right;'}
       %img{:src => "/assets/spinner.gif", :alt => "Loading" , :id => 'img-spinner'}/
     / %a.label-12{:href => "#"} + Post Event photos
@@ -30,8 +31,24 @@
 
 :javascript
   Posts.titlecomplete();
+  $(document).ready(function(){
+    $('.post').validate({
+      rules: {
+        "post[title]": {
+          required: true
+        },
+        "post[description]": {
+           required: true
+        }
+      }
+    });
+  });
 :css
   #ui-id-1 {
-     width:558px !important;
+    width:558px !important;
   }
-
+  .el-cont label.error{
+    display: block;
+    color: red;
+    font-size: 12px;
+  }
