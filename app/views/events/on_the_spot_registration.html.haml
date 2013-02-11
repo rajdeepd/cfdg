@@ -12,10 +12,10 @@
       .event-left{:style => "width:95%;"}
         .el-cont.createEventField
           %label.label-26.eventTitle  Name
-          = f.text_field :fullname , :class => "input-b size-f flt-left" , :placeholder => "Name *"
+          = f.text_field :fullname , :class => "input-b size-f flt-left newUserName" , :placeholder => "Name *"
         .el-cont.createEventField
           %label.label-26.eventTitle  Email
-          = f.text_field :email ,  :class => "input-b size-f flt-left" , :placeholder => "Email *"
+          = f.text_field :email ,  :class => "input-b size-f flt-left newUserEmail" , :placeholder => "Email *"
         .el-cont.createEventField
           %label.label-26.eventTitle  Location
           = f.text_field :location ,  :class => "input-b size-f flt-left" , :placeholder => "Location"
@@ -29,6 +29,7 @@
           %label.label-26.eventTitle  LinkedIn
           = f.text_field :linkedin_url ,  :class => "input-b size-f flt-left" , :placeholder => "LinkedIn"
       = f.submit "Add User",:class => "btn-a-small addBtnReg",:id => "event_user_add"
+      = link_to "Cancel",on_the_spot_registration_event_path(@event),:method => "get",:class => "btn-a-small"
 :javascript
   $(document).ready(function(){
     $('#new_user').validate({
@@ -53,7 +54,8 @@
         $("#event_user_add").attr("disabled","disabled");
       };
     });
-    $('.input-b').val("");
+    $('.newUserEmail').val("");
+    $('.newUserName').focus();
     $(".LV_valid").fadeOut(5000,"swing","")
-    $(".LV_invalid").fadeOut(5000,"swing","")
+    $(".LV_invalid").fadeOut(5000,"swing","");
   });
