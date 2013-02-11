@@ -28,7 +28,7 @@
         .el-cont.createEventField
           %label.label-26.eventTitle  LinkedIn
           = f.text_field :linkedin_url ,  :class => "input-b size-f flt-left" , :placeholder => "LinkedIn"
-      = f.submit "Add User",:class => "btn-a-small",:id => "event_user_add"
+      = f.submit "Add User",:class => "btn-a-small addBtnReg",:id => "event_user_add"
 :javascript
   $(document).ready(function(){
     $('#new_user').validate({
