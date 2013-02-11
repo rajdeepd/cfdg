@@ -2,13 +2,17 @@ class Event < ActiveRecord::Base
   stampable
   acts_as_soft_deletable
   after_create :persist_geocode
-  has_many :event_members
+
+  %w(agendas event_members posts event_galleries).each do |assoc|
+    has_many assoc.to_sym, :dependent=> :destroy
+  end
+
+  after_create :create_trigger
+  after_update :update_trigger
+
   has_many :users , :through => :event_members
   has_many :comments, :as => :commentable
-  has_many :posts
-  has_many :agendas
-  has_many :event_galleries, :dependent => :destroy
-  has_one  :event_geolocation
+  has_one  :event_geolocation, :dependent => :destroy
   belongs_to :chapter
   belongs_to :user , :foreign_key => :created_by
   attr_accessible :title, :event_start_date, :event_end_date, :status, :description, :venue, :entry_fee, :chapter_id , :location,
@@ -29,6 +33,37 @@ class Event < ActiveRecord::Base
 
   delegate :attendees, :members, :speakers, :to=> :event_members
 
+  def self.build_hash
+    country = []
+    Chapter.all.each do |i|
+      country.push(i.country_name)
+    end
+    country_count = country.uniq.count
+    chapter_count = Chapter.all.length
+    event_count = Event.all.length
+    user_count = User.all.length
+    upcoming_events = Event.get_upcoming_events
+    return country, country_count, chapter_count, user_count, event_count, upcoming_events
+  end
+
+  def create_trigger
+    puts self.inspect
+      start_date = (event_start_date?  and event_start_time?) ?   Time.parse(event_start_date + " " +event_start_time).strftime('%Y-%m-%d %H:%M:%S') : ""
+      end_date = (event_end_date? and  event_end_time?) ? Time.parse(event_end_date + " " +event_end_time).strftime('%Y-%m-%d %H:%M:%S') : ""
+      event_memeber = EventMember.new(:event_id => id, :user_id => (current_user.id rescue 1))
+      event_memeber.save!
+      to_email = chapter.get_primary_coordinator.email
+      bcc_emails=chapter.chapter_members.includes.collect(&:user).collect(&:email) - [to_email]
+      two_chapter_events = chapter.events.take(2)
+      EventNotification.event_creation(self, to_email, bcc_emails, chapter).deliver
+  end
+
+  def update_trigger
+    to_email = chapter.get_primary_coordinator.email
+    bcc_emails = event_members.collect(&:user).collect(&:email) -[to_email]
+    EventNotification.event_edit(self,to_email,bcc_emails,chapter).deliver
+  end
+
   def <=> (other)
     if (other.event_start_date.blank? or  other.event_start_time.blank?)
       return 1
@@ -37,6 +72,41 @@ class Event < ActiveRecord::Base
     end
 
     Time.parse(other.event_start_date + " " + other.event_start_time) <=> Time.parse(self.event_start_date + " " + self.event_start_time)
+  end
+
+  def build_show_hash
+    emails = ''
+    members = event_members.includes(:user).collect{|i| i.user}
+    coordinaters = chapter.get_secondary_coordinators
+    event_members.each do |member| 
+      emails << (member.user.try(:email).to_s+"\;")  
+    end
+    if event_galleries.present?
+      all_event_images =  event_galleries
+    end
+    marker = event_marker
+    return emails, members, coordinaters, all_event_images, marker
+  end
+
+  def get_geocodes
+    marker = []
+    if event_geolocation.present?
+      geo_tag= event_geolocation
+      marker << {:lat => geo_tag.latitude, :lng => geo_tag.longitude, :title => geo_tag.title}
+    end
+    marker
+  end
+
+  def event_marker
+    get_geocodes.to_json
+  end
+
+  def cancel_event
+    to_email = chapter.get_primary_coordinator.email
+    bcc_emails = event_members.collect(&:user).collect(&:email) - [to_email]
+    s_cancelled = true
+    save
+    EventNotification.event_cancellation(self, to_email, bcc_emails).deliver
   end
 
   def add_or_create_speaker(user)

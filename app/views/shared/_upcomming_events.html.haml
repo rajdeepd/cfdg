@@ -21,8 +21,6 @@
                         %img{:src => "/assets/student_event.png"}
                       -else
                         %img{:src => "/assets/professional_event.png"}
-                  -#.eventImg
-                    -#%img{:alt => "No_image", :src => "/assets/event_snap_5.jpg"}
                     -if event.image.event_landscape.present?
                       = image_tag(event.image.event_landscape.url,:size => "260x150")
                     -elsif event.image.present?
@@ -33,7 +31,7 @@
                     %h5
                       =event.title.truncate(35)
                     .personName
-                      =event.user.fullname
+                      =event.user.try(:fullname)
                     %p.lightGrayText
                       =event.description.truncate(70)
                     %a{:href => "#{event_path(event)}"} View Event

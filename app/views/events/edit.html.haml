@@ -44,7 +44,7 @@
       .event-left
         .el-cont{:style => "text-align: center;margin-top:10px;"}
           %div{:style => " width: 250px;height:160px;background: #ccc;margin: 0 auto;"}
-            -if @event.image.present?
+            -if @event.image?
               = image_tag(@event.image, :style => "width:250px;height:160px")
             -else
               %img{:alt => "", :src => "/assets/img-h.png", :style => "width:250px;height:160px"}
@@ -86,12 +86,7 @@
       #options{:style => "width:628px; overflow: hidden;"}
         %button.btn-a-small.flt-right{:style => "margin-right:10px;", :id=>"event_form_submit"} UPDATE
         /%button.btn-c-small.flt-right{:style => "margin-right:10px;"} DISCARD
-
-  -#= link_to 'Show', @event
-  -#\|
-  -#= link_to 'Back', events_path
-
-
+        
 :javascript
   $(document).ready(function(){
     $('.edit_event').validate({

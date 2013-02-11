@@ -74,14 +74,8 @@
         = select_tag "chapter_type", options_for_select(["All","Professional","Student"]), :class =>"selectID"
         -#= submit_tag "Search", :class =>"orangeBtn"
         = button_tag "Search" , :class => "orangeBtn search"
-
-        -#%select.selectID{:name => "country_id", :tabindex => "1"}
-        -#  %option Pune
-        -#  %option Nagpur
-        -#  %option India
-        -#%button.signUp.orangeBtn Search
       %a.signUp.btn{:href => "#{list_chapters_path(:all_chapters =>true)}"} View all Chapters
-    =render :partial => "chapter_list"
+    =render "chapter_list"
 
 :javascript
   $(document).ready(function(){

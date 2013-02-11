@@ -6,10 +6,21 @@ class HomeController < ApplicationController
   layout "application"
 
   def index
-    @country, @country_count, @chapter_count, @user_count, @event_count, @upcoming_events = Event.build_hash
-    if @current_user && @current_user.fullname?
-      redirect_to edit_user_path(current_user,:email => current_user.email)
-      flash[:error] = "Please fill up your name."
+    @country = []
+    Chapter.all.each do |i|
+      @country.push(i.country_name)
+    end
+    @country_count = @country.uniq.count
+    @chapter_count = Chapter.all.length
+    @event_count = Event.all.length
+    @user_count = User.all.length
+    @upcoming_events = Event.get_upcoming_events
+    if @current_user.present?
+      if @current_user.fullname.present?
+      else
+        redirect_to edit_user_path(current_user,:email => current_user.email)
+        flash[:error] = "Please fill up your name."
+      end
     end
   end
 
@@ -38,20 +49,7 @@ class HomeController < ApplicationController
     end
   end
 
-  def login
-
-  end
-
-  def autocomplete_city_details
-    # TODO: Use scope and move model logic to corresponding City model
-    city = City.where("details like ?","#{params[:term]}%")
-    data = city.collect{|i| {:id => i.details, :value => i.details}}
-    respond_to do |format|
-      format.json{ render :json => data}
-    end
-  end
-
-  private
+  protected
 
   def get_markers
     markers = []
@@ -68,23 +66,6 @@ class HomeController < ApplicationController
     markers
   end
 
-  def announcements
-    @announcements = Announcement.order("created_at DESC").first(3)
-  end
-
-  def chapters
-    @chapters = Chapter.incubated_or_active
-    @markers = get_geocodes.to_json
-  end
-
-  def get_address(chapter)
-    city = chapter.city_name.blank? ? "" : chapter.city_name + ","
-    state = chapter.state_name.blank? ? "" : chapter.state_name + ","
-    country = chapter.country_name.blank? ? "" : chapter.country_name
-    city + state + country
-  end
-
-
   def get_geocodes
     markers = []
     @chapters.each do |chapter|
@@ -93,5 +74,23 @@ class HomeController < ApplicationController
     end
     markers
   end
+
+
+  def get_address(chapter)
+    city = chapter.city_name.blank? ? "" : chapter.city_name + ","
+    state = chapter.state_name.blank? ? "" : chapter.state_name + ","
+    country = chapter.country_name.blank? ? "" : chapter.country_name
+    city + state + country
+  end
+
+  def announcements
+    @announcements = Announcement.order("created_at DESC").first(3)
+  end
+
+  def chapters
+    @chapters = Chapter.incubated_or_active || []
+    @markers = get_geocodes.to_json
+  end
+
 
 end

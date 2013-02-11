@@ -41,7 +41,7 @@
             %h3 create an event
           .eventHeader
           .borderWithShadow
-          =form_for @event, :url => chapter_events_path(params[:chapter_id]),:method => "POST" ,:html =>{ :class => "form-horizontal"} do |f|
+          =form_for @event, :url => chapter_events_path(@chapter),:method => "POST" ,:html =>{ :class => "form-horizontal"} do |f|
             - if @event.errors.any?
               %ul
                 - @event.errors.full_messages.each do |msg|

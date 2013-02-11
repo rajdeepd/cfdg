@@ -28,11 +28,6 @@
               .controls
                 %h5 Enter Event Agenda
             .agendaDiv
-              -#.agendaBox.clearfix
-              -#  %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam est dui, laoreet et malesuada sit amet, ultricies eu nisi. Sed condimentum malesuada ante.
-              -#  .editDeleteBtn
-              -#    %a.editIcon{:href => '#'}
-              -#    %a.deleteThikIcon{:href => '#'}
               - if @existing_agenda.present?
                 -@existing_agenda.each do |agenda|
                   = render "append_agenda",:description => agenda.description,:agenda_id => agenda.id
