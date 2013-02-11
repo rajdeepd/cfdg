@@ -329,9 +329,10 @@ class EventsController < ApplicationController
       if !@chapter.am_i_chapter_memeber?(@user.id)
             ChapterMember.create({:memeber_type=>ChapterMember::MEMBER, :user_id => @user.id, :chapter_id => @chapter.id})
           end
-      redirect_to on_the_spot_registration_event_path(@event),:notice => "Registered Successfully!"
+      #redirect_to on_the_spot_registration_event_path(@event),:notice => "Registered Successfully!"
+      redirect_to on_the_spot_registration_event_path(@event), :flash => { :success => "Registered Successfully!" }
     else
-      flash[:notice] = "User already exists"
+      flash[:notice] = "User already exists!"
       render :on_the_spot_registration
     end
   end

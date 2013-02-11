@@ -2,6 +2,8 @@
 .content.wrapper
   %span.LV_invalid
     = flash[:notice]     if flash[:notice]
+  %span.LV_valid
+    = flash[:success]     if flash[:success]
   = form_for(@user ,:url => create_on_spot_user_event_path(@event),:method => :post) do |f|
     .event-form
       .event-left{:style => "width:100%;"}
@@ -51,4 +53,7 @@
         $("#event_user_add").attr("disabled","disabled");
       };
     });
+    $('.input-b').val("");
+    $(".LV_valid").fadeOut(5000,"swing","")
+    $(".LV_invalid").fadeOut(5000,"swing","")
   });

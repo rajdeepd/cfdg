@@ -179,6 +179,15 @@ span.LV_invalid {
     margin-bottom: 10px;
     margin-top: -5px;
 }
+
+span.LV_valid {
+    display: block;
+    color: #1B9D21;
+    font-size: 12px;
+    margin-bottom: 10px;
+    margin-top: -5px;
+}
+
 .eventImageHolder {
     float: left;
     width: 150px;
