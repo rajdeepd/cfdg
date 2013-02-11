@@ -26,10 +26,10 @@
           / %a.flt-right{:href => "#", :style => "padding-left:10px"}
           /   %span
           /     %img{:src => "/assets/youtube.png"}/
-          -if event.id == 2
+          -#-if event.id == 2
             %label.label-25 Attendees: #{37}
-          -else
-            %label.label-25 Attendees: #{event.event_members.size}
+          -#-else
+          %label.label-25 Attendees: #{event.event_members.size}
           %p.label-26{:id => "full_content"}
-            #{event.description} 
+            #{event.description.truncate(160)}
   = will_paginate(@past_events, :class => 'pgt-bar',:inner_window => 2, :outer_window => 0, :renderer => RemoteLinkRenderer, :previous_label => '&lt; PREVIOUS'.html_safe, :next_label => 'NEXT &gt;'.html_safe)

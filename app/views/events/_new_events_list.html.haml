@@ -149,7 +149,7 @@
                 #{Time.parse(event.event_start_time_in_time.to_s).strftime('%I:%M %p')} #{Date.parse(event.event_start_date_in_date.to_s).strftime(",%A %b %d, %Y")} I #{event.entry_fee}  per person
               Location: #{event.venue}
             %p.label-26{:id => "full_content"}
-              #{event.description}
+              #{event.description.truncate(160)}
     -if @upcoming_events.size > 2
       %ul
         %li.flt-right{:style => "margin-top:10px;"}
