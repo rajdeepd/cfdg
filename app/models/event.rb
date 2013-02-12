@@ -1,5 +1,8 @@
 class Event < ActiveRecord::Base
+  include PublicActivity::Model
+  tracked
   stampable
+
   acts_as_soft_deletable
   has_many :event_members
   has_many :users , :through => :event_members

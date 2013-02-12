@@ -1,0 +1,5 @@
+.content.wrapper
+  %table.table-a
+    -@activities.each do |activity|
+      %tr
+        = render_activity(activity) 
