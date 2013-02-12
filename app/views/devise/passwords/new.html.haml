@@ -1,9 +1,54 @@
-%h2 Forgot your password?
-= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f|
+-#%h2 Forgot your password?
+-#= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f|
   = devise_error_messages!
   %p
     = f.label :email
     %br/
     = f.email_field :email
   %p= f.submit "Send me reset password instructions"
-= render :partial => "devise/shared/links"
+-#= render :partial => "devise/shared/links"
+
+= javascript_include_tag "jquery.validate"
+.content.wrapper
+  .loginContent.forgotPasswordWrapper
+    .row
+      .span10.offset1
+        .loginLayout.clearfix
+          .plainBlueHeader
+            %h3 Forgot Password
+          .loginLeftPanel.loginVisual
+            %ul
+              %li
+                Create & Attend the
+                %span.upperCaseBold events
+                in your city.
+              %li
+                Share your
+                %span.upperCaseBold knowledge
+              %li
+                Discuss your
+                %span.upperCaseBold thoughts
+              %li
+                Explore the
+                %span.upperCaseBold developers world
+          .loginRightPanel
+            .loginText
+              Enter Your Email
+            =form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f|
+              -#= devise_error_messages!
+              = f.email_field :email , :placeholder => "Email*"
+              = f.submit "Continue" ,:class => "orangeBtn"
+
+
+:javascript
+  $(document).ready(function(){
+
+    $('#new_user').validate({
+      rules: {
+        "user[email]": {
+          required: true,
+          email: true
+        }
+      }
+    });
+  });

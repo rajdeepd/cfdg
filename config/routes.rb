@@ -56,11 +56,18 @@ CloudfoundryUsergroups::Application.routes.draw do
 #resources :events, :has_many => :comments
 
 #scope ':locale' do
-  devise_for :users , :controllers => { :registrations => "registrations" } do
-    get '/signin' => 'devise/sessions#new'   
+  devise_for :users , :controllers => { :registrations => "registrations" ,
+                                          :confirmations => "confirmations",
+                                          :passwords => 'passwords',
+                                          :sessions => "sessions"} do
+    #get '/signin' => 'devise/sessions#new'
+    #get '/users/confirm', :to => 'devise/confirmations#new'
+    #get '/users/reset_password', :to => 'devise/passwords#new'
+    #get '/users/change_password', :to => 'devise/passwords#edit',
+    get '/signin' => 'sessions#new'
     get '/users/confirm', :to => 'devise/confirmations#new'
-    get '/users/reset_password', :to => 'devise/passwords#new'
-    get '/users/change_password', :to => 'devise/passwords#edit'
+    get '/users/reset_password', :to => 'passwords#new'
+    get '/users/change_password', :to => 'passwords#edit'
   end
   get "admin/log_out" => "admin/sessions#destroy", :as => "log_out"
   get '/sign_up' , :to => 'users#edit'

@@ -1,5 +1,5 @@
-%h2 Change your password
-= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f|
+-#%h2 Change your password
+-#= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f|
   = devise_error_messages!
   = f.hidden_field :reset_password_token
   %p
@@ -11,4 +11,45 @@
     %br/
     = f.password_field :password_confirmation
   %p= f.submit "Change my password"
-= render :partial => "devise/shared/links"
+-#= render :partial => "devise/shared/links"
+
+.loginContent.forgotPasswordWrapper
+  .row
+    .span10.offset1
+      .loginLayout.clearfix
+        .plainBlueHeader
+          %h3 Reset Password
+        .loginLeftPanel.loginVisual
+          %ul
+            %li
+              Create & Attend the
+              %span.upperCaseBold events
+              in your city.
+            %li
+              Share your
+              %span.upperCaseBold knowledge
+            %li
+              Discuss your
+              %span.upperCaseBold thoughts
+            %li
+              Explore the
+              %span.upperCaseBold developers world
+        .loginRightPanel
+          .loginText Enter New Password
+          = form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f|
+            = devise_error_messages!
+            = f.password_field :password , :placeholder => "New Password"
+            = f.password_field :password_confirmation ,:placeholder => "Confirm New Password"
+            = hidden_field_tag :reset_password_token , params[:reset_password_token]
+
+            %button.orangeBtn{:href => "#"} Reset Password
+
+:javascript
+  $(document).ready(function(){
+    $("#user_password").bind("cut copy paste",function(e) {
+      e.preventDefault();
+    });
+    $("#user_password_confirmation").bind("cut copy paste",function(e) {
+      e.preventDefault();
+    });
+  });
