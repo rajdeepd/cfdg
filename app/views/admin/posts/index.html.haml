@@ -3,7 +3,7 @@
     %h5.customPostHeading
       All Posts
       .flt-right
-        =link_to "new post",new_admin_chapter_post_path(params[:chapter_id]),:class => "btn-a-small change_status" ,:method => "get"
+        =link_to "Create Post",new_admin_chapter_post_path(params[:chapter_id]),:class => "btn-a-small change_status" ,:method => "get"
     //%input.input-b.flt-right.size-d.label-25{:placeholder => "search", :type => "text"}/
   - if @posts.present?
     %table.table-e
@@ -25,8 +25,9 @@
             %td
               %h5.label-48= post.description.truncate(72)
             %td
-              =link_to "Show",admin_chapter_post_path(params[:chapter_id],post),:class => "btn-a-small change_status customBtn" ,:method => "get"
-              =link_to "Edit",edit_admin_chapter_post_path(params[:chapter_id],post),:class => "btn-a-small change_status customBtn" ,:method => "get"
+              .customLinksWrapper
+                =link_to "Show",admin_chapter_post_path(params[:chapter_id],post),:class => "btnLinkSmall change_status " ,:method => "get"
+                =link_to "Edit",edit_admin_chapter_post_path(params[:chapter_id],post),:class => "btnLinkSmall change_status " ,:method => "get"
 
 
         %tr
