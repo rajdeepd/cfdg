@@ -41,7 +41,7 @@
                 %br/
                 %div{:class => "msg#{i}" ,:style => "display:none;"}
                   %div{:class=>"reply-msg#{mail.id}"}
-                    =render :partial => 'reply', :locals => {:mail => mail}
+                    =render 'reply', :mail => mail
   = will_paginate(@mail_messages, :class => 'pgt-bar',:inner_window => 2, :outer_window => 0, :renderer => RemoteLinkRenderer, :previous_label => '&lt; PREVIOUS'.html_safe, :next_label => 'NEXT &gt;'.html_safe)
 
 :javascript

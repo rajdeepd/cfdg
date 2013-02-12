@@ -1,2 +1,2 @@
 :plain
-  $("#chapter#{@chapter.id}").html("#{escape_javascript(render :partial => 'message',  :locals => {:chapter => @chapter})}");
+  $("#chapter#{@chapter.id}").html("#{escape_javascript(render 'message',  :chapter => @chapter)}");

@@ -7,7 +7,7 @@
         #welcome
           %h1.label-17 Welcome #{@user.fullname}!
           %div.userFixImage
-            - if @user.avatar_file_name && (@user.errors[:avatar_content_type].blank? && @user.errors[:avatar_file_size].blank?)
+            - if @user.avatar? && (@user.errors[:avatar_content_type].blank? && @user.errors[:avatar_file_size].blank?)
               %img.profile-image{:src => @user.try(:avatar).url(:medium)}
             - else
               %img.profile-image{:src => "/assets/default-Profile-Image.png"}

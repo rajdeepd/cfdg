@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
   stampable
   has_one :eventbrite_oauth_token
   has_many :chapter_members
+  has_many :event_members
   has_many :chapters , :through => :chapter_members
   has_many :events , :through => :event_members
   # Setup accessible (or protected) attributes for your model
@@ -33,54 +34,34 @@ class User < ActiveRecord::Base
   end
 
   def change_reset_password_token
-    Rails.logger.info "RESET PASSWORD TOKEN MAKING Nil"
-    Rails.logger.info self.reset_password_token.inspect
-    Rails.logger.info self.inspect
-    self.reset_password_token =  nil
-    self.save
-    Rails.logger.info self.reset_password_token.inspect
-    Rails.logger.info self.inspect
+    reset_password_token =  nil
+    save
   end
 
   def get_user_image
-    if self.avatar_file_name.present?
-      self.avatar_file_name
+    if avatar?
+      avatar_file_name
     else
       "no_image.jpg"
     end
   end
 
   def user_profile_completion_status
+    status = false
     user_profile_status = 6
-    if self.location.blank?
-      user_profile_status = user_profile_status - 1
-    end
-    if self.avatar.nil?
-      user_profile_status = user_profile_status - 1
-    end
-    if self.twitter_url.blank?
-      user_profile_status = user_profile_status - 1
-    end
-    if self.linkedin_url.blank?
-      user_profile_status = user_profile_status - 1
-    end
-    if self.website_url.blank?
-      user_profile_status = user_profile_status - 1
-    end
-    if self.email.blank?
-      user_profile_status = user_profile_status - 1
-    end
-    #user_profile_status.to_i
-    if user_profile_status.to_i == 6
-      return true
-    else
-      return false
-    end
+    user_profile_status -=  1 unless location?
+    user_profile_status -= 1 unless avatar?
+    user_profile_status -= 1 unless twitter_url?
+    user_profile_status -= 1 unless linkedin_url?
+    user_profile_status -= 1 unless  website_url?
+    user_profile_status -= 1 unless email?
+    status = true if user_profile_status == 6
+    status
   end
 
   def get_user_past_events
     past_events = []
-    user_all_events = EventMember.find_all_by_user_id(self).collect{|i| i.event}
+    user_all_events = events
     user_all_events.compact.each do |event|
       if((Time.parse(event.event_start_date+" "+event.event_start_time) < Time.now))
         past_events.push(event)
@@ -91,7 +72,7 @@ class User < ActiveRecord::Base
 
   def get_user_upcoming_events
     upcoming_events = []
-      user_all_events = EventMember.find_all_by_user_id(self).collect{|i| i.event}
+      user_all_events =  events
       user_all_events.compact.each do |event|
         if((Time.parse(event.event_start_date+" "+event.event_start_time) >= Time.now))
           upcoming_events.push(event)
@@ -99,7 +80,5 @@ class User < ActiveRecord::Base
       end
     upcoming_events
   end
-
-
-
+  
 end

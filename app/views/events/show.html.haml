@@ -110,7 +110,6 @@
       $(".widget-nascar-list h2").text("#{t('menu.signup_with')}");
     });
   });
--#=render :partial => "/shared/new_header"
 - if(@is_i_admin == true)
   .content.wrapper
     .content-c
@@ -149,7 +148,7 @@
         -#.mapDiv
         -#  %span.close x
         -#  %img{:src => "/assets/map.png"}
-        = render :partial => "event_map"
+        = render "event_map"
     .layoutWrapper
       .row
         .span8
@@ -273,8 +272,6 @@
             -#%img.chapterThumbnail{:src => "/assets/pune_chapter.jpg"}/
             =image_tag("logo-b.png",:size => "60x60",:class => "chapterThumbnail")
             %h3 #{@event.chapter.name}
-          -#= render '/events/members_list'
-
           .eventPeopleList
             .listHeader
               %span administrator
