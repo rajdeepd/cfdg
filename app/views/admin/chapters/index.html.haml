@@ -66,6 +66,6 @@
                                 = chapter.messages.root.try(:body)
                             %td.tb-3-4{:style => "width:150px;"}
                         %table.table-b{:id => "chapter#{chapter.id}"}
-                          = render :partial => "message" , :locals => {:chapter => chapter}
+                          = render "message" , :chapter => chapter
                 -else
                   No Request

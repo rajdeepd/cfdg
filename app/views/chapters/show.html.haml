@@ -25,7 +25,6 @@
 
 
 
--#=render :partial => "/shared/new_header"
 .content.chapterDetails
   .breadCrumb
     %span Chapters
@@ -47,7 +46,7 @@
         %span.close
           %i.closeIcon
         -#%img{:src => "/assets/map.png"}
-        = render :partial => "chapter_map"
+        = render "chapter_map"
   -if !@is_part_of_chapter
     .joinChapter
       = form_tag join_a_chapter_chapters_path, :method => :post do
@@ -106,7 +105,7 @@
                             -#%span People Attending
 
           .past_events
-            =render :partial => "past_events"
+            =render "past_events"
           .slider.clearfix
             .sliderHeading
               %h3 Chapter Gallery
@@ -156,7 +155,7 @@
                       %p #{i.description.truncate(197)}
                       %a.btn.learnMore{:href => "#{post_path(i)}"} View more
       .span4
-        =render :partial => "event_admin_and_members_list"
+        =render "event_admin_and_members_list"
 
 :javascript
   Chapters.init();
