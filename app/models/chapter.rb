@@ -3,6 +3,7 @@ class Chapter < ActiveRecord::Base
   after_create :persist_geocode
   acts_as_soft_deletable
 
+  after_create :add_member
 
   has_many :chapter_members ,:dependent => :destroy
 
@@ -31,6 +32,10 @@ class Chapter < ActiveRecord::Base
   scope :delist_chapters, where(:chapter_status => :delist)
   scope :incubated_or_active , where(:chapter_status => [:active,:incubated])
 
+  def add_member(role = ChapterMember::PRIMARY_COORDINATOR)
+    chapter_members.create({:memeber_type=>role, :user_id => @current_user.id})
+  end
+
   state_machine :chapter_status, :initial => :applied do
 
     # The first transition that matches the status and passes its conditions
@@ -58,6 +63,23 @@ class Chapter < ActiveRecord::Base
       transition :delist => :incubated
     end
 
+  end
+
+  def build_show_hash
+    is_part_of_chapter = chapter_members.where(:user_id=> @current_user.try(:id)).any?
+
+    primary_coordinator = chapter_members.where(:memeber_type => ChapterMember::PRIMARY_COORDINATOR).first
+    secondary_coordinators = chapter_members.where({:memeber_type => ChapterMember::SECONDARY_COORDINATOR})
+    members = chapter_members.where(:memeber_type => ChapterMember::MEMBER)
+
+    totalcount = chapter_members.size
+    marker =[]
+    if geolocation
+      geo_tag = geolocation
+      marker << {:lat => geo_tag.latitude, :lng => geo_tag.longitude, :title => geo_tag.title}
+    end
+    marker =marker.to_json
+    return is_part_of_chapter, primary_coordinator, secondary_coordinators, members, totalcount, marker
   end
 
   def location

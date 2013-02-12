@@ -20,7 +20,7 @@ class EventsController < ApplicationController
   def new
     @chapter = Chapter.find_by_id(params[:chapter_id])
     @event = @chapter.events.build
-    # respond_with @event
+    respond_with @event
   end
 
   def create
@@ -50,14 +50,12 @@ class EventsController < ApplicationController
 
   def delete_an_event
     @chapter = @event.chapter
-    # @event.event_members.each do|member| member.soft_delete! end
-    # @event.soft_delete!
     @event.destroy
     get_upcoming_and_past_events(@chapter.events, true)
     @profile_page = false
-      respond_with @event do |f|
-        f.js{render "event_list"}
-      end
+    respond_with @event do |f|
+      f.js{render "event_list"}
+    end
   end
 
   def unfollow_an_event
@@ -213,17 +211,6 @@ class EventsController < ApplicationController
 
 
   # =>  Keeping it here....but dont understand what it is doing here....!!!!
-
-  def initialise_eventbrite_client
-    event_brite_oauthtoken = EventbriteOauthToken.find_by_user_id(@current_user.id)
-    if(event_brite_oauthtoken)
-      @eb_client = EventbriteClient.new({ access_token: event_brite_oauthtoken.event_brite_token})
-    else
-      @auth_client_obj = OAuth2::Client.new(EVENTBRITE_CLIENT_ID, EVENTBRITE_CLIENT_SECRET, {:site => EVENTBRITE_URL})
-      @accept_url = @auth_client_obj.auth_code.authorize_url( :redirect_uri => EVENTBRITE_REDIRECT_URL)
-    end
-  end
-
   def download_list
     require 'csv'
     @event = Event.find(params[:id])
@@ -240,19 +227,6 @@ class EventsController < ApplicationController
                                :type => "text/csv; charset=iso-8859-1; header=present",
                                :disposition => "attachment; filename=event.csv" }
       format.json {render :json => @members}
-    end
-  end
-
-  def oauth_reader
-    if !params[:code].blank?
-      access_token_obj = @auth_client_obj.auth_code.get_token(params[:code], { :redirect_uri => EVENTBRITE_REDIRECT_URL, :token_method => :post })
-      eventbrite_entry = EventbriteOauthToken.new(:user_id => @current_user.id, :event_brite_token => access_token_obj.token)
-      eventbrite_entry.save!
-
-      @eb_client = EventbriteClient.new({ access_token: access_token_obj.token})
-    end
-    respond_to do |format|
-      format.html {redirect_to profile_path}# new.html.erb
     end
   end
 

@@ -10,8 +10,6 @@ class ApplicationController < ActionController::Base
 
 
   def current_user
-    #session[:user_id] = 1
-    #@current_user = nil
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
 
@@ -45,8 +43,6 @@ class ApplicationController < ActionController::Base
   def get_country(request)
     country= request.location.country
     country = "India" if country == "Reserved" #doing this coz in local(dev environment)  IP is 127.0.0.1 for this country is reserved
-    #logger.info "@@@@@@@@@@@@@@@@@@@@@@@ request.location file @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@#{request.location.inspect}"
-    #logger.info "####################### country in application.rb file ################################{country.inspect}"
     return country
   end
 

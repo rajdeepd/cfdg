@@ -7,9 +7,6 @@ class Event < ActiveRecord::Base
     has_many assoc.to_sym, :dependent=> :destroy
   end
 
-  after_create :create_trigger
-  after_update :update_trigger
-
   has_many :users , :through => :event_members
   has_many :comments, :as => :commentable
   has_one  :event_geolocation, :dependent => :destroy
@@ -19,6 +16,7 @@ class Event < ActiveRecord::Base
                   :address_line1,   :address_line2 ,:event_start_time ,:event_end_time, :city_name, :postal_code, :state_name,
                   :country_name ,:agenda_and_speakers,:image,:attendees_count
   mount_uploader :image, ImageUploader
+  
   validate :start_time_validation
   validates :title,:event_start_time ,:event_start_date, :event_end_date, :event_end_time ,:presence => true
   validates :event_start_date ,:format => {
@@ -30,7 +28,9 @@ class Event < ActiveRecord::Base
       :with => /^([0-3])?[0-9]\/[0-1][0-9]\/[1-9][0-9][0-9][0-9]$/,
       :message => "Date should be in dd/mm/yyyy format"
   } , :unless => Proc.new{|event| event.event_end_date.blank?}
-
+  
+  after_create :create_trigger
+  after_update :update_trigger
   delegate :attendees, :members, :speakers, :to=> :event_members
 
   def self.build_hash

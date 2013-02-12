@@ -1,0 +1,8 @@
+- if speaker
+  %li
+    %img{:src => speaker.avatar}
+    .speakerDetails
+      %input{:type=>"hidden", :value=>"#{speaker.id}"}
+      .speakerName= speaker.fullname
+      .speakerFrom= speaker.location
+    %button.closeTileIcon

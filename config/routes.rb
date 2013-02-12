@@ -20,6 +20,7 @@ CloudfoundryUsergroups::Application.routes.draw do
     end
     resources :events
     collection do
+      ## should be a member method
       post 'join_a_chapter'
       get  'chapter_admin_home_page'
       get 'search'

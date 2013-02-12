@@ -1,0 +1,88 @@
+.content.wrapper
+  .content-c
+    .cc-top
+      .banner-div{:style => "margin-bottom:5px;"}
+        .cfb-div
+          %h5.label-1 DEPLOY & SCALE
+          %h6.label-2 Focus on Your App,Not Plumbing
+      .div-b
+        %img.bg-logo-b{:src => "/assets/logo-b.png"}
+        %br/
+        -if !@is_part_of_chapter
+          = form_tag join_a_chapter_chapters_path, :method => :post do
+            = hidden_field_tag "chapter_id", "#{@chapter.id}"                            
+            - if @current_user.blank?
+              = button_tag 'JOIN US!' , :class => "btn-a signin join_us", :type => "button"
+            - else
+              = submit_tag 'JOIN US!' , :class => "btn-a join_us"
+      .div-a
+        %h2.label-17 #{@chapter.try(:name)}
+        %h5.label-18 Location: #{@chapter.try(:city_name)} | Founded on #{Time.parse(@chapter.try(:created_at).to_s).strftime('%b %d, %Y')}
+        %h5.label-20
+          Founded by
+          %a.label-20{:href => "#"}#{@chapter.user.try(:fullname)}
+          on #{Time.parse(@chapter.try(:created_at).to_s).strftime('%b %d, %Y')}
+        %h5.label-19
+          -#Primary Group Coordinator:
+          -#%label.label-20 #{@primary_coord.try(:user).email}
+          - member = ChapterMember.get_member(@current_user.id, @chapter.id).try(:first) if @current_user.present?
+          -if !@current_user.blank? and member.present?
+            %br
+            %span{:style=> "color:green;font-size:14px;"} Role: #{member.memeber_type.try(:titleize)}
+        -#-if @secondary_coords.present?
+          %h5.label-19
+            Group Coordinator:
+            %label.label-20
+              -@secondary_coords.each do |coord|
+                #{coord.user.email}
+      %ul.ul-e
+        -if @chapter.id == 3
+
+          %li
+            %h2.label-21 #{@totalcount + 28}
+            %h5.label-39 Members
+        -else
+          %li
+            %h2.label-21 #{@totalcount}
+            %h5.label-39 Members
+        %li
+          %h2.label-21 #{@chapter.events.try(:size)}
+          %h5.label-39 Events
+        %li{:style => "width:192px;height:133px;"}
+          %i.bg-img-e{:style => "width:182px;height:123px; "}
+          .black-bar
+            0 Photos in Event Name...
+          .info-bar
+            %h5.label-40
+              %span{:style => "font-size:17px;"} Status:
+              %b{:style => "color: orange;font-size: 16px;text-transform: uppercase;font-weight: bold;"}= @chapter.try(:chapter_status)
+            - last_event = @past_events.try(:first)
+            - if last_event.present?
+              %h5.label-40 Last Event Date: #{Time.parse(last_event.event_start_date.to_s).strftime('%b %d, %Y')}
+    .cc-left
+      %ul.ul-f
+        %li{:style=>"padding: 7px 20px;"}
+          %a{:href => "#",:style => "font-size:20px;", :id=>"chapter_page_posts", :chapter_id => @chapter.id} Post
+          %i.bg-arrow-down-b
+        %li.ulf-selected{:style=>"padding: 7px 20px;"}
+          %a{:href => "#" , :style => "font-size:20px;" ,:id=>"chapter_page_events", :chapter_id => @chapter.id} Events
+          %i.bg-arrow-down-b
+        / %li
+        /   %a{:href => "#"} Photos
+        /   %i.bg-arrow-down-b
+        -#-if @current_user.present? and (ChapterMember.am_i_coordinator?(@current_user.id, @chapter.id))
+          %li{:style => "float:right"}
+            -#%a.cp{:href => "#{chapter_event_path(@chapter)}" , :id=>"create_event_from_chapter", :chapter_id=> @chapter.id} + Create Event
+            =link_to "Create Event"  , new_chapter_event_path(@chapter) ,:id => "new_event", :class => "create_new_event"
+    -if @current_user.present? and (ChapterMember.am_i_coordinator?(@current_user.id, @chapter.id))
+      =link_to "Create Event"  , new_chapter_event_path(@chapter) ,:id => "new_event", :class => "create_new_event showEventChapter"
+      .clr
+      #chapter_show_events
+        = render '/events/events_list'
+        -#= render 'chapter_map'
+    /=render '/events/commentpartial'
+
+
+:javascript 
+  Chapters.init(); 
+  Events.init();

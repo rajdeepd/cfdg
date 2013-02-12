@@ -1,0 +1,36 @@
+%h4 Is Speaker already a CFDG member?
+.control-group
+  %label.control-label
+    Speaker Name
+  .controls
+    .addBox
+      %input{:type => "hidden", :value => "#{event}"}
+      %input{:type => "text", :id=> "user_autocomplete"}
+      %button.blueBtn#addSpeaker Add
+.speakersList
+  %ul
+    -@speakers.each do |speaker|
+      = render "speaker", :speaker=> speaker.user
+
+:javascript
+  $("#user_autocomplete").autocomplete({
+    source: "/users/search",
+    minLength: 2,
+    select: function(event, ui){
+    }
+  })
+
+  $("#addSpeaker").on("click", function(){
+    var that = $(this);
+    $.ajax({
+      url: "/events/" + that.parents(".controls").find("input:hidden").val() + "/add_speaker",
+      type: "POST",
+      dataType: "script",
+      data: {user: $("#user_autocomplete").val()}
+    });
+  });
+
+:css
+  .ui-autocomplete {
+    width: 237px!important; 
+  }
