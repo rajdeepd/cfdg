@@ -23,7 +23,8 @@ class ConfirmationsController < Devise::PasswordsController
       session[:is_allowed_to_login] = true
       redirect_to sign_up_path(:email => @confirmable.email)
     else
-      redirect_to home_index_path
+      #redirect_to home_index_path
+      redirect_to root_path
     end
 
   end
