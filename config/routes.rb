@@ -9,6 +9,8 @@ CloudfoundryUsergroups::Application.routes.draw do
   get '/about' => 'home#about' , :as => "about"
   get '/wiki' => 'home#wiki' , :as => "wiki"
   match'/admin', :to => "admin/sessions#new"
+
+  resources :activity_logs
   
   resources :chapters do
     resources :events

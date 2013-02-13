@@ -13,6 +13,7 @@
 //= require jquery.min
 //= require jquery_ujs
 //= require jquery.remotipart
+//= requrie jquery.timeago
 //= require_tree .
 
 $(function(){

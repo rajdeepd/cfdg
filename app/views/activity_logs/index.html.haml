@@ -1,0 +1,31 @@
+- content_for :header, "News feed"
+.content.wrapper
+  %table.table-a
+    -@activities.each do |activity|
+      %tr
+        = render_activity(activity, :layout => "layouts/activity_wrapper")
+:javascript
+  $("abbr.timeago").timeago();
+
+    // We use the same API key provided in config/pusher.yml
+    var socket = new Pusher('<%= Pusher.key %>');
+    var channel = socket.subscribe('public_activity');
+    channel.bind('new-activity',
+        function(data) {
+          var feed = $('#activity-feed');
+          if (feed.length > 0){
+            /*
+              Retrieve the HTML of activity using the activity_id we
+              received from Pusher notification.
+             */
+            $.ajax({
+              url: feed.data("fetchUrl"), // data attribute containing the path we send the request to
+              data: {id: data.activity_id},
+              success: function(htmlData) {
+                feed.prepend(htmlData).children(":first").hide().slideDown();
+                feed.find("abbr.timeago").timeago();
+              }
+            });
+          }
+        }
+    );
