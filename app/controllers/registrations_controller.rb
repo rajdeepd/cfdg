@@ -17,6 +17,7 @@ class RegistrationsController  < Devise::RegistrationsController
       #redirect_to home_index_path
       redirect_to root_path
     else
+      flash.now[:custom_error] = "Invalid email or password"
       render :action => :new
     end
   end

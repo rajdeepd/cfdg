@@ -1687,3 +1687,78 @@ form.new_comment textarea {
     width: 100%;
 }
 
+/*Error or Notification Classes starts here*/
+
+.alert {
+  padding: 8px 35px 8px 14px;
+  margin-bottom: 18px;
+  color: #c09853;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+  background-color: #fcf8e3;
+  border: 1px solid #fbeed5;
+  -webkit-border-radius: 4px;
+     -moz-border-radius: 4px;
+          border-radius: 4px;
+}
+.alert .close {
+  position: relative;
+  top: -2px;
+  right: -913px;
+  line-height: 18px;
+    color: #c09853;
+}
+
+.alert p{
+  color: #c09853;
+}
+
+.notice {
+  padding: 8px 35px 8px 14px;
+  margin-bottom: 18px;
+  color: #c09853;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+  background-color: #fcf8e3;
+  border: 1px solid #fbeed5;
+  -webkit-border-radius: 4px;
+     -moz-border-radius: 4px;
+          border-radius: 4px;
+}
+.notice .close {
+  position: relative;
+  top: -2px;
+  right: -913px;
+  line-height: 18px;
+    color: #c09853;
+}
+
+.notice p{
+  color: #c09853;
+}
+.custom_error {
+  padding: 8px 35px 8px 14px;
+  margin-bottom: 18px;
+  /*color: #b94a48;*/
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+  background-color: #f2dede;
+  border: 1px solid #fbeed5;
+  -webkit-border-radius: 4px;
+     -moz-border-radius: 4px;
+          border-radius: 4px;
+}
+.custom_error .close {
+  position: relative;
+  top: -2px;
+  right: -913px;
+  line-height: 18px;
+  color: #b94a48;
+}
+
+.fade_in p{
+    margin-top: -20px;
+}
+
+.custom_error p{
+    color: #b94a48;
+}
+
+/*Error or Notification Classes ends here*/

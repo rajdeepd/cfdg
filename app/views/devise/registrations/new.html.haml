@@ -25,6 +25,7 @@
 -#= render :partial => "devise/shared/links"
 = javascript_include_tag "jquery.validate"
 .content.wrapper
+  = render 'shared/errors_or_notifications'
   .loginContent.signUpWrapper
 
     .loginLayout.clearfix

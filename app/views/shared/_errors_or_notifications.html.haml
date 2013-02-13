@@ -1,0 +1,12 @@
+- [:notice, :custom_error,:error, :alert].each do |level|
+  - unless flash[level].blank?
+    %div{:class => "#{level} fade_in"}
+      %a.close{"data-dismiss" => "alert", :href => "#"} ×
+      = content_tag :p, flash[level]
+
+:javascript
+  $(document).ready(function(){
+    $(".close").on("click",function(){
+      $(".fade_in").fadeOut(1000);
+    });
+  });

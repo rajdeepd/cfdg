@@ -12,7 +12,6 @@ class SessionsController <  Devise::SessionsController
 
   # POST /resource/sign_in
   def create
-    #binding.remote_pry
     logger.info("#######{params.inspect}")
     user = User.find_by_email(params[:user][:email])
     if !user.nil?
@@ -33,12 +32,13 @@ class SessionsController <  Devise::SessionsController
 
       else
         logger.info "inside if status"
-        flash.now.alert = "Invalid email or password"
+        #flash.now.alert = "Invalid email or password"
+        flash.now[:custom_error] = "Invalid email or password"
         render "new"
       end
     else
       logger.info("#######{user.inspect}")
-      flash.now.alert = "Invalid email or password"
+      flash.now[:custom_error] = "Invalid email or password"
       render "new"
     end
   end

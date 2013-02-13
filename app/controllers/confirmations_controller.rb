@@ -24,6 +24,7 @@ class ConfirmationsController < Devise::PasswordsController
       redirect_to sign_up_path(:email => @confirmable.email)
     else
       #redirect_to home_index_path
+      flash[:custom_error] = "This account is already confirmed"
       redirect_to root_path
     end
 
