@@ -16,6 +16,8 @@
             %h4.form1 Please fill in the details given below
             %div
               = f.text_field :location , :placeholder => "Location", :class => "textboxes input-a"
+              %br
+                = text_field_tag "user[fullname]" ,@user.fullname, :placeholder => "Name *", :class => "textboxes input-a"
           .line_space
           #formsecond
             %h4.form1 Optional fields
@@ -37,9 +39,9 @@
   $(document).ready(function(){
       $('.edit_user').validate({
         rules: {
-          //"user[fullname]": {
-          //  required: true
-          //},
+          "user[fullname]": {
+            required: true
+          }
           //"user[mobile]": {
           //  digits: true
           //}
