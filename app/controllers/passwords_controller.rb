@@ -44,7 +44,7 @@ class PasswordsController <  Devise::PasswordsController
       #redirect_to home_index_path
       redirect_to root_path
     else
-      flash[:custom_error] = "Wrong Email Id"
+      flash[:custom_error] = "Invalid Credentials"
     end
   end
 
