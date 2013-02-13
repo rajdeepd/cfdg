@@ -1,6 +1,4 @@
-/ %td
-/   = @current_user.email
-/ %td
-/   = activity.trackable_type
-/ %td
-/   = activity.owner_type
+- single_content_for :action do
+  =" created a new " 
+  = link_to_trackable a.trackable, a.trackable_type
+= p[:summary]
