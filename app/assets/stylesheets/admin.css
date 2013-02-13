@@ -1392,7 +1392,13 @@ li.ulg-expanded .div-d{
     color: red;
     font-size: 12px;
 }
+.customTabs #tabs{
+	border-top: 2px solid #ebebeb;
+}
 
+.customTabs .cd-top h1.label-42{
+	border: none;
+} 
 
 #event_event_start_time_input p.inline-errors{
     width: 300px;
@@ -1405,4 +1411,9 @@ li.ulg-expanded .div-d{
 }
 .customPostHeading .flt-right .btn-a-small{
     padding: 7px 11px;
+}
+
+#activities-tabs{
+	margin: 20px;
+	font-size: 13px;
 }

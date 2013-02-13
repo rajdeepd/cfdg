@@ -86,6 +86,8 @@ Chapters ={
         });
         //userprofile jquery
         $('.ul-f, .ul-i').unbind('click').bind('click', function(e){
+            $("#tabs-1").show();
+            $("#tabs-2").hide();
             e.preventDefault();
 
 

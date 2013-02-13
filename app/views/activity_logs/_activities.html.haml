@@ -1,0 +1,20 @@
+#activities-tabs
+  -@activities.each do |activity|
+    = render_activity(activity, :layout => "layouts/activity_wrapper")
+  =paginate @activities, :remote=> true
+:javascript
+  $(function() {
+    $("#activities-tabs").tabs({
+          beforeLoad: function( event, ui ) {
+              ui.jqXHR.error(function() {
+                  ui.panel.html(
+                      "Couldn't load this tab. We'll try to fix this as soon as possible. " +
+                      "If this wouldn't be a demo." );
+              });
+          },
+          activate: function( event, ui ){
+            ui.newTab.attr('class','uli-selected')
+            ui.oldTab.attr('class','uli-selected1')
+          }
+     });
+  });
