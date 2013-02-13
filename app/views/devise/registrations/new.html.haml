@@ -1,5 +1,5 @@
-%h2 Sign up
-= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
+-#%h2 Sign up
+-#= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
   = devise_error_messages!
   %p
     = f.label :first_name
@@ -22,4 +22,66 @@
     %br/
     = f.password_field :password_confirmation
   %p= f.submit "Sign up"
-= render :partial => "devise/shared/links"
+-#= render :partial => "devise/shared/links"
+= javascript_include_tag "jquery.validate"
+.content.wrapper
+  = render 'shared/errors_or_notifications'
+  .loginContent.signUpWrapper
+
+    .loginLayout.clearfix
+      .plainBlueHeader
+        %h3 Signup
+      .loginLeftPanel.loginVisual
+        %ul
+          %li
+            Create & Attend the
+            %span.upperCaseBold events
+            in your city.
+          %li
+            Share your
+            %span.upperCaseBold knowledge
+          %li
+            Discuss your
+            %span.upperCaseBold thoughts
+          %li
+            Explore the
+            %span.upperCaseBold developers world
+      .loginRightPanel
+
+        .loginText Sign Up with email
+        = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
+          -#= devise_error_messages!
+          = f.email_field :email,:value => session[:email] , :placeholder => "Email*"
+          = f.password_field :password    ,:placeholder => "Password*"
+          = f.password_field :password_confirmation ,:placeholder => "Confirm Password*"
+          = hidden_field_tag "user[is_proprietary_user]" , true
+          = f.submit "Sign up" , :class => "orangeBtn"
+        %p
+          Already Have An Account?
+          %a{:href => "#{signin_path}"} Login
+
+
+:javascript
+  $(document).ready(function(){
+    $("#user_password").bind("cut copy paste",function(e) {
+      e.preventDefault();
+    });
+    $("#user_password_confirmation").bind("cut copy paste",function(e) {
+      e.preventDefault();
+    });
+    $('#new_user').validate({
+      rules: {
+        "user[email]": {
+          required: true,
+          email: true
+        },
+        "user[password]": {
+          required: true
+        },
+        "user[password_confirmation]": {
+          required: true
+        }
+      }
+
+    });
+  });

@@ -1521,15 +1521,107 @@ label.error{
     resize: none;
 }
 
-body {
-    padding-top: 60px;
+/*login page layout*/
+.loginLayout .plainBlueHeader h3{
+    color: #ffffff;
+    font-size: 16px;
 }
-.footer {
-    background-color: whiteSmoke;
-    border-top: 1px solid #E5E5E5;
-    margin-top: 70px;
-    padding: 70px 0;
+.loginLayout .plainBlueHeader{
+    background: #0097d7;
+    text-align: center;
+    padding: 10px 0;
+    margin-bottom: 80px;
 }
+.loginLayout .loginRightPanel{
+    width: 420px;
+    float: left;
+}
+.loginLayout .loginLeftPanel ul{
+    margin-left: 20px;
+    margin-top: 30px;
+}
+.loginLayout .loginLeftPanel ul li{
+    padding: 5px;
+    margin-bottom: 10px;
+    list-style: square;
+}
+.loginLayout .loginLeftPanel{
+    width: 380px;
+    float: left;
+    margin-left: 60px;
+}
+.googleLink{
+    background: url("gmail_icon.png") no-repeat;
+    width: 16px;
+    height: 16px;
+    display: block;
+    float: left;
+    margin-right: 10px;
+}
+.yahooLink{
+    background: url("yahoo_icon.png") no-repeat;
+    width: 16px;
+    height: 16px;
+    display: block;
+    float: left;
+}
+.loginRightPanel .socialNetworks a{
+    display: block;
+    width: 98px;
+    float: left;
+    margin-right: 10px;
+    background-color: white;
+    color: #333;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid #b5d7e5;
+    margin-bottom: 20px;
+}
+.loginRightPanel .socialNetworks a:hover{
+    background-color: #efefef;
+}
+.googleYahooBtn span.text{
+    float: left;
+}
+.loginRightPanel .socialNetworks a.googleYahooBtn{
+    width: 140px;
+}
+.divider {
+background: url("social_icon_divider.jpg") no-repeat;
+width: 1px;
+height: 18px;
+display: block;
+margin: 0 7px;
+float: left;
+}
+.loginText{
+    margin: 20px 0 10px;
+    font-weight: bold;
+}
+.loginRightPanel input{
+    display: block;
+    margin: 10px 0;
+    height: 20px;
+}
+.loginRightPanel input[type = "checkbox"]{
+    float: left;
+    margin: 3px 10px 0px 0;
+}
+.loginRightPanel a{
+    color: #0097d7;
+    margin-bottom: 5px;
+    display: inline-block;
+}
+.loginRightPanel a:hover{
+    color: #222222;
+}
+.loginRightPanel .orangeBtn{
+    width: 80px;
+    height: 30px;
+    padding: 5px;
+    border-radius: 3px;
+}
+
 abbr.timeago {
     border: medium none;
     color: #BBBBBB;
@@ -1595,3 +1687,79 @@ form.new_comment textarea {
     padding: 0;
     width: 100%;
 }
+
+/*Error or Notification Classes starts here*/
+
+.alert {
+  padding: 8px 35px 8px 14px;
+  margin-bottom: 18px;
+  color: #c09853;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+  background-color: #fcf8e3;
+  border: 1px solid #fbeed5;
+  -webkit-border-radius: 4px;
+     -moz-border-radius: 4px;
+          border-radius: 4px;
+}
+.alert .close {
+  position: relative;
+  top: -2px;
+  right: -913px;
+  line-height: 18px;
+    color: #c09853;
+}
+
+.alert p{
+  color: #c09853;
+}
+
+.notice {
+  padding: 8px 35px 8px 14px;
+  margin-bottom: 18px;
+  color: #c09853;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+  background-color: #fcf8e3;
+  border: 1px solid #fbeed5;
+  -webkit-border-radius: 4px;
+     -moz-border-radius: 4px;
+          border-radius: 4px;
+}
+.notice .close {
+  position: relative;
+  top: -2px;
+  right: -913px;
+  line-height: 18px;
+    color: #c09853;
+}
+
+.notice p{
+  color: #c09853;
+}
+.custom_error {
+  padding: 8px 35px 8px 14px;
+  margin-bottom: 18px;
+  /*color: #b94a48;*/
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+  background-color: #f2dede;
+  border: 1px solid #fbeed5;
+  -webkit-border-radius: 4px;
+     -moz-border-radius: 4px;
+          border-radius: 4px;
+}
+.custom_error .close {
+  position: relative;
+  top: -2px;
+  right: -913px;
+  line-height: 18px;
+  color: #b94a48;
+}
+
+.fade_in p{
+    margin-top: -20px;
+}
+
+.custom_error p{
+    color: #b94a48;
+}
+
+/*Error or Notification Classes ends here*/
