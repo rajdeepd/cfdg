@@ -1,6 +1,6 @@
 class Event < ActiveRecord::Base
   include PublicActivity::Model
-  tracked
+  tracked :owner=> proc {|controller, model| controller.current_user}
   stampable
 
   acts_as_soft_deletable

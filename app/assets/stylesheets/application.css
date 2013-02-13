@@ -1520,3 +1520,77 @@ label.error{
     width: 608px;
     resize: none;
 }
+
+body {
+    padding-top: 60px;
+}
+.footer {
+    background-color: whiteSmoke;
+    border-top: 1px solid #E5E5E5;
+    margin-top: 70px;
+    padding: 70px 0;
+}
+abbr.timeago {
+    border: medium none;
+    color: #BBBBBB;
+    cursor: default;
+    font-size: 12px;
+    font-weight: normal;
+}
+.page-header h1 small {
+    font-size: 13px;
+}
+.activity {
+    margin-bottom: 1em;
+    padding-left: 45px;
+    position: relative;
+}
+.activity .mega-icon {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 32px auto;
+    color: #BBBBBB;
+    height: 32px;
+    left: 0;
+    padding: 3px;
+    position: absolute;
+    top: 14px;
+    width: 32px;
+}
+.activity .body {
+    overflow: hidden;
+    padding: 0 0 1em;
+}
+.activity .body .title {
+    font-size: 14px;
+    font-weight: bold;
+    padding: 0 0 0.25em;
+}
+.activity .body .details .avatar {
+    background-color: white;
+    border: 1px solid #D0D0D0;
+    float: left;
+    line-height: 0;
+    margin-right: 0.7em;
+    padding: 2px;
+}
+.activity .body .details .message {
+    color: #666666;
+    display: inline;
+    font-size: 13px;
+}
+.post h2 {
+    margin-bottom: 10px;
+}
+.post h2 small {
+    font-size: 12px;
+}
+.activities-sidebar h3 {
+    text-align: center;
+}
+form.new_comment textarea {
+    -moz-box-sizing: border-box;
+    height: 100px;
+    padding: 0;
+    width: 100%;
+}

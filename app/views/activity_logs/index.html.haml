@@ -1,5 +1,6 @@
+- content_for :header, "News feed"
 .content.wrapper
   %table.table-a
     -@activities.each do |activity|
       %tr
-        = render_activity(activity) 
+        = render_activity(activity, :layout => "layouts/activity_wrapper")

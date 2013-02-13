@@ -13,10 +13,35 @@
 //= require jquery.min
 //= require jquery_ujs
 //= require jquery.remotipart
+//= requrie jquery.timeago
 //= require_tree .
 
 $(function(){
 
+  $("abbr.timeago").timeago();
+
+  // We use the same API key provided in config/pusher.yml
+  var socket = new Pusher('<%= Pusher.key %>');
+  var channel = socket.subscribe('public_activity');
+  channel.bind('new-activity',
+      function(data) {
+        var feed = $('#activity-feed');
+        if (feed.length > 0){
+          /*
+            Retrieve the HTML of activity using the activity_id we
+            received from Pusher notification.
+           */
+          $.ajax({
+            url: feed.data("fetchUrl"), // data attribute containing the path we send the request to
+            data: {id: data.activity_id},
+            success: function(htmlData) {
+              feed.prepend(htmlData).children(":first").hide().slideDown();
+              feed.find("abbr.timeago").timeago();
+            }
+          });
+        }
+      }
+  );
   $('.signin').click(function(){
     $('#navbar').accountChooser('showAccountChooser');   
   });

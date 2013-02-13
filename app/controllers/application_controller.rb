@@ -2,6 +2,9 @@ require 'will_paginate/array'
 class ApplicationController < ActionController::Base
   protect_from_forgery
   include Userstamp
+
+  include PublicActivity::StoreController
+  include ActionView::Helpers::TextHelper 
   before_filter :set_locale, :current_location
   #before_filter :set_cache_buster
   helper_method :current_user , :admin_user
