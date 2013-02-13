@@ -17,68 +17,64 @@
 
 = javascript_include_tag "jquery.validate"
 .content
-  .row
-    .span10.offset1
-      .loginLayout.clearfix
-        .plainBlueHeader
-          %h3 Member Login
-        .loginLeftPanel.loginVisual
-          %ul
-            %li
-              Create & Attend the
-              %span.upperCaseBold events
-              in your city.
-            %li
-              Share your
-              %span.upperCaseBold knowledge
-            %li
-              Discuss your
-              %span.upperCaseBold thoughts
-            %li
-              Explore the
-              %span.upperCaseBold developers world
-        .loginRightPanel
-          -#.loginText Login with
-          .socialNetworks.clearfix
-            -#%a{:href => "#"}
-            -#  %span.facebookLink
-            -#  %span.divider
-            -#  Facebook
-            -#%a{:href => "#"}
-            -#  %span.twitterLink
-            -#  %span.divider
-            -#  Twitter
-            -#%a{:href => "#"}
-            -#  %span.linkedInLink
-            -#  %span.divider
-            -#  Linked In
+  .loginLayout.clearfix
+    .plainBlueHeader
+      %h3 Member Login
+    .loginLeftPanel.loginVisual
+      %ul
+        %li
+          Create & Attend the
+          %span.upperCaseBold events
+          in your city.
+        %li
+          Share your
+          %span.upperCaseBold knowledge
+        %li
+          Discuss your
+          %span.upperCaseBold thoughts
+        %li
+          Explore the
+          %span.upperCaseBold developers world
+    .loginRightPanel
+      -#.loginText Login with
+      .socialNetworks.clearfix
+        -#%a{:href => "#"}
+        -#  %span.facebookLink
+        -#  %span.divider
+        -#  Facebook
+        -#%a{:href => "#"}
+        -#  %span.twitterLink
+        -#  %span.divider
+        -#  Twitter
+        -#%a{:href => "#"}
+        -#  %span.linkedInLink
+        -#  %span.divider
+        -#  Linked In
 
-            %a.signin.googleYahooBtn{:href => "#"}
-              %span.text Login With
-              %span.divider
-              %span.googleLink
-              %span.yahooLink
+        %a.signin.googleYahooBtn{:href => "#"}
+          %span.text Login With
+          %span.divider
+          %span.googleLink
+          %span.yahooLink
+      .clr
+      %span OR
 
+      .loginText Login with email
+      = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
 
+        = f.email_field :email , :placeholder => "Email*"
+        = f.password_field :password ,:placeholder => "Password*"
+        - if devise_mapping.rememberable?
+          .clr
+            %label.checkbox{:style => "width:85px;"}
+              = f.check_box :remember_me
+              = f.label :remember_me,:id => "remember_me_text"
+          = f.submit "LOGIN" , :class => "orangeBtn"
 
-          .orWithBorder
-            %span OR
-
-          .loginText Login with email
-          = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
-
-            = f.email_field :email , :placeholder => "Email*"
-            = f.password_field :password ,:placeholder => "Password*"
-            - if devise_mapping.rememberable?
-              %label.checkbox{:style => "width:85px;"}
-                = f.check_box :remember_me
-                = f.label :remember_me,:id => "remember_me_text"
-              = f.submit "LOGIN" , :class => "orangeBtn"
-
-              %a.forgotPassword{:href => "#{users_reset_password_path}"} Forgot your password?
-          %p
-            Need an account?
-            %a{:href => "#{new_user_registration_path}"} Sign Up
+          %a.forgotPassword{:href => "#{users_reset_password_path}"} Forgot your password?
+      %p
+        Need an account?
+        %a{:href => "#{new_user_registration_path}"} Sign Up
 
 :javascript
   google.load("identitytoolkit", "1", {packages: ["ac"], language:"#{lang}"});
