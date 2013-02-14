@@ -1,4 +1,7 @@
 class Chapter < ActiveRecord::Base
+  include PublicActivity::Model
+  tracked :owner=> proc {|controller, model| controller.current_user}
+  
   stampable
   after_create :persist_geocode
   acts_as_soft_deletable
