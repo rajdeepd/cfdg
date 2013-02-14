@@ -153,7 +153,14 @@
     float: left;
     margin: 0 5px;
 }
-
+#attrendeesForm .btn-a-small{
+    margin: 0 10px 10px 0;
+    float: right;
+}
+#attrendeesForm .el-cont label.label-26{
+    margin-bottom: 10px;
+    display: block;
+}
 .el-cont label.label-26 {
     top: 7px;
     width: 70px;
@@ -281,6 +288,7 @@ ul.attendeesList li .nameHolder {
 .div-h .caDate{
     margin-left: 0;
 }
+
 
 .addBtnReg{
     margin-left: 450px;

@@ -1488,6 +1488,7 @@ p.label-53{margin-bottom: 15px;}
 }
 .content {
     min-height: 500px;
+    overflow: hidden;
 }
 
 .userFixImage img{
@@ -1751,6 +1752,19 @@ form.new_comment textarea {
   right: -913px;
   line-height: 18px;
   color: #b94a48;
+}
+#attrendeesForm .input-b.size-f{
+	width: 468px;
+}
+#attrendeesForm{
+	width: 570px;
+	float: left;
+	overflow: hidden;
+}
+#attendeesBlock{
+	float: left;
+	width: 200px;
+	margin-left: 20px;
 }
 
 .fade_in p{

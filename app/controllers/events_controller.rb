@@ -313,6 +313,7 @@ class EventsController < ApplicationController
 
   def on_the_spot_registration
     @event = Event.find(params[:id])
+    @members = @event.event_members
     @user = User.new
   end
 
