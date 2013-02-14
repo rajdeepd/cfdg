@@ -10,7 +10,7 @@
           .success-flash
           = f.input :title, :placeholder => 'Type in your Announcement' ,  :label =>false ,  :input_html => {:class => "to", :style => "width:100%;margin-bottom: 5px;color:#666666;"}
           = f.input :body, :placeholder => 'Type in you message' ,  :label =>false ,  :input_html => {:class => "cmps label-26", :style => "width: 100%;height:100px;color:#666666;"}
-          = f.input :user_id, :as => :hidden, :value => session[:admin_user_id]
+          = f.input :user_id, :as => :hidden, :value => session[:user_id]
           -#= f.input :photo , :as => :file,  :label =>false , :input_html => {:style => "display:none;"}
           = f.file_field :photo , :as => :file,  :label =>false , :input_html => {:style => "display:none;"}
           .btns{:style => "overflow: hidden;width:610px;"}

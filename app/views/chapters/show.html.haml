@@ -12,7 +12,8 @@
           = form_tag join_a_chapter_chapters_path, :method => :post do
             = hidden_field_tag "chapter_id", "#{@chapter.id}"                            
             - if @current_user.blank?
-              = button_tag 'JOIN US!' , :class => "btn-a signin join_us", :type => "button"
+              -#= button_tag 'JOIN US!' , :class => "btn-a signin join_us", :type => "button"
+              %a.btn-a{:href => "#{signin_path}"} JOIN US!
             - else
               = submit_tag 'JOIN US!' , :class => "btn-a join_us"
       .div-a

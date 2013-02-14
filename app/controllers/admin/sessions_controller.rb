@@ -1,7 +1,8 @@
 class Admin::SessionsController < ApplicationController
   layout 'admin'
   def new
-    if !session[:admin_user_id].blank?
+    #if !session[:user_id].blank?
+    if !session[:user_id].blank? && current_user.admin?
       redirect_to admin_chapters_url
     else
       redirect_to root_path
@@ -13,7 +14,7 @@ class Admin::SessionsController < ApplicationController
     if !user.nil?
       status = user.valid_password?(params[:password]) unless user.nil?
       if status && user.admin?
-        session[:admin_user_id] = user.id
+        session[:user_id] = user.id
         redirect_to admin_chapters_url, :notice => "Logged in!"
       else
        flash.now.alert = "Invalid email or password"
@@ -26,7 +27,7 @@ class Admin::SessionsController < ApplicationController
   end
 
   def destroy
-    session[:admin_user_id] = nil
+    session[:user_id] = nil
     #redirect_to new_admin_session_url, :notice => "Logged out!"
     redirect_to root_path, :notice => "Logged out!"
   end

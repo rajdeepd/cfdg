@@ -2,8 +2,8 @@
 - if !current_user.blank?
   :javascript
     $(function(){
-      window.google.identitytoolkit.updateSavedAccount({email: "#{session[:user][:email]}", displayName: "#{session[:user][:name]}","legacy": true });
-      window.google.identitytoolkit.showSavedAccount('#{session[:user][:email]}');
+      window.google.identitytoolkit.updateSavedAccount({email: "#{User.find(session[:user_id]).email}", displayName: "#{User.find(session[:user_id]).fullname}","legacy": true });
+      window.google.identitytoolkit.showSavedAccount('#{User.find(session[:user_id]).email}');
       window.google.identitytoolkit.setConfig({ dropdownmenu: [{"label": "View profile","url": "#"},{"label": "Account settings","url": "#"},{"label": "Log out","handler": "onSignOutClicked"}] });
     });
 :css

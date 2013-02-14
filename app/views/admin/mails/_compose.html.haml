@@ -16,7 +16,7 @@
       %td.fill
         = f.input :to, :placeholder => 'Type in Mail-Id' ,  :label =>false ,  :input_html => {:class => "to", :style => "width:532px;"}
         = f.input :received_id,:as => :hidden ,  :input_html =>{:value => 0}
-        = f.input :sender_id, :as => :hidden,  :input_html =>{:value => session[:admin_user_id]}
+        = f.input :sender_id, :as => :hidden,  :input_html =>{:value => session[:user_id]}
     %tr
       %td.left
         %h5.label-26 Subject
