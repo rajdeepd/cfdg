@@ -5,7 +5,7 @@
         %a{:href => "#{root_url}"}
           %img{:src => "/assets/logo.png"}
       %ul.ul-a.flt-right
-        - if !admin_user.blank?
+        - if !admin_user.blank? or !current_user.blank?
           %li
             %a.label-2{:href => "#{log_out_path}"} Logout
   .header-b

@@ -2,7 +2,7 @@ class SessionsController <  Devise::SessionsController
   #before_filter :redirect_to_initial_page_if_platform_is_not_configured_yet ,:only => [:new]
   skip_before_filter :require_no_authentication, :only => [ :new, :create ]
   before_filter :is_already_login ,:only => [:new, :create]
-  before_filter :admin_cant_sign_in ,:only => [:create]
+  #before_filter :admin_cant_sign_in ,:only => [:create]
   #prepend_before_filter :allow_params_authentication!, :only => :create
 
   # GET /resource/sign_in
@@ -16,7 +16,7 @@ class SessionsController <  Devise::SessionsController
     user = User.find_by_email(params[:user][:email])
     if !user.nil?
       status = user.valid_password?(params[:user][:password]) unless user.nil?
-      if status
+      if status && !user.admin?
         if(user.confirmed?)
           session[:user_id] = user.id
           session[:email] = user.email
@@ -29,7 +29,9 @@ class SessionsController <  Devise::SessionsController
           #redirect_to(root_path)
           render "new"
         end
-
+      elsif status && user.admin?
+        session[:admin_user_id] = user.id
+        redirect_to admin_chapters_url, :notice => "Logged in!"
       else
         logger.info "inside if status"
         #flash.now.alert = "Invalid email or password"

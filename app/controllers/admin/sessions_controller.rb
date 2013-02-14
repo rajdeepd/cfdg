@@ -3,6 +3,8 @@ class Admin::SessionsController < ApplicationController
   def new
     if !session[:admin_user_id].blank?
       redirect_to admin_chapters_url
+    else
+      redirect_to root_path
     end
   end
 
@@ -25,7 +27,8 @@ class Admin::SessionsController < ApplicationController
 
   def destroy
     session[:admin_user_id] = nil
-    redirect_to new_admin_session_url, :notice => "Logged out!"
+    #redirect_to new_admin_session_url, :notice => "Logged out!"
+    redirect_to root_path, :notice => "Logged out!"
   end
   
 end

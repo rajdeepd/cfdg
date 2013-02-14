@@ -14,7 +14,7 @@
               %option{:value => "en"} EN
               %option{:value => "CN",  :selected=>'selected'} ZH-CN
       %ul.ul-a.flt-right        
-        - if !current_user.blank?
+        - if !current_user.blank? or !admin_user.blank?
           %li
             %a.label-2.logout{:href => "#{profile_path}"}= t('menu.myprofile') |
           %li
