@@ -25,7 +25,7 @@ class FederatedController < ApplicationController
   def logout
     reset_session
     cookies.delete(:user_id)
-    redirect_to root_path
+    redirect_to root_path, :notice => "Logged out!"
   end
 
   def verify_registration_status
