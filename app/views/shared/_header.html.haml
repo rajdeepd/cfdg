@@ -14,6 +14,7 @@
               %option{:value => "en"} EN
               %option{:value => "CN",  :selected=>'selected'} ZH-CN
       %ul.ul-a.flt-right        
+        -#- if !current_user.blank? or !admin_user.blank?
         - if !current_user.blank?
           %li
             %a.label-2.logout{:href => "#{profile_path}"}= t('menu.myprofile') |
@@ -42,7 +43,7 @@
           %a{:href => "#{wiki_path}"}= t('menu.wiki')        
         -#%li{:class => "#{active_class("admin","admin")}"}
           %a{:href => "#{new_admin_session_path}"}= t('menu.admin')
-        -if session[:admin_user_id].present?
+        -if(session[:user_id].present? && admin_user)
           %li{:class => "#{active_class("admin","admin")}"}
             %a{:href => "#{new_admin_session_path}"}= t('menu.admin')
         %li{:class => "#{active_class("about","home")}"}

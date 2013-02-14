@@ -37,7 +37,8 @@
                 %button.btn-a-small.flt-right{:id=>"cancelled_event", :event_id => "#{event.id}" ,:disable => true,:style => "opacity:0.35"} CANCELLED
               -else
                 -if event.is_rsvp_allowed?
-                  %button.btn-a-small.flt-right.signin{:id=>"follow_an_event", :event_id => "#{event.id}"} R.S.V.P
+                  -#%button.btn-a-small.flt-right.signin{:id=>"follow_an_event", :event_id => "#{event.id}"} R.S.V.P
+                  %a.btn-a-small.flt-right{:href => "#{signin_path}", :event_id => "#{event.id}"} R.S.V.P
                 -elsif !event.is_rsvp_allowed?
                   %button.btn-a-small.flt-right{:id=>"join_wait_list"} Limit Reached!
             - else
@@ -103,7 +104,8 @@
                 %button.btn-a-small.flt-right{:id=>"cancelled_event", :event_id => "#{event.id}" ,:disable => true,:style => "opacity:0.35"} CANCELLED
               -else
                 -if event.is_rsvp_allowed?
-                  %button.btn-a-small.flt-right.signin{:id=>"follow_an_event", :event_id => "#{event.id}"} R.S.V.P
+                  -#%button.btn-a-small.flt-right.signin{:id=>"follow_an_event", :event_id => "#{event.id}"} R.S.V.P
+                  %a.btn-a-small.flt-right{:href => "#{signin_path}", :event_id => "#{event.id}"} R.S.V.P
                 -elsif !event.is_rsvp_allowed?
                   %button.btn-a-small.flt-right{:id=>"join_wait_list"} Limit Reached!
             - else

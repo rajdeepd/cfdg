@@ -32,7 +32,8 @@
         %h5.label-5
           = t('welcome.about')
         - if current_user.blank?
-          %button.btn-a.signup
+          %a.btn-a{:href => "#{new_user_registration_path}"} SIGN UP
+          -#%button.btn-a.signup
             = "#{t('menu.signup')}!"
 
 
@@ -48,7 +49,8 @@
         .ca-down
           %h2.label-6= t('chapter.create_title')
           %h5.label-7= t('chapter.create_desc')
-          %button.btn-b.signin= t('chapter.create_create')
+          -#%button.btn-b.signin= t('chapter.create_create')
+          %a.btn-b{:href => "#{signin_path}"} CREATE
   .content-b
     - unless @announcements.blank?
       .cb-left.flt-left{:style=>"overflow:visible;"}

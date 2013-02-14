@@ -17,7 +17,11 @@ class ApplicationController < ActionController::Base
   end
 
   def admin_user
-    @admin_user ||= User.find(session[:admin_user_id]) if session[:admin_user_id]
+    user ||= User.find(session[:user_id]) if session[:user_id]
+    if user.admin?
+      @admin_user = user
+    end
+    #@admin_user ||= User.find(session[:admin_user_id]) if session[:admin_user_id]
   end
 
   def set_locale
