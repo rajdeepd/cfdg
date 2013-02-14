@@ -16,7 +16,7 @@ class UsersController < ApplicationController
 
   def profile
     @user = @current_user
-    @user_chapters = ChapterMember.get_chapters(@user.id) || []
+    @user_chapters = @user.chapters.uniq
     @create_event_from_chapters = params[:from]
     @chapter_id = params[:chapter_id]
     chapter_member = ChapterMember.get_details_if_coordinator(current_user.id).try(:first)

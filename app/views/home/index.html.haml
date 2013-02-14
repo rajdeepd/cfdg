@@ -49,7 +49,8 @@
         .ca-down
           %h2.label-6= t('chapter.create_title')
           %h5.label-7= t('chapter.create_desc')
-          %button.btn-b.signin= t('chapter.create_create')
+          -#%button.btn-b.signin= t('chapter.create_create')
+          %a.btn-b{:href => "#{signin_path}"} CREATE
   .content-b
     - unless @announcements.blank?
       .cb-left.flt-left{:style=>"overflow:visible;"}

@@ -2,19 +2,21 @@
   .content-d
     .cd-top
       %h1.label-42 Site Administrator
-      = link_to "Activity Log", activity_logs_path, :remote=>true
       #tabs
-        %ul.ul-f
+        %ul.ul-f.customTabList
           %li.ulf-selected
             %a{:href => "#tabs-1"} Chapter Satus
             %i.bg-arrow-down-b
           %li
             %a{:href => "#{admin_announcements_path}"} Announcement
             %i.bg-arrow-down-b
+        .activityLog
+          = link_to "Activity Log", activity_logs_path, :remote=>true
+        .clearFix 
         #tabs-2{:style=>"display:none"}
         #tabs-1
           #inner-tabs
-            %ul.ul-i
+            %ul.ul-i.innerTabList
               %li.uli-selected
                 %a{:href => "#inner-tab1"} Applied
               %li
@@ -71,13 +73,32 @@
                           = render :partial => "message" , :locals => {:chapter => chapter}
                 -else
                   No Request
+:javascript
+  $(".activityLog").click(function(){
+    $(".activityLog").css("box-shadow", "0px 2px #003A69");
+    $(".activityLog").append($('i').addClass("bg-arrow-down-b"));
+    $(".ul-f > li").css('box-shadow', '')
+  });   
+  $(".customTabList").click(function(){
+    $(".activityLog > i").remove();
+    $(".activityLog").css("box-shadow", "");
+  });               
 :javascript 
   $(".ul-f > li").click(function(){
-    console.log($(this));
+    $(this).css( 'box-shadow', '0px 2px #003A69');
+    $(this).siblings().css('box-shadow', '')
+    $(this).find('i').css('display', 'block');
+    $(this).append($('i').addClass("bg-arrow-down-b"));
     console.log($(".ul-f > li").first());
     if ($(this)[0] == $(".ul-f > li").first()[0]){
       $("#tabs-1").show();
       $("#tabs-1").addClass("ulf-selected");
     }
+    else{
+      $("#ui-tabs-1").show();
+      $("#ui-tabs-1").addClass("ulf-selected");
+    }
     $("#tabs-2").hide();
-  })
+  
+
+  });

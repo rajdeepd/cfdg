@@ -30,7 +30,7 @@ class SessionsController <  Devise::SessionsController
           render "new"
         end
       elsif status && user.admin?
-        session[:admin_user_id] = user.id
+        session[:user_id] = user.id
         redirect_to admin_chapters_url, :notice => "Logged in!"
       else
         logger.info "inside if status"
