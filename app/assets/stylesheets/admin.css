@@ -1414,6 +1414,67 @@ li.ulg-expanded .div-d{
 }
 
 #activities-tabs{
-	margin: 20px;
+	margin: 0 20px 20px 0;
 	font-size: 13px;
+	padding: 20px 0 0 20px;
+	border-top: 2px solid #EBEBEB;
+}
+/* css on sandeep machine*/
+.customTabList{
+	float: left;
+	width: 316px;
+	border: none;
+}
+.activityLog{
+	float: left;
+	color: #918f8f;
+	font-size: 14px;
+	line-height: 38px;
+	position: relative;
+}
+.activityLog a {
+	color: #918f8f;
+}
+.innerTabList{
+	border-top: 2px solid #EBEBEB;
+}
+.activityLog i.bg-arrow-down-b{
+	display: inline-block;
+	left: 31px;
+	bottom: -7px;
+}
+.activity{
+	margin: 15px 0;
+	border-bottom: 1px solid #ededed;
+}
+.activity .timeago{
+	margin: 5px 0;
+}
+.activity .title{
+	margin: 5px 0;
+	font-size: 12px;
+	line-height: 18px;
+}
+.activity .avatar{
+	margin: 0px 10px 10px 0;
+	float: left;
+}
+#activities-tabs .pagination span a{
+	color: #0099cc;
+	padding: 6px 10px;
+	background-image: linear-gradient(bottom, rgb(224,224,224) 35%, rgb(235,235,235) 68%, rgb(240,240,240) 84%);
+	background-image: -o-linear-gradient(bottom, rgb(224,224,224) 35%, rgb(235,235,235) 68%, rgb(240,240,240) 84%);
+	background-image: -moz-linear-gradient(bottom, rgb(224,224,224) 35%, rgb(235,235,235) 68%, rgb(240,240,240) 84%);
+	background-image: -webkit-linear-gradient(bottom, rgb(224,224,224) 35%, rgb(235,235,235) 68%, rgb(240,240,240) 84%);
+	background-image: -ms-linear-gradient(bottom, rgb(224,224,224) 35%, rgb(235,235,235) 68%, rgb(240,240,240) 84%);
+}
+#activities-tabs .pagination span.current{
+	color: #222222;
+	margin-right: 5px;
+	padding: 6px 10px;
+	background-image: linear-gradient(bottom, rgb(224,224,224) 35%, rgb(235,235,235) 68%, rgb(240,240,240) 84%);
+	background-image: -o-linear-gradient(bottom, rgb(224,224,224) 35%, rgb(235,235,235) 68%, rgb(240,240,240) 84%);
+	background-image: -moz-linear-gradient(bottom, rgb(224,224,224) 35%, rgb(235,235,235) 68%, rgb(240,240,240) 84%);
+	background-image: -webkit-linear-gradient(bottom, rgb(224,224,224) 35%, rgb(235,235,235) 68%, rgb(240,240,240) 84%);
+	background-image: -ms-linear-gradient(bottom, rgb(224,224,224) 35%, rgb(235,235,235) 68%, rgb(240,240,240) 84%);
 }
