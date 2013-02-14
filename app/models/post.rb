@@ -1,6 +1,8 @@
 class Post < ActiveRecord::Base
+  include PublicActivity::Model
+  tracked :owner=> proc {|controller, model| controller.current_user}
 	acts_as_soft_deletable         
-  	stampable	
+  stampable	
 	belongs_to :chapter
 	belongs_to :event
 	belongs_to :user , :foreign_key => :created_by

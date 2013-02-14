@@ -2,6 +2,7 @@
   .content-d
     .cd-top
       %h1.label-42 Site Administrator
+      = link_to "Activity Log", activity_logs_path, :remote=>true
       #tabs
         %ul.ul-f
           %li.ulf-selected
@@ -10,6 +11,7 @@
           %li
             %a{:href => "#{admin_announcements_path}"} Announcement
             %i.bg-arrow-down-b
+        #tabs-2{:style=>"display:none"}
         #tabs-1
           #inner-tabs
             %ul.ul-i
@@ -69,3 +71,13 @@
                           = render :partial => "message" , :locals => {:chapter => chapter}
                 -else
                   No Request
+:javascript 
+  $(".ul-f > li").click(function(){
+    console.log($(this));
+    console.log($(".ul-f > li").first());
+    if ($(this)[0] == $(".ul-f > li").first()[0]){
+      $("#tabs-1").show();
+      $("#tabs-1").addClass("ulf-selected");
+    }
+    $("#tabs-2").hide();
+  })
