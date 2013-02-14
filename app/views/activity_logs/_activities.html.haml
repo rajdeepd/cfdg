@@ -4,6 +4,7 @@
   =paginate @activities, :remote=> true
 :javascript
   $(function() {
+    $("abbr.timeago").timeago();
     $("#activities-tabs").tabs({
           beforeLoad: function( event, ui ) {
               ui.jqXHR.error(function() {
