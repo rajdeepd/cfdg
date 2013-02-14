@@ -1323,6 +1323,9 @@ li{
 
 
 /* custom css by developers*/
+.table-e.customTable tbody td .customLabel{
+    width: 120px;
+}
 .table-e tbody td .customLabel{
     width: 165px;
     word-wrap: break-word;
@@ -1412,14 +1415,12 @@ li.ulg-expanded .div-d{
 .customPostHeading .flt-right .btn-a-small{
     padding: 7px 11px;
 }
-
 #activities-tabs{
 	margin: 0 20px 20px 0;
 	font-size: 13px;
 	padding: 20px 0 0 20px;
 	border-top: 2px solid #EBEBEB;
 }
-/* css on sandeep machine*/
 .customTabList{
 	float: left;
 	width: 316px;
@@ -1477,4 +1478,50 @@ li.ulg-expanded .div-d{
 	background-image: -moz-linear-gradient(bottom, rgb(224,224,224) 35%, rgb(235,235,235) 68%, rgb(240,240,240) 84%);
 	background-image: -webkit-linear-gradient(bottom, rgb(224,224,224) 35%, rgb(235,235,235) 68%, rgb(240,240,240) 84%);
 	background-image: -ms-linear-gradient(bottom, rgb(224,224,224) 35%, rgb(235,235,235) 68%, rgb(240,240,240) 84%);
+}
+.btnLink{
+    color: #0097d7;
+    float: left;
+    font-size: 13px;
+    display: block;
+    text-align: left;
+    margin-right: 15px;
+    width: 99px;
+    line-height: 30px;
+}
+.btnLink:hover, .btnLinkSmall:hover{
+    color: #222222;
+}
+.customTable h5.label-46, .customTable h5.label-47{
+    margin: 0;
+}
+.customTable h5.label-48{
+    margin: 5px;
+}
+.customTable h5.label-46.customTD{
+    margin-top: 15px;
+}
+.customTable thead tr td:first-child{
+    border: none;
+}
+.customTable thead tr td{
+    border-left: 1px solid #dfdfdf;
+}
+.btnLinkSmall{
+    color: #0097d7;
+    width: 70px;
+    float: left;
+    font-size: 13px;
+    display: block;
+    line-height: 30px;
+    text-align: left;
+    margin-right: 15px;
+}
+.customLinksWrapper{
+    width: 190px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+.customLinksWrapper a.btnLinkSmall , .customLinksWrapper a.btnLink{
+    text-align: center;
 }

@@ -1,26 +1,26 @@
-.div-l
-  .dd-b.flt-left
-    %h5.label-44
-      All Chapters
-      %img.arrow-down-d-img{:src => "/assets/arrow-down-d.png"}/
-  //%input.input-b.flt-right.size-d.label-25{:placeholder => "search", :type => "text"}/
+-#.div-l
+-#  .dd-b.flt-left
+-#    %h5.label-44
+-#      All Chapters
+-#      %img.arrow-down-d-img{:src => "/assets/arrow-down-d.png"}/
+-#  //%input.input-b.flt-right.size-d.label-25{:placeholder => "search", :type => "text"}/
 - if @chapters.present?
-  %table.table-e
+  %table.table-e.customTable
     %thead
       %tr
-        %td{:style => "width:100px;text-align: left;"}
+        %td{:style => "width:84px;text-align: left;"}
           %h5.label-46 Chapter Name
-        %td{:style => "width:115px;"}
+        %td{:style => "width:84px;"}
           %h5.label-46 No. Members
-        %td{:style => "width:100px;"}
+        %td{:style => "width:84px;"}
           %h5.label-46 No. Events
-        %td{:style => "width:110px;"}
-          %h5.label-46 No. Members
-          %h5.label-47 Last 1 Year
-        %td{:style => "width:100px;"}
-          %h5.label-46 No. Events
-          %h5.label-47 Last 1 Year
-        %td{:style => "width:160px;"}
+        %td{:style => "width:84px;"}
+          %h5.customTD.label-46 No. Members
+          %h5.customTD.label-47 (Last 1 Year)
+        %td{:style => "width:84px;"}
+          %h5.customTD.label-46 No. Events
+          %h5.customTD.label-47 (Last 1 Year)
+        %td{:style => "width:250px;"}
           %h5.label-46
             Action
     %tbody
@@ -38,12 +38,13 @@
             %h5.label-48= chapter.try(:events).where("created_at >= ?", Date.today.years_ago(1)).try(:count)
           %td
             %h5.label-48
-              %button.btn-a-small.change_status.customBtn{"data-url" => "#{change_status_admin_chapter_path(chapter, :status => 'active_to_incubate')}"} Incubate
+              -#%button.btn-a-small.change_status.customBtn{"data-url" => "#{change_status_admin_chapter_path(chapter, :status => 'active_to_incubate')}"} Incubate
+              = link_to "Incubate",change_status_admin_chapter_path(chapter, :status => 'active_to_incubate'),:class => "btnLink change_status"
               -#%button.btn-a-small.change_status{"data-url" => "#{add_secondary_coordinator_admin_chapter_path(chapter)}"} Add Secondary Co-ordinator
-              =link_to "Add Secondary Coordinator",add_secondary_coordinator_admin_chapter_path(chapter),:class => "btn-a-small change_status" ,:method => "get"
-              =link_to "Event Actions",admin_chapter_events_path(chapter),:class => "btn-a-small change_status customBtn" ,:method => "get"
-              =link_to "Create Event",new_admin_chapter_event_path(chapter),:class => "btn-a-small change_status customBtn" ,:method => "get"
-              =link_to "Post actions",admin_chapter_posts_path(chapter),:class => "btn-a-small change_status customBtn" ,:method => "get"
+              =link_to "Add Coordinator",add_secondary_coordinator_admin_chapter_path(chapter),:class => "btnLink change_status" ,:method => "get"
+              =link_to "Event Actions",admin_chapter_events_path(chapter),:class => "btnLink change_status" ,:method => "get"
+              =link_to "Create Event",new_admin_chapter_event_path(chapter),:class => "btnLink change_status" ,:method => "get"
+              =link_to "Post actions",admin_chapter_posts_path(chapter),:class => "btnLink change_status" ,:method => "get"
 
       %tr
 - else
