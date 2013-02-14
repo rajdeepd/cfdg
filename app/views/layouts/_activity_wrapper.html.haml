@@ -1,6 +1,12 @@
 .activity
   .body
     .mega-icon{:style=>"background-image: url(#{image_path "icons/#{a.key.split(".").last}.svg"})"}
+    .details
+      .avatar
+        - if a.owner
+          = image_tag a.owner.avatar, width: "30", height: "30"
+        - else
+          = image_tag "http://i0.wp.com/a248.e.akamai.net/assets.github.com/images/gravatars/gravatar-140.png", width: "30", height: "30"
     =timeago a.created_at
     .title
       - if a.owner
@@ -8,10 +14,4 @@
       - else
         =' someone'
       =content_for :action
-    .details
-      .avatar
-        - if a.owner
-          = image_tag a.owner.avatar, width: "30", height: "30"
-        - else
-          = image_tag "http://i0.wp.com/a248.e.akamai.net/assets.github.com/images/gravatars/gravatar-140.png", width: "30", height: "30"
       = yield
