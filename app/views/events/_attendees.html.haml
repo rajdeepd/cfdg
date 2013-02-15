@@ -14,18 +14,24 @@
     -moz-border-radius:5px;
     border-radius:5px;
     -webkit-border-radius:5px;
+    height: 20px;
+  }
+  .eventMember{
+    cursor: pointer;
+    padding: 3px 10px;
   }
 #attendeesContainer
   %h1#header
     List of Attendees
   %table#list
     -members.each do |member|
-      %tr
+      %tr.eventMember
         %td
+          %input.userId{:value=>"#{member.user_id}", :type=>"hidden"}
           -if member.status
-            =image_tag "/assets/Active.png"
+            =image_tag "/assets/present.png"
           -else
-            =image_tag "/assets/Delist.png"
+            =image_tag "/assets/absent.png"
         %td=member.user.email
 
 :javascript
@@ -60,6 +66,13 @@
           $(this).change();
       });
     }
+
+    $(".eventMember").live("click", function(){
+      var that = $(this);
+      $.ajax({
+        url: "/events/" + $("#eventId").val() + "/attending?user_id=" + that.find(".userId").val(),
+      });
+    });
 
 
     //ondomready
