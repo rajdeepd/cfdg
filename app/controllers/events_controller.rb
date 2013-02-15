@@ -339,6 +339,16 @@ class EventsController < ApplicationController
   end
 
 
+  def delete_event_gallery_image
+    EventGallery.find(params[:event_id]).destroy
+
+    respond_to do |format|
+      format.js  {render :nothing => true}
+    end
+
+  end
+
+
   protected
 
   def upcoming_and_past_events(chapter_events)

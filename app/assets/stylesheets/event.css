@@ -205,6 +205,14 @@ span.LV_valid {
     margin-right: 5px;
     margin-bottom: 5px;
 }
+
+.eventImageHolder span{
+    background-image: url("cross-b.png");
+    display: block;
+    width: 15px;
+    height: 13px;
+    float: right;
+}
 .eventImageHolder img {
     width: 150px;
     height: 150px;
@@ -252,6 +260,14 @@ span.LV_valid {
     padding: 0 10px;
     margin-bottom: 15px;
 
+}
+.checkboxImgHolder{
+    width: 178px;
+}
+.checkboxImgHolder input[type = "checkbox"]{
+    float: left;
+    width: 20px;
+    margin-top: 80px;
 }
 .attendees strong {
     float: left;
