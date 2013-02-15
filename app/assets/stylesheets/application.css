@@ -594,6 +594,7 @@ textarea.size-b{height: 84px;width: 163px;margin-bottom:0px;}
 }
 .customAgenda{
     float: none !important;
+    margin-top: 30px;
 }
 .customComments{
     margin-top: 60px !important;
@@ -1775,6 +1776,39 @@ form.new_comment textarea {
 
 .custom_error p{
     color: #b94a48;
+}
+.caListAttendees .attendeesHeading strong {
+    float: left;
+    line-height: 20px;
+    margin-top: 7px;
+}
+.caListAttendees .attendeesHeading a:hover{
+    color: #222222;
+}
+.caListAttendees .attendeesHeading a{
+    font-size: 12px;
+    color: #0097d7;
+}
+.caListAttendees .attendeesHeading{
+    height: 52px;
+}
+.caListAttendees{
+    margin-top: 30px;
+}
+.customComments textarea{
+    width: 615px;
+    height: 88px;
+    resize: none;
+}
+.onSpotReg:hover{
+    color: #222222;
+    text-decoration: none;
+}
+.onSpotReg{
+    margin-left: 40px;
+    color: #0097d7;
+    font-weight: bold;
+    text-decoration: underline;
 }
 
 /*Error or Notification Classes ends here*/
