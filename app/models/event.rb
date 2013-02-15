@@ -12,7 +12,7 @@ class Event < ActiveRecord::Base
   belongs_to :chapter
   belongs_to :user , :foreign_key => :created_by
   attr_accessible :title, :event_start_date, :event_end_date, :status, :description, :venue, :entry_fee, :chapter_id , :location,
-                  :address_line1,   :address_line2 ,:event_start_time ,:event_end_time, :city_name, :postal_code, :state_name,
+                  :address_line1,   :address_line2 ,:event_start_time,  :event_end_time, :city_name, :postal_code, :state_name,
                   :country_name ,:agenda_and_speakers,:image,:attendees_count
   mount_uploader :image, ImageUploader
   validate :start_time_validation
@@ -36,6 +36,11 @@ class Event < ActiveRecord::Base
     end
 
     Time.parse(other.event_start_date + " " + other.event_start_time) <=> Time.parse(self.event_start_date + " " + self.event_start_time)
+  end
+
+  def update_attendee_status member_id
+    member = event_members.find_by_user_id(member_id)
+    member.update_attributes(:status=>!member.status)    
   end
 
   def am_i_member?(user_id)
