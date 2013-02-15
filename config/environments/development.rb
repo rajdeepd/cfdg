@@ -39,31 +39,9 @@ CloudfoundryUsergroups::Application.configure do
 
   config.action_mailer.default_url_options = { :host => 'local.cfdg.com' }
 
-  #FEDERATED_KEY = 'AIzaSyB8IrA9iaoSnQZbagf2rGxbIOk41IRKUA8'
-  #FEDERATED_KEY = 'AIzaSyBU01mSxFQ5efyknhwxX46tBFhbi5wj-PY' # new test api key
-
-  #FEDERATED_BASE_URL = "https://www.googleapis.com/identitytoolkit/v1/relyingparty/verifyAssertion?key=#{FEDERATED_KEY}"
-
-   EVENTBRITE_CLIENT_ID = 'AWJALQI5MSA7DJ5MGM'
-   EVENTBRITE_CLIENT_SECRET = 'SZ6KSV4WFJ6NLDP2OXLPJLSKW6W6JPAXOZEI5EAXPO6S33R6EL'
-   EVENTBRITE_URL = 'https://www.eventbrite.com'
-   EVENTBRITE_REDIRECT_URL = 'http://localhost:3000/events/oauth_reader'
-   #EVENTBRITE_REDIRECT_URL = 'http://local.cfdg.com//events/oauth_reader'
-   EVENTBRITE_ORGANIZATION_ID = '2894467429'
-
-  #require 'aws/ses'
-
-  #config.action_mailer.delivery_method = :ses
   config.action_mailer.delivery_method = :amazon_ses
 
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.perform_deliveries = true
-
-  #SES = AWS::SES::Base.new(
-  #    :access_key_id     => 'AKIAI7K4DV63EWHI5DSA',
-  #    :secret_access_key => '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'
-  #)
-
-
 
 end
