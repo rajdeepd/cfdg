@@ -52,13 +52,13 @@
         -#  %span.divider
         -#  Linked In
 
-        %a.signin.googleYahooBtn{:href => "#"}
+        -#%a.signin.googleYahooBtn{:href => "#"}
           %span.text Login With
           %span.divider
           %span.googleLink
           %span.yahooLink
-      .clr
-      %span OR
+      -#.clr
+      -#%span OR
 
       .loginText Login with email
       = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
