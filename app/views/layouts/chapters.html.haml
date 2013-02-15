@@ -22,31 +22,31 @@
     %script{:src => "http://code.jquery.com/jquery-1.8.2.js"}
     %script{:src => "http://code.jquery.com/ui/1.9.0/jquery-ui.js"}
     = javascript_include_tag "jquery.timepicker-1.2.2"
-    :javascript
-      google.load("identitytoolkit", "1", {packages: ["ac"], language:"en"});
-    :javascript
-      $(function() {
-        window.google.identitytoolkit.setConfig({
-            developerKey: "#{FEDERATED_KEY}",
-            companyName: "cloudfoundry usergroups",
-            callbackUrl: "#{verify_user_url()}",
-            realm: "",
-            userStatusUrl: "/user_status",
-            loginUrl: "/login",
-            signupUrl: "/sign_up",
-            //homeUrl: "/profile",
-            homeUrl: "#{session[:url]}",
-            logoutUrl: "/logout",
-            idps: ["Gmail", "Yahoo"],
-            tryFederatedFirst: true,
-            useCachedUserStatus: false,
-            useContextParam: true
-        });
-        $("#navbar").accountChooser();
-      });
+    -#:javascript
+    -#  google.load("identitytoolkit", "1", {packages: ["ac"], language:"en"});
+    -#:javascript
+    -#  $(function() {
+    -#    window.google.identitytoolkit.setConfig({
+    -#        developerKey: "#{FEDERATED_KEY}",
+    -#        companyName: "cloudfoundry usergroups",
+    -#        callbackUrl: "#{verify_user_url()}",
+    -#        realm: "",
+    -#        userStatusUrl: "/user_status",
+    -#        loginUrl: "/login",
+    -#        signupUrl: "/sign_up",
+    -#        //homeUrl: "/profile",
+    -#        homeUrl: "#{session[:url]}",
+    -#        logoutUrl: "/logout",
+    -#        idps: ["Gmail", "Yahoo"],
+    -#        tryFederatedFirst: true,
+    -#        useCachedUserStatus: false,
+    -#        useContextParam: true
+    -#    });
+    -#    $("#navbar").accountChooser();
+    -#  });
     = csrf_meta_tags
   %body
-    = render "shared/federated_header"
+    -#= render "shared/federated_header"
     = render "shared/header"
     = yield
     = render "shared/footer"

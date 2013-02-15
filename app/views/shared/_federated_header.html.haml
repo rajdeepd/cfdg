@@ -1,14 +1,14 @@
-#navbar{:style => "display:none;"}
-- if !current_user.blank?
-  :javascript
-    $(function(){
-      window.google.identitytoolkit.updateSavedAccount({email: "#{User.find(session[:user_id]).email}", displayName: "#{User.find(session[:user_id]).fullname}","legacy": true });
-      window.google.identitytoolkit.showSavedAccount('#{User.find(session[:user_id]).email}');
-      window.google.identitytoolkit.setConfig({ dropdownmenu: [{"label": "View profile","url": "#"},{"label": "Account settings","url": "#"},{"label": "Log out","handler": "onSignOutClicked"}] });
-    });
-:css
-  .widget-email-box {display:none;}
-  .widget-nascar-list{border-right:none!important;}
-  .widget-footer {display:none;}
-  .widget-panel-chooser.widget-panel-nascar {width: 530px;}
-  .widget-panel-chooser .widget-keyhole-button img {display:none;}
+-##navbar{:style => "display:none;"}
+-#- if !current_user.blank?
+-#  :javascript
+-#    $(function(){
+-#      window.google.identitytoolkit.updateSavedAccount({email: "#{User.find(session[:user_id]).email}", displayName: "#{User.find(session[:user_id]).fullname}","legacy": true });
+-#      window.google.identitytoolkit.showSavedAccount('#{User.find(session[:user_id]).email}');
+-#      window.google.identitytoolkit.setConfig({ dropdownmenu: [{"label": "View profile","url": "#"},{"label": "Account settings","url": "#"},{"label": "Log out","handler": "onSignOutClicked"}] });
+-#    });
+-#:css
+-#  .widget-email-box {display:none;}
+-#  .widget-nascar-list{border-right:none!important;}
+-#  .widget-footer {display:none;}
+-#  .widget-panel-chooser.widget-panel-nascar {width: 530px;}
+-#  .widget-panel-chooser .widget-keyhole-button img {display:none;}

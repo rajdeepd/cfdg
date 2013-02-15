@@ -45,6 +45,12 @@ class SessionsController <  Devise::SessionsController
     end
   end
 
+  def logout
+      session[:user_id] = nil
+      #redirect_to new_admin_session_url, :notice => "Logged out!"
+      redirect_to root_path, :notice => "Logged out!"
+  end
+
   def is_already_login
     if @current_user.present?
       redirect_to root_path

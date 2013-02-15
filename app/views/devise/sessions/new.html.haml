@@ -77,7 +77,7 @@
         Need an account?
         %a{:href => "#{new_user_registration_path}"} Sign Up
 
-:javascript
+-#:javascript
   google.load("identitytoolkit", "1", {packages: ["ac"], language:"#{lang}"});
 :javascript
   $(document).ready(function(){
@@ -98,31 +98,5 @@
     });
 
   });
-  $(function() {
-    $(".signin").on("click",function(){
-      window.google.identitytoolkit.setConfig({
-        developerKey: "#{FEDERATED_KEY}",
-        companyName: "cloudfoundry usergroups",
-        callbackUrl: "#{verify_user_url()}",
-        realm: "",
-        userStatusUrl: "/user_status",
-        loginUrl: "/login",
-        signupUrl: "/sign_up",
-        //homeUrl: "/dashboard",
-        homeUrl: "/profile",
-        //homeUrl: "#{session[:url]}",
-        logoutUrl: "/logout",
-        idps: ["Gmail", "Yahoo"],
-        tryFederatedFirst: true,
-        useCachedUserStatus: false,
-        useContextParam: true
-      });
-      $("#navbar").accountChooser();
-    });
 
-    $('.signup').click(function(){
-      $('#navbar').accountChooser('showAccountChooser');
-      $(".widget-header h1").text("#{t('menu.signup')}");
-      $(".widget-nascar-list h2").text("#{t('menu.signup_with')}");
-    });
   });

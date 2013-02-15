@@ -40,9 +40,9 @@ CloudfoundryUsergroups::Application.configure do
   config.action_mailer.default_url_options = { :host => 'local.cfdg.com' }
 
   #FEDERATED_KEY = 'AIzaSyB8IrA9iaoSnQZbagf2rGxbIOk41IRKUA8'
-  FEDERATED_KEY = 'AIzaSyBU01mSxFQ5efyknhwxX46tBFhbi5wj-PY' # new test api key
+  #FEDERATED_KEY = 'AIzaSyBU01mSxFQ5efyknhwxX46tBFhbi5wj-PY' # new test api key
 
-  FEDERATED_BASE_URL = "https://www.googleapis.com/identitytoolkit/v1/relyingparty/verifyAssertion?key=#{FEDERATED_KEY}"
+  #FEDERATED_BASE_URL = "https://www.googleapis.com/identitytoolkit/v1/relyingparty/verifyAssertion?key=#{FEDERATED_KEY}"
 
    EVENTBRITE_CLIENT_ID = 'AWJALQI5MSA7DJ5MGM'
    EVENTBRITE_CLIENT_SECRET = 'SZ6KSV4WFJ6NLDP2OXLPJLSKW6W6JPAXOZEI5EAXPO6S33R6EL'
