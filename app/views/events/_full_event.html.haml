@@ -4,7 +4,7 @@
 -#= stylesheet_link_tag "event", :media => "all"
 
 -if !current_user.blank? and !@event.is_past_event? and ((current_user.id == @event.created_by) or @event.can_i_register?(@current_user.id, @event.chapter_id))
-  =link_to "On the spot registration",on_the_spot_registration_event_path(@event),:class => "btn-a-small change_status" ,:method => "get",:style => "margin-left:90px;"
+  =link_to "On the spot registration",on_the_spot_registration_event_path(@event),:class => "onSpotReg change_status" ,:method => "get"
 %li.ulg-expanded{:style => "margin-top: -3px;"}
   .div-c
     -if @event.image.present?
@@ -83,12 +83,35 @@
     - @comment =  @event.comments.build
   -if @current_user.present?
     = semantic_form_for  @comment,:url => create_event_comment_events_path,:method => :post, :remote => true do |f|
-      .add_a_new_comment
+      .add_a_new_comment.customComments
         = f.text_area :content, :placeholder => "comment", :label => false, :class => " content_comment_class ta-a"
       = f.hidden_field   :commentable_type
       = f.hidden_field   :commentable_id
-      = f.submit "Add Comment" ,:class=>"btn-a-small flt-right", :style => "margin-right:153px;"
+      = f.submit "Add Comment" ,:class=>"btn-a-small flt-right", :style => "margin-right:10px;"
   %br
+-if @current_user.present? and @event.can_i_delete?(@current_user.id, @event.chapter_id)
+  -#.attendeesEmailList.clr
+  -#  %p.label-9{:href => '#', :style=>"font-size:20px;", :id=>"attendees_list"}
+  -#    Attendees List
+  -#  = text_area_tag 'attendes_emails', @emails, :style => "width:940px;padding-top:4px;", :readonly => 'readonly'
+  -#  = link_to "Download list",download_list_event_path(@event) ,:class=>"btn-a-small flt-right"
+  .attendees.caListAttendees
+    .attendeesHeading
+      %strong
+        LIST OF ATTENDEES &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+        %div
+          -#%a{:href => "#{download_list_event_path(@event)}"} (Download CSV)
+          = link_to "(Download CSV)",download_list_event_path(@event)
+      %div.mCount
+        #{@event.event_members.size}
+    %ul.attendeesList
+      -@members.each do |i|
+        %li
+          .imageHolder
+            = avatar_display_pic(i,'thumb', '30x30','profile.png',"profile-img img-a flt-left")
+          .nameHolder
+            = i.fullname
+          .clr
 
 
 - session_key = Rails.application.config.session_options[:key]

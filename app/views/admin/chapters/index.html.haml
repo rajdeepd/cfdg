@@ -47,9 +47,9 @@
                             %td.tb-3-4
                               %h5.label-20= chapter.created_at.strftime("%B %d, %Y")
                               - if chapter.incubated?
-                                %h5.label-20.flt-right.td-approved= "Approved on #{chapter.approved_on.strftime("%b %d, %Y")}"
+                                %h5.label-20.flt-right.td-approved= "Approved on #{chapter.approved_on.strftime("%b %d, %Y")}" if chapter.approved_on
                               - else
-                                %h5.label-20.flt-right= "Rejected on #{chapter.rejected_on.strftime("%b %d, %Y")}"
+                                %h5.label-20.flt-right= "Rejected on #{chapter.rejected_on.strftime("%b %d, %Y")}" if chapter.rejected_on
                     - else
                       %li
                         %table.table-b
