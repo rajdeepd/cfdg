@@ -57,7 +57,7 @@ module ApplicationHelper
     case object
       when Post
         owner = object.author
-      when Comment
+      when Event
         owner = object.user
       else
         owner = nil

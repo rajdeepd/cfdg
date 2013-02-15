@@ -1463,6 +1463,7 @@ li.ulg-expanded .div-d{
 #activities-tabs .pagination span a{
 	color: #0099cc;
 	padding: 6px 10px;
+	border-radius: 6px;
 	background-image: linear-gradient(bottom, rgb(224,224,224) 35%, rgb(235,235,235) 68%, rgb(240,240,240) 84%);
 	background-image: -o-linear-gradient(bottom, rgb(224,224,224) 35%, rgb(235,235,235) 68%, rgb(240,240,240) 84%);
 	background-image: -moz-linear-gradient(bottom, rgb(224,224,224) 35%, rgb(235,235,235) 68%, rgb(240,240,240) 84%);
@@ -1471,6 +1472,7 @@ li.ulg-expanded .div-d{
 }
 #activities-tabs .pagination span.current{
 	color: #222222;
+	border-radius: 6px;
 	margin-right: 5px;
 	padding: 6px 10px;
 	background-image: linear-gradient(bottom, rgb(224,224,224) 35%, rgb(235,235,235) 68%, rgb(240,240,240) 84%);

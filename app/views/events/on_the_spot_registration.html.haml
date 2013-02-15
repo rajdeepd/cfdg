@@ -4,7 +4,7 @@
     #attrendeesForm
       %span.LV_invalid
       %span.LV_valid
-      = form_for(@user ,:url => create_on_spot_user_event_path(@event),:method => :post) do |f|
+      = form_for(@user ,:url => create_on_spot_user_event_path(@event),:method => :post, :remote=>true) do |f|
         .event-form
           .event-left{:style => "width:100%;"}
             .el-cont{:style => "margin-bottom: 16px;"}
@@ -31,7 +31,7 @@
           = f.submit "Add User",:class => "btn-a-small addBtnReg",:disable_with=> "adding..."
           = link_to "Cancel",on_the_spot_registration_event_path(@event),:method => "get",:class => "btn-a-small"
     #attendeesBlock
-      =render "attendees"
+      =render "attendees", :members => @members
 :javascript
   $(document).ready(function(){
     $('#new_user').validate({

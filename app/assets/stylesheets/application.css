@@ -1763,8 +1763,10 @@ form.new_comment textarea {
 }
 #attendeesBlock{
 	float: left;
-	width: 200px;
+	width: 315px;
 	margin-left: 20px;
+	padding: 20px;
+	border: 2px dotted red;
 }
 
 .fade_in p{
