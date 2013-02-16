@@ -1,5 +1,6 @@
 --- 
 cn: 
+  cloud_foundry_groups: Cloud Foundry 同学会
   menu: 
     about: 关于
     home: 首页
@@ -39,6 +40,7 @@ cn:
     proposal: 分会申请
     type: 分会类型
     location: 分会位置
+    chairman_setting_intro: "分会主席信息会显示在分会页面上" 
     recommendations: 
       city_chapter_found: 推荐城市分会：
       college_chapter_found: 推荐学校分户：

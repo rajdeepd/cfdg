@@ -1,5 +1,11 @@
 #chairman-contain
   %div
     %p= @chapter.chairman_description
-    = image_tag @chapter.chairman_photo.url
+    - if @chapter.chairman_photo.present?
+      = image_tag @chapter.chairman_photo.url, :size => '100x100', :class => "profile-img img-a flt-left"
+    - else
+      = image_tag 'profile.png', :size => '100x100', :class => "profile-img img-a flt-left"
+
   %span= link_to "编辑", edit_chapter_path(@chapter), :remote => true
+  %p
+    = t("chapter.chairman_setting_intro")

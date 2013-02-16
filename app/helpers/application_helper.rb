@@ -45,6 +45,4 @@ module ApplicationHelper
   def main_chapters(country)
     Chapter.where(:country_name => country , :chapter_status => [:active,:incubated])
   end
-
-
 end
