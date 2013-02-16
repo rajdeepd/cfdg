@@ -7,10 +7,6 @@ class ChaptersController < ApplicationController
     #Carmen.i18n_backend.locale = locale if locale
   end
 
-  def recommend_chapters
-
-  end
-
   def subregion_options
     render partial: 'subregion_select'
   end
@@ -71,27 +67,31 @@ class ChaptersController < ApplicationController
   # GET /chapters/new
   # GET /chapters/new.json
   def new
-    #if @chapter
-    #redirect_to @chapter
-    #else
-    @chapter = Chapter.new
+    @user = current_user 
 
-    @chapter.chapter_type = current_user.is_student? ? Chapter::STUDENT : Chapter::CITY    
+    @chapters = Chapter.find_chapter_for_user(current_user)
 
-    if @chapter.is_type_student?
-      @chapter.college = current_user.college
+    if Chapter.has_chapters_for_user(@user)
+      redirect_to recommend_chapters_path()
     else
-      @chapter.city = current_user.city
-    end
+      @chapter = Chapter.new
 
-    @chapter.messages.build
-    @admin = User.admin_user
+      @chapter.chapter_type = current_user.is_student? ? Chapter::STUDENT : Chapter::CITY    
 
-    respond_to do |format|
-      format.html {render :layout => "create_chapter"}
-      format.json { render json: @chapter }
+      if @chapter.is_type_student?
+        @chapter.college = current_user.college
+      else
+        @chapter.city = current_user.city
+      end
+
+      @chapter.messages.build
+      @admin = User.admin_user
+
+      respond_to do |format|
+        format.html {render :layout => "create_chapter"}
+        format.json { render json: @chapter }
+      end
     end
-    #end
   end
 
   # GET /chapters/1/edit
@@ -202,10 +202,11 @@ class ChaptersController < ApplicationController
   end
 
   def recommend
-    @chapters = Chapter.find_chapter_for_user(current_user)
+    @user = current_user
+    @chapters = Chapter.find_chapter_for_user(@user)
 
     respond_to do |format|
-      format.html
+      format.html {render :layout => "create_chapter"}
     end
   end
 end

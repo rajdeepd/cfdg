@@ -89,6 +89,15 @@ class Chapter < ActiveRecord::Base
     chapters
   end
 
+  def self.has_chapters_for_user(user)
+    case user.role.to_sym
+    when :professional, :fan
+      user.city.chapters.count > 0
+    when :student
+      user.college.try(:chapters).count > 0 || user.city.chapters > 0
+    end
+  end
+
   def location
     if self.is_type_student?
       self.college.name

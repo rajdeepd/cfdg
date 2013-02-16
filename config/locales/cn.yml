@@ -42,8 +42,9 @@ cn:
     location: 分会位置
     chairman_setting_intro: "分会主席信息会显示在分会页面上" 
     recommendations: 
-      city_chapter_found: 推荐城市分会：
-      college_chapter_found: 推荐学校分户：
+      title: '您所在的地区已经创建了 Cloud Foundry 同学会分会, 请选择加入:'
+      city_chapter_found: 城市分会：
+      college_chapter_found: 学校分会：
       no_city_chapter: 你的所在城市没有分会
       no_college_chapter: 你的所在学校没有分会
       create_one: 创建一个分会
