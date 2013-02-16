@@ -111,7 +111,7 @@ class UsersController < ApplicationController
       flash[:error] = [I18n.t("profile.account_not_confirmed")]
     end
 
-    if !@user.email.blank? && !@user.is_confirmed?
+    if !@user.email.blank? && !@user.is_confirmed? && flash[:notice].nil?
       flash[:error] = [I18n.t("profile.please_confirm")]
     end
   end
