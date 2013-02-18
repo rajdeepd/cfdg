@@ -1764,10 +1764,11 @@ form.new_comment textarea {
 }
 #attendeesBlock{
 	float: left;
-	width: 315px;
+	width: 313px;
 	margin-left: 20px;
 	padding: 20px;
-	border: 2px dotted red;
+	border: 3px solid gray;
+	border-radius: 25px;
 }
 
 .fade_in p{

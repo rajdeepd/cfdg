@@ -23,16 +23,11 @@
 #attendeesContainer
   %h1#header
     List of Attendees
+  %span{:style=>"font-size: 12px; color: gray;"}
+    (click on the list to mark them absent/present)
   %table#list
     -members.each do |member|
-      %tr.eventMember
-        %td
-          %input.userId{:value=>"#{member.user_id}", :type=>"hidden"}
-          -if member.status
-            =image_tag "/assets/present.png"
-          -else
-            =image_tag "/assets/absent.png"
-        %td=member.user.email
+      = render "attendee", :member=>member
 
 :javascript
   (function ($) {
@@ -69,8 +64,18 @@
 
     $(".eventMember").live("click", function(){
       var that = $(this);
+      that.append("<img id='spinner' src='/assets/spinner.gif'/>");
       $.ajax({
         url: "/events/" + $("#eventId").val() + "/attending?user_id=" + that.find(".userId").val(),
+        dataType: "script",
+        success: function(data){
+          that.find("#spinner").remove();
+          if (that.find("img").attr("src") == "/assets/present.png"){
+            that.find("img").attr("src", "/assets/absent.png");
+          }else{
+            that.find("img").attr("src", "/assets/present.png");
+          }
+        }
       });
     });
 

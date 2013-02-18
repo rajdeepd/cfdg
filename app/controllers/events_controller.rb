@@ -346,7 +346,9 @@ class EventsController < ApplicationController
   def attending
     @event = Event.find(params[:id])
     @event.update_attendee_status params[:user_id]
-    respond_with @event
+    respond_with @event do |f|
+      f.js{render nothing: true}
+    end
   end
 
 
