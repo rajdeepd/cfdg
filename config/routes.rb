@@ -53,6 +53,7 @@ CloudfoundryUsergroups::Application.routes.draw do
       get 'on_the_spot_registration'
       post 'create_on_spot_user'
       delete :delete_event_gallery_image
+      get :attending
     end
   end
 

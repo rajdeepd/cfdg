@@ -8,6 +8,8 @@ class EventsController < ApplicationController
   before_filter :set_profile_page
   before_filter :check_authorization ,:only => [:download_list]
 
+  respond_to :js, :html
+
   def index
     @events = Event.all
     respond_to do |format|
@@ -331,10 +333,21 @@ class EventsController < ApplicationController
             ChapterMember.create({:memeber_type=>ChapterMember::MEMBER, :user_id => @user.id, :chapter_id => @chapter.id})
           end
       #redirect_to on_the_spot_registration_event_path(@event),:notice => "Registered Successfully!"
-      redirect_to on_the_spot_registration_event_path(@event), :flash => { :success => "Registered Successfully!" }
+      # redirect_to on_the_spot_registration_event_path(@event), :flash => { :success => "Registered Successfully!" }
     else
       flash[:notice] = "User already exists!"
-      render :on_the_spot_registration
+      # render :on_the_spot_registration
+    end
+    respond_to do |format|
+      format.js {}
+    end
+  end
+
+  def attending
+    @event = Event.find(params[:id])
+    @event.update_attendee_status params[:user_id]
+    respond_with @event do |f|
+      f.js{render nothing: true}
     end
   end
 

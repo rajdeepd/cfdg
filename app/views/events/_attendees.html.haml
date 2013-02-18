@@ -14,19 +14,20 @@
     -moz-border-radius:5px;
     border-radius:5px;
     -webkit-border-radius:5px;
+    height: 20px;
+  }
+  .eventMember{
+    cursor: pointer;
+    padding: 3px 10px;
   }
 #attendeesContainer
   %h1#header
     List of Attendees
+  %span{:style=>"font-size: 12px; color: gray;"}
+    (click on the list to mark them absent/present)
   %table#list
     -members.each do |member|
-      %tr
-        %td
-          -if member.status
-            =image_tag "/assets/Active.png"
-          -else
-            =image_tag "/assets/Delist.png"
-        %td=member.user.email
+      = render "attendee", :member=>member
 
 :javascript
   (function ($) {
@@ -60,6 +61,23 @@
           $(this).change();
       });
     }
+
+    $(".eventMember").live("click", function(){
+      var that = $(this);
+      that.append("<img id='spinner' src='/assets/spinner.gif'/>");
+      $.ajax({
+        url: "/events/" + $("#eventId").val() + "/attending?user_id=" + that.find(".userId").val(),
+        dataType: "script",
+        success: function(data){
+          that.find("#spinner").remove();
+          if (that.find("img").attr("src") == "/assets/present.png"){
+            that.find("img").attr("src", "/assets/absent.png");
+          }else{
+            that.find("img").attr("src", "/assets/present.png");
+          }
+        }
+      });
+    });
 
 
     //ondomready
