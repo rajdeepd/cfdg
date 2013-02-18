@@ -325,7 +325,7 @@ class EventsController < ApplicationController
     @user.password = "cloudfoundry"
     @user.password_confirmation = "cloudfoundry"
     if @user.save
-      @event_memeber = EventMember.new(:event_id => @event.id, :user_id => @user.id)
+      @event_memeber = EventMember.new(:event_id => @event.id, :user_id => @user.id, :status=> true)
       @event_memeber.save!
       EventNotification.user_registration_for_event(@event,@user).deliver
       @chapter = Chapter.find(@event.chapter_id)

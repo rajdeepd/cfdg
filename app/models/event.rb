@@ -27,7 +27,6 @@ class Event < ActiveRecord::Base
       :message => "Date should be in dd/mm/yyyy format"
   } , :unless => Proc.new{|event| event.event_end_date.blank?}
 
-
   def <=> (other)
     if (other.event_start_date.blank? or  other.event_start_time.blank?)
       return 1
@@ -67,7 +66,6 @@ class Event < ActiveRecord::Base
     members = self.event_members.includes(:user)
     members.size == 1 and members.first.user.id == self.created_by
   end
-
 
   def event_start_date_in_date
     Date.parse(self.event_start_date)
