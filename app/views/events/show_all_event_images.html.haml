@@ -7,10 +7,11 @@
   -if @all_event_images.present?
     =form_tag delete_event_gallery_image_event_path(@event),:method => :delete,:remote => true do
       - @all_event_images.each do |i|
-        .eventImageHolder.checkboxImgHolder
-          = check_box_tag "imageDelete[]",i.id
+        .eventImageHolder.checkboxImgHolder.customImage
+          = check_box_tag "event_gallery_ids[]",i.id
           %span{:class => "eventGalleryImageClose",:id => "#{i.id}",:rel => "#{@event.id}" }
           = link_to(image_tag(i.image),"#{i.image}")
+      .clr
       = submit_tag 'DELETE' , :class => "btn-a join_us"
 
 

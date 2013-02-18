@@ -127,14 +127,15 @@ $(function(){
 
     $(".eventGalleryImageClose").on("click", function(){
         var current_image_div = $(this);
+        var id = [$(this).attr('id')];
         $.ajax({
             url: '/events/'+ $(this).attr('rel') +'/delete_event_gallery_image',
-            data: {event_id: $(this).attr('id')},
+            data: {event_gallery_ids: id},
             type: 'DELETE',
             success: function(data){
-                console.log("Inside success");
-                console.log(current_image_div);
-               current_image_div.parent().remove();
+//                console.log("Inside success");
+//                console.log(current_image_div);
+//               current_image_div.parent().remove();
             }
         });
     });
