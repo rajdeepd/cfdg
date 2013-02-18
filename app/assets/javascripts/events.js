@@ -17,6 +17,7 @@ Events ={
             });
         });
 
+
         $('#follow_an_event').die('click').live('click', function(e){
 
             var data = {event_id: $(this).attr('event_id')};

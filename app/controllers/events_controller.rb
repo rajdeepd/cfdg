@@ -352,6 +352,20 @@ class EventsController < ApplicationController
   end
 
 
+  def delete_event_gallery_image
+    #EventGallery.delete_all("id IN #{params[:event_gallery_ids]}")
+    logger.info(params[:event_gallery_ids].inspect)
+    logger.info(params[:event_gallery_ids].class)
+    logger.info(params[:event_gallery_ids].first.inspect)
+    logger.info(params[:event_gallery_ids].first.class)
+    @event_gallery_ids = params[:event_gallery_ids].map {|event_gallery_id| event_gallery_id.to_i}
+    respond_to do |format|
+      format.js
+    end
+
+  end
+
+
   protected
 
   def upcoming_and_past_events(chapter_events)
