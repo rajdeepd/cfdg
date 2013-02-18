@@ -11,7 +11,9 @@ CloudfoundryUsergroups::Application.routes.draw do
   match'/admin', :to => "admin/sessions#new"
 
   resources :activity_logs
-  
+  resources :omniauth
+  match '/auth/:provider/callback', :to => 'omniauth#create'
+
   resources :chapters do
     resources :events
      collection do
@@ -71,6 +73,7 @@ CloudfoundryUsergroups::Application.routes.draw do
     get '/users/reset_password', :to => 'passwords#new'
     get '/users/change_password', :to => 'passwords#edit'
     get '/sessions/logout', :to => 'sessions#logout'
+
   end
   get "admin/log_out" => "admin/sessions#destroy", :as => "log_out"
   get '/sign_up' , :to => 'users#edit'
@@ -136,7 +139,7 @@ CloudfoundryUsergroups::Application.routes.draw do
 
 
    end
-   
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

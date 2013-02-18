@@ -12,7 +12,7 @@ class SessionsController <  Devise::SessionsController
 
   # POST /resource/sign_in
   def create
-    logger.info("#######{params.inspect}")
+    #logger.info("#######{params.inspect}")
     user = User.find_by_email(params[:user][:email])
     if !user.nil?
       status = user.valid_password?(params[:user][:password]) unless user.nil?

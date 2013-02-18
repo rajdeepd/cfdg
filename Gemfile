@@ -26,6 +26,9 @@ gem 'kaminari'
 
 # Authentication with Federated Google identity tool kit
 gem 'omniauth', '>= 0.2.6'
+gem 'omniauth-facebook'
+gem 'omniauth-twitter'
+#gem 'omniauth-linkedin'
 gem 'devise'
 gem "oa-core", "~> 0.3.2"
 gem "rest-client", "~> 1.6.7"

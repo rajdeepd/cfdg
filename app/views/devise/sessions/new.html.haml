@@ -38,7 +38,7 @@
           %span.upperCaseBold developers world
     .loginRightPanel
       -#.loginText Login with
-      .socialNetworks.clearfix
+      -#.socialNetworks.clearfix
         -#%a{:href => "#"}
         -#  %span.facebookLink
         -#  %span.divider
@@ -57,8 +57,11 @@
           %span.divider
           %span.googleLink
           %span.yahooLink
-      -#.clr
-      -#%span OR
+      %a.fbLink{:href => "/auth/facebook"}
+      %a.twitterLink{:href => "/auth/twitter"}
+      %a.linkedInLink{:href => "/auth/linkedin"}
+      .clr
+      %span OR
 
       .loginText Login with email
       = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
