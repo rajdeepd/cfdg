@@ -142,13 +142,12 @@ $(function(){
     });
 
     $("#deleteImagesBtn").click(function(){
-        alert("Hello");
         var checked_values = new Array();
         $('input:checkbox:checked').map(function () {
           checked_values.push(this.value);
         });
-        if(checked_values.length > 1){
-        var confirmation = confirm("Are you sure you want to delete "+ checked_values.length +" images from this event Gallery?")//
+        if(checked_values.length >= 1){
+        var confirmation = confirm("Are you sure you want to delete "+ ((checked_values.length > 1) ? checked_values.length +" images" : "this image") +" from this event Gallery?")//
           if(confirmation == true){
                 $.ajax({
                     url: '/events/'+ $(this).attr('rel') +'/delete_event_gallery_image',
