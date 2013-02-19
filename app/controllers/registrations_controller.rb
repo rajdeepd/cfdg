@@ -1,7 +1,7 @@
 class RegistrationsController  < Devise::RegistrationsController
   before_filter :authenticate_user!, :only => :token
   before_filter :is_already_login ,:only => [:new, :create]
-
+  skip_before_filter :require_no_authentication, :only => [ :new, :create ]
   def new
     super
   end

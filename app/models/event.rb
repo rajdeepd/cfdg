@@ -37,6 +37,22 @@ class Event < ActiveRecord::Base
     Time.parse(other.event_start_date + " " + other.event_start_time) <=> Time.parse(self.event_start_date + " " + self.event_start_time)
   end
 
+  def onspot_registration params
+    # user = User.new(params[:user].merge(:password=>"cloudfoundry", :password_confirmation=>"cloudfoundry"))
+    user = User.find_by_email(params[:user][:email])
+    user = User.new(params[:user].merge(:password=>"cloudfoundry", :password_confirmation=>"cloudfoundry")) unless user
+    if user || user.save
+      chapter.chapter_members.create(:memeber_type=>ChapterMember::MEMBER, :user_id => user.id) if !chapter.am_i_chapter_memeber?(user.id)
+      if member = event_members.find_by_user_id(user.id)
+        flag = false
+      else
+        member, flag = event_members.create(:user_id => user.id, :status=> true), true
+      end
+      EventNotification.user_registration_for_event(self,user).deliver
+    end
+    return member, flag, user
+  end
+
   def update_attendee_status member_id
     member = event_members.find_by_user_id(member_id)
     member.update_attributes(:status=>!member.status)    

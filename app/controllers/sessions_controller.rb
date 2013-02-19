@@ -12,7 +12,7 @@ class SessionsController <  Devise::SessionsController
 
   # POST /resource/sign_in
   def create
-    logger.info("#######{params.inspect}")
+    #logger.info("#######{params.inspect}")
     user = User.find_by_email(params[:user][:email])
     if !user.nil?
       status = user.valid_password?(params[:user][:password]) unless user.nil?
@@ -43,6 +43,12 @@ class SessionsController <  Devise::SessionsController
       flash.now[:custom_error] = "Invalid email or password"
       render "new"
     end
+  end
+
+  def logout
+      session[:user_id] = nil
+      #redirect_to new_admin_session_url, :notice => "Logged out!"
+      redirect_to root_path, :notice => "Logged out!"
   end
 
   def is_already_login
