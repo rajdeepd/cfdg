@@ -1,0 +1,8 @@
+%tr.eventMember
+  %td
+    %input.userId{:id=>"#{member.user_id}", :type=>"hidden"}
+    -if member.status
+      =image_tag "/assets/present.png"
+    -else
+      =image_tag "/assets/absent.png"
+  %td=member.user.email

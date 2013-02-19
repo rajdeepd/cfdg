@@ -1423,7 +1423,7 @@ li.ulg-expanded .div-d{
 }
 .customTabList{
 	float: left;
-	width: 316px;
+	width: 320px;
 	border: none;
 }
 .activityLog{
@@ -1460,6 +1460,11 @@ li.ulg-expanded .div-d{
 	margin: 0px 10px 10px 0;
 	float: left;
 }
+
+.activity a{
+	text-decoration: underline;
+}
+
 #activities-tabs .pagination span a{
 	color: #0099cc;
 	padding: 6px 10px;
@@ -1490,8 +1495,18 @@ li.ulg-expanded .div-d{
     margin-right: 15px;
     width: 99px;
     line-height: 30px;
+    cursor: pointer;
 }
-
+.incubateLinks .btnLinkSmall{
+    margin-left: 34px;
+    width: 40px;
+}
+.secondaryCo .btnLink{
+    width: auto;
+    float: none;
+    text-align: center;
+    display: block;
+}
 .btnLink:hover, .btnLinkSmall:hover{
     color: #222222;
 }
@@ -1519,6 +1534,7 @@ li.ulg-expanded .div-d{
     line-height: 30px;
     text-align: left;
     margin-right: 15px;
+    cursor: pointer;
 }
 .customLinksWrapper{
     width: 190px;
