@@ -1460,6 +1460,11 @@ li.ulg-expanded .div-d{
 	margin: 0px 10px 10px 0;
 	float: left;
 }
+
+.activity a{
+	text-decoration: underline;
+}
+
 #activities-tabs .pagination span a{
 	color: #0099cc;
 	padding: 6px 10px;

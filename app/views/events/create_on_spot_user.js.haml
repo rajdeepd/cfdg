@@ -1,2 +1,2 @@
 :plain
-  alert("updated");
+  $("table#list tbody").append("#{escape_javascript(render("attendee", :member => @event_memeber))}")

@@ -1771,6 +1771,10 @@ form.new_comment textarea {
 	border-radius: 25px;
 }
 
+table#list{
+	width:90%;
+}
+
 .fade_in p{
     margin-top: -20px;
 }
