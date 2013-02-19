@@ -321,23 +321,7 @@ class EventsController < ApplicationController
 
   def create_on_spot_user
     @event = Event.find(params[:id])
-    @user = User.new(params[:user])
-    @user.password = "cloudfoundry"
-    @user.password_confirmation = "cloudfoundry"
-    if @user.save
-      @event_memeber = EventMember.new(:event_id => @event.id, :user_id => @user.id, :status=> true)
-      @event_memeber.save!
-      EventNotification.user_registration_for_event(@event,@user).deliver
-      @chapter = Chapter.find(@event.chapter_id)
-      if !@chapter.am_i_chapter_memeber?(@user.id)
-            ChapterMember.create({:memeber_type=>ChapterMember::MEMBER, :user_id => @user.id, :chapter_id => @chapter.id})
-          end
-      #redirect_to on_the_spot_registration_event_path(@event),:notice => "Registered Successfully!"
-      # redirect_to on_the_spot_registration_event_path(@event), :flash => { :success => "Registered Successfully!" }
-    else
-      flash[:notice] = "User already exists!"
-      # render :on_the_spot_registration
-    end
+    @event_member, @flag, @user = @event.onspot_registration params
     respond_to do |format|
       format.js {}
     end

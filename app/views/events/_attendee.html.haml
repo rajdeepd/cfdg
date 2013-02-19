@@ -1,6 +1,6 @@
 %tr.eventMember
   %td
-    %input.userId{:value=>"#{member.user_id}", :type=>"hidden"}
+    %input.userId{:id=>"#{member.user_id}", :type=>"hidden"}
     -if member.status
       =image_tag "/assets/present.png"
     -else
