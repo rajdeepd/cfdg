@@ -1566,25 +1566,39 @@ label.error{
     float: left;
 }
 
-.fbLink{
+.fbCustomLink{
     background: url("fb.png") no-repeat;
     width: 32px;
     height: 32px;
-    display: block;
+    /*display: block;*/
     float: left;
 }
-.twitterLink{
+.twitterCustomLink{
     background: url("twitter_custom.png") no-repeat;
     width: 32px;
     height: 32px;
-    display: block;
+    /*display: block;*/
     float: left;
 }
-.linkedInLink{
+.yahooCustomLink{
+    background: url("yahoo_custom.png") no-repeat;
+    width: 32px;
+    height: 32px;
+    /*display: block;*/
+    float: left;
+}
+.gmailCustomLink{
+    background: url("google_custom.png") no-repeat;
+    width: 32px;
+    height: 32px;
+    /*display: block;*/
+    float: left;
+}
+.linkedInCustomLink{
     background: url("linkedIn.png") no-repeat;
     width: 32px;
     height: 32px;
-    display: block;
+    /*display: block;*/
     float: left;
 }
 
