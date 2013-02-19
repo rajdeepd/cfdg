@@ -23,11 +23,31 @@ Events ={
             var data = {event_id: $(this).attr('event_id')};
             $(this).text("please wait...");
             $(this).css("opacity",0.35);
-            $(this).attr("disabled","disabled");
+//            $(this).attr("disabled","disabled");
 
             $.ajax({
                 url: '/events/follow_an_event',
                 data : data,
+                success: function(data){
+                    $('#events').html(data);
+                    $('.join_us').hide();
+                },
+                async:false,
+                dataType: 'html'
+            });
+
+        });
+
+        $('#event_rsvped').die('click').live('click', function(e){
+
+//            var data = {event_id: $(this).attr('event_id')};
+            $(this).text("please wait...");
+            $(this).css("opacity",0.35);
+//            $(this).attr("disabled","disabled");
+
+            $.ajax({
+                url: '/events/'+ $(this).attr('event_id') +'/unfollow_an_event',
+//                data : data,
                 success: function(data){
                     $('#events').html(data);
                     $('.join_us').hide();
@@ -64,7 +84,7 @@ Events ={
             $(this).css("opacity",0.35);
             $(this).attr("disabled","disabled");
             var confirmation = confirm("Are you sure you want to cancel this event?")
-            if (confirmation == true)
+            if(confirmation == true)
             {
                 $.ajax({
                     url: '/events/cancel_event',

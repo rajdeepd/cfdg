@@ -5,14 +5,16 @@
   %h1.label-17{:style => "padding-bottom:10px;"}
     = @event.title
   -if @all_event_images.present?
-    =form_tag delete_event_gallery_image_event_path(@event),:method => :delete,:remote => true do
-      - @all_event_images.each do |i|
-        .eventImageHolder.checkboxImgHolder.customImage
-          = check_box_tag "event_gallery_ids[]",i.id
+    -#=form_tag delete_event_gallery_image_event_path(@event),:method => :delete,:remote => true do
+    - @all_event_images.each do |i|
+      .eventImageHolder.checkboxImgHolder.customImage
+        = check_box_tag "event_gallery_ids[]",i.id  if ChapterMember.is_primary_coordinator?(current_user.id)
+        - if ChapterMember.is_primary_coordinator?(current_user.id)
           %span{:class => "eventGalleryImageClose",:id => "#{i.id}",:rel => "#{@event.id}" }
-          = link_to(image_tag(i.image),"#{i.image}")
-      .clr
-      = submit_tag 'DELETE' , :class => "btn-a join_us"
+        = link_to(image_tag(i.image),"#{i.image}")
+    .clr
+      -#= submit_tag 'DELETE' , :class => "btn-a join_us",:id => "deleteImagesBtn"
+      %button.btn-a{:id => "deleteImagesBtn",:rel => "#{@event.id}"} DELETE
 
 
 

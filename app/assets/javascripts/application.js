@@ -128,16 +128,38 @@ $(function(){
     $(".eventGalleryImageClose").on("click", function(){
         var current_image_div = $(this);
         var id = [$(this).attr('id')];
+        var confirmation = confirm("Are you sure you want to delete this images from this event Gallery?")
+        if(confirmation == true){
         $.ajax({
             url: '/events/'+ $(this).attr('rel') +'/delete_event_gallery_image',
             data: {event_gallery_ids: id},
             type: 'DELETE',
             success: function(data){
-//                console.log("Inside success");
-//                console.log(current_image_div);
-//               current_image_div.parent().remove();
+
             }
         });
+    }
+    });
+
+    $("#deleteImagesBtn").click(function(){
+        alert("Hello");
+        var checked_values = new Array();
+        $('input:checkbox:checked').map(function () {
+          checked_values.push(this.value);
+        });
+        if(checked_values.length > 1){
+        var confirmation = confirm("Are you sure you want to delete "+ checked_values.length +" images from this event Gallery?")//
+          if(confirmation == true){
+                $.ajax({
+                    url: '/events/'+ $(this).attr('rel') +'/delete_event_gallery_image',
+                    data: {event_gallery_ids: checked_values},
+                    type: 'DELETE',
+                    success: function(data){
+
+                    }
+                });
+            }
+        }
     });
 
 

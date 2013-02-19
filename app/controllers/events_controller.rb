@@ -138,6 +138,8 @@ class EventsController < ApplicationController
     @member = @event.event_members.includes(:user).select{|i| i.user == @current_user}.first
     @member.delete
     @profile_page = false
+    chapter_events = Event.find_all_by_chapter_id(@event.chapter_id) || []
+    get_upcoming_and_past_events(chapter_events, true)
     respond_to do |format|
       format.js {render :partial => 'events_list' }# new.html.erb
     end
@@ -354,10 +356,7 @@ class EventsController < ApplicationController
 
   def delete_event_gallery_image
     #EventGallery.delete_all("id IN #{params[:event_gallery_ids]}")
-    logger.info(params[:event_gallery_ids].inspect)
-    logger.info(params[:event_gallery_ids].class)
-    logger.info(params[:event_gallery_ids].first.inspect)
-    logger.info(params[:event_gallery_ids].first.class)
+    EventGallery.delete params[:event_gallery_ids].map {|event_gallery_id| event_gallery_id}
     @event_gallery_ids = params[:event_gallery_ids].map {|event_gallery_id| event_gallery_id.to_i}
     respond_to do |format|
       format.js
