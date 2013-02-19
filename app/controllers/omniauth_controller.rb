@@ -12,6 +12,9 @@ class OmniauthController < ApplicationController
         elsif auth['provider'] == "google"
           user = User.create_google_auth_user(auth)
           redirect_to users_change_password_path(:reset_password_token => user.reset_password_token)
+        elsif auth['provider'] == "yahoo"
+          user = User.create_yahoo_auth_user(auth)
+          redirect_to users_change_password_path(:reset_password_token => user.reset_password_token)
         end
       elsif(user = User.find_by_email(auth['info']['email']))
         if user.providers
