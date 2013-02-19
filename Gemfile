@@ -25,7 +25,12 @@ gem 'public_activity'
 gem 'kaminari'
 
 # Authentication with Federated Google identity tool kit
-gem 'omniauth', '>= 0.2.6'
+gem 'omniauth','1.1.1'
+gem 'omniauth-facebook','1.4.1'
+gem 'omniauth-twitter','0.0.14'
+#gem 'omniauth-linkedin','0.0.8'
+gem 'omniauth-google'
+gem 'omniauth-yahoo'
 gem 'devise'
 gem "oa-core", "~> 0.3.2"
 gem "rest-client", "~> 1.6.7"
