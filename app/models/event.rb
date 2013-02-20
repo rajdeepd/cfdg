@@ -27,7 +27,6 @@ class Event < ActiveRecord::Base
       :message => "Date should be in dd/mm/yyyy format"
   } , :unless => Proc.new{|event| event.event_end_date.blank?}
 
-
   def <=> (other)
     if (other.event_start_date.blank? or  other.event_start_time.blank?)
       return 1
@@ -36,6 +35,24 @@ class Event < ActiveRecord::Base
     end
 
     Time.parse(other.event_start_date + " " + other.event_start_time) <=> Time.parse(self.event_start_date + " " + self.event_start_time)
+  end
+
+  def onspot_registration params
+    # user = User.new(params[:user].merge(:password=>"cloudfoundry", :password_confirmation=>"cloudfoundry"))
+    user = User.find_by_email(params[:user][:email])
+    # puts user.inspect
+    user = User.create(params[:user].merge(:password=>"cloudfoundry", :password_confirmation=>"cloudfoundry")) unless user
+    if user.valid?
+      puts user.inspect
+      chapter.chapter_members.create(:memeber_type=>ChapterMember::MEMBER, :user_id => user.id) if !chapter.am_i_chapter_memeber?(user.id)
+      if member = event_members.find_by_user_id(user.id)
+        flag = false
+      else
+        member, flag = event_members.create(:user_id => user.id, :status=> true), true
+      end
+      EventNotification.user_registration_for_event(self,user).deliver
+    end
+    return member, flag, user
   end
 
   def update_attendee_status member_id
@@ -67,7 +84,6 @@ class Event < ActiveRecord::Base
     members = self.event_members.includes(:user)
     members.size == 1 and members.first.user.id == self.created_by
   end
-
 
   def event_start_date_in_date
     Date.parse(self.event_start_date)

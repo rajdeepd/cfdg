@@ -22,7 +22,7 @@
             %label.label-2.bold{:style => "position: relative;top: -2px;font-size: 18px;color:#afafaf;"}
               |
           %li
-            %a.label-2.logout{:href => "#"}= t('menu.logout')
+            %a.label-2.logout{:href => "#{sessions_logout_path}"}= t('menu.logout')
         - else
           -#%li
           -#  %a.label-2.signup{:href => "#"}= t('menu.signup')

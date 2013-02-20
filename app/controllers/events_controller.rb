@@ -138,6 +138,8 @@ class EventsController < ApplicationController
     @member = @event.event_members.includes(:user).select{|i| i.user == @current_user}.first
     @member.delete
     @profile_page = false
+    chapter_events = Event.find_all_by_chapter_id(@event.chapter_id) || []
+    get_upcoming_and_past_events(chapter_events, true)
     respond_to do |format|
       format.js {render :partial => 'events_list' }# new.html.erb
     end
@@ -321,23 +323,7 @@ class EventsController < ApplicationController
 
   def create_on_spot_user
     @event = Event.find(params[:id])
-    @user = User.new(params[:user])
-    @user.password = "cloudfoundry"
-    @user.password_confirmation = "cloudfoundry"
-    if @user.save
-      @event_memeber = EventMember.new(:event_id => @event.id, :user_id => @user.id)
-      @event_memeber.save!
-      EventNotification.user_registration_for_event(@event,@user).deliver
-      @chapter = Chapter.find(@event.chapter_id)
-      if !@chapter.am_i_chapter_memeber?(@user.id)
-            ChapterMember.create({:memeber_type=>ChapterMember::MEMBER, :user_id => @user.id, :chapter_id => @chapter.id})
-          end
-      #redirect_to on_the_spot_registration_event_path(@event),:notice => "Registered Successfully!"
-      # redirect_to on_the_spot_registration_event_path(@event), :flash => { :success => "Registered Successfully!" }
-    else
-      flash[:notice] = "User already exists!"
-      # render :on_the_spot_registration
-    end
+    @event_member, @flag, @user = @event.onspot_registration params
     respond_to do |format|
       format.js {}
     end
@@ -346,7 +332,19 @@ class EventsController < ApplicationController
   def attending
     @event = Event.find(params[:id])
     @event.update_attendee_status params[:user_id]
-    respond_with @event
+    respond_with @event do |f|
+      f.js{render nothing: true}
+    end
+  end
+
+
+  def delete_event_gallery_image
+    #EventGallery.delete_all("id IN #{params[:event_gallery_ids]}")
+    EventGallery.delete params[:event_gallery_ids].map {|event_gallery_id| event_gallery_id}
+    @event_gallery_ids = params[:event_gallery_ids].map {|event_gallery_id| event_gallery_id.to_i}
+    respond_to do |format|
+      format.js
+    end
   end
 
 
