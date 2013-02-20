@@ -27,12 +27,12 @@
           -if !@event.am_i_member?(current_user.id) and @event.is_rsvp_allowed?
             %button.btn-a-small.flt-left.rsvp_me{:id=>"follow_an_event", :event_id => "#{@event.id}"} R.S.V.P
             -#%img.flt-right#rsvp_tick{:src => "/assets/Event.png",:style => "display:none"}
-            %button.btn-a-small.flt-left{:id=>"event_rsvped",:event_id => "#{@event.id}",:class => "rsvp_tick",:style => "display:none;opacity:0.35"} undo R.S.V.P
+            %button.btn-a-small.flt-left{:id=>"event_rsvped",:event_id => "#{@event.id}",:class => "rsvp_tick",:style => "display:none;opacity:1"} undo R.S.V.P
           -elsif !@event.am_i_member?(current_user.id) and !@event.is_rsvp_allowed?
             %button.btn-a-small.flt-left{:id=>"join_wait_list"} Limit Reached!
           -if @event.am_i_member?(current_user.id)
             -#%img.flt-right{:src => "/assets/Event.png"}
-            %button.btn-a-small.flt-left{:id=>"event_rsvped",:event_id => "#{@event.id}",:style => "opacity:0.35"} undo R.S.V.P
+            %button.btn-a-small.flt-left{:id=>"event_rsvped",:event_id => "#{@event.id}",:style => "opacity:1"} undo R.S.V.P
 
     %div.clr
     %div.label-26{:id => "short_content"}
@@ -154,8 +154,17 @@
         }
       });
       $(".rsvp_me").on("click",function(){
+        alert("Hello");
         $(".rsvp_me").hide();
         $(".rsvp_tick").show();
       });
+
+     $(".rsvp_tick").on("click",function(){
+          alert("Hello");
+          $(".rsvp_me").show();
+          $(".rsvp_me").css("opacity",1);
+          $(".rsvp_me").text("R.S.V.P");
+          $(".rsvp_tick").hide();
+     });
 
     });

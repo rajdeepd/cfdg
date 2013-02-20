@@ -41,8 +41,8 @@ Events ={
         $('#event_rsvped').die('click').live('click', function(e){
 
 //            var data = {event_id: $(this).attr('event_id')};
-            $(this).text("please wait...");
-            $(this).css("opacity",0.35);
+//            $(this).text("please wait...");
+            $(this).css("opacity",1);
 //            $(this).attr("disabled","disabled");
 
             $.ajax({

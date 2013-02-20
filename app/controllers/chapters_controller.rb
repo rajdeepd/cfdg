@@ -136,10 +136,7 @@ class ChaptersController < ApplicationController
 
   def unjoin_a_chapter
     @chapter = Chapter.find(params[:chapter_id])
-    events_member = EventMember.where(:user_id => @current_user.id, :event_id => @chapter.event_ids)
-    @chapter.events.event_members.delete_all
-    chapter_member = ChapterMember.where(:user_id => @current_user.id,:chapter_id => params[:chapter_id])
-    chapter_member.delete_all
+    output = Chapter.unfollow_chapter(@chapter,@current_user)
     respond_to do |format|
         format.html { redirect_to @chapter }
         format.json { render json: @chapter, status: :success, location: @chapter }
