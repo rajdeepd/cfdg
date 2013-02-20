@@ -6,24 +6,19 @@ class OmniauthController < ApplicationController
       auth = request.env['omniauth.auth']
       logger.info "############# auth hash ############{auth.inspect}"
       if !User.find_by_email(auth['info']['email'])
-        if auth['provider'] == "facebook"
-          user = User.create_fb_auth_user(auth)
+        #if auth['provider'] == "facebook"
+          user = User.create_outh_auth_user(auth)
           redirect_to users_change_password_path(:reset_password_token => user.reset_password_token)
-        elsif auth['provider'] == "google"
-          user = User.create_google_auth_user(auth)
-          redirect_to users_change_password_path(:reset_password_token => user.reset_password_token)
-        elsif auth['provider'] == "yahoo"
-          user = User.create_yahoo_auth_user(auth)
-          redirect_to users_change_password_path(:reset_password_token => user.reset_password_token)
-        elsif auth['provider'] == "linkedin"
-          user = User.create_linkedin_auth_user(auth)
-          redirect_to users_change_password_path(:reset_password_token => user.reset_password_token)
-        end
-        session[:user_id] = user.id
-        session[:email] = user.email
-        session[:user] = {:email => user.email,:verified => true, :name => user.fullname}
-        sign_in(user)
-        redirect_to(profile_path)
+        #elsif auth['provider'] == "google"
+        #  user = User.create_google_auth_user(auth)
+        #  redirect_to users_change_password_path(:reset_password_token => user.reset_password_token)
+        #elsif auth['provider'] == "yahoo"
+        #  user = User.create_yahoo_auth_user(auth)
+        #  redirect_to users_change_password_path(:reset_password_token => user.reset_password_token)
+        #elsif auth['provider'] == "linkedin"
+        #  user = User.create_linkedin_auth_user(auth)
+        #  redirect_to users_change_password_path(:reset_password_token => user.reset_password_token)
+        #end
       elsif(user = User.find_by_email(auth['info']['email']))
         logger.info "############# after finding user ############"
         if !user.providers.blank?
@@ -55,11 +50,6 @@ class OmniauthController < ApplicationController
           logger.info "############# after creating token ############{new_reset_token}"
           redirect_to users_change_password_path(:reset_password_token => new_reset_token)
         end
-        #session[:user_id] = user.id
-        #session[:email] = user.email
-        #session[:user] = {:email => user.email,:verified => true, :name => user.fullname}
-        #sign_in(user)
-        #redirect_to(profile_path)
       end
     end
   end

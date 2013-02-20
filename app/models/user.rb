@@ -42,7 +42,7 @@ class User < ActiveRecord::Base
     Rails.logger.info self.inspect
   end
 
-  def self.create_fb_auth_user(hash)
+  def self.create_outh_auth_user(hash)
     token_array =  [('a'..'z'),('A'..'Z'),(0..9)].map{|i| i.to_a}.flatten
     new_reset_token = (0...20).map{ token_array[rand(token_array.length)] }.join
     Rails.logger.info "after create token#{new_reset_token.inspect}"
@@ -53,7 +53,7 @@ class User < ActiveRecord::Base
       user = User.new(:email => hash['info']['email'],:fullname => hash['info']['name'],:admin => false,:reset_password_token => new_reset_token)
       if user.save!(:validate => false)
         Rails.logger.info "inspecting user object #{user.inspect}"
-        provider = user.providers.create(:user_id => user.id,:provider => hash['provider'],:uid => hash['uid'])
+        provider = user.providers.create(:provider => hash['provider'],:uid => hash['uid'])
         provider.save!
         Rails.logger.info "inspecting user object #{provider.inspect}"
       end
@@ -61,62 +61,62 @@ class User < ActiveRecord::Base
     return user
   end
 
-  def self.create_google_auth_user(hash)
-    token_array =  [('a'..'z'),('A'..'Z'),(0..9)].map{|i| i.to_a}.flatten
-    new_reset_token = (0...20).map{ token_array[rand(token_array.length)] }.join
-    Rails.logger.info "after create token#{new_reset_token.inspect}"
-    if User.all.any?{|i| i.reset_password_token == new_reset_token}
-      Rails.logger.info "inside if "
-    else
-      Rails.logger.info "inside else "
-      user = User.new(:email => hash['info']['email'],:fullname => hash['info']['name'],:admin => false,:reset_password_token => new_reset_token)
-      if user.save!(:validate => false)
-        Rails.logger.info "inspecting user object #{user.inspect}"
-        provider = user.providers.create(:user_id => user.id,:provider => hash['provider'],:uid => hash['uid'])
-        provider.save!
-        Rails.logger.info "inspecting user object #{provider.inspect}"
-      end
-    end
-    return user
-  end
+  #def self.create_google_auth_user(hash)
+  #  token_array =  [('a'..'z'),('A'..'Z'),(0..9)].map{|i| i.to_a}.flatten
+  #  new_reset_token = (0...20).map{ token_array[rand(token_array.length)] }.join
+  #  Rails.logger.info "after create token#{new_reset_token.inspect}"
+  #  if User.all.any?{|i| i.reset_password_token == new_reset_token}
+  #    Rails.logger.info "inside if "
+  #  else
+  #    Rails.logger.info "inside else "
+  #    user = User.new(:email => hash['info']['email'],:fullname => hash['info']['name'],:admin => false,:reset_password_token => new_reset_token)
+  #    if user.save!(:validate => false)
+  #      Rails.logger.info "inspecting user object #{user.inspect}"
+  #      provider = user.providers.create(:user_id => user.id,:provider => hash['provider'],:uid => hash['uid'])
+  #      provider.save!
+  #      Rails.logger.info "inspecting user object #{provider.inspect}"
+  #    end
+  #  end
+  #  return user
+  #end
+  #
+  #def self.create_yahoo_auth_user(hash)
+  #  token_array =  [('a'..'z'),('A'..'Z'),(0..9)].map{|i| i.to_a}.flatten
+  #  new_reset_token = (0...20).map{ token_array[rand(token_array.length)] }.join
+  #  Rails.logger.info "after create token#{new_reset_token.inspect}"
+  #  if User.all.any?{|i| i.reset_password_token == new_reset_token}
+  #    Rails.logger.info "inside if "
+  #  else
+  #    Rails.logger.info "inside else "
+  #    user = User.new(:email => hash['info']['email'],:fullname => hash['info']['name'],:admin => false,:reset_password_token => new_reset_token)
+  #    if user.save!(:validate => false)
+  #      Rails.logger.info "inspecting user object #{user.inspect}"
+  #      provider = user.providers.create(:user_id => user.id,:provider => hash['provider'],:uid => hash['uid'])
+  #      provider.save!
+  #      Rails.logger.info "inspecting user object #{provider.inspect}"
+  #    end
+  #  end
+  #  return user
+  #end
 
-  def self.create_yahoo_auth_user(hash)
-    token_array =  [('a'..'z'),('A'..'Z'),(0..9)].map{|i| i.to_a}.flatten
-    new_reset_token = (0...20).map{ token_array[rand(token_array.length)] }.join
-    Rails.logger.info "after create token#{new_reset_token.inspect}"
-    if User.all.any?{|i| i.reset_password_token == new_reset_token}
-      Rails.logger.info "inside if "
-    else
-      Rails.logger.info "inside else "
-      user = User.new(:email => hash['info']['email'],:fullname => hash['info']['name'],:admin => false,:reset_password_token => new_reset_token)
-      if user.save!(:validate => false)
-        Rails.logger.info "inspecting user object #{user.inspect}"
-        provider = user.providers.create(:user_id => user.id,:provider => hash['provider'],:uid => hash['uid'])
-        provider.save!
-        Rails.logger.info "inspecting user object #{provider.inspect}"
-      end
-    end
-    return user
-  end
-
-  def self.create_linkedin_auth_user(hash)
-    token_array =  [('a'..'z'),('A'..'Z'),(0..9)].map{|i| i.to_a}.flatten
-    new_reset_token = (0...20).map{ token_array[rand(token_array.length)] }.join
-    Rails.logger.info "after create token#{new_reset_token.inspect}"
-    if User.all.any?{|i| i.reset_password_token == new_reset_token}
-      Rails.logger.info "inside if "
-    else
-      Rails.logger.info "inside else "
-      user = User.new(:email => hash['info']['email'],:fullname => hash['info']['name'],:admin => false,:reset_password_token => new_reset_token)
-      if user.save!(:validate => false)
-        Rails.logger.info "inspecting user object #{user.inspect}"
-        provider = user.providers.create(:user_id => user.id,:provider => hash['provider'],:uid => hash['uid'])
-        provider.save!
-        Rails.logger.info "inspecting user object #{provider.inspect}"
-      end
-    end
-    return user
-  end
+  #def self.create_linkedin_auth_user(hash)
+  #  token_array =  [('a'..'z'),('A'..'Z'),(0..9)].map{|i| i.to_a}.flatten
+  #  new_reset_token = (0...20).map{ token_array[rand(token_array.length)] }.join
+  #  Rails.logger.info "after create token#{new_reset_token.inspect}"
+  #  if User.all.any?{|i| i.reset_password_token == new_reset_token}
+  #    Rails.logger.info "inside if "
+  #  else
+  #    Rails.logger.info "inside else "
+  #    user = User.new(:email => hash['info']['email'],:fullname => hash['info']['name'],:admin => false,:reset_password_token => new_reset_token)
+  #    if user.save!(:validate => false)
+  #      Rails.logger.info "inspecting user object #{user.inspect}"
+  #      provider = user.providers.create(:user_id => user.id,:provider => hash['provider'],:uid => hash['uid'])
+  #      provider.save!
+  #      Rails.logger.info "inspecting user object #{provider.inspect}"
+  #    end
+  #  end
+  #  return user
+  #end
 
 
 end
