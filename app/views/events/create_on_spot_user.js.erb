@@ -1,0 +1,16 @@
+<%-if @user.valid? %>
+  <%-if @flag %>
+    $(".LV_valid").text("User is added and marked as present")
+    $(".LV_valid").show();
+    $("table#list tbody").append("<%= escape_javascript(render("attendee", :member => @event_member))%>")
+  <%-else %>
+    $(".LV_valid").text("User is marked as present")
+    $(".LV_valid").show();
+    $(".eventMember input#<%=@user.id%>").parent().find("img").attr("src", "/assets/present.png");
+  $(".LV_invalid").hide();
+  <%- end %>
+<%-else %>
+  $(".LV_invalid").text("Unable to add user");
+  $(".LV_invalid").show();
+  $(".LV_valid").hide();
+<%-end%>
