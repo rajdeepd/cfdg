@@ -6,4 +6,4 @@ class ActivityLogsController < ApplicationController
     render :layout=>false
   end
 
-END
+end

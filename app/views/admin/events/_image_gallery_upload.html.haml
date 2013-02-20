@@ -1,6 +1,6 @@
 = javascript_include_tag "jquery.colorbox-min"
 = stylesheet_link_tag    "colorbox", :media => "all"
-.picHolder{:id => "image_gallery",:style =>"width:500px;" }
+.picHolder{:id => "image_gallery",:style =>"width:640px;" }
   -if @all_event_images.present?
     - @all_event_images.limit(5).each do |i|
       .eventImageHolder.customImg

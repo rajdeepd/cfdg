@@ -1812,7 +1812,7 @@ form.new_comment textarea {
 table#list{
 	width:90%;
     float: left;
-    width: 315px;
+    /*width: 315px;*/
     margin-left: 20px;
     padding: 20px;
     border: 2px dotted red;
@@ -1857,6 +1857,15 @@ table#list{
     color: #0097d7;
     font-weight: bold;
     text-decoration: underline;
+}
+#attendeesContainer table#list tr td{
+    border-bottom: 1px solid lightgray;
+    cursor: pointer;
+    line-height: 25px;
+}
+#attendeesContainer table#list {
+    border: none;
+    margin-left: 0;
 }
 
 /*Error or Notification Classes ends here*/
