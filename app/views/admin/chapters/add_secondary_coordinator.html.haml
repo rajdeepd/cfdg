@@ -16,33 +16,33 @@
         = link_to "Add secondary co-odrinator" , create_secondary_coordinator_admin_chapter_path(:member => m) , :method => "POST"
       %br
 .content.wrapper
-  .div-l{:style => "overflow:visible;"}
+  -#.div-l{:style => "overflow:visible;"}
     .dd-b
       %h5.label-44
         Add Secondary Co-ordinator
         %img.arrow-down-d-img{:src => "/assets/arrow-down-d.png"}
-    %table.table-e
-      %thead
-        %tr
-          %td{:style => "width:100px;text-align: left;"}
-            %h5.label-46 Email
-          %td{:style => "width:115px;"}
-            %h5.label-46 Full Name
-          %td{:style => "width:100px;"}
-            %h5.label-46 Action
-      %tbody
-        - if @members.present?
-          - @members.each do |member|
-            %tr
-              %td{:style => "text-align: left;"}
-                %h5.label-48= member.user.email
-              %td
-                %h5.label-48= member.user.fullname
-              %td
-                %h5.label-48.secondaryCo
-                  = link_to "Add Secondary Coodrinator" , create_secondary_coordinator_admin_chapter_path(:member => member) ,:class => "btnLink change_status", :method => "POST"
-        - else
+  %table.table-e
+    %thead
+      %tr
+        %td{:style => "width:100px;text-align: left;"}
+          %h5.label-46 Email
+        %td{:style => "width:115px;"}
+          %h5.label-46 Full Name
+        %td{:style => "width:100px;"}
+          %h5.label-46 Action
+    %tbody
+      - if @members.present?
+        - @members.each do |member|
           %tr
             %td{:style => "text-align: left;"}
-              %h5.label-48
-                = "No Active Members"
+              %h5.label-48= member.user.email
+            %td
+              %h5.label-48= member.user.fullname
+            %td
+              %h5.label-48.secondaryCo
+                = link_to "Add Secondary Coodrinator" , create_secondary_coordinator_admin_chapter_path(:member => member) ,:class => "btnLink change_status", :method => "POST"
+      - else
+        %tr
+          %td{:style => "text-align: left;"}
+            %h5.label-48
+              = "No Active Members"

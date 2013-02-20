@@ -83,7 +83,22 @@
       -#= f.hidden_field   :updated_by,:value => 1
       = f.submit "Add Comment" ,:class=>"btn-a-small flt-right", :style => "margin-right:63px;"
   %br
-
+.attendees.caListAttendees
+  .attendeesHeading
+    %strong
+      LIST OF ATTENDEES &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+      %div
+        = link_to "(Download CSV)",download_list_admin_chapter_event_path(params[:chapter_id],@event)
+    %div.mCount
+      #{@event.event_members.size}
+  %ul.attendeesList
+    -@members.each do |i|
+      %li
+        .imageHolder
+          = avatar_display_pic(i,'thumb', '30x30','profile.png',"profile-img img-a flt-left")
+        .nameHolder
+          = i.fullname
+        .clr
 
 - session_key = Rails.application.config.session_options[:key]
 
