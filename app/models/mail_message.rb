@@ -1,3 +1,5 @@
+# => TODO :: Do we need it???????
+
 class MailMessage < ActiveRecord::Base
   acts_as_soft_deletable
   belongs_to :sender, :class_name => 'User' , :foreign_key => :sender_id

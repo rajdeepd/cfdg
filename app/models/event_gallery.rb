@@ -1,3 +1,4 @@
+# => Naming is improper
 class EventGallery < ActiveRecord::Base
 
   belongs_to :event

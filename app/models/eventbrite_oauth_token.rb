@@ -1,3 +1,5 @@
+# TODO :: Do we need it??????
+
 class EventbriteOauthToken < ActiveRecord::Base
 stampable
 belongs_to :user

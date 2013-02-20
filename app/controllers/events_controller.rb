@@ -5,6 +5,7 @@ class EventsController < ApplicationController
   before_filter :set_profile_page
   before_filter :check_authorization ,:only => [:download_list]
   before_filter :event, :only=> [:show, :edit, :update, :delete_an_event, :unfollow_an_event, :cancel_event, :check_authorization, :image_gallery_upload, :show_all_event_images, :update_markers, :join_event, :new_agenda_and_speaker, :create_agenda, :speaker_delete]
+  before_filter :chapter, :only=>[:new, :create]
   respond_to :js, :html, :json
 
   def index
@@ -18,13 +19,11 @@ class EventsController < ApplicationController
   end
 
   def new
-    @chapter = Chapter.find_by_id(params[:chapter_id])
     @event = @chapter.events.build
     respond_with @event
   end
 
   def create
-    @chapter = Chapter.find(params[:chapter_id])
     @event = @chapter.events.new(params[:event])
     if @event.save
       redirect_to new_agenda_and_speaker_event_path(@event), :notice => "Event created successfully"
@@ -237,6 +236,10 @@ class EventsController < ApplicationController
 
   def event
     @event = Event.find_by_id(params[:id])
+  end
+
+  def chapter
+    @chapter = Chapter.find_by_id(params[:chapter_id])
   end
 
   def check_authorization

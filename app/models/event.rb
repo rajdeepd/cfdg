@@ -46,6 +46,8 @@ class Event < ActiveRecord::Base
     return country, country_count, chapter_count, user_count, event_count, upcoming_events
   end
 
+  # => 
+
   def create_trigger
     puts self.inspect
       start_date = (event_start_date?  and event_start_time?) ?   Time.parse(event_start_date + " " +event_start_time).strftime('%Y-%m-%d %H:%M:%S') : ""
@@ -90,8 +92,7 @@ class Event < ActiveRecord::Base
 
   def get_geocodes
     marker = []
-    if event_geolocation.present?
-      geo_tag= event_geolocation
+    if geo_tag= event_geolocation
       marker << {:lat => geo_tag.latitude, :lng => geo_tag.longitude, :title => geo_tag.title}
     end
     marker
@@ -101,10 +102,11 @@ class Event < ActiveRecord::Base
     get_geocodes.to_json
   end
 
+  # => Move Mailer to Async way
   def cancel_event
     to_email = chapter.get_primary_coordinator.email
     bcc_emails = event_members.collect(&:user).collect(&:email) - [to_email]
-    s_cancelled = true
+    is_cancelled = true
     save
     EventNotification.event_cancellation(self, to_email, bcc_emails).deliver
   end
@@ -118,14 +120,15 @@ class Event < ActiveRecord::Base
     speaker = false
     if @user && (!event_members.collect(&:user).include? @user)
       speaker = event_members.build(:user_id=> @user.id, :member_type=>"Speaker")
-      speaker.save
-      
+      speaker.save     
     end
     speaker.user rescue nil
   end
 
+# => TODO:: Do we need these????
+
   def am_i_member?(user_id)
-    self.event_members.where(:user_id => user_id).present?
+    event_members.where(:user_id => user_id).present?
   end
 
   def can_i_delete?(user_id, chapter_id)
@@ -133,19 +136,17 @@ class Event < ActiveRecord::Base
   end
 
   def is_rsvp_allowed?
-    if  self.attendees_count.present?
-      self.event_members.length < self.attendees_count
-    else
-      true
-    end
+    flag = true
+    flag = event_members.length < attendees_count if attendees_count?
+    flag
   end
 
+  # => Check SA create event logic.....!!!
   def can_be_deleted?
-    members = self.event_members.includes(:user)
-    members.size == 1 and members.first.user.id == self.created_by
+    members.count == 1
   end
 
-
+  # => TODO: update structure
   def event_start_date_in_date
     Date.parse(self.event_start_date)
   end
@@ -162,21 +163,13 @@ class Event < ActiveRecord::Base
     Time.parse(self.event_start_time)
   end
 
+  # => DELETE ME...!!
   def is_cancelled?
     self.is_cancelled ? true : false
   end
 
+  # TODO: FIX ME
   def start_time_validation
-    #Rails.logger.info("date1  #{self.event_start_date_in_date}")
-    #Rails.logger.info("date2  #{self.event_end_date_in_date}")
-    #Rails.logger.info("time1  #{self.event_start_time_in_time}")
-    #Rails.logger.info("time2  #{self.event_end_time_in_time}")
-    #Rails.logger.info("time2class  #{self.event_end_time_in_time.class}")
-    #Rails.logger.info("time2  #{self.event_end_time_in_time}")
-    #Rails.logger.info("comparing")
-    #Rails.logger.info("date  #{self.event_start_date_in_date >= self.event_end_date_in_date}")
-    ##Rails.logger.info("time  #{self.event_start_time_in_time >= self.event_end_time_in_time}")                 city
-    #Rails.logger.info("time with now  #{self.event_start_time_in_time <= Time.now}")
     if  self.event_start_date_in_date >= self.event_end_date_in_date
       Rails.logger.info "date compared"
       if self.event_start_time_in_time >= self.event_end_time_in_time
@@ -193,28 +186,27 @@ class Event < ActiveRecord::Base
     end
   end
 
-
   def persist_geocode
-    logger.info "inside persist geocode"
-    chapter_geocode = self.chapter.geolocation
-    if chapter_geocode.present?
-      geotag = self.create_event_geolocation(:latitude => chapter_geocode.latitude, :longitude => chapter_geocode.longitude , :title => chapter_geocode.title )
+    if chapter.geolocation
+      geotag = create_event_geolocation(:latitude => chapter_geocode.latitude, :longitude => chapter_geocode.longitude , :title => chapter_geocode.title )
     end
   end
 
-  def self.search_events(query)
-    where("city_name like ?", query)
-  end
+  # => TODO: DELETE me.
+  # def self.search_events(query)
+  #   where("city_name like ?", query)
+  # end
 
+  # Should be in user
   def event_created_by
-    User.find(self.created_by)
+    User.find_by_id(created_by)
   end
 
 
   def self.get_upcoming_events
     #self.all.select{|i| i.event_start_date_in_date < Date.today}
     upcoming_events = []
-    Event.all.each do |event|
+    all.each do |event|
       if(Time.parse(event.event_start_date+" "+ event.event_start_time) >= Time.now)
         upcoming_events.push(event)
       end
@@ -228,7 +220,7 @@ class Event < ActiveRecord::Base
   def self.get_past_events
       #self.all.select{|i| i.event_start_date_in_date < Date.today}
       past_events = []
-      Event.all.each do |event|
+      all.each do |event|
         if(Time.parse(event.event_start_date+" "+ event.event_start_time) < Time.now)
           past_events.push(event)
         end
@@ -239,35 +231,22 @@ class Event < ActiveRecord::Base
 
   def self.search_event_chapter(query)
       chapters = []
-      events = []
-      query_arr = query.split(",") if query.present?
-      if query_arr.present?
-        city = query_arr[0]
-        state= query_arr[1]
-        country = query_arr[2]
-        #chapters=where("city_name like ? and state_name like ? and country_name like ?", city.strip,state.strip,country.strip) if city.present? and state.present? and country.present?
-        chapters = Chapter.where("city_name like ? and state_name like ? and country_name like ?", city.strip,state.strip,country.strip) if city.present? and state.present? and country.present?
+      query_arr = query.split(",") if query
+      if query_arr && query_arr.any?
+        city,state,country = query_arr[0],query_arr[1],query_arr[2]
+        chapters = Chapter.where(city_name: city.strip, state_name: state.strip, country_name: country.strip) if city && state && country
       end
-      chapters.to_a.each do |i|
-        puts i.class
-        events.push(i.events)
-      end
-    events.flatten!
+      chapters.collect(&:events).flatten!
     end
 
 
   def get_event_image
-    if self.image.present?
-      self.image
-    else
-      "logo-b.png"
-    end
+    image || "logo-b.png"
   end
 
   def is_past_event?
     if self.event_start_date_in_date < Date.today
       return true
-
     elsif self.event_start_date_in_date == Date.today
       if self.event_start_time_in_time < Time.now
         return true

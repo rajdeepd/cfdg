@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
 
   #using the user stamp gem to populate created by, last modified by
   model_stamper
-  acts_as_soft_deletable
+  # acts_as_soft_deletable
   stampable
   has_one :eventbrite_oauth_token
   has_many :chapter_members
@@ -15,12 +15,8 @@ class User < ActiveRecord::Base
   has_many :chapters , :through => :chapter_members
   has_many :events , :through => :event_members
   scope :admin, where(:admin=> true).first
-  # Setup accessible (or protected) attributes for your model
+
   attr_accessible :email, :description, :password, :password_confirmation, :remember_me, :first_name, :last_name, :fullname,:mobile, :website_url, :linkedin_url, :twitter_url, :avatar, :avatar_content_type,:location, :admin, :profile_picture,:reset_password_token,:is_proprietary_user
-  #  has_attached_file :avatar,
-  #    :styles => { :medium => "157x161>", :thumb => "100x100>" },
-  #    :path => ":rails_root/public/system/:attachment/:id/:style/:filename",
-  #    :url => "/system/:attachment/:id/:style/:filename"
 
   has_attached_file :avatar,
                     :styles => { :medium => "157x161>", :thumb => "100x100>" , :mini => "60x60>" },
@@ -40,11 +36,7 @@ class User < ActiveRecord::Base
   end
 
   def get_user_image
-    if avatar?
-      avatar_file_name
-    else
-      "no_image.jpg"
-    end
+    avatar_file_name || "no_image.jpg"
   end
 
   def user_profile_completion_status
@@ -60,10 +52,11 @@ class User < ActiveRecord::Base
     status
   end
 
+# => TODO : update date store in DB. Combine Time & Date for start-time & end-time
+
   def get_user_past_events
     past_events = []
-    user_all_events = events
-    user_all_events.compact.each do |event|
+    events.each do |event|
       if((Time.parse(event.event_start_date+" "+event.event_start_time) < Time.now))
         past_events.push(event)
       end
@@ -73,8 +66,7 @@ class User < ActiveRecord::Base
 
   def get_user_upcoming_events
     upcoming_events = []
-      user_all_events =  events
-      user_all_events.compact.each do |event|
+      events.each do |event|
         if((Time.parse(event.event_start_date+" "+event.event_start_time) >= Time.now))
           upcoming_events.push(event)
         end
