@@ -47,7 +47,7 @@ class User < ActiveRecord::Base
     new_reset_token = (0...20).map{ token_array[rand(token_array.length)] }.join
     if User.all.any?{|i| i.reset_password_token == new_reset_token}
     else
-      user = User.new(:email => hash['info']['email'],:fullname => hash['info']['name'],:admin => false,:reset_password_token => new_reset_token,:is_proprietary_user => true)
+      user = User.new(:email => hash['info']['email'],:fullname => hash['info']['name'],:admin => false,:reset_password_token => new_reset_token)
       if user.save!(:validate => false)
         provider = user.providers.create(:provider => hash['provider'],:uid => hash['uid'])
         provider.save!
