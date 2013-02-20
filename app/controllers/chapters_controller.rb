@@ -132,7 +132,19 @@ class ChaptersController < ApplicationController
         format.json { render json: @chapter.errors, status: :unprocessable_entity }
       end
     end  
-  end 
+  end
+
+  def unjoin_a_chapter
+    @chapter = Chapter.find(params[:chapter_id])
+    events_member = EventMember.where(:user_id => @current_user.id, :event_id => @chapter.event_ids)
+    @chapter.events.event_members.delete_all
+    chapter_member = ChapterMember.where(:user_id => @current_user.id,:chapter_id => params[:chapter_id])
+    chapter_member.delete_all
+    respond_to do |format|
+        format.html { redirect_to @chapter }
+        format.json { render json: @chapter, status: :success, location: @chapter }
+    end
+  end
 
   def chapter_admin_home_page
     @chapter = Chapter.find(params[:chapter_id])    
