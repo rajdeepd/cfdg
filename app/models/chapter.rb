@@ -112,4 +112,11 @@ class Chapter < ActiveRecord::Base
   def am_i_secondary_coordinator?(user)
     ChapterMember.where(" user_id = ? and chapter_id = ? and memeber_type = ?",user.id, self.id,  ChapterMember::SECONDARY_COORDINATOR).present?
   end
+
+  def self.unfollow_chapter(chapter,user)
+    events_member = EventMember.where(:user_id => user.id, :event_id => chapter.event_ids)
+    events_member.delete_all
+    chapter_member = ChapterMember.where(:user_id => user.id,:chapter_id => chapter.id)
+    chapter_member.delete_all
+  end
 end

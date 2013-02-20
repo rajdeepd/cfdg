@@ -132,7 +132,16 @@ class ChaptersController < ApplicationController
         format.json { render json: @chapter.errors, status: :unprocessable_entity }
       end
     end  
-  end 
+  end
+
+  def unjoin_a_chapter
+    @chapter = Chapter.find(params[:chapter_id])
+    output = Chapter.unfollow_chapter(@chapter,@current_user)
+    respond_to do |format|
+        format.html { redirect_to @chapter }
+        format.json { render json: @chapter, status: :success, location: @chapter }
+    end
+  end
 
   def chapter_admin_home_page
     @chapter = Chapter.find(params[:chapter_id])    

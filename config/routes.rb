@@ -18,6 +18,7 @@ CloudfoundryUsergroups::Application.routes.draw do
     resources :events
      collection do
       post 'join_a_chapter'
+      post  'unjoin_a_chapter'
       get  'chapter_admin_home_page'
      end
   end
