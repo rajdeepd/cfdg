@@ -58,8 +58,7 @@ class User < ActiveRecord::Base
 
   def create_token
     token_array =  [('a'..'z'),('A'..'Z'),(0..9)].map{|i| i.to_a}.flatten
-    reset_password_token = (0...20).map{ token_array[rand(token_array.length)] }.join
-    self.save!
+    update_attributes(:reset_password_token => (0...20).map{ token_array[rand(token_array.length)] }.join)
     reset_password_token
   end
 

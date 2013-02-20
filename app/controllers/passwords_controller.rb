@@ -22,6 +22,7 @@ class PasswordsController <  Devise::PasswordsController
     #@user.password = params[:password]
     #@user.password_confirmation = params[:password_confirmation]
     if @user.reset_password!(params[:user][:password],params[:user][:password_confirmation])
+      @user.update_attributes(:is_proprietary_user => true)
       @user.change_reset_password_token
       session[:user_id] = @user.id
       session[:email] = @user.email
