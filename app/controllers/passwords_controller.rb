@@ -14,7 +14,6 @@ class PasswordsController <  Devise::PasswordsController
 
   def create
     super
-    #render :text => "mailed"
   end
 
   def update
@@ -38,11 +37,9 @@ class PasswordsController <  Devise::PasswordsController
   end
 
   def change_password_check
-    logger.info (params.inspect)
     @user = User.find_by_email(params[:user][:email])
     if @user.present? and !@user.is_proprietary_user
-      flash[:alert] = "only proprietary user have this feature"
-      #redirect_to home_index_path
+      flash[:alert] = "You are not a proprietary user yet. Sign In through your social account to create your proprietary password. Thanks!"
       redirect_to root_path
     elsif !@user.present?
       flash[:custom_error] = "Invalid Credentials"
