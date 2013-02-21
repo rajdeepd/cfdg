@@ -177,14 +177,15 @@ class ChaptersController < ApplicationController
   end
 
   def block_unblock_chapter_member
-    logger.info "####### params inside block_unblock_chapter_member ###{params.inspect}"
     member = ChapterMember.find(params[:member])
     chapter = Chapter.find(params[:id])
-    event_id_array = chapter.events.select("id")
+    events = EventMember.where(:user_id => params[:user], :event_id => chapter.event_ids)
     if params[:status] == "block"
       member.update_attributes(:is_blocked => true)
-      event_id_array.each do |id|
-        EventMember.find_by_event_id_and_user_id(id,params[:user]).delete
+      if  events.size > 0
+      events.each do |i|
+        EventMember.find_by_event_id_and_user_id(i.event_id,params[:user]).delete
+      end
       end
     elsif params[:status] == "unblock"
       member.update_attributes(:is_blocked => false)

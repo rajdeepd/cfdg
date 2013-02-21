@@ -47,7 +47,7 @@
                   %button.btn-a-small.flt-right{:id=>"cancelled_event", :event_id => "#{event.id}" ,:disable => true,:style => "opacity:0.35"} CANCELLED
                 -else
                   -if event.is_rsvp_allowed?
-                    - if ChapterMember.am_i_blocked(current_user.id)
+                    - if ChapterMember.am_i_blocked(@chapter.id,current_user.id)
                       %button.btn-a-small.flt-right{:href => "#"} BLOCKED!
                     -else
                       %button.btn-a-small.flt-right{:id=>"follow_an_event", :event_id => "#{event.id}"} R.S.V.P
@@ -65,7 +65,7 @@
                   = link_to "EDIT",edit_chapter_event_path(event.chapter_id,event.id),:class => "btn-a-small flt-right"
                   %button.btn-a-small.flt-right{:id=>"cancel_an_event", :event_id => "#{event.id}"} CANCEL
                   -if event.is_rsvp_allowed?
-                    - if ChapterMember.am_i_blocked(current_user.id)
+                    - if ChapterMember.am_i_blocked(@chapter.id,current_user.id)
                       %button.btn-a-small.flt-right{:href => "#"} BLOCKED!
                     -else
                       %button.btn-a-small.flt-right{:id=>"follow_an_event", :event_id => "#{event.id}"} R.S.V.P
@@ -125,7 +125,7 @@
                   %button.btn-a-small.flt-right{:id=>"cancelled_event", :event_id => "#{event.id}" ,:disable => true,:style => "opacity:0.35"} CANCELLED
                 -else
                   -if event.is_rsvp_allowed?
-                    - if ChapterMember.am_i_blocked(current_user.id)
+                    - if ChapterMember.am_i_blocked(@chapter.id,current_user.id)
                       %button.btn-a-small.flt-right{:href => "#"} BLOCKED!
                     -else
                       %button.btn-a-small.flt-right{:id=>"follow_an_event", :event_id => "#{event.id}"} R.S.V.P
@@ -143,7 +143,7 @@
                   = link_to "EDIT",edit_chapter_event_path(event.chapter_id,event.id),:class => "btn-a-small flt-right"
                   %button.btn-a-small.flt-right{:id=>"cancel_an_event", :event_id => "#{event.id}"} CANCEL
                   -if event.is_rsvp_allowed?
-                    - if ChapterMember.am_i_blocked(current_user.id)
+                    - if ChapterMember.am_i_blocked(@chapter.id,current_user.id)
                       %button.btn-a-small.flt-right{:href => "#"} BLOCKED!
                     -else
                       %button.btn-a-small.flt-right{:id=>"follow_an_event", :event_id => "#{event.id}"} R.S.V.P
