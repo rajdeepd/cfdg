@@ -27,7 +27,7 @@ gem 'kaminari'
 # Authentication with Federated Google identity tool kit
 gem 'omniauth','1.1.1'
 gem 'omniauth-facebook','1.4.1'
-gem 'omniauth-twitter','0.0.14'
+#gem 'omniauth-twitter','0.0.14'
 gem 'omniauth-linkedin'
 gem 'omniauth-google'
 gem 'omniauth-yahoo'

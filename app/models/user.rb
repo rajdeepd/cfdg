@@ -42,7 +42,7 @@ class User < ActiveRecord::Base
     Rails.logger.info self.inspect
   end
 
-  def self.create_outh_auth_user(hash)
+  def self.create_auth_user(hash)
     token_array =  [('a'..'z'),('A'..'Z'),(0..9)].map{|i| i.to_a}.flatten
     new_reset_token = (0...20).map{ token_array[rand(token_array.length)] }.join
     if User.all.any?{|i| i.reset_password_token == new_reset_token}
@@ -54,6 +54,12 @@ class User < ActiveRecord::Base
       end
     end
     return user
+  end
+
+  def create_token
+    token_array =  [('a'..'z'),('A'..'Z'),(0..9)].map{|i| i.to_a}.flatten
+    update_attributes(:reset_password_token => (0...20).map{ token_array[rand(token_array.length)] }.join)
+    reset_password_token
   end
 
 end

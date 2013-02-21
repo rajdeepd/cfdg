@@ -7,7 +7,7 @@ class SessionsController <  Devise::SessionsController
 
   # GET /resource/sign_in
   def new
-    logger.info "inside new"
+
   end
 
   # POST /resource/sign_in

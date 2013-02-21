@@ -58,7 +58,8 @@ class Admin::ChaptersController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json{ render json: {:msg => msg , :id => chapter.id} , status:  :ok }
+      format.json { render json: {:msg => msg , :id => chapter.id} , status:  :ok }
+      #format.js { render text: "Chapter Incubated." }
     end
   end
 
