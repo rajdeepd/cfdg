@@ -38,4 +38,9 @@ class ChapterMember < ActiveRecord::Base
   	ChapterMember.find(:all , :conditions => [" user_id = ? and memeber_type = ?", user_id, MEMBER]).present?
   end
 
+  def self.am_i_blocked(user_id)
+    member = ChapterMember.find_by_user_id(user_id)
+    member.is_blocked?
+  end
+
 end

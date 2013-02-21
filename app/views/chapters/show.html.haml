@@ -9,21 +9,25 @@
         %img.bg-logo-b{:src => "/assets/logo-b.png"}
         %br/
         -if !@is_part_of_chapter
-          = form_tag join_a_chapter_chapters_path, :method => :post do
-            = hidden_field_tag "chapter_id", "#{@chapter.id}"                            
-            - if @current_user.blank?
-              -#= button_tag 'JOIN US!' , :class => "btn-a signin join_us", :type => "button"
-              %a.btn-a{:href => "#{signin_path}"} JOIN US!
-            - else
-              = submit_tag 'JOIN US!' , :class => "btn-a join_us"
+          - if ChapterMember.am_i_blocked(@current_user.id)
+            %a.btn-a{:href => "#"} BLOCKED!
+          - else
+            = form_tag join_a_chapter_chapters_path, :method => :post do
+              = hidden_field_tag "chapter_id", "#{@chapter.id}"
+              - if @current_user.blank?
+                %a.btn-a{:href => "#{signin_path}"} JOIN US!
+              - else
+                = submit_tag 'JOIN US!' , :class => "btn-a join_us"
         -else
-          = form_tag unjoin_a_chapter_chapters_path, :method => :post do
-            = hidden_field_tag "chapter_id", "#{@chapter.id}"
-            - if @current_user.blank?
-              -#= button_tag 'JOIN US!' , :class => "btn-a signin join_us", :type => "button"
-              %a.btn-a{:href => "#{signin_path}"} JOIN US!
-            - else
-              = submit_tag 'UNJOIN US!' , :class => "btn-a join_us"
+          - if ChapterMember.am_i_blocked(@current_user.id)
+            %a.btn-a{:href => "#"} BLOCKED!
+          -else
+            = form_tag unjoin_a_chapter_chapters_path, :method => :post do
+              = hidden_field_tag "chapter_id", "#{@chapter.id}"
+              - if @current_user.blank?
+                %a.btn-a{:href => "#{signin_path}"} JOIN US!
+              - elsif(!ChapterMember.am_i_coordinator?(@current_user.id, @chapter.id))
+                = submit_tag 'UNJOIN US!' , :class => "btn-a join_us"
 
       .div-a
         %h2.label-17 #{@chapter.try(:name)}
@@ -63,6 +67,9 @@
             - last_event = @past_events.try(:first)
             - if last_event.present?
               %h5.label-40 Last Event Date: #{Time.parse(last_event.event_start_date.to_s).strftime('%b %d, %Y')}
+            -if @current_user.present? and (ChapterMember.am_i_coordinator?(@current_user.id, @chapter.id))
+              = link_to "See Chapter Members",chapter_members_chapter_path(@chapter),:class => "cp"
+
     .cc-left
       %ul.ul-f
         %li{:style=>"padding: 7px 20px;"}
@@ -77,8 +84,9 @@
         -if @current_user.present? and (ChapterMember.am_i_coordinator?(@current_user.id, @chapter.id))
           %li{:style => "float:right"}
             %a.cp{:href => "#{profile_path}" , :id=>"create_event_from_chapter", :chapter_id=> @chapter.id} + Create Event
+
       #chapter_show_events
-        = render '/events/events_list' 
+        = render '/events/events_list'
     /=render '/events/comment_partial'
 
 

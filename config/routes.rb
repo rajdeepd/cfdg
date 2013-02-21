@@ -20,6 +20,10 @@ CloudfoundryUsergroups::Application.routes.draw do
   match '/auth/failure', :to => 'omniauth#auth_failure'
 
   resources :chapters do
+    member do
+      get :chapter_members
+      get :block_unblock_chapter_member
+    end
     resources :events
     collection do
       post 'join_a_chapter'
