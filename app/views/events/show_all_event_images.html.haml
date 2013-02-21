@@ -8,13 +8,14 @@
     -#=form_tag delete_event_gallery_image_event_path(@event),:method => :delete,:remote => true do
     - @all_event_images.each do |i|
       .eventImageHolder.checkboxImgHolder.customImage
-        = check_box_tag "event_gallery_ids[]",i.id  if ChapterMember.is_primary_coordinator?(current_user.id)
-        - if ChapterMember.is_primary_coordinator?(current_user.id)
+        = check_box_tag "event_gallery_ids[]",i.id  if current_user.present? && ChapterMember.is_primary_coordinator?(current_user.id)
+        - if current_user.present? && ChapterMember.is_primary_coordinator?(current_user.id)
           %span{:class => "eventGalleryImageClose",:id => "#{i.id}",:rel => "#{@event.id}" }
         = link_to(image_tag(i.image),"#{i.image}")
     .clr
       -#= submit_tag 'DELETE' , :class => "btn-a join_us",:id => "deleteImagesBtn"
-      %button.btn-a{:id => "deleteImagesBtn",:rel => "#{@event.id}"} DELETE
+      - if current_user.present? && ChapterMember.is_primary_coordinator?(current_user.id)
+        %button.btn-a{:id => "deleteImagesBtn",:rel => "#{@event.id}"} DELETE
 
 
 

@@ -54,7 +54,7 @@
                 -if event.is_cancelled?
                   %button.btn-a-small.flt-right{:id=>"cancelled_event", :event_id => "#{event.id}" ,:disable => true,:style => "opacity:0.35"} CANCELLED
                 -else
-                  %button.btn-a-small.flt-right{:id=>"event_rsvped", :event_id => "#{event.id}",:style => "opacity:0.35"} Undo R.S.V.P
+                  %button.btn-a-small.flt-right{:id=>"event_rsvped", :event_id => "#{event.id}",:style => "opacity:1"} Undo R.S.V.P
               -if !event.am_i_member?(@current_user.id) and ChapterMember.am_i_coordinator?(@current_user.id,event.chapter.id)
                 -if event.can_be_deleted?
                   %button.btn-a-small.flt-right{:id=>"delete_an_event", :event_id => "#{event.id}"} DELETE
