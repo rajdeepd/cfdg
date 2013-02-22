@@ -3,7 +3,7 @@
   %ul
     -if @chapter_members.size > 0
       - @chapter_members.each do |member|
-        - unless member.user.admin?
+        - unless member.user.admin? or (member.user_id == member.created_by)
           %li
             .userName
               = member.user.fullname
