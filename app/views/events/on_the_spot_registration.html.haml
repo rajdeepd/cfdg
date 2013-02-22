@@ -30,7 +30,7 @@
             %label.label-26.eventTitle  LinkedIn
             = f.text_field :linkedin_url ,  :class => "input-b size-f flt-left" , :placeholder => "LinkedIn"
         = f.submit "Add User",:class => "btn-a-small addBtnReg",:disable_with=> "adding..."
-        = link_to "Cancel",on_the_spot_registration_event_path(@event),:method => "get",:class => "btn-a-small"
+        = link_to "Cancel", event_path(@event) ,:method => "get",:class => "btn-a-small"
   #attendeesBlock
     =render "attendees", :members => @members
 :javascript
