@@ -1,0 +1,4 @@
+.eventImageHolder.checkboxImgHolder.customImage{:style=>"height: 175px; width: auto;"}
+  - if ChapterMember.is_primary_coordinator?(current_user.id)
+    %span{:class => "eventGalleryMediaClose",:id => "#{media.id}",:rel => "#{event.id}" }
+  = render "embed_media", :media=>media 

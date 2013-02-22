@@ -29,6 +29,7 @@
               - elsif(!ChapterMember.am_i_coordinator?(@current_user.id, @chapter.id))
                 = submit_tag 'UNJOIN US!' , :class => "btn-a join_us"
 
+
       .div-a
         %h2.label-17 #{@chapter.try(:name)}
         %h5.label-18 Location: #{@chapter.try(:city_name)} | Founded on #{Time.parse(@chapter.try(:created_at).to_s).strftime('%b %d, %Y')}
