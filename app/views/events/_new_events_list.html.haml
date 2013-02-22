@@ -80,7 +80,7 @@
                 -if !event.is_cancelled?
                   = link_to "EDIT",edit_chapter_event_path(event.chapter_id,event.id),:class => "btn-a-small flt-right"
                   %button.btn-a-small.flt-right{:id=>"cancel_an_event", :event_id => "#{event.id}"} CANCEL
-                  %button.btn-a-small.flt-right{:id=>"event_rsvped",:style => "opacity:0.35"} Attending Event
+                  %button.btn-a-small.flt-right{:style => "opacity:0.35"} Attending
                 -else
                   %button.btn-a-small.flt-right{:id=>"cancelled_event", :event_id => "#{event.id}" ,:disable => true,:style => "opacity:0.35"} CANCELLED
 
@@ -153,7 +153,7 @@
                 -if !event.is_cancelled?
                   = link_to "EDIT",edit_chapter_event_path(event.chapter_id,event.id),:class => "btn-a-small flt-right"
                   %button.btn-a-small.flt-right{:id=>"cancel_an_event", :event_id => "#{event.id}"} CANCEL
-                  %button.btn-a-small.flt-right{:id=>"event_rsvped",:style => "opacity:0.35"} Attending Event
+                  %button.btn-a-small.flt-right{:style => "opacity:0.35"} Attending
                 -else
                   %button.btn-a-small.flt-right{:id=>"cancelled_event", :event_id => "#{event.id}" ,:disable => true,:style => "opacity:0.35"} CANCELLED
 
