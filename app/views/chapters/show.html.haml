@@ -9,7 +9,7 @@
         %img.bg-logo-b{:src => "/assets/logo-b.png"}
         %br/
         -if !@is_part_of_chapter
-          - if ChapterMember.am_i_blocked(@chapter.id,@current_user.id)
+          - if @current_user && ChapterMember.am_i_blocked(@chapter.id,@current_user.id)
             %a.btn-a{:href => "#"} BLOCKED!
           - else
             = form_tag join_a_chapter_chapters_path, :method => :post do
@@ -19,7 +19,7 @@
               - else
                 = submit_tag 'JOIN US!' , :class => "btn-a join_us"
         -else
-          - if ChapterMember.am_i_blocked(@chapter.id,@current_user.id)
+          - if @current_user && ChapterMember.am_i_blocked(@chapter.id,@current_user.id)
             %a.btn-a{:href => "#"} BLOCKED!
           -else
             = form_tag unjoin_a_chapter_chapters_path, :method => :post do

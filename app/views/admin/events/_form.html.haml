@@ -5,6 +5,7 @@
 = javascript_include_tag "jquery.timepicker-1.2.2"
 = semantic_form_for @event ,:url => admin_chapter_events_path(params[:chapter_id]),:method => :post do |f|
   .event-form
+    .custom_error
     .event-left{:style => "width:100%;"}
       .el-cont{:style => "margin-bottom: 16px;"}
         %h2.label-45.flt-left Create Event For #{@event.chapter.try(:name)}
