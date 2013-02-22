@@ -40,7 +40,7 @@ class ChapterMember < ActiveRecord::Base
 
   def self.am_i_blocked(chapter_id,user_id)
     member = ChapterMember.find_by_chapter_id_and_user_id(chapter_id,user_id)
-    member.is_blocked?
+    member.is_blocked? if member.present?
   end
 
 end
