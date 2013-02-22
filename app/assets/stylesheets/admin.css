@@ -728,11 +728,6 @@ ul.inbox .table-b .bg-cross-b{
 	cursor: pointer;
 	position: relative;
 }
-
-.dd-b:hover{
-	border: 1px solid #cfcfcf;
-	box-shadow: 1px 2px 2px 0px #ccc;
-}
 .dd-c{
 	border:1px solid #f0f0f0;
 	border-radius: 3px;
@@ -1574,4 +1569,12 @@ li.ulg-expanded .div-d{
 }
 .caListAttendees{
     margin-top: 30px;
+}
+.attendeesList li{
+    overflow: hidden;
+    margin-bottom: 15px;
+}
+.centerLink{
+    text-align: center;
+    width: 200px;
 }

@@ -9,7 +9,7 @@
         %img.bg-logo-b{:src => "/assets/logo-b.png"}
         %br/
         -if !@is_part_of_chapter
-          - if ChapterMember.am_i_blocked(@chapter.id,@current_user.id)
+          - if @current_user && ChapterMember.am_i_blocked(@chapter.id,@current_user.id)
             %a.btn-a{:href => "#"} BLOCKED!
           - else
             = form_tag join_a_chapter_chapters_path, :method => :post do
@@ -19,7 +19,7 @@
               - else
                 = submit_tag 'JOIN US!' , :class => "btn-a join_us"
         -else
-          - if ChapterMember.am_i_blocked(@chapter.id,@current_user.id)
+          - if @current_user && ChapterMember.am_i_blocked(@chapter.id,@current_user.id)
             %a.btn-a{:href => "#"} BLOCKED!
           -else
             = form_tag unjoin_a_chapter_chapters_path, :method => :post do
@@ -44,6 +44,9 @@
           -if !@current_user.blank? and member.present?
             %br
             %span{:style=> "color:green;font-size:14px;"} Role: #{member.memeber_type.try(:titleize)}
+          .clr
+          -if @current_user.present? and (ChapterMember.am_i_coordinator?(@current_user.id, @chapter.id))
+            = link_to "See Chapter Members",chapter_members_chapter_path(@chapter),:class => "cp"
         -if @secondary_coords.present?
           %h5.label-19
             Group Coordinator:
@@ -68,8 +71,7 @@
             - last_event = @past_events.try(:first)
             - if last_event.present?
               %h5.label-40 Last Event Date: #{Time.parse(last_event.event_start_date.to_s).strftime('%b %d, %Y')}
-            -if @current_user.present? and (ChapterMember.am_i_coordinator?(@current_user.id, @chapter.id))
-              = link_to "See Chapter Members",chapter_members_chapter_path(@chapter),:class => "cp"
+
 
     .cc-left
       %ul.ul-f

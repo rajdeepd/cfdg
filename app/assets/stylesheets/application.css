@@ -1118,7 +1118,7 @@ a.label-28:hover{color: #d9541e;}
     color: #5a5758;
     font-size: 12px;
 }
-.btn-a,.btn-a-small{
+.btn-a,.btn-a-small, .orangeBtn{
     border: 1px solid #813516;
     border-radius: 6px 6px 6px 6px;
     box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.3) inset, 0 -1px 0 0 rgba(0, 0, 0, 0.4) inset;
@@ -1449,7 +1449,7 @@ p.label-53{margin-bottom: 15px;}
     font-weight: bold;
 }
 .div-h .dateAttendees {
-    border-bottom: 1px dotted #eee;
+    /*border-bottom: 1px dotted #eee;*/
     padding-bottom: 10px;
     margin-bottom: 10px;
 }
@@ -1539,7 +1539,7 @@ label.error{
 }
 .loginLayout .loginLeftPanel ul{
     margin-left: 20px;
-    margin-top: 30px;
+    margin-top: 12px;
 }
 .loginLayout .loginLeftPanel ul li{
     padding: 5px;
@@ -1633,7 +1633,7 @@ label.error{
     float: left;
 }
 .loginText{
-    margin: 20px 0 10px;
+    margin: 10px 0;
     font-weight: bold;
 }
 .loginRightPanel input{
@@ -1654,10 +1654,11 @@ label.error{
     color: #222222;
 }
 .loginRightPanel .orangeBtn{
-    width: 80px;
     height: 30px;
     padding: 5px;
     border-radius: 3px;
+    line-height: 19px;
+    font-size: 16px;
 }
 
 abbr.timeago {
@@ -1867,5 +1868,79 @@ table#list{
     border: none;
     margin-left: 0;
 }
+.postDetails h1 , .postDetails h3{
+    color: #0096d6;
+    font-size: 20px;
+    text-transform: capitalize;
+    font-weight: bold;
+}
+.postDetails .chapterDate ,.postDetails .articleDescription, .postDetails .commentDate{
+    color: #6c6f70;
+    font-size: 12px;
+    margin-bottom: 20px;
+    display: block;
+}
+.postDetails p{
+    font-size: 14px;
+    color: #222222;
+}
+.postDetails h5{
+    color: #0096d6;
+    font-size: 16px;
+    text-transform: capitalize;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.postDetails textarea{
+    width: 470px;
+    height: 100px;
+    display: block;
+    margin-bottom: 10px;
+}
+.postDetails .comments{
+    width: 500px;
+}
+.ul-e a.cp{
+    margin-top: 10px;
+}
+.customBtn{
+    margin-bottom: 10px;
+}
+.userName{
+    margin: 0 30px 20px 0;
+    font-size: 16px;
+    color: #222222;
+    float: left;
+    width: 250px;
+}
+.chapterMember h1{
+    font-size: 24px;
+    border-bottom: 1px solid #dcdcdc;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+}
+.chapterMember li{
+    overflow: hidden;
+}
+.upperCaseBold{
+    font-weight: bold;
+    color: #000000;
+    text-transform: uppercase;
+}
+.label-26 .description.customDescription{
+    margin-left: 0;
+}
+.darkText{
+    font-weight: bold;
+    color: #222222;
+}
 
+#gallery_media a{
+    color: #0097d7;
+    margin-top: 20px;
+    display: block;
+}
+#gallery_media a:hover{
+    color: #222222;
+}
 /*Error or Notification Classes ends here*/
