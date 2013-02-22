@@ -7,7 +7,7 @@
     - @event_videos.each do |media|
       =render "event_media", :media=> media, :event => @event
   .clr
-  = link_to "Add New Media", new_event_event_media_path, :remote=>true, :style=>"text-decoration:underline;"
+  = link_to "Add New Media", new_event_event_media_path, :remote=>true, :style=>"text-decoration:underline;" if current_user
   #createEventMedia
 :javascript
   $(document).ready(function(){
