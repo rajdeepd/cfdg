@@ -1,0 +1,13 @@
+.content.wrapper
+  %ul
+    - @chapter_members.each do |member|
+      - unless member.user.admin?
+        %li
+          = member.user.fullname
+          -if member.is_blocked?
+            = link_to "Unblock user",block_unblock_chapter_member_chapter_path(@chapter,:member => member,:user => member.user,:status => "unblock"),:class => "cp", :confirm => "Are you sure you want to unblock the member?"
+          -else
+            = link_to "Block user",block_unblock_chapter_member_chapter_path(@chapter,:member => member,:user => member.user,:status => "block"),:class => "cp", :confirm => "Are you sure you want to block the member?"
+          %br
+
+

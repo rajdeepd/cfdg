@@ -1,0 +1,12 @@
+= "Hi #{@user.fullname},"
+%br
+%p
+-if @status == "block"
+  = "Due to some unexpected behaviour you have been blocked from #{@chapter.name} chapter. You are not a member for any of the associated events."
+-else
+  = "Congratulations! Chapter admin has unblocked you for #{@chapter.name} chapter. You can again attend all the related events."
+%br
+%p
+Thank you
+%p
+CloudFoundry Team

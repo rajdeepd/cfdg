@@ -4,7 +4,7 @@ class ChapterMember < ActiveRecord::Base
   belongs_to :user
   belongs_to :chapter
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :chapter_id, :user_id, :memeber_type
+  attr_accessible :chapter_id, :user_id, :memeber_type, :is_blocked
   PRIMARY_COORDINATOR = "primary coordinator"
   SECONDARY_COORDINATOR = "secondary coordinator"
   MEMBER = 'member'
@@ -36,6 +36,11 @@ class ChapterMember < ActiveRecord::Base
   
   def self.is_just_member?(user_id)
   	ChapterMember.find(:all , :conditions => [" user_id = ? and memeber_type = ?", user_id, MEMBER]).present?
+  end
+
+  def self.am_i_blocked(chapter_id,user_id)
+    member = ChapterMember.find_by_chapter_id_and_user_id(chapter_id,user_id)
+    member.is_blocked?
   end
 
 end

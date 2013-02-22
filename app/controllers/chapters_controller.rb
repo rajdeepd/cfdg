@@ -1,5 +1,7 @@
 class ChaptersController < ApplicationController
 
+  before_filter :check_chapter_admin, :only => [:chapter_members]
+
   before_filter do
     locale = params[:locale]
     Carmen.i18n_backend.locale = locale if locale
@@ -167,6 +169,40 @@ class ChaptersController < ApplicationController
     #@upcoming_events = @upcoming_events.paginate(:page => params[:page], :per_page => 5)
     @past_events.sort!
     @past_events = @past_events.paginate(:page => params[:page], :per_page => 10)
+  end
+
+  def chapter_members
+    @chapter = Chapter.find(params[:id])
+    @chapter_members = @chapter.chapter_members.select{|i| i.memeber_type == "member"}
+  end
+
+  def block_unblock_chapter_member
+    member = ChapterMember.find(params[:member])
+    chapter = Chapter.find(params[:id])
+    events = EventMember.where(:user_id => params[:user], :event_id => chapter.event_ids)
+    if params[:status] == "block"
+      member.update_attributes(:is_blocked => true)
+      if  events.size > 0
+      events.each do |i|
+        EventMember.find_by_event_id_and_user_id(i.event_id,params[:user]).delete
+      end
+      end
+    elsif params[:status] == "unblock"
+      member.update_attributes(:is_blocked => false)
+    end
+    ChapterMailer.block_unblock_member(params[:user],chapter,params[:status]).deliver
+    redirect_to chapter_members_chapter_path(params[:id])
+  end
+
+  private
+
+  def check_chapter_admin
+    if ChapterMember.am_i_coordinator?(@current_user.id, params[:id])
+      return true
+    else
+      flash[:custom_error] = "You are not the chapter coordinator of this chapter"
+      redirect_to root_path
+    end
   end
 
 end

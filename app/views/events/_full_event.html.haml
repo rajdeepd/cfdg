@@ -25,7 +25,10 @@
           %button.btn-a-small.flt-right{:id=>"cancelled_event", :event_id => "#{@event.id}" ,:disable => true,:style => "opacity:0.35"} CANCELLED
         -else
           -if !@event.am_i_member?(current_user.id) and @event.is_rsvp_allowed?
-            %button.btn-a-small.flt-left.rsvp_me{:id=>"follow_an_event", :event_id => "#{@event.id}"} R.S.V.P
+            - if ChapterMember.am_i_blocked(@event.chapter_id,current_user.id)
+              %button.btn-a-small.flt-right{:href => "#"} BLOCKED!
+            -else
+              %button.btn-a-small.flt-left.rsvp_me{:id=>"follow_an_event", :event_id => "#{@event.id}"} R.S.V.P
             -#%img.flt-right#rsvp_tick{:src => "/assets/Event.png",:style => "display:none"}
             %button.btn-a-small.flt-left{:id=>"event_rsvped",:event_id => "#{@event.id}",:class => "rsvp_tick",:style => "display:none;opacity:1"} undo R.S.V.P
           -elsif !@event.am_i_member?(current_user.id) and !@event.is_rsvp_allowed?
@@ -85,7 +88,7 @@
     - (@event.comments || []).each do |comment|
       =render "comment",:comment => comment
     - @comment =  @event.comments.build
-  -if @current_user.present?
+  -if @current_user.present? && !ChapterMember.am_i_blocked(@event.chapter_id,@current_user.id)
     = semantic_form_for  @comment,:url => create_event_comment_events_path,:method => :post, :remote => true do |f|
       .add_a_new_comment.customComments
         = f.text_area :content, :placeholder => "comment", :label => false, :class => " content_comment_class ta-a"
