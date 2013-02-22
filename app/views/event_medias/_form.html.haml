@@ -1,4 +1,19 @@
-=form_for media, :as=>:post, :url=> event_event_medias_path(event), :remote=>true do |f|
-  = f.label "Youtube URL"
-  = f.text_field :url
-  =f.submit "Create"
+= javascript_include_tag "jquery.validate"
+=form_for media, :as=>:event_media, :url=> event_event_medias_path(event), :remote=>true do |f|
+  =f.hidden_field :category, :value=>"Video"
+  %p
+    = f.label "Youtube URL"
+    = f.text_field :url
+  %p
+    =f.submit "Create"
+
+:javascript
+  $(document).ready(function(){
+    $('#new_event_media').validate({
+      rules: {
+        "event_media[url]": {
+          required: true
+        }
+      }
+    });
+  });

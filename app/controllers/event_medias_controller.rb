@@ -11,7 +11,7 @@ class EventMediasController < ApplicationController
   end
 
   def create
-    @media = @event.event_medias.create(params[:post])
+    @media = @event.event_medias.create(params[:event_media])
   end
 
   def destroy

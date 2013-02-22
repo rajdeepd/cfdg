@@ -26,7 +26,7 @@
         -else
           -if !@event.am_i_member?(current_user.id) and @event.is_rsvp_allowed?
             - if ChapterMember.am_i_blocked(@event.chapter_id,current_user.id)
-              %button.btn-a-small.flt-right{:href => "#"} BLOCKED!
+              %button.btn-a-small.customBtn{:href => "#"} BLOCKED!
             -else
               %button.btn-a-small.flt-left.rsvp_me{:id=>"follow_an_event", :event_id => "#{@event.id}"} R.S.V.P
             -#%img.flt-right#rsvp_tick{:src => "/assets/Event.png",:style => "display:none"}
@@ -43,14 +43,14 @@
         %div
           -if(!@event.event_start_date.blank?)
             -if(@event.event_start_date == @event.event_end_date)
-              %b From:
+              %b.darkText From:
               #{Time.parse(@event.event_start_time_in_time.to_s).strftime('%I:%M %p')}&nbsp&nbsp&nbsp
-              %b To:
+              %b.darkText To:
               #{Time.parse(@event.event_end_time_in_time.to_s).strftime('%I:%M %p')} , #{Date.parse(@event.event_start_date_in_date.to_s).strftime('%A %b %d, %Y')}
             -else
-              %b From:
+              %b.darkText From:
               #{Time.parse(@event.event_start_time_in_time.to_s).strftime('%I:%M %p')} #{Date.parse(@event.event_start_date_in_date.to_s).strftime('%A %b %d, %Y')}&nbsp&nbsp&nbsp
-              %b To:
+              %b.darkText To:
               #{Time.parse(@event.event_end_time_in_time.to_s).strftime('%I:%M %p')} #{Date.parse(@event.event_end_date_in_date.to_s).strftime('%A %b %d, %Y')}
 
 
@@ -58,12 +58,17 @@
             -#I #{@event.entry_fee}  per person
 
         .clr
-      %div.location.caDate
-        %div.title
-          Location
-        = get_event_address(@event)
-      %div.description
-        = @event.description
+        %div.location.caDate
+          %div.title
+            %span.darkText
+              Location:
+              %span
+                = get_event_address(@event)
+      %div.description.customDescription
+        %span.darkText
+          Description
+          %span
+            = @event.description
 
       -#=image_tag(@event.image,:size => "60x60")
   %div.clr

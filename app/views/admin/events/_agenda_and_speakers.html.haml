@@ -10,7 +10,7 @@
     = render :inline => "#{@event.agenda_and_speakers}"
 
   - display_val = content_present ? "display:none" : "display:block"
-  - submit_val  =  content_present ? "UPDATE" : "CREATE"
+  - submit_val  =  content_present ? "UPDATE" : "ADD Agenda"
   .clr
   #agenda_text_area{:style=>"#{display_val}"}
     = semantic_form_for(@event,:url => admin_chapter_event_path(params[:chapter_id],params[:id]),:method => "PUT") do |f|
