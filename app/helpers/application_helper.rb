@@ -84,5 +84,9 @@ module ApplicationHelper
       "a #{object_type.downcase} which does not exist anymore"
     end
   end
+
+  def youtube_parsed_uri(uri)
+    "https://www.youtube.com/v/#{uri.split("?v=").last}?version=3&fs=1&width=600&height=360&hl=en_US1&iframe=true&rel=0"
+  end
   
 end

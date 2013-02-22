@@ -1,4 +1,5 @@
-.eventImageHolder.checkboxImgHolder.customImage{:style=>"height: 175px; width: auto;"}
+.eventImageHolder.checkboxImgHolder.customImage{}
   - if ChapterMember.is_primary_coordinator?(current_user.id)
     %span{:class => "eventGalleryMediaClose",:id => "#{media.id}",:rel => "#{event.id}" }
-  = render "embed_media", :media=>media 
+  %a{:href=>"#{youtube_parsed_uri(media.url)}", :title=>" We Share Our Mother's Health"}
+    = render "embed_media", :media=>media 
