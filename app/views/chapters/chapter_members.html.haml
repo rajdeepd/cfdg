@@ -1,15 +1,19 @@
 .content.wrapper.chapterMember
   %h1 Chapter Members
   %ul
-    - @chapter_members.each do |member|
-      - unless member.user.admin?
-        %li
-          .userName
-            = member.user.fullname
-          -if member.is_blocked?
-            = link_to "Unblock user",block_unblock_chapter_member_chapter_path(@chapter,:member => member,:user => member.user,:status => "unblock"),:class => "cp", :confirm => "Are you sure you want to unblock the member?"
-          -else
-            = link_to "Block user",block_unblock_chapter_member_chapter_path(@chapter,:member => member,:user => member.user,:status => "block"),:class => "cp", :confirm => "Are you sure you want to block the member?"
-          %br
+    -if @chapter_members.size > 0
+      - @chapter_members.each do |member|
+        - unless member.user.admin?
+          %li
+            .userName
+              = member.user.fullname
+            -if member.is_blocked?
+              = link_to "Unblock user",block_unblock_chapter_member_chapter_path(@chapter,:member => member,:user => member.user,:status => "unblock"),:class => "cp", :confirm => "Are you sure you want to unblock the member?"
+            -else
+              = link_to "Block user",block_unblock_chapter_member_chapter_path(@chapter,:member => member,:user => member.user,:status => "block"),:class => "cp", :confirm => "Are you sure you want to block the member?"
+            %br
+    - else
+      .userName
+        No chapter Member present.
 
 
