@@ -38,7 +38,7 @@
 
 
     -if !current_user.blank?
-      - if !ChapterMember.is_primary_coordinator?(current_user.id)
+      - if !ChapterMember.is_primary_coordinator?(current_user.id) && !current_user.admin?
         .ca-bottom
           .ca-down
             %h2.label-6= t('chapter.create_title')
