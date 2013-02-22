@@ -41,6 +41,7 @@ CloudfoundryUsergroups::Application.routes.draw do
   end
   resources :comments
   resources :events do
+    resources :event_medias
     collection do 
       get 'oauth_reader'
       get 'userevents'

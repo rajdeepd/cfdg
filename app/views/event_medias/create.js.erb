@@ -1,0 +1,4 @@
+<%- if @media.valid? %>
+  $(".mediaContainer").append("<%= escape_javascript(render "event_media", :media=> @media, :event=> @event) %>")
+  $("#createEventMedia").html("");
+<%- end %>
