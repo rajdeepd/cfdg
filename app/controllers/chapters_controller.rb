@@ -190,6 +190,7 @@ class ChaptersController < ApplicationController
     elsif params[:status] == "unblock"
       member.update_attributes(:is_blocked => false)
     end
+    ChapterMailer.block_unblock_member(params[:user],chapter,params[:status]).deliver
     redirect_to chapter_members_chapter_path(params[:id])
   end
 
