@@ -54,7 +54,7 @@
                 -if event.is_cancelled?
                   %button.btn-a-small.flt-right{:id=>"cancelled_event", :event_id => "#{event.id}" ,:disable => true,:style => "opacity:0.35"} CANCELLED
                 -else
-                  %button.btn-a-small.flt-right{:id=>"event_rsvped", :event_id => "#{event.id}",:style => "opacity:0.35"} Undo R.S.V.P
+                  %button.btn-a-small.flt-right{:id=>"event_rsvped", :event_id => "#{event.id}",:style => "opacity:1"} Undo R.S.V.P
               -if !event.am_i_member?(@current_user.id) and ChapterMember.am_i_coordinator?(@current_user.id,event.chapter.id)
                 -if event.can_be_deleted?
                   %button.btn-a-small.flt-right{:id=>"delete_an_event", :event_id => "#{event.id}"} DELETE
@@ -81,7 +81,7 @@
             %div.clr
             %label.label-25
               -if(!event.event_start_date.blank?)
-                #{Time.parse(event.event_start_time_in_time.to_s).strftime('%I:%M %p')} #{Date.parse(event.event_start_date_in_date.to_s).strftime(",%A %b %d, %Y")} I #{event.entry_fee}  per person
+                #{Time.parse(event.event_start_time_in_time.to_s).strftime('%I:%M %p')} #{Date.parse(event.event_start_date_in_date.to_s).strftime(",%A %b %d, %Y")} I #{event.entry_fee ? event.entry_fee : "0"}  per person,
               Location: #{event.venue}
             %p.label-26{:id => "short_content"}
               #{raw truncate(event.description, :length => 30, :omission => '...')}
@@ -148,7 +148,7 @@
             %div.clr
             %label.label-25
               -if(!event.event_start_date.blank?)
-                #{Time.parse(event.event_start_time_in_time.to_s).strftime('%I:%M %p')} #{Date.parse(event.event_start_date_in_date.to_s).strftime(",%A %b %d, %Y")} I #{event.entry_fee}  per person
+                #{Time.parse(event.event_start_time_in_time.to_s).strftime('%I:%M %p')} #{Date.parse(event.event_start_date_in_date.to_s).strftime(",%A %b %d, %Y")} I #{event.entry_fee ? event.entry_fee : "0"}  per person,
               Location: #{event.venue}
             %p.label-26{:id => "full_content"}
               #{event.description.truncate(160)}

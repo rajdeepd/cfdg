@@ -23,7 +23,8 @@
         %td{:style => "width:95px;"}
           %h5.label-26 #{Time.parse(post.created_at.to_s).strftime('%b %d, %Y')}
         %td{:style => "width:400px;"}
-          %a.label-46.block{:href => "#"} #{post.title}
+          -#%a.label-46.block{:href => "#"} #{post.title}
+          = link_to "#{post.title}",post_path(post),:class => "label-46 block"
           %h5.label-26
             Posted on #{Time.parse(post.created_at.to_s).strftime('%b %d, %Y')} by
             %a.label-25{:href => "#"} #{post.user.try(:fullname)}
