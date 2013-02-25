@@ -1584,3 +1584,6 @@ li.ulg-expanded .div-d{
     width: 545px;
     color: #222222;
 }
+#tabs ul{
+    margin: 0;
+}
