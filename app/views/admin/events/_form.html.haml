@@ -11,19 +11,25 @@
         %h2.label-45.flt-left Create Event For #{@event.chapter.try(:name)}
     .event-left{:style => "width:95%;"}
       .el-cont.createEventField
-        %label.label-26.eventTitle  Event Title
+        %label.label-26.eventTitle
+          Event Title
+          %span.asterix *
         = f.input :title , :input_html => {:class => "input-b size-f flt-left"} , :placeholder => "Event Title", :label => false
       -#.error{:class => "el-cont"}
         %li{:style => "float:left;", :class => "inline-errors event_title"} &nbsp;
       .el-cont.createEventField
-        %label.flt-left.label-26 Starts On
+        %label.flt-left.label-26
+          Starts On
+          %span.asterix *
         = f.input :event_start_date , :input_html => {:class => "input-b size-b size-of-inputs "} , :placeholder => "dd/mm/yyyy", :label => false
         = f.input :event_start_time ,  :placeholder => "hh:mm", :label => false,   :input_html => {:class => "input-b size-b size-of-inputs timepicker" }
         .error{:class => "el-cont", :style => "clear:both"}
           %li{:style => "padding-left:74px;float:left;width:35%;", :class => "inline-errors event_event_start_date"}
           %li{:style => "float:left;padding-left:74px;", :class => "inline-errors event_event_start_time"}
       .el-cont.createEventField
-        %label.flt-left.label-26 Ends On
+        %label.flt-left.label-26
+          Ends On
+          %span.asterix *
         = f.input :event_end_date , :input_html => {:class => "input-b size-b size-of-inputs"} , :placeholder => "dd/mm/yyyy", :label => false
         = f.input :event_end_time ,  :placeholder => "hh:mm", :label => false , :input_html => {:class => "input-b size-b size-of-inputs timepicker" }
         .error{:class => "el-cont", :style => "clear:both"}
@@ -60,7 +66,7 @@
         = f.input :city_name ,:input_html => { :class => "input-b size-text-event-create" }, :placeholder => "Type to select a city", :label => false
         = f.hidden_field :chapter_id
       .el-cont
-        = f.input :postal_code , :input_html => {:class => "input-b size-text-event-create"} , :placeholder => "Postal code", :label => false
+        = f.input :postal_code , :input_html => {:class => "input-b size-text-event-create"} , :placeholder => "Postal code *", :label => false
       .el-cont
         = f.text_field :attendees_count , :class => "input-b size-text-event-create", :placeholder => "Attendees Count", :label => false
   .event-form{:style => "padding-top:10px; padding-bottom: 20px;"}
