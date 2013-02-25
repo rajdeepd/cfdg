@@ -1954,3 +1954,9 @@ table#list{
     color: #222222;
 }
 /*Error or Notification Classes ends here*/
+#cboxCurrent {
+    display: none !important;
+}
+.mediaContainer .checkboxImgHolder {
+    padding-top: 15px;
+}
