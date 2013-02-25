@@ -89,7 +89,7 @@
       = render '/events/agenda_and_speakers'
     -elsif @event.agenda_and_speakers.present?
       = render '/events/agenda_and_speakers'
-  .div-d.customComments
+  .div-d.customComments.addNewComment
     - (@event.comments || []).each do |comment|
       =render "comment",:comment => comment
     - @comment =  @event.comments.build

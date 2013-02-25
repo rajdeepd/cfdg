@@ -4,13 +4,17 @@ $('#spinner').hide();
   $("#events").html("#{escape_javascript render(:partial => 'chapters/chapter_admin_home_page')}");
   $('.success_msg').show();
   $('.success_msg').fadeOut(5000);
-
--else    
-  $("#event_content li.inline-errors").html("&nbsp;");
-  - @event.errors.messages.each do |attribute, errors|
+-else
+  $('.event_error_msg').show();
+  $('.event_error_msg').fadeOut(10000);
+  $("#event_form_submit").css("opacity",1);
+  $("#event_form_submit").attr("disabled",false);
+  $("#event_form_submit").text("CREATE");
+  -#$("#event_content li.inline-errors").html("&nbsp;");
+  -#- @event.errors.messages.each do |attribute, errors|
     - msg= ''
     -errors.each do |e|
-      -msg= msg+ e  
+      -msg= msg+ e
     $(".event_#{attribute}").html("#{msg.to_s}");
     
   

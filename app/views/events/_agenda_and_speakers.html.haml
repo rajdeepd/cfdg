@@ -10,7 +10,7 @@
     = render :inline => "#{@event.agenda_and_speakers}"
   -if @current_user.present? and @event.can_i_delete?(@current_user.id, @event.chapter_id)
     - display_val = content_present ? "display:none" : "display:block"
-    - submit_val  =  content_present ? "UPDATE" : "CREATE"
+    - submit_val  =  content_present ? "UPDATE AGENDA" : "ADD AGENDA"
     .clr
     #agenda_text_area{:style=>"#{display_val}"}
       = semantic_form_for  @event do |f|

@@ -9,7 +9,6 @@ Events ={
                 url: '/chapters/'+ chapter_id+'/events/new',
 //          data: {chapter_id: chapter_id},
                 success: function(data){
-
                     $('#admincontent').html(data);
                 },
                 async:false,
@@ -104,6 +103,7 @@ Events ={
         });
 
         $('#event_form_submit').die('click').live('click', function(e){
+
 //    $('#options').hide();
 //    $('#spinner').show();
         });
