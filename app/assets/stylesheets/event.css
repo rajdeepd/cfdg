@@ -215,6 +215,7 @@ span.LV_valid {
     width: 15px;
     height: 13px;
     float: right;
+    cursor: pointer;
 }
 .eventImageHolder img {
     width: 150px;
