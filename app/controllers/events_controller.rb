@@ -100,11 +100,7 @@ class EventsController < ApplicationController
     if !@event.is_cancelled? and !@event.am_i_member?(@current_user.id)
       @event_memeber = EventMember.new(:event_id => @event.id, :user_id => current_user.id)
       @event_memeber.save!
-
-      #EventNotification.rsvped_event(@event,@current_user).deliver
       EventNotification.rsvped_event(@event,@current_user).deliver
-      #SES.send_raw_email(EventNotification.rsvped_event(@event,@current_user))
-      #EventNotification.delay.rsvped_event(@event,@current_user)
     end
     chapter_events = Event.find_all_by_chapter_id(@event.chapter_id) || []
     get_upcoming_and_past_events(chapter_events, true)
@@ -152,7 +148,6 @@ class EventsController < ApplicationController
     bcc_emails = @event.event_members.includes(:user).collect{|i| i.user.email} - [to_email]
     @event.is_cancelled = true
     @event.save
-    #EventNotification.delay.event_cancellation(@event, emails)
     EventNotification.event_cancellation(@event,to_email,bcc_emails).deliver
     #SES.send_raw_email(EventNotification.event_cancellation(@event,to_email,bcc_emails))
     chapter_events = Event.find_all_by_chapter_id(@event.chapter_id) || []
@@ -164,35 +159,22 @@ class EventsController < ApplicationController
     end
   end
 
-
-
   # POST /events
   # POST /events.json
   def create
     @event = Event.new(params[:event])
-    logger.info "#################{@event.errors.inspect}"
     respond_to do |format|
       if @event.save
         start_date = (params[:event][:event_start_date].blank? or params[:event][:event_start_time].blank?) ? "" : Time.parse(params[:event][:event_start_date]+" " +params[:event][:event_start_time]).strftime('%Y-%m-%d %H:%M:%S')
         end_date = (params[:event][:event_end_date].blank? or  params[:event][:event_end_time].blank?) ? "" : Time.parse(params[:event][:event_end_date]+" " +params[:event][:event_end_time]).strftime('%Y-%m-%d %H:%M:%S')
-
-        #venue_id = get_venue_id
-        #eventbrite_event = @eb_client.event_new(:venue_id => venue_id , :organizer_id =>  EVENTBRITE_ORGANIZATION_ID , :name => params[:name], :start_date => start_date, :end_date => end_date,  :title => params[:event][:title], :description => params[:event][:description])
-        #eventbrite_id = eventbrite_event.parsed_response["process"]["id"].to_s
-        #@event.update_attribute(:eventbrite_id, eventbrite_id)
-
         @event_memeber = EventMember.new(:event_id => @event.id, :user_id => @current_user.id)
         @event_memeber.save!
-
-
         @chapter = Chapter.find(@event.chapter_id)
         @chapter_events = @chapter.events.sort
         to_email = @chapter.get_primary_coordinator.email
         bcc_emails=@chapter.chapter_members.includes(:user).collect{|i| i.user.email} - [to_email]
         @two_chapter_events = @chapter_events.take(2)
-        #EventNotification.delay.event_creation(@event,emails,@chapter)
         EventNotification.event_creation(@event,to_email,bcc_emails,@chapter).deliver
-        #SES.send_raw_email(EventNotification.event_creation(@event,to_email,bcc_emails,@chapter))
         format.js
       else
         format.js
@@ -288,7 +270,6 @@ class EventsController < ApplicationController
 
 
   def initialise_eventbrite_client
-    logger.info("#############################{@current_user.inspect}")
     event_brite_oauthtoken = EventbriteOauthToken.find_by_user_id(@current_user.id)
     if(!event_brite_oauthtoken.nil?)
       @eb_client = EventbriteClient.new({ access_token: event_brite_oauthtoken.event_brite_token})

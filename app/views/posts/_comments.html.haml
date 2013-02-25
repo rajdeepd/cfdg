@@ -10,7 +10,8 @@
             = avatar_display_pic(comment.user,'thumb', '50x50','profile.png',"img-c flt-left")
             .commentText
               %h5 #{comment.user.fullname}
-              %span.commentDate #{comment.created_at.strftime("%B %d,%Y")} at #{comment.created_at.strftime("%I:%M %p")}
-              %p
+              %span.commentDate{:style => "margin-top: -10px;"} #{comment.created_at.strftime("%B %d,%Y")} at #{comment.created_at.strftime("%I:%M %p")}
+              %p{:style => "margin-left: 60px;margin-top: -20px;"}
                 #{comment.content}
                 -#%a{:href => "#"} View more
+          %br
