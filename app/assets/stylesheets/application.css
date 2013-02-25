@@ -1945,7 +1945,6 @@ table#list{
     font-weight: bold;
     color: #222222;
 }
-
 #gallery_media a{
     color: #0097d7;
     margin-top: 20px;
@@ -1955,3 +1954,9 @@ table#list{
     color: #222222;
 }
 /*Error or Notification Classes ends here*/
+#cboxCurrent {
+    display: none !important;
+}
+.mediaContainer .checkboxImgHolder {
+    padding-top: 15px;
+}

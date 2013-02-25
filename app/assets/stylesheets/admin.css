@@ -14,7 +14,7 @@
 
 
 /*reset begins*/
-html, body, div, span, applet, object, iframe, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, tt, var, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+html, body, div, applet, object, iframe, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, img, ins, kbd, q, s, samp, small, strike, sub, tt, var, center, dl, dt, dd, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
 	margin: 0;
 	padding: 0;
 	border: 0;
@@ -31,7 +31,7 @@ textarea{
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
 	display: block;
 }
-ol, ul {
+ul {
 	list-style: none;
 }
 blockquote, q {
@@ -1577,4 +1577,13 @@ li.ulg-expanded .div-d{
 .centerLink{
     text-align: center;
     width: 200px;
+}
+.add_a_new_comment textarea{
+    height: 100px;
+    resize: none;
+    width: 545px;
+    color: #222222;
+}
+#tabs ul{
+    margin: 0;
 }

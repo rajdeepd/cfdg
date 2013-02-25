@@ -1,5 +1,5 @@
 - content_present = @event.agenda_and_speakers.present?
-.agendaAndSpeakers
+.agendaAndSpeakers{:style => "width: 565px;"}
   %p.label-9{:style=>"font-size:20px;"}
     Agenda and Speakers
     -if @event.agenda_and_speakers.present?
@@ -15,7 +15,7 @@
   #agenda_text_area{:style=>"#{display_val}"}
     = semantic_form_for(@event,:url => admin_chapter_event_path(params[:chapter_id],params[:id]),:method => "PUT") do |f|
       = f.input :agenda_and_speakers, :as => :ckeditor, :label => false, :input_html => { :toolbar => 'Easy' }
-      = f.submit "#{submit_val}" ,:class=>"btn-a-small flt-right", :style => "margin-right:10px;", :id=>"event_agnda_form_submit"
+      = f.submit "#{submit_val}" ,:class=>"btn-a-small flt-right", :style => "margin: 7px 22px 0 0;", :id=>"event_agnda_form_submit"
   %br
 
   %br
