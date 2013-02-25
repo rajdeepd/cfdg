@@ -1960,3 +1960,10 @@ table#list{
 .mediaContainer .checkboxImgHolder {
     padding-top: 15px;
 }
+
+a.chapMem h2, a.chapMem h5{
+    color: #0096D6 ;
+}
+a.chapMem h2:hover, a.chapMem h5:hover{
+    color: #244466;
+}

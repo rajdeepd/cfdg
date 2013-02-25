@@ -45,8 +45,6 @@
             %br
             %span{:style=> "color:green;font-size:14px;"} Role: #{member.memeber_type.try(:titleize)}
           .clr
-          -if @current_user.present? and (ChapterMember.am_i_coordinator?(@current_user.id, @chapter.id))
-            = link_to "See Chapter Members",chapter_members_chapter_path(@chapter),:class => "cp"
         -if @secondary_coords.present?
           %h5.label-19
             Group Coordinator:
@@ -55,8 +53,13 @@
                 #{coord.user.email}
       %ul.ul-e
         %li
-          %h2.label-21 #{@totalcount}
-          %h5.label-39 Members
+          -if @current_user.present? and (ChapterMember.am_i_coordinator?(@current_user.id, @chapter.id))
+            %a{:href => "#{chapter_members_chapter_path(@chapter)}",:class => "chapMem"}
+              %h2.label-21 #{@totalcount}
+              %h5.label-39 Members
+          -else
+            %h2.label-21 #{@totalcount}
+            %h5.label-39 Members
         %li
           %h2.label-21 #{@chapter.events.try(:size)}
           %h5.label-39 Events

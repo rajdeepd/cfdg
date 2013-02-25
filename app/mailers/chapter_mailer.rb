@@ -8,5 +8,4 @@ class ChapterMailer < ActionMailer::Base
     mail(:to => @user.email, :subject => "CFDG - chapter status")
   end
 
-
 end
