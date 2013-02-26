@@ -81,7 +81,10 @@ class Chapter < ActiveRecord::Base
   def get_all_members
      self.chapter_members.select{|i| i.memeber_type == ChapterMember::MEMBER}
   end
-  
+
+  def get_secondary_coordinators
+    self.chapter_members.select{|i| i.memeber_type == ChapterMember::SECONDARY_COORDINATOR}
+  end
 
   def get_primary_coordinator
      User.find(self.created_by)
