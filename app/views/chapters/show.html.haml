@@ -27,7 +27,7 @@
               - if @current_user.blank?
                 %a.btn-a{:href => "#{signin_path}"} JOIN US!
               - elsif(!ChapterMember.am_i_coordinator?(@current_user.id, @chapter.id))
-                = submit_tag 'UNJOIN US!' , :class => "btn-a join_us"
+                = submit_tag 'UNJOIN' , :class => "btn-a join_us"
 
 
       .div-a
