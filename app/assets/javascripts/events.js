@@ -28,8 +28,10 @@ Events ={
                 url: '/events/follow_an_event',
                 data : data,
                 success: function(data){
+                    alert("hello");
                     $('#events').html(data);
-                    $('.join_us').hide();
+                    $('.join_form').attr('action',"/chapters/unjoin_a_chapter?locale=en");
+                    $('.join_us').val("UNJOIN");
                 },
                 async:false,
                 dataType: 'html'
