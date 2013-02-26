@@ -14,8 +14,8 @@
         %td{:style => "width:100px;"}
           %h5.label-46 Action
     %tbody
-      - if @members.present?
-        - @members.each do |member|
+      - if @secondary_coordinator.present?
+        - @secondary_coordinator.each do |member|
           - unless member.user.admin?
             %tr
               %td{:style => "text-align: left;"}
@@ -24,7 +24,7 @@
                 %h5.label-48= member.user.fullname
               %td
                 %h5.label-48.secondaryCo
-                  = link_to "Add Secondary Coodrinator" , create_secondary_coordinator_admin_chapter_path(:member => member) ,:class => "btnLink change_status", :method => "POST"
+                  = link_to "Remove Secondary coordinator" , create_secondary_coordinator_admin_chapter_path(:member => member) ,:class => "btnLink change_status", :method => "POST"
       - else
         %tr
           %td{:style => "text-align: left;"}
