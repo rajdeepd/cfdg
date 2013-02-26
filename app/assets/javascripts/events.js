@@ -33,6 +33,7 @@ Events ={
                 },
                 async:false,
                 dataType: 'html'
+
             });
 
         });
@@ -49,7 +50,7 @@ Events ={
 //                data : data,
                 success: function(data){
                     $('#events').html(data);
-                    $('.join_us').hide();
+//                    $('.join_us').hide();
                 },
                 async:false,
                 dataType: 'html'

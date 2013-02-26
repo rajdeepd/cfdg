@@ -11,7 +11,7 @@ class OmniauthController < ApplicationController
         sign_in(user)
         redirect_to(profile_path) && return
       end
-      redirect_to users_change_password_path(:reset_password_token => (user.reset_password_token || user.create_token)), :notice => "Please create your password for proprietary login."
+      redirect_to users_change_password_path(:reset_password_token => (user.reset_password_token || user.create_token),:set_password => "set_password"), :notice => "Please create your password for proprietary login."
     end
   end
 

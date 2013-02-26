@@ -340,7 +340,7 @@ body {
     font-size:14px;
 }
 .ul-f .ulf-selected{
-    box-shadow: 0px 2px #003A69;
+    box-shadow: 0px 3px #003A69;
 }
 .ul-f .ulf-selected a{
     color: #003A69;
@@ -1792,16 +1792,21 @@ form.new_comment textarea {
     line-height: 18px;
     color: #b94a48;
 }
-#attrendeesForm .input-b.size-f{
-    width: 468px;
+
+#attendeesForm .input-b.size-f{
+    width: 250px;
+    margin-bottom: 0;
 }
-#attrendeesForm{
+#attendeesForm .input-b.size-f:first-child{
+    margin-top: 0;
+}
+#attendeesForm{
     width: 570px;
     float: left;
     overflow: hidden;
 }
 #attendeesBlock{
-
+    margin-top: 15px;
 	float: left;
 	width: 313px;
 	margin-left: 20px;
@@ -1809,7 +1814,6 @@ form.new_comment textarea {
 	border: 3px solid gray;
 	border-radius: 25px;
 }
-
 table#list{
 	width:90%;
     float: left;
@@ -1945,13 +1949,52 @@ table#list{
     font-weight: bold;
     color: #222222;
 }
-
 #gallery_media a{
     color: #0097d7;
-    margin-top: 20px;
+    margin-top: 10px;
     display: block;
 }
 #gallery_media a:hover{
     color: #222222;
 }
 /*Error or Notification Classes ends here*/
+#cboxCurrent {
+    display: none !important;
+}
+.mediaContainer .checkboxImgHolder {
+    padding-top: 15px;
+}
+a.chapMem h2, a.chapMem h5{
+    color: #0096D6 ;
+}
+a.chapMem h2:hover, a.chapMem h5:hover{
+    color: #244466;
+}
+
+#gallery_images{
+    margin-bottom: 20px;
+}
+.fade_in p {
+    text-align: center;
+}
+.loginContent h1, .loginLayout h1{
+    font-size: 24px;
+    line-height: 48px;
+    margin-bottom: 20px;
+    text-align: center;
+    border-bottom: 1px solid #222222;
+}
+.asterix{
+    color: red;
+}
+#attendeesForm .event-form {
+    border: none;
+}
+#attendeesForm label.error {
+    margin-left: 65px;
+}
+#gallery_images .seeAllImages a{
+    width: 215px;
+    display: block;
+    text-decoration: none;
+}

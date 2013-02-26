@@ -98,5 +98,3 @@ gem 'rb-readline'
 
 # Deploy with Capistrano
 # gem 'capistrano'
-
-
