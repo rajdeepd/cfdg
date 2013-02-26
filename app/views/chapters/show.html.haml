@@ -12,7 +12,7 @@
           - if @current_user && ChapterMember.am_i_blocked(@chapter.id,@current_user.id)
             %a.btn-a{:href => "#"} BLOCKED!
           - else
-            = form_tag join_a_chapter_chapters_path, :method => :post do
+            = form_tag join_a_chapter_chapters_path,:class => "join_form", :method => :post do
               = hidden_field_tag "chapter_id", "#{@chapter.id}"
               - if @current_user.blank?
                 %a.btn-a{:href => "#{signin_path}"} JOIN US!
@@ -22,14 +22,12 @@
           - if @current_user && ChapterMember.am_i_blocked(@chapter.id,@current_user.id)
             %a.btn-a{:href => "#"} BLOCKED!
           -else
-            = form_tag unjoin_a_chapter_chapters_path, :method => :post do
+            = form_tag unjoin_a_chapter_chapters_path, :class => "unjoin_form", :method => :post do
               = hidden_field_tag "chapter_id", "#{@chapter.id}"
               - if @current_user.blank?
                 %a.btn-a{:href => "#{signin_path}"} JOIN US!
               - elsif(!ChapterMember.am_i_coordinator?(@current_user.id, @chapter.id))
                 = submit_tag 'UNJOIN' , :class => "btn-a join_us"
-
-
       .div-a
         %h2.label-17 #{@chapter.try(:name)}
         %h5.label-18 Location: #{@chapter.try(:city_name)} | Founded on #{Time.parse(@chapter.try(:created_at).to_s).strftime('%b %d, %Y')}
