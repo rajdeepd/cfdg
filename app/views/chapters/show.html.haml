@@ -37,7 +37,8 @@
           on #{Time.parse(@chapter.try(:created_at).to_s).strftime('%b %d, %Y')}
         %h5.label-19
           Primary Group Coordinator:
-          %label.label-20 #{@primary_coord.try(:user).email}
+          %label.label-20
+            =link_to @primary_coord.try(:user).email, profile_info_user_path(:user => @primary_coord.user),:class => "label-my"
           - member = ChapterMember.get_member(@current_user.id, @chapter.id).try(:first) if @current_user.present?
           -if !@current_user.blank? and member.present?
             %br
@@ -48,7 +49,7 @@
             Group Coordinator:
             %label.label-20
               -@secondary_coords.each do |coord|
-                #{coord.user.email}
+                = link_to coord.user.email, profile_info_user_path(:user => coord),:class => "label-my"
       %ul.ul-e
         %li
           -if @current_user.present? and (ChapterMember.am_i_coordinator?(@current_user.id, @chapter.id))

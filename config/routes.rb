@@ -113,6 +113,9 @@ CloudfoundryUsergroups::Application.routes.draw do
     collection do
       post 'uploader'
     end
+    member do
+      get 'profile_info'
+    end
   end
 
   namespace :admin do

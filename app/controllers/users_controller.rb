@@ -47,4 +47,9 @@ class UsersController < ApplicationController
     end
   end
 
+  def profile_info
+    @user = User.find(params[:user])
+    logger.info"################# #{@user.inspect}"
+  end
+
 end
