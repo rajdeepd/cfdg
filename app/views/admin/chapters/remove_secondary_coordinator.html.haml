@@ -24,9 +24,9 @@
                 %h5.label-48= member.user.fullname
               %td
                 %h5.label-48.secondaryCo
-                  = link_to "Remove Secondary coordinator" , create_secondary_coordinator_admin_chapter_path(:member => member) ,:class => "btnLink change_status", :method => "POST"
+                  = link_to "Remove Secondary coordinator", delete_secondary_coordinator_admin_chapter_path(:member => member) ,:class => "btnLink change_status", :method => "PUT"
       - else
         %tr
           %td{:style => "text-align: left;"}
             %h5.label-48
-            = "No Active Members"
+            = "No Secondary Coordinator"

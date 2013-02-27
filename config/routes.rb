@@ -140,6 +140,7 @@ CloudfoundryUsergroups::Application.routes.draw do
         get 'add_secondary_coordinator'
         get 'remove_secondary_coordinator'
         post 'create_secondary_coordinator'
+        put 'delete_secondary_coordinator'
       end
       resources :events do
         member do
