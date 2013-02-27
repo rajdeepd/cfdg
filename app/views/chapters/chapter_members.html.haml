@@ -6,7 +6,12 @@
         %li
           .userName
             = member.user.fullname
-          - unless member.user.admin? or (member.user_id == member.created_by)
+            .role
+              -if member.user.admin?
+                = "Site Admin"
+              -if member.memeber_type == "primary coordinator"
+                = "Chapter Admin"
+          - unless member.user.admin? or (member.memeber_type == "primary coordinator")
             -if member.is_blocked?
               = link_to "Unblock user",block_unblock_chapter_member_chapter_path(@chapter,:member => member,:user => member.user,:status => "unblock"),:class => "cp", :confirm => "Are you sure you want to unblock the member?"
             -else
