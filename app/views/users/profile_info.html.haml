@@ -13,24 +13,24 @@
     .forms_list
       #formfirst
         .control-group
-          %h3 Location
+
           .controls
             -if @user.location.present?
-              = @user.location
+              %h3 Location : #{@user.location}
             -else
               = "Not avilabel"
           %br
-            = @user.fullname
+            %h3 FullName : #{@user.fullname}
       .line_space
       #formsecond
 
         .control-group
-          %h3 mobile number
           .controls
             -if @user.mobile.present?
               = @user.mobile
             -else
               = "Not avilabel"
+          %br
         .control-group
           %h3 Website Url
           .controls
@@ -38,6 +38,7 @@
               = @user.website_url
             -else
               = "Not avilabel"
+          %br
         .control-group
           %h3 Linkedin Url
           .controls
@@ -45,6 +46,7 @@
               = @user.linkedin_url
             -else
               = "Not avilabel"
+          %br
         .control-group
           %h3 Twitter Url
           .controls
