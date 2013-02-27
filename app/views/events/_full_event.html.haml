@@ -99,7 +99,7 @@
         = f.text_area :content, :placeholder => "comment", :label => false, :class => " content_comment_class ta-a"
       = f.hidden_field   :commentable_type
       = f.hidden_field   :commentable_id
-      = f.submit "Add Comment" ,:class=>"btn-a-small flt-right", :style => "margin-right:10px;"
+      = f.submit "Add Comment" ,:class=>"btn-a-small flt-right", :style => "margin-right:10px;",:disable_with=> "Adding..........."
   %br
 -if @current_user.present? and @event.can_i_delete?(@current_user.id, @event.chapter_id)
   -#.attendeesEmailList.clr
