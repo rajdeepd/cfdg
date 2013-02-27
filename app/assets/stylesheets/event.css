@@ -156,17 +156,17 @@
     float: left;
     margin: 0 5px;
 }
-#attrendeesForm .btn-a-small{
+#attendeesForm .btn-a-small{
     margin: 0 10px 10px 0;
     float: right;
 }
-#attrendeesForm .el-cont label.label-26{
+#attendeesForm .el-cont label.label-26{
     margin-bottom: 10px;
     display: block;
 }
 .el-cont label.label-26 {
     top: 7px;
-    width: 70px;
+    width: 77px;
 }
 .size-text-event-create {
     width: 295px;
@@ -223,11 +223,9 @@ span.LV_valid {
 }
 .seeAllImages {
     width: 150px;
-    /*height: 150px;*/
     text-align: center;
     vertical-align: bottom;
     display: inline-block;
-    padding-top: 100px
 }
 .seeAllImages a {
     text-decoration: underline;
@@ -271,7 +269,7 @@ span.LV_valid {
 .checkboxImgHolder input[type = "checkbox"]{
     float: left;
     width: 20px;
-    margin-top: 80px;
+    margin-top: 95px;
 }
 .attendees strong {
     float: left;
@@ -308,15 +306,30 @@ ul.attendeesList li .nameHolder {
 .div-h .caDate{
     margin-left: 0;
 }
-.customImage{
+.showAllImg {
+    height: auto;
+    width: 230px;
+    margin-bottom: 20px;
+}
+.showAllImg img{
     height: 170px;
     border: 1px solid #cccccc;
     box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.4);
-    margin-bottom: 20px;
-    margin-right: 50px;
+    padding: 20px;
+    float: left;
 }
 
 .addBtnReg{
     margin-left: 450px;
     margin-bottom: 10px;
+}
+#attendeesForm .createEventField {
+    width: 335px;
+    margin: 0 auto 20px;
+}
+#attendeesForm .el-cont label.label-26 {
+    width: 60px;
+}
+#deleteImagesBtn {
+    margin-left: 30px;
 }
