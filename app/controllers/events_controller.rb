@@ -177,6 +177,9 @@ class EventsController < ApplicationController
         EventNotification.event_creation(@event,to_email,bcc_emails,@chapter).deliver
         format.js
       else
+        logger.info @event.errors.messages[:event_start_time].inspect
+        @error =  @event.errors.messages[:event_start_time]
+        logger.info "######## after finding error ################{@event.errors.messages[:event_start_time].inspect}"
         format.js
       end
 

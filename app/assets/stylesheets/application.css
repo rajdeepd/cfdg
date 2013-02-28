@@ -2003,3 +2003,9 @@ a.chapMem h2:hover, a.chapMem h5:hover{
     display: block;
     margin-top: -20px;
 }
+
+.event_desc{
+    height: 40px;
+    margin: 5px 0px;
+    width: 607px;
+}

@@ -6,7 +6,6 @@
 = javascript_include_tag "jquery.timepicker-1.2.2"
 %div.content.wrapper
   = form_for @event ,:url =>admin_chapter_event_path(params[:chapter_id],@event),:method => :put do |f|
-
     .event-form
       .event-left{:style => "width:100%;"}
         .el-cont{:style => "margin-bottom: 16px;"}
