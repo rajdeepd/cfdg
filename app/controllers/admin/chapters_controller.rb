@@ -76,7 +76,8 @@ class Admin::ChaptersController < ApplicationController
 
   def add_secondary_coordinator
     @chapter = Chapter.find(params[:id])
-    @members = @chapter.get_all_members
+    @members = @chapter.get_all_members_and_secondary_coordinators
+    #logger.info"############ #{@members.inspect}"
   end
 
 

@@ -79,7 +79,11 @@ class Chapter < ActiveRecord::Base
 
 
   def get_all_members
-     self.chapter_members.select{|i| i.memeber_type == ChapterMember::MEMBER}
+    self.chapter_members.select{|i| i.memeber_type == ChapterMember::MEMBER}
+  end
+
+  def get_all_members_and_secondary_coordinators
+    self.chapter_members.where("memeber_type in (?)",["member","secondary coordinator"])
   end
 
   def get_secondary_coordinators
