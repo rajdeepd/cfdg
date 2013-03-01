@@ -5,4 +5,11 @@ class UserMailer < ActionMailer::Base
     @user = user
     mail(:to => "kunalb@weboniselab.com",:bcc => ["aditya@weboniselab.com", "apurva@weboniselab.com"], :subject => "Welcome mail")
   end
+
+  def send_custom_mail(to,subject,body)
+    @user = to
+    @body = body
+    mail(:to => to, :subject => subject)
+  end
+
 end

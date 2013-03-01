@@ -1,5 +1,7 @@
+= javascript_include_tag "jquery.validate"
 .formDiv
-  = form_tag(emails_path, :method => "POST", :remote => true) do
+  = render 'shared/errors_or_notifications'
+  = form_tag(emails_path, :method => "POST",:class => "new_email", :remote => true) do
     #Form_ch
       .drop_list
         .one_side
@@ -13,3 +15,21 @@
             = text_area_tag :body,nil, :placeholder => "Body",:class => "emailArea"
       .proposal
         = submit_tag "Send Email", :class => 'send',:style=> "margin-left:0px;margin-right:0px;"
+
+:javascript
+  $(document).ready(function(){
+    $('.new_email').validate({
+      rules: {
+        "to": {
+          required: true,
+          email: true
+        },
+        "subject": {
+          required: true
+        },
+        "body": {
+          required: true
+        }
+      }
+    });
+  });
