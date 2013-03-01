@@ -1623,6 +1623,56 @@ li.ulg-expanded .div-d{
 .emailArea{
     width: 400px;
     height: 200px;
+    resize: none;
+}
+.notice {
+    padding: 8px 35px 8px 14px;
+    margin-bottom: 18px;
+    color: #c09853;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+    background-color: #fcf8e3;
+    border: 1px solid #fbeed5;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}
+.notice .close {
+    position: relative;
+    top: -2px;
+    right: -913px;
+    line-height: 18px;
+    color: #c09853;
 }
 
+.notice p{
+    color: #c09853;
+    margin-top: -20px;
+}
+.custom_error {
+    padding: 8px 35px 8px 14px;
+    margin-bottom: 18px;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+    background-color: #f2dede;
+    border: 1px solid #fbeed5;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}
+.custom_error .close {
+    position: relative;
+    top: -2px;
+    right: -913px;
+    line-height: 18px;
+    color: #b94a48;
+}
+
+.custom_error p{
+    color: #b94a48;
+    margin-top: -20px;
+}
+label.error{
+    display: block;
+    color: red;
+    font-size: 12px;
+}
 /* form for sending email ends */
