@@ -13,7 +13,10 @@
             %i.bg-arrow-down-b
         .activityLog
           = link_to "Activity Log", activity_logs_path, :remote=>true
-        .clearFix 
+        -#.clearFix
+        .sendEmail
+          = link_to "Send Email", new_email_path, :remote => true
+        .clearFix
         #tabs-2{:style=>"display:none"}
         #tabs-1
           #inner-tabs

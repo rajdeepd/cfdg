@@ -9,9 +9,6 @@ $('#spinner').hide();
   - flash[:error].each do |key, error|
     $('.event_error_msg').append('#{error[0]}<br/><br/>');
   $('.event_error_msg').fadeOut(10000,function(){$(".event_error_msg").html("");$("#event_form_submit").css("opacity",1);$("#event_form_submit").attr("disabled",false);$("#event_form_submit").text("CREATE");});
-  -#$("#event_form_submit").css("opacity",1);
-  -#$("#event_form_submit").attr("disabled",false);
-  -#$("#event_form_submit").text("CREATE");
 
   -#$("#event_content li.inline-errors").html("&nbsp;");
   -#- @event.errors.messages.each do |attribute, errors|
@@ -19,7 +16,3 @@ $('#spinner').hide();
   -#  -errors.each do |e|
   -#    -msg= msg+ e
   -#  $(".event_#{attribute}").html("#{msg.to_s}");
--#
--#- flash[:error].keys.sort.each do |error|
--#  $(".event_error_msg").html("#{escape_javascript(error)}");
--#  $(".event_error_msg").show(300);
