@@ -126,6 +126,8 @@
       var event_id = $("#event_title").attr("event_id");
       var chapter_id = $("#event_title").attr("chapter_id");
       var url = "/admin/chapters/"+chapter_id+"/events/"+ event_id +"/image_gallery_upload"
+      var token = "#{CGI::escape form_authenticity_token}";
+      var url = "/events/"+ event_id +"/image_gallery_upload" + "?authentication_token="+token
       $('input#Uploadify').uploadify({
         swf            : '/assets/uploadify.swf',
         buttonText     :'Upload Images',
