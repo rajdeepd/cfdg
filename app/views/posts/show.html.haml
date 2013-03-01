@@ -31,7 +31,7 @@
                     = avatar_display_pic(comment.user,'thumb', '50x50','profile.png',"img-c flt-left")
                     .commentText
                       %h5
-                        = link_to comment.user.fullname , profile_info_user_path(:user => comment.user)
+                        = link_to comment.user.fullname , profile_info_user_path(comment.user)
                       %span.commentDate{:style => "margin-top: -10px;"} #{comment.created_at.strftime("%B %d,%Y")} at #{comment.created_at.strftime("%I:%M %p")}
                       %p{:style => "margin-left: 60px;margin-top: -20px;"}
                         #{comment.content}

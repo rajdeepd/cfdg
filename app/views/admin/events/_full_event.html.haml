@@ -95,9 +95,9 @@
     -@members.each do |i|
       %li
         .imageHolder
-          = avatar_display_pic(i,'thumb', '30x30','profile.png',"profile-img img-a flt-left")
+          = link_to avatar_display_pic(i,'thumb', '30x30','profile.png',"profile-img img-a flt-left"), profile_info_user_path(i)
         .nameHolder
-          = i.fullname
+          = link_to i.fullname, profile_info_user_path(i), :class => "label-my"
         .clr
 
 - session_key = Rails.application.config.session_options[:key]

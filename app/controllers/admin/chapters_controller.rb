@@ -84,6 +84,9 @@ class Admin::ChaptersController < ApplicationController
     member = ChapterMember.find(params[:member])
     @chapter = Chapter.find(params[:id])
     @chapter.save_secondary_coordinator(member)
+    user = member.user
+    member_type = member.memeber_type
+    ChapterMailer.manage_coordinators(user,@chapter,member_type).deliver
     redirect_to manage_secondary_coordinators_admin_chapter_path(@chapter)
   end
 
@@ -91,6 +94,9 @@ class Admin::ChaptersController < ApplicationController
     member = ChapterMember.find(params[:member])
     member.update_attributes(:memeber_type => "member")
     @chapter = Chapter.find(params[:id])
+    user = member.user
+    member_type = member.memeber_type
+    ChapterMailer.manage_coordinators(user,@chapter,member_type).deliver
     redirect_to manage_secondary_coordinators_admin_chapter_path(@chapter)
   end
 end

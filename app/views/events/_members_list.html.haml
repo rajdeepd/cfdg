@@ -11,5 +11,5 @@
         .imageHolder
           = avatar_display_pic(i,'thumb', '30x30','profile.png',"profile-img img-a flt-left")
         .nameHolder
-          = link_to i.fullname, profile_info_user_path(:user => i)
+          = link_to i.fullname, profile_info_user_path(i)
         .clr

@@ -18,7 +18,7 @@
             -if @user.location.present?
               %h3 Location : #{@user.location}
             -else
-              = "Not avilabel"
+              %h3 Location : Not available
           %br
             %h3 FullName : #{@user.fullname}
       .line_space
@@ -27,33 +27,30 @@
         .control-group
           .controls
             -if @user.mobile.present?
-              = @user.mobile
+              %h3 Mobile No. : #{@user.mobile}
             -else
-              = "Not avilabel"
+              %h3 Mobile No. : Not available
           %br
         .control-group
-          %h3 Website Url
           .controls
             -if @user.website_url.present?
-              = @user.website_url
+              %h3 Website Url. : #{@user.website_url}
             -else
-              = "Not avilabel"
+              %h3 Website Url : Not available
           %br
         .control-group
-          %h3 Linkedin Url
           .controls
             -if @user.linkedin_url.present?
-              = @user.linkedin_url
+              %h3 Linkdin Url. : #{@user.linkedin_url}
             -else
-              = "Not avilabel"
+              %h3 Linkdin Url : Not available
           %br
         .control-group
-          %h3 Twitter Url
           .controls
             -if @user.twitter_url.present?
-              = @user.twitter_url
+              %h3 Twitter Url. : #{@user.twitter_url}
             -else
-              = "Not avilabel"
+              %h3 Twitter Url : Not available
         .styled
 
 

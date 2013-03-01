@@ -38,6 +38,12 @@ class ApplicationController < ActionController::Base
     options.merge!({ :locale => I18n.locale })
   end
 
+  def signed_in_user
+    unless current_user.present?
+      redirect_to new_user_session_path
+    end
+  end
+
   #def set_cache_buster
   #  response.headers["Cache-Control"] = "no-cache, no-store, max-age=0, must-revalidate"
   #  response.headers["Pragma"] = "no-cache"

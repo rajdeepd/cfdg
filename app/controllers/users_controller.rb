@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_filter :signed_in_user, only: [:profile_info]
   layout 'chapters'
 
   def edit
@@ -48,8 +49,8 @@ class UsersController < ApplicationController
   end
 
   def profile_info
-    @user = User.find(params[:user])
-    logger.info"################# #{@user.inspect}"
+    @user = User.find(params[:id])
+    logger.info"################# #{params.inspect}"
   end
 
 end

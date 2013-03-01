@@ -2007,3 +2007,8 @@ a.chapMem h2:hover, a.chapMem h5:hover{
     color: #0097d7;
     font-weight: bold;
 }
+
+.profile-image-s{
+    width: 20px;
+    height: 20px;
+}

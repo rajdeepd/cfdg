@@ -8,4 +8,13 @@ class ChapterMailer < ActionMailer::Base
     mail(:to => @user.email, :subject => "CFDG - chapter status")
   end
 
+  def manage_coordinators(user,chapter,member_type)
+    @member_type = member_type
+    @user = User.find(user)
+    @email = user.email
+    @chapter = chapter
+    mail(:to => @user.email, :subject => "CFDG - Activity" )
+
+  end
+
 end
