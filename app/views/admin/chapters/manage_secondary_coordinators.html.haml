@@ -41,8 +41,11 @@
                 %h5.label-48= member.user.fullname
               %td
                 %h5.label-48.secondaryCo
-
+                - if member.memeber_type == ChapterMember::MEMBER
                   = link_to "Add Secondary Coodrinator" , create_secondary_coordinator_admin_chapter_path(:member => member) ,:class => "btnLink change_status", :method => "POST"
+                -else
+                  = link_to "Remove Secondary coordinator", delete_secondary_coordinator_admin_chapter_path(:member => member) ,:class => "btnLink change_status", :method => "PUT"
+
       - else
         %tr
           %td{:style => "text-align: left;"}

@@ -41,11 +41,10 @@
               %a.change_status.btnLink{"data-url" => "#{change_status_admin_chapter_path(chapter, :status => 'active_to_incubate')}"} Incubate
               -#= link_to "Incubate",change_status_admin_chapter_path(chapter, :status => 'active_to_incubate'),:class => "btnLink change_status",:remote => true
               -#%button.btn-a-small.change_status{"data-url" => "#{add_secondary_coordinator_admin_chapter_path(chapter)}"} Add Secondary Co-ordinator
-              =link_to "Add Coordinator",add_secondary_coordinator_admin_chapter_path(chapter),:class => "btnLink change_status" ,:method => "get"
+              =link_to "Manage Coordinators",manage_secondary_coordinators_admin_chapter_path(chapter),:class => "btnLink change_status" ,:method => "get"
               =link_to "Event Actions",admin_chapter_events_path(chapter),:class => "btnLink change_status" ,:method => "get"
               =link_to "Create Event",new_admin_chapter_event_path(chapter),:class => "btnLink change_status" ,:method => "get"
               =link_to "Post actions",admin_chapter_posts_path(chapter),:class => "btnLink change_status" ,:method => "get"
-              =link_to "Remove Coordinator",remove_secondary_coordinator_admin_chapter_path(chapter),:class => "btnLink change_status" ,:method => "get"
       %tr
 - else
   No Active Chapters

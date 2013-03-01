@@ -74,29 +74,23 @@ class Admin::ChaptersController < ApplicationController
     end
   end
 
-  def add_secondary_coordinator
+  def manage_secondary_coordinators
     @chapter = Chapter.find(params[:id])
     @members = @chapter.get_all_members_and_secondary_coordinators
     #logger.info"############ #{@members.inspect}"
   end
 
-
   def create_secondary_coordinator
-    member= ChapterMember.find(params[:member])
+    member = ChapterMember.find(params[:member])
     @chapter = Chapter.find(params[:id])
     @chapter.save_secondary_coordinator(member)
-    redirect_to add_secondary_coordinator_admin_chapter_path(@chapter)
-  end
-
-  def remove_secondary_coordinator
-    @chapter = Chapter.find(params[:id])
-    @secondary_coordinator=@chapter.chapter_members.where(:memeber_type => "secondary coordinator")
+    redirect_to manage_secondary_coordinators_admin_chapter_path(@chapter)
   end
 
   def delete_secondary_coordinator
-    member= ChapterMember.find(params[:member])
+    member = ChapterMember.find(params[:member])
     member.update_attributes(:memeber_type => "member")
-    @chapter=Chapter.find(params[:id])
-    redirect_to remove_secondary_coordinator_admin_chapter_path(@chapter)
+    @chapter = Chapter.find(params[:id])
+    redirect_to manage_secondary_coordinators_admin_chapter_path(@chapter)
   end
 end
