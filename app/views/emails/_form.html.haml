@@ -6,7 +6,7 @@
       .drop_list
         .one_side
           %div
-            = text_field_tag :to,nil,:placeholder => "To",:class => "emailField"
+            = text_field_tag :to,nil,:placeholder => "To",:class => "emailField",:id => "city_autocomplete"
           %br
           %div
             = text_field_tag :subject,nil, :placeholder => "Subject",:class => "emailField"
@@ -30,6 +30,16 @@
         "body": {
           required: true
         }
+      }
+    });
+
+    $( "#city_autocomplete" ).autocomplete({
+      source: "/emails/autocomplete_user_email",
+      minLength: 2,
+      select: function( event, ui ) {
+        //log( ui.item ?
+        //  "Selected: " + ui.item.value + " aka " + ui.item.id :
+        //  "Nothing selected, input was " + this.value );
       }
     });
   });

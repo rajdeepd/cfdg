@@ -236,7 +236,6 @@ class EventsController < ApplicationController
     @events.each_with_index do |event,i|
       data[i] = { "label" => "#{event.title}", "value" => "#{event.id}"}
     end
-
     render json: data.to_json
   end
 

@@ -11,7 +11,11 @@ CloudfoundryUsergroups::Application.routes.draw do
   match'/admin', :to => "admin/sessions#new"
 
   resources :activity_logs
-  resources :emails
+  resources :emails do
+    collection do
+      get :autocomplete_user_email
+    end
+  end
   resources :omniauth do
     collection do
       get :auth_failure
