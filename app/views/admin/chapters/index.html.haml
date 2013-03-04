@@ -15,7 +15,7 @@
           = link_to "Activity Log", activity_logs_path, :remote=>true
         -#.clearFix
         .sendEmail
-          = link_to "Send Email", new_email_path, :remote => true
+          = link_to "Send Email", new_email_path, :remote => true, :class => 'emailLink'
         .clearFix
         #tabs-2{:style=>"display:none"}
         #tabs-1
@@ -84,15 +84,20 @@
                 -else
                   No Request
 :javascript
-  $(".activityLog").click(function(){
-    $(".activityLog").css("box-shadow", "0px 2px #003A69");
-    $(".activityLog").append($('i').addClass("bg-arrow-down-b"));
+  $(".activityLog, .emailLink").click(function(){
+    $(this).css("box-shadow", "0px 2px #003A69");
+    $(this).append($('i').addClass("bg-arrow-down-b"));
+    $(this).siblings().find('.activityLog, .emailLink').css('box-shadow', '');
     $(".ul-f > li").css('box-shadow', '')
   });   
   $(".customTabList").click(function(){
+    $(".activityLog > i, .emailLink > i").remove();
+    $(".activityLog, .emailLink").css("box-shadow", "");
+  });
+  $(".emailLink").click(function(){
     $(".activityLog > i").remove();
     $(".activityLog").css("box-shadow", "");
-  });               
+  });
 :javascript 
   $(".ul-f > li").click(function(){
     $(this).css( 'box-shadow', '0px 2px #003A69');
@@ -109,6 +114,6 @@
       $("#ui-tabs-1").addClass("ulf-selected");
     }
     $("#tabs-2").hide();
-  
+
 
   });
