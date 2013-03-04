@@ -3,6 +3,7 @@
   = render 'shared/errors_or_notifications'
   = form_tag(emails_path, :method => "POST",:class => "new_email", :remote => true) do
     #Form_ch.emailForm
+      %h3.h-cm Send Email
       .drop_list
         .one_side
           %div
