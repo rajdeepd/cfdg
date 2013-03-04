@@ -74,7 +74,19 @@
             - if last_event.present?
               %h5.label-40 Last Event Date: #{Time.parse(last_event.event_start_date.to_s).strftime('%b %d, %Y')}
 
-
+            %div
+              #inviteFriendLink
+                = link_to "Invite Friend","",:class => "inviteFriend"
+              #invitationForm{:style => "display:none;"}
+                = form_tag invite_friends_chapter_path(current_user), :method => 'get'    do
+                  %fieldset
+                    %legend Invites Friends
+                    %p
+                      Enter Friend's email
+                      %br/
+                      = text_area_tag "email",nil, :class => 'email'
+                    %span.help-block eg. example@yopmail.com.
+                    %p= submit_tag 'Invites'
     .cc-left
       %ul.ul-f
         %li{:style=>"padding: 7px 20px;"}
@@ -98,3 +110,15 @@
 :javascript 
   Chapters.init();
   Events.init();
+
+:javascript
+  $(document).ready(function(){
+
+    //$('#invitationForm').hide();
+    $('.inviteFriend').on("click",function(event){
+      event.preventDefault();
+      //alert("hello");
+      $('#invitationForm').show();
+    });
+  });
+

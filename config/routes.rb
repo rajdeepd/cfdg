@@ -28,12 +28,14 @@ CloudfoundryUsergroups::Application.routes.draw do
     member do
       get :chapter_members
       get :block_unblock_chapter_member
+      get :invite_friends
     end
     resources :events
     collection do
       post 'join_a_chapter'
       post  'unjoin_a_chapter'
       get  'chapter_admin_home_page'
+
     end
   end
 
@@ -149,6 +151,8 @@ CloudfoundryUsergroups::Application.routes.draw do
         get 'remove_secondary_coordinator'
         post 'create_secondary_coordinator'
         put 'delete_secondary_coordinator'
+
+
       end
       resources :events do
         member do

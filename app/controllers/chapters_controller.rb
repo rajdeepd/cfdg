@@ -77,9 +77,13 @@ class ChaptersController < ApplicationController
   # POST /chapters.json
 
   def create
+     logger.info"############# #{params.inspect}"
+
      @admin = User.find_by_email("admin@cloudfoundry.com")
+     params[:chapter][:city_name]=params[:chapter][:city_name].downcase
      params[:chapter][:name] = "CFDG - " + params[:chapter][:city_name].try(:titleize)
      @chapter = Chapter.new(params[:chapter])
+
      member = ChapterMember.new({:memeber_type=>ChapterMember::PRIMARY_COORDINATOR, :user_id => @current_user.id})
     
     respond_to do |format|
@@ -193,6 +197,17 @@ class ChaptersController < ApplicationController
     end
     ChapterMailer.block_unblock_member(params[:user],chapter,params[:status]).deliver
     redirect_to chapter_members_chapter_path(params[:id])
+  end
+
+  def invite_friends
+    logger.info"############ #{params.inspect}"
+    user = current_user
+    emails = Array.new
+    emails.each do |email|
+      email << params[:email].split(" ").join(",")
+    end
+    emails = params[:email].split(" ").join(",")
+    logger.info"########### #{emails.inspect}"
   end
 
   private
