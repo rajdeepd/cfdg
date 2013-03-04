@@ -449,6 +449,9 @@ a.label-27{
 a.label-9:hover{
     color: #244466;
 }
+a.label-my:hover{
+    color: #244466;
+}
 .pgt-bar .pgtbar-selected{
     color: #d9541e;
     font-weight: bold;
@@ -1998,14 +2001,26 @@ a.chapMem h2:hover, a.chapMem h5:hover{
     display: block;
     text-decoration: none;
 }
+
 .role{
     margin-left: 281px;
     display: block;
     margin-top: -20px;
 }
-
 .event_desc{
     height: 40px;
     margin: 5px 0px;
     width: 607px;
+
+}
+.label-my{
+    font-size:16px;
+    color: #0097d7;
+    font-weight: bold;
+}
+
+.profile-image-s{
+    width: 20px;
+    height: 20px;
+
 }

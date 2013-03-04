@@ -1,0 +1,84 @@
+
+.content.wrapper
+  .content-a
+    .ca-left.flt-left
+
+      %h1.label-17  #{@user.fullname}
+      %div.userFixImage
+        - if @user.avatar_file_name && (@user.errors[:avatar_content_type].blank? && @user.errors[:avatar_file_size].blank?)
+          %img.profile-image{:src => @user.try(:avatar).url(:medium)}
+        - else
+          %img.profile-image{:src => "/assets/default-Profile-Image.png"}
+      -#= f.file_field :avatar ,:class => "uploadImage"
+    .forms_list
+      #formfirst
+        .control-group
+
+          .controls
+            -if @user.location.present?
+              %h3 Location : #{@user.location}
+            -else
+              %h3 Location : Not available
+          %br
+            %h3 FullName : #{@user.fullname}
+      .line_space
+      #formsecond
+
+        .control-group
+          .controls
+            -if @user.mobile.present?
+              %h3 Mobile No. : #{@user.mobile}
+            -else
+              %h3 Mobile No. : Not available
+          %br
+        .control-group
+          .controls
+            -if @user.website_url.present?
+              %h3 Website Url. : #{@user.website_url}
+            -else
+              %h3 Website Url : Not available
+          %br
+        .control-group
+          .controls
+            -if @user.linkedin_url.present?
+              %h3 Linkdin Url. : #{@user.linkedin_url}
+            -else
+              %h3 Linkdin Url : Not available
+          %br
+        .control-group
+          .controls
+            -if @user.twitter_url.present?
+              %h3 Twitter Url. : #{@user.twitter_url}
+            -else
+              %h3 Twitter Url : Not available
+        .styled
+
+
+:css
+  .uploadify-queue-item{
+    margin-top:220px;
+    width:145px;
+    padding-left: 0px;
+  }
+
+  .uploadify-queue {
+    margin-bottom: 10em;
+    margin-left: 0px;
+  }
+  .uploadify-progress {
+    background-color: #E5E5E5;
+    margin-top: 10px;
+    width: 90%;
+
+  }
+  .uploadify-progress-bar {
+    background-color: #0099FF;
+    height: 3px;
+    width: 1px;
+  }
+  .fileName{
+    width : 50px;
+    height:50px
+    padding-right:5px;
+  }
+

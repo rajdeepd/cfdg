@@ -882,6 +882,11 @@ a.label-28:hover{color: #d9541e;}
 .ca-right .label-5{margin-bottom: 20px;}
 .ca-right .label-3{	margin: 5px 0px 10px 0px;}
 .cb-right a.label-12{display: block;}
+.label-my{
+    font-size:16px;
+    color: #0097d7;
+    font-weight: bold;
+}
 .label-43{
     font-size: 14px;
     color:#0097d7 !important;
@@ -1690,3 +1695,13 @@ span.ui-helper-hidden-accessible{
     background-color: rgb(243, 243, 243) !important;
 }
 /* form for sending email ends */
+
+.profile-image-s{
+    width: 40px;
+    height: 40px;
+}
+
+a.label-my:hover{
+    color: #244466;
+}
+
