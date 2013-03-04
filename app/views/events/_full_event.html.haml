@@ -140,7 +140,6 @@
         }
       }
     });
-
       var uploadify_script_data = {};
       var csrf_token = $('meta[name=csrf-token]').attr('content');
       var csrf_param = $('meta[name=csrf-param]').attr('content');
@@ -149,11 +148,12 @@
       uploadify_script_data['#{session_key}'] = '#{cookies[session_key]}'
       //var url = $('input#photo_image').attr('rel');
       var event_id = $("#event_title").attr("event_id");
-      var url = "/events/"+ event_id +"/image_gallery_upload"
+
+      //var url = "/events/"+ event_id +"/image_gallery_upload"
       var token = "#{CGI::escape form_authenticity_token}";
-      var url = "/events/"+ event_id +"/image_gallery_upload" + "?authentication_token="+token
+      var url = "/events/"+ event_id +"/image_gallery_upload.js" + "?authenticity_token="+token
       $('input#Uploadify').uploadify({
-        swf            : '/assets/uploadify.swf',
+        swf            : "/assets/uploadify.swf",
         buttonText     :'Upload Images',
         buttonClass    :'uploadify-button-custom',
         uploader       : url,
@@ -165,7 +165,11 @@
           $.get(url,{},function(data){
           },"script");
           //$('#gallery_images').append(response);
-        }
+        },
+        scriptData:{
+         '#{session_key}' : encodeURIComponent('#{u cookies[session_key]}'),
+         'authenticity_token': encodeURIComponent('#{u form_authenticity_token}')
+       }
       });
       $(".rsvp_me").on("click",function(){
         alert("Hello");

@@ -1,5 +1,5 @@
 class EventMediasController < ApplicationController
-
+  protect_from_forgery :except => [:destroy]
   before_filter :event
   respond_to :js, :html
   def index
