@@ -1,0 +1,12 @@
+= "Hi #{@user.fullname},"
+%br
+%p
+-if @member_type == "member"
+  = "Due to some reason you have been removed from secondary coordinators of #{@chapter.name} chapter.By side admin"
+-else
+  = "Congratulations! You are selected as secondary coordinator for  #{@chapter.name} Chapter.By side admin."
+%br
+%p
+Thank you
+%p
+CloudFoundry Team

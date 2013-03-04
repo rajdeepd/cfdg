@@ -13,7 +13,10 @@
             %i.bg-arrow-down-b
         .activityLog
           = link_to "Activity Log", activity_logs_path, :remote=>true
-        .clearFix 
+        -#.clearFix
+        .sendEmail
+          = link_to "Send Email", new_email_path, :remote => true
+        .clearFix
         #tabs-2{:style=>"display:none"}
         #tabs-1
           #inner-tabs
@@ -38,11 +41,15 @@
                         %table.table-b
                           %tr
                             %td.tb-1-4
-                              %a.bg-profile-img-b{:href => "#"}
-                                %img.profile-img-b{:src => "/assets/img-d.png"}/
+                              %a.bg-profile-img-s{:href => "/users/#{chapter.user.id}/profile_info" }
+                                - if chapter.user.avatar_file_name && (chapter.user.errors[:avatar_content_type].blank? && chapter.user.errors[:avatar_file_size].blank?)
+                                  %img.profile-image-s{:src => chapter.user.try(:avatar).url(:medium)}
+                                - else
+                                  %img.profile-image-s{:src => "/assets/default-Profile-Image.png"}
+
                             %td.tb-2-4
-                              %a.label-43{:href => "#"}
-                                = chapter.try(:user).try(:fullname)
+
+                              = link_to chapter.try(:user).try(:fullname),profile_info_user_path(chapter.user), :class => "label-my"
                               %h5.label-20= "Location:  #{chapter.location}"
                             %td.tb-3-4
                               %h5.label-20= chapter.created_at.strftime("%B %d, %Y")
@@ -56,10 +63,12 @@
                           %tr
                             %td.tb-1-4
                               %a.bg-profile-img-b{:href => "#"}
+                                -#%img.profile-img-b{:src => "/assets/img-d.png"}/
                                 %img.profile-img-b{:src => "/assets/img-d.png"}/
                             %td.tb-2-4
                               %a.label-43{:href => "#", :style => "position: relative;"}
-                                = chapter.try(:user).try(:fullname)
+                                -#= chapter.user.inspect
+                                = link_to chapter.try(:user).try(:fullname),profile_info_user_path(chapter.user), :class => "label-my"
                                 %span{:id => "approve-reject#{chapter.id}" , :style=>"font-size: 12px;text-align: right;left: 540px;position: absolute;width: 200px;"}
                                   %button.btn-a-small.change_status{:style => "top:-3px;","data-url" => "#{change_status_admin_chapter_path(chapter, :status => 'incubate')}"} APPROVE
                                   %button.btn-c-small.change_status{:style => "top:-3px;","data-url" => "#{change_status_admin_chapter_path(chapter, :status => 'deny')}"} REJECT

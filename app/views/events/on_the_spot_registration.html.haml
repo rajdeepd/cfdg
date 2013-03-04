@@ -34,7 +34,7 @@
             %label.label-26.eventTitle  LinkedIn
             = f.text_field :linkedin_url ,  :class => "input-b size-f "
           .e1-cont.createEventField
-            = f.submit "Add User",:class => "btn-a-small addBtnReg",:disable_with=> "adding..."
+            = f.submit "Add User",:class => "btn-a-small addBtnReg",:disable_with=> "Adding..."
             = link_to "Cancel", event_path(@event) ,:method => "get",:class => "btn-a-small"
   #attendeesBlock
     =render "attendees", :members => @members

@@ -58,7 +58,7 @@ class Event < ActiveRecord::Base
 
   def update_attendee_status member_id
     member = event_members.find_by_user_id(member_id)
-    member.update_attributes(:status=>!member.status)    
+    member.update_attributes(:status=>!member.status)
   end
 
   def am_i_member?(user_id)
@@ -70,8 +70,8 @@ class Event < ActiveRecord::Base
   end
 
   def can_i_register?(user_id, chapter_id)
-      ChapterMember.am_i_only_primary_coordinator?(user_id, chapter_id)
-    end
+    ChapterMember.am_i_only_primary_coordinator?(user_id, chapter_id)
+  end
 
   def is_rsvp_allowed?
     if  self.attendees_count.present?
@@ -107,28 +107,18 @@ class Event < ActiveRecord::Base
   end
 
   def start_time_validation
-    #Rails.logger.info("date1  #{self.event_start_date_in_date}")
-    #Rails.logger.info("date2  #{self.event_end_date_in_date}")
-    #Rails.logger.info("time1  #{self.event_start_time_in_time}")
-    #Rails.logger.info("time2  #{self.event_end_time_in_time}")
-    #Rails.logger.info("time2class  #{self.event_end_time_in_time.class}")
-    #Rails.logger.info("time2  #{self.event_end_time_in_time}")
-    #Rails.logger.info("comparing")
-    #Rails.logger.info("date  #{self.event_start_date_in_date >= self.event_end_date_in_date}")
-    ##Rails.logger.info("time  #{self.event_start_time_in_time >= self.event_end_time_in_time}")
-    #Rails.logger.info("time with now  #{self.event_start_time_in_time <= Time.now}")
     if  self.event_start_date_in_date >= self.event_end_date_in_date
       Rails.logger.info "date compared"
       if self.event_start_time_in_time >= self.event_end_time_in_time
         Rails.logger.info "Time Compared with now"
         Rails.logger.info "inside first comp"
-        errors.add(:event_start_time, 'Event start time and end time are not valid')
+        errors.add(:event_start_time, "Event start time and end time are not valid")
       end
     end
     if self.event_start_date_in_date == Date.today
       if self.event_start_time_in_time <= Time.now
         Rails.logger.info "inside second comp"
-        errors.add(:event_start_time, 'Event start time and end time are not valid') if !self.errors.messages[:event_start_time].present?
+        errors.add(:event_start_time, "Event start time and end time are not valid") if !self.errors.messages[:event_start_time].present?
       end
     end
   end

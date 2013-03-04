@@ -11,6 +11,11 @@ CloudfoundryUsergroups::Application.routes.draw do
   match'/admin', :to => "admin/sessions#new"
 
   resources :activity_logs
+  resources :emails do
+    collection do
+      get :autocomplete_user_email
+    end
+  end
   resources :omniauth do
     collection do
       get :auth_failure
@@ -113,6 +118,9 @@ CloudfoundryUsergroups::Application.routes.draw do
     collection do
       post 'uploader'
     end
+    member do
+      get 'profile_info'
+    end
   end
 
   namespace :admin do
@@ -137,8 +145,10 @@ CloudfoundryUsergroups::Application.routes.draw do
       member do
         get 'change_status'
         post 'chapter_reply'
-        get 'add_secondary_coordinator'
+        get 'manage_secondary_coordinators'
+        get 'remove_secondary_coordinator'
         post 'create_secondary_coordinator'
+        put 'delete_secondary_coordinator'
       end
       resources :events do
         member do

@@ -173,7 +173,8 @@ class ChaptersController < ApplicationController
 
   def chapter_members
     @chapter = Chapter.find(params[:id])
-    @chapter_members = @chapter.chapter_members.select{|i| i.memeber_type == "member"}
+    #@chapter_members = @chapter.chapter_members.select{|i| i.memeber_type == "member"}
+    @chapter_members = @chapter.chapter_members
   end
 
   def block_unblock_chapter_member

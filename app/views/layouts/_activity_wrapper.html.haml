@@ -4,14 +4,16 @@
     .details
       .avatar
         - if a.owner
-          = image_tag a.owner.avatar, width: "30", height: "30"
+          = link_to image_tag(a.owner.avatar, :size =>  "30x30"),profile_info_user_path(a.owner)
         - else
           = image_tag "http://i0.wp.com/a248.e.akamai.net/assets.github.com/images/gravatars/gravatar-140.png", width: "30", height: "30"
-    =timeago a.created_at
+    -#=timeago a.created_at
+    = Time.parse((a.created_at).to_s).strftime('%b %d, %Y')+" at "+Time.parse((a.created_at).to_s).strftime('%l:%M %p')
+    = "from IP "+a.owner.current_sign_in_ip if a.owner.current_sign_in_ip.present?
     .title
       - if a.owner
         -#=link_to a.owner.fullname, a.owner
-        =link_to a.owner.fullname,""
+        = link_to a.owner.fullname, profile_info_user_path(a.owner)
       - else
         =' someone'
       =content_for :action

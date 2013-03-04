@@ -30,7 +30,8 @@
                   .clearfix
                     = avatar_display_pic(comment.user,'thumb', '50x50','profile.png',"img-c flt-left")
                     .commentText
-                      %h5 #{comment.user.fullname}
+                      %h5
+                        = link_to comment.user.fullname , profile_info_user_path(comment.user)
                       %span.commentDate{:style => "margin-top: -10px;"} #{comment.created_at.strftime("%B %d,%Y")} at #{comment.created_at.strftime("%I:%M %p")}
                       %p{:style => "margin-left: 60px;margin-top: -20px;"}
                         #{comment.content}
@@ -44,7 +45,7 @@
               = text_area_tag "comment[content]","", :placeholder => "comment", :label => false, :class => " content_comment_class ta-a"
               = hidden_field_tag "comment[commentable_type]","Post"
               = hidden_field_tag "comment[commentable_id]",@post.id
-              = button_tag "Add Comment",:class => "addBtn btn add_comment_button btn-a-small flt-right"
+              = button_tag "Add Comment",:class => "addBtn btn add_comment_button btn-a-small flt-right",:disable_with => "Adding..........."
 
 :javascript
   $(document).ready(function(e){

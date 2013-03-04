@@ -1,7 +1,7 @@
 require 'eventbrite-client'
 require 'oauth2'
 class EventsController < ApplicationController
-  protect_from_forgery :except => [:image_gallery_upload]
+  protect_from_forgery :except => [:image_gallery_upload,:delete_event_gallery_image]
   # GET /events
   # GET /events.json
   #before_filter :initialise_eventbrite_client, :except => ['create_event_comment', 'show']
@@ -177,6 +177,7 @@ class EventsController < ApplicationController
         EventNotification.event_creation(@event,to_email,bcc_emails,@chapter).deliver
         format.js
       else
+        flash.now[:error] =  @event.errors.messages
         format.js
       end
 
@@ -235,7 +236,6 @@ class EventsController < ApplicationController
     @events.each_with_index do |event,i|
       data[i] = { "label" => "#{event.title}", "value" => "#{event.id}"}
     end
-
     render json: data.to_json
   end
 

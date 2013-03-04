@@ -1,0 +1,45 @@
+= javascript_include_tag "jquery.validate"
+.formDiv
+  = render 'shared/errors_or_notifications'
+  = form_tag(emails_path, :method => "POST",:class => "new_email", :remote => true) do
+    #Form_ch
+      .drop_list
+        .one_side
+          %div
+            = text_field_tag :to,nil,:placeholder => "To",:class => "emailField",:id => "city_autocomplete"
+          %br
+          %div
+            = text_field_tag :subject,nil, :placeholder => "Subject",:class => "emailField"
+          %br
+          %div
+            = text_area_tag :body,nil, :placeholder => "Body",:class => "emailArea"
+      .proposal
+        = submit_tag "Send Email", :class => 'send',:style=> "margin-left:0px;margin-right:0px;",:disable_with => "Sending..."
+
+:javascript
+  $(document).ready(function(){
+    $('.new_email').validate({
+      rules: {
+        "to": {
+          required: true,
+          email: true
+        },
+        "subject": {
+          required: true
+        },
+        "body": {
+          required: true
+        }
+      }
+    });
+
+    $( "#city_autocomplete" ).autocomplete({
+      source: "/emails/autocomplete_user_email",
+      minLength: 2,
+      select: function( event, ui ) {
+        //log( ui.item ?
+        //  "Selected: " + ui.item.value + " aka " + ui.item.id :
+        //  "Nothing selected, input was " + this.value );
+      }
+    });
+  });

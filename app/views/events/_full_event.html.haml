@@ -99,7 +99,7 @@
         = f.text_area :content, :placeholder => "comment", :label => false, :class => " content_comment_class ta-a"
       = f.hidden_field   :commentable_type
       = f.hidden_field   :commentable_id
-      = f.submit "Add Comment" ,:class=>"btn-a-small flt-right", :style => "margin-right:10px;"
+      = f.submit "Add Comment" ,:class=>"btn-a-small flt-right", :style => "margin-right:10px;",:disable_with=> "Adding..........."
   %br
 -if @current_user.present? and @event.can_i_delete?(@current_user.id, @event.chapter_id)
   -#.attendeesEmailList.clr
@@ -122,7 +122,7 @@
           .imageHolder
             = avatar_display_pic(i,'thumb', '30x30','profile.png',"profile-img img-a flt-left")
           .nameHolder
-            = i.fullname
+            = link_to i.fullname,profile_info_user_path(i), :class => "label-my"
           .clr
 
 
@@ -150,6 +150,8 @@
       //var url = $('input#photo_image').attr('rel');
       var event_id = $("#event_title").attr("event_id");
       var url = "/events/"+ event_id +"/image_gallery_upload"
+      var token = "#{CGI::escape form_authenticity_token}";
+      var url = "/events/"+ event_id +"/image_gallery_upload" + "?authentication_token="+token
       $('input#Uploadify').uploadify({
         swf            : '/assets/uploadify.swf',
         buttonText     :'Upload Images',
