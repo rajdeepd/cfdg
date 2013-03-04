@@ -21,6 +21,8 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.json
   def show
+    logger.info("#########################################{(CGI::escape form_authenticity_token).inspect}")
+    logger.info("#########################################{form_authenticity_token.inspect}")
     @event = Event.find(params[:id])
     #@event = Event.find(9)
     @emails = ''

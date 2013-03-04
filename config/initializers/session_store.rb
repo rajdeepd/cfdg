@@ -5,4 +5,4 @@ CloudfoundryUsergroups::Application.config.session_store :cookie_store, key: '_c
 # Use the database for sessions instead of the cookie-based default,
 # which shouldn't be used to store highly confidential information
 # (create the session table with "rails generate session_migration")
-# CloudfoundryUsergroups::Application.config.session_store :active_record_store
+#CloudfoundryUsergroups::Application.config.session_store :active_record_store, key: '_cloudfoundry_usergroups_session'

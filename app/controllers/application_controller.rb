@@ -1,6 +1,6 @@
 require 'will_paginate/array'
 class ApplicationController < ActionController::Base
-  protect_from_forgery
+  #protect_from_forgery
   include Userstamp
 
   include PublicActivity::StoreController
