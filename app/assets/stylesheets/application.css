@@ -1132,7 +1132,7 @@ a.label-28:hover{color: #d9541e;}
     position: relative;
     text-align: center;
     text-transform:capitalize;
-
+    cursor: pointer;
     background: #ec6129; /* Old browsers */
     background: -moz-linear-gradient(top,  #ec6129 0%, #c14513 100%); /* FF3.6+ */
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ec6129), color-stop(100%,#c14513)); /* Chrome,Safari4+ */
