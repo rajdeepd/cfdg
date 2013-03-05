@@ -2,7 +2,8 @@
 .formDiv
   = render 'shared/errors_or_notifications'
   = form_tag(emails_path, :method => "POST",:class => "new_email", :remote => true) do
-    #Form_ch
+    #Form_ch.emailForm
+      %h3.h-cm Send Email
       .drop_list
         .one_side
           %div
@@ -12,7 +13,7 @@
             = text_field_tag :subject,nil, :placeholder => "Subject",:class => "emailField"
           %br
           %div
-            = text_area_tag :body,nil, :placeholder => "Body",:class => "emailArea"
+            = text_area_tag :body,nil, :placeholder => "Type in your message",:class => "emailArea"
       .proposal
         = submit_tag "Send Email", :class => 'send',:style=> "margin-left:0px;margin-right:0px;",:disable_with => "Sending..."
 
