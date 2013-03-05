@@ -1,4 +1,5 @@
-= javascript_include_tag "jquery.uploadify"
+-#= javascript_include_tag "jquery.uploadify"
+= javascript_include_tag "uploadifive"
 = javascript_include_tag "jquery.validate"
 = stylesheet_link_tag "uploadify", :media => "all"
 -#= stylesheet_link_tag "event", :media => "all"
@@ -153,11 +154,10 @@
       var token = encodeURI(encodeURI("#{CGI::escape form_authenticity_token}"));
       var url = "/events/"+ event_id +"/image_gallery_upload" + "?authentication_token="+token;
 
-      $('input#Uploadify').uploadify({
-        swf            :  '#{Rails.root}/public/uploadify.swf',
+      $('input#Uploadify').uploadifive({
         buttonText     :'Upload Images',
         buttonClass    :'uploadify-button-custom',
-        uploader       : url,
+        'uploadScript' : url,
         formData       : 'photo[image]',
         fileExt        : '*.png;*.jpg;*.gif',
         multi          : true,

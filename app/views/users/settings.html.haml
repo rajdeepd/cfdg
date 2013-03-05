@@ -34,7 +34,8 @@
 - arr = []
 - request.env['HTTP_COOKIE'].each_char{|c| arr.push(c[0].to_s)}
 - session = arr.join("x")
-= javascript_include_tag "jquery.uploadify-3.1"
+-#= javascript_include_tag "jquery.uploadify-3.1"
+= javascript_include_tag "uploadifive"
 :javascript
   $(document).ready(function(){
       $('.edit_user').validate({
@@ -51,9 +52,9 @@
     });
 
   $(function() {
-    $('#user_avatar').uploadify({
-      uploader   : "#{uploader_users_path(:format => :json)}",
-      swf        : '/assets/uploadify.swf',
+    $('#user_avatar').uploadifive({
+      'uploadScript'   : "#{uploader_users_path(:format => :json)}",
+      //swf        : '/assets/uploadify.swf',
       auto       : true,
       fileSizeLimit : '1MB',
       fileTypeExts : '*.gif; *.jpg; *.jpeg; *.png',
