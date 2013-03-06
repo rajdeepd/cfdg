@@ -75,7 +75,7 @@
             - if last_event.present?
               %h5.label-40 Last Event Date: #{Time.parse(last_event.event_start_date.to_s).strftime('%b %d, %Y')}
 
-          .inviteViaEmail{:style => "margin-left:-365px;"}
+          .inviteViaEmail
             #inviteFriendLink
               = link_to "Invite Friend","",:class => "inviteFriend"
             #invitationForm{:style => "display:none;"}
@@ -116,56 +116,40 @@
       $('#invitationForm').toggle();
     });
 
-    //jQuery.validator.addMethod("multiemail",
-    //  function(value, element) {
-    //    if (this.optional(element)) // return true on optional element
-    //        return true;
-    //    var email = ("#email").value();
-    //    console.log("email")
-    //    var emails = value.split(/[,]+/); // split element by , and ;
-    //    valid = true;
-    //    for (var i in emails) {
-    //        value = emails[i];
-    //        console.log(value)
-    //        if (value.length > 0)
-    //        valid = valid &&
-    //               jQuery.validator.methods.email.call(this, $.trim(value), element);
-    //    }
-    //    return valid;
-    //  }
-    //);
 
-    //$('.new_email').validate({
-    //  rules: {
-    //    "email": {
-    //      required: true,
-    //      multiemail: true
-        //}
-      //}
-    //});
 
     $(".multiple_email").on("click",function(event){
       var value = $(".email").val();
       var validity = $(validateMultipleEmailsCommaSeparated(value));
       if(validity["selector"]=="false"){
         event.preventDefault();
+        $(".inviteFriend").append('<div id="error">please enter valid email address</div>');
       }
     });
 
     function validateMultipleEmailsCommaSeparated(value){
-      var result = value.split(",");
-      var regex=/\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b/i;
+
+      var comma = value.split(/\s*[,;]\s*|\s{1,}|[\r\n]+/).join(",");
+      //alert(comma);
+      //var array = comma.replace(/,(?=[^,]*$)/, '')
+      //alert(array)
+      var result = comma.split(",");
+      console.log("aaaaaaaaaaaaaaa");
+      var regex=/\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i;
       for (var i = 0;i < result.length;i++){
         if(regex.test(result[i])){
           return "true";
         }
         else{
-          $(".inviteFriend").append('<div id="error">please enter valid email address</div>');
+          //alert("false");
+          //$(".inviteFriend").append('<div id="error">please enter valid email address</div>');
           return "false";
         }
 
       }
     }
+
+
   });
 
 

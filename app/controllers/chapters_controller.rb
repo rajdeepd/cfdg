@@ -202,7 +202,9 @@ class ChaptersController < ApplicationController
   def invite_friends
     chapter = Chapter.find(params[:id])
     user = current_user
-    emails = params[:email]
+    emails = params[:email].split(/\s*[,;]\s*|\s{1,}|[\r\n]+/).join(",")
+    logger.info"############### #{emails}"
+    #emails = params[:email]
     ChapterMailer.chapter_invitation(user,emails,chapter).deliver
     flash[:notice] = "Email sent successfully"
     redirect_to chapter_path

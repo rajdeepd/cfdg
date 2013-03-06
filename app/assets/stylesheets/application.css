@@ -2024,3 +2024,13 @@ a.chapMem h2:hover, a.chapMem h5:hover{
     height: 20px;
 
 }
+
+.inviteViaEmail{
+    margin-left: -365px;
+}
+
+.email{
+    resize: none
+}
+
+
