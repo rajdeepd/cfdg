@@ -15,8 +15,9 @@
           %p #{@post.description}
           -#%a{:href => "#"} More...
 
-
-      %a.fbCustomLink{:href => "/users/facebook_sharing?url="+"#{request.fullpath}&message="+"#{@post.title}"}
+      %a.fbCustomLink{:href => "/users/facebook_sharing?url="+"#{url_for(:only_path => false)}&message="+"#{@post.title}"}
+      %a.linkedInCustomLink{:href => "http://www.linkedin.com/shareArticle?mini=true&url=#{url_for(:only_path => false)}&title=#{@post.title}",:target => "_blank"}
+      -#%a.fbCustomLink{:href => "https://graph.facebook.com/oauth/authorize?type=user_agent&client_id=143322869168766&redirect_uri=http://localhost:3000/users/facebook_callback/&scope=read_stream,offline_access"}
       .comments.clearfix
         .sliderHeadingMid
           %h3 Comments

@@ -61,6 +61,7 @@ group :development do
    # To use debugger
   gem 'hirb'
   gem "pry-remote"
+  #gem 'debugger'
 end
 
 
@@ -85,6 +86,7 @@ gem 'flash_cookie_session'
 gem 'fog'
 gem 'rb-readline'
 gem 'fb_graph'
+
 #gem 'aws-ses'
 
 #gem 'pry-remote'

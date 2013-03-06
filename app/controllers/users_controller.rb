@@ -54,23 +54,21 @@ class UsersController < ApplicationController
   end
 
   def facebook_sharing
-    fb_auth = FbGraph::Auth.new('143322869168766','38918b7605b3927ee8d2c9a01bab200e')
+    fb_auth = FbGraph::Auth.new(APP_ID,APP_SECRET)
     @@client = fb_auth.client
-    @@client.redirect_uri = "http://localhost:3000/users/facebook_callback"
-    redirect_to @@client.authorization_uri(
-                    :scope => [:email, :read_stream, :offline_access]
-                )
+    @@client.redirect_uri = facebook_callback_users_url(:url => params[:url],:message => params[:message])
+    redirect_to @@client.authorization_uri(:scope => [:publish_stream])
+
 
   end
 
   def facebook_callback
     @@client.authorization_code = params[:code]
-    logger.info"################# #{params.inspect}"
     access_token = @@client.access_token! :client_auth_body # => Rack::OAuth2::AccessToken
     user = FbGraph::User.me(access_token).fetch
     user.link!(
-        :link => "local.testing.com",
-        :message => "This is test"
+        :link => params[:url],
+        :message => params[:message]
     )
     redirect_to params[:url]
 
