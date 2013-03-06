@@ -117,6 +117,8 @@ CloudfoundryUsergroups::Application.routes.draw do
   resources :users do
     collection do
       post 'uploader'
+      get 'facebook_sharing'
+      get 'facebook_callback'
     end
     member do
       get 'profile_info'

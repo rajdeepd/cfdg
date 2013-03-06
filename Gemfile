@@ -84,6 +84,7 @@ gem 'mini_magick'
 gem 'flash_cookie_session'
 gem 'fog'
 gem 'rb-readline'
+gem 'fb_graph'
 #gem 'aws-ses'
 
 #gem 'pry-remote'
