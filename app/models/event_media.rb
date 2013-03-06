@@ -5,5 +5,6 @@ class EventMedia < ActiveRecord::Base
   validates :url, :presence => true
   belongs_to :event
   scope :videos, where(:category=>"Video")
+  scope :slides, where(:category=>"Slide")
 
 end

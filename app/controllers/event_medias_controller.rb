@@ -1,4 +1,8 @@
+require 'net/http'
+require 'uri'
+
 class EventMediasController < ApplicationController
+
   protect_from_forgery :except => [:destroy]
   before_filter :event
   respond_to :js, :html
@@ -16,6 +20,23 @@ class EventMediasController < ApplicationController
 
   def destroy
     @media = @event.event_medias.destroy(params[:id])
+  end
+
+  def event_slides
+    @event_slides = @event.event_medias.slides
+  end
+
+  def new_slide
+    @event_slide = EventMedia.new
+  end
+
+  def create_slide
+    logger.info "#########################{params.inspect}"
+    url = {:url => params[:event_media][:url]}
+    create_slide = Net::HTTP.post_form(URI.parse("http://www.slideshare.net/api/oembed/2?url=#{params[:event_media][:url]}&format=json"), url)
+    slideshow_body = JSON.parse(create_slide.body)
+    logger.info "#############################create slideshare##########{slideshow_body['slideshow_id']}"
+    @media = @event.event_medias.create(params[:event_media])
   end
 
   private

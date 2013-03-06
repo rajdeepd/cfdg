@@ -1,5 +1,5 @@
 .eventImageHolder.checkboxImgHolder.customImage{}
   - if current_user && ChapterMember.is_primary_coordinator?(current_user.id)
     %span{:class => "eventGalleryMediaClose",:id => "#{media.id}",:rel => "#{event.id}" }
-  %a{:href=>"#{youtube_parsed_uri(media.url)}"}
+  %a{:href=>"#"}
     = render "embed_media", :media => media

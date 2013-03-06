@@ -82,6 +82,8 @@
     #gallery_media
       %p.label-9 Event Videos
       = link_to "See all Videos", event_event_medias_path(@event)
+      %p.label-9 Event Slides
+      = link_to "See all Slides", event_slides_event_event_medias_path(@event)
   -if !@current_user.present?
     -if @event.agenda_and_speakers.present?
       = render '/events/agenda_and_speakers'

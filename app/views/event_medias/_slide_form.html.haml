@@ -1,8 +1,8 @@
 = javascript_include_tag "jquery.validate"
-=form_for media, :as=>:event_media, :url=> event_event_medias_path(event), :remote => true do |f|
-  =f.hidden_field :category, :value=>"Video"
+=form_for media, :as=>:event_media, :url=> create_slide_event_event_medias_path(event), :remote => true do |f|
+  =f.hidden_field :category, :value=>"Slide"
   %p
-    = f.label "Youtube URL"
+    = f.label "Slideshare URL"
     = f.text_field :url
   %p
     =f.submit "Create"
