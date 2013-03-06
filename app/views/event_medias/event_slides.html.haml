@@ -4,7 +4,7 @@
   %h1.label-17{:style => "padding-bottom:10px;"}= @event.title
   .mediaContainer
     - @event_slides.each do |media|
-      =render "event_slides", :media=> media, :event => @event
+      =render "event_slides", :media=> media, :slide_id => media.slideshow_id,:title => media.title, :event => @event
   .clr
   = link_to "Add New Slide", new_slide_event_event_medias_path, :remote => true, :style=>"text-decoration:underline;" if current_user
   #createEventMedia
