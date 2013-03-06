@@ -13,3 +13,9 @@
         .nameHolder
           = link_to i.fullname, profile_info_user_path(i)
         .clr
+-#          static invite frnds
+.inviteViaEmailsStatic
+  #invitationFormStatic
+    = form_tag(invite_friends_for_event_event_path(:event => @event), :class => "new_email", :method => 'get') do
+      = text_area_tag "email",nil, :class => 'email',:placeholder => "Enter Friend's email"
+      = submit_tag 'Invites', :class => "multiple_email"

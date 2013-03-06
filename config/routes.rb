@@ -68,6 +68,7 @@ CloudfoundryUsergroups::Application.routes.draw do
       get 'cancel_event'
     end
     member do
+      get :invite_friends_for_event
       get :download_list
       get :unfollow_an_event
       post 'image_gallery_upload'
