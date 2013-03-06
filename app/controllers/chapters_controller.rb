@@ -1,5 +1,5 @@
 class ChaptersController < ApplicationController
-
+  before_filter :signed_in_user, only: [:show]
   before_filter :check_chapter_admin, :only => [:chapter_members]
 
   before_filter do
@@ -200,14 +200,13 @@ class ChaptersController < ApplicationController
   end
 
   def invite_friends
-    logger.info"############ #{params.inspect}"
+    chapter = Chapter.find(params[:id])
     user = current_user
-    emails = Array.new
-    emails.each do |email|
-      email << params[:email].split(" ").join(",")
-    end
-    emails = params[:email].split(" ").join(",")
-    logger.info"########### #{emails.inspect}"
+    emails = params[:email]
+    ChapterMailer.chapter_invitation(user,emails,chapter).deliver
+    flash[:notice] = "Email sent successfully"
+    redirect_to chapter_path
+
   end
 
   private
