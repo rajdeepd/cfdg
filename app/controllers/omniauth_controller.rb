@@ -2,7 +2,6 @@ class OmniauthController < ApplicationController
 
   def create
     if auth = request.env['omniauth.auth']
-      logger.info "######################{auth['info']['email'].inspect}"
       user = User.find_by_email(auth['info']['email'])
       user = User.create_auth_user(auth) unless user
       user.providers.create(:uid => auth['uid'],:provider => auth['provider']) unless user.providers.collect(&:provider).include? auth['provider']
@@ -12,7 +11,8 @@ class OmniauthController < ApplicationController
         redirect_to(profile_path) && return
       end
       redirect_to users_change_password_path(:reset_password_token => (user.reset_password_token || user.create_token),:set_password => "set_password"), :notice => "Please create your password for proprietary login."
-    end
+
+      end
   end
 
   def auth_failure

@@ -53,4 +53,25 @@ class UsersController < ApplicationController
     logger.info"################# #{params.inspect}"
   end
 
+  def facebook_sharing
+    fb_auth = FbGraph::Auth.new(APP_ID,APP_SECRET)
+    @@client = fb_auth.client
+    @@client.redirect_uri = facebook_callback_users_url(:url => params[:url],:message => params[:message])
+    redirect_to @@client.authorization_uri(:scope => [:publish_stream])
+
+
+  end
+
+  def facebook_callback
+    @@client.authorization_code = params[:code]
+    access_token = @@client.access_token! :client_auth_body # => Rack::OAuth2::AccessToken
+    user = FbGraph::User.me(access_token).fetch
+    user.link!(
+        :link => params[:url],
+        :message => params[:message]
+    )
+    redirect_to params[:url]
+
+  end
+
 end
