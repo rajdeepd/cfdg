@@ -71,7 +71,7 @@
   %div.clr
     -##gallery_images
     #gallery_media
-      = link_to "See all images",show_all_event_images_event_path(@all_event_images.first.event_id)
+      = link_to "See all images",show_all_event_images_event_path(@event)
       -#= render  "events/image_gallery_upload"
   -#-if(current_user.present?)
     -if((current_user.id == @event.created_by or @event.can_i_delete?(@current_user.id, @event.chapter_id)) and !@event.is_cancelled?)
