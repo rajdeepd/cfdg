@@ -1,17 +1,18 @@
 = javascript_include_tag "jquery.colorbox-min"
 = stylesheet_link_tag    "colorbox", :media => "all"
-.picHolder{:id => "image_gallery",:style =>"width:500px;" }
-  -if @all_event_images.present?
-    - @all_event_images.limit(5).each do |i|
-      .eventImageHolder
-        = link_to(image_tag(i.image),"#{i.image}")
-    .clr
-    .seeAllImages
-      = link_to "See all images",show_all_event_images_event_path(@all_event_images.first.event_id)
+-#.picHolder{:id => "image_gallery",:style =>"width:500px;" }
+-if @all_event_images.present?
+  - @all_event_images.each do |i|
+    .eventImageHolder.checkboxImgHolder.showAllImg{:id => "#{i.id}_imgHolder"}
+      = check_box_tag "event_gallery_ids[]",i.id if current_user.present? && ChapterMember.is_primary_coordinator?(current_user.id)
+      -#- if current_user.present? && ChapterMember.is_primary_coordinator?(current_user.id)
+      = link_to(image_tag(i.image),"#{i.image}")
+  .clr
+    - if current_user.present? && ChapterMember.is_primary_coordinator?(current_user.id)
+      %button.btn-a{:id => "deleteImagesBtn",:rel => "#{@event.id}"} DELETE
 
-  -else
-    = "No Image for the event."
-
+-else
+  = "No Image for the event."
 .clr
 
 :javascript
