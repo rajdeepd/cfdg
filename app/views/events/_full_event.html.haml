@@ -55,10 +55,6 @@
               %b.darkText To:
               #{Time.parse(@event.event_end_time_in_time.to_s).strftime('%I:%M %p')} #{Date.parse(@event.event_end_date_in_date.to_s).strftime('%A %b %d, %Y')}
 
-
-            -##{Time.parse(@event.event_start_time_in_time.to_s).strftime('%I:%M %p')}, #{Date.parse(@event.event_start_date_in_date.to_s).strftime('%A %b %d, %Y')}
-            -#I #{@event.entry_fee}  per person
-
         .clr
         %div.location.caDate
           %div.title
@@ -71,12 +67,13 @@
           Description
           %span
             = @event.description
-
       -#=image_tag(@event.image,:size => "60x60")
   %div.clr
-    #gallery_images
-      = render  "events/image_gallery_upload"
-  -if(current_user.present?)
+    -##gallery_images
+    #gallery_media
+      = link_to "See all images",show_all_event_images_event_path(@all_event_images.first.event_id)
+      -#= render  "events/image_gallery_upload"
+  -#-if(current_user.present?)
     -if((current_user.id == @event.created_by or @event.can_i_delete?(@current_user.id, @event.chapter_id)) and !@event.is_cancelled?)
       %input#Uploadify{:name => "Uploadify", :type => "file"}
   %div.clr

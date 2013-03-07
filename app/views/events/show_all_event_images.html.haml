@@ -1,25 +1,58 @@
 = javascript_include_tag "jquery.colorbox-min"
 = stylesheet_link_tag    "colorbox", :media => "all"
+= javascript_include_tag "uploadifive"
+= javascript_include_tag "jquery.validate"
+= stylesheet_link_tag "uploadify", :media => "all"
 
-%div.content.wrapper
+%div.content.wrapper{:event_id=> @event.id,:id => "event_title"}
   %h1.label-17{:style => "padding-bottom:30px;"}
     = @event.title
-  -if @all_event_images.present?
-    -#=form_tag delete_event_gallery_image_event_path(@event),:method => :delete,:remote => true do
+  %div.clr
+    #gallery_images
+      = render  "events/image_gallery_upload"
+  -#-if @all_event_images.present?
     - @all_event_images.each do |i|
       .eventImageHolder.checkboxImgHolder.showAllImg{:id => "#{i.id}_imgHolder"}
         = check_box_tag "event_gallery_ids[]",i.id if current_user.present? && ChapterMember.is_primary_coordinator?(current_user.id)
         - if current_user.present? && ChapterMember.is_primary_coordinator?(current_user.id)
-          -#%span{:class => "eventGalleryImageClose",:id => "#{i.id}",:rel => "#{@event.id}" }
         = link_to(image_tag(i.image),"#{i.image}")
     .clr
-      -#= submit_tag 'DELETE' , :class => "btn-a join_us",:id => "deleteImagesBtn"
       - if current_user.present? && ChapterMember.is_primary_coordinator?(current_user.id)
         %button.btn-a{:id => "deleteImagesBtn",:rel => "#{@event.id}"} DELETE
+  -if(current_user.present?)
+    -if((current_user.id == @event.created_by or @event.can_i_delete?(@current_user.id, @event.chapter_id)) and !@event.is_cancelled?)
+      %input#Uploadify{:name => "Uploadify", :type => "file"}
 
+- session_key = Rails.application.config.session_options[:key]
+= content_for :scripts do
+  :javascript
+    $(document).ready(function(){
+      $(".eventImageHolder a").colorbox({rel:'group1'});
+    });
 
-
-:javascript
-  $(document).ready(function(){
-    $(".eventImageHolder a").colorbox({rel:'group1'});
-  });
+    var uploadify_script_data = {};
+    var csrf_token = $('meta[name=csrf-token]').attr('content');
+    var csrf_param = $('meta[name=csrf-param]').attr('content');
+    uploadify_script_data[csrf_token] =  encodeURI(encodeURI(csrf_param));
+    uploadify_script_data['#{session_key}'] = '#{cookies[session_key]}'
+    var event_id = $("#event_title").attr("event_id");
+    var token = encodeURI(encodeURI("#{CGI::escape form_authenticity_token}"));
+    var url = "/events/"+ event_id +"/image_gallery_upload" + "?authentication_token="+token;
+    $('input#Uploadify').uploadifive({
+      buttonText     :'Upload Images',
+      buttonClass    :'uploadify-button-custom',
+      'uploadScript' : url,
+      formData       : 'photo[image]',
+      fileExt        : '*.png;*.jpg;*.gif',
+      multi          : true,
+      auto           : true,
+     'scriptData'    : uploadify_script_data,
+      onUploadComplete     : function(e) {
+        $.get(url,{},function(data){
+        },"script");
+      },
+      scriptData:{
+       '#{session_key}' : encodeURIComponent('#{u cookies[session_key]}'),
+       'authenticity_token': encodeURIComponent('#{u form_authenticity_token}')
+     }
+    });

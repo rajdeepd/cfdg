@@ -33,6 +33,7 @@ class EventMediasController < ApplicationController
   def create_slide
     url = {:url => params[:event_media][:url]}
     create_slide = Net::HTTP.post_form(URI.parse("http://www.slideshare.net/api/oembed/2?url=#{params[:event_media][:url]}&format=json"), url)
+    logger.info "#################{create_slide.body}"
     slideshow_body = JSON.parse(create_slide.body)
     @slide_id = slideshow_body['slideshow_id']
     @title = slideshow_body['title']
