@@ -8,6 +8,8 @@ CloudfoundryUsergroups::Application.configure do
   config.consider_all_requests_local       = true
   config.action_controller.perform_caching = true
 
+  #APP_ID = '543305615699970'
+  #APP_SECRET = '5eeeadf96ed1c5dca0583fa11ad4e77f'
 
   # Disable Rails's static asset server (Apache or nginx will already do this)
   #config.serve_static_assets = false

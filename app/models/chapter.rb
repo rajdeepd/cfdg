@@ -1,6 +1,6 @@
 class Chapter < ActiveRecord::Base
   include PublicActivity::Model
-  tracked :owner=> proc {|controller, model| controller.current_user}
+ tracked :owner=> proc {|controller, model| controller.current_user}
   
   stampable
   after_create :persist_geocode
@@ -125,5 +125,9 @@ class Chapter < ActiveRecord::Base
     events_member.delete_all
     chapter_member = ChapterMember.where(:user_id => user.id,:chapter_id => chapter.id)
     chapter_member.delete_all
+  end
+
+  def self.get_same_chapter(city)
+    Chapter.where("city_name = ? AND chapter_status = ?",city,"applied").present?
   end
 end

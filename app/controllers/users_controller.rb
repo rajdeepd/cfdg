@@ -54,7 +54,7 @@ class UsersController < ApplicationController
   end
 
   def facebook_sharing
-    fb_auth = FbGraph::Auth.new(APP_ID, APP_SECRET)
+    fb_auth = FbGraph::Auth.new("543305615699970", "5eeeadf96ed1c5dca0583fa11ad4e77f")
     @@client = fb_auth.client
     @@client.redirect_uri = facebook_callback_users_url(:url => params[:url],:message => params[:message])
     redirect_to @@client.authorization_uri(:scope => [:publish_stream])

@@ -1,13 +1,12 @@
 = javascript_include_tag "jquery.colorbox-min"
 = stylesheet_link_tag    "colorbox", :media => "all"
-
 %div.content.wrapper
   %h1.label-17{:style => "padding-bottom:10px;"}= @event.title
   .mediaContainer
-    - @event_videos.each do |media|
-      =render "event_media", :media=> media, :event => @event
+    - @event_slides.each do |media|
+      =render "event_slides", :media=> media, :slide_id => media.slideshow_id,:title => media.title, :event => @event
   .clr
-  = link_to "Add New Media", new_event_event_media_path, :remote => true, :style=>"text-decoration:underline;" if current_user
+  = link_to "Add New Slide", new_slide_event_event_medias_path, :remote => true, :style=>"text-decoration:underline;" if current_user
   #createEventMedia
 :javascript
   $(document).ready(function(){
@@ -15,11 +14,12 @@
 
     $(".eventImageHolder a").colorbox({rel:'group1'});
     $(".eventImageHolder .cboxElement").colorbox({iframe:true, innerWidth:480, innerHeight:390});
+
   });
   $(document).on("click", ".eventGalleryMediaClose", function(){
     var current_image_div = $(this);
     var id = [$(this).attr('id')];
-    var confirmation = confirm("Are you sure you want to delete this video from this event Gallery?")
+    var confirmation = confirm("Are you sure you want to delete this slide from this event Gallery?")
     if(confirmation == true){
       $.ajax({
         url: '/events/'+ $(this).attr('rel') +'/event_medias/' + id,
