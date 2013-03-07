@@ -286,6 +286,7 @@ ul.attendeesList li {
     display: block;
     padding: 10px 0;
     border-bottom: 1px dotted #c5c6c7;
+    overflow: hidden;
 }
 ul.attendeesList li .imageHolder {
     width: 30px;

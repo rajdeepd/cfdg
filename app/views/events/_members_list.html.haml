@@ -13,12 +13,13 @@
         .nameHolder
           = link_to i.fullname, profile_info_user_path(i)
   .clr
-.inviteViaEmails
-  #invitation
-    <strong>Invite Friends</strong>
-    = form_tag :class => "new_email" do
-      = text_area_tag "email",nil, :class => 'email',:placeholder => "Enter Friend's email"
-      = submit_tag 'Invites', :class => "multiple_email"
+= if !@event.is_past_event? and current_user.present?
+  .inviteViaEmails
+    #invitationForm
+      <strong>Invite Friends</strong>
+      = form_tag( invite_friends_for_event_event_path(:event => @event), :class => "new_email", :method => 'get') do
+        = text_area_tag "email",nil, :class => 'email',:placeholder => "Enter Friend's email"
+        = submit_tag 'Invites', :class => "multiple_email"
 
 
 :javascript
@@ -30,7 +31,7 @@
       if(validity["selector"]=="false"){
         event.preventDefault();
         //$(".inviteFriend").append('<div id="error">please enter valid email address</div>');
-        $("#invitation").append('<div id="error">please enter valid email address</div>');
+        $("#invitationForm").append('<div id="error">please enter valid email address</div>');
         $("#error").fadeOut(4000,function(){
           $("#error").remove();
         });
