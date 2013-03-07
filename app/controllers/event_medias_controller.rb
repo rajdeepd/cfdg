@@ -37,9 +37,11 @@ class EventMediasController < ApplicationController
     slideshow_body = JSON.parse(create_slide.body)
     @slide_id = slideshow_body['slideshow_id']
     @title = slideshow_body['title']
+    @thumbnail = slideshow_body['thumbnail'].split("?")[0]
     @media = @event.event_medias.new(params[:event_media])
     @media.slideshow_id = @slide_id
     @media.title = @title
+    @media.slideshow_image = @thumbnail
     @media.save!
   end
 

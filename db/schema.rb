@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130306081425) do
+ActiveRecord::Schema.define(:version => 20130307124921) do
 
   create_table "activities", :force => true do |t|
     t.integer  "trackable_id"
@@ -87,15 +87,10 @@ ActiveRecord::Schema.define(:version => 20130306081425) do
   end
 
   create_table "cities", :force => true do |t|
-    t.string   "name"
-    t.integer  "state_id"
-    t.integer  "created_by"
-    t.integer  "updated_by"
-    t.datetime "deleted_at"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.integer  "country_id"
-    t.string   "details"
+    t.string  "name"
+    t.integer "country_id"
+    t.integer "state_id"
+    t.string  "details"
   end
 
   create_table "ckeditor_assets", :force => true do |t|
@@ -126,12 +121,7 @@ ActiveRecord::Schema.define(:version => 20130306081425) do
   end
 
   create_table "countries", :force => true do |t|
-    t.string   "name"
-    t.integer  "created_by"
-    t.integer  "updated_by"
-    t.datetime "deleted_at"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string "name"
   end
 
   create_table "delayed_jobs", :force => true do |t|
@@ -170,10 +160,11 @@ ActiveRecord::Schema.define(:version => 20130306081425) do
     t.string   "url"
     t.string   "category"
     t.integer  "event_id"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
     t.string   "slideshow_id"
     t.string   "title"
+    t.string   "slideshow_image"
   end
 
   create_table "event_members", :force => true do |t|
@@ -288,13 +279,8 @@ ActiveRecord::Schema.define(:version => 20130306081425) do
   end
 
   create_table "states", :force => true do |t|
-    t.string   "name"
-    t.integer  "country_id"
-    t.integer  "created_by"
-    t.integer  "updated_by"
-    t.datetime "deleted_at"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer "country_id"
+    t.string  "name"
   end
 
   create_table "users", :force => true do |t|
@@ -327,11 +313,11 @@ ActiveRecord::Schema.define(:version => 20130306081425) do
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
     t.string   "profile_picture"
-    t.boolean  "is_proprietary_user"
     t.string   "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
+    t.boolean  "is_proprietary_user"
   end
 
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true
