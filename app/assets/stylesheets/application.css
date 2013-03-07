@@ -1996,11 +1996,9 @@ a.chapMem h2:hover, a.chapMem h5:hover{
     margin-left: 65px;
 }
 #gallery_images .seeAllImages a{
-    width: 215px;
     display: block;
     text-decoration: none;
 }
-
 .role{
     margin-left: 281px;
     display: block;
@@ -2010,23 +2008,17 @@ a.chapMem h2:hover, a.chapMem h5:hover{
     height: 40px;
     margin: 5px 0px;
     width: 607px;
-
 }
 .label-my{
     font-size:16px;
     color: #0097d7;
     font-weight: bold;
 }
-
 .profile-image-s{
     width: 20px;
     height: 20px;
-
 }
 
-.inviteViaEmail{
-    margin-left: -365px;
-}
 
 .email{
     resize: none
@@ -2041,25 +2033,27 @@ a.chapMem h2:hover, a.chapMem h5:hover{
     position: relative;
     height: 25px;
 }
+.inviteViaEmails.chapter {
+    margin-top: 37px;
+}
+.inviteViaEmails {
+    float: right;
+    margin-top: 20px;
+}
+.inviteViaEmails strong {
+    margin-bottom: 10px;
+    display: block;
+}
 #invitationForm {
-    position: absolute;
-    bottom: -155px;
-    left: 0;
-    background: #ffffff;
+    background: #f1f1f1;
     border: 1px solid #cccccc;
     border-radius: 4px;
-    padding: 10px 0;
+    width: 250px;
+    padding: 10px;
 }
 #invitationForm textarea {
-    width: 150px;
-}
-/* static invite frnd*/
-#invitationFormStatic {
-    margin: 10px 50px 10px 30px;
-    float: right;
-}
-#invitationFormStatic textarea {
-    float: none;
     display: block;
-    width: 210px;
+    margin-bottom: 10px;
+    width: 242px;
+    height: 50px;
 }

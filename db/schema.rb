@@ -30,13 +30,6 @@ ActiveRecord::Schema.define(:version => 20130306081425) do
   add_index "activities", ["recipient_id", "recipient_type"], :name => "index_activities_on_recipient_id_and_recipient_type"
   add_index "activities", ["trackable_id", "trackable_type"], :name => "index_activities_on_trackable_id_and_trackable_type"
 
-  create_table "agendas", :force => true do |t|
-    t.string   "description"
-    t.integer  "event_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-  end
-
   create_table "announcements", :force => true do |t|
     t.string   "title"
     t.text     "body"
@@ -48,7 +41,6 @@ ActiveRecord::Schema.define(:version => 20130306081425) do
     t.datetime "updated_at",         :null => false
     t.integer  "user_id"
     t.datetime "deleted_at"
-    t.string   "image"
   end
 
   create_table "chapter_members", :force => true do |t|
@@ -87,10 +79,13 @@ ActiveRecord::Schema.define(:version => 20130306081425) do
   end
 
   create_table "cities", :force => true do |t|
-    t.string  "name"
-    t.integer "country_id"
-    t.integer "state_id"
-    t.string  "details"
+    t.string   "name"
+    t.integer  "state_id"
+    t.integer  "created_by"
+    t.integer  "updated_by"
+    t.datetime "deleted_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "ckeditor_assets", :force => true do |t|
@@ -121,7 +116,12 @@ ActiveRecord::Schema.define(:version => 20130306081425) do
   end
 
   create_table "countries", :force => true do |t|
-    t.string "name"
+    t.string   "name"
+    t.integer  "created_by"
+    t.integer  "updated_by"
+    t.datetime "deleted_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "delayed_jobs", :force => true do |t|
@@ -142,15 +142,6 @@ ActiveRecord::Schema.define(:version => 20130306081425) do
 
   create_table "event_galleries", :force => true do |t|
     t.string   "image"
-    t.integer  "event_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "event_geolocations", :force => true do |t|
-    t.string   "latitude"
-    t.string   "longitude"
-    t.string   "title"
     t.integer  "event_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
@@ -278,8 +269,13 @@ ActiveRecord::Schema.define(:version => 20130306081425) do
   end
 
   create_table "states", :force => true do |t|
-    t.integer "country_id"
-    t.string  "name"
+    t.string   "name"
+    t.integer  "country_id"
+    t.integer  "created_by"
+    t.integer  "updated_by"
+    t.datetime "deleted_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "users", :force => true do |t|
@@ -312,11 +308,11 @@ ActiveRecord::Schema.define(:version => 20130306081425) do
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
     t.string   "profile_picture"
+    t.boolean  "is_proprietary_user"
     t.string   "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
-    t.boolean  "is_proprietary_user"
   end
 
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true
