@@ -2057,3 +2057,18 @@ a.chapMem h2:hover, a.chapMem h5:hover{
     width: 242px;
     height: 50px;
 }
+#gallery_media .galleryBox{
+    float: left;
+    margin: 10px 30px 10px 0;
+    text-align: center;
+}
+#gallery_media img {
+    width: 150px;
+    height: 150px;
+    border: 1px solid #dfdfdf;
+}
+#gallery_media h4 {
+    color: #0097d7;
+    font-weight: bold;
+    font-size: 20px;
+}

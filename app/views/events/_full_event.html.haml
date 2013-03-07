@@ -77,12 +77,23 @@
       %input#Uploadify{:name => "Uploadify", :type => "file"}
   %div.clr
     #gallery_media
-      %p.label-9 Event Images
-      = link_to "See all images",show_all_event_images_event_path(@event)
-      %p.label-9 Event Videos
-      = link_to "See all Videos", event_event_medias_path(@event)
-      %p.label-9 Event Slides
-      = link_to "See all Slides", event_slides_event_event_medias_path(@event)
+      %h4 Event Media Gallery
+      %a.eventImages.galleryBox{:href=>"#"}
+        %img{:src=>"/assets/upload_img.jpg"}
+        %p See all images
+      %a.eventVideos.galleryBox{:href=>"#"}
+        %img{:src=>"/assets/link_upload.jpg"}
+        %p See all videos
+      %a.eventSlides.galleryBox{:href=>"#"}
+        %img{:src=>"/assets/img-e.png"}
+        %p See all slides
+      .clr
+      -#%p.label-9 Event Images
+      -#= link_to "See all images",show_all_event_images_event_path(@event)
+      -#%p.label-9 Event Videos
+      -#= link_to "See all Videos", event_event_medias_path(@event)
+      -#%p.label-9 Event Slides
+      -#= link_to "See all Slides", event_slides_event_event_medias_path(@event)
   -if !@current_user.present?
     -if @event.agenda_and_speakers.present?
       = render '/events/agenda_and_speakers'
@@ -109,12 +120,6 @@
   -#    Attendees List
   -#  = text_area_tag 'attendes_emails', @emails, :style => "width:940px;padding-top:4px;", :readonly => 'readonly'
   -#  = link_to "Download list",download_list_event_path(@event) ,:class=>"btn-a-small flt-right"
-  .inviteViaEmails
-    #invitationForm
-      <strong>Invite Friends</strong>
-      = form_tag(invite_friends_for_event_event_path(:event => @event), :class => "new_email", :method => 'get') do
-        = text_area_tag "email",nil, :class => 'email',:placeholder => "Enter Friend's email"
-        = submit_tag 'Invites', :class => "multiple_email"
   .attendees.caListAttendees
     .attendeesHeading
       %strong
@@ -132,7 +137,12 @@
           .nameHolder
             = link_to i.fullname,profile_info_user_path(i), :class => "label-my"
           .clr
-
+  .inviteViaEmails
+    #invitationForm
+      <strong>Invite Friends</strong>
+      = form_tag :class => "new_email" do
+        = text_area_tag "email",nil, :class => 'email',:placeholder => "Enter Friend's email"
+        = submit_tag 'Invites', :class => "multiple_email"
 
 - session_key = Rails.application.config.session_options[:key]
 
