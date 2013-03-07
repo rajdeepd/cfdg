@@ -1,5 +1,5 @@
 class ChaptersController < ApplicationController
-  before_filter :signed_in_user, only: [:show]
+  #before_filter :signed_in_user, only: [:show]
   before_filter :check_chapter_admin, :only => [:chapter_members]
 
   before_filter do

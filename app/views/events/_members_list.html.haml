@@ -1,7 +1,5 @@
 
 -#%h1
-
-
 .attendees
   .attendeesHeading
     %strong LIST OF ATTENDEES &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
@@ -15,9 +13,48 @@
         .nameHolder
           = link_to i.fullname, profile_info_user_path(i)
   .clr
-.inviteViaEmails
-  #invitation
-    <strong>Invite Friends</strong>
-    = form_tag :class => "new_email" do
-      = text_area_tag "email",nil, :class => 'email',:placeholder => "Enter Friend's email"
-      = submit_tag 'Invites', :class => "multiple_email"
+= if !@event.is_past_event? and current_user.present?
+  .inviteViaEmails
+    #invitationForm
+      <strong>Invite Friends</strong>
+      = form_tag( invite_friends_for_event_event_path(:event => @event), :class => "new_email", :method => 'get') do
+        = text_area_tag "email",nil, :class => 'email',:placeholder => "Enter Friend's email"
+        = submit_tag 'Invites', :class => "multiple_email"
+
+
+:javascript
+
+  $(document).ready(function(){
+    $(".multiple_email").on("click",function(event){
+      var value = $(".email").val();
+      var validity = $(validateMultipleEmailsCommaSeparated(value));
+      if(validity["selector"]=="false"){
+        event.preventDefault();
+        //$(".inviteFriend").append('<div id="error">please enter valid email address</div>');
+        $("#invitationForm").append('<div id="error">please enter valid email address</div>');
+        $("#error").fadeOut(4000,function(){
+          $("#error").remove();
+        });
+      }
+    });
+
+    function validateMultipleEmailsCommaSeparated(value){
+      var comma = value.split(/\s*[,;]\s*|\s{1,}|[\r\n]+/).join(",");
+      var result = comma.split(",");
+      var regex=/\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b/i;
+      for(var i = result.length;i >0 ;i--){
+        if(regex.test(result[i-1])){
+          console.log("true")
+          //return "true";
+
+        }
+        else{
+          console.log("false")
+          return "false";
+        }
+      }
+    }
+
+
+  });
+
