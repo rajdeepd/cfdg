@@ -9,8 +9,8 @@ CloudfoundryUsergroups::Application.configure do
 
   # Log error messages when you accidentally call methods on nil.
   config.whiny_nils = true
-  APP_ID ="143322869168766"
-  APP_SECRET ="5eeeadf96ed1c5dca0583fa11ad4e77f"
+  #APP_ID ="143322869168766"
+  #APP_SECRET ="5eeeadf96ed1c5dca0583fa11ad4e77f"
 
   # Show full error reports and disable caching
   config.consider_all_requests_local       = true
@@ -46,5 +46,10 @@ CloudfoundryUsergroups::Application.configure do
 
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.perform_deliveries = true
+  APP_ID = '143322869168766'
+  APP_SECRET = '5eeeadf96ed1c5dca0583fa11ad4e77f'
+  GA.tracker = "UA-39084859-1"
+  #GA.source_script = "('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js'"
+
 
 end

@@ -37,6 +37,7 @@ gem 'devise'
 gem "oa-core", "~> 0.3.2"
 gem "rest-client", "~> 1.6.7"
 gem 'soft-deletable'
+gem "httparty"
 # Authentication end
 
 
@@ -88,6 +89,7 @@ gem 'flash_cookie_session'
 gem 'fog'
 gem 'rb-readline'
 gem 'fb_graph'
+gem 'google-analytics-rails'
 
 #gem 'aws-ses'
 

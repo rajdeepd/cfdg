@@ -55,10 +55,6 @@
               %b.darkText To:
               #{Time.parse(@event.event_end_time_in_time.to_s).strftime('%I:%M %p')} #{Date.parse(@event.event_end_date_in_date.to_s).strftime('%A %b %d, %Y')}
 
-
-            -##{Time.parse(@event.event_start_time_in_time.to_s).strftime('%I:%M %p')}, #{Date.parse(@event.event_start_date_in_date.to_s).strftime('%A %b %d, %Y')}
-            -#I #{@event.entry_fee}  per person
-
         .clr
         %div.location.caDate
           %div.title
@@ -71,18 +67,22 @@
           Description
           %span
             = @event.description
-
       -#=image_tag(@event.image,:size => "60x60")
   %div.clr
-    #gallery_images
-      = render  "events/image_gallery_upload"
-  -if(current_user.present?)
+    -##gallery_images
+      = link_to "See all images",show_all_event_images_event_path(@event)
+      -#= render  "events/image_gallery_upload"
+  -#-if(current_user.present?)
     -if((current_user.id == @event.created_by or @event.can_i_delete?(@current_user.id, @event.chapter_id)) and !@event.is_cancelled?)
       %input#Uploadify{:name => "Uploadify", :type => "file"}
   %div.clr
     #gallery_media
+      %p.label-9 Event Images
+      = link_to "See all images",show_all_event_images_event_path(@event)
       %p.label-9 Event Videos
       = link_to "See all Videos", event_event_medias_path(@event)
+      %p.label-9 Event Slides
+      = link_to "See all Slides", event_slides_event_event_medias_path(@event)
   -if !@current_user.present?
     -if @event.agenda_and_speakers.present?
       = render '/events/agenda_and_speakers'
@@ -109,6 +109,12 @@
   -#    Attendees List
   -#  = text_area_tag 'attendes_emails', @emails, :style => "width:940px;padding-top:4px;", :readonly => 'readonly'
   -#  = link_to "Download list",download_list_event_path(@event) ,:class=>"btn-a-small flt-right"
+  .inviteViaEmails
+    #invitationForm
+      <strong>Invite Friends</strong>
+      = form_tag :class => "new_email" do
+        = text_area_tag "email",nil, :class => 'email',:placeholder => "Enter Friend's email"
+        = submit_tag 'Invites', :class => "multiple_email"
   .attendees.caListAttendees
     .attendeesHeading
       %strong
@@ -126,11 +132,7 @@
           .nameHolder
             = link_to i.fullname,profile_info_user_path(i), :class => "label-my"
           .clr
-  .inviteViaEmailsStatic
-    #invitationFormStatic
-      = form_tag :class => "new_email" do
-        = text_area_tag "email",nil, :class => 'email',:placeholder => "Enter Friend's email"
-        = submit_tag 'Invites', :class => "multiple_email"
+
 
 - session_key = Rails.application.config.session_options[:key]
 
@@ -146,7 +148,6 @@
         }
       }
     });
-
       var uploadify_script_data = {};
       var csrf_token = $('meta[name=csrf-token]').attr('content');
       var csrf_param = $('meta[name=csrf-param]').attr('content');
@@ -173,7 +174,11 @@
           $.get(url,{},function(data){
           },"script");
           //$('#gallery_images').append(response);
-        }
+        },
+        scriptData:{
+         '#{session_key}' : encodeURIComponent('#{u cookies[session_key]}'),
+         'authenticity_token': encodeURIComponent('#{u form_authenticity_token}')
+       }
       });
       $(".rsvp_me").on("click",function(){
         alert("Hello");

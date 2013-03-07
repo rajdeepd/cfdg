@@ -1,10 +1,7 @@
 require 'eventbrite-client'
 require 'oauth2'
 class EventsController < ApplicationController
-  protect_from_forgery :except => [:image_gallery_upload,:delete_event_gallery_image]
-  # GET /events
-  # GET /events.json
-  #before_filter :initialise_eventbrite_client, :except => ['create_event_comment', 'show']
+  protect_from_forgery :except => [:image_gallery_upload,:delete_event_gallery_image, :index]
   before_filter :set_profile_page
   before_filter :check_authorization ,:only => [:download_list]
 
@@ -197,11 +194,11 @@ class EventsController < ApplicationController
         format.html { redirect_to @event, notice: 'Event was successfully updated.' }
         @chapter = Chapter.find(@event.chapter_id)
         if params[:send_email].present?
-        to_email = @chapter.get_primary_coordinator.email
-        bcc_emails = @event.event_members.includes(:user).collect{|i| i.user.email} -[to_email]
-        #EventNotification.delay.event_edit(@event,emails,@chapter)
-        EventNotification.event_edit(@event,to_email,bcc_emails,@chapter).deliver
-        #SES.send_raw_email(EventNotification.event_edit(@event,to_email,bcc_emails,@chapter))
+          to_email = @chapter.get_primary_coordinator.email
+          bcc_emails = @event.event_members.includes(:user).collect{|i| i.user.email} -[to_email]
+          #EventNotification.delay.event_edit(@event,emails,@chapter)
+          EventNotification.event_edit(@event,to_email,bcc_emails,@chapter).deliver
+          #SES.send_raw_email(EventNotification.event_edit(@event,to_email,bcc_emails,@chapter))
         end
         format.json { head :no_content }
       else
@@ -277,7 +274,7 @@ class EventsController < ApplicationController
   def check_authorization
     @event = Event.find(params[:id])
     if @current_user.present?  and !@event.can_i_delete?(@current_user.id, @event.chapter_id)
-       redirect_to event_path(@event)
+      redirect_to event_path(@event)
     end
   end
 
@@ -295,10 +292,10 @@ class EventsController < ApplicationController
 
   def image_gallery_upload
     @event = Event.find(params[:id])
-   if params[:Filedata].present?
-    upload_image = @event.event_galleries.new(:image => params[:Filedata])
-    upload_image.save!
-   end
+    if params[:Filedata].present?
+      upload_image = @event.event_galleries.new(:image => params[:Filedata])
+      upload_image.save!
+    end
     @all_event_images = @event.event_galleries
     respond_to do |format|
       format.js {render :layout => false}
