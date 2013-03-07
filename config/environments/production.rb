@@ -7,6 +7,7 @@ CloudfoundryUsergroups::Application.configure do
   # Full error reports are disabled and caching is turned on
   config.consider_all_requests_local       = true
   config.action_controller.perform_caching = true
+
   #APP_ID = '543305615699970'
   #APP_SECRET = '5eeeadf96ed1c5dca0583fa11ad4e77f'
 
@@ -71,5 +72,7 @@ CloudfoundryUsergroups::Application.configure do
   config.assets.precompile += Ckeditor.assets
 
   config.action_mailer.delivery_method = :amazon_ses
+  APP_ID = '543305615699970'
+  APP_SECRET = '5eeeadf96ed1c5dca0583fa11ad4e77f'
 
 end

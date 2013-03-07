@@ -22,6 +22,7 @@
     = javascript_include_tag "ckeditor/init"
     = javascript_include_tag "gmaps4rails.base.js"
     = javascript_include_tag "gmaps4rails.googlemaps.js"
+    = analytics_init if Rails.env.development?
 
 
     %script{:src => "http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"}
