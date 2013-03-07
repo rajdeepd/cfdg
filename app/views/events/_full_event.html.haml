@@ -111,6 +111,12 @@
   -#    Attendees List
   -#  = text_area_tag 'attendes_emails', @emails, :style => "width:940px;padding-top:4px;", :readonly => 'readonly'
   -#  = link_to "Download list",download_list_event_path(@event) ,:class=>"btn-a-small flt-right"
+  .inviteViaEmails
+    #invitationForm
+      <strong>Invite Friends</strong>
+      = form_tag :class => "new_email" do
+        = text_area_tag "email",nil, :class => 'email',:placeholder => "Enter Friend's email"
+        = submit_tag 'Invites', :class => "multiple_email"
   .attendees.caListAttendees
     .attendeesHeading
       %strong
@@ -128,11 +134,7 @@
           .nameHolder
             = link_to i.fullname,profile_info_user_path(i), :class => "label-my"
           .clr
-  .inviteViaEmailsStatic
-    #invitationFormStatic
-      = form_tag :class => "new_email" do
-        = text_area_tag "email",nil, :class => 'email',:placeholder => "Enter Friend's email"
-        = submit_tag 'Invites', :class => "multiple_email"
+
 
 - session_key = Rails.application.config.session_options[:key]
 
