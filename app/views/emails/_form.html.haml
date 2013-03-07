@@ -48,7 +48,7 @@
         var validity = $(validateMultipleEmailsCommaSeparated(value));
         if(validity["selector"]=="false"){
           event.preventDefault();
-          $(".emailField").append('<div id="error">please enter valid email address</div>');
+          $(".ui-helper-hidden-accessible").append('<div id="error">please enter valid email address</div>');
             $("#error").fadeOut(4000,function(){
               $("#error").remove();
           });
