@@ -83,6 +83,7 @@
                 = text_area_tag "email",nil, :class => 'email',:placeholder => "Enter Friend's email",:style => "resize: none;"
                 -#%span.help-block eg. example@yopmail.com.
                 = submit_tag 'Invite', :class => "multiple_email"
+            #mail_error
     .cc-left
       %ul.ul-f
         %li{:style=>"padding: 7px 20px;"}
@@ -124,31 +125,28 @@
       var validity = $(validateMultipleEmailsCommaSeparated(value));
       if(validity["selector"]=="false"){
         event.preventDefault();
-        $(".inviteFriend").append('<div id="error">please enter valid email address</div>');
+        //$(".inviteFriend").append('<div id="error">please enter valid email address</div>');
+        $("#invitationForm").append('<div id="error">please enter valid email address</div>');
+        $("#error").fadeOut(4000,function(){
+          $("#error").remove();
+        });
       }
     });
 
     function validateMultipleEmailsCommaSeparated(value){
-
       var comma = value.split(/\s*[,;]\s*|\s{1,}|[\r\n]+/).join(",");
-      //alert(comma);
-      //var array = comma.replace(/,(?=[^,]*$)/, '')
-      //alert(array)
       var result = comma.split(",");
-      alert(result)
-      console.log("aaaaaaaaaaaaaaa");
       var regex=/\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b/i;
-      for (var i = 0;i < result.length;i++){
-        if(regex.test(result[i])){
-          return "true";
-          alert("true"+result[i]);
+      for(var i = result.length;i >0 ;i--){
+        if(regex.test(result[i-1])){
+          //console.log("true")
+          //return "true";
+
         }
         else{
-          alert("false"+result[i]);
-          //$(".inviteFriend").append('<div id="error">please enter valid email address</div>');
+          console.log("false")
           return "false";
         }
-
       }
     }
 
