@@ -1997,11 +1997,9 @@ a.chapMem h2:hover, a.chapMem h5:hover{
     margin-left: 65px;
 }
 #gallery_images .seeAllImages a{
-    width: 215px;
     display: block;
     text-decoration: none;
 }
-
 .role{
     margin-left: 281px;
     display: block;
@@ -2011,16 +2009,13 @@ a.chapMem h2:hover, a.chapMem h5:hover{
     height: 40px;
     margin: 5px 0px;
     width: 607px;
-
 }
 .label-my{
     font-size:16px;
     color: #0097d7;
     font-weight: bold;
 }
-
 .profile-image-s{
     width: 20px;
     height: 20px;
-
 }
