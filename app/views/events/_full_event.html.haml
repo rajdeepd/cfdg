@@ -18,6 +18,7 @@
   .div-h
     %a.label-9.event_expand{:href => "#", :event_id=> @event.id,:id => "event_title"} #{@event.title}
     .clr
+
     -#-if !current_user.blank? and @profile_page != true  and !@event.am_i_member?(@current_user.id)
       %button.btn-a-small.flt-right{:id=>"follow_an_event", :event_id => "#{@event.id}"} FOLLOW
     -if !@event.is_past_event?
@@ -127,7 +128,11 @@
           .nameHolder
             = link_to i.fullname,profile_info_user_path(i), :class => "label-my"
           .clr
-
+  .inviteViaEmailsStatic
+    #invitationFormStatic
+      = form_tag :class => "new_email" do
+        = text_area_tag "email",nil, :class => 'email',:placeholder => "Enter Friend's email"
+        = submit_tag 'Invites', :class => "multiple_email"
 
 - session_key = Rails.application.config.session_options[:key]
 
@@ -189,4 +194,54 @@
           $(".rsvp_tick").hide();
      });
 
+
+
+
+
     });
+
+:javascript
+  $(document).ready(function(){
+
+    //$('#invitationForm').hide();
+    $('.inviteFriend').on("click",function(event){
+      event.preventDefault();
+      $('#invitationForm').toggle();
+    });
+
+
+
+    $(".multiple_email").on("click",function(event){
+      var value = $(".email").val();
+      var validity = $(validateMultipleEmailsCommaSeparated(value));
+      if(validity["selector"]=="false"){
+        event.preventDefault();
+        $(".inviteFriend").append('<div id="error">please enter valid email address</div>');
+      }
+    });
+
+    function validateMultipleEmailsCommaSeparated(value){
+
+      var comma = value.split(/\s*[,;]\s*|\s{1,}|[\r\n]+/).join(",");
+      //alert(comma);
+      //var array = comma.replace(/,(?=[^,]*$)/, '')
+      //alert(array)
+      var result = comma.split(",");
+      console.log("aaaaaaaaaaaaaaa");
+      var regex=/\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b/i;
+      for (var i = 0;i < result.length;i++){
+        if(regex.test(result[i])){
+          return "true";
+        }
+        else{
+          //alert("false");
+          //$(".inviteFriend").append('<div id="error">please enter valid email address</div>');
+          return "false";
+        }
+
+      }
+    }
+
+
+  });
+

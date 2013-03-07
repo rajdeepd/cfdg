@@ -17,4 +17,10 @@ class ChapterMailer < ActionMailer::Base
 
   end
 
+  def chapter_invitation(user,email,chapter)
+    @chapter = chapter
+    @user = user
+    mail(:to => email, :subject => "CFDG - Chapter Invitation" )
+  end
+
 end

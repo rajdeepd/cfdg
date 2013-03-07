@@ -1,3 +1,4 @@
+= javascript_include_tag "jquery.validate"
 .content.wrapper
   .content-c
     .cc-top
@@ -74,7 +75,15 @@
             - if last_event.present?
               %h5.label-40 Last Event Date: #{Time.parse(last_event.event_start_date.to_s).strftime('%b %d, %Y')}
 
-
+          .inviteViaEmail
+            #inviteFriendLink
+              = link_to "Invite Friends","",:class => "inviteFriend "
+            #invitationForm
+              = form_tag(invite_friends_chapter_path(:chapter => @chapter), :class => "new_email", :method => 'get') do
+                = text_area_tag "email",nil, :class => 'email',:placeholder => "Enter Friend's email",:style => "resize: none;"
+                -#%span.help-block eg. example@yopmail.com.
+                = submit_tag 'Invite', :class => "multiple_email"
+            #mail_error
     .cc-left
       %ul.ul-f
         %li{:style=>"padding: 7px 20px;"}
@@ -98,3 +107,52 @@
 :javascript 
   Chapters.init();
   Events.init();
+
+:javascript
+  $(document).ready(function(){
+
+    //$('#invitationForm').hide();
+    $("#invitationForm").hide();
+    $('.inviteFriend').on("click",function(event){
+      event.preventDefault();
+      $('#invitationForm').toggle();
+    });
+
+
+
+    $(".multiple_email").on("click",function(event){
+      var value = $(".email").val();
+      var validity = $(validateMultipleEmailsCommaSeparated(value));
+      if(validity["selector"]=="false"){
+        event.preventDefault();
+        //$(".inviteFriend").append('<div id="error">please enter valid email address</div>');
+        $("#invitationForm").append('<div id="error">please enter valid email address</div>');
+        $("#error").fadeOut(4000,function(){
+          $("#error").remove();
+        });
+      }
+    });
+
+    function validateMultipleEmailsCommaSeparated(value){
+      var comma = value.split(/\s*[,;]\s*|\s{1,}|[\r\n]+/).join(",");
+      var result = comma.split(",");
+      var regex=/\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b/i;
+      for(var i = result.length;i >0 ;i--){
+        if(regex.test(result[i-1])){
+          //console.log("true")
+          //return "true";
+
+        }
+        else{
+          console.log("false")
+          return "false";
+        }
+      }
+    }
+
+
+  });
+
+
+
+
