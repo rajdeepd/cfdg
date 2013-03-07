@@ -31,9 +31,10 @@ class EventNotification < ActionMailer::Base
     mail(:to => to,:bcc => bcc, :subject => "Event Updated")
   end
 
-  def event_invitation(user,event,chapter)
+  def event_invitation(emails,user,event,chapter)
     @user = user
     @event = event
     @chapter = chapter
+    mail(:to => emails, :subject => "CFDG - Event Invitation" )
   end
 end

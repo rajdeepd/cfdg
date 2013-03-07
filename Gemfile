@@ -2,8 +2,8 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.2.11'
 #cms
-gem 'irwi', :git => 'git://github.com/alno/irwi.git'
-gem 'RedCloth', :require => 'redcloth'
+#gem 'irwi', :git => 'git://github.com/alno/irwi.git'
+#gem 'RedCloth', :require => 'redcloth'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 

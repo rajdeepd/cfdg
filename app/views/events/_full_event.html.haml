@@ -112,7 +112,7 @@
   .inviteViaEmails
     #invitationForm
       <strong>Invite Friends</strong>
-      = form_tag :class => "new_email" do
+      = form_tag(invite_friends_for_event_event_path(:event => @event), :class => "new_email", :method => 'get') do
         = text_area_tag "email",nil, :class => 'email',:placeholder => "Enter Friend's email"
         = submit_tag 'Invites', :class => "multiple_email"
   .attendees.caListAttendees
@@ -141,13 +141,13 @@
     Events.init();
     $(document).ready(function(e){
     //$("#new_comment").removeClass("comment");
-    $('#new_comment').validate({
-      rules: {
-        "comment[content]": {
-          required: true
+      $('#new_comment').validate({
+        rules: {
+          "comment[content]": {
+            required: true
+          }
         }
-      }
-    });
+      });
       var uploadify_script_data = {};
       var csrf_token = $('meta[name=csrf-token]').attr('content');
       var csrf_param = $('meta[name=csrf-param]').attr('content');
@@ -186,62 +186,49 @@
         $(".rsvp_tick").show();
       });
 
-     $(".rsvp_tick").on("click",function(){
+      $(".rsvp_tick").on("click",function(){
           alert("Hello");
           $(".rsvp_me").show();
           $(".rsvp_me").css("opacity",1);
           $(".rsvp_me").text("R.S.V.P");
           $(".rsvp_tick").hide();
-     });
+      });
 
 
+      $(".multiple_email").on("click",function(event){
+        var value = $(".email").val();
+        var validity = $(validateMultipleEmailsCommaSeparated(value));
+        if(validity["selector"]=="false"){
+          event.preventDefault();
+          $("#invitationForm").append('<div id="error">please enter valid email address</div>');
+            $("#error").fadeOut(4000,function(){
+              $("#error").remove();
+        });
+        }
+      });
 
+      function validateMultipleEmailsCommaSeparated(value){
 
-
-    });
-
-:javascript
-  $(document).ready(function(){
-
-    //$('#invitationForm').hide();
-    $('.inviteFriend').on("click",function(event){
-      event.preventDefault();
-      $('#invitationForm').toggle();
-    });
-
-
-
-    $(".multiple_email").on("click",function(event){
-      var value = $(".email").val();
-      var validity = $(validateMultipleEmailsCommaSeparated(value));
-      if(validity["selector"]=="false"){
-        event.preventDefault();
-        $(".inviteFriend").append('<div id="error">please enter valid email address</div>');
-      }
-    });
-
-    function validateMultipleEmailsCommaSeparated(value){
-
-      var comma = value.split(/\s*[,;]\s*|\s{1,}|[\r\n]+/).join(",");
+        var comma = value.split(/\s*[,;]\s*|\s{1,}|[\r\n]+/).join(",");
       //alert(comma);
       //var array = comma.replace(/,(?=[^,]*$)/, '')
       //alert(array)
-      var result = comma.split(",");
-      console.log("aaaaaaaaaaaaaaa");
-      var regex=/\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b/i;
-      for (var i = 0;i < result.length;i++){
-        if(regex.test(result[i])){
-          return "true";
-        }
-        else{
-          //alert("false");
-          //$(".inviteFriend").append('<div id="error">please enter valid email address</div>');
-          return "false";
-        }
+        var result = comma.split(",");
+        console.log("aaaaaaaaaaaaaaa");
+        var regex=/\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b/i;
+        for (var i = 0;i < result.length;i++){
+          if(regex.test(result[i])){
+            return "true";
+          }
+          else{
+            alert("false");
+            //$(".inviteFriend").append('<div id="error">please enter valid email address</div>');
+            //return "false";
+          }
 
+        }
       }
-    }
 
+    });
 
-  });
 

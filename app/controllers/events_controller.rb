@@ -214,7 +214,7 @@ class EventsController < ApplicationController
     emails = params[:email].split(/\s*[,;]\s*|\s{1,}|[\r\n]+/).join(",")
     logger.info"############### #{emails}"
     chapter = event.chapter
-    EventNotification.event_invitation(user,event,chapter)
+    EventNotification.event_invitation(emails,user,event,chapter).deliver
     #ChapterMailer.chapter_invitation(user,emails,chapter).deliver
     flash[:notice] = "Email sent successfully"
     redirect_to event_path
