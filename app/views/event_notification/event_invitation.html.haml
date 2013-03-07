@@ -1,0 +1,10 @@
+= "Hi"
+%br
+%p
+  = "You are invited for #{@event.name} event of #{@chapter.name} chapter.By #{@user.fullname}"
+%br
+%a{:href => "#{event_url(@event)}"} Click Here to see the event.
+%p
+Thank you
+%p
+CloudFoundry Team

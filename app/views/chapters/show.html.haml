@@ -77,7 +77,8 @@
 
           .inviteViaEmail
             #inviteFriendLink
-              = link_to "Invite Friends","",:class => "inviteFriend "
+              -if @current_user.present?
+                = link_to "Invite Friends","",:class => "inviteFriend "
             #invitationForm
               = form_tag(invite_friends_chapter_path(:chapter => @chapter), :class => "new_email", :method => 'get') do
                 = text_area_tag "email",nil, :class => 'email',:placeholder => "Enter Friend's email",:style => "resize: none;"
