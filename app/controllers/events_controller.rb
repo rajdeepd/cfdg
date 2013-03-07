@@ -211,6 +211,17 @@ class EventsController < ApplicationController
     end
   end
 
+  def invite_friends_for_event
+    event = Event.find(params[:id])
+    user = current_user
+    emails = params[:email].split(/\s*[,;]\s*|\s{1,}|[\r\n]+/).join(",")
+    logger.info"############### #{emails}"
+    #emails = params[:email]
+    #ChapterMailer.chapter_invitation(user,emails,chapter).deliver
+    flash[:notice] = "Email sent successfully"
+    redirect_to chapter_path
+  end
+
   def full_event_content
     @event = Event.find(params[:event_id])
     respond_to do |format|
