@@ -1,12 +1,7 @@
 
 -#%h1
-.inviteViaEmails
-  #invitation
-    <strong>Invite Friends</strong>
-    = form_tag :class => "new_email" do
-      = text_area_tag "email",nil, :class => 'email',:placeholder => "Enter Friend's email"
-      = submit_tag 'Invites', :class => "multiple_email"
-  .clr
+
+
 .attendees
   .attendeesHeading
     %strong LIST OF ATTENDEES &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
@@ -19,4 +14,10 @@
           = avatar_display_pic(i,'thumb', '30x30','profile.png',"profile-img img-a flt-left")
         .nameHolder
           = link_to i.fullname, profile_info_user_path(i)
-
+  .clr
+.inviteViaEmails
+  #invitation
+    <strong>Invite Friends</strong>
+    = form_tag :class => "new_email" do
+      = text_area_tag "email",nil, :class => 'email',:placeholder => "Enter Friend's email"
+      = submit_tag 'Invites', :class => "multiple_email"
