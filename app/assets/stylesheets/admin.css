@@ -1281,7 +1281,7 @@ li{
     background: linear-gradient(to bottom, #f9672c 0%,#e26638 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9672c', endColorstr='#e26638',GradientType=0 );
 }
-}
+
 
 .validation-error li{
     color: red;

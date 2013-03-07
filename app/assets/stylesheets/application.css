@@ -292,7 +292,6 @@ body {
     text-align: right;
 }
 .cc-top{
-    overflow:hidden;
     padding-bottom: 20px;
     border-bottom: 2px solid #ebebeb;
 }
@@ -2018,4 +2017,44 @@ a.chapMem h2:hover, a.chapMem h5:hover{
 .profile-image-s{
     width: 20px;
     height: 20px;
+}
+
+.inviteViaEmail{
+    margin-left: -365px;
+}
+
+.email{
+    resize: none
+}
+#inviteFriendLink a {
+    color: blue;
+}
+#inviteFriendLink {
+    float: right;
+    display: block;
+    margin: 45px 50px 0 0;
+    position: relative;
+    height: 25px;
+}
+#invitationForm {
+    position: absolute;
+    bottom: -155px;
+    left: 0;
+    background: #ffffff;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    padding: 10px 0;
+}
+#invitationForm textarea {
+    width: 150px;
+}
+/* static invite frnd*/
+#invitationFormStatic {
+    margin: 10px 50px 10px 30px;
+    float: right;
+}
+#invitationFormStatic textarea {
+    float: none;
+    display: block;
+    width: 210px;
 }
