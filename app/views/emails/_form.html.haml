@@ -21,10 +21,10 @@
   $(document).ready(function(){
     $('.new_email').validate({
       rules: {
-        "to": {
-          required: true,
-          email: true
-        },
+    //    "to": {
+    //      required: true,
+    //      email: true
+    //    },
         "subject": {
           required: true
         },
@@ -43,4 +43,42 @@
         //  "Nothing selected, input was " + this.value );
       }
     });
+    $(".send").on("click",function(event){
+        var value = $(".emailField").val();
+        var validity = $(validateMultipleEmailsCommaSeparated(value));
+        if(validity["selector"]=="false"){
+          event.preventDefault();
+          $(".emailField").append('<div id="error">please enter valid email address</div>');
+            $("#error").fadeOut(4000,function(){
+              $("#error").remove();
+          });
+        }
+      });
+
+      function validateMultipleEmailsCommaSeparated(value){
+
+        var comma = value.split(/\s*[,;]\s*|\s{1,}|[\r\n]+/).join(",");
+      //alert(comma);
+      //var array = comma.replace(/,(?=[^,]*$)/, '')
+      //alert(array)
+        var result = comma.split(",");
+        console.log("aaaaaaaaaaaaaaa");
+        var regex=/\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b/i;
+        for(var i = result.length;i >0 ;i--){
+          if(regex.test(result[i-1])){
+          //console.log("true")
+          //return "true";
+
+           }
+           else{
+             console.log("false")
+             return "false";
+          }
+
+        }
+      }
+
+
+
   });
+
