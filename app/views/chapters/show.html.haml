@@ -104,11 +104,9 @@
             = submit_tag 'Invite', :class => "multiple_email"
         #mail_error
 
-:javascript 
+:javascript
   Chapters.init();
   Events.init();
-
-:javascript
 
   $(document).ready(function(){
     $(".multiple_email").on("click",function(event){
@@ -135,7 +133,6 @@
 
         }
         else{
-          console.log("false")
           return "false";
         }
       }
