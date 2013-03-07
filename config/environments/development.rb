@@ -9,8 +9,8 @@ CloudfoundryUsergroups::Application.configure do
 
   # Log error messages when you accidentally call methods on nil.
   config.whiny_nils = true
-  APP_ID ="143322869168766"
-  APP_SECRET ="5eeeadf96ed1c5dca0583fa11ad4e77f"
+  #APP_ID ="143322869168766"
+  #APP_SECRET ="5eeeadf96ed1c5dca0583fa11ad4e77f"
 
   # Show full error reports and disable caching
   config.consider_all_requests_local       = true
