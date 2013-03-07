@@ -86,6 +86,7 @@ gem 'flash_cookie_session'
 gem 'fog'
 gem 'rb-readline'
 gem 'fb_graph'
+gem 'google-analytics-rails'
 
 #gem 'aws-ses'
 
