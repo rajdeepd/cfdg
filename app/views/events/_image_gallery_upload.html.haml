@@ -15,7 +15,8 @@
   = "No Image for the event."
 .clr
 
-:javascript
-  $(document).ready(function(){
-    $(".eventImageHolder a").colorbox({rel:'group1'});
-  });
+= content_for :scripts do
+  :javascript
+    $(document).ready(function(){
+      $(".eventImageHolder a").colorbox({rel:'group1'});
+    });

@@ -25,8 +25,31 @@ Released under the MIT License <http://www.opensource.org/licenses/mit-license.p
 	margin-bottom: 1em;
         /*margin-left: 30px;*/
 }
-
-
+#uploadifive-user_avatar{
+    width: 158px !important;
+}
+#uploadifive-Uploadify {
+    border: 1px solid #813516;
+    border-radius: 6px 6px 6px 6px;
+    box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.3) inset, 0 -1px 0 0 rgba(0, 0, 0, 0.4) inset;
+    color: #FFFFFF;
+    display: inline-block;
+    font-size: 18px;
+    padding: 5px 10px;
+    position: relative;
+    text-align: center;
+    text-transform: capitalize;
+    cursor: pointer;
+    background: #ec6129;
+    background: -moz-linear-gradient(top, #ec6129 0%, #c14513 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ec6129), color-stop(100%,#c14513));
+    background: -webkit-linear-gradient(top, #ec6129 0%,#c14513 100%);
+    background: -o-linear-gradient(top, #ec6129 0%,#c14513 100%);
+    background: -ms-linear-gradient(top, #ec6129 0%,#c14513 100%);
+    background: linear-gradient(to bottom, #ec6129 0%,#c14513 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ec6129', endColorstr='#c14513',GradientType=0 );
+    cursor: pointer;
+}
 .uploadify-button.disabled {
 	background-color: #D0D0D0;
 	color: #808080;
