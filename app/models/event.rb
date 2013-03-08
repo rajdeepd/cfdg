@@ -4,9 +4,9 @@ class Event < ActiveRecord::Base
   stampable
 
   acts_as_soft_deletable
-  has_many :event_members
+  has_many :event_members, :dependent => :destroy
   has_many :users , :through => :event_members
-  has_many :comments, :as => :commentable
+  has_many :comments, :as => :commentable, :dependent => :destroy
   has_many :posts
   has_many :event_medias, :dependent => :destroy
   has_many :event_galleries, :dependent => :destroy
