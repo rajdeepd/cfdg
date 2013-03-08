@@ -1,13 +1,17 @@
 = javascript_include_tag "jquery.colorbox-min"
 = stylesheet_link_tag    "colorbox", :media => "all"
 
-%div.content.wrapper
-  %h1.label-17{:style => "padding-bottom:10px;"}= @event.title
-  .mediaContainer
+%div.content.wrapper.eventMedia
+  .clr
+    %h1.label-17{:style => "padding-bottom:10px;"}= @event.title
+    -if current_user
+      = render "form"  , :media=> @event_video, :event=> @event
+  .mediaContainer.clr
     - @event_videos.each do |media|
       =render "event_media", :media=> media, :event => @event
   .clr
-  = link_to "Add New Media", new_event_event_media_path, :remote => true, :style=>"text-decoration:underline;" if current_user
+  -#= link_to "Add New Media", new_event_event_media_path, :remote => true, :style=>"text-decoration:underline;" if current_user
+
   #createEventMedia
 :javascript
   $(document).ready(function(){

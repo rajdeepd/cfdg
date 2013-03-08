@@ -86,6 +86,11 @@ ActiveRecord::Schema.define(:version => 20130307124921) do
     t.datetime "deleted_at"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+<<<<<<< HEAD
+=======
+    t.integer  "country_id"
+    t.string   "details"
+>>>>>>> ef11be7279f673c5d6e21d5bb22d84bc32a4a8dc
   end
 
   create_table "ckeditor_assets", :force => true do |t|

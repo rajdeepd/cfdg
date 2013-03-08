@@ -1698,8 +1698,18 @@ span.ui-helper-hidden-accessible{
     position: relative;
     top: -859px;
     left: 323px;
-    width: 315px !important;
+    width: 404px !important;
     background-color: rgb(243, 243, 243) !important;
+    border: 1px solid #cccccc;
+    cursor: pointer;
+    padding-left: 0
+}
+#ui-id-8 li {
+    padding-left: 10px;
+}
+#ui-id-8 li:hover {
+    background: #D0D0D0;
+
 }
 /* form for sending email ends */
 

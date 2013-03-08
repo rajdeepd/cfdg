@@ -1,12 +1,15 @@
 = javascript_include_tag "jquery.colorbox-min"
 = stylesheet_link_tag    "colorbox", :media => "all"
-%div.content.wrapper
-  %h1.label-17{:style => "padding-bottom:10px;"}= @event.title
-  .mediaContainer
+%div.content.wrapper.eventMedia
+  .clr
+    %h1.label-17{:style => "padding-bottom:10px;"}= @event.title
+    - if current_user
+      = render "slide_form", :media=> @event_slide, :event=> @event
+  .mediaContainer.clr
     - @event_slides.each do |media|
       =render "event_slides", :media=> media, :slide_id => media.slideshow_id,:title => media.title, :event => @event
   .clr
-  .create_slide{:style => "margin-top:50px;margin-left: 10px;"}
+  -#.create_slide{:style => "margin-top:50px;margin-left: 10px;"}
     = link_to "Add New Slide", new_slide_event_event_medias_path, :remote => true, :style=>"text-decoration:underline;" if current_user
   #createEventMedia
 :javascript
