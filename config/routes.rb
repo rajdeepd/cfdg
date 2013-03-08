@@ -170,6 +170,7 @@ CloudfoundryUsergroups::Application.routes.draw do
           post 'create_event_comment'
           post 'image_gallery_upload'
           get 'image_gallery_upload'
+          get 'admin_invite_friends_for_event'
         end
       end
 
