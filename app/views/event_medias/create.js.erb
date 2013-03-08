@@ -1,6 +1,0 @@
-<%- if @media.valid? %>
-  $(".mediaContainer").append("<%= escape_javascript(render "event_media", :media=> @media, :event=> @event) %>")
-  $("#createEventMedia").html("");
-  $(".eventImageHolder a").colorbox({rel:'group1'});
-  $(".eventImageHolder .cboxElement").colorbox({iframe:true, innerWidth:480, innerHeight:390});
-<%- end %>

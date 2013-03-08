@@ -1,0 +1,12 @@
+-#<%- if @media.valid? %>
+-#  $(".mediaContainer").append("<%= escape_javascript(render "event_slides", :media=> @media, :event=> @event,:slide_id => @slide_id,:title => @title) %>")
+-#  $("#createEventMedia").html("");
+-#  $(".eventImageHolder a").colorbox({rel:'group1'});
+-#  $(".eventImageHolder .cboxElement").colorbox({iframe:true, innerWidth:480, innerHeight:390});
+-#<%- end %>
+
+- if @media.valid?
+  $(".mediaContainer").append("#{escape_javascript(render "event_slides", :media=> @media, :event=> @event,:slide_id => @slide_id,:title => @title)}")
+  $("#createEventMedia").html("");
+  $(".eventImageHolder a").colorbox({rel:'group1'});
+  $(".eventImageHolder .cboxElement").colorbox({iframe:true, innerWidth:480, innerHeight:390});
