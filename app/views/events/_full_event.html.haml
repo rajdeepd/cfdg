@@ -78,14 +78,24 @@
   %div.clr
     #gallery_media
       %h4 Event Media Gallery
-      %a.eventImages.galleryBox{:href=>"#"}
-        %img{:src=>"/assets/upload_img.jpg"}
+      %a.eventImages.galleryBox{:href=>"#{show_all_event_images_event_path(@event)}"}
+        -if @event.event_galleries.present?
+          = image_tag(@all_event_images.first.image,:size => "150x150")
+        -else
+          %img{:src=>"/assets/upload_img.jpg"}
         %p See all images
-      %a.eventVideos.galleryBox{:href=>"#"}
-        %img{:src=>"/assets/link_upload.jpg"}
+      %a.eventVideos.galleryBox{:href=>"#{event_event_medias_path(@event)}"}
+        -if @event.event_medias.videos.present?
+          - media = @event.event_medias.videos.first
+          = image_tag("http://i2.ytimg.com/vi/#{media.url.split("?v=").last}/default.jpg",:size => "150x150")
+        -else
+          %img{:src=>"/assets/link_upload.jpg"}
         %p See all videos
-      %a.eventSlides.galleryBox{:href=>"#"}
-        %img{:src=>"/assets/img-e.png"}
+      %a.eventSlides.galleryBox{:href=>"#{event_slides_event_event_medias_path(@event)}"}
+        -if @event.event_medias.slides.present?
+          = image_tag(@event.event_medias.slides.first.slideshow_image,:size => "150x150")
+        -else
+          %img{:src=>"/assets/img-e.png"}
         %p See all slides
       .clr
       -#%p.label-9 Event Images
@@ -136,13 +146,15 @@
             = avatar_display_pic(i,'thumb', '30x30','profile.png',"profile-img img-a flt-left")
           .nameHolder
             = link_to i.fullname,profile_info_user_path(i), :class => "label-my"
-          .clr
-  .inviteViaEmails
-    #invitationForm
-      <strong>Invite Friends</strong>
-      = form_tag :class => "new_email" do
-        = text_area_tag "email",nil, :class => 'email',:placeholder => "Enter Friend's email"
-        = submit_tag 'Invites', :class => "multiple_email"
+    .clr
+  - if !@event.is_past_event? and @current_user.present?
+    -#= @current_user.fullname
+    .inviteViaEmails
+      #invitationForm
+        <strong>Invite Friends</strong>
+        = form_tag( invite_friends_for_event_event_path(:event => @event), :class => "new_email", :method => 'get') do
+          = text_area_tag "email",nil, :class => 'email',:placeholder => "Enter Friend's email"
+          = submit_tag 'Invites', :class => "multiple_email"
 
 - session_key = Rails.application.config.session_options[:key]
 
@@ -151,13 +163,13 @@
     Events.init();
     $(document).ready(function(e){
     //$("#new_comment").removeClass("comment");
-    $('#new_comment').validate({
-      rules: {
-        "comment[content]": {
-          required: true
+      $('#new_comment').validate({
+        rules: {
+          "comment[content]": {
+            required: true
+          }
         }
-      }
-    });
+      });
       var uploadify_script_data = {};
       var csrf_token = $('meta[name=csrf-token]').attr('content');
       var csrf_param = $('meta[name=csrf-param]').attr('content');
@@ -196,62 +208,50 @@
         $(".rsvp_tick").show();
       });
 
-     $(".rsvp_tick").on("click",function(){
+      $(".rsvp_tick").on("click",function(){
           alert("Hello");
           $(".rsvp_me").show();
           $(".rsvp_me").css("opacity",1);
           $(".rsvp_me").text("R.S.V.P");
           $(".rsvp_tick").hide();
-     });
+      });
 
 
+      $(".multiple_email").on("click",function(event){
+        var value = $(".email").val();
+        var validity = $(validateMultipleEmailsCommaSeparated(value));
+        if(validity["selector"]=="false"){
+          event.preventDefault();
+          $("#invitationForm").append('<div id="error">please enter valid email address</div>');
+            $("#error").fadeOut(4000,function(){
+              $("#error").remove();
+          });
+        }
+      });
 
+      function validateMultipleEmailsCommaSeparated(value){
 
-
-    });
-
-:javascript
-  $(document).ready(function(){
-
-    //$('#invitationForm').hide();
-    $('.inviteFriend').on("click",function(event){
-      event.preventDefault();
-      $('#invitationForm').toggle();
-    });
-
-
-
-    $(".multiple_email").on("click",function(event){
-      var value = $(".email").val();
-      var validity = $(validateMultipleEmailsCommaSeparated(value));
-      if(validity["selector"]=="false"){
-        event.preventDefault();
-        $(".inviteFriend").append('<div id="error">please enter valid email address</div>');
-      }
-    });
-
-    function validateMultipleEmailsCommaSeparated(value){
-
-      var comma = value.split(/\s*[,;]\s*|\s{1,}|[\r\n]+/).join(",");
+        var comma = value.split(/\s*[,;]\s*|\s{1,}|[\r\n]+/).join(",");
       //alert(comma);
       //var array = comma.replace(/,(?=[^,]*$)/, '')
       //alert(array)
-      var result = comma.split(",");
-      console.log("aaaaaaaaaaaaaaa");
-      var regex=/\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b/i;
-      for (var i = 0;i < result.length;i++){
-        if(regex.test(result[i])){
-          return "true";
-        }
-        else{
-          //alert("false");
-          //$(".inviteFriend").append('<div id="error">please enter valid email address</div>');
-          return "false";
-        }
+        var result = comma.split(",");
+        console.log("aaaaaaaaaaaaaaa");
+        var regex=/\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b/i;
+        for(var i = result.length;i >0 ;i--){
+          if(regex.test(result[i-1])){
+          //console.log("true")
+          //return "true";
 
+           }
+           else{
+             console.log("false")
+             return "false";
+          }
+
+        }
       }
-    }
 
+    });
 
-  });
 

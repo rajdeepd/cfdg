@@ -74,6 +74,8 @@
             - last_event = @past_events.try(:first)
             - if last_event.present?
               %h5.label-40 Last Event Date: #{Time.parse(last_event.event_start_date.to_s).strftime('%b %d, %Y')}
+
+
     .cc-left
       %ul.ul-f
         %li{:style=>"padding: 7px 20px;"}
@@ -92,20 +94,18 @@
       #chapter_show_events
         = render '/events/events_list'
     /=render '/events/comment_partial'
-    .inviteViaEmails.chapter
-      #invitationForm
-        <strong>Invite Friends</strong>
-        = form_tag(invite_friends_chapter_path(:chapter => @chapter), :class => "new_email", :method => 'get') do
-          = text_area_tag "email",nil, :class => 'email',:placeholder => "Enter Friend's email",:style => "resize: none;"
-          -#%span.help-block eg. example@yopmail.com.
-          = submit_tag 'Invite', :class => "multiple_email"
-      #mail_error
-
-:javascript 
-  Chapters.init();
-  Events.init();
+    - if @current_user.present?
+      .inviteViaEmails.chapter
+        #invitationForm
+          <strong>Invite Friends</strong>
+          = form_tag(invite_friends_chapter_path(:chapter => @chapter), :class => "new_email", :method => 'get') do
+            = text_area_tag "email",nil, :class => 'email',:placeholder => "Enter Friend's email",:style => "resize: none;"
+            = submit_tag 'Invite', :class => "multiple_email"
+        #mail_error
 
 :javascript
+  Chapters.init();
+  Events.init();
 
   $(document).ready(function(){
     $(".multiple_email").on("click",function(event){
@@ -132,7 +132,6 @@
 
         }
         else{
-          console.log("false")
           return "false";
         }
       }
