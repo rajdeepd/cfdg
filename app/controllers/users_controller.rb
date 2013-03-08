@@ -65,18 +65,14 @@ class UsersController < ApplicationController
   def facebook_callback
     if params[:code].present?
     @@client.authorization_code = params[:code]
-     begin
-      rescue
         access_token = @@client.access_token! :client_auth_body # => Rack::OAuth2::AccessToken
         user = FbGraph::User.me(access_token).fetch
         user.link!(
             :link => 'https://github.com/nov/fb_graph',
             :message => params[:message]
         )
-     end
     end
     redirect_to params[:url]
-
   end
 
 end
