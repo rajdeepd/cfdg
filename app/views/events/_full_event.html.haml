@@ -148,7 +148,7 @@
             = link_to i.fullname,profile_info_user_path(i), :class => "label-my"
     .clr
   - if !@event.is_past_event? and @current_user.present?
-    = @current_user.fullname
+    -#= @current_user.fullname
     .inviteViaEmails
       #invitationForm
         <strong>Invite Friends</strong>
