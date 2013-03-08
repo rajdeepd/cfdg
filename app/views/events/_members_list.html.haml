@@ -13,7 +13,7 @@
         .nameHolder
           = link_to i.fullname, profile_info_user_path(i)
   .clr
-= if !@event.is_past_event? and current_user.present?
+- if !@event.is_past_event? && @current_user.present? && !@event.is_cancelled?
   .inviteViaEmails
     #invitationForm
       <strong>Invite Friends</strong>

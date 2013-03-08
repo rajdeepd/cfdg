@@ -94,7 +94,7 @@
       #chapter_show_events
         = render '/events/events_list'
     /=render '/events/comment_partial'
-    = if @current_user.present?
+    - if @current_user.present?
       .inviteViaEmails.chapter
         #invitationForm
           <strong>Invite Friends</strong>
