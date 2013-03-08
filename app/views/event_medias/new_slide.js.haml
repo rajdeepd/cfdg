@@ -1,0 +1,2 @@
+-#$("#createEventMedia").html("<%= escape_javascript(render "slide_form", :media=> @event_slide, :event=> @event) %>")
+$("#createEventMedia").html("#{escape_javascript(render "slide_form", :media=> @event_slide, :event=> @event)}")

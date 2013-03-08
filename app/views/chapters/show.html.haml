@@ -100,15 +100,12 @@
           <strong>Invite Friends</strong>
           = form_tag(invite_friends_chapter_path(:chapter => @chapter), :class => "new_email", :method => 'get') do
             = text_area_tag "email",nil, :class => 'email',:placeholder => "Enter Friend's email",:style => "resize: none;"
-            -#%span.help-block eg. example@yopmail.com.
             = submit_tag 'Invite', :class => "multiple_email"
         #mail_error
 
-:javascript 
+:javascript
   Chapters.init();
   Events.init();
-
-:javascript
 
   $(document).ready(function(){
     $(".multiple_email").on("click",function(event){
@@ -135,7 +132,6 @@
 
         }
         else{
-          console.log("false")
           return "false";
         }
       }

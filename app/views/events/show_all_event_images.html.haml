@@ -4,10 +4,14 @@
 = javascript_include_tag "jquery.validate"
 = stylesheet_link_tag "uploadify", :media => "all"
 
-%div.content.wrapper{:event_id=> @event.id,:id => "event_title"}
+%div.content.wrapper.eventMedia{:event_id=> @event.id,:id => "event_title"}
   %h1.label-17{:style => "padding-bottom:30px;"}
     = @event.title
+  -if(current_user.present?)
+    -if((current_user.id == @event.created_by or @event.can_i_delete?(@current_user.id, @event.chapter_id)) and !@event.is_cancelled?)
+      %input#Uploadify{:name => "Uploadify", :type => "file"}
   %div.clr
+
     #gallery_images
       = render  "events/image_gallery_upload"
   -#-if @all_event_images.present?
@@ -19,9 +23,7 @@
     .clr
       - if current_user.present? && ChapterMember.is_primary_coordinator?(current_user.id)
         %button.btn-a{:id => "deleteImagesBtn",:rel => "#{@event.id}"} DELETE
-  -if(current_user.present?)
-    -if((current_user.id == @event.created_by or @event.can_i_delete?(@current_user.id, @event.chapter_id)) and !@event.is_cancelled?)
-      %input#Uploadify{:name => "Uploadify", :type => "file"}
+
 
 - session_key = Rails.application.config.session_options[:key]
 = content_for :scripts do
@@ -29,7 +31,6 @@
     $(document).ready(function(){
       $(".eventImageHolder a").colorbox({rel:'group1'});
     });
-
     var uploadify_script_data = {};
     var csrf_token = $('meta[name=csrf-token]').attr('content');
     var csrf_param = $('meta[name=csrf-param]').attr('content');
