@@ -2071,3 +2071,25 @@ a.chapMem h2:hover, a.chapMem h5:hover{
     font-weight: bold;
     font-size: 20px;
 }
+.eventMedia h1{
+    float: left;
+    width: 500px;
+}
+.eventMedia #uploadifive-Uploadify{
+    float: right;
+}
+#uploadifive-Uploadify-queue {
+    clear: both;
+    width: 500px;
+    float: right;
+    text-align: right;
+    max-height: 80px;
+    overflow-y: auto;
+    margin-bottom: 10px;
+}
+.fileinfo {
+    color: green;
+}
+.new_event_media p {
+    float: left;
+}
