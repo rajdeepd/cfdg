@@ -103,7 +103,7 @@
         .inviteViaEmails
           #invitationForm
             <strong>Invite Friends</strong>
-            = form_tag( admin_invite_friends_for_event_admin_chapter_event_path(:event => @event), :class => "new_email", :method => 'get') do
+            = form_tag( admin_invite_friends_for_event_admin_chapter_event_path, :class => "new_email", :method => 'post') do
               = text_area_tag "email",nil, :class => 'email',:placeholder => "Enter Friend's email"
               = submit_tag 'Invites', :class => "multiple_email"
 

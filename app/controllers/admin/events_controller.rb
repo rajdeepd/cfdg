@@ -140,11 +140,9 @@ class Admin::EventsController < ApplicationController
   def admin_invite_friends_for_event
     event = Event.find(params[:id])
     user = current_user
-    emails = params[:email].split(/\s*[,;]\s*|\s{1,}|[\r\n]+/).join(",")
-    logger.info"############### #{emails}"
+    emails = validate_email(params[:email])
     chapter = event.chapter
     EventNotification.event_invitation(emails,user,event,chapter).deliver
-    #ChapterMailer.chapter_invitation(user,emails,chapter).deliver
     flash[:notice] = "Email sent successfully"
     redirect_to admin_chapter_event_path
   end

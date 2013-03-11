@@ -74,7 +74,7 @@ CloudfoundryUsergroups::Application.routes.draw do
       get 'cancel_event'
     end
     member do
-      get :invite_friends_for_event
+      post :invite_friends_for_event
       get :download_list
       get :unfollow_an_event
       post 'image_gallery_upload'
@@ -170,7 +170,7 @@ CloudfoundryUsergroups::Application.routes.draw do
           post 'create_event_comment'
           post 'image_gallery_upload'
           get 'image_gallery_upload'
-          get 'admin_invite_friends_for_event'
+          post 'admin_invite_friends_for_event'
         end
       end
 
