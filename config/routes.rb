@@ -28,7 +28,7 @@ CloudfoundryUsergroups::Application.routes.draw do
     member do
       get :chapter_members
       get :block_unblock_chapter_member
-      get :invite_friends
+      post :invite_friends
     end
     resources :events
     collection do
