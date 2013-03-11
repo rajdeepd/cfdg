@@ -59,6 +59,7 @@ public/uploads
 /.idea/
 .idea/*
 /.idea/workspace.xml
+/db/schema.rb
 
 
 *#*
