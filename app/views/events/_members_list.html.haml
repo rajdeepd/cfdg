@@ -13,13 +13,11 @@
         .nameHolder
           = link_to i.fullname, profile_info_user_path(i)
   .clr
-
 - if !@event.is_past_event? && @current_user.present? && !@event.is_cancelled?
-
   .inviteViaEmails
     #invitationForm
       <strong>Invite Friends</strong>
-      = form_tag( invite_friends_for_event_event_path(:event => @event), :class => "new_email", :method => 'get') do
+      = form_tag( invite_friends_for_event_event_path, :class => "new_email", :method => 'post') do
         = text_area_tag "email",nil, :class => 'email',:placeholder => "Enter Friend's email"
         = submit_tag 'Invites', :class => "multiple_email"
 
@@ -47,8 +45,6 @@
       for(var i = result.length;i >0 ;i--){
         if(regex.test(result[i-1])){
           console.log("true")
-          //return "true";
-
         }
         else{
           console.log("false")

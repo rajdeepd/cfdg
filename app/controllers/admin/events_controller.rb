@@ -137,6 +137,16 @@ class Admin::EventsController < ApplicationController
 
   end
 
+  def admin_invite_friends_for_event
+    event = Event.find(params[:id])
+    user = current_user
+    emails = validate_email(params[:email])
+    chapter = event.chapter
+    EventNotification.event_invitation(emails,user,event,chapter).deliver
+    flash[:notice] = "Email sent successfully"
+    redirect_to admin_chapter_event_path
+  end
+
   def image_gallery_upload
     @event = Event.find(params[:id])
     if params[:Filedata].present?

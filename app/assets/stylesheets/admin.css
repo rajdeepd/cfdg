@@ -1737,3 +1737,43 @@ a.label-my:hover {
     float: none;
     text-align: center;
 }
+/*invite friends */
+
+#inviteFriendLink a {
+    color: blue;
+}
+#inviteFriendLink {
+    float: right;
+    display: block;
+    margin: 45px 50px 0 0;
+    position: relative;
+    height: 25px;
+}
+.inviteViaEmails.chapter {
+    margin-top: 37px;
+}
+.inviteViaEmails {
+    float: right;
+    margin-top: 20px;
+}
+.inviteViaEmails strong {
+    margin-bottom: 10px;
+    display: block;
+}
+#invitationForm {
+    background: #f1f1f1;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    width: 250px;
+    padding: 10px;
+}
+#invitationForm textarea {
+    display: block;
+    margin-bottom: 10px;
+    width: 242px;
+    height: 50px;
+}
+
+.email{
+    resize: none
+}
