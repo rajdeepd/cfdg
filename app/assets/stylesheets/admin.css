@@ -1422,18 +1422,18 @@ li.ulg-expanded .div-d{
 .customPostHeading .flt-right .btn-a-small{
     padding: 7px 11px;
 }
-#activities-tabs{
+#activities-tabs {
     margin: 0 20px 20px 0;
     font-size: 13px;
     padding: 20px 0 0 20px;
     border-top: 2px solid #EBEBEB;
 }
-.customTabList{
+.customTabList {
     float: left;
     width: 320px;
     border: none;
 }
-.activityLog{
+.activityLog {
     float: left;
     color: #918f8f;
     font-size: 14px;
@@ -1443,17 +1443,17 @@ li.ulg-expanded .div-d{
 .activityLog a {
     color: #918f8f;
 }
-.innerTabList{
+.innerTabList {
     border-top: 2px solid #EBEBEB;
 }
-.activityLog i.bg-arrow-down-b{
+.activityLog i.bg-arrow-down-b {
     display: inline-block;
     left: 31px;
     bottom: -7px;
 }
 
 /* Send Email link starts */
-.sendEmail{
+.sendEmail {
     float: left;
     color: #918f8f;
     font-size: 14px;
@@ -1464,38 +1464,38 @@ li.ulg-expanded .div-d{
 .sendEmail a {
     color: #918f8f;
 }
-.innerTabList{
+.innerTabList {
     border-top: 2px solid #EBEBEB;
 }
-.sendEmail i.bg-arrow-down-b{
+.sendEmail i.bg-arrow-down-b {
     display: inline-block;
     left: 31px;
     bottom: -7px;
 }
 /* Send Email link ends  */
 
-.activity{
+.activity {
     margin: 15px 0;
     border-bottom: 1px solid #ededed;
 }
-.activity .timeago{
+.activity .timeago {
     margin: 5px 0;
 }
-.activity .title{
+.activity .title {
     margin: 5px 0;
     font-size: 12px;
     line-height: 18px;
 }
-.activity .avatar{
+.activity .avatar {
     margin: 0px 10px 10px 0;
     float: left;
 }
 
-.activity a{
+.activity a {
     text-decoration: underline;
 }
 
-#activities-tabs .pagination span a{
+#activities-tabs .pagination span a {
     color: #0099cc;
     padding: 6px 10px;
     border-radius: 6px;
@@ -1505,7 +1505,7 @@ li.ulg-expanded .div-d{
     background-image: -webkit-linear-gradient(bottom, rgb(224,224,224) 35%, rgb(235,235,235) 68%, rgb(240,240,240) 84%);
     background-image: -ms-linear-gradient(bottom, rgb(224,224,224) 35%, rgb(235,235,235) 68%, rgb(240,240,240) 84%);
 }
-#activities-tabs .pagination span.current{
+#activities-tabs .pagination span.current {
     color: #222222;
     border-radius: 6px;
     margin-right: 5px;
@@ -1516,7 +1516,7 @@ li.ulg-expanded .div-d{
     background-image: -webkit-linear-gradient(bottom, rgb(224,224,224) 35%, rgb(235,235,235) 68%, rgb(240,240,240) 84%);
     background-image: -ms-linear-gradient(bottom, rgb(224,224,224) 35%, rgb(235,235,235) 68%, rgb(240,240,240) 84%);
 }
-.btnLink{
+.btnLink {
     color: #0097d7;
     float: left;
     font-size: 13px;
@@ -1527,35 +1527,35 @@ li.ulg-expanded .div-d{
     line-height: 28px;
     cursor: pointer;
 }
-.incubateLinks .btnLinkSmall{
+.incubateLinks .btnLinkSmall {
     margin-left: 34px;
     width: 40px;
 }
-.secondaryCo .btnLink{
+.secondaryCo .btnLink {
     width: auto;
     float: none;
     text-align: center;
     display: block;
 }
-.btnLink:hover, .btnLinkSmall:hover{
+.btnLink:hover, .btnLinkSmall:hover {
     color: #222222;
 }
-.customTable h5.label-46, .customTable h5.label-47{
+.customTable h5.label-46, .customTable h5.label-47 {
     margin: 0;
 }
-.customTable h5.label-48{
+.customTable h5.label-48 {
     margin: 5px;
 }
-.customTable h5.label-46.customTD{
+.customTable h5.label-46.customTD {
     margin-top: 15px;
 }
-.customTable thead tr td:first-child{
+.customTable thead tr td:first-child {
     border: none;
 }
-.customTable thead tr td{
+.customTable thead tr td {
     border-left: 1px solid #dfdfdf;
 }
-.btnLinkSmall{
+.btnLinkSmall {
     color: #0097d7;
     width: 70px;
     float: left;
@@ -1566,15 +1566,15 @@ li.ulg-expanded .div-d{
     margin-right: 15px;
     cursor: pointer;
 }
-.customLinksWrapper{
+.customLinksWrapper {
     width: 190px;
     margin: 0 auto;
     overflow: hidden;
 }
-.customLinksWrapper a.btnLinkSmall , .customLinksWrapper a.btnLink, .btnLinkSmall.change_status{
+.customLinksWrapper a.btnLinkSmall , .customLinksWrapper a.btnLink, .btnLinkSmall.change_status {
     text-align: center;
 }
-.ulg-expanded{
+.ulg-expanded {
     width: 640px;
     float: left;
     margin-right: 20px;
@@ -1588,51 +1588,51 @@ li.ulg-expanded .div-d{
     float: left;
     margin-top: 3px;
 }
-.caListAttendees .attendeesHeading a:hover{
+.caListAttendees .attendeesHeading a:hover {
     color: #222222;
 }
-.caListAttendees .attendeesHeading a{
+.caListAttendees .attendeesHeading a {
     font-size: 12px;
     color: #0097d7;
 }
-.caListAttendees .attendeesHeading{
+.caListAttendees .attendeesHeading {
     height: 52px;
     line-height: 25px;
     background: #f1f1f1;
     padding: 0 10px;
     margin-bottom: 15px;
 }
-.caListAttendees{
+.caListAttendees {
     margin-top: 30px;
 }
-.attendeesList li{
+.attendeesList li {
     overflow: hidden;
     margin-bottom: 15px;
 }
-.centerLink{
+.centerLink {
     text-align: center;
     width: 200px;
 }
-.add_a_new_comment textarea{
+.add_a_new_comment textarea {
     height: 100px;
     resize: none;
     width: 545px;
     color: #222222;
 }
-#tabs ul{
+#tabs ul {
     margin: 0;
 }
-.asterix{
+.asterix {
     color: red;
 }
 
 /* form for sending email starts */
 
-.emailField{
+.emailField {
     width: 402px;
     height: 20px;
 }
-.emailArea{
+.emailArea {
     width: 400px;
     height: 200px;
     resize: none;
@@ -1656,7 +1656,7 @@ li.ulg-expanded .div-d{
     color: #c09853;
 }
 
-.notice p{
+.notice p {
     color: #c09853;
     margin-top: -20px;
 }
@@ -1678,21 +1678,21 @@ li.ulg-expanded .div-d{
     color: #b94a48;
 }
 
-.custom_error p{
+.custom_error p {
     color: #b94a48;
     margin-top: -20px;
 }
-label.error{
+label.error {
     display: block;
     color: red;
     font-size: 12px;
 }
-span.ui-helper-hidden-accessible{
+span.ui-helper-hidden-accessible {
     display: block;
     color: black;
     font-size: 12px;
 }
-#ui-id-8{
+#ui-id-8 {
     z-index: 3;
     display: block;
     position: relative;
@@ -1713,11 +1713,11 @@ span.ui-helper-hidden-accessible{
 }
 /* form for sending email ends */
 
-.profile-image-s{
+.profile-image-s {
     width: 40px;
     height: 40px;
 }
-a.label-my:hover{
+a.label-my:hover {
     color: #244466;
 }
 .emailLink {

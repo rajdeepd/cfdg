@@ -2084,8 +2084,8 @@ a.chapMem h2:hover, a.chapMem h5:hover{
     float: right;
     text-align: right;
     max-height: 80px;
-    overflow-y: auto;
     margin-bottom: 10px;
+    overflow-y: auto;
 }
 .fileinfo {
     color: green;
