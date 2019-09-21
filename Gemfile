@@ -27,7 +27,7 @@ gem 'gmaps4rails'
 gem 'omniauth', '>= 0.2.6'
 gem 'devise'
 gem "oa-core", "~> 0.3.2"
-gem "rest-client", "~> 1.6.7"
+gem "rest-client", "~> 1.8.0"
 gem 'soft-deletable'
 # Authentication end
 
